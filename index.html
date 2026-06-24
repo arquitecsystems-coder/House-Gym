@@ -2114,7 +2114,8 @@ function wizardConfirm() {
 
   // Generar calendario
   const calendario = [];
-  const startDate = new Date(partial.fecha);
+  const [sy, sm, sd] = partial.fecha.split('-').map(Number);
+  const startDate = new Date(sy, sm-1, sd);
   let pesoNoche = partial.pesoNoche;
   let pesoAyunas = partial.pesoAyunas;
   for (let s = 1; s <= r.semanas; s++) {
@@ -2158,8 +2159,10 @@ function renderCutDashboard(wrap, datos) {
   const semanales = datos.registrosSemanales || {};
 
   // Semana actual
-  const inicio = new Date(s.fechaInicio);
-  const hoyDate = new Date(hoy);
+  const [_iy, _im, _id] = s.fechaInicio.split('-').map(Number);
+  const inicio = new Date(_iy, _im-1, _id);
+  const [_hy, _hm, _hd] = hoy.split('-').map(Number);
+  const hoyDate = new Date(_hy, _hm-1, _hd);
   const diasTranscurridos = Math.floor((hoyDate - inicio) / (1000*60*60*24));
   const semanaActual = Math.min(Math.floor(diasTranscurridos / 7) + 1, s.semanas);
   const semanaInfo = s.calendario[semanaActual - 1];
@@ -2316,8 +2319,10 @@ function savePesoDiario(fecha) {
 
   // Actualizar promedio en registro semanal
   const s = datos.setup;
-  const inicio = new Date(s.fechaInicio);
-  const hoyDate = new Date(fecha);
+  const [iy, im, id] = s.fechaInicio.split('-').map(Number);
+  const inicio = new Date(iy, im-1, id);
+  const [hy, hm, hd] = fecha.split('-').map(Number);
+  const hoyDate = new Date(hy, hm-1, hd);
   const dias = Math.floor((hoyDate - inicio) / (1000*60*60*24));
   const semana = Math.min(Math.floor(dias / 7) + 1, s.semanas);
 
