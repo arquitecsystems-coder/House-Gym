@@ -1,0 +1,2686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Forge">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<meta name="theme-color" content="#5C7A00">
+<title>Forge</title>
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --bg:       #F7F7F5;
+    --surface:  #FFFFFF;
+    --card:     #FFFFFF;
+    --border:   #E5E5E3;
+    --accent:   #5C7A00;
+    --accent2:  #C0392B;
+    --text:     #1A1A1A;
+    --muted:    #999;
+    --ok:       #2E7D32;
+    --ok-bg:    #E8F5E9;
+    --accent-bg:#F5FFD0;
+    --font-mono: 'SF Mono', 'Fira Mono', monospace;
+    --font:     -apple-system, 'Segoe UI', sans-serif;
+    --radius:   10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sync-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+  }
+
+  .sync-btn.syncing { color: var(--accent); border-color: var(--accent); }
+  .sync-btn.error   { color: var(--accent2); border-color: var(--accent2); }
+
+  /* ── MESO SELECTOR ── */
+  .meso-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .meso-tabs::-webkit-scrollbar { display: none; }
+
+  .meso-tab {
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .meso-tab.active {
+    background: var(--accent);
+    color: #FFFFFF;
+    border-color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ── WEEK / DAY NAV ── */
+  .nav-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+
+  .week-btn {
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .week-btn.active { border-color: var(--accent); color: var(--accent); }
+
+  /* ── DAY TABS ── */
+  .day-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .day-tabs::-webkit-scrollbar { display: none; }
+
+  .day-tab {
+    flex: 1;
+    min-width: 70px;
+    padding: 10px 6px;
+    text-align: center;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .day-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .day-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ok);
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { padding: 16px 16px; max-width: 600px; margin: 0 auto; }
+
+  .session-header {
+    margin-bottom: 16px;
+  }
+
+  .session-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .session-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+
+  /* ── EXERCISE CARD ── */
+  .exercise-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: visible;
+  }
+
+  .exercise-body {
+    overflow: hidden;
+    border-radius: 0 0 var(--radius) var(--radius);
+    background: var(--card);
+  }
+
+  .exercise-header {
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .exercise-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .exercise-meta {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    margin-top: 2px;
+  }
+
+  .exercise-badge {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: var(--border);
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .exercise-badge.done { background: var(--ok-bg); color: var(--ok); }
+
+  /* ── PLAN ROW (semana a semana) ── */
+  .plan-weeks {
+    padding: 8px 14px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .plan-week-chip {
+    flex-shrink: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .plan-week-chip.current {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: #F5FFD0;
+    font-weight: 700;
+  }
+
+  /* ── SETS ── */
+  .sets-container {
+    padding: 0 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .set-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 1fr 60px 32px;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .set-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .set-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 7px 8px;
+    width: 100%;
+    text-align: center;
+    -webkit-appearance: none;
+  }
+
+  .set-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .set-input.filled { border-color: #C5E06A; background: #F5FFD0; }
+
+  .set-rir {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 7px 4px;
+    width: 100%;
+    text-align: center;
+    -webkit-appearance: none;
+  }
+
+  .set-rir:focus { outline: none; border-color: var(--accent); }
+
+  .set-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--muted);
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+
+  .set-check.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #FFFFFF;
+  }
+
+  .set-labels {
+    display: grid;
+    grid-template-columns: 28px 1fr 1fr 60px 32px;
+    gap: 6px;
+    padding: 0 14px 6px;
+  }
+
+  .set-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ── PROGRESS COMPARISON ── */
+  .comparison {
+    margin: 0 14px 12px;
+    background: var(--surface);
+    border-radius: 6px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .comp-item { text-align: center; }
+
+  .comp-val {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .comp-label {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    margin-top: 1px;
+  }
+
+  .comp-arrow { color: var(--muted); font-size: 14px; }
+  .comp-up { color: var(--ok); }
+  .comp-down { color: var(--accent2); }
+  .comp-same { color: var(--muted); }
+
+  /* ── RM PANEL ── */
+  .rm-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .rm-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .rm-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rm-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rm-row:last-child { border-bottom: none; }
+
+  .rm-ex { flex: 1; font-size: 13px; }
+
+  .rm-val {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    min-width: 90px;
+    text-align: right;
+  }
+
+  .rm-meso {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    min-width: 30px;
+  }
+
+  /* ── CONFIG PANEL ── */
+  .config-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .config-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .config-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .config-label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .config-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 9px 12px;
+    width: 100%;
+  }
+
+  .config-input:focus { outline: none; border-color: var(--accent); }
+
+  .config-btn {
+    background: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 11px;
+    width: 100%;
+    cursor: pointer;
+    font-family: var(--font);
+  }
+
+  /* ── BOTTOM NAV ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 100;
+  }
+
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 4px 12px;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 10px;
+    font-family: var(--font-mono);
+    gap: 4px;
+    transition: color 0.15s;
+  }
+
+  .nav-item.active { color: var(--accent); }
+
+  .nav-icon { font-size: 18px; }
+
+  /* ── ESTADO VACÍO ── */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+  }
+
+  .empty-icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-text { font-size: 14px; }
+
+  /* ── SESSION NOTE ── */
+  .session-note-wrap {
+    margin-bottom: 14px;
+  }
+
+  .session-note {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    padding: 10px 12px;
+    resize: none;
+    min-height: 60px;
+    line-height: 1.5;
+  }
+
+  .session-note:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .session-note::placeholder { color: var(--muted); }
+
+  /* ── REHAB ── */
+  .rehab-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .rehab-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .rehab-progress-bar {
+    background: var(--border);
+    border-radius: 99px;
+    height: 10px;
+    margin: 8px 0 4px;
+    overflow: hidden;
+  }
+
+  .rehab-progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+
+  .rehab-progress-fill.done { background: var(--ok); }
+
+  .rehab-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .rehab-log-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 32px;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .rehab-log-label {
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  .rehab-log-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .rehab-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 6px 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .rehab-input:focus { outline: none; border-color: var(--accent); }
+
+  .rehab-add-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rehab-criterion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .rehab-criterion:last-child { border-bottom: none; }
+
+  .rehab-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all 0.15s;
+  }
+
+  .rehab-check.ok {
+    background: var(--ok);
+    border-color: var(--ok);
+    color: #fff;
+  }
+
+  .rehab-history-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .rehab-history-row:last-child { border-bottom: none; }
+
+
+  /* ── CUT ── */
+  .cut-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .cut-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .cut-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .cut-stat {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .cut-stat-val {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .cut-stat-val.danger { color: var(--accent2); }
+  .cut-stat-val.ok { color: var(--ok); }
+
+  .cut-stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .cut-input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .cut-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cut-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+
+  .cut-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 8px 10px;
+    width: 100%;
+  }
+
+  .cut-input:focus { outline: none; border-color: var(--accent2); }
+
+  .cut-btn {
+    background: var(--accent2);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-family: var(--font);
+    margin-top: 4px;
+  }
+
+  .cut-btn.secondary {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 0;
+  }
+
+  .cut-week-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 8px;
+  }
+
+  .cut-week-row:last-child { border-bottom: none; }
+
+  .cut-week-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 32px;
+  }
+
+  .cut-week-target {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    flex: 1;
+  }
+
+  .cut-week-real {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .cut-week-delta {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .cut-pliegue-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cut-pliegue-row:last-child { border-bottom: none; }
+
+  .cut-pliegue-name {
+    flex: 1;
+    font-size: 13px;
+  }
+
+  .cut-pliegue-val {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .cut-pliegue-target {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .wizard-step {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  .wizard-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .wizard-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .cut-alert {
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .cut-alert.warn {
+    background: #FFF8E1;
+    border: 1px solid #F9A825;
+    color: #795548;
+  }
+
+  .cut-alert.ok {
+    background: var(--ok-bg);
+    border: 1px solid var(--ok);
+    color: var(--ok);
+  }
+
+  .cut-alert.danger {
+    background: #FFEBEE;
+    border: 1px solid var(--accent2);
+    color: var(--accent2);
+  }
+
+  .cut-progress-bar {
+    background: var(--border);
+    border-radius: 99px;
+    height: 8px;
+    margin: 6px 0 3px;
+    overflow: hidden;
+  }
+
+  .cut-progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--accent2);
+    transition: width 0.4s ease;
+  }
+
+  .daily-peso-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-family: var(--font-mono);
+    opacity: 0;
+    transition: all 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 200;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .toast.ok { border-color: var(--ok); color: var(--ok); }
+  .toast.err { border-color: var(--accent2); color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <span class="logo">Forge ▸</span>
+    <button class="sync-btn" id="syncBtn" onclick="syncData()">⟳ sync</button>
+      <button class="sync-btn" id="updateBtn" onclick="updateFromGithub()" style="margin-left:6px" title="Actualizar app">↓ update</button>
+  </div>
+  <div class="meso-tabs" id="mesoTabs"></div>
+</header>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item active" id="nav-session" onclick="setView('session')">
+    <span class="nav-icon">🏋️</span>sesión
+  </div>
+  <div class="nav-item" id="nav-rms" onclick="setView('rms')">
+    <span class="nav-icon">📈</span>RMs
+  </div>
+  <div class="nav-item" id="nav-rehab" onclick="setView('rehab')">
+    <span class="nav-icon">🦶</span>rehab
+  </div>
+  <div class="nav-item" id="nav-cut" onclick="setView('cut')">
+    <span class="nav-icon">🔥</span>cut
+  </div>
+  <div class="nav-item" id="nav-config" onclick="setView('config')">
+    <span class="nav-icon">⚙️</span>config
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MAIN -->
+<main id="mainContent"></main>
+
+<script>
+// ============================================================
+// DATOS DEL PLAN
+// ============================================================
+
+const MESOCICLOS = {
+  "M3": {
+    label: "M3 — Prelesión",
+    tipo: "referencia",
+    semanas: 6,
+    dias: [
+      { key: "lun", label: "Lun", titulo: "Pecho + Bíceps (fuerza base)" },
+      { key: "mar", label: "Mar", titulo: "Espalda + Tríceps" },
+      { key: "mie", label: "Mié", titulo: "Piernas + Core" },
+      { key: "jue", label: "Jue", titulo: "Pecho + Espalda técnico" },
+      { key: "vie", label: "Vie", titulo: "Piernas + Core técnico" },
+    ],
+    plan: {
+      lun: [
+        { nombre: "Press Inclinado (barra)", series: 4,
+          semanas: ["59kg × 8","63kg × 6–8","67kg × 5–6","72kg × 3–5","75kg × 2–3","49kg × 10 — 2s"] },
+        { nombre: "Press Plano (barra)", series: 3,
+          semanas: ["70kg × 10","72.5kg × 9","75kg × 8","72kg × 8","70kg × 8","45kg × 10 — 2s"] },
+        { nombre: "Press Militar (barra)", series: 3,
+          semanas: ["40kg × 10","42kg × 9","44kg × 8","46kg × 8","48kg × 8","31kg × 10 — 2s"] },
+        { nombre: "Curl Bíceps (barra)", series: 3,
+          semanas: ["28kg × 10","29kg × 9","30kg × 8","31kg × 8","32kg × 8","21kg × 10 — 2s"] },
+      ],
+      mar: [
+        { nombre: "Remo Pendlay (barra)", series: 3,
+          semanas: ["50kg × 10","54kg × 8","58kg × 6–8","61kg × 5–6","64kg × 3–5","42kg × 10 — 2s"] },
+        { nombre: "Remo 1 mano (DB)", series: 3,
+          semanas: ["35lb × 10","40lb × 10","45lb × 10","47.5lb × 8–10","50lb × 8","33lb × 12 — 2s"] },
+        { nombre: "Press Francés (barra)", series: 3,
+          semanas: ["28kg × 10","30kg × 9","31kg × 8","33kg × 8","35kg × 8","23kg × 10 — 2s"] },
+        { nombre: "Encogimientos (barra)", series: 3,
+          semanas: ["60kg × 15","65kg × 12","68kg × 12","70kg × 12","75kg × 12","49kg × 15 — 2s"] },
+      ],
+      mie: [
+        { nombre: "Sentadilla (barra)", series: 3,
+          semanas: ["86kg × 3","95kg × 3","102kg × 3","108kg × 3","112kg × 2","73kg × 5 — 2s"] },
+        { nombre: "Rumano (barra)", series: 3,
+          semanas: ["55kg × 10","58kg × 8–10","62kg × 8","66kg × 8","69kg × 8","45kg × 10 — 2s"] },
+        { nombre: "Búlgaras (DB)", series: 3,
+          semanas: ["40lb × 10","45lb × 9","50lb × 8","52.5lb × 8","52.5lb × 8","35lb × 10 — 2s"] },
+        { nombre: "Crunch (lastrado)", series: 3,
+          semanas: ["20kg × 15","20kg × 15","22kg × 15","22kg × 15","22kg × 15","15kg × 15 — 2s"] },
+      ],
+      jue: [
+        { nombre: "Press Plano técnico (barra)", series: 3,
+          semanas: ["70kg × 8","72.5kg × 8","75kg × 8","75kg × 6–8","72kg × 6","47kg × 10 — 2s"] },
+        { nombre: "Press Inclinado técnico (barra)", series: 3,
+          semanas: ["55kg × 8","58kg × 8","60kg × 8","62kg × 6–8","60kg × 6","39kg × 10 — 2s"] },
+        { nombre: "Pendlay técnico (barra)", series: 3,
+          semanas: ["45kg × 10","48kg × 8","50kg × 8","52kg × 8","50kg × 8","33kg × 10 — 2s"] },
+        { nombre: "Hanging Leg Raises", series: 3,
+          semanas: ["× 10–12","× 12","× 12","× 12","× 12","× 10 — 2s"] },
+      ],
+      vie: [
+        { nombre: "Squat técnico (barra)", series: 3,
+          semanas: ["70kg × 5","75kg × 5","80kg × 5","85kg × 4","87kg × 4","57kg × 6 — 2s"] },
+        { nombre: "Rumano técnico (barra)", series: 3,
+          semanas: ["50kg × 10","52.5kg × 10","55kg × 10","58kg × 8","60kg × 8","39kg × 10 — 2s"] },
+        { nombre: "Gemelos (DB)", series: 3,
+          semanas: ["30lb × 20","30lb × 20","30lb × 20","30lb × 20","30lb × 20","20lb × 15 — 2s"] },
+        { nombre: "Core", series: 3,
+          semanas: ["× 15","× 15","× 15","× 15","× 15","× 12 — 2s"] },
+      ],
+    }
+  },
+
+  "M4": {
+    label: "M4 — 2026 (recuperación)",
+    tipo: "completado",
+    semanas: 6,
+    dias: [
+      { key: "lun", label: "Lun", titulo: "Push A — Fuerza" },
+      { key: "mar", label: "Mar", titulo: "Pull A — Fuerza" },
+      { key: "mie", label: "Mié", titulo: "Lower A" },
+      { key: "jue", label: "Jue", titulo: "Push B — Volumen" },
+      { key: "vie", label: "Vie", titulo: "Pull B — Volumen" },
+      { key: "sab", label: "Sáb", titulo: "Lower B" },
+    ],
+    plan: {
+      lun: [
+        { nombre: "Press Inclinado (barra)", series: 4,
+          semanas: ["55kg × 5","57.5kg × 5","60kg × 5","62.5kg × 5","65kg × 5","42kg × 10 — 2s"] },
+        { nombre: "Press Militar (barra)", series: 3,
+          semanas: ["35kg × 8","37.5kg × 8","40kg × 8","42.5kg × 8","45kg × 8","29kg × 10 — 2s"] },
+        { nombre: "Curl Bíceps (barra)", series: 3,
+          semanas: ["20kg × 8–10","22.5kg × 8–10","25kg × 8–10","27.5kg × 8–10","30kg × 8–10","20kg × 10 — 2s"] },
+        { nombre: "Curl Martillo (DB)", series: 2,
+          semanas: ["10kg × 5–6","10kg × 5–6","10kg × 5–6","10kg × 5–6","10kg × 5–6","10kg × 8 — 2s"] },
+      ],
+      mar: [
+        { nombre: "Remo Pendlay (barra)", series: 4,
+          semanas: ["47.5kg × 5","50kg × 5","52.5kg × 5","55kg × 5","57.5kg × 5","37kg × 10 — 2s"] },
+        { nombre: "Remo 1 mano (DB)", series: 3,
+          semanas: ["20kg × 7–9","20kg × 7–9","20kg × 7–9","20kg × 7–9","20kg × 7–9","15kg × 10 — 2s"] },
+        { nombre: "Press Francés (barra)", series: 3,
+          semanas: ["20kg × 8–10","22.5kg × 8–10","25kg × 8–10","27.5kg × 8–10","30kg × 8–10","20kg × 10 — 2s"] },
+        { nombre: "Encogimientos (DB)", series: 3,
+          semanas: ["20kg × 12–15","20kg × 12–15","20kg × 12–15","20kg × 12–15","20kg × 12–15","15kg × 12 — 2s"] },
+      ],
+      mie: [
+        { nombre: "Sentadilla Isométrica", series: 3,
+          semanas: ["pc × 20–30s","pc × 20–30s","pc × 20–30s","pc × 20–30s","pc × 20–30s","pc × 15s — 2s"] },
+        { nombre: "Sentadilla Libre Técnica", series: 3,
+          semanas: ["pc × 5","pc × 5","pc × 5","pc × 5","pc × 5","pc × 5 — 2s"] },
+        { nombre: "Rumano (barra)", series: 3,
+          semanas: ["55kg × 8","57.5kg × 8","60kg × 8","62.5kg × 8","65kg × 8","42kg × 10 — 2s"] },
+        { nombre: "Elevaciones de pie (gemelo)", series: 3,
+          semanas: ["30kg × 15","30kg × 15","30kg × 15","30kg × 15","30kg × 15","30kg × 12 — 2s"] },
+      ],
+      jue: [
+        { nombre: "Press Inclinado (barra)", series: 3,
+          semanas: ["50kg × 8","52.5kg × 8","55kg × 8","57.5kg × 8","60kg × 8","39kg × 10 — 2s"] },
+        { nombre: "Deficit Push-ups (DB)", series: 3,
+          semanas: ["× 12","× 12","× 12","× 12","× 12","× 10 — 2s"] },
+        { nombre: "Laterales (DB)", series: 3,
+          semanas: ["10kg × 15","10kg × 15","10kg × 15","10kg × 15","10kg × 15","10kg × 12 — 2s"] },
+        { nombre: "Curl Bíceps (barra)", series: 3,
+          semanas: ["20kg × 8–10","22.5kg × 8–10","25kg × 8–10","27.5kg × 8–10","30kg × 8–10","20kg × 10 — 2s"] },
+      ],
+      vie: [
+        { nombre: "Remo Pendlay (barra)", series: 3,
+          semanas: ["40kg × 8","42.5kg × 8","45kg × 8","47.5kg × 8","50kg × 8","33kg × 10 — 2s"] },
+        { nombre: "Remo 1 mano (DB)", series: 3,
+          semanas: ["20kg × 7–9","20kg × 7–9","20kg × 7–9","20kg × 7–9","20kg × 7–9","15kg × 10 — 2s"] },
+        { nombre: "Press Francés (barra)", series: 2,
+          semanas: ["20kg × 8–10","22.5kg × 8–10","25kg × 8–10","27.5kg × 8–10","30kg × 8–10","20kg × 10 — 2s"] },
+        { nombre: "Pullover (DB)", series: 2,
+          semanas: ["10kg × 12","10kg × 12","10kg × 12","10kg × 12","10kg × 12","10kg × 10 — 2s"] },
+      ],
+      sab: [
+        { nombre: "Rumano (barra)", series: 3,
+          semanas: ["50kg × 10","55kg × 10","57.5kg × 10","60kg × 10","62.5kg × 10","41kg × 10 — 2s"] },
+        { nombre: "Split Squat Derecha (DB)", series: 3,
+          semanas: ["20kg × 8","20kg × 8","20kg × 8","20kg × 8","20kg × 8","20kg × 6 — 2s"] },
+        { nombre: "Split Squat Izquierda", series: 3,
+          semanas: ["pc × 8","pc × 8","pc × 8","pc × 8","pc × 8","pc × 6 — 2s"] },
+        { nombre: "Elevaciones de pie (gemelo)", series: 3,
+          semanas: ["30kg × 15","30kg × 15","30kg × 15","30kg × 15","30kg × 15","30kg × 10 — 2s"] },
+      ],
+    }
+  },
+
+  "M5": {
+    label: "M5 — En curso",
+    tipo: "activo",
+    semanas: 6,
+    fechas: [
+      "6 – 11 jul","13 – 18 jul","20 – 25 jul",
+      "27 jul – 1 ago","3 – 8 ago","10 – 15 ago"
+    ],
+    dias: [
+      { key: "lun", label: "Lun", titulo: "Push A — Fuerza" },
+      { key: "mar", label: "Mar", titulo: "Pull A — Fuerza" },
+      { key: "mie", label: "Mié", titulo: "Lower A" },
+      { key: "jue", label: "Jue", titulo: "Push B — Volumen" },
+      { key: "vie", label: "Vie", titulo: "Pull B — Volumen" },
+      { key: "sab", label: "Sáb", titulo: "Lower B" },
+    ],
+    plan: {
+      lun: [
+        { nombre: "Press Inclinado (barra)", series: 4,
+          semanas: ["62.5kg × 5","65kg × 5","67.5kg × 4–5","70kg × 3–4","72.5kg × 3+","47kg × 10 — 2s"] },
+        { nombre: "Deficit Push-ups (DB en suelo)", series: 3,
+          semanas: ["× 10","× 12","× 14","× 10 lastradas","× 12 lastradas","× 10 — 2s"] },
+        { nombre: "Curl Bíceps (barra)", series: 3,
+          semanas: ["27.5kg × 8","29kg × 8","30kg × 6–8","31kg × 6","32kg × 4–6","21kg × 10 — 2s"] },
+        { nombre: "Curl Martillo (DB)", series: 2,
+          semanas: ["10kg × 12","10kg × 14","10kg × 15","10kg × 15 pausa","10kg × 12 tempo","10kg × 10 — 2s"] },
+      ],
+      mar: [
+        { nombre: "Remo Pendlay (barra)", series: 4,
+          semanas: ["55kg × 5","57.5kg × 5","60kg × 4–5","62.5kg × 4","65kg × 3–5","42kg × 10 — 2s"] },
+        { nombre: "Remo 1 mano (DB)", series: 3,
+          semanas: ["20kg × 10","20kg × 12","20kg × 12 pausa","20kg × 10 tempo","20kg × 10 tempo","15kg × 12 — 2s"] },
+        { nombre: "Press Francés (barra)", series: 3,
+          semanas: ["28kg × 8","29kg × 8","30kg × 7","31kg × 6–7","32kg × 6","21kg × 10 — 2s"] },
+        { nombre: "Pullover (DB)", series: 3,
+          semanas: ["20kg × 8","20kg × 10","20kg × 12","20kg × 10 pausa 2s","20kg × 10 pausa 3s","20kg × 10 — 2s"] },
+      ],
+      mie: [
+        { nombre: "Búlgaras (DB c/mano)", series: 4,
+          semanas: ["10kg × 10","10kg × 10","10kg × 12","20kg × 6–8","20kg × 8–10","10kg × 10 — 2s"] },
+        { nombre: "Rumano (barra)", series: 3,
+          semanas: ["62.5kg × 8","65kg × 8","67.5kg × 8","70kg × 8","72.5kg × 6–8","47kg × 10 — 2s"] },
+        { nombre: "Elevaciones de pie (gemelo)", series: 3,
+          semanas: ["× 15","× 18","× 20","× 20 pausa","× 20 pausa arriba","× 15 — 2s"] },
+        { nombre: "Leg Raises colgado", series: 3,
+          semanas: ["× 12","× 13","× 14","× 15","× 15 pausa","× 10 — 2s"] },
+      ],
+      jue: [
+        { nombre: "Press Inclinado (barra)", series: 3,
+          semanas: ["57.5kg × 8","60kg × 8","62.5kg × 8","65kg × 6–8","67.5kg × 6","44kg × 10 — 2s"] },
+        { nombre: "Deficit Push-ups (DB en suelo)", series: 3,
+          semanas: ["× 12 tempo","× 12 tempo","× 14 tempo","× 10 pausa 1s","× 12 pausa 1s","× 10 — 2s"] },
+        { nombre: "Laterales (DB)", series: 3,
+          semanas: ["10kg × 15","10kg × 15","10kg × 15","10kg × 15 pausa","10kg × 15 pausa","10kg × 12 — 2s"] },
+        { nombre: "Curl Bíceps (barra)", series: 3,
+          semanas: ["27.5kg × 8","28kg × 8","30kg × 8","30kg × 6–8","32kg × 6","21kg × 10 — 2s"] },
+      ],
+      vie: [
+        { nombre: "Remo Pendlay (barra)", series: 3,
+          semanas: ["50kg × 8","52.5kg × 8","55kg × 8","57.5kg × 8","60kg × 8","39kg × 10 — 2s"] },
+        { nombre: "Remo 1 mano (DB)", series: 3,
+          semanas: ["20kg × 10 tempo","20kg × 10 tempo","20kg × 12 tempo","20kg × 12 tempo","20kg × 12 tempo","15kg × 10 — 2s"] },
+        { nombre: "Press Francés (barra)", series: 2,
+          semanas: ["28kg × 10","29kg × 10","30kg × 8","31kg × 8","32kg × 8","20kg × 10 — 2s"] },
+        { nombre: "Pullover (DB)", series: 2,
+          semanas: ["20kg × 10","20kg × 10","20kg × 12","20kg × 12","20kg × 12 pausa","20kg × 10 — 2s"] },
+      ],
+      sab: [
+        { nombre: "Búlgaras (DB c/mano)", series: 3,
+          semanas: ["10kg × 8","10kg × 8","10kg × 10","20kg × 5–6","20kg × 6–8","10kg × 8 — 2s"] },
+        { nombre: "Rumano (barra)", series: 3,
+          semanas: ["57.5kg × 10","60kg × 10","62.5kg × 10","65kg × 8","67.5kg × 8","44kg × 10 — 2s"] },
+        { nombre: "Elevaciones sentado (sóleo)", series: 3,
+          semanas: ["20kg × 15","20kg × 15","20kg × 18","20kg × 20","20kg × 20","20kg × 12 — 2s"] },
+        { nombre: "Core (crunch lastrado)", series: 3,
+          semanas: ["20kg × 15","20kg × 15","20kg × 15","22kg × 15","22kg × 15","15kg × 12 — 2s"] },
+      ],
+    }
+  }
+};
+
+// RMs de referencia
+const RMS_REFERENCIA = {
+  "M3": [
+    { ejercicio: "Press Inclinado", peso: "72.5kg", reps: 3 },
+    { ejercicio: "Remo Pendlay",    peso: "63kg",   reps: 5 },
+    { ejercicio: "Sentadilla",      peso: "115kg",  reps: 2 },
+    { ejercicio: "Rumano",          peso: "75kg",   reps: 6 },
+    { ejercicio: "Press Francés",   peso: "34kg",   reps: 7 },
+    { ejercicio: "Curl Bíceps",     peso: "32kg",   reps: 6 },
+    { ejercicio: "Press Militar",   peso: "47.5kg", reps: 6 },
+  ],
+  "M4": [
+    { ejercicio: "Press Inclinado",  peso: "65kg",  reps: 4 },
+    { ejercicio: "Remo Pendlay",     peso: "57.5kg",reps: 5 },
+    { ejercicio: "Flexiones",        peso: "pc",    reps: 8 },
+    { ejercicio: "Rumano",           peso: "65kg",  reps: 8 },
+    { ejercicio: "Goblet Squat",     peso: "20kg",  reps: 8 },
+    { ejercicio: "Búlgara Derecha",  peso: "10kg",  reps: 10 },
+    { ejercicio: "Búlgara Izquierda",peso: "pc",    reps: 10 },
+    { ejercicio: "Press Francés",    peso: "30kg",  reps: 7 },
+    { ejercicio: "Curl Bíceps",      peso: "30kg",  reps: 4 },
+    { ejercicio: "Pullover",         peso: "10kg",  reps: 12 },
+  ],
+};
+
+// ============================================================
+// ESTADO
+// ============================================================
+let state = {
+  view: "session",
+  meso: "M5",
+  semana: 1,
+  dia: "lun",
+  registros: {},
+  scriptUrl: localStorage.getItem("scriptUrl") || "",
+  githubToken: localStorage.getItem("githubToken") || "",
+  githubRepo: "arquitecsystems-coder/House-Gym",
+  syncing: false,
+};
+
+// ============================================================
+// RENDER PRINCIPAL
+// ============================================================
+function render() {
+  const showMesos = ["session","rms"].includes(state.view);
+  document.getElementById("mesoTabs").style.display = showMesos ? "flex" : "none";
+  if (showMesos) renderMesoTabs();
+  const main = document.getElementById("mainContent");
+
+  if (state.view === "session") {
+    renderSession(main);
+  } else if (state.view === "rms") {
+    renderRMs(main);
+  } else if (state.view === "rehab") {
+    renderRehab(main);
+  } else if (state.view === "cut") {
+    renderCut(main);
+  } else if (state.view === "config") {
+    renderConfig(main);
+  }
+
+  // Nav activo
+  ["session","rms","rehab","cut","config"].forEach(v => {
+    document.getElementById("nav-"+v).classList.toggle("active", state.view === v);
+  });
+}
+
+function setView(v) {
+  state.view = v;
+  render();
+}
+
+// ── MESO TABS ──
+function renderMesoTabs() {
+  const el = document.getElementById("mesoTabs");
+  el.innerHTML = Object.entries(MESOCICLOS).map(([k, m]) =>
+    `<button class="meso-tab ${state.meso === k ? "active" : ""}"
+      onclick="setMeso('${k}')">${m.label}</button>`
+  ).join("");
+}
+
+function setMeso(k) {
+  state.meso = k;
+  const meso = MESOCICLOS[k];
+  state.semana = 1;
+  state.dia = meso.dias[0].key;
+  render();
+}
+
+// ── SESSION VIEW ──
+function renderSession(main) {
+  const meso = MESOCICLOS[state.meso];
+
+  // Nav semanas
+  let html = `<div class="nav-bar">`;
+  for (let s = 1; s <= meso.semanas; s++) {
+    let label, sublabel = "";
+    if (s === meso.semanas) label = `S${s} — Desc`;
+    else if (s === meso.semanas - 1) label = `S${s} — Pico`;
+    else label = `S${s}`;
+    if (meso.fechas && meso.fechas[s-1]) sublabel = meso.fechas[s-1];
+    html += `<button class="week-btn ${state.semana === s ? "active" : ""}"
+      onclick="setSemana(${s})">
+      <span style="display:block">${label}</span>
+      ${sublabel ? `<span style="display:block;font-size:9px;opacity:0.7;margin-top:1px">${sublabel}</span>` : ""}
+    </button>`;
+  }
+  html += `</div>`;
+
+  // Day tabs
+  html += `<div class="day-tabs">`;
+  meso.dias.forEach(d => {
+    const done = diaCompleto(state.meso, state.semana, d.key);
+    html += `<div class="day-tab ${state.dia === d.key ? "active" : ""}"
+      onclick="setDia('${d.key}')">
+      ${d.label}${done ? '<span class="day-dot"></span>' : ""}
+    </div>`;
+  });
+  html += `</div>`;
+
+  main.innerHTML = html;
+
+  // Contenido del día
+  const diaInfo = meso.dias.find(d => d.key === state.dia);
+  const planDia = meso.plan[state.dia] || [];
+  const fecha = meso.fechas ? meso.fechas[state.semana - 1] : null;
+  const noteKey = `nota-sesion-${state.meso}-S${state.semana}-${state.dia}`;
+  const notaActual = state.registros[noteKey]?.nota || "";
+
+  let content = `<div style="padding:16px 16px 0">
+    <div class="session-header">
+      <div class="session-title">${diaInfo?.titulo || ""}</div>
+      <div class="session-sub">${state.meso} — Semana ${state.semana}${fecha ? ` · ${fecha}` : ""}</div>
+    </div>
+    <div class="session-note-wrap">
+      <textarea class="session-note" placeholder="Nota de sesión — cómo te sentiste, qué pasó..."
+        onchange="saveNota('${noteKey}', this.value)">${notaActual}</textarea>
+    </div>`;
+
+  planDia.forEach(ejercicio => {
+    content += renderEjercicioCard(ejercicio, state.meso, state.semana, state.dia);
+  });
+
+  content += `</div>`;
+  main.innerHTML += content;
+}
+
+function setSemana(s) {
+  state.semana = s;
+  render();
+}
+
+function setDia(d) {
+  state.dia = d;
+  render();
+}
+
+// ── EJERCICIO CARD ──
+function renderEjercicioCard(ej, meso, semana, dia) {
+  const planActual = ej.semanas[semana - 1] || "—";
+  const key = (n, s) => `${meso}-S${semana}-${dia}-${ej.nombre}-${s}`;
+  const allChecked = Array.from({length: ej.series}, (_, i) => i + 1)
+    .every(s => state.registros[key(ej.nombre, s)]?.checked);
+
+  // Progresión por semanas
+  let weeksHtml = ej.semanas.map((w, i) =>
+    `<div class="plan-week-chip ${i + 1 === semana ? "current" : ""}">S${i+1}: ${w}</div>`
+  ).join("");
+
+  // Comparación vs semana anterior
+  let compHtml = "";
+  if (semana > 1) {
+    const prevPlan = ej.semanas[semana - 2];
+    compHtml = `<div class="comparison">
+      <div class="comp-item">
+        <div class="comp-val" style="color:var(--muted)">${prevPlan}</div>
+        <div class="comp-label">S${semana-1}</div>
+      </div>
+      <div class="comp-arrow">→</div>
+      <div class="comp-item">
+        <div class="comp-val" style="color:var(--accent)">${planActual}</div>
+        <div class="comp-label">S${semana} objetivo</div>
+      </div>
+    </div>`;
+  }
+
+  // Sets
+  let labelsHtml = `<div class="set-labels">
+    <div class="set-label"></div>
+    <div class="set-label">kg / lb</div>
+    <div class="set-label">reps</div>
+    <div class="set-label">RIR</div>
+    <div class="set-label">✓</div>
+  </div>`;
+
+  let setsHtml = `<div class="sets-container">`;
+  for (let s = 1; s <= ej.series; s++) {
+    const k = key(ej.nombre, s);
+    const reg = state.registros[k] || {};
+    const filled = reg.peso || reg.reps;
+    setsHtml += `<div class="set-row">
+      <div class="set-num">${s}</div>
+      <input class="set-input ${filled ? 'filled' : ''}"
+        type="text" inputmode="decimal"
+        placeholder="—"
+        value="${reg.peso || ""}"
+        onchange="saveField('${k}','peso',this.value)"
+        onfocus="this.select()">
+      <input class="set-input ${filled ? 'filled' : ''}"
+        type="text" inputmode="numeric"
+        placeholder="—"
+        value="${reg.reps || ""}"
+        onchange="saveField('${k}','reps',this.value)"
+        onfocus="this.select()">
+      <select class="set-rir" onchange="saveField('${k}','rir',this.value)">
+        <option value="">—</option>
+        ${[0,1,2,3,4].map(r =>
+          `<option value="${r}" ${reg.rir == r ? "selected" : ""}>${r}</option>`
+        ).join("")}
+      </select>
+      <button class="set-check ${reg.checked ? 'checked' : ''}"
+        onclick="toggleCheck('${k}')">
+        ${reg.checked ? "✓" : ""}
+      </button>
+    </div>`;
+  }
+  setsHtml += `</div>`;
+
+  return `<div class="exercise-card">
+    <div class="exercise-header" onclick="toggleCard(this)">
+      <div>
+        <div class="exercise-name">${ej.nombre}</div>
+        <div class="exercise-meta">${ej.series} series — objetivo: ${planActual}</div>
+      </div>
+      <div class="exercise-badge ${allChecked ? 'done' : ''}">
+        ${allChecked ? "✓ hecho" : `${ej.series}s`}
+      </div>
+    </div>
+    <div class="plan-weeks">${weeksHtml}</div>
+    <div class="exercise-body">
+      ${compHtml}
+      ${labelsHtml}
+      ${setsHtml}
+    </div>
+  </div>`;
+}
+
+function toggleCard(header) {
+  const weeks = header.nextElementSibling;
+  const body = weeks.nextElementSibling;
+  const hidden = body.style.display === "none";
+  weeks.style.display = hidden ? "" : "none";
+  body.style.display = hidden ? "" : "none";
+}
+
+// ── RMs VIEW ──
+function renderRMs(main) {
+  let html = `<div class="rm-panel"><div class="rm-title">📊 Histórico de RMs</div><div class="rm-grid">`;
+
+  Object.entries(RMS_REFERENCIA).forEach(([meso, rms]) => {
+    html += `<div style="padding:4px 0 6px;font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-top:8px">${meso}</div>`;
+    rms.forEach(rm => {
+      html += `<div class="rm-row">
+        <div class="rm-ex">${rm.ejercicio}</div>
+        <div class="rm-val">${rm.peso} × ${rm.reps}</div>
+      </div>`;
+    });
+  });
+
+  html += `</div></div>`;
+
+  // Objetivos M5
+  html += `<div class="rm-panel"><div class="rm-title">🎯 Objetivos pico M5</div><div class="rm-grid">`;
+  const objetivos = [
+    { ejercicio: "Press Inclinado", actual: "65kg × 4", objetivo: "72.5kg × 3", estado: "↑" },
+    { ejercicio: "Remo Pendlay",    actual: "57.5kg × 5", objetivo: "65kg × 4", estado: "↑" },
+    { ejercicio: "Curl Bíceps",     actual: "30kg × 4", objetivo: "32kg × 5–6", estado: "↑" },
+    { ejercicio: "Press Francés",   actual: "30kg × 7", objetivo: "33–34kg × 6", estado: "↑" },
+    { ejercicio: "Rumano",          actual: "65kg × 8", objetivo: "72.5kg × 6–8", estado: "↑" },
+    { ejercicio: "Búlgaras",        actual: "10kg × 10", objetivo: "20kg × 8", estado: "↑" },
+  ];
+  objetivos.forEach(o => {
+    html += `<div class="rm-row">
+      <div style="flex:1">
+        <div style="font-size:13px">${o.ejercicio}</div>
+        <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">${o.actual} → <span style="color:var(--accent)">${o.objetivo}</span></div>
+      </div>
+    </div>`;
+  });
+  html += `</div></div>`;
+
+  main.innerHTML = html;
+}
+
+// ── REHAB VIEW ──
+const REHAB_EJERCICIOS = [
+  {
+    id: "rodilla_pared",
+    nombre: "Rodilla a pared",
+    sets: 3,
+    protocolo: "Hold 2 min en rango máximo · descanso 30 s entre sets",
+    nota: "Empuja 1 mm más dentro del hold si sientes que la tensión cede"
+  },
+  {
+    id: "cuadrupedia",
+    nombre: "Cuadrupedia — desliz rodilla",
+    sets: 3,
+    protocolo: "Hold 2 min en rango máximo · descanso 30 s entre sets",
+    nota: "4 puntos de apoyo, talón pegado al suelo"
+  },
+  {
+    id: "equilibrio",
+    nombre: "Equilibrio monopodal ojos cerrados",
+    sets: 2,
+    protocolo: "Hasta fallo · registra tiempo",
+    nota: "Superficie firme → inestable cuando superes 45 s consistente"
+  },
+];
+
+function getRehabDatos() {
+  try {
+    const raw = localStorage.getItem("rehab-datos");
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+
+function saveRehabDatos(datos) {
+  localStorage.setItem("rehab-datos", JSON.stringify(datos));
+}
+
+function renderRehab(main) {
+  const TARGET_CM = 7;
+  const datos = getRehabDatos();
+  const mediciones = datos.mediciones || [];
+  const sesiones = datos.sesiones || {};
+
+  const ultima = mediciones.length ? mediciones[mediciones.length - 1].valor : 4;
+  const pct = Math.min(100, (ultima / TARGET_CM) * 100);
+  const reached = ultima >= TARGET_CM;
+
+  // Fecha hoy
+  const _hoy = new Date();
+  const hoy = `${_hoy.getFullYear()}-${String(_hoy.getMonth()+1).padStart(2,'0')}-${String(_hoy.getDate()).padStart(2,'0')}`;
+  const esDomingo = new Date().getDay() === 0;
+  const sesionHoy = sesiones[hoy] || {};
+
+  // Streak
+  let streak = 0;
+  const d = new Date();
+  while (true) {
+    const k = d.toISOString().slice(0, 10);
+    if (sesiones[k] && REHAB_EJERCICIOS.every(e =>
+      sesiones[k][e.id] && sesiones[k][e.id].filter(Boolean).length === e.sets
+    )) {
+      streak++;
+      d.setDate(d.getDate() - 1);
+    } else break;
+  }
+
+  // ── ESTADO GENERAL ──
+  let html = `<div style="padding:16px 16px 0;max-width:600px;margin:0 auto">`;
+
+  // Header estado
+  html += `<div class="rehab-card" style="display:flex;align-items:center;gap:16px;padding:14px 16px">
+    <div style="flex:1">
+      <div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:2px">DORSIFLEXIÓN ACTUAL</div>
+      <div style="display:flex;align-items:baseline;gap:6px">
+        <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:${reached?'var(--ok)':'var(--accent)'}">${ultima}</span>
+        <span style="font-size:13px;color:var(--muted)">cm / ${TARGET_CM} cm</span>
+      </div>
+      <div class="rehab-progress-bar" style="margin-top:6px">
+        <div class="rehab-progress-fill ${reached?'done':''}" style="width:${pct}%"></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px">
+        ${reached ? "✓ Objetivo alcanzado" : `Faltan ${(TARGET_CM - ultima).toFixed(1)} cm`}
+      </div>
+    </div>
+    <div style="text-align:center;border-left:1px solid var(--border);padding-left:16px;min-width:64px">
+      <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--accent)">${streak}</div>
+      <div style="font-size:10px;color:var(--muted);font-family:var(--font-mono)">días seguidos</div>
+    </div>
+  </div>`;
+
+  // ── BANNER DOMINGO ──
+  if (esDomingo) {
+    html += `<div style="background:var(--accent-bg);border:1px solid var(--accent);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--accent)">📏 Día de medición</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">Mide rodilla a pared y registra el resultado</div>
+      </div>
+      <button class="rehab-add-btn" onclick="showMedicionModal()" style="flex-shrink:0;width:auto;padding:0 12px;font-size:12px;font-family:var(--font-mono)">Registrar</button>
+    </div>`;
+  }
+
+  // ── SESIÓN DE HOY ──
+  html += `<div class="rehab-card">
+    <div class="rehab-title">HOY — ${hoy}</div>`;
+
+  REHAB_EJERCICIOS.forEach(ej => {
+    const setsHoy = sesionHoy[ej.id] || Array(ej.sets).fill(false);
+    const completados = setsHoy.filter(Boolean).length;
+    const todoOk = completados === ej.sets;
+
+    html += `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px">
+        <div>
+          <div style="font-size:14px;font-weight:600">${ej.nombre}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">${ej.protocolo}</div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:${todoOk?'var(--ok)':'var(--muted)'};white-space:nowrap;padding-top:2px">
+          ${completados}/${ej.sets} sets
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        ${Array.from({length: ej.sets}, (_, i) => `
+          <button onclick="toggleRehabSet('${hoy}','${ej.id}',${i})"
+            style="width:36px;height:36px;border-radius:50%;border:2px solid ${setsHoy[i]?'var(--ok)':'var(--border)'};
+            background:${setsHoy[i]?'var(--ok)':'transparent'};color:${setsHoy[i]?'#fff':'var(--muted)'};
+            font-size:14px;cursor:pointer;transition:all 0.15s;flex-shrink:0">
+            ${setsHoy[i] ? '✓' : i+1}
+          </button>`).join('')}
+        <div style="font-size:11px;color:var(--muted);font-style:italic;flex:1">${ej.nota}</div>
+      </div>
+    </div>`;
+  });
+
+  // Nota de sesión rehab
+  const notaSesion = sesionHoy.nota || "";
+  html += `<div style="margin-top:10px">
+    <textarea class="session-note" placeholder="¿Cómo se sintió? ¿Llegaste más lejos que ayer?"
+      onchange="saveRehabNota('${hoy}', this.value)">${notaSesion}</textarea>
+  </div>`;
+
+  html += `</div>`;
+
+  // ── HISTORIAL MEDICIONES ──
+  if (mediciones.length > 0) {
+    html += `<div class="rehab-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div class="rehab-title" style="margin-bottom:0">📅 Mediciones dominicales</div>
+        <button onclick="borrarMediciones()" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">borrar todo</button>
+      </div>`;
+    [...mediciones].reverse().slice(0, 12).forEach((m, i, arr) => {
+      const prev = arr[i + 1];
+      const delta = prev ? (m.valor - prev.valor) : null;
+      const deltaStr = delta !== null
+        ? `<span style="color:${delta>0?'var(--ok)':delta<0?'var(--accent2)':'var(--muted)'};font-size:11px;margin-left:6px">${delta>0?'+':''}${delta.toFixed(1)} cm</span>`
+        : '';
+      html += `<div class="rehab-history-row">
+        <span>${m.fecha}</span>
+        <span style="color:${m.valor>=TARGET_CM?'var(--ok)':'var(--accent)'};font-weight:700">
+          ${m.valor} cm${deltaStr}
+        </span>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  // ── CRITERIOS RE-INGRESO ──
+  const criterios = [
+    { id: "dorsiflexion", label: "Dorsiflexión ≥ 7 cm (pierna izquierda)", auto: reached },
+    { id: "equilibrio",   label: "Equilibrio monopodal ojos cerrados ≥ 45 s", auto: true },
+    { id: "pistol",       label: "Pistol squat izquierdo inicia descenso sin bloqueo", auto: false },
+  ];
+
+  html += `<div class="rehab-card">
+    <div class="rehab-title">✅ Criterios re-ingreso sentadilla</div>`;
+
+  criterios.forEach(c => {
+    const isOk = c.auto || (datos.criterios && datos.criterios[c.id]);
+    html += `<div class="rehab-criterion">
+      <div class="rehab-check ${isOk?'ok':''}" onclick="toggleCriterio('${c.id}')">${isOk?'✓':''}</div>
+      <span style="${isOk?'color:var(--ok)':''}">${c.label}</span>
+    </div>`;
+  });
+
+  const allOk = criterios.every(c => c.auto || (datos.criterios && datos.criterios[c.id]));
+  if (allOk) {
+    html += `<div style="margin-top:12px;padding:10px;background:var(--ok-bg);border-radius:8px;font-size:13px;color:var(--ok);font-weight:600;text-align:center">
+      🎉 Listo para re-ingresar la sentadilla con barra
+    </div>`;
+  }
+
+  html += `</div></div>`;
+
+  // Modal medición (oculto por defecto)
+  html += `<div id="medicionModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;align-items:center;justify-content:center">
+    <div style="background:var(--card);border-radius:var(--radius);padding:20px;margin:20px;max-width:320px;width:100%">
+      <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:12px">📏 MEDICIÓN DOMINICAL</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Rodilla a pared · pie descalzo · talón en suelo<br>Distancia dedo gordo → pared en cm</div>
+      <input class="rehab-input" id="rehabCm" type="number" step="0.1" min="0" max="15" placeholder="ej: 4.5"
+        style="width:100%;margin-bottom:10px;font-size:18px;text-align:center;padding:12px">
+      <div style="display:flex;gap:8px">
+        <button onclick="hideMedicionModal()"
+          style="flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--muted);cursor:pointer">
+          Cancelar
+        </button>
+        <button onclick="saveRehabMedicion()"
+          style="flex:1;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>`;
+
+  main.innerHTML = html;
+}
+
+function toggleRehabSet(fecha, ejId, setIdx) {
+  const datos = getRehabDatos();
+  if (!datos.sesiones) datos.sesiones = {};
+  if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
+  const ej = REHAB_EJERCICIOS.find(e => e.id === ejId);
+  if (!datos.sesiones[fecha][ejId]) datos.sesiones[fecha][ejId] = Array(ej.sets).fill(false);
+  datos.sesiones[fecha][ejId][setIdx] = !datos.sesiones[fecha][ejId][setIdx];
+  saveRehabDatos(datos);
+  renderRehab(document.getElementById("mainContent"));
+}
+
+function saveRehabNota(fecha, nota) {
+  const datos = getRehabDatos();
+  if (!datos.sesiones) datos.sesiones = {};
+  if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
+  datos.sesiones[fecha].nota = nota;
+  saveRehabDatos(datos);
+}
+
+function showMedicionModal() {
+  document.getElementById("medicionModal").style.display = "flex";
+}
+
+function hideMedicionModal() {
+  document.getElementById("medicionModal").style.display = "none";
+}
+
+function saveRehabMedicion() {
+  const cm = parseFloat(document.getElementById("rehabCm").value);
+  if (!cm || cm <= 0) { showToast("Ingresa los cm", "err"); return; }
+  const _d = new Date();
+  const fecha = `${_d.getFullYear()}-${String(_d.getMonth()+1).padStart(2,'0')}-${String(_d.getDate()).padStart(2,'0')}`;
+  const datos = getRehabDatos();
+  if (!datos.mediciones) datos.mediciones = [];
+  // Reemplaza si ya hay medición hoy
+  const idx = datos.mediciones.findIndex(m => m.fecha === fecha);
+  if (idx >= 0) datos.mediciones[idx].valor = cm;
+  else datos.mediciones.push({ valor: cm, fecha });
+  datos.mediciones.sort((a,b) => a.fecha.localeCompare(b.fecha));
+  saveRehabDatos(datos);
+  hideMedicionModal();
+  showToast(`${cm} cm registrado ✓`, "ok");
+  renderRehab(document.getElementById("mainContent"));
+}
+
+function borrarMediciones() {
+  const datos = getRehabDatos();
+  datos.mediciones = [];
+  saveRehabDatos(datos);
+  showToast("Mediciones borradas", "ok");
+  renderRehab(document.getElementById("mainContent"));
+}
+
+function toggleCriterio(id) {
+  const datos = getRehabDatos();
+  if (!datos.criterios) datos.criterios = {};
+  datos.criterios[id] = !datos.criterios[id];
+  saveRehabDatos(datos);
+  renderRehab(document.getElementById("mainContent"));
+}
+
+
+// ============================================================
+// CUT — CUTTING PHASE
+// ============================================================
+
+const PLIEGUES_NAMES = [
+  "Pecho","Axilar Media","Tríceps","Subescapular",
+  "Abdominal","Suprailiaco","Muslo"
+];
+
+function getCutDatos() {
+  try { return JSON.parse(localStorage.getItem("cut-datos") || "{}"); }
+  catch(e) { return {}; }
+}
+
+function saveCutDatos(d) {
+  localStorage.setItem("cut-datos", JSON.stringify(d));
+}
+
+// Jackson-Pollock 7 pliegues (hombre, edad estimada 24)
+function calcGrasa7(pliegues, edad) {
+  const suma = pliegues.reduce((a,b) => a + b, 0);
+  const densidad = 1.112 - (0.00043499 * suma) + (0.00000055 * suma * suma) - (0.00028826 * edad);
+  return ((4.95 / densidad) - 4.50) * 100;
+}
+
+// Pérdida semanal recomendada (extremo bajo)
+function getPerdidaSemanal(pctGrasa) {
+  if (pctGrasa > 15) return 0.5;
+  if (pctGrasa >= 12) return 0.35;
+  return 0.25;
+}
+
+// Targets de pliegues proporcionales al % grasa target
+function calcPlieguTargets(pliegues, pctActual, pctTarget) {
+  const ratio = pctTarget / pctActual;
+  return pliegues.map(p => Math.round(p * ratio * 10) / 10);
+}
+
+function renderCut(main) {
+  const datos = getCutDatos();
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'padding:16px;max-width:600px;margin:0 auto';
+
+  if (!datos.setup) {
+    renderCutWizard(wrap, datos);
+  } else {
+    renderCutDashboard(wrap, datos);
+  }
+
+  main.innerHTML = '';
+  main.appendChild(wrap);
+}
+
+// ── WIZARD ──
+function renderCutWizard(wrap, datos) {
+  const step = datos.wizardStep || 1;
+
+  let html = '';
+
+  if (step === 1) {
+    html = `
+    <div class="cut-card">
+      <div class="wizard-step">PASO 1 DE 3 — DATOS BASE</div>
+      <div class="wizard-title">Cutting Phase</div>
+      <div class="wizard-sub">Ingresa tus medidas actuales para calcular el plan.</div>
+
+      <div class="cut-input-grid">
+        <div class="cut-field">
+          <div class="cut-label">Peso noche (kg)</div>
+          <input class="cut-input" id="cw_pesoNoche" type="number" step="0.1" placeholder="77.3">
+        </div>
+        <div class="cut-field">
+          <div class="cut-label">Peso ayunas (kg)</div>
+          <input class="cut-input" id="cw_pesoAyunas" type="number" step="0.1" placeholder="76.7">
+        </div>
+        <div class="cut-field">
+          <div class="cut-label">% Grasa target</div>
+          <input class="cut-input" id="cw_pctTarget" type="number" step="0.1" placeholder="9.0">
+        </div>
+        <div class="cut-field">
+          <div class="cut-label">Ganancia músculo (kg)</div>
+          <input class="cut-input" id="cw_ganMus" type="number" step="0.1" placeholder="1.0">
+        </div>
+        <div class="cut-field">
+          <div class="cut-label">Calorías diarias plan</div>
+          <input class="cut-input" id="cw_cals" type="number" step="10" placeholder="2000">
+        </div>
+        <div class="cut-field">
+          <div class="cut-label">Edad</div>
+          <input class="cut-input" id="cw_edad" type="number" placeholder="24">
+        </div>
+      </div>
+      <div class="cut-field" style="margin-bottom:10px">
+        <div class="cut-label">Fecha de inicio</div>
+        <input class="cut-input" id="cw_fecha" type="date">
+      </div>
+      <button class="cut-btn" onclick="wizardNext1()">Continuar →</button>
+    </div>`;
+
+  } else if (step === 2) {
+    const partial = datos.wizardPartial || {};
+    html = `
+    <div class="cut-card">
+      <div class="wizard-step">PASO 2 DE 3 — 7 PLIEGUES ACTUALES (mm)</div>
+      <div class="wizard-title">Medidas de pliegues</div>
+      <div class="wizard-sub">Usa un plicómetro. Mide en el lado derecho del cuerpo.</div>
+      <div class="cut-input-grid">
+        ${PLIEGUES_NAMES.map((n,i) => `
+        <div class="cut-field">
+          <div class="cut-label">${n}</div>
+          <input class="cut-input" id="pl_${i}" type="number" step="0.5" placeholder="mm">
+        </div>`).join('')}
+        <div class="cut-field">
+          <div class="cut-label">Cintura (cm)</div>
+          <input class="cut-input" id="pl_cintura" type="number" step="0.5" placeholder="85">
+        </div>
+      </div>
+      <button class="cut-btn" onclick="wizardNext2()">Calcular plan →</button>
+      <button class="cut-btn secondary" onclick="wizardBack(1)" style="margin-top:8px">← Volver</button>
+    </div>`;
+
+  } else if (step === 3) {
+    const r = datos.wizardResumen;
+    if (!r) { wizardBack(1); return; }
+    html = `
+    <div class="cut-card">
+      <div class="wizard-step">PASO 3 DE 3 — CONFIRMA TU PLAN</div>
+      <div class="wizard-title">Tu Cutting Phase</div>
+
+      <div class="cut-stat-grid">
+        <div class="cut-stat">
+          <div class="cut-stat-val">${r.pctGrasaActual.toFixed(1)}%</div>
+          <div class="cut-stat-label">Grasa actual</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val ok">${r.pctTarget}%</div>
+          <div class="cut-stat-label">Grasa objetivo</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val">${r.masaMagra.toFixed(1)} kg</div>
+          <div class="cut-stat-label">Masa magra actual</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val">${r.pesoTarget.toFixed(1)} kg</div>
+          <div class="cut-stat-label">Peso final objetivo</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val danger">${r.grasaEliminar.toFixed(1)} kg</div>
+          <div class="cut-stat-label">Grasa a eliminar</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val">${r.semanas} sem</div>
+          <div class="cut-stat-label">Duración estimada</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val">${r.deficitDiario} kcal</div>
+          <div class="cut-stat-label">Déficit diario</div>
+        </div>
+        <div class="cut-stat">
+          <div class="cut-stat-val">${r.perdidaSemanal} kg</div>
+          <div class="cut-stat-label">Pérdida sem. objetivo</div>
+        </div>
+      </div>
+
+      <div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:8px">PLIEGUES DE SEGUIMIENTO SEMANAL</div>
+      ${r.topPliegues.map(p => `
+      <div class="cut-pliegue-row">
+        <div class="cut-pliegue-name">${p.nombre}</div>
+        <div class="cut-pliegue-val">${p.actual} mm</div>
+        <div class="cut-pliegue-target">→ ${p.target} mm</div>
+      </div>`).join('')}
+      <div class="cut-pliegue-row">
+        <div class="cut-pliegue-name">Cintura</div>
+        <div class="cut-pliegue-val">${r.cinturaActual} cm</div>
+        <div class="cut-pliegue-target">seguimiento</div>
+      </div>
+
+      <button class="cut-btn" onclick="wizardConfirm()" style="margin-top:12px">Iniciar Cutting Phase ✓</button>
+      <button class="cut-btn secondary" onclick="wizardBack(2)" style="margin-top:8px">← Volver</button>
+    </div>`;
+  }
+
+  wrap.innerHTML = html;
+
+  // Pre-fill date
+  const fi = wrap.querySelector('#cw_fecha');
+  if (fi) {
+    const d = new Date();
+    fi.value = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+}
+
+function wizardNext1() {
+  const datos = getCutDatos();
+  const get = id => parseFloat(document.getElementById(id)?.value);
+  const pesoNoche = get('cw_pesoNoche');
+  const pesoAyunas = get('cw_pesoAyunas');
+  const pctTarget = get('cw_pctTarget');
+  const ganMus = get('cw_ganMus');
+  const cals = get('cw_cals');
+  const edad = get('cw_edad') || 24;
+  const fecha = document.getElementById('cw_fecha')?.value;
+
+  if (!pesoNoche || !pesoAyunas || !pctTarget || !ganMus || !cals || !fecha) {
+    showToast("Completa todos los campos", "err"); return;
+  }
+
+  datos.wizardPartial = { pesoNoche, pesoAyunas, pctTarget, ganMus, cals, edad, fecha };
+  datos.wizardStep = 2;
+  saveCutDatos(datos);
+  renderCut(document.getElementById('mainContent'));
+}
+
+function wizardNext2() {
+  const datos = getCutDatos();
+  const partial = datos.wizardPartial;
+  const pliegues = PLIEGUES_NAMES.map((_,i) => parseFloat(document.getElementById(`pl_${i}`)?.value));
+  const cintura = parseFloat(document.getElementById('pl_cintura')?.value);
+
+  if (pliegues.some(isNaN) || isNaN(cintura)) {
+    showToast("Completa todos los pliegues", "err"); return;
+  }
+
+  const edad = partial.edad || 24;
+  const pctGrasaActual = calcGrasa7(pliegues, edad);
+  const masaMagra = partial.pesoAyunas * (1 - pctGrasaActual / 100);
+  const masaMagraProyectada = masaMagra + partial.ganMus;
+  const pesoTarget = masaMagraProyectada / (1 - partial.pctTarget / 100);
+  const grasaActualKg = partial.pesoAyunas * (pctGrasaActual / 100);
+  const grasaTargetKg = pesoTarget * (partial.pctTarget / 100);
+  const grasaEliminar = grasaActualKg - grasaTargetKg;
+  const perdidaSemanal = getPerdidaSemanal(pctGrasaActual);
+  const semanas = Math.ceil(grasaEliminar / perdidaSemanal);
+  const deficitDiario = Math.round(perdidaSemanal * 7700 / 7);
+
+  // Top 3 pliegues más altos
+  const indexedPliegues = pliegues.map((v,i) => ({ i, v, nombre: PLIEGUES_NAMES[i] }));
+  indexedPliegues.sort((a,b) => b.v - a.v);
+  const top3 = indexedPliegues.slice(0,3);
+  const plieguTargets = calcPlieguTargets(pliegues, pctGrasaActual, partial.pctTarget);
+  const topPliegues = top3.map(p => ({
+    nombre: p.nombre, actual: p.v, target: plieguTargets[p.i], idx: p.i
+  }));
+
+  // Generar calendario semanal
+  const calendario = [];
+  const startDate = new Date(partial.fecha);
+  let pesoNocheActual = partial.pesoNoche;
+  let pesoAyunasActual = partial.pesoAyunas;
+  for (let s = 1; s <= semanas; s++) {
+    const weekStart = new Date(startDate);
+    weekStart.setDate(startDate.getDate() + (s-1)*7);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    const fmt = d => `${d.getDate()}/${d.getMonth()+1}`;
+    pesoNocheActual = Math.round((pesoNocheActual - perdidaSemanal) * 10) / 10;
+    pesoAyunasActual = Math.round((pesoAyunasActual - perdidaSemanal) * 10) / 10;
+    calendario.push({
+      semana: s,
+      fechaStr: `${fmt(weekStart)}–${fmt(weekEnd)}`,
+      targetNoche: pesoNocheActual,
+      targetAyunas: pesoAyunasActual,
+    });
+  }
+
+  datos.wizardResumen = {
+    pctGrasaActual, pctTarget: partial.pctTarget, masaMagra,
+    pesoTarget, grasaEliminar, perdidaSemanal, semanas, deficitDiario,
+    topPliegues, cinturaActual: cintura, plieguesIniciales: pliegues,
+    plieguTargets, cals: partial.cals
+  };
+  datos.wizardStep = 3;
+  saveCutDatos(datos);
+  renderCut(document.getElementById('mainContent'));
+}
+
+function wizardBack(step) {
+  const datos = getCutDatos();
+  datos.wizardStep = step;
+  saveCutDatos(datos);
+  renderCut(document.getElementById('mainContent'));
+}
+
+function wizardConfirm() {
+  const datos = getCutDatos();
+  const r = datos.wizardResumen;
+  const partial = datos.wizardPartial;
+
+  // Generar calendario
+  const calendario = [];
+  const startDate = new Date(partial.fecha);
+  let pesoNoche = partial.pesoNoche;
+  let pesoAyunas = partial.pesoAyunas;
+  for (let s = 1; s <= r.semanas; s++) {
+    const weekStart = new Date(startDate);
+    weekStart.setDate(startDate.getDate() + (s-1)*7);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    const fmt = d => `${d.getDate()}/${d.getMonth()+1}`;
+    pesoNoche = Math.round((pesoNoche - r.perdidaSemanal) * 10) / 10;
+    pesoAyunas = Math.round((pesoAyunas - r.perdidaSemanal) * 10) / 10;
+    calendario.push({
+      semana: s,
+      fechaStr: `${fmt(weekStart)}–${fmt(weekEnd)}`,
+      targetNoche: pesoNoche,
+      targetAyunas: pesoAyunas,
+    });
+  }
+
+  datos.setup = {
+    ...partial,
+    ...r,
+    calendario,
+    fechaInicio: partial.fecha,
+  };
+  datos.registrosDiarios = {};
+  datos.registrosSemanales = {};
+  datos.registrosMensuales = {};
+  delete datos.wizardStep;
+  delete datos.wizardPartial;
+  delete datos.wizardResumen;
+  saveCutDatos(datos);
+  showToast("Cutting Phase iniciada ✓", "ok");
+  renderCut(document.getElementById('mainContent'));
+}
+
+// ── DASHBOARD ──
+function renderCutDashboard(wrap, datos) {
+  const s = datos.setup;
+  const hoy = (() => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
+  const registros = datos.registrosDiarios || {};
+  const semanales = datos.registrosSemanales || {};
+
+  // Semana actual
+  const inicio = new Date(s.fechaInicio);
+  const hoyDate = new Date(hoy);
+  const diasTranscurridos = Math.floor((hoyDate - inicio) / (1000*60*60*24));
+  const semanaActual = Math.min(Math.floor(diasTranscurridos / 7) + 1, s.semanas);
+  const semanaInfo = s.calendario[semanaActual - 1];
+
+  // Promedio peso esta semana
+  const diasSemana = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(inicio);
+    d.setDate(inicio.getDate() + (semanaActual-1)*7 + i);
+    diasSemana.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`);
+  }
+  const pesosNoche = diasSemana.map(d => registros[d]?.noche).filter(Boolean);
+  const pesosAyunas = diasSemana.map(d => registros[d]?.ayunas).filter(Boolean);
+  const promNoche = pesosNoche.length ? (pesosNoche.reduce((a,b)=>a+b,0)/pesosNoche.length) : null;
+  const promAyunas = pesosAyunas.length ? (pesosAyunas.reduce((a,b)=>a+b,0)/pesosAyunas.length) : null;
+
+  // % progreso
+  const semanasCompletadas = semanaActual - 1;
+  const pct = Math.round((semanasCompletadas / s.semanas) * 100);
+
+  // Alerta calórica
+  let alertaCalórica = '';
+  if (semanaActual > 1 && promAyunas !== null) {
+    const semanaAnterior = s.calendario[semanaActual - 2];
+    const diffReal = semanaAnterior.targetAyunas - promAyunas;
+    const diffEsperado = s.perdidaSemanal;
+    if (diffReal < diffEsperado * 0.5) {
+      const ajuste = Math.round((diffEsperado - diffReal) * 7700 / 7 / 50) * 50;
+      alertaCalórica = `<div class="cut-alert warn">⚠️ El peso no bajó lo esperado esta semana. Considera reducir ~${ajuste} kcal/día (de ${s.cals} a ${s.cals - ajuste} kcal).</div>`;
+    } else if (diffReal >= diffEsperado * 0.9) {
+      alertaCalórica = `<div class="cut-alert ok">✓ Bajada en línea con el plan esta semana.</div>`;
+    }
+  }
+
+  let html = `
+  <!-- HEADER -->
+  <div class="cut-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div>
+        <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent2)">CUTTING PHASE · SEMANA ${semanaActual} DE ${s.semanas}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">${semanaInfo?.fechaStr || ''}</div>
+      </div>
+      <button onclick="resetCut()" style="font-size:10px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">reiniciar</button>
+    </div>
+    <div class="cut-progress-bar">
+      <div class="cut-progress-fill" style="width:${pct}%"></div>
+    </div>
+    <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px;display:flex;justify-content:space-between">
+      <span>Inicio: ${s.fechaInicio}</span>
+      <span>${pct}% completado</span>
+    </div>
+  </div>
+
+  ${alertaCalórica}
+
+  <!-- OBJETIVO SEMANA -->
+  <div class="cut-card">
+    <div class="cut-title">🎯 Objetivo semana ${semanaActual}</div>
+    <div class="cut-stat-grid">
+      <div class="cut-stat">
+        <div class="cut-stat-val">${semanaInfo?.targetNoche || '—'} kg</div>
+        <div class="cut-stat-label">Target noche</div>
+      </div>
+      <div class="cut-stat">
+        <div class="cut-stat-val">${semanaInfo?.targetAyunas || '—'} kg</div>
+        <div class="cut-stat-label">Target ayunas</div>
+      </div>
+      <div class="cut-stat">
+        <div class="cut-stat-val ${promNoche ? (promNoche <= semanaInfo?.targetNoche ? 'ok' : 'danger') : ''}">${promNoche ? promNoche.toFixed(1)+' kg' : '—'}</div>
+        <div class="cut-stat-label">Promedio noche</div>
+      </div>
+      <div class="cut-stat">
+        <div class="cut-stat-val ${promAyunas ? (promAyunas <= semanaInfo?.targetAyunas ? 'ok' : 'danger') : ''}">${promAyunas ? promAyunas.toFixed(1)+' kg' : '—'}</div>
+        <div class="cut-stat-label">Promedio ayunas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTRO DIARIO -->
+  <div class="cut-card">
+    <div class="cut-title">📅 Registro hoy — ${hoy}</div>
+    <div class="daily-peso-grid">
+      <div class="cut-field">
+        <div class="cut-label">Peso mañana / ayunas (kg)</div>
+        <input class="cut-input" id="peso_ayunas" type="number" step="0.1"
+          placeholder="${semanaInfo?.targetAyunas || '—'}"
+          value="${registros[hoy]?.ayunas || ''}">
+      </div>
+      <div class="cut-field">
+        <div class="cut-label">Peso noche (kg)</div>
+        <input class="cut-input" id="peso_noche" type="number" step="0.1"
+          placeholder="${semanaInfo?.targetNoche || '—'}"
+          value="${registros[hoy]?.noche || ''}">
+      </div>
+    </div>
+    <button class="cut-btn" onclick="savePesoDiario('${hoy}')" style="margin-top:10px">Guardar peso</button>
+  </div>
+
+  <!-- REGISTRO SEMANAL PLIEGUES -->
+  <div class="cut-card">
+    <div class="cut-title">📐 Pliegues semanales (fin de semana)</div>
+    ${s.topPliegues.map((p,i) => `
+    <div class="cut-pliegue-row">
+      <div class="cut-pliegue-name">${p.nombre}</div>
+      <input class="cut-input" id="pls_${i}" type="number" step="0.5"
+        style="width:70px;text-align:center"
+        value="${semanales[`S${semanaActual}`]?.pliegues?.[i] || ''}"
+        placeholder="${p.actual}">
+      <div class="cut-pliegue-target">→ ${p.target} mm</div>
+    </div>`).join('')}
+    <div class="cut-pliegue-row">
+      <div class="cut-pliegue-name">Cintura (cm)</div>
+      <input class="cut-input" id="pls_cintura" type="number" step="0.5"
+        style="width:70px;text-align:center"
+        value="${semanales[`S${semanaActual}`]?.cintura || ''}"
+        placeholder="${s.cinturaActual}">
+      <div class="cut-pliegue-target">seguimiento</div>
+    </div>
+    <button class="cut-btn" onclick="savePlieguesSemana(${semanaActual})" style="margin-top:10px">Guardar pliegues</button>
+  </div>
+
+  <!-- CALENDARIO -->
+  <div class="cut-card">
+    <div class="cut-title">📆 Calendario completo</div>
+    ${s.calendario.map((w,i) => {
+      const semReg = semanales[`S${w.semana}`];
+      const tienePeso = semReg?.promAyunas;
+      const ok = tienePeso && tienePeso <= w.targetAyunas;
+      return `<div class="cut-week-row">
+        <div class="cut-week-num">S${w.semana}</div>
+        <div class="cut-week-target" style="color:var(--muted)">${w.fechaStr}</div>
+        <div class="cut-week-target">${w.targetAyunas} kg</div>
+        <div class="cut-week-real" style="color:${tienePeso ? (ok?'var(--ok)':'var(--accent2)') : 'var(--muted)'}">
+          ${tienePeso ? tienePeso.toFixed(1)+' kg' : '—'}
+        </div>
+        <div class="cut-week-delta" style="color:${tienePeso ? (ok?'var(--ok)':'var(--accent2)') : 'var(--muted)'}">
+          ${tienePeso ? (ok?'✓':'↑'+(tienePeso-w.targetAyunas).toFixed(1)) : ''}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  wrap.innerHTML = html;
+}
+
+function savePesoDiario(fecha) {
+  const ayunas = parseFloat(document.getElementById('peso_ayunas')?.value);
+  const noche = parseFloat(document.getElementById('peso_noche')?.value);
+  if (!ayunas && !noche) { showToast("Ingresa al menos un peso", "err"); return; }
+
+  const datos = getCutDatos();
+  if (!datos.registrosDiarios) datos.registrosDiarios = {};
+  datos.registrosDiarios[fecha] = { ayunas: ayunas||null, noche: noche||null };
+
+  // Actualizar promedio en registro semanal
+  const s = datos.setup;
+  const inicio = new Date(s.fechaInicio);
+  const hoyDate = new Date(fecha);
+  const dias = Math.floor((hoyDate - inicio) / (1000*60*60*24));
+  const semana = Math.min(Math.floor(dias / 7) + 1, s.semanas);
+
+  const diasSemana = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(inicio);
+    d.setDate(inicio.getDate() + (semana-1)*7 + i);
+    diasSemana.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`);
+  }
+  const pesosAyunas = diasSemana.map(d => datos.registrosDiarios[d]?.ayunas).filter(Boolean);
+  const pesosNoche = diasSemana.map(d => datos.registrosDiarios[d]?.noche).filter(Boolean);
+
+  if (!datos.registrosSemanales) datos.registrosSemanales = {};
+  if (!datos.registrosSemanales[`S${semana}`]) datos.registrosSemanales[`S${semana}`] = {};
+  if (pesosAyunas.length) datos.registrosSemanales[`S${semana}`].promAyunas = Math.round(pesosAyunas.reduce((a,b)=>a+b,0)/pesosAyunas.length*10)/10;
+  if (pesosNoche.length) datos.registrosSemanales[`S${semana}`].promNoche = Math.round(pesosNoche.reduce((a,b)=>a+b,0)/pesosNoche.length*10)/10;
+
+  saveCutDatos(datos);
+  showToast("Peso guardado ✓", "ok");
+  renderCut(document.getElementById('mainContent'));
+}
+
+function savePlieguesSemana(semana) {
+  const datos = getCutDatos();
+  const s = datos.setup;
+  const pliegues = s.topPliegues.map((_,i) => parseFloat(document.getElementById(`pls_${i}`)?.value) || null);
+  const cintura = parseFloat(document.getElementById('pls_cintura')?.value) || null;
+
+  if (!datos.registrosSemanales) datos.registrosSemanales = {};
+  if (!datos.registrosSemanales[`S${semana}`]) datos.registrosSemanales[`S${semana}`] = {};
+  datos.registrosSemanales[`S${semana}`].pliegues = pliegues;
+  datos.registrosSemanales[`S${semana}`].cintura = cintura;
+
+  saveCutDatos(datos);
+  showToast("Pliegues guardados ✓", "ok");
+}
+
+function resetCut() {
+  if (!confirm("¿Reiniciar la Cutting Phase? Se borrarán todos los datos.")) return;
+  localStorage.removeItem("cut-datos");
+  showToast("Cutting Phase reiniciada", "ok");
+  renderCut(document.getElementById('mainContent'));
+}
+
+// ── CONFIG VIEW ──
+function renderConfig(main) {
+  const ghConnected = !!state.githubToken;
+  const sheetsConnected = !!state.scriptUrl;
+
+  main.innerHTML = `
+    <div class="config-panel">
+      <div class="config-title">📊 Google Sheets — Sync de datos</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:${sheetsConnected ? 'var(--ok)' : 'var(--border)'}"></div>
+        <span style="font-size:11px;font-family:var(--font-mono);color:${sheetsConnected ? 'var(--ok)' : 'var(--muted)'}">
+          ${sheetsConnected ? 'Conectado' : 'No configurado'}
+        </span>
+      </div>
+      <div class="config-row">
+        <div class="config-label">URL del Apps Script</div>
+        <input class="config-input" id="urlInput"
+          placeholder="https://script.google.com/macros/s/..."
+          value="${state.scriptUrl}">
+      </div>
+      <button class="config-btn" onclick="saveConfig()">Guardar</button>
+    </div>
+
+    <div class="config-panel">
+      <div class="config-title">🐙 GitHub — Actualizaciones automáticas</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:${ghConnected ? 'var(--ok)' : 'var(--border)'}"></div>
+        <span style="font-size:11px;font-family:var(--font-mono);color:${ghConnected ? 'var(--ok)' : 'var(--muted)'}">
+          ${ghConnected ? 'Conectado · arquitecsystems-coder/House-Gym' : 'No configurado'}
+        </span>
+      </div>
+      <div class="config-row">
+        <div class="config-label">Personal Access Token (repo scope)</div>
+        <input class="config-input" id="ghTokenInput" type="password"
+          placeholder="ghp_..."
+          value="${state.githubToken}">
+      </div>
+      <button class="config-btn" onclick="saveGithubToken()">Guardar</button>
+    </div>
+
+    <div class="config-panel">
+      <div class="config-title">📤 Datos locales</div>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button class="config-btn" style="background:var(--surface);color:var(--text);border:1px solid var(--border)"
+          onclick="exportData()">Exportar backup</button>
+        <button class="config-btn" style="background:var(--surface);color:var(--text);border:1px solid var(--border)"
+          onclick="document.getElementById('importFile').click()">Importar backup</button>
+      </div>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    </div>
+
+    <div class="config-panel">
+      <div class="config-title">🦶 Criterio re-ingreso sentadilla</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">
+        Los <strong style="color:var(--text)">tres</strong> deben cumplirse:
+        <br><br>
+        <span style="color:var(--accent)">□</span> Dorsiflexión rodilla-pared ≥ 7 cm (pierna izquierda)<br>
+        <span style="color:var(--ok)">✓</span> Equilibrio monopodal ojos cerrados ≥ 45 s<br>
+        <span style="color:var(--accent)">□</span> Pistol squat izquierdo inicia descenso sin bloqueo
+      </div>
+    </div>`;
+}
+
+// ============================================================
+// REGISTRO
+// ============================================================
+function saveNota(key, value) {
+  if (!state.registros[key]) state.registros[key] = {};
+  state.registros[key].nota = value;
+  state.registros[key].timestamp = new Date().toISOString();
+  saveLocal();
+  if (state.scriptUrl) queueSync(key);
+}
+
+function saveField(key, field, value) {
+  if (!state.registros[key]) state.registros[key] = {};
+  state.registros[key][field] = value;
+  state.registros[key].timestamp = new Date().toISOString();
+  saveLocal();
+  if (state.scriptUrl) queueSync(key);
+}
+
+function toggleCheck(key) {
+  if (!state.registros[key]) state.registros[key] = {};
+  state.registros[key].checked = !state.registros[key].checked;
+  state.registros[key].timestamp = new Date().toISOString();
+  saveLocal();
+  render();
+  if (state.scriptUrl) queueSync(key);
+}
+
+function diaCompleto(meso, semana, dia) {
+  const planDia = MESOCICLOS[meso]?.plan[dia] || [];
+  if (!planDia.length) return false;
+  return planDia.every(ej =>
+    Array.from({length: ej.series}, (_, i) => i + 1)
+      .every(s => state.registros[`${meso}-S${semana}-${dia}-${ej.nombre}-${s}`]?.checked)
+  );
+}
+
+// ============================================================
+// PERSISTENCIA LOCAL
+// ============================================================
+function saveLocal() {
+  localStorage.setItem("hgRegistros", JSON.stringify(state.registros));
+}
+
+function loadLocal() {
+  const r = localStorage.getItem("hgRegistros");
+  if (r) state.registros = JSON.parse(r);
+}
+
+function exportData() {
+  const blob = new Blob([JSON.stringify(state.registros, null, 2)], {type: "application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `housegym_backup_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  showToast("Backup exportado ✓", "ok");
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      state.registros = JSON.parse(ev.target.result);
+      saveLocal();
+      showToast("Datos importados ✓", "ok");
+      render();
+    } catch {
+      showToast("Error al importar", "err");
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ============================================================
+// SYNC CON GOOGLE SHEETS
+// ============================================================
+let syncQueue = new Set();
+let syncTimer = null;
+
+function queueSync(key) {
+  syncQueue.add(key);
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(flushSync, 2000);
+}
+
+async function flushSync() {
+  if (!state.scriptUrl || syncQueue.size === 0) return;
+  const btn = document.getElementById("syncBtn");
+  btn.className = "sync-btn syncing";
+  btn.textContent = "⟳ sync…";
+
+  const keys = [...syncQueue];
+  syncQueue.clear();
+
+  for (const key of keys) {
+    const reg = state.registros[key];
+    if (!reg) continue;
+    const parts = key.split("-");
+    // key: "M5-S1-lun-Press Inclinado (barra)-1"
+    const meso = parts[0];
+    const semana = parts[1];
+    const dia = parts[2];
+    const serie = parts[parts.length - 1];
+    const ejercicio = parts.slice(3, parts.length - 1).join("-");
+
+    try {
+      await fetch(state.scriptUrl, {
+        method: "POST",
+        body: JSON.stringify({
+          action: "saveSet",
+          id: key,
+          mesociclo: meso,
+          semana,
+          dia,
+          ejercicio,
+          serie,
+          pesoReal: reg.peso || "",
+          repsReales: reg.reps || "",
+          rir: reg.rir || "",
+          nota: "",
+          timestamp: reg.timestamp
+        })
+      });
+    } catch (e) {
+      console.error("Sync error:", e);
+    }
+  }
+
+  btn.className = "sync-btn";
+  btn.textContent = "⟳ sync";
+  showToast("Guardado en Sheets ✓", "ok");
+}
+
+async function syncData() {
+  if (!state.scriptUrl) {
+    showToast("Configura la URL del script primero", "err");
+    setView("config");
+    return;
+  }
+  const btn = document.getElementById("syncBtn");
+  btn.className = "sync-btn syncing";
+  btn.textContent = "⟳ sync…";
+
+  // Pull primero, luego push
+  await pullData();
+  Object.keys(state.registros).forEach(k => syncQueue.add(k));
+  await flushSync();
+}
+
+async function pullData() {
+  if (!state.scriptUrl) return;
+  try {
+    const res = await fetch(`${state.scriptUrl}?action=getAll`);
+    const data = await res.json();
+    if (!data.records || !data.records.length) return;
+
+    // Merge: los registros remotos tienen prioridad si son más recientes
+    data.records.forEach(r => {
+      const key = r.id;
+      if (!key) return;
+      const localTs = state.registros[key]?.timestamp || "";
+      const remoteTs = r.timestamp || "";
+      if (!state.registros[key] || remoteTs > localTs) {
+        state.registros[key] = {
+          peso: r.pesoReal,
+          reps: r.repsReales,
+          rir: r.rir,
+          nota: r.nota,
+          checked: r.pesoReal || r.repsReales ? true : false,
+          timestamp: remoteTs
+        };
+      }
+    });
+    saveLocal();
+    showToast("Datos sincronizados ✓", "ok");
+    render();
+  } catch(e) {
+    console.error("Pull error:", e);
+  }
+}
+
+// ============================================================
+// CONFIG
+// ============================================================
+function saveConfig() {
+  const url = document.getElementById("urlInput").value.trim();
+  state.scriptUrl = url;
+  localStorage.setItem("scriptUrl", url);
+  showToast("URL guardada ✓", "ok");
+  renderConfig(document.getElementById("mainContent"));
+}
+
+function saveGithubToken() {
+  const token = document.getElementById("ghTokenInput").value.trim();
+  state.githubToken = token;
+  localStorage.setItem("githubToken", token);
+  showToast("Token guardado ✓", "ok");
+  renderConfig(document.getElementById("mainContent"));
+}
+
+async function updateFromGithub() {
+  if (!state.githubToken) {
+    showToast("Configura el token de GitHub primero", "err");
+    setView("config");
+    return;
+  }
+  const btn = document.getElementById("syncBtn");
+  btn.className = "sync-btn syncing";
+  btn.textContent = "⟳ actualizando…";
+
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${state.githubRepo}/contents/index.html`,
+      { headers: { Authorization: `token ${state.githubToken}` } }
+    );
+    const data = await res.json();
+    const newContent = atob(data.content.replace(/
+/g, ""));
+
+    // Inyecta el nuevo HTML preservando datos locales
+    const registrosBackup = JSON.stringify(state.registros);
+    const scriptUrlBackup = state.scriptUrl;
+    const tokenBackup = state.githubToken;
+
+    const blob = new Blob([newContent], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+
+    // Guarda estado antes de navegar
+    localStorage.setItem("hgRegistros", registrosBackup);
+    localStorage.setItem("scriptUrl", scriptUrlBackup);
+    localStorage.setItem("githubToken", tokenBackup);
+
+    window.location.href = url;
+  } catch(e) {
+    btn.className = "sync-btn error";
+    btn.textContent = "⟳ error";
+    showToast("Error al actualizar", "err");
+    console.error(e);
+    setTimeout(() => {
+      btn.className = "sync-btn";
+      btn.textContent = "⟳ sync";
+    }, 3000);
+  }
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg, type = "ok") {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.className = "toast", 2500);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+loadLocal();
+state.dia = MESOCICLOS[state.meso].dias[0].key;
+render();
+// Auto-pull al cargar si hay URL configurada
+if (state.scriptUrl) {
+  setTimeout(() => pullData(), 800);
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(e => console.log('SW error:', e));
+  });
+}
+</script>
+</body>
+</html>
