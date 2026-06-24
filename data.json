@@ -71,11 +71,20 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-06-24T21:13:27.007Z",
+    "_syncTs": "2026-06-24T22:13:53.566Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
           true,
+          true,
+          false
+        ],
+        "cuadrupedia": [
+          true,
+          false,
+          false
+        ],
+        "equilibrio": [
           true,
           false
         ]
@@ -83,7 +92,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-06-24T21:13:27.007Z"
+    "_syncTs": "2026-06-24T22:13:53.566Z"
   },
-  "timestamp": "2026-06-24T22:13:53.566Z"
+  "timestamp": "2026-06-24T22:17:08.016Z"
 }
