@@ -1,6 +1,80 @@
 {
-  "registros": {},
-  "rehab": {},
-  "cut": {},
-  "timestamp": "2026-06-24T21:02:13.070Z"
+  "registros": {
+    "M4-S5-mie-Sentadilla Isométrica-1": {
+      "reps": "30",
+      "timestamp": "2026-06-24T16:40:27.149Z",
+      "checked": true
+    },
+    "M4-S5-mie-Sentadilla Isométrica-2": {
+      "reps": "45",
+      "timestamp": "2026-06-24T16:44:24.936Z",
+      "checked": true
+    },
+    "M4-S5-mie-Sentadilla Isométrica-3": {
+      "reps": "60",
+      "timestamp": "2026-06-24T16:47:46.380Z",
+      "checked": true
+    },
+    "M4-S5-mie-Sentadilla Libre Técnica-1": {
+      "reps": "15",
+      "timestamp": "2026-06-24T16:50:38.228Z",
+      "checked": true
+    },
+    "M4-S5-mie-Sentadilla Libre Técnica-2": {
+      "reps": "10",
+      "timestamp": "2026-06-24T16:54:27.265Z",
+      "checked": true
+    },
+    "M4-S5-mie-Sentadilla Libre Técnica-3": {
+      "reps": "8",
+      "timestamp": "2026-06-24T16:58:44.143Z",
+      "checked": true
+    },
+    "M4-S5-mie-Rumano (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-06-24T17:17:40.714Z",
+      "reps": "2",
+      "checked": true
+    },
+    "M4-S5-mie-Rumano (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-06-24T17:23:06.440Z",
+      "reps": "3",
+      "checked": true
+    },
+    "M4-S5-mie-Elevaciones de pie (gemelo)-1": {
+      "peso": "10",
+      "timestamp": "2026-06-24T17:45:25.418Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M4-S5-mie-Rumano (barra)-3": {
+      "peso": "65",
+      "timestamp": "2026-06-24T17:48:35.907Z",
+      "reps": "3",
+      "checked": true
+    },
+    "M4-S5-mie-Elevaciones de pie (gemelo)-2": {
+      "peso": "10",
+      "timestamp": "2026-06-24T17:50:05.486Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "M4-S5-mie-Elevaciones de pie (gemelo)-3": {
+      "peso": "10",
+      "timestamp": "2026-06-24T17:55:54.349Z",
+      "reps": "7",
+      "rir": "0",
+      "checked": true
+    }
+  },
+  "rehab": {
+    "_syncTs": "2026-06-24T21:02:13.070Z"
+  },
+  "cut": {
+    "_syncTs": "2026-06-24T21:02:13.070Z"
+  },
+  "timestamp": "2026-06-24T21:13:27.007Z"
 }
