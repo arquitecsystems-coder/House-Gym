@@ -2033,11 +2033,14 @@ function renderCutWizard(wrap, datos) {
         <div class="cut-label">Fecha de inicio</div>
         <input class="cut-input" id="cw_fecha" type="date">
       </div>
+      ${datos.editing ? '<button class="cut-btn secondary" onclick="cancelEdit()" style="margin-top:8px">← Cancelar (conservar datos actuales)</button>' : ''}
       <button class="cut-btn" onclick="wizardNext1()">Continuar →</button>
     </div>`;
 
   } else if (step === 2) {
     const partial = datos.wizardPartial || {};
+    const prevPliegues = datos.wizardPliegues || [];
+    const prevCintura = datos.wizardCintura || null;
     html = `
     <div class="cut-card">
       <div class="wizard-step">PASO 2 DE 3 — 7 PLIEGUES ACTUALES (mm)</div>
@@ -2047,11 +2050,11 @@ function renderCutWizard(wrap, datos) {
         ${PLIEGUES_NAMES.map((n,i) => `
         <div class="cut-field">
           <div class="cut-label">${n}</div>
-          <input class="cut-input" id="pl_${i}" type="number" step="0.5" placeholder="mm">
+          <input class="cut-input" id="pl_${i}" type="number" step="0.5" placeholder="mm" value="${prevPliegues[i] || ''}">
         </div>`).join('')}
         <div class="cut-field">
           <div class="cut-label">Cintura (cm)</div>
-          <input class="cut-input" id="pl_cintura" type="number" step="0.5" placeholder="85">
+          <input class="cut-input" id="pl_cintura" type="number" step="0.5" placeholder="85" value="${prevCintura || ''}">
         </div>
       </div>
       <button class="cut-btn" onclick="wizardNext2()">Calcular plan →</button>
@@ -2212,6 +2215,18 @@ function wizardNext2() {
   datos.wizardStep = 3;
   saveCutDatos(datos);
   renderCut(document.getElementById('mainContent'));
+}
+
+function cancelEdit() {
+  const datos = getCutDatos();
+  delete datos.wizardStep;
+  delete datos.wizardPartial;
+  delete datos.wizardPliegues;
+  delete datos.wizardCintura;
+  delete datos.wizardResumen;
+  datos.editing = false;
+  saveCutDatos(datos);
+  setView('profile');
 }
 
 function wizardBack(step) {
@@ -2635,8 +2650,9 @@ function toggleSubAccordion(id) {
 }
 
 function editCutSetup() {
-  // Reset wizard to step 1 but keep setup data for pre-fill
   const datos = getCutDatos();
+  if (!datos.setup) return;
+  // Pre-fill wizard WITHOUT deleting setup — setup only gets replaced on wizardConfirm
   datos.wizardPartial = {
     pesoNoche: datos.setup.pesoNoche,
     pesoAyunas: datos.setup.pesoAyunas,
@@ -2646,9 +2662,11 @@ function editCutSetup() {
     edad: datos.setup.edad || 24,
     fecha: datos.setup.fechaInicio
   };
+  datos.wizardPliegues = datos.setup.plieguesIniciales || [];
+  datos.wizardCintura = datos.setup.cinturaActual || null;
   datos.wizardStep = 1;
   datos.editing = true;
-  delete datos.setup;
+  // DO NOT delete setup here — it stays until wizard is confirmed
   saveCutDatos(datos);
   setView('cut');
 }
