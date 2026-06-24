@@ -1097,6 +1097,10 @@ const MESOCICLOS = {
     label: "M4 — 2026 (recuperación)",
     tipo: "completado",
     semanas: 6,
+    fechas: [
+      "25–30 may","1–6 jun","8–13 jun",
+      "15–20 jun","22–27 jun","29 jun–4 jul"
+    ],
     dias: [
       { key: "lun", label: "Lun", titulo: "Push A — Fuerza" },
       { key: "mar", label: "Mar", titulo: "Pull A — Fuerza" },
@@ -2566,13 +2570,9 @@ async function pullFromGithub() {
   if (!state.githubToken) return;
   try {
     const url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`;
-    console.log("Fetching:", url);
     const r = await fetch(url, { cache: "no-store" });
-    console.log("Response status:", r.status, r.ok);
     if (!r.ok) { showToast("Error al descargar: " + r.status, "err"); return; }
     const data = await r.json();
-    console.log("Data timestamp:", data.timestamp);
-    console.log("Registros count:", Object.keys(data.registros || {}).length);
 
     if (data.registros) {
       let merged = 0;
@@ -2584,7 +2584,6 @@ async function pullFromGithub() {
           merged++;
         }
       });
-      console.log("Merged registros:", merged);
       saveLocal();
     }
 
@@ -2740,7 +2739,91 @@ if (savedTheme === 'dark') {
 }
 
 loadLocal();
-state.dia = MESOCICLOS[state.meso].dias[0].key;
+
+// ── Auto-detección de posición por fecha ──
+function detectPosition() {
+  const today = new Date();
+  const meses = {
+    'ene':0,'feb':1,'mar':2,'abr':3,'may':4,'jun':5,
+    'jul':6,'ago':7,'sep':8,'oct':9,'nov':10,'dic':11
+  };
+
+  function parseDate(s, fallbackMon) {
+    s = s.trim();
+    const parts = s.split(' ');
+    const day = parseInt(parts[0]);
+    const mon = parts[1] ? meses[parts[1].toLowerCase()] : fallbackMon;
+    return new Date(2026, mon, day);
+  }
+
+  for (const [mesoKey, meso] of Object.entries(MESOCICLOS)) {
+    if (!meso.fechas) continue;
+    for (let i = 0; i < meso.fechas.length; i++) {
+      const rango = meso.fechas[i];
+      const dashIdx = rango.indexOf('–');
+      if (dashIdx === -1) continue;
+      const startRaw = rango.slice(0, dashIdx).trim();
+      const endRaw = rango.slice(dashIdx + 1).trim();
+
+      // endRaw siempre tiene mes
+      const endParts = endRaw.split(' ');
+      const endMon = meses[endParts[1]?.toLowerCase()];
+      const endDay = parseInt(endParts[0]);
+      const endDate = new Date(2026, endMon, endDay);
+
+      // startRaw puede o no tener mes
+      const startParts = startRaw.split(' ');
+      const startDay = parseInt(startParts[0]);
+      const startMon = startParts[1] ? meses[startParts[1].toLowerCase()] : endMon;
+      const startDate = new Date(2026, startMon, startDay);
+
+      // Incluir hasta el domingo de esa semana
+      const weekEnd = new Date(endDate);
+      weekEnd.setDate(weekEnd.getDate() + 1);
+
+      if (today >= startDate && today <= weekEnd) {
+        return { meso: mesoKey, semana: i + 1 };
+      }
+    }
+  }
+  return null;
+}
+
+const pos = detectPosition();
+if (pos) {
+  state.meso = pos.meso;
+  state.semana = pos.semana;
+  state.dia = MESOCICLOS[pos.meso].dias[0].key;
+} else {
+  const saved = localStorage.getItem('forge-position');
+  if (saved) {
+    try {
+      const p = JSON.parse(saved);
+      if (p.meso && MESOCICLOS[p.meso]) {
+        state.meso = p.meso;
+        state.semana = p.semana || 1;
+        state.dia = p.dia || MESOCICLOS[p.meso].dias[0].key;
+      }
+    } catch(e) {}
+  } else {
+    state.dia = MESOCICLOS[state.meso].dias[0].key;
+  }
+}
+
+// Guardar posición al navegar
+const _setSemana = setSemana;
+setSemana = function(s) { _setSemana(s); savePosition(); };
+const _setDia = setDia;
+setDia = function(d) { _setDia(d); savePosition(); };
+const _setMeso = setMeso;
+setMeso = function(k) { _setMeso(k); savePosition(); };
+
+function savePosition() {
+  localStorage.setItem('forge-position', JSON.stringify({
+    meso: state.meso, semana: state.semana, dia: state.dia
+  }));
+}
+
 render();
 // Apply theme button icon after render
 setTimeout(() => {
