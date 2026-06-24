@@ -2428,7 +2428,7 @@ function saveNota(key, value) {
   state.registros[key].nota = value;
   state.registros[key].timestamp = new Date().toISOString();
   saveLocal();
-  if (state.scriptUrl) queueSync(key);
+  queueSync();
 }
 
 function saveField(key, field, value) {
@@ -2436,7 +2436,7 @@ function saveField(key, field, value) {
   state.registros[key][field] = value;
   state.registros[key].timestamp = new Date().toISOString();
   saveLocal();
-  if (state.scriptUrl) queueSync(key);
+  queueSync();
 }
 
 function toggleCheck(key) {
@@ -2445,7 +2445,7 @@ function toggleCheck(key) {
   state.registros[key].timestamp = new Date().toISOString();
   saveLocal();
   render();
-  if (state.scriptUrl) queueSync(key);
+  queueSync();
 }
 
 function diaCompleto(meso, semana, dia) {
@@ -2496,111 +2496,143 @@ function importData(e) {
 }
 
 // ============================================================
-// SYNC CON GOOGLE SHEETS
+// SYNC CON GITHUB
 // ============================================================
-let syncQueue = new Set();
-let syncTimer = null;
 
-function queueSync(key) {
-  syncQueue.add(key);
+let syncTimer = null;
+let syncPending = false;
+
+function queueSync() {
+  syncPending = true;
   clearTimeout(syncTimer);
-  syncTimer = setTimeout(flushSync, 2000);
+  syncTimer = setTimeout(pushToGithub, 3000);
 }
 
-async function flushSync() {
-  if (!state.scriptUrl || syncQueue.size === 0) return;
+async function getGithubFileSha(filename) {
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${state.githubRepo}/contents/${filename}`,
+      { headers: { Authorization: `token ${state.githubToken}` } }
+    );
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d.sha;
+  } catch(e) { return null; }
+}
+
+async function pushToGithub() {
+  if (!state.githubToken) return;
   const btn = document.getElementById("syncBtn");
   btn.className = "sync-btn syncing";
   btn.textContent = "⟳ sync…";
 
-  const keys = [...syncQueue];
-  syncQueue.clear();
+  try {
+    const payload = {
+      registros: state.registros,
+      rehab: JSON.parse(localStorage.getItem("rehab-datos") || "{}"),
+      cut: JSON.parse(localStorage.getItem("cut-datos") || "{}"),
+      timestamp: new Date().toISOString()
+    };
 
-  for (const key of keys) {
-    const reg = state.registros[key];
-    if (!reg) continue;
-    const parts = key.split("-");
-    // key: "M5-S1-lun-Press Inclinado (barra)-1"
-    const meso = parts[0];
-    const semana = parts[1];
-    const dia = parts[2];
-    const serie = parts[parts.length - 1];
-    const ejercicio = parts.slice(3, parts.length - 1).join("-");
+    const sha = await getGithubFileSha("data.json");
+    const body = {
+      message: "Sync data " + new Date().toISOString().slice(0,16),
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2)))),
+    };
+    if (sha) body.sha = sha;
 
-    try {
-      await fetch(state.scriptUrl, {
-        method: "POST",
-        body: JSON.stringify({
-          action: "saveSet",
-          id: key,
-          mesociclo: meso,
-          semana,
-          dia,
-          ejercicio,
-          serie,
-          pesoReal: reg.peso || "",
-          repsReales: reg.reps || "",
-          rir: reg.rir || "",
-          nota: "",
-          timestamp: reg.timestamp
-        })
-      });
-    } catch (e) {
-      console.error("Sync error:", e);
+    const r = await fetch(
+      `https://api.github.com/repos/${state.githubRepo}/contents/data.json`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `token ${state.githubToken}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      }
+    );
+
+    if (r.ok) {
+      syncPending = false;
+      btn.className = "sync-btn";
+      btn.textContent = "⟳ sync";
+      showToast("Guardado en GitHub ✓", "ok");
+    } else {
+      throw new Error("GitHub API error: " + r.status);
     }
+  } catch(e) {
+    console.error("Push error:", e);
+    btn.className = "sync-btn error";
+    btn.textContent = "⟳ error";
+    showToast("Error al sincronizar", "err");
+    setTimeout(() => {
+      btn.className = "sync-btn";
+      btn.textContent = "⟳ sync";
+    }, 3000);
   }
+}
 
-  btn.className = "sync-btn";
-  btn.textContent = "⟳ sync";
-  showToast("Guardado en Sheets ✓", "ok");
+async function pullFromGithub() {
+  if (!state.githubToken) return;
+  try {
+    const r = await fetch(
+      `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`,
+      { cache: "no-store" }
+    );
+    if (!r.ok) return;
+    const data = await r.json();
+    if (!data.timestamp) return;
+
+    if (data.registros) {
+      Object.entries(data.registros).forEach(([key, val]) => {
+        const localTs = state.registros[key]?.timestamp || "";
+        const remoteTs = val?.timestamp || "";
+        if (!state.registros[key] || remoteTs > localTs) {
+          state.registros[key] = val;
+        }
+      });
+      saveLocal();
+    }
+
+    if (data.rehab) {
+      const localRehab = JSON.parse(localStorage.getItem("rehab-datos") || "{}");
+      const remoteTs = data.timestamp || "";
+      const localTs = localRehab._syncTs || "";
+      if (remoteTs > localTs) {
+        data.rehab._syncTs = remoteTs;
+        localStorage.setItem("rehab-datos", JSON.stringify(data.rehab));
+      }
+    }
+
+    if (data.cut) {
+      const localCut = JSON.parse(localStorage.getItem("cut-datos") || "{}");
+      const remoteTs = data.timestamp || "";
+      const localTs = localCut._syncTs || "";
+      if (remoteTs > localTs) {
+        data.cut._syncTs = remoteTs;
+        localStorage.setItem("cut-datos", JSON.stringify(data.cut));
+      }
+    }
+
+    showToast("Datos actualizados ✓", "ok");
+    render();
+  } catch(e) {
+    console.error("Pull error:", e);
+  }
 }
 
 async function syncData() {
-  if (!state.scriptUrl) {
-    showToast("Configura la URL del script primero", "err");
+  if (!state.githubToken) {
+    showToast("Configura el token de GitHub en Config", "err");
     setView("config");
     return;
   }
   const btn = document.getElementById("syncBtn");
   btn.className = "sync-btn syncing";
   btn.textContent = "⟳ sync…";
-
-  // Pull primero, luego push
-  await pullData();
-  Object.keys(state.registros).forEach(k => syncQueue.add(k));
-  await flushSync();
-}
-
-async function pullData() {
-  if (!state.scriptUrl) return;
-  try {
-    const res = await fetch(`${state.scriptUrl}?action=getAll`);
-    const data = await res.json();
-    if (!data.records || !data.records.length) return;
-
-    // Merge: los registros remotos tienen prioridad si son más recientes
-    data.records.forEach(r => {
-      const key = r.id;
-      if (!key) return;
-      const localTs = state.registros[key]?.timestamp || "";
-      const remoteTs = r.timestamp || "";
-      if (!state.registros[key] || remoteTs > localTs) {
-        state.registros[key] = {
-          peso: r.pesoReal,
-          reps: r.repsReales,
-          rir: r.rir,
-          nota: r.nota,
-          checked: r.pesoReal || r.repsReales ? true : false,
-          timestamp: remoteTs
-        };
-      }
-    });
-    saveLocal();
-    showToast("Datos sincronizados ✓", "ok");
-    render();
-  } catch(e) {
-    console.error("Pull error:", e);
-  }
+  await pullFromGithub();
+  await pushToGithub();
 }
 
 // ============================================================
@@ -2703,9 +2735,9 @@ setTimeout(() => {
   const btn = document.getElementById('themeBtn');
   if (btn) btn.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
 }, 0);
-// Auto-pull al cargar si hay URL configurada
-if (state.scriptUrl) {
-  setTimeout(() => pullData(), 800);
+// Auto-pull al cargar si hay token de GitHub
+if (state.githubToken) {
+  setTimeout(() => pullFromGithub(), 1000);
 }
 </script>
 <script>
