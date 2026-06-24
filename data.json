@@ -80,12 +80,12 @@
           false
         ],
         "cuadrupedia": [
-          true,
+          false,
           false,
           false
         ],
         "equilibrio": [
-          true,
+          false,
           false
         ]
       }
@@ -227,5 +227,5 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-24T22:25:26.495Z"
+  "timestamp": "2026-06-24T22:25:44.212Z"
 }
