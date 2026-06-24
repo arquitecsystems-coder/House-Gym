@@ -2793,7 +2793,12 @@ const pos = detectPosition();
 if (pos) {
   state.meso = pos.meso;
   state.semana = pos.semana;
-  state.dia = MESOCICLOS[pos.meso].dias[0].key;
+  // Detectar día de la semana actual
+  const diasSemana = ['dom','lun','mar','mie','jue','vie','sab'];
+  const diaSemana = diasSemana[new Date().getDay()];
+  const diasMeso = MESOCICLOS[pos.meso].dias.map(d => d.key);
+  // Si el día de hoy existe en este meso, úsalo; si no, usa el primero
+  state.dia = diasMeso.includes(diaSemana) ? diaSemana : diasMeso[0];
 } else {
   const saved = localStorage.getItem('forge-position');
   if (saved) {
