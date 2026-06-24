@@ -1002,14 +1002,14 @@
   <div class="nav-item active" id="nav-session" onclick="setView('session')">
     <span class="nav-icon">🏋️</span>sesión
   </div>
-  <div class="nav-item" id="nav-rms" onclick="setView('rms')">
-    <span class="nav-icon">📈</span>RMs
-  </div>
   <div class="nav-item" id="nav-rehab" onclick="setView('rehab')">
     <span class="nav-icon">🦶</span>rehab
   </div>
   <div class="nav-item" id="nav-cut" onclick="setView('cut')">
     <span class="nav-icon">🔥</span>cut
+  </div>
+  <div class="nav-item" id="nav-profile" onclick="setView('profile')">
+    <span class="nav-icon">👤</span>perfil
   </div>
   <div class="nav-item" id="nav-config" onclick="setView('config')">
     <span class="nav-icon">⚙️</span>config
@@ -1305,18 +1305,18 @@ function render() {
 
   if (state.view === "session") {
     renderSession(main);
-  } else if (state.view === "rms") {
-    renderRMs(main);
   } else if (state.view === "rehab") {
     renderRehab(main);
   } else if (state.view === "cut") {
     renderCut(main);
+  } else if (state.view === "profile") {
+    renderProfile(main);
   } else if (state.view === "config") {
     renderConfig(main);
   }
 
   // Nav activo
-  ["session","rms","rehab","cut","config"].forEach(v => {
+  ["session","rehab","cut","profile","config"].forEach(v => {
     document.getElementById("nav-"+v).classList.toggle("active", state.view === v);
   });
 }
@@ -2078,7 +2078,8 @@ function wizardNext2() {
     weekStart.setDate(startDate.getDate() + (s-1)*7);
     const weekEnd = new Date(weekStart);
     weekEnd.setDate(weekStart.getDate() + 6);
-    const fmt = d => `${d.getDate()}/${d.getMonth()+1}`;
+    const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    const fmt = d => `${d.getDate()} ${mesesFmt[d.getMonth()]}`;
     pesoNocheActual = Math.round((pesoNocheActual - perdidaSemanal) * 10) / 10;
     pesoAyunasActual = Math.round((pesoAyunasActual - perdidaSemanal) * 10) / 10;
     calendario.push({
@@ -2123,7 +2124,8 @@ function wizardConfirm() {
     weekStart.setDate(startDate.getDate() + (s-1)*7);
     const weekEnd = new Date(weekStart);
     weekEnd.setDate(weekStart.getDate() + 6);
-    const fmt = d => `${d.getDate()}/${d.getMonth()+1}`;
+    const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    const fmt = d => `${d.getDate()} ${mesesFmt[d.getMonth()]}`;
     pesoNoche = Math.round((pesoNoche - r.perdidaSemanal) * 10) / 10;
     pesoAyunas = Math.round((pesoAyunas - r.perdidaSemanal) * 10) / 10;
     calendario.push({
@@ -2365,6 +2367,149 @@ function resetCut() {
   localStorage.removeItem("cut-datos");
   showToast("Cutting Phase reiniciada", "ok");
   renderCut(document.getElementById('mainContent'));
+}
+
+// ── PROFILE VIEW ──
+function renderProfile(main) {
+  const cutDatos = getCutDatos();
+  const hasCut = !!cutDatos.setup;
+  const s = cutDatos.setup || {};
+
+  let html = `<div style="padding:16px;max-width:600px;margin:0 auto">`;
+
+  // ── FUERZA — RMs ──
+  html += `<div class="rm-panel">
+    <div class="rm-title">💪 Fuerza — RMs históricos</div>
+    <div class="rm-grid">`;
+
+  Object.entries(RMS_REFERENCIA).forEach(([meso, rms]) => {
+    html += `<div style="padding:4px 0 6px;font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-top:8px">${meso}</div>`;
+    rms.forEach(rm => {
+      html += `<div class="rm-row">
+        <div class="rm-ex">${rm.ejercicio}</div>
+        <div class="rm-val">${rm.peso} × ${rm.reps}</div>
+      </div>`;
+    });
+  });
+
+  // M5 objectives
+  html += `<div style="padding:4px 0 6px;font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-top:8px">M5 — Objetivos pico</div>`;
+  const objetivos = [
+    { ejercicio: "Press Inclinado", actual: "65kg × 4", objetivo: "72.5kg × 3" },
+    { ejercicio: "Remo Pendlay",    actual: "57.5kg × 5", objetivo: "65kg × 4" },
+    { ejercicio: "Curl Bíceps",     actual: "30kg × 4", objetivo: "32kg × 5-6" },
+    { ejercicio: "Press Francés",   actual: "30kg × 7", objetivo: "33-34kg × 6" },
+    { ejercicio: "Rumano",          actual: "65kg × 8", objetivo: "72.5kg × 6-8" },
+    { ejercicio: "Búlgaras",        actual: "10kg × 10", objetivo: "20kg × 8" },
+  ];
+  objetivos.forEach(o => {
+    html += `<div class="rm-row">
+      <div style="flex:1">
+        <div style="font-size:13px">${o.ejercicio}</div>
+        <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">${o.actual} → <span style="color:var(--accent)">${o.objetivo}</span></div>
+      </div>
+    </div>`;
+  });
+
+  html += `</div></div>`;
+
+  // ── COMPOSICIÓN CORPORAL ──
+  if (hasCut) {
+    html += `<div class="rm-panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div class="rm-title" style="margin-bottom:0">⚖️ Composición corporal</div>
+        <button onclick="editCutSetup()" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">editar</button>
+      </div>
+
+      <div style="font-size:10px;font-family:var(--font-mono);color:var(--accent);letter-spacing:0.1em;margin-bottom:8px">ESTADO INICIAL</div>
+      <div class="rm-row"><div class="rm-ex">Peso noche</div><div class="rm-val">${s.pesoNoche} kg</div></div>
+      <div class="rm-row"><div class="rm-ex">Peso ayunas</div><div class="rm-val">${s.pesoAyunas} kg</div></div>
+      <div class="rm-row"><div class="rm-ex">% Grasa actual</div><div class="rm-val">${s.pctGrasaActual?.toFixed(1)}%</div></div>
+      <div class="rm-row"><div class="rm-ex">Masa magra</div><div class="rm-val">${s.masaMagra?.toFixed(1)} kg</div></div>
+      <div class="rm-row"><div class="rm-ex">Cintura</div><div class="rm-val">${s.cinturaActual} cm</div></div>
+
+      <div style="font-size:10px;font-family:var(--font-mono);color:var(--accent);letter-spacing:0.1em;margin:12px 0 8px">OBJETIVO</div>
+      <div class="rm-row"><div class="rm-ex">% Grasa target</div><div class="rm-val" style="color:var(--ok)">${s.pctTarget}%</div></div>
+      <div class="rm-row"><div class="rm-ex">Peso final</div><div class="rm-val" style="color:var(--ok)">${s.pesoTarget?.toFixed(1)} kg</div></div>
+      <div class="rm-row"><div class="rm-ex">Grasa a eliminar</div><div class="rm-val" style="color:var(--accent2)">${s.grasaEliminar?.toFixed(1)} kg</div></div>
+      <div class="rm-row"><div class="rm-ex">Ganancia músculo</div><div class="rm-val">${s.ganMus} kg</div></div>
+
+      <div style="font-size:10px;font-family:var(--font-mono);color:var(--accent);letter-spacing:0.1em;margin:12px 0 8px">PROTOCOLO</div>
+      <div class="rm-row"><div class="rm-ex">Duración</div><div class="rm-val">${s.semanas} semanas</div></div>
+      <div class="rm-row"><div class="rm-ex">Pérdida semanal</div><div class="rm-val">${s.perdidaSemanal} kg</div></div>
+      <div class="rm-row"><div class="rm-ex">Déficit diario</div><div class="rm-val">${s.deficitDiario} kcal</div></div>
+      <div class="rm-row"><div class="rm-ex">Calorías plan</div><div class="rm-val">${s.cals} kcal</div></div>
+      <div class="rm-row"><div class="rm-ex">Inicio</div><div class="rm-val">${s.fechaInicio}</div></div>
+
+      <div style="font-size:10px;font-family:var(--font-mono);color:var(--accent);letter-spacing:0.1em;margin:12px 0 8px">PLIEGUES INICIALES</div>
+      ${PLIEGUES_NAMES.map((n,i) => {
+        const val = s.plieguesIniciales?.[i];
+        const target = s.plieguTargets?.[i];
+        const isTop = s.topPliegues?.some(p => p.idx === i);
+        return `<div class="rm-row">
+          <div class="rm-ex">${n}${isTop ? ' ★' : ''}</div>
+          <div class="rm-val">${val} mm → <span style="color:var(--ok)">${target?.toFixed(1)} mm</span></div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  } else {
+    html += `<div class="rm-panel">
+      <div class="rm-title">⚖️ Composición corporal</div>
+      <div style="font-size:13px;color:var(--muted);padding:8px 0">
+        Inicia una Cutting Phase en la pestaña 🔥 para ver tus datos de composición aquí.
+      </div>
+    </div>`;
+  }
+
+  // ── REHAB — Criterios ──
+  html += `<div class="rm-panel">
+    <div class="rm-title">🦶 Criterios re-ingreso sentadilla</div>`;
+
+  const rehabDatos = (() => {
+    try { return JSON.parse(localStorage.getItem("rehab-datos") || "{}"); }
+    catch(e) { return {}; }
+  })();
+  const TARGET_CM = 7;
+  const mediciones = rehabDatos.mediciones || [];
+  const ultima = mediciones.length ? mediciones[mediciones.length-1].valor : 0;
+  const reached = ultima >= TARGET_CM;
+
+  const criterios = [
+    { id: "dorsiflexion", label: "Dorsiflexión ≥ 7 cm (pierna izquierda)", auto: reached },
+    { id: "equilibrio",   label: "Equilibrio monopodal ojos cerrados ≥ 45 s", auto: true },
+    { id: "pistol",       label: "Pistol squat izquierdo inicia descenso sin bloqueo", auto: false },
+  ];
+
+  criterios.forEach(c => {
+    const isOk = c.auto || (rehabDatos.criterios && rehabDatos.criterios[c.id]);
+    html += `<div class="rehab-criterion">
+      <div class="rehab-check ${isOk?'ok':''}">${isOk?'✓':''}</div>
+      <span style="${isOk?'color:var(--ok)':''}">${c.label}</span>
+    </div>`;
+  });
+
+  html += `</div>`;
+  html += `</div>`;
+  main.innerHTML = html;
+}
+
+function editCutSetup() {
+  // Reset wizard to step 1 but keep setup data for pre-fill
+  const datos = getCutDatos();
+  datos.wizardPartial = {
+    pesoNoche: datos.setup.pesoNoche,
+    pesoAyunas: datos.setup.pesoAyunas,
+    pctTarget: datos.setup.pctTarget,
+    ganMus: datos.setup.ganMus,
+    cals: datos.setup.cals,
+    edad: datos.setup.edad || 24,
+    fecha: datos.setup.fechaInicio
+  };
+  datos.wizardStep = 1;
+  datos.editing = true;
+  delete datos.setup;
+  saveCutDatos(datos);
+  setView('cut');
 }
 
 // ── CONFIG VIEW ──
