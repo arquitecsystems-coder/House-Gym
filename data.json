@@ -92,7 +92,140 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-06-24T22:13:53.566Z"
+    "_syncTs": "2026-06-24T22:13:53.566Z",
+    "setup": {
+      "pesoNoche": 77,
+      "pesoAyunas": 75.6,
+      "pctTarget": 9,
+      "ganMus": 1,
+      "cals": 1950,
+      "edad": 24,
+      "fecha": "2026-06-24",
+      "pctGrasaActual": 13.881545607577728,
+      "masaMagra": 65.10555152067123,
+      "pesoTarget": 72.64346320952882,
+      "grasaEliminar": 3.9565367904711684,
+      "perdidaSemanal": 0.35,
+      "semanas": 12,
+      "deficitDiario": 385,
+      "topPliegues": [
+        {
+          "nombre": "Abdominal",
+          "actual": 20,
+          "target": 13,
+          "idx": 4
+        },
+        {
+          "nombre": "Suprailiaco",
+          "actual": 20,
+          "target": 13,
+          "idx": 5
+        },
+        {
+          "nombre": "Muslo",
+          "actual": 17,
+          "target": 11,
+          "idx": 6
+        }
+      ],
+      "cinturaActual": 87,
+      "plieguesIniciales": [
+        7,
+        14,
+        9,
+        13,
+        20,
+        20,
+        17
+      ],
+      "plieguTargets": [
+        4.5,
+        9.1,
+        5.8,
+        8.4,
+        13,
+        13,
+        11
+      ],
+      "calendario": [
+        {
+          "semana": 1,
+          "fechaStr": "24/6-30/6",
+          "targetNoche": 76.7,
+          "targetAyunas": 75.3
+        },
+        {
+          "semana": 2,
+          "fechaStr": "1/7-7/7",
+          "targetNoche": 76.4,
+          "targetAyunas": 75
+        },
+        {
+          "semana": 3,
+          "fechaStr": "8/7-14/7",
+          "targetNoche": 76.1,
+          "targetAyunas": 74.7
+        },
+        {
+          "semana": 4,
+          "fechaStr": "15/7-21/7",
+          "targetNoche": 75.8,
+          "targetAyunas": 74.4
+        },
+        {
+          "semana": 5,
+          "fechaStr": "22/7-28/7",
+          "targetNoche": 75.5,
+          "targetAyunas": 74.1
+        },
+        {
+          "semana": 6,
+          "fechaStr": "29/7-4/8",
+          "targetNoche": 75.2,
+          "targetAyunas": 73.8
+        },
+        {
+          "semana": 7,
+          "fechaStr": "5/8-11/8",
+          "targetNoche": 74.9,
+          "targetAyunas": 73.5
+        },
+        {
+          "semana": 8,
+          "fechaStr": "12/8-18/8",
+          "targetNoche": 74.6,
+          "targetAyunas": 73.2
+        },
+        {
+          "semana": 9,
+          "fechaStr": "19/8-25/8",
+          "targetNoche": 74.3,
+          "targetAyunas": 72.9
+        },
+        {
+          "semana": 10,
+          "fechaStr": "26/8-1/9",
+          "targetNoche": 74,
+          "targetAyunas": 72.6
+        },
+        {
+          "semana": 11,
+          "fechaStr": "2/9-8/9",
+          "targetNoche": 73.7,
+          "targetAyunas": 72.3
+        },
+        {
+          "semana": 12,
+          "fechaStr": "9/9-15/9",
+          "targetNoche": 73.4,
+          "targetAyunas": 72
+        }
+      ],
+      "fechaInicio": "2026-06-24"
+    },
+    "registrosDiarios": {},
+    "registrosSemanales": {},
+    "registrosMensuales": {}
   },
-  "timestamp": "2026-06-24T22:17:42.101Z"
+  "timestamp": "2026-06-24T22:25:26.495Z"
 }
