@@ -2587,24 +2587,14 @@ async function pullFromGithub() {
       saveLocal();
     }
 
-    if (data.rehab) {
-      const localRehab = JSON.parse(localStorage.getItem("rehab-datos") || "{}");
-      const remoteTs = data.timestamp || "";
-      const localTs = localRehab._syncTs || "";
-      if (remoteTs > localTs) {
-        data.rehab._syncTs = remoteTs;
-        localStorage.setItem("rehab-datos", JSON.stringify(data.rehab));
-      }
+    if (data.rehab && Object.keys(data.rehab).length > 0) {
+      data.rehab._syncTs = data.timestamp;
+      localStorage.setItem("rehab-datos", JSON.stringify(data.rehab));
     }
 
-    if (data.cut) {
-      const localCut = JSON.parse(localStorage.getItem("cut-datos") || "{}");
-      const remoteTs = data.timestamp || "";
-      const localTs = localCut._syncTs || "";
-      if (remoteTs > localTs) {
-        data.cut._syncTs = remoteTs;
-        localStorage.setItem("cut-datos", JSON.stringify(data.cut));
-      }
+    if (data.cut && Object.keys(data.cut).length > 0) {
+      data.cut._syncTs = data.timestamp;
+      localStorage.setItem("cut-datos", JSON.stringify(data.cut));
     }
 
     showToast("Datos descargados ✓", "ok");
