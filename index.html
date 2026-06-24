@@ -2565,22 +2565,26 @@ async function pushToGithub() {
 async function pullFromGithub() {
   if (!state.githubToken) return;
   try {
-    const r = await fetch(
-      `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`,
-      { cache: "no-store" }
-    );
-    if (!r.ok) return;
+    const url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`;
+    console.log("Fetching:", url);
+    const r = await fetch(url, { cache: "no-store" });
+    console.log("Response status:", r.status, r.ok);
+    if (!r.ok) { showToast("Error al descargar: " + r.status, "err"); return; }
     const data = await r.json();
-    if (!data.timestamp) return;
+    console.log("Data timestamp:", data.timestamp);
+    console.log("Registros count:", Object.keys(data.registros || {}).length);
 
     if (data.registros) {
+      let merged = 0;
       Object.entries(data.registros).forEach(([key, val]) => {
         const localTs = state.registros[key]?.timestamp || "";
         const remoteTs = val?.timestamp || "";
-        if (!state.registros[key] || remoteTs > localTs) {
+        if (!state.registros[key] || remoteTs >= localTs) {
           state.registros[key] = val;
+          merged++;
         }
       });
+      console.log("Merged registros:", merged);
       saveLocal();
     }
 
@@ -2608,6 +2612,7 @@ async function pullFromGithub() {
     render();
   } catch(e) {
     console.error("Pull error:", e);
+    showToast("Error: " + e.message, "err");
   }
 }
 
