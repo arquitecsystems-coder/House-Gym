@@ -2599,6 +2599,10 @@ async function pullFromGithub() {
 
     showToast("Datos descargados ✓", "ok");
     render();
+    // Si estamos en rehab o cut, re-renderizar esa vista también
+    const main = document.getElementById("mainContent");
+    if (state.view === "rehab") renderRehab(main);
+    if (state.view === "cut") renderCut(main);
   } catch(e) {
     console.error("Pull error:", e);
     showToast("Error: " + e.message, "err");
