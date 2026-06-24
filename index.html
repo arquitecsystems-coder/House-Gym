@@ -2631,8 +2631,9 @@ async function syncData() {
   const btn = document.getElementById("syncBtn");
   btn.className = "sync-btn syncing";
   btn.textContent = "⟳ sync…";
-  await pullFromGithub();
+  // Push primero para no perder datos locales, luego pull para mergear
   await pushToGithub();
+  await pullFromGithub();
 }
 
 // ============================================================
