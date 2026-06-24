@@ -1,4 +1,4 @@
-const CACHE = "forge-v2";
+const CACHE = "forge-v3";
 const FILES = [
   "/House-Gym/index.html",
   "/House-Gym/manifest.json",
@@ -24,7 +24,22 @@ self.addEventListener("activate", e => {
 });
 
 self.addEventListener("fetch", e => {
+  const url = new URL(e.request.url);
+
+  // Deja pasar sin cache: llamadas a APIs externas
+  if (url.hostname !== self.location.hostname) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+
+  // Para archivos propios: network first, cache como fallback
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
+    fetch(e.request)
+      .then(res => {
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+        return res;
+      })
+      .catch(() => caches.match(e.request))
   );
 });
