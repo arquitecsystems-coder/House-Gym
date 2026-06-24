@@ -990,8 +990,9 @@
   <div class="header-top">
     <span class="logo">Forge ▸</span>
     <button class="sync-btn" id="themeBtn" onclick="toggleTheme()" style="margin-right:6px">☀️</button>
-      <button class="sync-btn" id="syncBtn" onclick="syncData()">⟳ sync</button>
-      <button class="sync-btn" id="updateBtn" onclick="updateFromGithub()" style="margin-left:6px" title="Actualizar app">↓ update</button>
+      <button class="sync-btn" id="uploadBtn" onclick="uploadData()" title="Subir datos a GitHub">↑</button>
+      <button class="sync-btn" id="downloadBtn" onclick="downloadData()" title="Descargar datos de GitHub" style="margin-left:4px">↓</button>
+      <button class="sync-btn" id="updateBtn" onclick="updateFromGithub()" style="margin-left:4px" title="Actualizar app">↻</button>
   </div>
   <div class="meso-tabs" id="mesoTabs"></div>
 </header>
@@ -2522,10 +2523,6 @@ async function getGithubFileSha(filename) {
 
 async function pushToGithub() {
   if (!state.githubToken) return;
-  const btn = document.getElementById("syncBtn");
-  btn.className = "sync-btn syncing";
-  btn.textContent = "⟳ sync…";
-
   try {
     const payload = {
       registros: state.registros,
@@ -2555,21 +2552,13 @@ async function pushToGithub() {
 
     if (r.ok) {
       syncPending = false;
-      btn.className = "sync-btn";
-      btn.textContent = "⟳ sync";
-      showToast("Guardado en GitHub ✓", "ok");
+      showToast("Datos subidos ✓", "ok");
     } else {
       throw new Error("GitHub API error: " + r.status);
     }
   } catch(e) {
     console.error("Push error:", e);
-    btn.className = "sync-btn error";
-    btn.textContent = "⟳ error";
-    showToast("Error al sincronizar", "err");
-    setTimeout(() => {
-      btn.className = "sync-btn";
-      btn.textContent = "⟳ sync";
-    }, 3000);
+    showToast("Error al subir datos", "err");
   }
 }
 
@@ -2615,25 +2604,42 @@ async function pullFromGithub() {
       }
     }
 
-    showToast("Datos actualizados ✓", "ok");
+    showToast("Datos descargados ✓", "ok");
     render();
   } catch(e) {
     console.error("Pull error:", e);
   }
 }
 
-async function syncData() {
+async function uploadData() {
   if (!state.githubToken) {
     showToast("Configura el token de GitHub en Config", "err");
-    setView("config");
-    return;
+    setView("config"); return;
   }
-  const btn = document.getElementById("syncBtn");
+  const btn = document.getElementById("uploadBtn");
+  btn.textContent = "↑…";
   btn.className = "sync-btn syncing";
-  btn.textContent = "⟳ sync…";
-  // Push primero para no perder datos locales, luego pull para mergear
   await pushToGithub();
+  btn.textContent = "↑";
+  btn.className = "sync-btn";
+}
+
+async function downloadData() {
+  if (!state.githubToken) {
+    showToast("Configura el token de GitHub en Config", "err");
+    setView("config"); return;
+  }
+  const btn = document.getElementById("downloadBtn");
+  btn.textContent = "↓…";
+  btn.className = "sync-btn syncing";
   await pullFromGithub();
+  btn.textContent = "↓";
+  btn.className = "sync-btn";
+}
+
+// Legacy — mantiene compatibilidad con cualquier referencia interna
+async function syncData() {
+  await uploadData();
 }
 
 // ============================================================
@@ -2736,7 +2742,7 @@ setTimeout(() => {
   const btn = document.getElementById('themeBtn');
   if (btn) btn.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
 }, 0);
-// Auto-pull al cargar si hay token de GitHub
+// Auto-descarga al cargar si hay token
 if (state.githubToken) {
   setTimeout(() => pullFromGithub(), 1000);
 }
