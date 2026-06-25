@@ -1980,7 +1980,7 @@ function renderCut(main) {
   const wrap = document.createElement('div');
   wrap.style.cssText = 'padding:16px;max-width:600px;margin:0 auto';
 
-  if (!datos.setup) {
+  if (!datos.setup || datos.editing) {
     renderCutWizard(wrap, datos);
   } else {
     renderCutDashboard(wrap, datos);
