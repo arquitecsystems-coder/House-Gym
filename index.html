@@ -1980,7 +1980,7 @@ function renderCut(main) {
   const wrap = document.createElement('div');
   wrap.style.cssText = 'padding:16px;max-width:600px;margin:0 auto';
 
-  if (!datos.setup || datos.editing) {
+  if (!datos.setup) {
     renderCutWizard(wrap, datos);
   } else {
     renderCutDashboard(wrap, datos);
@@ -2653,23 +2653,138 @@ function toggleSubAccordion(id) {
 function editCutSetup() {
   const datos = getCutDatos();
   if (!datos.setup) return;
-  // Pre-fill wizard WITHOUT deleting setup — setup only gets replaced on wizardConfirm
-  datos.wizardPartial = {
-    pesoNoche: datos.setup.pesoNoche,
-    pesoAyunas: datos.setup.pesoAyunas,
-    pctTarget: datos.setup.pctTarget,
-    ganMus: datos.setup.ganMus,
-    cals: datos.setup.cals,
-    edad: datos.setup.edad || 24,
-    fecha: datos.setup.fechaInicio
+  const s = datos.setup;
+
+  // Show inline edit modal
+  const modal = document.createElement('div');
+  modal.id = 'editModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;display:flex;align-items:center;justify-content:center;padding:16px';
+
+  modal.innerHTML = `<div style="background:var(--card);border-radius:var(--radius);padding:20px;width:100%;max-width:380px;max-height:85vh;overflow-y:auto">
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:12px">EDITAR DATOS</div>
+
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono)">PESOS</div>
+    <div class="cut-input-grid" style="margin-bottom:12px">
+      <div class="cut-field">
+        <div class="cut-label">Peso noche (kg)</div>
+        <input class="cut-input" id="ed_pesoNoche" type="number" step="0.1" value="${s.pesoNoche}">
+      </div>
+      <div class="cut-field">
+        <div class="cut-label">Peso ayunas (kg)</div>
+        <input class="cut-input" id="ed_pesoAyunas" type="number" step="0.1" value="${s.pesoAyunas}">
+      </div>
+    </div>
+
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono)">OBJETIVOS</div>
+    <div class="cut-input-grid" style="margin-bottom:12px">
+      <div class="cut-field">
+        <div class="cut-label">% Grasa target</div>
+        <input class="cut-input" id="ed_pctTarget" type="number" step="0.1" value="${s.pctTarget}">
+      </div>
+      <div class="cut-field">
+        <div class="cut-label">Ganancia músculo (kg)</div>
+        <input class="cut-input" id="ed_ganMus" type="number" step="0.1" value="${s.ganMus}">
+      </div>
+      <div class="cut-field">
+        <div class="cut-label">Calorías diarias</div>
+        <input class="cut-input" id="ed_cals" type="number" step="10" value="${s.cals}">
+      </div>
+      <div class="cut-field">
+        <div class="cut-label">Fecha inicio</div>
+        <input class="cut-input" id="ed_fecha" type="date" value="${s.fechaInicio}">
+      </div>
+    </div>
+
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono)">PLIEGUES (mm)</div>
+    <div class="cut-input-grid" style="margin-bottom:16px">
+      ${PLIEGUES_NAMES.map((n,i) => `
+      <div class="cut-field">
+        <div class="cut-label">${n}</div>
+        <input class="cut-input" id="ed_pl_${i}" type="number" step="0.5" value="${s.plieguesIniciales?.[i] || ''}">
+      </div>`).join('')}
+      <div class="cut-field">
+        <div class="cut-label">Cintura (cm)</div>
+        <input class="cut-input" id="ed_cintura" type="number" step="0.5" value="${s.cinturaActual || ''}">
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button onclick="closeEditModal()" style="flex:1;padding:11px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--muted);cursor:pointer;font-family:var(--font)">Cancelar</button>
+      <button onclick="saveEditModal()" style="flex:2;padding:11px;border:none;border-radius:8px;background:var(--accent2);color:#fff;font-weight:700;cursor:pointer;font-family:var(--font)">Guardar y recalcular</button>
+    </div>
+  </div>`;
+
+  document.body.appendChild(modal);
+}
+
+function closeEditModal() {
+  const m = document.getElementById('editModal');
+  if (m) m.remove();
+}
+
+function saveEditModal() {
+  const datos = getCutDatos();
+  const s = datos.setup;
+  const get = id => parseFloat(document.getElementById(id)?.value);
+  const getString = id => document.getElementById(id)?.value;
+
+  const pesoNoche = get('ed_pesoNoche') || s.pesoNoche;
+  const pesoAyunas = get('ed_pesoAyunas') || s.pesoAyunas;
+  const pctTarget = get('ed_pctTarget') || s.pctTarget;
+  const ganMus = get('ed_ganMus') || s.ganMus;
+  const cals = get('ed_cals') || s.cals;
+  const fecha = getString('ed_fecha') || s.fechaInicio;
+  const edad = s.edad || 24;
+
+  const pliegues = PLIEGUES_NAMES.map((_,i) => get('ed_pl_'+i) || s.plieguesIniciales?.[i] || 0);
+  const cintura = get('ed_cintura') || s.cinturaActual;
+
+  // Recalculate everything
+  const pctGrasaActual = calcGrasa7(pliegues, edad);
+  const masaMagra = pesoAyunas * (1 - pctGrasaActual / 100);
+  const masaMagraProyectada = masaMagra + ganMus;
+  const pesoTarget = masaMagraProyectada / (1 - pctTarget / 100);
+  const grasaActualKg = pesoAyunas * (pctGrasaActual / 100);
+  const grasaTargetKg = pesoTarget * (pctTarget / 100);
+  const grasaEliminar = grasaActualKg - grasaTargetKg;
+  const perdidaSemanal = getPerdidaSemanal(pctGrasaActual);
+  const semanas = Math.ceil(grasaEliminar / perdidaSemanal);
+  const deficitDiario = Math.round(perdidaSemanal * 7700 / 7);
+
+  const indexedPliegues = pliegues.map((v,i) => ({ i, v, nombre: PLIEGUES_NAMES[i] }));
+  indexedPliegues.sort((a,b) => b.v - a.v);
+  const top3 = indexedPliegues.slice(0,3);
+  const plieguTargets = calcPlieguTargets(pliegues, pctGrasaActual, pctTarget);
+  const topPliegues = top3.map(p => ({ nombre: p.nombre, actual: p.v, target: plieguTargets[p.i], idx: p.i }));
+
+  // Regenerate calendar
+  const calendario = [];
+  const [sy, sm, sd] = fecha.split('-').map(Number);
+  const startDate = new Date(sy, sm-1, sd);
+  const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const fmt = d => `${d.getDate()} ${mesesFmt[d.getMonth()]}`;
+  let pNoche = pesoNoche;
+  let pAyunas = pesoAyunas;
+  for (let i = 1; i <= semanas; i++) {
+    const ws = new Date(startDate); ws.setDate(startDate.getDate() + (i-1)*7);
+    const we = new Date(ws); we.setDate(ws.getDate() + 6);
+    pNoche = Math.round((pNoche - perdidaSemanal) * 10) / 10;
+    pAyunas = Math.round((pAyunas - perdidaSemanal) * 10) / 10;
+    calendario.push({ semana: i, fechaStr: `${fmt(ws)} – ${fmt(we)}`, targetNoche: pNoche, targetAyunas: pAyunas });
+  }
+
+  datos.setup = {
+    pesoNoche, pesoAyunas, pctTarget, ganMus, cals, edad,
+    fechaInicio: fecha, pctGrasaActual, masaMagra, pesoTarget,
+    grasaEliminar, perdidaSemanal, semanas, deficitDiario,
+    topPliegues, cinturaActual: cintura, plieguesIniciales: pliegues,
+    plieguTargets, calendario
   };
-  datos.wizardPliegues = datos.setup.plieguesIniciales || [];
-  datos.wizardCintura = datos.setup.cinturaActual || null;
-  datos.wizardStep = 1;
-  datos.editing = true;
-  // DO NOT delete setup here — it stays until wizard is confirmed
+
   saveCutDatos(datos);
-  setView('cut');
+  closeEditModal();
+  showToast("Datos actualizados ✓", "ok");
+  renderProfile(document.getElementById('mainContent'));
 }
 
 // ── CONFIG VIEW ──
