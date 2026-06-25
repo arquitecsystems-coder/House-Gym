@@ -1401,7 +1401,6 @@ let state = {
   semana: 1,
   dia: "lun",
   registros: {},
-  scriptUrl: localStorage.getItem("scriptUrl") || "",
   githubToken: localStorage.getItem("githubToken") || "",
   githubRepo: "arquitecsystems-coder/House-Gym",
   syncing: false,
@@ -2790,26 +2789,8 @@ function saveEditModal() {
 // ── CONFIG VIEW ──
 function renderConfig(main) {
   const ghConnected = !!state.githubToken;
-  const sheetsConnected = !!state.scriptUrl;
 
   main.innerHTML = `
-    <div class="config-panel">
-      <div class="config-title">📊 Google Sheets — Sync de datos</div>
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
-        <div style="width:8px;height:8px;border-radius:50%;background:${sheetsConnected ? 'var(--ok)' : 'var(--border)'}"></div>
-        <span style="font-size:11px;font-family:var(--font-mono);color:${sheetsConnected ? 'var(--ok)' : 'var(--muted)'}">
-          ${sheetsConnected ? 'Conectado' : 'No configurado'}
-        </span>
-      </div>
-      <div class="config-row">
-        <div class="config-label">URL del Apps Script</div>
-        <input class="config-input" id="urlInput"
-          placeholder="https://script.google.com/macros/s/..."
-          value="${state.scriptUrl}">
-      </div>
-      <button class="config-btn" onclick="saveConfig()">Guardar</button>
-    </div>
-
     <div class="config-panel">
       <div class="config-title">🐙 GitHub — Actualizaciones automáticas</div>
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
@@ -3068,14 +3049,6 @@ async function syncData() {
 // ============================================================
 // CONFIG
 // ============================================================
-function saveConfig() {
-  const url = document.getElementById("urlInput").value.trim();
-  state.scriptUrl = url;
-  localStorage.setItem("scriptUrl", url);
-  showToast("URL guardada ✓", "ok");
-  renderConfig(document.getElementById("mainContent"));
-}
-
 function saveGithubToken() {
   const token = document.getElementById("ghTokenInput").value.trim();
   state.githubToken = token;
@@ -3104,7 +3077,6 @@ async function updateFromGithub() {
 
     // Inyecta el nuevo HTML preservando datos locales
     const registrosBackup = JSON.stringify(state.registros);
-    const scriptUrlBackup = state.scriptUrl;
     const tokenBackup = state.githubToken;
 
     const blob = new Blob([newContent], { type: "text/html" });
