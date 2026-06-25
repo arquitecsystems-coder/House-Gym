@@ -1997,44 +1997,45 @@ function renderCutWizard(wrap, datos) {
   let html = '';
 
   if (step === 1) {
+    const p = datos.wizardPartial || {};
     html = `
     <div class="cut-card">
       <div class="wizard-step">PASO 1 DE 3 — DATOS BASE</div>
-      <div class="wizard-title">Cutting Phase</div>
-      <div class="wizard-sub">Ingresa tus medidas actuales para calcular el plan.</div>
+      <div class="wizard-title">${datos.editing ? 'Editar datos' : 'Cutting Phase'}</div>
+      <div class="wizard-sub">${datos.editing ? 'Modifica solo lo que quieras cambiar.' : 'Ingresa tus medidas actuales para calcular el plan.'}</div>
 
       <div class="cut-input-grid">
         <div class="cut-field">
           <div class="cut-label">Peso noche (kg)</div>
-          <input class="cut-input" id="cw_pesoNoche" type="number" step="0.1" placeholder="77.3">
+          <input class="cut-input" id="cw_pesoNoche" type="number" step="0.1" placeholder="77.3" value="${p.pesoNoche || ''}">
         </div>
         <div class="cut-field">
           <div class="cut-label">Peso ayunas (kg)</div>
-          <input class="cut-input" id="cw_pesoAyunas" type="number" step="0.1" placeholder="76.7">
+          <input class="cut-input" id="cw_pesoAyunas" type="number" step="0.1" placeholder="76.7" value="${p.pesoAyunas || ''}">
         </div>
         <div class="cut-field">
           <div class="cut-label">% Grasa target</div>
-          <input class="cut-input" id="cw_pctTarget" type="number" step="0.1" placeholder="9.0">
+          <input class="cut-input" id="cw_pctTarget" type="number" step="0.1" placeholder="9.0" value="${p.pctTarget || ''}">
         </div>
         <div class="cut-field">
           <div class="cut-label">Ganancia músculo (kg)</div>
-          <input class="cut-input" id="cw_ganMus" type="number" step="0.1" placeholder="1.0">
+          <input class="cut-input" id="cw_ganMus" type="number" step="0.1" placeholder="1.0" value="${p.ganMus || ''}">
         </div>
         <div class="cut-field">
           <div class="cut-label">Calorías diarias plan</div>
-          <input class="cut-input" id="cw_cals" type="number" step="10" placeholder="2000">
+          <input class="cut-input" id="cw_cals" type="number" step="10" placeholder="2000" value="${p.cals || ''}">
         </div>
         <div class="cut-field">
           <div class="cut-label">Edad</div>
-          <input class="cut-input" id="cw_edad" type="number" placeholder="24">
+          <input class="cut-input" id="cw_edad" type="number" placeholder="24" value="${p.edad || ''}">
         </div>
       </div>
       <div class="cut-field" style="margin-bottom:10px">
         <div class="cut-label">Fecha de inicio</div>
-        <input class="cut-input" id="cw_fecha" type="date">
+        <input class="cut-input" id="cw_fecha" type="date" value="${p.fecha || ''}">
       </div>
-      ${datos.editing ? '<button class="cut-btn secondary" onclick="cancelEdit()" style="margin-top:8px">← Cancelar (conservar datos actuales)</button>' : ''}
-      <button class="cut-btn" onclick="wizardNext1()">Continuar →</button>
+      ${datos.editing ? '<button class="cut-btn secondary" onclick="cancelEdit()" style="margin-top:8px">← Cancelar</button>' : ''}
+      <button class="cut-btn" onclick="wizardNext1()" style="margin-top:8px">Continuar →</button>
     </div>`;
 
   } else if (step === 2) {
