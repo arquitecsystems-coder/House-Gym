@@ -2309,9 +2309,18 @@ function renderCutDashboard(wrap, datos) {
   const promNoche = pesosNoche.length ? (pesosNoche.reduce((a,b)=>a+b,0)/pesosNoche.length) : null;
   const promAyunas = pesosAyunas.length ? (pesosAyunas.reduce((a,b)=>a+b,0)/pesosAyunas.length) : null;
 
-  // % progreso
-  const semanasCompletadas = semanaActual - 1;
-  const pct = Math.round((semanasCompletadas / s.semanas) * 100);
+  // % progreso basado en peso real vs objetivo
+  const pesoInicial = s.pesoAyunas;
+  const pesoFinal = s.calendario[s.semanas - 1]?.targetAyunas || pesoInicial;
+  const totalBajar = pesoInicial - pesoFinal;
+  // Usar el promedio de ayunas más reciente disponible
+  let mejorPromedio = null;
+  for (let i = semanaActual; i >= 1; i--) {
+    const p = semanales['S'+i]?.promAyunas;
+    if (p) { mejorPromedio = p; break; }
+  }
+  const bajado = mejorPromedio ? Math.max(0, pesoInicial - mejorPromedio) : 0;
+  const pct = totalBajar > 0 ? Math.min(100, Math.round((bajado / totalBajar) * 100)) : 0;
 
   // Alerta calorica
   let alertaCalorica = '';
@@ -2327,6 +2336,7 @@ function renderCutDashboard(wrap, datos) {
     }
   }
 
+  const pesoFinalTarget = s.calendario[s.semanas - 1]?.targetAyunas;
   let html = `
   <!-- HEADER -->
   <div class="cut-card">
@@ -2335,14 +2345,27 @@ function renderCutDashboard(wrap, datos) {
         <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent2)">CUTTING PHASE · SEMANA ${semanaActual} DE ${s.semanas}</div>
         <div style="font-size:12px;color:var(--muted);margin-top:2px">${semanaInfo?.fechaStr || ''}</div>
       </div>
-      <button onclick="resetCut()" style="font-size:10px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">reiniciar</button>
+      <div style="display:flex;gap:6px">
+        <button onclick="clearDailyRecords()" style="font-size:10px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">borrar pesos</button>
+        <button onclick="resetCut()" style="font-size:10px;font-family:var(--font-mono);color:var(--accent2);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">reiniciar</button>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+      <div>
+        <span style="font-family:var(--font-mono);font-size:22px;font-weight:700">${mejorPromedio ? mejorPromedio.toFixed(1)+' kg' : s.pesoAyunas+' kg'}</span>
+        <span style="font-size:12px;color:var(--muted);margin-left:4px">actual</span>
+      </div>
+      <div style="text-align:right">
+        <span style="font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--ok)">${pesoFinalTarget} kg</span>
+        <span style="font-size:12px;color:var(--muted);margin-left:4px">objetivo</span>
+      </div>
     </div>
     <div class="cut-progress-bar">
       <div class="cut-progress-fill" style="width:${pct}%"></div>
     </div>
     <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px;display:flex;justify-content:space-between">
       <span>Inicio: ${s.fechaInicio}</span>
-      <span>${pct}% completado</span>
+      <span>${pct}% · ${bajado.toFixed(1)} kg bajados</span>
     </div>
   </div>
 
@@ -2488,6 +2511,16 @@ function savePlieguesSemana(semana) {
 
   saveCutDatos(datos);
   showToast("Pliegues guardados ✓", "ok");
+}
+
+function clearDailyRecords() {
+  if (!confirm("¿Borrar todos los registros de peso diario? El setup y calendario se conservan.")) return;
+  const datos = getCutDatos();
+  datos.registrosDiarios = {};
+  datos.registrosSemanales = {};
+  saveCutDatos(datos);
+  showToast("Registros borrados ✓", "ok");
+  renderCut(document.getElementById('mainContent'));
 }
 
 function resetCut() {
