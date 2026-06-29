@@ -72,6 +72,13 @@
     "M4-S6-lun-Press Inclinado (barra)-1": {
       "checked": false,
       "timestamp": "2026-06-29T16:29:53.223Z"
+    },
+    "M4-S1-lun-Press Inclinado (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-06-29T17:02:15.680Z",
+      "reps": "5",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -120,6 +127,13 @@
           true
         ],
         "nota": "Mejoró la cuadropedia"
+      },
+      "2026-06-29": {
+        "rodilla_pared": [
+          false,
+          false,
+          false
+        ]
       }
     }
   },
@@ -259,5 +273,5 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-29T16:29:56.235Z"
+  "timestamp": "2026-06-29T17:02:18.697Z"
 }
