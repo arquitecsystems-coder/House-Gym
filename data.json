@@ -79,6 +79,20 @@
       "reps": "5",
       "rir": "3",
       "checked": true
+    },
+    "M4-S1-lun-Press Inclinado (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-06-29T17:15:09.667Z",
+      "reps": "5",
+      "rir": "3",
+      "checked": true
+    },
+    "M4-S1-lun-Press Inclinado (barra)-3": {
+      "peso": "55",
+      "timestamp": "2026-06-29T17:15:14.614Z",
+      "reps": "5",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -273,5 +287,5 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-29T17:02:18.697Z"
+  "timestamp": "2026-06-29T17:15:17.621Z"
 }
