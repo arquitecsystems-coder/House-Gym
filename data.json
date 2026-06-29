@@ -93,6 +93,13 @@
       "reps": "5",
       "rir": "3",
       "checked": true
+    },
+    "M4-S1-lun-Press Inclinado (barra)-4": {
+      "peso": "55",
+      "timestamp": "2026-06-29T17:19:42.030Z",
+      "reps": "5",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -287,5 +294,5 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-29T17:15:17.621Z"
+  "timestamp": "2026-06-29T17:19:45.038Z"
 }
