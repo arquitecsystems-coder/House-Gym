@@ -212,6 +212,13 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M4-S6-mar-Encogimientos (DB)-1": {
+      "peso": "15",
+      "timestamp": "2026-06-30T16:13:19.861Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -406,5 +413,5 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-30T16:05:04.796Z"
+  "timestamp": "2026-06-30T16:13:22.869Z"
 }
