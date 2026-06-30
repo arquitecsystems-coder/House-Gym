@@ -2360,17 +2360,28 @@ function renderRehab(main) {
   const dowToday = todayMid.getDay();
   const daysToMon = (dowToday + 6) % 7;
   const thisMonday = new Date(todayMid.getTime() - daysToMon * 86400000);
-  const hmStart = new Date(thisMonday.getTime() - 7 * 7 * 86400000);
+
+  // Rango dinamico: desde la semana del primer registro hasta hoy
+  const allSessionDates = Object.keys(sesiones).sort();
+  let hmStart = thisMonday;
+  if (allSessionDates.length) {
+    const fp = allSessionDates[0].split('-');
+    const firstDate = new Date(parseInt(fp[0]), parseInt(fp[1])-1, parseInt(fp[2]));
+    const firstDow = (firstDate.getDay() + 6) % 7;
+    hmStart = new Date(firstDate.getTime() - firstDow * 86400000);
+  }
+  const numWeeks = Math.max(1, Math.round((thisMonday.getTime() - hmStart.getTime()) / (7 * 86400000)) + 1);
 
   html += '<div class="rehab-card">'
-    + '<div class="rehab-title" style="margin-bottom:10px">Historial — 8 semanas</div>'
+    + '<div class="rehab-title" style="margin-bottom:10px">Historial</div>'
     + '<div class="rehab-heatmap-grid">';
 
   ['L','M','X','J','V','S','D'].forEach(function(d) {
     html += '<div class="rehab-heatmap-dow">'+d+'</div>';
   });
 
-  for (let row = 0; row < 8; row++) {
+  // Semanas mas antiguas arriba (row 0), semana actual abajo (ultima fila)
+  for (let row = 0; row < numWeeks; row++) {
     for (let col = 0; col < 7; col++) {
       const cellDate = new Date(hmStart.getTime() + (row * 7 + col) * 86400000);
       const cellStr = cellDate.getFullYear()+'-'+String(cellDate.getMonth()+1).padStart(2,'0')+'-'+String(cellDate.getDate()).padStart(2,'0');
