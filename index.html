@@ -3014,6 +3014,22 @@ function toggleAccordion(id) {
   if (arrow) arrow.classList.toggle('open', !isOpen);
 }
 
+function formatTestResultRM(ej, r) {
+  if (!r) return '—';
+  const parts = [];
+  if (r.variante_lograda) parts.push(r.variante_lograda);
+  if (r.nivel_asistencia) parts.push(r.nivel_asistencia);
+  if (r.peso_kg) parts.push(r.peso_kg + ' kg');
+  if (r.tiempo_segundos) parts.push(r.tiempo_segundos + ' seg');
+  if (r.segundos_bajada) parts.push(r.segundos_bajada + 's excéntrico');
+  if (r.reps) parts.push('× ' + r.reps + ' reps');
+  if (r.reps_logradas) parts.push('× ' + r.reps_logradas + ' reps');
+  if (r.reps_pierna_derecha || r.reps_pierna_izquierda) {
+    parts.push('× ' + (r.reps_pierna_derecha || '?') + '/' + (r.reps_pierna_izquierda || '?') + ' der/izq');
+  }
+  return parts.join(' ');
+}
+
 function renderProfile(main) {
   const cutDatos = getCutDatos();
   const hasCut = !!cutDatos.setup;
@@ -3074,17 +3090,36 @@ function renderProfile(main) {
 
   // ── FUERZA ──
   let fuerzaBody = '';
-  Object.entries(RMS_REFERENCIA).forEach(([meso, rms]) => {
-    fuerzaBody += subAcc('fuerza-'+meso, meso, `<div class="rm-grid">${rmRows(rms)}</div>`);
-  });
-  fuerzaBody += subAcc('fuerza-M5obj', 'M5 — Objetivos pico',
-    `<div class="rm-grid">${objetivos.map(o => `<div class="rm-row">
-      <div style="flex:1">
-        <div style="font-size:13px">${o.ejercicio}</div>
-        <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">${o.actual} → <span style="color:var(--accent)">${o.objetivo}</span></div>
-      </div>
-    </div>`).join('')}</div>`
-  );
+  if (state.currentUser === 'dolly') {
+    const testDatos = getTestDatos();
+    if (!testDatos.completado) {
+      fuerzaBody = `<div style="font-size:13px;color:var(--muted);padding:4px 0">Completa el test inicial en 🏋️ para ver tu baseline aquí.</div>`;
+    } else {
+      let rows = '';
+      ['sab', 'dom'].forEach(dia => {
+        TEST_DOLLY.ejercicios[dia].forEach(ej => {
+          const r = testDatos[dia]?.[ej.nombre];
+          rows += `<div class="rm-row">
+            <div class="rm-ex">${ej.nombre}</div>
+            <div class="rm-val" style="font-size:11px">${formatTestResultRM(ej, r)}</div>
+          </div>`;
+        });
+      });
+      fuerzaBody = subAcc('fuerza-test', 'Test inicial — Baseline', `<div class="rm-grid">${rows}</div>`, true);
+    }
+  } else {
+    Object.entries(RMS_REFERENCIA).forEach(([meso, rms]) => {
+      fuerzaBody += subAcc('fuerza-'+meso, meso, `<div class="rm-grid">${rmRows(rms)}</div>`);
+    });
+    fuerzaBody += subAcc('fuerza-M5obj', 'M5 — Objetivos pico',
+      `<div class="rm-grid">${objetivos.map(o => `<div class="rm-row">
+        <div style="flex:1">
+          <div style="font-size:13px">${o.ejercicio}</div>
+          <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">${o.actual} → <span style="color:var(--accent)">${o.objetivo}</span></div>
+        </div>
+      </div>`).join('')}</div>`
+    );
+  }
 
   // ── COMPOSICIÓN ──
   let compBody = '';
@@ -3138,11 +3173,10 @@ function renderProfile(main) {
     </div>`;
   }).join('');
 
-  const isDolly = state.currentUser === 'dolly';
   const html = `<div style="padding:16px;max-width:600px;margin:0 auto">
-    ${isDolly ? '' : acc('fuerza', '💪', 'Fuerza', fuerzaBody)}
+    ${acc('fuerza', '💪', 'Fuerza', fuerzaBody)}
     ${acc('comp', '⚖️', 'Composición corporal', compBody)}
-    ${isDolly ? '' : acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody)}
+    ${state.currentUser === 'dolly' ? '' : acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody)}
   </div>`;
 
   main.innerHTML = html;
