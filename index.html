@@ -3712,7 +3712,27 @@ const _setMeso = setMeso;
 setMeso = function(k) { _setMeso(k); savePosition(); };
 
 function migrateOldData() {
-  // Migra hgRegistros haciendo merge por timestamp (no sobreescribe entradas más nuevas)
+  const hasOldData = localStorage.getItem('hgRegistros') || localStorage.getItem('cut-datos') || localStorage.getItem('rehab-datos');
+
+  // Sin datos viejos = dispositivo nuevo o usuario nuevo = nada que migrar
+  if (!hasOldData) return;
+
+  // Registrar quién es el usuario original (el que tenía datos antes del multi-usuario)
+  const originalUser = localStorage.getItem('forge-original-user');
+  if (!originalUser) {
+    localStorage.setItem('forge-original-user', state.currentUser);
+  } else if (originalUser !== state.currentUser) {
+    // Usuario nuevo: limpiar datos que pudieron copiarse incorrectamente en una versión anterior
+    const cleanKey = 'forge-new-user-clean-v1-' + state.currentUser;
+    if (!localStorage.getItem(cleanKey)) {
+      localStorage.removeItem(uk('cut-datos'));
+      localStorage.removeItem(uk('rehab-datos'));
+      localStorage.setItem(cleanKey, '1');
+    }
+    return; // Nunca migrar datos del usuario original a usuarios nuevos
+  }
+
+  // Solo llega aquí el usuario original — migra con merge por timestamp
   const oldRegistros = localStorage.getItem('hgRegistros');
   if (oldRegistros) {
     try {
@@ -3728,7 +3748,6 @@ function migrateOldData() {
       if (changed) localStorage.setItem(newKey, JSON.stringify(existing));
     } catch(e) {}
   }
-  // Copia simple para rehab, cut y position si la clave nueva está vacía
   ['rehab-datos', 'cut-datos', 'forge-position'].forEach(key => {
     const newKey = uk(key);
     if (!localStorage.getItem(newKey) && localStorage.getItem(key)) {
