@@ -761,6 +761,38 @@
 
   .rehab-history-row:last-child { border-bottom: none; }
 
+  .rehab-heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+
+  .rehab-heatmap-dow {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    text-align: center;
+    padding-bottom: 3px;
+  }
+
+  .rehab-heatmap-cell {
+    aspect-ratio: 1;
+    border-radius: 3px;
+    cursor: pointer;
+    min-height: 14px;
+    transition: opacity 0.1s;
+  }
+
+  .rehab-heatmap-cell:hover { opacity: 0.75; }
+
+  .rehab-heatmap-tooltip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 8px;
+  }
+
 
   /* ── CUT ── */
   .cut-card {
@@ -2123,6 +2155,7 @@ const REHAB_EJERCICIOS = [
     id: "rodilla_pared",
     nombre: "Rodilla a pared",
     sets: 3,
+    objetivoSeg: 120,
     protocolo: "Hold 2 min en rango máximo · descanso 30 s entre sets",
     nota: "Empuja 1 mm más dentro del hold si sientes que la tensión cede"
   },
@@ -2130,6 +2163,7 @@ const REHAB_EJERCICIOS = [
     id: "cuadrupedia",
     nombre: "Cuadrupedia — desliz rodilla",
     sets: 3,
+    objetivoSeg: 120,
     protocolo: "Hold 2 min en rango máximo · descanso 30 s entre sets",
     nota: "4 puntos de apoyo, talón pegado al suelo"
   },
@@ -2137,15 +2171,41 @@ const REHAB_EJERCICIOS = [
     id: "equilibrio",
     nombre: "Equilibrio monopodal ojos cerrados",
     sets: 2,
+    objetivoSeg: 45,
     protocolo: "Hasta fallo · registra tiempo",
     nota: "Superficie firme → inestable cuando superes 45 s consistente"
   },
 ];
 
+function normalizeRehabSet(raw, objetivoSeg) {
+  if (raw && typeof raw === 'object') return { tiempo: raw.tiempo != null ? raw.tiempo : null, completado: !!raw.completado };
+  if (raw === true) return { tiempo: objetivoSeg, completado: true };
+  return { tiempo: null, completado: false };
+}
+
+function migrateRehabSesiones(datos) {
+  if (!datos.sesiones) return false;
+  let changed = false;
+  Object.values(datos.sesiones).forEach(dia => {
+    if (!dia || typeof dia !== 'object') return;
+    REHAB_EJERCICIOS.forEach(ej => {
+      const raw = dia[ej.id];
+      if (!Array.isArray(raw)) return;
+      if (raw.some(v => typeof v === 'boolean')) {
+        dia[ej.id] = raw.map(v => normalizeRehabSet(v, ej.objetivoSeg));
+        changed = true;
+      }
+    });
+  });
+  return changed;
+}
+
 function getRehabDatos() {
   try {
     const raw = localStorage.getItem(uk("rehab-datos"));
-    return raw ? JSON.parse(raw) : {};
+    const datos = raw ? JSON.parse(raw) : {};
+    if (migrateRehabSesiones(datos)) saveRehabDatos(datos);
+    return datos;
   } catch(e) { return {}; }
 }
 
@@ -2153,192 +2213,322 @@ function saveRehabDatos(datos) {
   localStorage.setItem(uk("rehab-datos"), JSON.stringify(datos));
 }
 
+function getRehabDayScore(sesionDia) {
+  if (!sesionDia) return 0;
+  const totalObj = REHAB_EJERCICIOS.reduce(function(a, ej) { return a + ej.sets * ej.objetivoSeg; }, 0);
+  if (!totalObj) return 0;
+  let contrib = 0;
+  REHAB_EJERCICIOS.forEach(function(ej) {
+    var sets = sesionDia[ej.id] || [];
+    sets.forEach(function(s) {
+      var norm = normalizeRehabSet(s, ej.objetivoSeg);
+      if (norm.completado) {
+        contrib += Math.min(norm.tiempo != null ? norm.tiempo : ej.objetivoSeg, ej.objetivoSeg);
+      }
+    });
+  });
+  return contrib / totalObj;
+}
+
+function getHeatmapColor(score, isDark) {
+  if (score <= 0) return isDark ? '#2a2a2a' : '#E5E5E3';
+  if (score < 0.5) return '#F9A825';
+  if (score < 1) return '#81C784';
+  return '#2E7D32';
+}
+
+function dayHasActivity(sesionDia) {
+  if (!sesionDia) return false;
+  return REHAB_EJERCICIOS.some(function(ej) {
+    var sets = sesionDia[ej.id] || [];
+    return sets.some(function(s) { return normalizeRehabSet(s, ej.objetivoSeg).completado; });
+  });
+}
+
 function renderRehab(main) {
   const TARGET_CM = 7;
   const datos = getRehabDatos();
   const mediciones = datos.mediciones || [];
   const sesiones = datos.sesiones || {};
+  const isDark = document.body.classList.contains('dark');
+
+  const _hoy = new Date();
+  const hoy = _hoy.getFullYear()+'-'+String(_hoy.getMonth()+1).padStart(2,'0')+'-'+String(_hoy.getDate()).padStart(2,'0');
+  const esDomingo = _hoy.getDay() === 0;
+  const sesionHoy = sesiones[hoy] || {};
 
   const ultima = mediciones.length ? mediciones[mediciones.length - 1].valor : 4;
   const pct = Math.min(100, (ultima / TARGET_CM) * 100);
   const reached = ultima >= TARGET_CM;
 
-  // Fecha hoy
-  const _hoy = new Date();
-  const hoy = `${_hoy.getFullYear()}-${String(_hoy.getMonth()+1).padStart(2,'0')}-${String(_hoy.getDate()).padStart(2,'0')}`;
-  const esDomingo = new Date().getDay() === 0;
-  const sesionHoy = sesiones[hoy] || {};
-
-  // Streak
+  // Racha: basta con al menos un set completado en el dia
   let streak = 0;
-  const d = new Date();
+  const _sd = new Date();
   while (true) {
-    const k = d.toISOString().slice(0, 10);
-    if (sesiones[k] && REHAB_EJERCICIOS.every(e =>
-      sesiones[k][e.id] && sesiones[k][e.id].filter(Boolean).length === e.sets
-    )) {
-      streak++;
-      d.setDate(d.getDate() - 1);
-    } else break;
+    const sk = _sd.getFullYear()+'-'+String(_sd.getMonth()+1).padStart(2,'0')+'-'+String(_sd.getDate()).padStart(2,'0');
+    if (dayHasActivity(sesiones[sk])) { streak++; _sd.setDate(_sd.getDate()-1); }
+    else break;
   }
 
-  // ── ESTADO GENERAL ──
-  let html = `<div style="padding:16px 16px 0;max-width:600px;margin:0 auto">`;
+  let html = '<div style="padding:16px 16px 0;max-width:600px;margin:0 auto">';
 
-  // Header estado
-  html += `<div class="rehab-card" style="display:flex;align-items:center;gap:16px;padding:14px 16px">
-    <div style="flex:1">
-      <div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:2px">DORSIFLEXIÓN ACTUAL</div>
-      <div style="display:flex;align-items:baseline;gap:6px">
-        <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:${reached?'var(--ok)':'var(--accent)'}">${ultima}</span>
-        <span style="font-size:13px;color:var(--muted)">cm / ${TARGET_CM} cm</span>
-      </div>
-      <div class="rehab-progress-bar" style="margin-top:6px">
-        <div class="rehab-progress-fill ${reached?'done':''}" style="width:${pct}%"></div>
-      </div>
-      <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px">
-        ${reached ? "✓ Objetivo alcanzado" : `Faltan ${(TARGET_CM - ultima).toFixed(1)} cm`}
-      </div>
-    </div>
-    <div style="text-align:center;border-left:1px solid var(--border);padding-left:16px;min-width:64px">
-      <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--accent)">${streak}</div>
-      <div style="font-size:10px;color:var(--muted);font-family:var(--font-mono)">días seguidos</div>
-    </div>
-  </div>`;
+  // Header
+  html += '<div class="rehab-card" style="display:flex;align-items:center;gap:16px;padding:14px 16px">'
+    + '<div style="flex:1">'
+    + '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:2px">DORSIFLEXION ACTUAL</div>'
+    + '<div style="display:flex;align-items:baseline;gap:6px">'
+    + '<span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:'+(reached?'var(--ok)':'var(--accent)')+'">'+ultima+'</span>'
+    + '<span style="font-size:13px;color:var(--muted)">cm / '+TARGET_CM+' cm</span>'
+    + '</div>'
+    + '<div class="rehab-progress-bar" style="margin-top:6px">'
+    + '<div class="rehab-progress-fill '+(reached?'done':'')+'" style="width:'+pct+'%"></div>'
+    + '</div>'
+    + '<div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px">'
+    + (reached ? '&#10003; Objetivo alcanzado' : 'Faltan '+(TARGET_CM-ultima).toFixed(1)+' cm')
+    + '</div></div>'
+    + '<div style="text-align:center;border-left:1px solid var(--border);padding-left:16px;min-width:64px">'
+    + '<div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--accent)">'+streak+'</div>'
+    + '<div style="font-size:10px;color:var(--muted);font-family:var(--font-mono)">días seguidos</div>'
+    + '</div></div>';
 
-  // ── BANNER DOMINGO ──
+  // Banner domingo
   if (esDomingo) {
-    html += `<div style="background:var(--accent-bg);border:1px solid var(--accent);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
-      <div>
-        <div style="font-size:13px;font-weight:600;color:var(--accent)">📏 Día de medición</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px">Mide rodilla a pared y registra el resultado</div>
-      </div>
-      <button class="rehab-add-btn" onclick="showMedicionModal()" style="flex-shrink:0;width:auto;padding:0 12px;font-size:12px;font-family:var(--font-mono)">Registrar</button>
-    </div>`;
+    html += '<div style="background:var(--accent-bg);border:1px solid var(--accent);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
+      + '<div>'
+      + '<div style="font-size:13px;font-weight:600;color:var(--accent)">&#128207; Día de medición</div>'
+      + '<div style="font-size:11px;color:var(--muted);margin-top:2px">Mide rodilla a pared y registra el resultado</div>'
+      + '</div>'
+      + '<button class="rehab-add-btn" onclick="showMedicionModal()" style="flex-shrink:0;width:auto;padding:0 12px;font-size:12px;font-family:var(--font-mono)">Registrar</button>'
+      + '</div>';
   }
 
-  // ── SESIÓN DE HOY ──
-  html += `<div class="rehab-card">
-    <div class="rehab-title">Hoy — ${hoy}</div>`;
+  // Sesion de hoy
+  html += '<div class="rehab-card"><div class="rehab-title">Hoy — '+hoy+'</div>';
 
-  REHAB_EJERCICIOS.forEach(ej => {
-    const setsHoy = sesionHoy[ej.id] || Array(ej.sets).fill(false);
-    const completados = setsHoy.filter(Boolean).length;
-    const todoOk = completados === ej.sets;
+  REHAB_EJERCICIOS.forEach(function(ej) {
+    const setsEj = sesionHoy[ej.id] || [];
+    const setsNorm = Array.from({length: ej.sets}, function(_, i) { return normalizeRehabSet(setsEj[i], ej.objetivoSeg); });
+    const completados = setsNorm.filter(function(s) { return s.completado; }).length;
+    const fullCount = setsNorm.filter(function(s) { return s.completado && (s.tiempo == null || s.tiempo >= ej.objetivoSeg); }).length;
+    const todoOk = fullCount === ej.sets;
 
-    html += `<div style="padding:10px 0;border-bottom:1px solid var(--border)">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px">
-        <div>
-          <div style="font-size:14px;font-weight:600">${ej.nombre}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">${ej.protocolo}</div>
-        </div>
-        <div style="font-family:var(--font-mono);font-size:11px;color:${todoOk?'var(--ok)':'var(--muted)'};white-space:nowrap;padding-top:2px">
-          ${completados}/${ej.sets} sets
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        ${Array.from({length: ej.sets}, (_, i) => `
-          <button onclick="toggleRehabSet('${hoy}','${ej.id}',${i})"
-            style="width:36px;height:36px;border-radius:50%;border:2px solid ${setsHoy[i]?'var(--ok)':'var(--border)'};
-            background:${setsHoy[i]?'var(--ok)':'transparent'};color:${setsHoy[i]?'#fff':'var(--muted)'};
-            font-size:14px;cursor:pointer;transition:all 0.15s;flex-shrink:0">
-            ${setsHoy[i] ? '✓' : i+1}
-          </button>`).join('')}
-        <div style="font-size:11px;color:var(--muted);font-style:italic;flex:1">${ej.nota}</div>
-      </div>
-    </div>`;
+    html += '<div style="padding:10px 0;border-bottom:1px solid var(--border)">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">'
+      + '<div>'
+      + '<div style="font-size:14px;font-weight:600">'+ej.nombre+'</div>'
+      + '<div style="font-size:11px;color:var(--muted);margin-top:2px">'+ej.protocolo+'</div>'
+      + '</div>'
+      + '<div style="font-family:var(--font-mono);font-size:11px;color:'+(todoOk?'var(--ok)':'var(--muted)')+';white-space:nowrap;padding-top:2px">'
+      + completados+'/'+ej.sets+' sets'
+      + '</div></div>';
+
+    setsNorm.forEach(function(s, i) {
+      const full = s.completado && (s.tiempo == null || s.tiempo >= ej.objetivoSeg);
+      const partial = s.completado && s.tiempo != null && s.tiempo < ej.objetivoSeg;
+      const cBorder = full ? 'var(--ok)' : partial ? '#F9A825' : 'var(--border)';
+      const cBg    = full ? 'var(--ok)' : partial ? '#F9A825' : 'transparent';
+      const cFg    = (full || partial) ? '#fff' : 'var(--muted)';
+      const cLabel = full ? '&#10003;' : partial ? '~' : String(i+1);
+      const statusNote = partial ? ' · parcial' : '';
+
+      html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:5px">'
+        + '<button onclick="toggleRehabSet(\''+hoy+'\',\''+ej.id+'\','+i+')"'
+        + ' style="width:28px;height:28px;border-radius:50%;border:2px solid '+cBorder+';background:'+cBg+';color:'+cFg+';font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;line-height:1">'
+        + cLabel+'</button>'
+        + '<input type="number" min="0" max="999"'
+        + ' value="'+(s.tiempo != null ? s.tiempo : '')+'"'
+        + ' placeholder="'+ej.objetivoSeg+'"'
+        + ' class="rehab-input"'
+        + ' style="width:72px;padding:4px 6px;font-size:14px;border-color:'+cBorder+'"'
+        + ' onchange="saveRehabSetTime(\''+hoy+'\',\''+ej.id+'\','+i+',this.value)">'
+        + '<span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">'+ej.objetivoSeg+'s'+statusNote+'</span>'
+        + '</div>';
+    });
+
+    html += '<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:4px">'+ej.nota+'</div>'
+      + '</div>';
   });
 
-  // Nota de sesión rehab
-  const notaSesion = sesionHoy.nota || "";
-  html += `<div style="margin-top:10px">
-    <textarea class="session-note" placeholder="¿Cómo se sintió? ¿Llegaste más lejos que ayer?"
-      onchange="saveRehabNota('${hoy}', this.value)">${notaSesion}</textarea>
-  </div>`;
+  const notaSesion = sesionHoy.nota || '';
+  html += '<div style="margin-top:10px">'
+    + '<textarea class="session-note" placeholder="Como se sintio? Llegaste mas lejos que ayer?"'
+    + ' onchange="saveRehabNota(\''+hoy+'\', this.value)">'+notaSesion+'</textarea>'
+    + '</div></div>';
 
-  html += `</div>`;
+  // Heatmap 8 semanas
+  const todayMid = new Date(_hoy.getFullYear(), _hoy.getMonth(), _hoy.getDate());
+  const dowToday = todayMid.getDay();
+  const daysToMon = (dowToday + 6) % 7;
+  const thisMonday = new Date(todayMid.getTime() - daysToMon * 86400000);
+  const hmStart = new Date(thisMonday.getTime() - 7 * 7 * 86400000);
 
-  // ── HISTORIAL MEDICIONES ──
-  if (mediciones.length > 0) {
-    html += `<div class="rehab-card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <div class="rehab-title" style="margin-bottom:0">📅 Mediciones dominicales</div>
-        <button onclick="borrarMediciones()" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">borrar todo</button>
-      </div>`;
-    [...mediciones].reverse().slice(0, 12).forEach((m, i, arr) => {
-      const prev = arr[i + 1];
-      const delta = prev ? (m.valor - prev.valor) : null;
-      const deltaStr = delta !== null
-        ? `<span style="color:${delta>0?'var(--ok)':delta<0?'var(--accent2)':'var(--muted)'};font-size:11px;margin-left:6px">${delta>0?'+':''}${delta.toFixed(1)} cm</span>`
-        : '';
-      html += `<div class="rehab-history-row">
-        <span>${m.fecha}</span>
-        <span style="color:${m.valor>=TARGET_CM?'var(--ok)':'var(--accent)'};font-weight:700">
-          ${m.valor} cm${deltaStr}
-        </span>
-      </div>`;
-    });
-    html += `</div>`;
+  html += '<div class="rehab-card">'
+    + '<div class="rehab-title" style="margin-bottom:10px">Historial — 8 semanas</div>'
+    + '<div class="rehab-heatmap-grid">';
+
+  ['L','M','X','J','V','S','D'].forEach(function(d) {
+    html += '<div class="rehab-heatmap-dow">'+d+'</div>';
+  });
+
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 7; col++) {
+      const cellDate = new Date(hmStart.getTime() + (row * 7 + col) * 86400000);
+      const cellStr = cellDate.getFullYear()+'-'+String(cellDate.getMonth()+1).padStart(2,'0')+'-'+String(cellDate.getDate()).padStart(2,'0');
+      const isFuture = cellDate > todayMid;
+      const isToday = cellStr === hoy;
+      const score = isFuture ? 0 : getRehabDayScore(sesiones[cellStr]);
+      const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getHeatmapColor(score, isDark);
+      const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
+      const opacity = isFuture ? 'opacity:0.25;cursor:default;' : '';
+      const onclick = isFuture ? '' : ' onclick="showRehabHeatmapDay(\''+cellStr+'\')"';
+      html += '<div class="rehab-heatmap-cell"'+onclick+' style="background:'+color+';'+outline+opacity+'"></div>';
+    }
   }
 
-  // ── CRITERIOS RE-INGRESO ──
+  html += '</div>';
+  html += '<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);font-family:var(--font-mono);flex-wrap:wrap">'
+    + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#2E7D32;vertical-align:middle;margin-right:3px"></span>100%</span>'
+    + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#81C784;vertical-align:middle;margin-right:3px"></span>50%+</span>'
+    + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#F9A825;vertical-align:middle;margin-right:3px"></span>&lt;50%</span>'
+    + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#E5E5E3;vertical-align:middle;margin-right:3px"></span>sin dato</span>'
+    + '</div>'
+    + '<div id="rehab-heatmap-tooltip" style="display:none" class="rehab-heatmap-tooltip"></div>'
+    + '</div>';
+
+  // Historial mediciones
+  if (mediciones.length > 0) {
+    html += '<div class="rehab-card">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+      + '<div class="rehab-title" style="margin-bottom:0">&#128197; Mediciones dominicales</div>'
+      + '<button onclick="borrarMediciones()" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">borrar todo</button>'
+      + '</div>';
+    var medRev = mediciones.slice().reverse().slice(0, 12);
+    medRev.forEach(function(m, i) {
+      const prev = medRev[i + 1];
+      const delta = prev ? (m.valor - prev.valor) : null;
+      const deltaStr = delta !== null
+        ? '<span style="color:'+(delta>0?'var(--ok)':delta<0?'var(--accent2)':'var(--muted)')+';font-size:11px;margin-left:6px">'+(delta>0?'+':'')+delta.toFixed(1)+' cm</span>'
+        : '';
+      html += '<div class="rehab-history-row">'
+        + '<span>'+m.fecha+'</span>'
+        + '<span style="color:'+(m.valor>=TARGET_CM?'var(--ok)':'var(--accent)')+';font-weight:700">'+m.valor+' cm'+deltaStr+'</span>'
+        + '</div>';
+    });
+    html += '</div>';
+  }
+
+  // Criterios re-ingreso
   const criterios = [
-    { id: "dorsiflexion", label: "Dorsiflexión ≥ 7 cm (pierna izquierda)", auto: reached },
+    { id: "dorsiflexion", label: "Dorsiflexion ≥ 7 cm (pierna izquierda)", auto: reached },
     { id: "equilibrio",   label: "Equilibrio monopodal ojos cerrados ≥ 45 s", auto: true },
     { id: "pistol",       label: "Pistol squat izquierdo inicia descenso sin bloqueo", auto: false },
   ];
 
-  html += `<div class="rehab-card">
-    <div class="rehab-title">✅ Criterios re-ingreso sentadilla</div>`;
-
-  criterios.forEach(c => {
+  html += '<div class="rehab-card"><div class="rehab-title">&#10003; Criterios re-ingreso sentadilla</div>';
+  criterios.forEach(function(c) {
     const isOk = c.auto || (datos.criterios && datos.criterios[c.id]);
-    html += `<div class="rehab-criterion">
-      <div class="rehab-check ${isOk?'ok':''}" onclick="toggleCriterio('${c.id}')">${isOk?'✓':''}</div>
-      <span style="${isOk?'color:var(--ok)':''}">${c.label}</span>
-    </div>`;
+    html += '<div class="rehab-criterion">'
+      + '<div class="rehab-check '+(isOk?'ok':'')+'" onclick="toggleCriterio(\''+c.id+'\')">'+(isOk?'&#10003;':'')+'</div>'
+      + '<span style="'+(isOk?'color:var(--ok)':'')+'">'+c.label+'</span>'
+      + '</div>';
   });
 
-  const allOk = criterios.every(c => c.auto || (datos.criterios && datos.criterios[c.id]));
+  const allOk = criterios.every(function(c) { return c.auto || (datos.criterios && datos.criterios[c.id]); });
   if (allOk) {
-    html += `<div style="margin-top:12px;padding:10px;background:var(--ok-bg);border-radius:8px;font-size:13px;color:var(--ok);font-weight:600;text-align:center">
-      🎉 Listo para re-ingresar la sentadilla con barra
-    </div>`;
+    html += '<div style="margin-top:12px;padding:10px;background:var(--ok-bg);border-radius:8px;font-size:13px;color:var(--ok);font-weight:600;text-align:center">'
+      + '&#127881; Listo para re-ingresar la sentadilla con barra'
+      + '</div>';
   }
+  html += '</div>';
 
-  html += `</div></div>`;
+  // Modal medicion
+  html += '<div id="medicionModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;align-items:center;justify-content:center">'
+    + '<div style="background:var(--card);border-radius:var(--radius);padding:20px;margin:20px;max-width:320px;width:100%">'
+    + '<div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:12px">&#128207; MEDICION DOMINICAL</div>'
+    + '<div style="font-size:13px;color:var(--muted);margin-bottom:12px">Rodilla a pared · pie descalzo · talón en suelo<br>Distancia dedo gordo → pared en cm</div>'
+    + '<input class="rehab-input" id="rehabCm" type="number" step="0.1" min="0" max="15" placeholder="ej: 4.5"'
+    + ' style="width:100%;margin-bottom:10px;font-size:18px;text-align:center;padding:12px">'
+    + '<div style="display:flex;gap:8px">'
+    + '<button onclick="hideMedicionModal()" style="flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--muted);cursor:pointer">Cancelar</button>'
+    + '<button onclick="saveRehabMedicion()" style="flex:1;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer">Guardar</button>'
+    + '</div></div></div>';
 
-  // Modal medición (oculto por defecto)
-  html += `<div id="medicionModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;align-items:center;justify-content:center">
-    <div style="background:var(--card);border-radius:var(--radius);padding:20px;margin:20px;max-width:320px;width:100%">
-      <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:12px">📏 MEDICIÓN DOMINICAL</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Rodilla a pared · pie descalzo · talón en suelo<br>Distancia dedo gordo → pared en cm</div>
-      <input class="rehab-input" id="rehabCm" type="number" step="0.1" min="0" max="15" placeholder="ej: 4.5"
-        style="width:100%;margin-bottom:10px;font-size:18px;text-align:center;padding:12px">
-      <div style="display:flex;gap:8px">
-        <button onclick="hideMedicionModal()"
-          style="flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--muted);cursor:pointer">
-          Cancelar
-        </button>
-        <button onclick="saveRehabMedicion()"
-          style="flex:1;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer">
-          Guardar
-        </button>
-      </div>
-    </div>
-  </div>`;
-
+  html += '</div>';
   main.innerHTML = html;
+}
+
+function showRehabHeatmapDay(fechaStr) {
+  const tooltip = document.getElementById('rehab-heatmap-tooltip');
+  if (!tooltip) return;
+  if (tooltip.dataset.fecha === fechaStr && tooltip.style.display !== 'none') {
+    tooltip.style.display = 'none';
+    return;
+  }
+  tooltip.dataset.fecha = fechaStr;
+  const datos = getRehabDatos();
+  const sesion = (datos.sesiones || {})[fechaStr] || {};
+  let html = '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:8px">'+fechaStr+'</div>';
+  let hasAny = false;
+  REHAB_EJERCICIOS.forEach(function(ej) {
+    const sets = sesion[ej.id] || [];
+    if (!sets.length) return;
+    hasAny = true;
+    const setsInfo = sets.map(function(s, i) {
+      const norm = normalizeRehabSet(s, ej.objetivoSeg);
+      if (!norm.completado) return 'S'+(i+1)+': -';
+      const tStr = norm.tiempo != null ? norm.tiempo+'s' : 'hecho';
+      const esFull = norm.tiempo == null || norm.tiempo >= ej.objetivoSeg;
+      return 'S'+(i+1)+': '+tStr+(esFull ? '' : ' parcial');
+    }).join(' · ');
+    html += '<div style="margin-bottom:6px">'
+      + '<div style="font-size:12px;font-weight:600">'+ej.nombre+'</div>'
+      + '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">'+setsInfo+'</div>'
+      + '</div>';
+  });
+  if (sesion.nota) {
+    html += '<div style="font-size:11px;color:var(--muted);font-style:italic;border-top:1px solid var(--border);padding-top:6px;margin-top:4px">&ldquo;'+sesion.nota+'&rdquo;</div>';
+  }
+  if (!hasAny) {
+    html += '<div style="color:var(--muted);font-size:12px">Sin registro este día</div>';
+  }
+  tooltip.innerHTML = html;
+  tooltip.style.display = 'block';
+}
+
+function saveRehabSetTime(fecha, ejId, setIdx, tiempoStr) {
+  const datos = getRehabDatos();
+  if (!datos.sesiones) datos.sesiones = {};
+  if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
+  const ej = REHAB_EJERCICIOS.find(function(e) { return e.id === ejId; });
+  if (!ej) return;
+  if (!datos.sesiones[fecha][ejId]) {
+    datos.sesiones[fecha][ejId] = Array.from({length: ej.sets}, function() { return { tiempo: null, completado: false }; });
+  }
+  const tiempo = tiempoStr !== '' ? parseInt(tiempoStr, 10) : null;
+  const prev = datos.sesiones[fecha][ejId][setIdx] || {};
+  const wasCompletado = typeof prev === 'object' ? !!prev.completado : !!prev;
+  datos.sesiones[fecha][ejId][setIdx] = {
+    tiempo: (tiempo != null && !isNaN(tiempo) && tiempo >= 0) ? tiempo : null,
+    completado: (tiempo > 0) || wasCompletado
+  };
+  saveRehabDatos(datos);
+  queueSync();
+  renderRehab(document.getElementById("mainContent"));
 }
 
 function toggleRehabSet(fecha, ejId, setIdx) {
   const datos = getRehabDatos();
   if (!datos.sesiones) datos.sesiones = {};
   if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
-  const ej = REHAB_EJERCICIOS.find(e => e.id === ejId);
-  if (!datos.sesiones[fecha][ejId]) datos.sesiones[fecha][ejId] = Array(ej.sets).fill(false);
-  datos.sesiones[fecha][ejId][setIdx] = !datos.sesiones[fecha][ejId][setIdx];
+  const ej = REHAB_EJERCICIOS.find(function(e) { return e.id === ejId; });
+  if (!ej) return;
+  if (!datos.sesiones[fecha][ejId]) {
+    datos.sesiones[fecha][ejId] = Array.from({length: ej.sets}, function() { return { tiempo: null, completado: false }; });
+  }
+  const norm = normalizeRehabSet(datos.sesiones[fecha][ejId][setIdx], ej.objetivoSeg);
+  datos.sesiones[fecha][ejId][setIdx] = { tiempo: norm.tiempo, completado: !norm.completado };
   saveRehabDatos(datos);
+  queueSync();
   renderRehab(document.getElementById("mainContent"));
 }
 
@@ -2348,6 +2538,7 @@ function saveRehabNota(fecha, nota) {
   if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
   datos.sesiones[fecha].nota = nota;
   saveRehabDatos(datos);
+  queueSync();
 }
 
 function showMedicionModal() {
@@ -2362,17 +2553,16 @@ function saveRehabMedicion() {
   const cm = parseFloat(document.getElementById("rehabCm").value);
   if (!cm || cm <= 0) { showToast("Ingresa los cm", "err"); return; }
   const _d = new Date();
-  const fecha = `${_d.getFullYear()}-${String(_d.getMonth()+1).padStart(2,'0')}-${String(_d.getDate()).padStart(2,'0')}`;
+  const fecha = _d.getFullYear()+'-'+String(_d.getMonth()+1).padStart(2,'0')+'-'+String(_d.getDate()).padStart(2,'0');
   const datos = getRehabDatos();
   if (!datos.mediciones) datos.mediciones = [];
-  // Reemplaza si ya hay medición hoy
-  const idx = datos.mediciones.findIndex(m => m.fecha === fecha);
+  const idx = datos.mediciones.findIndex(function(m) { return m.fecha === fecha; });
   if (idx >= 0) datos.mediciones[idx].valor = cm;
   else datos.mediciones.push({ valor: cm, fecha });
-  datos.mediciones.sort((a,b) => a.fecha.localeCompare(b.fecha));
+  datos.mediciones.sort(function(a,b) { return a.fecha.localeCompare(b.fecha); });
   saveRehabDatos(datos);
   hideMedicionModal();
-  showToast(`${cm} cm registrado ✓`, "ok");
+  showToast(cm + ' cm registrado', "ok");
   renderRehab(document.getElementById("mainContent"));
 }
 
