@@ -198,6 +198,20 @@
       "timestamp": "2026-06-30T15:49:53.349Z",
       "reps": "10",
       "checked": true
+    },
+    "M4-S6-mar-Remo 1 mano (DB)-1": {
+      "peso": "15",
+      "timestamp": "2026-06-30T16:05:01.784Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
+    },
+    "M4-S6-mar-Remo 1 mano (DB)-2": {
+      "peso": "15",
+      "timestamp": "2026-06-30T16:05:01.605Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -392,5 +406,5 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-30T15:49:56.358Z"
+  "timestamp": "2026-06-30T16:05:04.796Z"
 }
