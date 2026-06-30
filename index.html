@@ -3378,8 +3378,24 @@ const _setMeso = setMeso;
 setMeso = function(k) { _setMeso(k); savePosition(); };
 
 function migrateOldData() {
-  const keys = ['hgRegistros', 'rehab-datos', 'cut-datos', 'forge-position'];
-  keys.forEach(key => {
+  // Migra hgRegistros haciendo merge por timestamp (no sobreescribe entradas más nuevas)
+  const oldRegistros = localStorage.getItem('hgRegistros');
+  if (oldRegistros) {
+    try {
+      const old = JSON.parse(oldRegistros);
+      const newKey = uk('hgRegistros');
+      const existing = JSON.parse(localStorage.getItem(newKey) || '{}');
+      let changed = false;
+      Object.entries(old).forEach(([k, v]) => {
+        const exTs = existing[k]?.timestamp || '';
+        const oldTs = v?.timestamp || '';
+        if (!existing[k] || oldTs > exTs) { existing[k] = v; changed = true; }
+      });
+      if (changed) localStorage.setItem(newKey, JSON.stringify(existing));
+    } catch(e) {}
+  }
+  // Copia simple para rehab, cut y position si la clave nueva está vacía
+  ['rehab-datos', 'cut-datos', 'forge-position'].forEach(key => {
     const newKey = uk(key);
     if (!localStorage.getItem(newKey) && localStorage.getItem(key)) {
       localStorage.setItem(newKey, localStorage.getItem(key));
@@ -3422,7 +3438,7 @@ function initApp() {
     const btn = document.getElementById('themeBtn');
     if (btn) btn.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
   }, 0);
-  if (state.githubToken) setTimeout(() => pullFromGithub(), 1000);
+  if (state.githubToken) pullFromGithub();
 }
 
 function selectUser(name) {
