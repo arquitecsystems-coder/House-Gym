@@ -3551,7 +3551,15 @@ async function pullFromGithub() {
 
     if (data.cut && Object.keys(data.cut).length > 0) {
       data.cut._syncTs = data.timestamp;
-      localStorage.setItem(uk("cut-datos"), JSON.stringify(data.cut));
+      // Merge por campo en vez de pisar todo: une registrosDiarios/Semanales/Mensuales
+      // de remoto y local para no perder entradas que el remoto aún no tiene.
+      const localCut = JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}");
+      const mergedCut = Object.assign({}, data.cut);
+      ['registrosDiarios', 'registrosSemanales', 'registrosMensuales'].forEach(field => {
+        mergedCut[field] = Object.assign({}, localCut[field] || {}, data.cut[field] || {});
+      });
+      if (!mergedCut.setup && localCut.setup) mergedCut.setup = localCut.setup;
+      localStorage.setItem(uk("cut-datos"), JSON.stringify(mergedCut));
     }
 
     if (data.test && Object.keys(data.test).length > 0) {
