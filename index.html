@@ -3138,10 +3138,11 @@ function renderProfile(main) {
     </div>`;
   }).join('');
 
+  const isDolly = state.currentUser === 'dolly';
   const html = `<div style="padding:16px;max-width:600px;margin:0 auto">
-    ${acc('fuerza', '💪', 'Fuerza', fuerzaBody)}
+    ${isDolly ? '' : acc('fuerza', '💪', 'Fuerza', fuerzaBody)}
     ${acc('comp', '⚖️', 'Composición corporal', compBody)}
-    ${acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody)}
+    ${isDolly ? '' : acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody)}
   </div>`;
 
   main.innerHTML = html;
@@ -3327,7 +3328,7 @@ function renderConfig(main) {
       <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
     </div>
 
-    <div class="config-panel">
+    ${state.currentUser === 'dolly' ? '' : `<div class="config-panel">
       <div class="config-title">🦶 Criterio re-ingreso sentadilla</div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6">
         Los <strong style="color:var(--text)">tres</strong> deben cumplirse:
@@ -3336,7 +3337,8 @@ function renderConfig(main) {
         <span style="color:var(--ok)">✓</span> Equilibrio monopodal ojos cerrados ≥ 45 s<br>
         <span style="color:var(--accent)">□</span> Pistol squat izquierdo inicia descenso sin bloqueo
       </div>
-    </div>`;
+    </div>`}
+  `;
 }
 
 // ============================================================
