@@ -1577,6 +1577,10 @@ function setMeso(k) {
 
 // ── SESSION VIEW ──
 function renderSession(main) {
+  if (state.currentUser === 'dolly') {
+    main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción</div>';
+    return;
+  }
   const meso = MESOCICLOS[state.meso];
 
   // Nav semanas
@@ -1743,6 +1747,10 @@ function toggleCard(header) {
 
 // ── RMs VIEW ──
 function renderRMs(main) {
+  if (state.currentUser === 'dolly') {
+    main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción</div>';
+    return;
+  }
   let html = `<div class="rm-panel"><div class="rm-title">📊 Histórico de RMs</div><div class="rm-grid">`;
 
   Object.entries(RMS_REFERENCIA).forEach(([meso, rms]) => {
@@ -2074,10 +2082,12 @@ function saveCutDatos(d) {
   localStorage.setItem(uk("cut-datos"), JSON.stringify(d));
 }
 
-// Jackson-Pollock 7 pliegues (hombre, edad estimada 24)
-function calcGrasa7(pliegues, edad) {
+// Jackson-Pollock 7 pliegues — fórmula varía por género
+function calcGrasa7(pliegues, edad, genero) {
   const suma = pliegues.reduce((a,b) => a + b, 0);
-  const densidad = 1.112 - (0.00043499 * suma) + (0.00000055 * suma * suma) - (0.00028826 * edad);
+  const densidad = (genero === 'mujer')
+    ? 1.097 - (0.00046971 * suma) + (0.00000056 * suma * suma) - (0.00012828 * edad)
+    : 1.112 - (0.00043499 * suma) + (0.00000055 * suma * suma) - (0.00028826 * edad);
   return ((4.95 / densidad) - 4.50) * 100;
 }
 
@@ -2152,6 +2162,17 @@ function renderCutWizard(wrap, datos) {
       <div class="cut-field" style="margin-bottom:10px">
         <div class="cut-label">Fecha de inicio</div>
         <input class="cut-input" id="cw_fecha" type="date" value="${p.fecha || ''}">
+      </div>
+      <div class="cut-field" style="margin-bottom:16px">
+        <div class="cut-label">Género</div>
+        <div style="display:flex;gap:12px;margin-top:6px">
+          <label style="display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:13px;cursor:pointer">
+            <input type="radio" name="cw_genero" value="hombre" ${(p.genero||'hombre')==='hombre'?'checked':''}>Hombre
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:13px;cursor:pointer">
+            <input type="radio" name="cw_genero" value="mujer" ${p.genero==='mujer'?'checked':''}>Mujer
+          </label>
+        </div>
       </div>
       ${datos.editing ? '<button class="cut-btn secondary" onclick="cancelEdit()" style="margin-top:8px">← Cancelar</button>' : ''}
       <button class="cut-btn" onclick="wizardNext1()" style="margin-top:8px">Continuar →</button>
@@ -2262,12 +2283,13 @@ function wizardNext1() {
   const cals = get('cw_cals');
   const edad = get('cw_edad') || 24;
   const fecha = document.getElementById('cw_fecha')?.value;
+  const genero = document.querySelector('input[name="cw_genero"]:checked')?.value || 'hombre';
 
   if (!pesoNoche || !pesoAyunas || !pctTarget || !ganMus || !cals || !fecha) {
     showToast("Completa todos los campos", "err"); return;
   }
 
-  datos.wizardPartial = { pesoNoche, pesoAyunas, pctTarget, ganMus, cals, edad, fecha };
+  datos.wizardPartial = { pesoNoche, pesoAyunas, pctTarget, ganMus, cals, edad, fecha, genero };
   datos.wizardStep = 2;
   saveCutDatos(datos);
   renderCut(document.getElementById('mainContent'));
@@ -2284,7 +2306,8 @@ function wizardNext2() {
   }
 
   const edad = partial.edad || 24;
-  const pctGrasaActual = calcGrasa7(pliegues, edad);
+  const genero = partial.genero || 'hombre';
+  const pctGrasaActual = calcGrasa7(pliegues, edad, genero);
   const masaMagra = partial.pesoAyunas * (1 - pctGrasaActual / 100);
   const masaMagraProyectada = masaMagra + partial.ganMus;
   const pesoTarget = masaMagraProyectada / (1 - partial.pctTarget / 100);
@@ -2330,7 +2353,7 @@ function wizardNext2() {
     pctGrasaActual, pctTarget: partial.pctTarget, masaMagra,
     pesoTarget, grasaEliminar, perdidaSemanal, semanas, deficitDiario,
     topPliegues, cinturaActual: cintura, plieguesIniciales: pliegues,
-    plieguTargets, cals: partial.cals
+    plieguTargets, cals: partial.cals, genero
   };
   datos.wizardStep = 3;
   saveCutDatos(datos);
@@ -2892,9 +2915,10 @@ function saveEditModal() {
 
   const pliegues = PLIEGUES_NAMES.map((_,i) => get('ed_pl_'+i) || s.plieguesIniciales?.[i] || 0);
   const cintura = get('ed_cintura') || s.cinturaActual;
+  const genero = s.genero || 'hombre';
 
   // Recalculate everything
-  const pctGrasaActual = calcGrasa7(pliegues, edad);
+  const pctGrasaActual = calcGrasa7(pliegues, edad, genero);
   const masaMagra = pesoAyunas * (1 - pctGrasaActual / 100);
   const masaMagraProyectada = masaMagra + ganMus;
   const pesoTarget = masaMagraProyectada / (1 - pctTarget / 100);
@@ -3375,6 +3399,8 @@ function initApp() {
   }
   const chip = document.getElementById('userChip');
   if (chip) chip.textContent = state.currentUser;
+  const rehabNav = document.getElementById('nav-rehab');
+  if (rehabNav) rehabNav.style.display = state.currentUser === 'dolly' ? 'none' : '';
   render();
   setTimeout(() => {
     const btn = document.getElementById('themeBtn');
