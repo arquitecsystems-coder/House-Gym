@@ -250,63 +250,151 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-06-30T03:07:26.764Z",
+    "_syncTs": "2026-06-30T18:59:02.622Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
-          true,
-          true,
-          false
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
         ],
         "cuadrupedia": [
-          false,
-          false,
-          false
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
         ],
         "equilibrio": [
-          false,
-          false
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
         ]
       },
       "2026-06-26": {
         "rodilla_pared": [
-          true,
-          true,
-          true
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          }
         ],
         "equilibrio": [
-          true,
-          true
+          {
+            "tiempo": 45,
+            "completado": true
+          },
+          {
+            "tiempo": 45,
+            "completado": true
+          }
         ]
       },
       "2026-06-27": {
         "rodilla_pared": [
-          true,
-          true,
-          true
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          }
         ],
         "cuadrupedia": [
-          true,
-          true,
-          true
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": 120,
+            "completado": true
+          }
         ],
         "equilibrio": [
-          true,
-          true
+          {
+            "tiempo": 45,
+            "completado": true
+          },
+          {
+            "tiempo": 45,
+            "completado": true
+          }
         ],
         "nota": "Mejoró la cuadropedia"
       },
       "2026-06-29": {
         "rodilla_pared": [
-          false,
-          false,
-          false
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
+        ]
+      },
+      "2026-06-30": {
+        "rodilla_pared": [
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
         ]
       }
     }
   },
   "cut": {
-    "_syncTs": "2026-06-30T03:07:26.764Z",
+    "_syncTs": "2026-06-30T18:59:02.622Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -441,5 +529,6 @@
     "registrosSemanales": {},
     "registrosMensuales": {}
   },
-  "timestamp": "2026-06-30T18:59:02.622Z"
+  "test": {},
+  "timestamp": "2026-06-30T22:11:21.573Z"
 }
