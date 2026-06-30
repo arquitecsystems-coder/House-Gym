@@ -1098,14 +1098,126 @@
 
   .toast.ok { border-color: var(--ok); color: var(--ok); }
   .toast.err { border-color: var(--accent2); color: var(--accent2); }
+
+  /* ── USER PICKER ── */
+  #userPicker {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .picker-logo {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .picker-title {
+    font-size: 14px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+
+  .picker-cards {
+    display: flex;
+    gap: 20px;
+  }
+
+  .picker-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    min-width: 120px;
+  }
+
+  .picker-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  .picker-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  body.dark .picker-avatar { color: #000; }
+
+  .picker-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── USER CHIP ── */
+  .user-chip {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 8px;
+    margin-right: auto;
+    text-transform: lowercase;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .user-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 </style>
 </head>
 <body>
+
+<!-- USER PICKER -->
+<div id="userPicker">
+  <div class="picker-logo">Forge ▸</div>
+  <div class="picker-title">¿Quién eres?</div>
+  <div class="picker-cards">
+    <div class="picker-card" onclick="selectUser('samuel')">
+      <div class="picker-avatar">SA</div>
+      <div class="picker-name">Samuel</div>
+    </div>
+    <div class="picker-card" onclick="selectUser('dolly')">
+      <div class="picker-avatar">DO</div>
+      <div class="picker-name">Dolly</div>
+    </div>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header>
   <div class="header-top">
     <span class="logo">Forge ▸</span>
+    <span id="userChip" class="user-chip" onclick="switchUser()" title="Cambiar usuario"></span>
     <button class="sync-btn" id="themeBtn" onclick="toggleTheme()" style="margin-right:6px">☀️</button>
       <button class="sync-btn" id="uploadBtn" onclick="uploadData()" title="Subir datos a GitHub">↑</button>
       <button class="sync-btn" id="downloadBtn" onclick="downloadData()" title="Descargar datos de GitHub" style="margin-left:4px">↓</button>
@@ -1408,7 +1520,11 @@ let state = {
   githubToken: localStorage.getItem("githubToken") || "",
   githubRepo: "arquitecsystems-coder/House-Gym",
   syncing: false,
+  currentUser: localStorage.getItem("forge-currentUser") || "",
 };
+
+// Prefija las claves de localStorage con el usuario activo
+function uk(key) { return `${state.currentUser}-${key}`; }
 
 // ============================================================
 // RENDER PRINCIPAL
@@ -1691,13 +1807,13 @@ const REHAB_EJERCICIOS = [
 
 function getRehabDatos() {
   try {
-    const raw = localStorage.getItem("rehab-datos");
+    const raw = localStorage.getItem(uk("rehab-datos"));
     return raw ? JSON.parse(raw) : {};
   } catch(e) { return {}; }
 }
 
 function saveRehabDatos(datos) {
-  localStorage.setItem("rehab-datos", JSON.stringify(datos));
+  localStorage.setItem(uk("rehab-datos"), JSON.stringify(datos));
 }
 
 function renderRehab(main) {
@@ -1950,12 +2066,12 @@ const PLIEGUES_NAMES = [
 ];
 
 function getCutDatos() {
-  try { return JSON.parse(localStorage.getItem("cut-datos") || "{}"); }
+  try { return JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}"); }
   catch(e) { return {}; }
 }
 
 function saveCutDatos(d) {
-  localStorage.setItem("cut-datos", JSON.stringify(d));
+  localStorage.setItem(uk("cut-datos"), JSON.stringify(d));
 }
 
 // Jackson-Pollock 7 pliegues (hombre, edad estimada 24)
@@ -2531,7 +2647,7 @@ function clearDailyRecords() {
 
 function resetCut() {
   if (!confirm("¿Reiniciar la Cutting Phase? Se borrarán todos los datos.")) return;
-  localStorage.removeItem("cut-datos");
+  localStorage.removeItem(uk("cut-datos"));
   showToast("Cutting Phase reiniciada", "ok");
   renderCut(document.getElementById('mainContent'));
 }
@@ -2552,7 +2668,7 @@ function renderProfile(main) {
   const s = cutDatos.setup || {};
 
   const rehabDatos = (() => {
-    try { return JSON.parse(localStorage.getItem("rehab-datos") || "{}"); }
+    try { return JSON.parse(localStorage.getItem(uk("rehab-datos")) || "{}"); }
     catch(e) { return {}; }
   })();
   const ultima = (rehabDatos.mediciones || []).slice(-1)[0]?.valor || 0;
@@ -2911,11 +3027,11 @@ function diaCompleto(meso, semana, dia) {
 // PERSISTENCIA LOCAL
 // ============================================================
 function saveLocal() {
-  localStorage.setItem("hgRegistros", JSON.stringify(state.registros));
+  localStorage.setItem(uk("hgRegistros"), JSON.stringify(state.registros));
 }
 
 function loadLocal() {
-  const r = localStorage.getItem("hgRegistros");
+  const r = localStorage.getItem(uk("hgRegistros"));
   if (r) state.registros = JSON.parse(r);
 }
 
@@ -2975,12 +3091,13 @@ async function pushToGithub() {
   try {
     const payload = {
       registros: state.registros,
-      rehab: JSON.parse(localStorage.getItem("rehab-datos") || "{}"),
-      cut: JSON.parse(localStorage.getItem("cut-datos") || "{}"),
+      rehab: JSON.parse(localStorage.getItem(uk("rehab-datos")) || "{}"),
+      cut: JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}"),
       timestamp: new Date().toISOString()
     };
 
-    const sha = await getGithubFileSha("data.json");
+    const dataFile = `data-${state.currentUser}.json`;
+    const sha = await getGithubFileSha(dataFile);
     const body = {
       message: "Sync data " + new Date().toISOString().slice(0,16),
       content: btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2)))),
@@ -2988,7 +3105,7 @@ async function pushToGithub() {
     if (sha) body.sha = sha;
 
     const r = await fetch(
-      `https://api.github.com/repos/${state.githubRepo}/contents/data.json`,
+      `https://api.github.com/repos/${state.githubRepo}/contents/${dataFile}`,
       {
         method: "PUT",
         headers: {
@@ -3014,7 +3131,7 @@ async function pushToGithub() {
 async function pullFromGithub() {
   if (!state.githubToken) return;
   try {
-    const url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`;
+    const url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data-${state.currentUser}.json?t=${Date.now()}`;
     const r = await fetch(url, { cache: "no-store" });
     if (!r.ok) { showToast("Error al descargar: " + r.status, "err"); return; }
     const data = await r.json();
@@ -3034,12 +3151,12 @@ async function pullFromGithub() {
 
     if (data.rehab && Object.keys(data.rehab).length > 0) {
       data.rehab._syncTs = data.timestamp;
-      localStorage.setItem("rehab-datos", JSON.stringify(data.rehab));
+      localStorage.setItem(uk("rehab-datos"), JSON.stringify(data.rehab));
     }
 
     if (data.cut && Object.keys(data.cut).length > 0) {
       data.cut._syncTs = data.timestamp;
-      localStorage.setItem("cut-datos", JSON.stringify(data.cut));
+      localStorage.setItem(uk("cut-datos"), JSON.stringify(data.cut));
     }
 
     showToast("Datos descargados ✓", "ok");
@@ -3122,7 +3239,7 @@ async function updateFromGithub() {
     const url = URL.createObjectURL(blob);
 
     // Guarda estado antes de navegar
-    localStorage.setItem("hgRegistros", registrosBackup);
+    localStorage.setItem(uk("hgRegistros"), registrosBackup);
     localStorage.setItem("scriptUrl", scriptUrlBackup);
     localStorage.setItem("githubToken", tokenBackup);
 
@@ -3167,8 +3284,6 @@ if (savedTheme === 'dark') {
     if (btn) btn.textContent = '🌙';
   });
 }
-
-loadLocal();
 
 // ── Auto-detección de posición por fecha ──
 function detectPosition() {
@@ -3219,33 +3334,13 @@ function detectPosition() {
   return null;
 }
 
-const pos = detectPosition();
-if (pos) {
-  state.meso = pos.meso;
-  state.semana = pos.semana;
-  // Detectar día de la semana actual
-  const diasSemana = ['dom','lun','mar','mie','jue','vie','sab'];
-  const diaSemana = diasSemana[new Date().getDay()];
-  const diasMeso = MESOCICLOS[pos.meso].dias.map(d => d.key);
-  // Si el día de hoy existe en este meso, úsalo; si no, usa el primero
-  state.dia = diasMeso.includes(diaSemana) ? diaSemana : diasMeso[0];
-} else {
-  const saved = localStorage.getItem('forge-position');
-  if (saved) {
-    try {
-      const p = JSON.parse(saved);
-      if (p.meso && MESOCICLOS[p.meso]) {
-        state.meso = p.meso;
-        state.semana = p.semana || 1;
-        state.dia = p.dia || MESOCICLOS[p.meso].dias[0].key;
-      }
-    } catch(e) {}
-  } else {
-    state.dia = MESOCICLOS[state.meso].dias[0].key;
-  }
+function savePosition() {
+  localStorage.setItem(uk('forge-position'), JSON.stringify({
+    meso: state.meso, semana: state.semana, dia: state.dia
+  }));
 }
 
-// Guardar posición al navegar
+// Guardar posición al navegar (se configura una sola vez)
 const _setSemana = setSemana;
 setSemana = function(s) { _setSemana(s); savePosition(); };
 const _setDia = setDia;
@@ -3253,21 +3348,59 @@ setDia = function(d) { _setDia(d); savePosition(); };
 const _setMeso = setMeso;
 setMeso = function(k) { _setMeso(k); savePosition(); };
 
-function savePosition() {
-  localStorage.setItem('forge-position', JSON.stringify({
-    meso: state.meso, semana: state.semana, dia: state.dia
-  }));
+function initApp() {
+  loadLocal();
+  const pos = detectPosition();
+  if (pos) {
+    state.meso = pos.meso;
+    state.semana = pos.semana;
+    const diasSemana = ['dom','lun','mar','mie','jue','vie','sab'];
+    const diaSemana = diasSemana[new Date().getDay()];
+    const diasMeso = MESOCICLOS[pos.meso].dias.map(d => d.key);
+    state.dia = diasMeso.includes(diaSemana) ? diaSemana : diasMeso[0];
+  } else {
+    const saved = localStorage.getItem(uk('forge-position'));
+    if (saved) {
+      try {
+        const p = JSON.parse(saved);
+        if (p.meso && MESOCICLOS[p.meso]) {
+          state.meso = p.meso;
+          state.semana = p.semana || 1;
+          state.dia = p.dia || MESOCICLOS[p.meso].dias[0].key;
+        }
+      } catch(e) {}
+    } else {
+      state.dia = MESOCICLOS[state.meso].dias[0].key;
+    }
+  }
+  const chip = document.getElementById('userChip');
+  if (chip) chip.textContent = state.currentUser;
+  render();
+  setTimeout(() => {
+    const btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
+  }, 0);
+  if (state.githubToken) setTimeout(() => pullFromGithub(), 1000);
 }
 
-render();
-// Apply theme button icon after render
-setTimeout(() => {
-  const btn = document.getElementById('themeBtn');
-  if (btn) btn.textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
-}, 0);
-// Auto-descarga al cargar si hay token
-if (state.githubToken) {
-  setTimeout(() => pullFromGithub(), 1000);
+function selectUser(name) {
+  state.currentUser = name;
+  localStorage.setItem("forge-currentUser", name);
+  document.getElementById("userPicker").style.display = "none";
+  initApp();
+}
+
+function switchUser() {
+  if (!confirm(`Cambiar usuario (actualmente: ${state.currentUser})`)) return;
+  localStorage.removeItem("forge-currentUser");
+  state.currentUser = "";
+  document.getElementById("userPicker").style.display = "flex";
+}
+
+// Arranque
+if (state.currentUser) {
+  document.getElementById("userPicker").style.display = "none";
+  initApp();
 }
 </script>
 <script>
