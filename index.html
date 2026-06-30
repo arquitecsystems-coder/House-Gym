@@ -1509,6 +1509,131 @@ const RMS_REFERENCIA = {
 };
 
 // ============================================================
+// TEST INICIAL — DOLLY
+// ============================================================
+const TEST_DOLLY = {
+  label: "Test inicial — Dolly",
+  tipo: "test",
+  dias: [
+    { key: "sab", label: "Sáb", titulo: "Cadena Anterior — Cuádriceps + Empuje" },
+    { key: "dom", label: "Dom", titulo: "Cadena Posterior — Isquios/Glúteo + Tracción" },
+  ],
+  ejercicios: {
+    sab: [
+      {
+        nombre: "Flexión inclinada (banco)",
+        tipo: "patron_motor",
+        instruccion: "Prueba la variante más difícil que logres con 5 reps técnica limpia: banco alto → banco medio → banco bajo → rodillas en suelo.",
+        registrar: ["variante_lograda", "reps_logradas"],
+        gif_busqueda: "incline push up progression"
+      },
+      {
+        nombre: "Búlgaras con mancuerna",
+        tipo: "rampa_peso",
+        instruccion: "Sube peso progresivamente hasta encontrar el peso de fallo entre 5-8 reps por pierna.",
+        registrar: ["peso_kg", "reps_pierna_derecha", "reps_pierna_izquierda"],
+        gif_busqueda: "bulgarian split squat dumbbell"
+      },
+      {
+        nombre: "Press inclinado con mancuerna (unilateral)",
+        tipo: "rampa_peso",
+        instruccion: "Confirma o supera el dato previo (15kg x 5). Rampa corta para validar techo actual.",
+        baseline_previo: "15kg x 5 (3 series)",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "single arm incline dumbbell press"
+      },
+      {
+        nombre: "Fondos asistidos (soporte de pared)",
+        tipo: "patron_motor",
+        instruccion: "Encuentra el nivel de asistencia mínimo con el que logra 5 reps técnica limpia.",
+        registrar: ["nivel_asistencia", "reps_logradas"],
+        gif_busqueda: "assisted dip band"
+      },
+      {
+        nombre: "Copa a una mano (tríceps)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "single arm overhead tricep extension dumbbell"
+      }
+    ],
+    dom: [
+      {
+        nombre: "Dead hang",
+        tipo: "patron_motor",
+        instruccion: "Tiempo colgada de la barra sin soltar.",
+        baseline_previo: "1 minuto",
+        registrar: ["tiempo_segundos"],
+        gif_busqueda: "dead hang pull up bar"
+      },
+      {
+        nombre: "Negativa de dominada",
+        tipo: "patron_motor",
+        instruccion: "Sube con apoyo o salto, controla la bajada lo más lento posible. Mide segundos de bajada controlada.",
+        registrar: ["segundos_bajada", "reps_logradas"],
+        gif_busqueda: "negative pull up eccentric"
+      },
+      {
+        nombre: "RDL unilateral con mancuerna",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 6-8 reps por pierna.",
+        registrar: ["peso_kg", "reps_pierna_derecha", "reps_pierna_izquierda"],
+        gif_busqueda: "single leg romanian deadlift dumbbell"
+      },
+      {
+        nombre: "Remo unilateral con mancuerna",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "single arm dumbbell row bench"
+      },
+      {
+        nombre: "Curl bíceps con mancuerna",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "dumbbell bicep curl"
+      },
+      {
+        nombre: "Lateral inclinado contra pared",
+        tipo: "rampa_peso",
+        instruccion: "Apoyada contra la pared con inclinación para aumentar tensión en rango medio. Peso con el que controla 10-12 reps técnica limpia.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "leaning lateral raise wall"
+      }
+    ]
+  },
+  escalas_progresion: {
+    flexion: [
+      "Banco alto (manos muy elevadas)",
+      "Banco medio",
+      "Banco bajo",
+      "Rodillas en suelo, manos en suelo",
+      "Flexión completa"
+    ],
+    fondo: [
+      "Asistencia máxima (banda fuerte / apoyo de pies)",
+      "Asistencia media",
+      "Asistencia mínima",
+      "Negativas lentas sin asistencia",
+      "Fondo completo"
+    ]
+  }
+};
+
+const TEST_FIELD_LABELS = {
+  variante_lograda:      "Variante lograda",
+  reps_logradas:         "Reps logradas",
+  peso_kg:               "Peso (kg)",
+  reps:                  "Reps",
+  reps_pierna_derecha:   "Reps pierna der.",
+  reps_pierna_izquierda: "Reps pierna izq.",
+  nivel_asistencia:      "Nivel de asistencia",
+  tiempo_segundos:       "Tiempo (seg)",
+  segundos_bajada:       "Seg bajada excéntrico"
+};
+
+// ============================================================
 // ESTADO
 // ============================================================
 let state = {
@@ -1521,6 +1646,7 @@ let state = {
   githubRepo: "arquitecsystems-coder/House-Gym",
   syncing: false,
   currentUser: localStorage.getItem("forge-currentUser") || "",
+  testDia: "sab",
 };
 
 // Prefija las claves de localStorage con el usuario activo
@@ -1530,7 +1656,7 @@ function uk(key) { return `${state.currentUser}-${key}`; }
 // RENDER PRINCIPAL
 // ============================================================
 function render() {
-  const showMesos = ["session","rms"].includes(state.view);
+  const showMesos = ["session","rms"].includes(state.view) && state.currentUser !== "dolly";
   document.getElementById("mesoTabs").style.display = showMesos ? "flex" : "none";
   if (showMesos) renderMesoTabs();
   const main = document.getElementById("mainContent");
@@ -1576,9 +1702,212 @@ function setMeso(k) {
 }
 
 // ── SESSION VIEW ──
+// ============================================================
+// TEST DOLLY — helpers y render
+// ============================================================
+function getTestDatos() {
+  try { return JSON.parse(localStorage.getItem(uk("test-datos")) || "{}"); }
+  catch(e) { return {}; }
+}
+
+function saveTestDatos(d) {
+  localStorage.setItem(uk("test-datos"), JSON.stringify(d));
+}
+
+function saveTestField(dia, exIdx, campo, valor) {
+  const datos = getTestDatos();
+  if (!datos[dia]) datos[dia] = {};
+  const nombre = TEST_DOLLY.ejercicios[dia][exIdx].nombre;
+  if (!datos[dia][nombre]) datos[dia][nombre] = {};
+  if (valor !== "" && valor !== null) datos[dia][nombre][campo] = valor;
+  else delete datos[dia][nombre][campo];
+
+  // Actualizar visual de la card sin re-renderizar
+  const ej = TEST_DOLLY.ejercicios[dia][exIdx];
+  const r = datos[dia][nombre];
+  const ejDone = r && ej.registrar.every(c => r[c]);
+  const card = document.getElementById(`test-card-${dia}-${exIdx}`);
+  if (card) {
+    card.style.borderColor = ejDone ? "var(--ok)" : "var(--border)";
+    const badge = card.querySelector(".test-badge");
+    if (badge) badge.textContent = ejDone ? "✓" : "";
+  }
+
+  // Progreso del día
+  const ejercicios = TEST_DOLLY.ejercicios[dia];
+  const done = ejercicios.filter((e, i2) => {
+    const r2 = datos[dia]?.[e.nombre];
+    return r2 && e.registrar.every(c => r2[c]);
+  }).length;
+  const progEl = document.getElementById("test-progress");
+  if (progEl) progEl.textContent = `${done}/${ejercicios.length} completados`;
+
+  // Actualizar chips de días
+  TEST_DOLLY.dias.forEach(d => {
+    const total = TEST_DOLLY.ejercicios[d.key].length;
+    const doneDia = TEST_DOLLY.ejercicios[d.key].filter(e => {
+      const r3 = datos[d.key]?.[e.nombre];
+      return r3 && e.registrar.every(c => r3[c]);
+    }).length;
+    const chip = document.getElementById(`test-day-chip-${d.key}`);
+    if (chip) chip.textContent = `${doneDia}/${total}`;
+  });
+
+  // Verificar completado total
+  let allDone = true;
+  for (const d of ["sab", "dom"]) {
+    for (const e of TEST_DOLLY.ejercicios[d]) {
+      const r4 = datos[d]?.[e.nombre];
+      if (!r4 || e.registrar.some(c => !r4[c])) { allDone = false; break; }
+    }
+    if (!allDone) break;
+  }
+  if (allDone && !datos.completado) {
+    datos.completado = true;
+    showToast("Test completado — resultados guardados ✓", "ok");
+    const banner = document.getElementById("test-completado-banner");
+    if (banner) banner.style.display = "block";
+  }
+
+  saveTestDatos(datos);
+  queueSync();
+}
+
+async function loadExerciseGif(elementId, searchTerm) {
+  try {
+    const r = await fetch(
+      `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&key=LIVDSRZULELA&limit=1&media_filter=minimal&contentfilter=high`,
+      { cache: "force-cache" }
+    );
+    const data = await r.json();
+    const gifUrl = data.results?.[0]?.media?.[0]?.tinygif?.url;
+    if (gifUrl) {
+      const el = document.getElementById(elementId);
+      if (el) { el.src = gifUrl; el.style.display = "block"; }
+    }
+  } catch(e) {}
+}
+
+function setTestDia(dia) {
+  state.testDia = dia;
+  renderTestDolly(document.getElementById("mainContent"));
+}
+
+function renderTestDolly(main) {
+  const datos = getTestDatos();
+  const dia = state.testDia || "sab";
+  const ejercicios = TEST_DOLLY.ejercicios[dia];
+  const doneDia = ejercicios.filter(ej => {
+    const r = datos[dia]?.[ej.nombre];
+    return r && ej.registrar.every(c => r[c]);
+  }).length;
+
+  let html = `<div style="padding:16px;max-width:600px;margin:0 auto">`;
+  html += `<div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px">Test inicial</div>`;
+
+  // Selector de días
+  html += `<div style="display:flex;gap:8px;margin-bottom:16px">`;
+  TEST_DOLLY.dias.forEach(d => {
+    const active = d.key === dia;
+    const dDone = TEST_DOLLY.ejercicios[d.key].filter(ej => {
+      const r = datos[d.key]?.[ej.nombre];
+      return r && ej.registrar.every(c => r[c]);
+    }).length;
+    const dTotal = TEST_DOLLY.ejercicios[d.key].length;
+    html += `<button onclick="setTestDia('${d.key}')" style="flex:1;padding:10px 8px;border:1px solid ${active ? "var(--accent)" : "var(--border)"};border-radius:var(--radius);background:${active ? "var(--accent-bg)" : "none"};color:${active ? "var(--accent)" : "var(--muted)"};font-family:var(--font-mono);font-size:12px;cursor:pointer;line-height:1.4">
+      <div style="font-weight:${active ? 700 : 400}">${d.label} — ${d.titulo.split("—")[0].trim()}</div>
+      <div id="test-day-chip-${d.key}" style="font-size:10px;margin-top:2px">${dDone}/${dTotal}</div>
+    </button>`;
+  });
+  html += `</div>`;
+
+  // Título y progreso
+  html += `<div style="font-size:14px;font-weight:700;margin-bottom:2px">${TEST_DOLLY.dias.find(d => d.key === dia).titulo}</div>`;
+  html += `<div id="test-progress" style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:14px">${doneDia}/${ejercicios.length} completados</div>`;
+
+  if (datos.completado) {
+    html += `<div id="test-completado-banner" style="background:var(--ok-bg);border:1px solid var(--ok);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-family:var(--font-mono);font-size:11px;color:var(--ok)">Test completo — resultados listos para diseñar el mesociclo</div>`;
+  } else {
+    html += `<div id="test-completado-banner" style="display:none;background:var(--ok-bg);border:1px solid var(--ok);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-family:var(--font-mono);font-size:11px;color:var(--ok)">Test completo — resultados listos para diseñar el mesociclo</div>`;
+  }
+
+  // Cards de ejercicios
+  ejercicios.forEach((ej, i) => {
+    const r = datos[dia]?.[ej.nombre] || {};
+    const ejDone = ej.registrar.every(c => r[c]);
+    const gifId = `gif-${dia}-${i}`;
+
+    html += `<div id="test-card-${dia}-${i}" style="background:var(--card);border:1px solid ${ejDone ? "var(--ok)" : "var(--border)"};border-radius:var(--radius);margin-bottom:12px;overflow:hidden">`;
+
+    // Header
+    html += `<div style="padding:12px 14px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-weight:600;font-size:14px">${ej.nombre}</div>
+        <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);margin-top:2px">${ej.tipo === "rampa_peso" ? "rampa de peso" : "patrón motor"}</div>
+      </div>
+      <div class="test-badge" style="font-family:var(--font-mono);font-size:18px;color:var(--ok);min-width:24px;text-align:right">${ejDone ? "✓" : ""}</div>
+    </div>`;
+
+    // GIF (se carga async)
+    html += `<div style="text-align:center;padding:0 14px 8px">
+      <img id="${gifId}" src="" alt="" style="display:none;max-width:100%;max-height:180px;border-radius:6px;object-fit:cover">
+    </div>`;
+
+    // Instrucción
+    html += `<div style="padding:0 14px 10px;font-size:13px;color:var(--text);line-height:1.5">${ej.instruccion}</div>`;
+
+    // Baseline
+    if (ej.baseline_previo) {
+      html += `<div style="margin:0 14px 10px;padding:6px 10px;background:var(--accent-bg);border-radius:6px;font-family:var(--font-mono);font-size:11px;color:var(--accent)">Referencia previa: ${ej.baseline_previo}</div>`;
+    }
+
+    // Inputs
+    html += `<div style="padding:0 14px 14px;display:flex;flex-wrap:wrap;gap:10px">`;
+    ej.registrar.forEach(campo => {
+      const label = TEST_FIELD_LABELS[campo] || campo;
+      const val = r[campo] || "";
+      if (campo === "variante_lograda") {
+        html += `<div style="flex:1;min-width:160px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);margin-bottom:4px">${label}</div>
+          <select class="cut-input" onchange="saveTestField('${dia}',${i},'${campo}',this.value)" style="width:100%;padding:7px 8px">
+            <option value="">Seleccionar...</option>
+            ${TEST_DOLLY.escalas_progresion.flexion.map(v => `<option value="${v}" ${val === v ? "selected" : ""}>${v}</option>`).join("")}
+          </select>
+        </div>`;
+      } else if (campo === "nivel_asistencia") {
+        html += `<div style="flex:1;min-width:160px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);margin-bottom:4px">${label}</div>
+          <select class="cut-input" onchange="saveTestField('${dia}',${i},'${campo}',this.value)" style="width:100%;padding:7px 8px">
+            <option value="">Seleccionar...</option>
+            ${TEST_DOLLY.escalas_progresion.fondo.map(v => `<option value="${v}" ${val === v ? "selected" : ""}>${v}</option>`).join("")}
+          </select>
+        </div>`;
+      } else {
+        const isNum = ["peso_kg","reps","reps_pierna_derecha","reps_pierna_izquierda","tiempo_segundos","segundos_bajada","reps_logradas"].includes(campo);
+        const step = campo === "peso_kg" ? "0.5" : "1";
+        html += `<div style="flex:1;min-width:90px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);margin-bottom:4px">${label}</div>
+          <input class="cut-input" type="${isNum ? "number" : "text"}" step="${step}" value="${val}" placeholder="${campo === "tiempo_segundos" ? "seg" : isNum ? "0" : ""}"
+            oninput="saveTestField('${dia}',${i},'${campo}',this.value)" style="width:100%;text-align:center;padding:7px 8px">
+        </div>`;
+      }
+    });
+    html += `</div>`;
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+  main.innerHTML = html;
+
+  // Cargar GIFs de forma asíncrona
+  ejercicios.forEach((ej, i) => {
+    loadExerciseGif(`gif-${dia}-${i}`, ej.gif_busqueda);
+  });
+}
+
 function renderSession(main) {
   if (state.currentUser === 'dolly') {
-    main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción</div>';
+    renderTestDolly(main);
     return;
   }
   const meso = MESOCICLOS[state.meso];
@@ -3117,6 +3446,7 @@ async function pushToGithub() {
       registros: state.registros,
       rehab: JSON.parse(localStorage.getItem(uk("rehab-datos")) || "{}"),
       cut: JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}"),
+      test: JSON.parse(localStorage.getItem(uk("test-datos")) || "{}"),
       timestamp: new Date().toISOString()
     };
 
@@ -3186,6 +3516,10 @@ async function pullFromGithub() {
     if (data.cut && Object.keys(data.cut).length > 0) {
       data.cut._syncTs = data.timestamp;
       localStorage.setItem(uk("cut-datos"), JSON.stringify(data.cut));
+    }
+
+    if (data.test && Object.keys(data.test).length > 0) {
+      localStorage.setItem(uk("test-datos"), JSON.stringify(data.test));
     }
 
     showToast("Datos descargados ✓", "ok");
