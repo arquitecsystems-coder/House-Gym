@@ -3155,9 +3155,14 @@ async function pushToGithub() {
 async function pullFromGithub() {
   if (!state.githubToken) return;
   try {
-    const url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data-${state.currentUser}.json?t=${Date.now()}`;
-    const r = await fetch(url, { cache: "no-store" });
-    if (!r.ok) { showToast("Error al descargar: " + r.status, "err"); return; }
+    let url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data-${state.currentUser}.json?t=${Date.now()}`;
+    let r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) {
+      // Fallback a data.json para migración desde versión single-usuario
+      url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`;
+      r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) { showToast("Sin datos remotos aún", "ok"); return; }
+    }
     const data = await r.json();
 
     if (data.registros) {
@@ -3372,7 +3377,18 @@ setDia = function(d) { _setDia(d); savePosition(); };
 const _setMeso = setMeso;
 setMeso = function(k) { _setMeso(k); savePosition(); };
 
+function migrateOldData() {
+  const keys = ['hgRegistros', 'rehab-datos', 'cut-datos', 'forge-position'];
+  keys.forEach(key => {
+    const newKey = uk(key);
+    if (!localStorage.getItem(newKey) && localStorage.getItem(key)) {
+      localStorage.setItem(newKey, localStorage.getItem(key));
+    }
+  });
+}
+
 function initApp() {
+  migrateOldData();
   loadLocal();
   const pos = detectPosition();
   if (pos) {
