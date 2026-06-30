@@ -3790,6 +3790,30 @@ function migrateOldData() {
       localStorage.setItem(newKey, localStorage.getItem(key));
     }
   });
+
+  // Reparación única: si la clave nueva ya existía (vacía o parcial) cuando
+  // corrió la copia de arriba, los registros viejos de cut-datos quedaron
+  // huérfanos bajo la clave legacy y nunca se migraron. Mergea por campo
+  // sin pisar nada de lo que ya esté en la clave nueva.
+  const repairKey = 'forge-cut-legacy-merge-v1-' + state.currentUser;
+  if (!localStorage.getItem(repairKey)) {
+    const legacyCutRaw = localStorage.getItem('cut-datos');
+    if (legacyCutRaw) {
+      try {
+        const legacy = JSON.parse(legacyCutRaw);
+        const newKey = uk('cut-datos');
+        const current = JSON.parse(localStorage.getItem(newKey) || '{}');
+        ['registrosDiarios', 'registrosSemanales', 'registrosMensuales'].forEach(field => {
+          if (legacy[field] && Object.keys(legacy[field]).length) {
+            current[field] = Object.assign({}, legacy[field], current[field] || {});
+          }
+        });
+        if (!current.setup && legacy.setup) current.setup = legacy.setup;
+        localStorage.setItem(newKey, JSON.stringify(current));
+      } catch(e) {}
+    }
+    localStorage.setItem(repairKey, '1');
+  }
 }
 
 function initApp() {
