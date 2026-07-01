@@ -4044,19 +4044,13 @@ function migrateOldData() {
 }
 
 function initApp() {
-  // Descontaminar usuarios nuevos que recibieron datos del usuario original
-  // vía el fallback a data.json en pullFromGithub (bug ya corregido).
-  // Corre incondicionalmente (no depende de claves legacy como migrateOldData).
-  const _origUser = localStorage.getItem('forge-original-user');
-  if (_origUser && state.currentUser && _origUser !== state.currentUser) {
-    const _decontamKey = 'forge-cross-user-decontam-v1-' + state.currentUser;
-    if (!localStorage.getItem(_decontamKey)) {
-      localStorage.removeItem(uk('cut-datos'));
-      // Bloquear también el pull de cut hasta que este usuario haga su propio setup,
-      // porque data-dolly.json en GitHub también tiene datos contaminados.
-      localStorage.setItem('forge-cut-pull-blocked-' + state.currentUser, '1');
-      localStorage.setItem(_decontamKey, '1');
-    }
+  // Wipe único de cut-datos para dolly: la app era monousuario y sus datos
+  // se mezclaron con los de samuel. Se limpia una sola vez y se bloquea el
+  // pull de cut hasta que ella haga su propio setup.
+  if (state.currentUser === 'dolly' && !localStorage.getItem('forge-dolly-cut-wipe-v1')) {
+    localStorage.removeItem(uk('cut-datos'));
+    localStorage.setItem('forge-cut-pull-blocked-dolly', '1');
+    localStorage.setItem('forge-dolly-cut-wipe-v1', '1');
   }
   migrateOldData();
   loadLocal();
