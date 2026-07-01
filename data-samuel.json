@@ -287,7 +287,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-01T16:59:26.448Z",
+    "_syncTs": "2026-07-01T19:26:54.112Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -442,12 +442,26 @@
             "tiempo": 45,
             "completado": true
           }
+        ],
+        "cuadrupedia": [
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
         ]
       }
     }
   },
   "cut": {
-    "_syncTs": "2026-07-01T16:59:26.448Z",
+    "_syncTs": "2026-07-01T19:26:54.112Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -592,5 +606,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T19:26:54.112Z"
+  "timestamp": "2026-07-01T19:55:04.147Z"
 }
