@@ -259,6 +259,14 @@
     "M4-S6-mie-Sentadilla Isométrica-3": {
       "checked": true,
       "timestamp": "2026-07-01T16:13:51.071Z"
+    },
+    "M4-S6-mie-Sentadilla Libre Técnica-1": {
+      "checked": true,
+      "timestamp": "2026-07-01T16:21:55.332Z"
+    },
+    "M4-S6-mie-Sentadilla Libre Técnica-2": {
+      "checked": true,
+      "timestamp": "2026-07-01T16:21:55.897Z"
     }
   },
   "rehab": {
@@ -542,5 +550,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T16:13:54.092Z"
+  "timestamp": "2026-07-01T16:21:58.906Z"
 }
