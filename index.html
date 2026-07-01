@@ -4038,6 +4038,17 @@ function migrateOldData() {
 }
 
 function initApp() {
+  // Descontaminar usuarios nuevos que recibieron datos del usuario original
+  // vía el fallback a data.json en pullFromGithub (bug ya corregido).
+  // Corre incondicionalmente (no depende de claves legacy como migrateOldData).
+  const _origUser = localStorage.getItem('forge-original-user');
+  if (_origUser && state.currentUser && _origUser !== state.currentUser) {
+    const _decontamKey = 'forge-cross-user-decontam-v1-' + state.currentUser;
+    if (!localStorage.getItem(_decontamKey)) {
+      localStorage.removeItem(uk('cut-datos'));
+      localStorage.setItem(_decontamKey, '1');
+    }
+  }
   migrateOldData();
   loadLocal();
   const pos = detectPosition();
