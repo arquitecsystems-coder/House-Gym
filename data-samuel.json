@@ -277,6 +277,13 @@
       "timestamp": "2026-07-01T16:36:37.893Z",
       "peso": "45",
       "reps": "6"
+    },
+    "M4-S6-mie-Rumano (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-07-01T16:59:23.437Z",
+      "reps": "6",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -560,5 +567,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T16:36:40.891Z"
+  "timestamp": "2026-07-01T16:59:26.448Z"
 }
