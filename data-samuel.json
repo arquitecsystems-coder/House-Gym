@@ -431,16 +431,16 @@
       "2026-07-01": {
         "rodilla_pared": [
           {
-            "tiempo": null,
+            "tiempo": 45,
             "completado": true
           },
           {
-            "tiempo": null,
-            "completado": false
+            "tiempo": 45,
+            "completado": true
           },
           {
-            "tiempo": null,
-            "completado": false
+            "tiempo": 45,
+            "completado": true
           }
         ]
       }
@@ -592,5 +592,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T19:26:40.523Z"
+  "timestamp": "2026-07-01T19:26:54.112Z"
 }
