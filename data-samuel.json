@@ -271,6 +271,11 @@
     "M4-S6-mie-Sentadilla Libre Técnica-3": {
       "checked": true,
       "timestamp": "2026-07-01T16:25:31.829Z"
+    },
+    "M4-S6-mie-Rumano (barra)-1": {
+      "checked": true,
+      "timestamp": "2026-07-01T16:36:36.523Z",
+      "peso": "45"
     }
   },
   "rehab": {
@@ -554,5 +559,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T16:25:34.840Z"
+  "timestamp": "2026-07-01T16:36:35.593Z"
 }
