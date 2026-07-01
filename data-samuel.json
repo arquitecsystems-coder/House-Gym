@@ -267,6 +267,10 @@
     "M4-S6-mie-Sentadilla Libre Técnica-2": {
       "checked": true,
       "timestamp": "2026-07-01T16:21:55.897Z"
+    },
+    "M4-S6-mie-Sentadilla Libre Técnica-3": {
+      "checked": true,
+      "timestamp": "2026-07-01T16:25:31.829Z"
     }
   },
   "rehab": {
@@ -550,5 +554,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T16:21:58.906Z"
+  "timestamp": "2026-07-01T16:25:34.840Z"
 }
