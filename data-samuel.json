@@ -251,10 +251,14 @@
     "M4-S6-mie-Sentadilla Isométrica-1": {
       "checked": true,
       "timestamp": "2026-07-01T16:06:18.581Z"
+    },
+    "M4-S6-mie-Sentadilla Isométrica-2": {
+      "checked": true,
+      "timestamp": "2026-07-01T16:09:48.704Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-06-30T22:11:29.742Z",
+    "_syncTs": "2026-07-01T16:06:21.601Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -398,7 +402,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-06-30T22:11:29.742Z",
+    "_syncTs": "2026-07-01T16:06:21.601Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -534,5 +538,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T16:06:21.601Z"
+  "timestamp": "2026-07-01T16:09:51.712Z"
 }
