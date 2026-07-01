@@ -1579,7 +1579,7 @@ const TEST_DOLLY = {
         tipo: "patron_motor",
         instruccion: "Súbete con ayuda de un banco o salto hasta la posición alta. Baja lo más lento que puedas (cuenta 4-5 segundos). No es necesario subir sola todavía — el objetivo es controlar la bajada.",
         registrar: ["segundos_bajada", "reps_logradas"],
-        gif_busqueda: "negative dip eccentric slow"
+        gif_busqueda: "negative dips"
       },
       {
         nombre: "Copa a una mano (tríceps)",
@@ -1603,14 +1603,14 @@ const TEST_DOLLY = {
         tipo: "patron_motor",
         instruccion: "Sube con apoyo o salto, controla la bajada lo más lento posible. Mide segundos de bajada controlada.",
         registrar: ["segundos_bajada", "reps_logradas"],
-        gif_busqueda: "negative pull up slow lower"
+        gif_busqueda: "negative pull up"
       },
       {
         nombre: "RDL unilateral con mancuerna",
         tipo: "rampa_peso",
         instruccion: "Rampa hasta fallo en 6-8 reps por pierna.",
         registrar: ["peso_kg", "reps_pierna_derecha", "reps_pierna_izquierda"],
-        gif_busqueda: "single leg rdl dumbbell"
+        gif_busqueda: "single leg rdl"
       },
       {
         nombre: "Remo unilateral con mancuerna",
@@ -1631,7 +1631,7 @@ const TEST_DOLLY = {
         tipo: "rampa_peso",
         instruccion: "Apoyada contra la pared con inclinación para aumentar tensión en rango medio. Peso con el que controla 10-12 reps técnica limpia.",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "leaning lateral raise dumbbell"
+        gif_busqueda: "leaning lateral raise"
       }
     ]
   },
@@ -3725,7 +3725,12 @@ async function pullFromGithub() {
     let url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data-${state.currentUser}.json?t=${Date.now()}`;
     let r = await fetch(url, { cache: "no-store" });
     if (!r.ok) {
-      // Fallback a data.json para migración desde versión single-usuario
+      // Fallback a data.json solo para el usuario original (migración single→multi usuario).
+      // Otros usuarios nunca deben heredar data.json o recibirán datos del usuario original.
+      const originalUser = localStorage.getItem('forge-original-user');
+      if (state.currentUser !== originalUser) {
+        showToast("Sin datos remotos aún para " + state.currentUser, "ok"); return;
+      }
       url = `https://raw.githubusercontent.com/${state.githubRepo}/main/data.json?t=${Date.now()}`;
       r = await fetch(url, { cache: "no-store" });
       if (!r.ok) { showToast("Sin datos remotos aún", "ok"); return; }
