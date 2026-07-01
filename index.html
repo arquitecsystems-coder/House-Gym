@@ -2950,6 +2950,9 @@ function wizardConfirm() {
   delete datos.wizardPartial;
   delete datos.wizardResumen;
   saveCutDatos(datos);
+  // Dolly confirmó su propio setup: desbloquear pulls futuros de cut
+  localStorage.removeItem('forge-cut-pull-blocked-' + state.currentUser);
+  queueSync();
   showToast("Cutting Phase iniciada ✓", "ok");
   renderCut(document.getElementById('mainContent'));
 }
@@ -3756,16 +3759,19 @@ async function pullFromGithub() {
     }
 
     if (data.cut && Object.keys(data.cut).length > 0) {
-      data.cut._syncTs = data.timestamp;
-      // Merge por campo en vez de pisar todo: une registrosDiarios/Semanales/Mensuales
-      // de remoto y local para no perder entradas que el remoto aún no tiene.
-      const localCut = JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}");
-      const mergedCut = Object.assign({}, data.cut);
-      ['registrosDiarios', 'registrosSemanales', 'registrosMensuales'].forEach(field => {
-        mergedCut[field] = Object.assign({}, localCut[field] || {}, data.cut[field] || {});
-      });
-      if (!mergedCut.setup && localCut.setup) mergedCut.setup = localCut.setup;
-      localStorage.setItem(uk("cut-datos"), JSON.stringify(mergedCut));
+      // Si el pull de cut está bloqueado para este usuario (decontaminación activa),
+      // no cargar — el archivo remoto puede tener datos de otro usuario.
+      const _cutBlocked = localStorage.getItem('forge-cut-pull-blocked-' + state.currentUser);
+      if (!_cutBlocked) {
+        data.cut._syncTs = data.timestamp;
+        const localCut = JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}");
+        const mergedCut = Object.assign({}, data.cut);
+        ['registrosDiarios', 'registrosSemanales', 'registrosMensuales'].forEach(field => {
+          mergedCut[field] = Object.assign({}, localCut[field] || {}, data.cut[field] || {});
+        });
+        if (!mergedCut.setup && localCut.setup) mergedCut.setup = localCut.setup;
+        localStorage.setItem(uk("cut-datos"), JSON.stringify(mergedCut));
+      }
     }
 
     if (data.test && Object.keys(data.test).length > 0) {
@@ -4046,6 +4052,9 @@ function initApp() {
     const _decontamKey = 'forge-cross-user-decontam-v1-' + state.currentUser;
     if (!localStorage.getItem(_decontamKey)) {
       localStorage.removeItem(uk('cut-datos'));
+      // Bloquear también el pull de cut hasta que este usuario haga su propio setup,
+      // porque data-dolly.json en GitHub también tiene datos contaminados.
+      localStorage.setItem('forge-cut-pull-blocked-' + state.currentUser, '1');
       localStorage.setItem(_decontamKey, '1');
     }
   }
