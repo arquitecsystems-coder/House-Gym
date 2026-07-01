@@ -445,8 +445,8 @@
         ],
         "cuadrupedia": [
           {
-            "tiempo": null,
-            "completado": false
+            "tiempo": 30,
+            "completado": true
           },
           {
             "tiempo": null,
@@ -606,5 +606,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T19:55:04.147Z"
+  "timestamp": "2026-07-01T19:55:20.730Z"
 }
