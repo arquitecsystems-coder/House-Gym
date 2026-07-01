@@ -1572,21 +1572,21 @@ const TEST_DOLLY = {
         instruccion: "Confirma o supera el dato previo (15kg x 5). Rampa corta para validar techo actual.",
         baseline_previo: "15kg x 5 (3 series)",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "single arm incline dumbbell press"
+        gif_busqueda: "one arm incline dumbbell press"
       },
       {
-        nombre: "Fondos asistidos (soporte de pared)",
+        nombre: "Negativas de fondo (excéntrico)",
         tipo: "patron_motor",
-        instruccion: "Encuentra el nivel de asistencia mínimo con el que logra 5 reps técnica limpia.",
-        registrar: ["nivel_asistencia", "reps_logradas"],
-        gif_busqueda: "assisted dip band"
+        instruccion: "Súbete con ayuda de un banco o salto hasta la posición alta. Baja lo más lento que puedas (cuenta 4-5 segundos). No es necesario subir sola todavía — el objetivo es controlar la bajada.",
+        registrar: ["segundos_bajada", "reps_logradas"],
+        gif_busqueda: "negative dip eccentric slow"
       },
       {
         nombre: "Copa a una mano (tríceps)",
         tipo: "rampa_peso",
         instruccion: "Rampa hasta fallo en 8-10 reps.",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "single arm overhead tricep extension dumbbell"
+        gif_busqueda: "single arm overhead tricep extension"
       }
     ],
     dom: [
@@ -1603,21 +1603,21 @@ const TEST_DOLLY = {
         tipo: "patron_motor",
         instruccion: "Sube con apoyo o salto, controla la bajada lo más lento posible. Mide segundos de bajada controlada.",
         registrar: ["segundos_bajada", "reps_logradas"],
-        gif_busqueda: "negative pull up eccentric"
+        gif_busqueda: "negative pull up slow lower"
       },
       {
         nombre: "RDL unilateral con mancuerna",
         tipo: "rampa_peso",
         instruccion: "Rampa hasta fallo en 6-8 reps por pierna.",
         registrar: ["peso_kg", "reps_pierna_derecha", "reps_pierna_izquierda"],
-        gif_busqueda: "single leg romanian deadlift dumbbell"
+        gif_busqueda: "single leg rdl dumbbell"
       },
       {
         nombre: "Remo unilateral con mancuerna",
         tipo: "rampa_peso",
         instruccion: "Rampa hasta fallo en 8-10 reps.",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "single arm dumbbell row bench"
+        gif_busqueda: "one arm dumbbell row"
       },
       {
         nombre: "Curl bíceps con mancuerna",
@@ -1631,7 +1631,7 @@ const TEST_DOLLY = {
         tipo: "rampa_peso",
         instruccion: "Apoyada contra la pared con inclinación para aumentar tensión en rango medio. Peso con el que controla 10-12 reps técnica limpia.",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "leaning lateral raise wall"
+        gif_busqueda: "leaning lateral raise dumbbell"
       }
     ]
   },
