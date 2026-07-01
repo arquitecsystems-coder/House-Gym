@@ -456,7 +456,8 @@
             "tiempo": null,
             "completado": false
           }
-        ]
+        ],
+        "nota": "Avanzamos en rango, bastante dolor posterior "
       }
     }
   },
@@ -606,5 +607,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T20:51:38.141Z"
+  "timestamp": "2026-07-01T20:51:58.345Z"
 }
