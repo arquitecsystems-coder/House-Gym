@@ -3979,6 +3979,13 @@ function migrateOldData() {
       localStorage.removeItem(uk('rehab-datos'));
       localStorage.setItem(cleanKey, '1');
     }
+    // Segunda pasada: descontaminar cut-datos que pudo llegar vía fallback a data.json
+    // (bug ya corregido en pullFromGithub). Corre una sola vez por usuario nuevo.
+    const decontamKey = 'forge-cross-user-decontam-v1-' + state.currentUser;
+    if (!localStorage.getItem(decontamKey)) {
+      localStorage.removeItem(uk('cut-datos'));
+      localStorage.setItem(decontamKey, '1');
+    }
     return; // Nunca migrar datos del usuario original a usuarios nuevos
   }
 
