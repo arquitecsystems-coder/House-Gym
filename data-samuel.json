@@ -287,7 +287,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-01T16:06:21.601Z",
+    "_syncTs": "2026-07-01T16:59:26.448Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -427,11 +427,27 @@
             "completado": false
           }
         ]
+      },
+      "2026-07-01": {
+        "rodilla_pared": [
+          {
+            "tiempo": null,
+            "completado": true
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
+        ]
       }
     }
   },
   "cut": {
-    "_syncTs": "2026-07-01T16:06:21.601Z",
+    "_syncTs": "2026-07-01T16:59:26.448Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -562,10 +578,19 @@
       ],
       "fechaInicio": "2026-06-24"
     },
-    "registrosDiarios": {},
-    "registrosSemanales": {},
+    "registrosDiarios": {
+      "2026-07-01": {
+        "ayunas": 76.9,
+        "noche": null
+      }
+    },
+    "registrosSemanales": {
+      "S2": {
+        "promAyunas": 76.9
+      }
+    },
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T16:59:26.448Z"
+  "timestamp": "2026-07-01T19:26:40.523Z"
 }
