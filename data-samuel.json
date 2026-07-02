@@ -287,8 +287,15 @@
     },
     "M4-S6-jue-Press Inclinado (barra)-1": {
       "peso": "35",
-      "timestamp": "2026-07-02T20:42:13.432Z",
-      "reps": "10"
+      "timestamp": "2026-07-02T20:49:36.667Z",
+      "reps": "10",
+      "checked": true
+    },
+    "M4-S6-jue-Press Inclinado (barra)-2": {
+      "peso": "35",
+      "timestamp": "2026-07-02T20:49:36.984Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -612,5 +619,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T20:42:16.434Z"
+  "timestamp": "2026-07-02T20:49:39.992Z"
 }
