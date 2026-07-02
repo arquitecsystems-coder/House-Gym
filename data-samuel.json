@@ -284,10 +284,14 @@
       "reps": "6",
       "rir": "0",
       "checked": true
+    },
+    "M4-S6-jue-Press Inclinado (barra)-1": {
+      "peso": "35",
+      "timestamp": "2026-07-02T20:42:09.178Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-01T19:55:20.730Z",
+    "_syncTs": "2026-07-01T20:51:58.345Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -462,7 +466,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-01T19:55:20.730Z",
+    "_syncTs": "2026-07-01T20:51:58.345Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -607,5 +611,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-01T20:51:58.345Z"
+  "timestamp": "2026-07-02T20:42:12.181Z"
 }
