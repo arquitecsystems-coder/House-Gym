@@ -526,7 +526,7 @@
       "2026-07-02": {
         "equilibrio": [
           {
-            "tiempo": null,
+            "tiempo": 30,
             "completado": true
           },
           {
@@ -683,5 +683,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T21:24:57.656Z"
+  "timestamp": "2026-07-02T21:25:01.846Z"
 }
