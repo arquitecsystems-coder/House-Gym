@@ -314,6 +314,12 @@
       "timestamp": "2026-07-02T21:05:17.327Z",
       "rir": "1",
       "checked": true
+    },
+    "M4-S6-jue-Deficit Push-ups (DB)-3": {
+      "reps": "6",
+      "timestamp": "2026-07-02T21:14:46.276Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -637,5 +643,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T21:05:20.334Z"
+  "timestamp": "2026-07-02T21:14:49.278Z"
 }
