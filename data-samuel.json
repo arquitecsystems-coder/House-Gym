@@ -320,6 +320,12 @@
       "timestamp": "2026-07-02T21:14:46.276Z",
       "rir": "1",
       "checked": true
+    },
+    "M4-S6-jue-Laterales (DB)-1": {
+      "reps": "7",
+      "timestamp": "2026-07-02T21:14:54.611Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -643,5 +649,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T21:14:49.278Z"
+  "timestamp": "2026-07-02T21:14:57.615Z"
 }
