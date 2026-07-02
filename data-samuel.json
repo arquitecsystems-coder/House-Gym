@@ -522,6 +522,18 @@
           }
         ],
         "nota": "Avanzamos en rango, bastante dolor posterior "
+      },
+      "2026-07-02": {
+        "equilibrio": [
+          {
+            "tiempo": null,
+            "completado": true
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
+        ]
       }
     }
   },
@@ -671,5 +683,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T21:24:48.699Z"
+  "timestamp": "2026-07-02T21:24:57.656Z"
 }
