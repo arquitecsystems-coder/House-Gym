@@ -344,6 +344,10 @@
       "timestamp": "2026-07-02T21:24:05.258Z",
       "reps": "10",
       "checked": true
+    },
+    "nota-sesion-M4-S6-jue": {
+      "nota": "Después del primer ejercicio no se sintió como una semana descarga ",
+      "timestamp": "2026-07-02T21:24:45.698Z"
     }
   },
   "rehab": {
@@ -667,5 +671,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T21:24:08.266Z"
+  "timestamp": "2026-07-02T21:24:48.699Z"
 }
