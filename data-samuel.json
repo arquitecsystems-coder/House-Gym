@@ -287,7 +287,8 @@
     },
     "M4-S6-jue-Press Inclinado (barra)-1": {
       "peso": "35",
-      "timestamp": "2026-07-02T20:42:09.178Z"
+      "timestamp": "2026-07-02T20:42:13.432Z",
+      "reps": "10"
     }
   },
   "rehab": {
@@ -611,5 +612,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T20:42:12.181Z"
+  "timestamp": "2026-07-02T20:42:16.434Z"
 }
