@@ -622,8 +622,8 @@
             "completado": true
           },
           {
-            "tiempo": null,
-            "completado": false
+            "tiempo": 120,
+            "completado": true
           },
           {
             "tiempo": null,
@@ -783,5 +783,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-03T19:52:43.840Z"
+  "timestamp": "2026-07-03T19:56:36.805Z"
 }
