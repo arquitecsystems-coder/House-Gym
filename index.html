@@ -1572,21 +1572,21 @@ const TEST_DOLLY = {
         instruccion: "Confirma o supera el dato previo (15kg x 5). Rampa corta para validar techo actual.",
         baseline_previo: "15kg x 5 (3 series)",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "one arm incline dumbbell press"
+        gif_busqueda: "https://arquitecsystems-coder.github.io/House-Gym/gif-press-unilateral.gif"
       },
       {
         nombre: "Negativas de fondo (excéntrico)",
         tipo: "patron_motor",
         instruccion: "Súbete con ayuda de un banco o salto hasta la posición alta. Baja lo más lento que puedas (cuenta 4-5 segundos). No es necesario subir sola todavía — el objetivo es controlar la bajada.",
         registrar: ["segundos_bajada", "reps_logradas"],
-        gif_busqueda: "negative dips"
+        gif_busqueda: "https://arquitecsystems-coder.github.io/House-Gym/gif-fondos-negativos.gif"
       },
       {
         nombre: "Copa a una mano (tríceps)",
         tipo: "rampa_peso",
         instruccion: "Rampa hasta fallo en 8-10 reps.",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "single arm overhead tricep extension"
+        gif_busqueda: "https://arquitecsystems-coder.github.io/House-Gym/gif-copa-triceps.gif"
       }
     ],
     dom: [
@@ -1807,12 +1807,17 @@ function saveTestField(dia, exIdx, campo, valor) {
 
 async function loadExerciseGif(elementId, searchTerm) {
   try {
-    const r = await fetch(
-      `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&key=LIVDSRZULELA&limit=1&media_filter=minimal&contentfilter=high`,
-      { cache: "force-cache" }
-    );
-    const data = await r.json();
-    const gifUrl = data.results?.[0]?.media?.[0]?.tinygif?.url;
+    let gifUrl;
+    if (searchTerm.startsWith('https://')) {
+      gifUrl = searchTerm;
+    } else {
+      const r = await fetch(
+        `https://api.tenor.com/v1/search?q=${encodeURIComponent(searchTerm)}&key=LIVDSRZULELA&limit=1&media_filter=minimal&contentfilter=high`,
+        { cache: "force-cache" }
+      );
+      const data = await r.json();
+      gifUrl = data.results?.[0]?.media?.[0]?.tinygif?.url;
+    }
     if (gifUrl) {
       const el = document.getElementById(elementId);
       if (el) { el.src = gifUrl; el.style.display = "block"; }
