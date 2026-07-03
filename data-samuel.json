@@ -404,6 +404,20 @@
       "reps": "10",
       "rir": "2",
       "checked": true
+    },
+    "M4-S6-vie-Press Francés (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-07-03T19:47:09.954Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
+    },
+    "M4-S6-vie-Press Francés (barra)-2": {
+      "peso": "20",
+      "timestamp": "2026-07-03T19:47:09.789Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -743,5 +757,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-03T19:39:47.883Z"
+  "timestamp": "2026-07-03T19:47:12.961Z"
 }
