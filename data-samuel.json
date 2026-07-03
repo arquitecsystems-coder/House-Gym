@@ -390,6 +390,20 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M4-S6-vie-Pullover (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-07-03T19:39:44.662Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "M4-S6-vie-Pullover (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-07-03T19:39:44.876Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -729,5 +743,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-03T19:30:56.586Z"
+  "timestamp": "2026-07-03T19:39:47.883Z"
 }
