@@ -615,6 +615,20 @@
             "tiempo": 10,
             "completado": true
           }
+        ],
+        "rodilla_pared": [
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
         ]
       }
     }
@@ -769,5 +783,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-03T19:50:21.113Z"
+  "timestamp": "2026-07-03T19:52:43.840Z"
 }
