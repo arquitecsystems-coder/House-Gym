@@ -369,6 +369,20 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M4-S6-vie-Remo 1 mano (DB)-1": {
+      "peso": "15",
+      "timestamp": "2026-07-03T19:24:28.205Z",
+      "reps": "10",
+      "rir": "4",
+      "checked": true
+    },
+    "M4-S6-vie-Remo 1 mano (DB)-2": {
+      "peso": "15",
+      "timestamp": "2026-07-03T19:24:28.385Z",
+      "reps": "10",
+      "rir": "4",
+      "checked": true
     }
   },
   "rehab": {
@@ -708,5 +722,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-03T19:16:09.789Z"
+  "timestamp": "2026-07-03T19:24:31.392Z"
 }
