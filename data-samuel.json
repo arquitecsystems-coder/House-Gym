@@ -348,10 +348,17 @@
     "nota-sesion-M4-S6-jue": {
       "nota": "Después del primer ejercicio no se sintió como una semana descarga ",
       "timestamp": "2026-07-02T21:24:45.698Z"
+    },
+    "M4-S6-vie-Remo Pendlay (barra)-1": {
+      "peso": "35",
+      "timestamp": "2026-07-03T19:05:19.469Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-01T20:51:58.345Z",
+    "_syncTs": "2026-07-02T21:25:01.846Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -538,7 +545,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-01T20:51:58.345Z",
+    "_syncTs": "2026-07-02T21:25:01.846Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -673,6 +680,10 @@
       "2026-07-01": {
         "ayunas": 76.9,
         "noche": null
+      },
+      "2026-07-03": {
+        "ayunas": 76.65,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -683,5 +694,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-02T21:25:01.846Z"
+  "timestamp": "2026-07-03T19:05:22.476Z"
 }
