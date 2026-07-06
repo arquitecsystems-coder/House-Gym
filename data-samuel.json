@@ -418,10 +418,20 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M5-S1-lun-Press Inclinado (barra)-1": {
+      "peso": "62,5",
+      "timestamp": "2026-07-06T17:14:18.190Z",
+      "reps": "5",
+      "rir": "1"
+    },
+    "M5-S1-lun-Press Inclinado (barra)-2": {
+      "peso": "62,5",
+      "timestamp": "2026-07-06T17:14:21.530Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-02T21:25:01.846Z",
+    "_syncTs": "2026-07-03T20:02:27.003Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -634,7 +644,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-02T21:25:01.846Z",
+    "_syncTs": "2026-07-03T20:02:27.003Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -773,6 +783,14 @@
       "2026-07-03": {
         "ayunas": 76.65,
         "noche": null
+      },
+      "2026-07-04": {
+        "ayunas": 77.4,
+        "noche": null
+      },
+      "2026-07-06": {
+        "ayunas": 78.5,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -783,5 +801,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-03T20:02:27.003Z"
+  "timestamp": "2026-07-06T17:14:21.196Z"
 }
