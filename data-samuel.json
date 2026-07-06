@@ -451,6 +451,13 @@
       "timestamp": "2026-07-06T17:29:24.592Z",
       "rir": "0",
       "checked": true
+    },
+    "M5-S1-lun-Curl Bíceps (barra)-1": {
+      "peso": "27,5",
+      "timestamp": "2026-07-06T17:32:18.388Z",
+      "reps": "7",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -824,5 +831,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-06T17:29:27.600Z"
+  "timestamp": "2026-07-06T17:32:21.395Z"
 }
