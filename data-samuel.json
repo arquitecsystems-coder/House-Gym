@@ -492,10 +492,17 @@
       "reps": "9",
       "rir": "2",
       "checked": true
+    },
+    "M5-S1-mie-Rumano (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-07-08T16:59:44.042Z",
+      "reps": "4",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-03T20:02:27.003Z",
+    "_syncTs": "2026-07-06T17:55:21.003Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -734,7 +741,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-03T20:02:27.003Z",
+    "_syncTs": "2026-07-06T17:55:21.003Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -881,15 +888,22 @@
       "2026-07-06": {
         "ayunas": 78.5,
         "noche": null
+      },
+      "2026-07-08": {
+        "ayunas": 77.45,
+        "noche": null
       }
     },
     "registrosSemanales": {
       "S2": {
         "promAyunas": 76.9
+      },
+      "S3": {
+        "promAyunas": 77.5
       }
     },
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-06T17:55:21.003Z"
+  "timestamp": "2026-07-08T16:59:47.070Z"
 }
