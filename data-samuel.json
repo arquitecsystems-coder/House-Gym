@@ -499,6 +499,10 @@
       "reps": "4",
       "rir": "2",
       "checked": true
+    },
+    "M5-S1-mie-Rumano (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-07-08T17:05:16.324Z"
     }
   },
   "rehab": {
@@ -905,5 +909,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-08T16:59:47.070Z"
+  "timestamp": "2026-07-08T17:05:19.327Z"
 }
