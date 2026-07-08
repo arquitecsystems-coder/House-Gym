@@ -502,7 +502,10 @@
     },
     "M5-S1-mie-Rumano (barra)-2": {
       "peso": "55",
-      "timestamp": "2026-07-08T17:05:16.324Z"
+      "timestamp": "2026-07-08T17:05:22.914Z",
+      "reps": "4",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -909,5 +912,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-08T17:05:19.327Z"
+  "timestamp": "2026-07-08T17:05:25.922Z"
 }
