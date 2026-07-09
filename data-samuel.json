@@ -506,10 +506,15 @@
       "reps": "4",
       "rir": "2",
       "checked": true
+    },
+    "M5-S1-mie-Elevaciones de pie (gemelo)-1": {
+      "peso": "12",
+      "timestamp": "2026-07-09T03:00:15.062Z",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-06T17:55:21.003Z",
+    "_syncTs": "2026-07-08T17:05:25.922Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -748,7 +753,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-06T17:55:21.003Z",
+    "_syncTs": "2026-07-08T17:05:25.922Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -912,5 +917,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-08T17:05:25.922Z"
+  "timestamp": "2026-07-09T03:00:18.071Z"
 }
