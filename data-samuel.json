@@ -508,9 +508,10 @@
       "checked": true
     },
     "M5-S1-mie-Elevaciones de pie (gemelo)-1": {
-      "peso": "12",
-      "timestamp": "2026-07-09T03:00:15.062Z",
-      "checked": true
+      "peso": "",
+      "timestamp": "2026-07-09T03:00:21.744Z",
+      "checked": true,
+      "reps": "12"
     }
   },
   "rehab": {
@@ -917,5 +918,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-09T03:00:18.071Z"
+  "timestamp": "2026-07-09T03:00:24.747Z"
 }
