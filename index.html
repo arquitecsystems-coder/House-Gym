@@ -1453,11 +1453,11 @@ const MESOCICLOS = {
     plan: {
       lun: [
         { nombre: "Press Inclinado (barra)", series: 4,
-          semanas: ["62.5kg × 5","65kg × 5","67.5kg × 4-5","70kg × 3-4","72.5kg × 3+","47kg × 10 - 2s"] },
+          semanas: ["62.5kg × 5","62.5kg × 5","65kg × 5","67.5kg × 4-5","70kg × 3-5","45kg × 10 - 2s"] },
         { nombre: "Deficit Push-ups (DB en suelo)", series: 3,
           semanas: ["× 10","× 12","× 14","× 10 lastradas","× 12 lastradas","× 10 - 2s"] },
         { nombre: "Curl Bíceps (barra)", series: 3,
-          semanas: ["27.5kg × 8","29kg × 8","30kg × 6-8","31kg × 6","32kg × 4-6","21kg × 10 - 2s"] },
+          semanas: ["27.5kg × 8","27.5kg × 7-8","29kg × 6-8","30kg × 6","31-32kg × 5-6","20kg × 10 - 2s"] },
         { nombre: "Curl Martillo (DB)", series: 2,
           semanas: ["10kg × 12","10kg × 14","10kg × 15","10kg × 15 pausa","10kg × 12 tempo","10kg × 10 - 2s"] },
       ],
@@ -1472,14 +1472,14 @@ const MESOCICLOS = {
           semanas: ["20kg × 8","20kg × 10","20kg × 12","20kg × 10 pausa 2s","20kg × 10 pausa 3s","20kg × 10 - 2s"] },
       ],
       mie: [
-        { nombre: "Búlgaras (DB c/mano)", series: 4,
-          semanas: ["10kg × 10","10kg × 10","10kg × 12","20kg × 6-8","20kg × 8-10","10kg × 10 - 2s"] },
-        { nombre: "Rumano (barra)", series: 3,
-          semanas: ["62.5kg × 8","65kg × 8","67.5kg × 8","70kg × 8","72.5kg × 6-8","47kg × 10 - 2s"] },
-        { nombre: "Elevaciones de pie (gemelo)", series: 3,
-          semanas: ["× 15","× 18","× 20","× 20 pausa","× 20 pausa arriba","× 15 - 2s"] },
-        { nombre: "Leg Raises colgado", series: 3,
-          semanas: ["× 12","× 13","× 14","× 15","× 15 pausa","× 10 - 2s"] },
+        { nombre: "Sentadilla parcial (barra)", series: 4,
+          semanas: ["55kg × 8 (ref)","60kg × 8","65kg × 6-8","70kg × 5-6","75kg × 5","45kg × 8 - 2s"] },
+        { nombre: "RDL sin flexión de rodilla (barra)", series: 3,
+          semanas: ["55kg × 4 (ref)","52.5kg × 6-8","55kg × 6-8","57.5kg × 6","60kg × 5-6","37.5kg × 8 - 2s"] },
+        { nombre: "Hip thrust (mancuerna en banco)", series: 3,
+          semanas: ["25kg × 10 (ref)","25kg × 12","27.5kg × 12","30kg × 10-12","32.5kg × 10","20kg × 12 - 2s"] },
+        { nombre: "Elevación de pie o sentado (gemelo/sóleo)", series: 3,
+          semanas: ["× 12-15 (ref)","× 12-15","× 12-15","× 15","× 15","× 12 - 2s"] },
       ],
       jue: [
         { nombre: "Press Inclinado (barra)", series: 3,
@@ -1502,14 +1502,14 @@ const MESOCICLOS = {
           semanas: ["20kg × 10","20kg × 10","20kg × 12","20kg × 12","20kg × 12 pausa","20kg × 10 - 2s"] },
       ],
       sab: [
-        { nombre: "Búlgaras (DB c/mano)", series: 3,
-          semanas: ["10kg × 8","10kg × 8","10kg × 10","20kg × 5-6","20kg × 6-8","10kg × 8 - 2s"] },
-        { nombre: "Rumano (barra)", series: 3,
-          semanas: ["57.5kg × 10","60kg × 10","62.5kg × 10","65kg × 8","67.5kg × 8","44kg × 10 - 2s"] },
-        { nombre: "Elevaciones sentado (sóleo)", series: 3,
-          semanas: ["20kg × 15","20kg × 15","20kg × 18","20kg × 20","20kg × 20","20kg × 12 - 2s"] },
-        { nombre: "Core (crunch lastrado)", series: 3,
-          semanas: ["20kg × 15","20kg × 15","20kg × 15","22kg × 15","22kg × 15","15kg × 12 - 2s"] },
+        { nombre: "RDL sin flexión de rodilla (barra)", series: 4,
+          semanas: ["55kg × 6-8 (ref)","55kg × 6-8","57.5kg × 6-8","60kg × 5-6","62.5kg × 5","40kg × 8 - 2s"] },
+        { nombre: "Sentadilla parcial (barra)", series: 3,
+          semanas: ["52.5kg × 8-10 (ref)","52.5kg × 8-10","55kg × 8-10","57.5kg × 8","60kg × 6-8","37.5kg × 10 - 2s"] },
+        { nombre: "Hip thrust (mancuerna en banco)", series: 3,
+          semanas: ["25kg × 10 (ref)","25kg × 12","27.5kg × 12","30kg × 10-12","32.5kg × 10","20kg × 12 - 2s"] },
+        { nombre: "Elevación de pie o sentado (gemelo/sóleo)", series: 3,
+          semanas: ["× 12-15 (ref)","× 12-15","× 12-15","× 15","× 15","× 12 - 2s"] },
       ],
     }
   }
@@ -2134,12 +2134,13 @@ function renderRMs(main) {
   // Objetivos M5
   html += `<div class="rm-panel"><div class="rm-title">🎯 Objetivos pico M5</div><div class="rm-grid">`;
   const objetivos = [
-    { ejercicio: "Press Inclinado", actual: "65kg × 4", objetivo: "72.5kg × 3", estado: "↑" },
-    { ejercicio: "Remo Pendlay",    actual: "57.5kg × 5", objetivo: "65kg × 4", estado: "↑" },
-    { ejercicio: "Curl Bíceps",     actual: "30kg × 4", objetivo: "32kg × 5-6", estado: "↑" },
-    { ejercicio: "Press Francés",   actual: "30kg × 7", objetivo: "33-34kg × 6", estado: "↑" },
-    { ejercicio: "Rumano",          actual: "65kg × 8", objetivo: "72.5kg × 6-8", estado: "↑" },
-    { ejercicio: "Búlgaras",        actual: "10kg × 10", objetivo: "20kg × 8", estado: "↑" },
+    { ejercicio: "Press Inclinado",    actual: "62.5kg × 5", objetivo: "70kg × 3-5", estado: "↑" },
+    { ejercicio: "Remo Pendlay",       actual: "57.5kg × 5", objetivo: "65kg × 4", estado: "↑" },
+    { ejercicio: "Curl Bíceps",        actual: "27.5kg × 8", objetivo: "31-32kg × 5-6", estado: "↑" },
+    { ejercicio: "Press Francés",      actual: "30kg × 7", objetivo: "33-34kg × 6", estado: "↑" },
+    { ejercicio: "RDL sin flexión",    actual: "55kg × 4", objetivo: "62.5kg × 5", estado: "↑" },
+    { ejercicio: "Sentadilla parcial", actual: "55kg × 8", objetivo: "75kg × 5", estado: "↑" },
+    { ejercicio: "Hip thrust",         actual: "25kg × 10", objetivo: "32.5kg × 10", estado: "↑" },
   ];
   objetivos.forEach(o => {
     html += `<div class="rm-row">
@@ -3258,12 +3259,13 @@ function renderProfile(main) {
   ];
 
   const objetivos = [
-    { ejercicio: "Press Inclinado", actual: "65kg × 4", objetivo: "72.5kg × 3" },
-    { ejercicio: "Remo Pendlay",    actual: "57.5kg × 5", objetivo: "65kg × 4" },
-    { ejercicio: "Curl Bíceps",     actual: "30kg × 4", objetivo: "32kg × 5-6" },
-    { ejercicio: "Press Francés",   actual: "30kg × 7", objetivo: "33-34kg × 6" },
-    { ejercicio: "Rumano",          actual: "65kg × 8", objetivo: "72.5kg × 6-8" },
-    { ejercicio: "Búlgaras",        actual: "10kg × 10", objetivo: "20kg × 8" },
+    { ejercicio: "Press Inclinado",    actual: "62.5kg × 5", objetivo: "70kg × 3-5" },
+    { ejercicio: "Remo Pendlay",       actual: "57.5kg × 5", objetivo: "65kg × 4" },
+    { ejercicio: "Curl Bíceps",        actual: "27.5kg × 8", objetivo: "31-32kg × 5-6" },
+    { ejercicio: "Press Francés",      actual: "30kg × 7", objetivo: "33-34kg × 6" },
+    { ejercicio: "RDL sin flexión",    actual: "55kg × 4", objetivo: "62.5kg × 5" },
+    { ejercicio: "Sentadilla parcial", actual: "55kg × 8", objetivo: "75kg × 5" },
+    { ejercicio: "Hip thrust",         actual: "25kg × 10", objetivo: "32.5kg × 10" },
   ];
 
   function acc(id, icon, title, bodyHtml, defaultOpen=false) {
