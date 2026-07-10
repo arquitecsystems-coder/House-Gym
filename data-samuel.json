@@ -554,10 +554,22 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M5-S1-vie-Press Francés (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-07-10T18:04:30.973Z",
+      "reps": "9",
+      "rir": "2",
+      "checked": true
+    },
+    "M5-S1-vie-Pullover (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-07-10T18:25:16.633Z",
+      "reps": "10"
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-10T17:14:22.410Z",
+    "_syncTs": "2026-07-10T17:58:45.126Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -796,7 +808,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-10T17:14:22.410Z",
+    "_syncTs": "2026-07-10T17:58:45.126Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -964,5 +976,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-10T17:58:45.126Z"
+  "timestamp": "2026-07-10T18:25:19.639Z"
 }
