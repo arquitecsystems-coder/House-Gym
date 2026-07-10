@@ -564,8 +564,17 @@
     },
     "M5-S1-vie-Pullover (DB)-1": {
       "peso": "10",
-      "timestamp": "2026-07-10T18:25:16.633Z",
-      "reps": "10"
+      "timestamp": "2026-07-10T18:25:26.036Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "M5-S1-vie-Pullover (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-07-10T18:25:32.262Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -976,5 +985,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-10T18:25:19.639Z"
+  "timestamp": "2026-07-10T18:25:35.268Z"
 }
