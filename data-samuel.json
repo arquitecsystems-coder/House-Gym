@@ -540,10 +540,17 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M5-S1-vie-Remo 1 mano (DB)-2": {
+      "peso": "20",
+      "timestamp": "2026-07-10T17:41:21.704Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-09T03:00:26.808Z",
+    "_syncTs": "2026-07-10T17:14:22.410Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -782,7 +789,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-09T03:00:26.808Z",
+    "_syncTs": "2026-07-10T17:14:22.410Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -950,5 +957,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-10T17:14:22.410Z"
+  "timestamp": "2026-07-10T17:41:24.719Z"
 }
