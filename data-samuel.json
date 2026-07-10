@@ -529,9 +529,10 @@
     },
     "M5-S1-vie-Remo Pendlay (barra)-3": {
       "peso": "50",
-      "timestamp": "2026-07-10T17:11:16.557Z",
+      "timestamp": "2026-07-10T17:11:17.003Z",
       "reps": "8",
-      "rir": "1"
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -942,5 +943,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-10T17:11:16.084Z"
+  "timestamp": "2026-07-10T17:11:20.009Z"
 }
