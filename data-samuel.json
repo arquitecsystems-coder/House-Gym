@@ -512,10 +512,17 @@
       "timestamp": "2026-07-09T03:00:21.744Z",
       "checked": true,
       "reps": "12"
+    },
+    "M5-S1-vie-Remo Pendlay (barra)-1": {
+      "peso": "50",
+      "timestamp": "2026-07-10T17:04:46.268Z",
+      "reps": "8",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-08T17:05:25.922Z",
+    "_syncTs": "2026-07-09T03:00:26.808Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -754,7 +761,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-08T17:05:25.922Z",
+    "_syncTs": "2026-07-09T03:00:26.808Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -905,6 +912,10 @@
       "2026-07-08": {
         "ayunas": 77.45,
         "noche": null
+      },
+      "2026-07-10": {
+        "ayunas": 77,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -918,5 +929,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-09T03:00:26.808Z"
+  "timestamp": "2026-07-10T17:04:49.297Z"
 }
