@@ -547,6 +547,13 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M5-S1-vie-Remo 1 mano (DB)-3": {
+      "peso": "20",
+      "timestamp": "2026-07-10T17:58:42.099Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -957,5 +964,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-10T17:41:24.719Z"
+  "timestamp": "2026-07-10T17:58:45.126Z"
 }
