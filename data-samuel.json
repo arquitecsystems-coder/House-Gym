@@ -604,6 +604,12 @@
     "nota-sesion-M5-S2-lun": {
       "nota": "La 3era serie de Inclinado saque las 5 con rest pause en la 3era repetición ",
       "timestamp": "2026-07-13T22:08:00.067Z"
+    },
+    "M5-S2-lun-Deficit Push-ups (DB en suelo)-1": {
+      "reps": "12",
+      "timestamp": "2026-07-13T22:12:29.854Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1018,5 +1024,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-13T22:08:03.069Z"
+  "timestamp": "2026-07-13T22:12:32.860Z"
 }
