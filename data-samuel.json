@@ -600,6 +600,10 @@
     "M5-S2-lun-Press Inclinado (barra)-4": {
       "checked": false,
       "timestamp": "2026-07-13T22:07:17.003Z"
+    },
+    "nota-sesion-M5-S2-lun": {
+      "nota": "La 3era serie de Inclinado saque las 5 con rest pause en la 3era repetición ",
+      "timestamp": "2026-07-13T22:08:00.067Z"
     }
   },
   "rehab": {
@@ -1014,5 +1018,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-13T22:07:21.003Z"
+  "timestamp": "2026-07-13T22:08:03.069Z"
 }
