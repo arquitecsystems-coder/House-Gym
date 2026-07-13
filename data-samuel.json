@@ -848,6 +848,22 @@
             "completado": true
           }
         ]
+      },
+      "2026-07-13": {
+        "rodilla_pared": [
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
+        ]
       }
     }
   },
@@ -1024,5 +1040,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-13T22:12:32.860Z"
+  "timestamp": "2026-07-13T22:22:44.249Z"
 }
