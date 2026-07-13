@@ -635,10 +635,17 @@
       "reps": "5",
       "rir": "0",
       "checked": true
+    },
+    "M5-S2-lun-Curl Martillo (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-07-13T22:46:47.032Z",
+      "reps": "14",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-10T18:25:35.268Z",
+    "_syncTs": "2026-07-13T22:42:58.216Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -903,7 +910,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-10T18:25:35.268Z",
+    "_syncTs": "2026-07-13T22:42:58.216Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -1075,5 +1082,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-13T22:42:58.216Z"
+  "timestamp": "2026-07-13T22:46:46.948Z"
 }
