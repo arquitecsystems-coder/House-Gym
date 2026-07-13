@@ -581,6 +581,12 @@
       "timestamp": "2026-07-13T22:06:58.199Z",
       "reps": "5",
       "rir": "1"
+    },
+    "M5-S2-lun-Press Inclinado (barra)-2": {
+      "peso": "62,5",
+      "timestamp": "2026-07-13T22:07:05.640Z",
+      "reps": "5",
+      "rir": "0"
     }
   },
   "rehab": {
@@ -995,5 +1001,5 @@
     "registrosMensuales": {}
   },
   "test": {},
-  "timestamp": "2026-07-13T22:07:01.202Z"
+  "timestamp": "2026-07-13T22:07:08.642Z"
 }
