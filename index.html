@@ -1242,6 +1242,10 @@
       <div class="picker-avatar">DO</div>
       <div class="picker-name">Dolly</div>
     </div>
+    <div class="picker-card" onclick="selectUser('nata')">
+      <div class="picker-avatar">NA</div>
+      <div class="picker-name">Nata</div>
+    </div>
   </div>
 </div>
 
@@ -1541,6 +1545,15 @@ const RMS_REFERENCIA = {
 };
 
 // ============================================================
+// CONFIG POR USUARIO
+// ============================================================
+const USUARIOS = {
+  samuel: { mesociclos: ['M4', 'M5'], tieneRehab: true,  renderTest: null },
+  dolly:  { mesociclos: [],           tieneRehab: false, renderTest: 'dolly' },
+  nata:   { mesociclos: [],           tieneRehab: false, renderTest: null },
+};
+
+// ============================================================
 // TEST INICIAL — DOLLY
 // ============================================================
 const TEST_DOLLY = {
@@ -1688,7 +1701,7 @@ function uk(key) { return `${state.currentUser}-${key}`; }
 // RENDER PRINCIPAL
 // ============================================================
 function render() {
-  const showMesos = ["session","rms"].includes(state.view) && state.currentUser !== "dolly";
+  const showMesos = ["session","rms"].includes(state.view) && (USUARIOS[state.currentUser]?.mesociclos?.length > 0);
   document.getElementById("mesoTabs").style.display = showMesos ? "flex" : "none";
   if (showMesos) renderMesoTabs();
   const main = document.getElementById("mainContent");
@@ -1719,10 +1732,13 @@ function setView(v) {
 // ── MESO TABS ──
 function renderMesoTabs() {
   const el = document.getElementById("mesoTabs");
-  el.innerHTML = Object.entries(MESOCICLOS).map(([k, m]) =>
-    `<button class="meso-tab ${state.meso === k ? "active" : ""}"
-      onclick="setMeso('${k}')">${m.label}</button>`
-  ).join("");
+  const userMesos = USUARIOS[state.currentUser]?.mesociclos || [];
+  el.innerHTML = Object.entries(MESOCICLOS)
+    .filter(([k]) => userMesos.includes(k))
+    .map(([k, m]) =>
+      `<button class="meso-tab ${state.meso === k ? "active" : ""}"
+        onclick="setMeso('${k}')">${m.label}</button>`
+    ).join("");
 }
 
 function setMeso(k) {
@@ -1943,8 +1959,13 @@ function renderTestDolly(main) {
 }
 
 function renderSession(main) {
-  if (state.currentUser === 'dolly') {
+  const usuarioCfg = USUARIOS[state.currentUser] || {};
+  if (usuarioCfg.renderTest === 'dolly') {
     renderTestDolly(main);
+    return;
+  }
+  if (!usuarioCfg.mesociclos?.length) {
+    main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción<br><span style="font-size:11px;opacity:0.6">Tu mesociclo se diseña en base al test inicial</span></div>';
     return;
   }
   const meso = MESOCICLOS[state.meso];
@@ -2113,7 +2134,7 @@ function toggleCard(header) {
 
 // ── RMs VIEW ──
 function renderRMs(main) {
-  if (state.currentUser === 'dolly') {
+  if (!(USUARIOS[state.currentUser]?.mesociclos?.length > 0)) {
     main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción</div>';
     return;
   }
@@ -3301,7 +3322,7 @@ function renderProfile(main) {
 
   // ── FUERZA ──
   let fuerzaBody = '';
-  if (state.currentUser === 'dolly') {
+  if (USUARIOS[state.currentUser]?.renderTest === 'dolly') {
     const testDatos = getTestDatos();
     if (!testDatos.completado) {
       fuerzaBody = `<div style="font-size:13px;color:var(--muted);padding:4px 0">Completa el test inicial en 🏋️ para ver tu baseline aquí.</div>`;
@@ -3387,7 +3408,7 @@ function renderProfile(main) {
   const html = `<div style="padding:16px;max-width:600px;margin:0 auto">
     ${acc('fuerza', '💪', 'Fuerza', fuerzaBody)}
     ${acc('comp', '⚖️', 'Composición corporal', compBody)}
-    ${state.currentUser === 'dolly' ? '' : acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody)}
+    ${USUARIOS[state.currentUser]?.tieneRehab ? acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody) : ''}
   </div>`;
 
   main.innerHTML = html;
@@ -3573,7 +3594,7 @@ function renderConfig(main) {
       <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
     </div>
 
-    ${state.currentUser === 'dolly' ? '' : `<div class="config-panel">
+    ${USUARIOS[state.currentUser]?.tieneRehab ? `<div class="config-panel">
       <div class="config-title">🦶 Criterio re-ingreso sentadilla</div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6">
         Los <strong style="color:var(--text)">tres</strong> deben cumplirse:
@@ -3582,7 +3603,7 @@ function renderConfig(main) {
         <span style="color:var(--ok)">✓</span> Equilibrio monopodal ojos cerrados ≥ 45 s<br>
         <span style="color:var(--accent)">□</span> Pistol squat izquierdo inicia descenso sin bloqueo
       </div>
-    </div>`}
+    </div>` : ''}
   `;
 }
 
@@ -4061,33 +4082,36 @@ function initApp() {
   }
   migrateOldData();
   loadLocal();
+  const userMesos = USUARIOS[state.currentUser]?.mesociclos || [];
   const pos = detectPosition();
-  if (pos) {
+  if (pos && userMesos.includes(pos.meso)) {
     state.meso = pos.meso;
     state.semana = pos.semana;
     const diasSemana = ['dom','lun','mar','mie','jue','vie','sab'];
     const diaSemana = diasSemana[new Date().getDay()];
     const diasMeso = MESOCICLOS[pos.meso].dias.map(d => d.key);
     state.dia = diasMeso.includes(diaSemana) ? diaSemana : diasMeso[0];
-  } else {
+  } else if (userMesos.length > 0) {
     const saved = localStorage.getItem(uk('forge-position'));
     if (saved) {
       try {
         const p = JSON.parse(saved);
-        if (p.meso && MESOCICLOS[p.meso]) {
+        if (p.meso && MESOCICLOS[p.meso] && userMesos.includes(p.meso)) {
           state.meso = p.meso;
           state.semana = p.semana || 1;
           state.dia = p.dia || MESOCICLOS[p.meso].dias[0].key;
         }
       } catch(e) {}
     } else {
-      state.dia = MESOCICLOS[state.meso].dias[0].key;
+      const defaultMeso = userMesos[userMesos.length - 1];
+      state.meso = defaultMeso;
+      state.dia = MESOCICLOS[defaultMeso].dias[0].key;
     }
   }
   const chip = document.getElementById('userChip');
   if (chip) chip.textContent = state.currentUser;
   const rehabNav = document.getElementById('nav-rehab');
-  if (rehabNav) rehabNav.style.display = state.currentUser === 'dolly' ? 'none' : '';
+  if (rehabNav) rehabNav.style.display = USUARIOS[state.currentUser]?.tieneRehab ? '' : 'none';
   render();
   setTimeout(() => {
     const btn = document.getElementById('themeBtn');
