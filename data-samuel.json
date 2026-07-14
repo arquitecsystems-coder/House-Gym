@@ -670,10 +670,17 @@
       "reps": "5",
       "rir": "1",
       "checked": true
+    },
+    "M5-S2-mar-Remo 1 mano (DB)-1": {
+      "peso": "20",
+      "timestamp": "2026-07-14T18:45:50.394Z",
+      "reps": "12",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-13T22:50:50.724Z",
+    "_syncTs": "2026-07-14T18:27:33.702Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -938,7 +945,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-13T22:50:50.724Z",
+    "_syncTs": "2026-07-14T18:27:33.702Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -1111,5 +1118,5 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-14T18:27:33.702Z"
+  "timestamp": "2026-07-14T18:45:53.418Z"
 }
