@@ -1550,7 +1550,7 @@ const RMS_REFERENCIA = {
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5'], tieneRehab: true,  renderTest: null },
   dolly:  { mesociclos: [],           tieneRehab: false, renderTest: 'dolly' },
-  nata:   { mesociclos: [],           tieneRehab: false, renderTest: null },
+  nata:   { mesociclos: [],           tieneRehab: false, renderTest: 'nata' },
 };
 
 // ============================================================
@@ -1662,6 +1662,132 @@ const TEST_DOLLY = {
       "Asistencia mínima",
       "Negativas lentas sin asistencia",
       "Fondo completo"
+    ]
+  }
+};
+
+// ============================================================
+// TEST INICIAL — NATA
+// ============================================================
+const TEST_NATA = {
+  label: "Test inicial — Nata",
+  tipo: "test",
+  dias: [
+    { key: "lun", label: "Lun", titulo: "Full Body A" },
+    { key: "mie", label: "Mié", titulo: "Full Body B" },
+    { key: "vie", label: "Vie", titulo: "Full Body A (variante)" },
+  ],
+  ejercicios: {
+    lun: [
+      {
+        nombre: "Sentadilla trasera (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta encontrar el peso de fallo entre 5-8 reps. Usar rack, profundidad a paralelo o más abajo si la técnica lo permite.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell back squat"
+      },
+      {
+        nombre: "Press banca (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 5-8 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell bench press"
+      },
+      {
+        nombre: "Remo Pendlay (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 6-8 reps. Referencia previa (equipo limitado): 20.5kg x 9-14.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "pendlay row barbell"
+      },
+      {
+        nombre: "Curl bíceps (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps. Referencia previa: 6kg x 8-10 (mancuerna, equipo limitado).",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell bicep curl"
+      },
+      {
+        nombre: "Plancha (core)",
+        tipo: "patron_motor",
+        instruccion: "Tiempo máximo sostenido con técnica correcta.",
+        registrar: ["tiempo_segundos"],
+        gif_busqueda: "plank hold"
+      }
+    ],
+    mie: [
+      {
+        nombre: "RDL (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 6-8 reps. Referencia previa: 12kg x 7-14 (equipo muy limitado, esperar salto grande).",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "romanian deadlift barbell"
+      },
+      {
+        nombre: "Press militar (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 6-8 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell overhead press"
+      },
+      {
+        nombre: "Remo 1 mano (mancuerna, banco)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "single arm dumbbell row bench"
+      },
+      {
+        nombre: "Hip thrust (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 10-12 reps. Referencia previa: 20kg x 23-26 (mancuerna, equipo limitado).",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell hip thrust"
+      },
+      {
+        nombre: "Crunch con peso",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 12-15 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "weighted crunch"
+      }
+    ],
+    vie: [
+      {
+        nombre: "Zancada estática (barra o mancuernas)",
+        tipo: "rampa_peso",
+        instruccion: "Zancada en el sitio, no caminando. Rampa hasta fallo en 8-10 reps por pierna.",
+        registrar: ["peso_kg", "reps_pierna_derecha", "reps_pierna_izquierda"],
+        gif_busqueda: "static lunge barbell"
+      },
+      {
+        nombre: "Press inclinado (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 6-8 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell incline press"
+      },
+      {
+        nombre: "Remo Pendlay técnico (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Peso menor al de lunes, foco en técnica y control, 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "pendlay row barbell"
+      },
+      {
+        nombre: "Curl martillo (mancuerna)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "hammer curl dumbbell"
+      },
+      {
+        nombre: "Elevaciones laterales (mancuerna)",
+        tipo: "rampa_peso",
+        instruccion: "Referencia previa: 5kg x 5-8. Rampa hasta fallo en 10-12 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "dumbbell lateral raise"
+      }
     ]
   }
 };
@@ -1958,12 +2084,146 @@ function renderTestDolly(main) {
   });
 }
 
+function saveTestFieldNata(dia, exIdx, campo, valor) {
+  const datos = getTestDatos();
+  if (!datos[dia]) datos[dia] = {};
+  const nombre = TEST_NATA.ejercicios[dia][exIdx].nombre;
+  if (!datos[dia][nombre]) datos[dia][nombre] = {};
+  if (valor !== "" && valor !== null) datos[dia][nombre][campo] = valor;
+  else delete datos[dia][nombre][campo];
+
+  const ej = TEST_NATA.ejercicios[dia][exIdx];
+  const r = datos[dia][nombre];
+  const ejDone = r && ej.registrar.every(c => r[c]);
+  const card = document.getElementById(`test-card-${dia}-${exIdx}`);
+  if (card) {
+    card.style.borderColor = ejDone ? "var(--ok)" : "var(--border)";
+    const badge = card.querySelector(".test-badge");
+    if (badge) badge.textContent = ejDone ? "✓" : "";
+  }
+
+  const ejercicios = TEST_NATA.ejercicios[dia];
+  const done = ejercicios.filter((e, i2) => {
+    const r2 = datos[dia]?.[e.nombre];
+    return r2 && e.registrar.every(c => r2[c]);
+  }).length;
+  const progEl = document.getElementById("test-progress");
+  if (progEl) progEl.textContent = `${done}/${ejercicios.length} completados`;
+
+  TEST_NATA.dias.forEach(d => {
+    const total = TEST_NATA.ejercicios[d.key].length;
+    const doneDia = TEST_NATA.ejercicios[d.key].filter(e => {
+      const r3 = datos[d.key]?.[e.nombre];
+      return r3 && e.registrar.every(c => r3[c]);
+    }).length;
+    const chip = document.getElementById(`test-day-chip-${d.key}`);
+    if (chip) chip.textContent = `${doneDia}/${total}`;
+  });
+
+  let allDone = true;
+  for (const d of ["lun", "mie", "vie"]) {
+    for (const e of TEST_NATA.ejercicios[d]) {
+      const r4 = datos[d]?.[e.nombre];
+      if (!r4 || e.registrar.some(c => !r4[c])) { allDone = false; break; }
+    }
+    if (!allDone) break;
+  }
+  if (allDone && !datos.completado) {
+    datos.completado = true;
+    showToast("Test completado — resultados guardados ✓", "ok");
+    const banner = document.getElementById("test-completado-banner");
+    if (banner) banner.style.display = "block";
+  }
+
+  saveTestDatos(datos);
+  queueSync();
+}
+
+function setTestDiaNata(dia) {
+  state.testDia = dia;
+  renderTestNata(document.getElementById("mainContent"));
+}
+
+function renderTestNata(main) {
+  const datos = getTestDatos();
+  const dia = state.testDia || "lun";
+  const ejercicios = TEST_NATA.ejercicios[dia];
+  const doneDia = ejercicios.filter(ej => {
+    const r = datos[dia]?.[ej.nombre];
+    return r && ej.registrar.every(c => r[c]);
+  }).length;
+
+  let html = `<div style="padding:16px;max-width:600px;margin:0 auto">`;
+  html += `<div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px">Test inicial</div>`;
+
+  html += `<div style="display:flex;gap:8px;margin-bottom:16px">`;
+  TEST_NATA.dias.forEach(d => {
+    const active = d.key === dia;
+    const dDone = TEST_NATA.ejercicios[d.key].filter(ej => {
+      const r = datos[d.key]?.[ej.nombre];
+      return r && ej.registrar.every(c => r[c]);
+    }).length;
+    const dTotal = TEST_NATA.ejercicios[d.key].length;
+    html += `<button onclick="setTestDiaNata('${d.key}')" style="flex:1;padding:10px 8px;border:1px solid ${active ? "var(--accent)" : "var(--border)"};border-radius:var(--radius);background:${active ? "var(--accent-bg)" : "none"};color:${active ? "var(--accent)" : "var(--muted)"};font-family:var(--font-mono);font-size:12px;cursor:pointer;line-height:1.4">
+      <div style="font-weight:${active ? 700 : 400}">${d.label}</div>
+      <div id="test-day-chip-${d.key}" style="font-size:10px;margin-top:2px">${dDone}/${dTotal}</div>
+    </button>`;
+  });
+  html += `</div>`;
+
+  html += `<div style="font-size:14px;font-weight:700;margin-bottom:2px">${TEST_NATA.dias.find(d => d.key === dia).titulo}</div>`;
+  html += `<div id="test-progress" style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:14px">${doneDia}/${ejercicios.length} completados</div>`;
+
+  if (datos.completado) {
+    html += `<div id="test-completado-banner" style="background:var(--ok-bg);border:1px solid var(--ok);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-family:var(--font-mono);font-size:11px;color:var(--ok)">Test completo — resultados listos para diseñar el mesociclo</div>`;
+  } else {
+    html += `<div id="test-completado-banner" style="display:none;background:var(--ok-bg);border:1px solid var(--ok);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-family:var(--font-mono);font-size:11px;color:var(--ok)">Test completo — resultados listos para diseñar el mesociclo</div>`;
+  }
+
+  ejercicios.forEach((ej, i) => {
+    const r = datos[dia]?.[ej.nombre] || {};
+    const ejDone = ej.registrar.every(c => r[c]);
+    const gifId = `gif-${dia}-${i}`;
+
+    html += `<div id="test-card-${dia}-${i}" style="background:var(--card);border:1px solid ${ejDone ? "var(--ok)" : "var(--border)"};border-radius:var(--radius);margin-bottom:12px;overflow:hidden">`;
+    html += `<div style="padding:12px 14px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-weight:600;font-size:14px">${ej.nombre}</div>
+        <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);margin-top:2px">${ej.tipo === "rampa_peso" ? "rampa de peso" : "patrón motor"}</div>
+      </div>
+      <div class="test-badge" style="font-family:var(--font-mono);font-size:18px;color:var(--ok);min-width:24px;text-align:right">${ejDone ? "✓" : ""}</div>
+    </div>`;
+    html += `<div style="text-align:center;padding:0 14px 8px">
+      <img id="${gifId}" src="" alt="" style="display:none;max-width:100%;max-height:180px;border-radius:6px;object-fit:cover">
+    </div>`;
+    html += `<div style="padding:0 14px 10px;font-size:13px;color:var(--text);line-height:1.5">${ej.instruccion}</div>`;
+    html += `<div style="padding:0 14px 14px;display:flex;flex-wrap:wrap;gap:10px">`;
+    ej.registrar.forEach(campo => {
+      const label = TEST_FIELD_LABELS[campo] || campo;
+      const val = r[campo] || "";
+      const isNum = ["peso_kg","reps","reps_pierna_derecha","reps_pierna_izquierda","tiempo_segundos"].includes(campo);
+      const step = campo === "peso_kg" ? "0.5" : "1";
+      html += `<div style="flex:1;min-width:90px">
+        <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);margin-bottom:4px">${label}</div>
+        <input class="cut-input" type="${isNum ? "number" : "text"}" step="${step}" value="${val}" placeholder="${campo === "tiempo_segundos" ? "seg" : isNum ? "0" : ""}"
+          oninput="saveTestFieldNata('${dia}',${i},'${campo}',this.value)" style="width:100%;text-align:center;padding:7px 8px">
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  html += `</div>`;
+  main.innerHTML = html;
+
+  ejercicios.forEach((ej, i) => {
+    loadExerciseGif(`gif-${dia}-${i}`, ej.gif_busqueda);
+  });
+}
+
 function renderSession(main) {
   const usuarioCfg = USUARIOS[state.currentUser] || {};
-  if (usuarioCfg.renderTest === 'dolly') {
-    renderTestDolly(main);
-    return;
-  }
+  if (usuarioCfg.renderTest === 'dolly') { renderTestDolly(main); return; }
+  if (usuarioCfg.renderTest === 'nata') { renderTestNata(main); return; }
   if (!usuarioCfg.mesociclos?.length) {
     main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción<br><span style="font-size:11px;opacity:0.6">Tu mesociclo se diseña en base al test inicial</span></div>';
     return;
@@ -3339,7 +3599,24 @@ function renderProfile(main) {
       });
       fuerzaBody = subAcc('fuerza-test', 'Test inicial — Baseline', `<div class="rm-grid">${rows}</div>`, true);
     }
-  } else {
+  } else if (USUARIOS[state.currentUser]?.renderTest === 'nata') {
+    const testDatosNata = getTestDatos();
+    if (!testDatosNata.completado) {
+      fuerzaBody = `<div style="font-size:13px;color:var(--muted);padding:4px 0">Completa el test inicial en 🏋️ para ver tu baseline aquí.</div>`;
+    } else {
+      let rows = '';
+      ['lun', 'mie', 'vie'].forEach(dia => {
+        TEST_NATA.ejercicios[dia].forEach(ej => {
+          const r = testDatosNata[dia]?.[ej.nombre];
+          rows += `<div class="rm-row">
+            <div class="rm-ex">${ej.nombre}</div>
+            <div class="rm-val" style="font-size:11px">${formatTestResultRM(ej, r)}</div>
+          </div>`;
+        });
+      });
+      fuerzaBody = subAcc('fuerza-test', 'Test inicial — Baseline', `<div class="rm-grid">${rows}</div>`, true);
+    }
+  } else if (USUARIOS[state.currentUser]?.mesociclos?.length > 0) {
     Object.entries(RMS_REFERENCIA).forEach(([meso, rms]) => {
       fuerzaBody += subAcc('fuerza-'+meso, meso, `<div class="rm-grid">${rmRows(rms)}</div>`);
     });
@@ -3351,6 +3628,8 @@ function renderProfile(main) {
         </div>
       </div>`).join('')}</div>`
     );
+  } else {
+    fuerzaBody = `<div style="font-size:13px;color:var(--muted);padding:4px 0">Programa en construcción.</div>`;
   }
 
   // ── COMPOSICIÓN ──
