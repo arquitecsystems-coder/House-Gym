@@ -1273,6 +1273,9 @@
   <div class="nav-item" id="nav-cut" onclick="setView('cut')">
     <span class="nav-icon">🔥</span>cut
   </div>
+  <div class="nav-item" id="nav-actividad" onclick="setView('actividad')">
+    <span class="nav-icon">👟</span>actividad
+  </div>
   <div class="nav-item" id="nav-profile" onclick="setView('profile')">
     <span class="nav-icon">👤</span>perfil
   </div>
@@ -1840,12 +1843,14 @@ function render() {
     renderCut(main);
   } else if (state.view === "profile") {
     renderProfile(main);
+  } else if (state.view === "actividad") {
+    renderActividad(main);
   } else if (state.view === "config") {
     renderConfig(main);
   }
 
   // Nav activo
-  ["session","rehab","cut","profile","config"].forEach(v => {
+  ["session","rehab","cut","actividad","profile","config"].forEach(v => {
     document.getElementById("nav-"+v).classList.toggle("active", state.view === v);
   });
 }
@@ -3840,6 +3845,154 @@ function saveEditModal() {
   renderProfile(document.getElementById('mainContent'));
 }
 
+// ── ACTIVIDAD VIEW ──
+function getActividadDatos() {
+  try { return JSON.parse(localStorage.getItem(uk("actividad-datos")) || "{}"); }
+  catch(e) { return {}; }
+}
+
+function saveActividadDatos(d) {
+  localStorage.setItem(uk("actividad-datos"), JSON.stringify(d));
+  queueSync();
+}
+
+function guardarObjetivoPasos(valor) {
+  const d = getActividadDatos();
+  const n = parseInt(valor);
+  if (!isNaN(n) && n > 0) d.objetivoPasos = n;
+  else delete d.objetivoPasos;
+  saveActividadDatos(d);
+  renderActividad(document.getElementById("mainContent"));
+}
+
+function guardarActividad(fecha, campo, valor) {
+  const d = getActividadDatos();
+  if (!d.registros) d.registros = {};
+  if (!d.registros[fecha]) d.registros[fecha] = {};
+  if (campo === "pasos") {
+    const n = parseInt(valor);
+    if (!isNaN(n) && n >= 0) d.registros[fecha].pasos = n;
+    else delete d.registros[fecha].pasos;
+  } else if (campo === "cardio") {
+    if (valor) d.registros[fecha].cardio = true;
+    else delete d.registros[fecha].cardio;
+  } else if (campo === "minCardio") {
+    const n = parseInt(valor);
+    if (!isNaN(n) && n > 0) d.registros[fecha].minCardio = n;
+    else delete d.registros[fecha].minCardio;
+  }
+  if (!d.registros[fecha].pasos && !d.registros[fecha].cardio) delete d.registros[fecha];
+  saveActividadDatos(d);
+  renderActividad(document.getElementById("mainContent"));
+}
+
+function getActividadColor(reg, objetivo, isDark) {
+  if (!reg || (!reg.pasos && !reg.cardio)) return isDark ? '#2a2a2a' : '#E5E5E3';
+  const cumple = reg.pasos >= objetivo;
+  const cardio = !!reg.cardio;
+  if (cumple && cardio)  return isDark ? '#3ddc84' : '#2E7D32';
+  if (cumple || cardio)  return '#81C784';
+  return '#F9A825';
+}
+
+function renderActividad(main) {
+  const d = getActividadDatos();
+  const isDark = document.body.classList.contains('dark');
+  const now = new Date();
+  const hoy = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+  const regHoy = d.registros?.[hoy] || {};
+  const objetivo = d.objetivoPasos || 0;
+
+  let html = '<div style="padding:16px;max-width:600px;margin:0 auto">';
+
+  // ── Setup / Registro de hoy ──
+  html += '<div class="rehab-card">';
+  html += '<div class="rehab-title" style="margin-bottom:12px">Actividad diaria</div>';
+
+  // Objetivo de pasos (siempre visible, editable)
+  html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">';
+  html += '<div style="font-size:12px;font-family:var(--font-mono);color:var(--muted);white-space:nowrap">Objetivo pasos:</div>';
+  html += '<input class="cut-input" type="number" id="act-obj-input" value="' + (objetivo || "") + '" placeholder="p.ej. 8000" style="flex:1;padding:7px 8px;text-align:center">';
+  html += '<button onclick="guardarObjetivoPasos(document.getElementById(\'act-obj-input\').value)" style="padding:7px 12px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px;white-space:nowrap">Guardar</button>';
+  html += '</div>';
+
+  if (objetivo > 0) {
+    // Pasos de hoy
+    const pasosHoy = regHoy.pasos;
+    const pct = pasosHoy ? Math.min(1, pasosHoy / objetivo) : 0;
+    const cumple = pasosHoy >= objetivo;
+
+    html += '<div style="margin-bottom:14px">';
+    html += '<div style="font-size:12px;font-family:var(--font-mono);color:var(--muted);margin-bottom:6px">Pasos hoy</div>';
+    html += '<input class="cut-input" type="number" id="act-pasos-hoy" value="' + (pasosHoy || "") + '" placeholder="0" style="width:100%;padding:8px;text-align:center;margin-bottom:6px" onchange="guardarActividad(\'' + hoy + '\',\'pasos\',this.value)">';
+    html += '<div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:' + (cumple ? 'var(--ok)' : 'var(--muted)') + ';margin-bottom:4px">';
+    html += '<span>' + (pasosHoy ? pasosHoy.toLocaleString() : '—') + '</span><span>' + objetivo.toLocaleString() + '</span></div>';
+    html += '<div style="background:var(--border);border-radius:3px;height:5px;overflow:hidden">';
+    html += '<div style="background:' + (cumple ? 'var(--ok)' : 'var(--accent)') + ';height:100%;width:' + Math.round(pct*100) + '%"></div>';
+    html += '</div></div>';
+
+    // Cardio
+    html += '<div style="display:flex;align-items:center;gap:12px">';
+    html += '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px">';
+    html += '<input type="checkbox" ' + (regHoy.cardio ? 'checked' : '') + ' onchange="guardarActividad(\'' + hoy + '\',\'cardio\',this.checked)" style="width:16px;height:16px;cursor:pointer">';
+    html += '<span>Cardio hoy</span></label>';
+    if (regHoy.cardio) {
+      html += '<input class="cut-input" type="number" value="' + (regHoy.minCardio || "") + '" placeholder="min" style="width:65px;padding:6px 8px;text-align:center" onchange="guardarActividad(\'' + hoy + '\',\'minCardio\',this.value)">';
+      html += '<span style="font-size:12px;color:var(--muted);font-family:var(--font-mono)">min</span>';
+    }
+    html += '</div>';
+  } else {
+    html += '<div style="font-size:13px;color:var(--muted)">Define el objetivo de pasos arriba para empezar a registrar.</div>';
+  }
+
+  html += '</div>';
+
+  // ── Heatmap ──
+  if (objetivo > 0 && d.registros) {
+    const fechas = Object.keys(d.registros).sort();
+    const todayMid = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const thisMonday = new Date(todayMid.getTime() - ((todayMid.getDay() + 6) % 7) * 86400000);
+    let hmStart = new Date(thisMonday.getTime() - 7 * 7 * 86400000); // 8 semanas atras
+    if (fechas.length > 0) {
+      const fp = fechas[0].split('-');
+      const firstDate = new Date(parseInt(fp[0]), parseInt(fp[1])-1, parseInt(fp[2]));
+      if (firstDate < hmStart) hmStart = new Date(firstDate.getTime() - ((firstDate.getDay() + 6) % 7) * 86400000);
+    }
+    const numWeeks = Math.max(1, Math.round((thisMonday.getTime() - hmStart.getTime()) / (7 * 86400000)) + 1);
+
+    html += '<div class="rehab-card"><div class="rehab-title" style="margin-bottom:10px">Historial</div>';
+    html += '<div class="rehab-heatmap-grid">';
+    ['L','M','X','J','V','S','D'].forEach(d2 => { html += '<div class="rehab-heatmap-dow">'+d2+'</div>'; });
+
+    for (let row = 0; row < numWeeks; row++) {
+      for (let col = 0; col < 7; col++) {
+        const cellDate = new Date(hmStart.getTime() + (row * 7 + col) * 86400000);
+        const cellStr = cellDate.getFullYear() + '-' + String(cellDate.getMonth()+1).padStart(2,'0') + '-' + String(cellDate.getDate()).padStart(2,'0');
+        const isFuture = cellDate > todayMid;
+        const isToday = cellStr === hoy;
+        const reg = d.registros[cellStr];
+        const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getActividadColor(reg, objetivo, isDark);
+        const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
+        const opacity = isFuture ? 'opacity:0.25;cursor:default;' : '';
+        const tip = !isFuture && reg ? ' title="' + cellStr + (reg.pasos ? ': ' + reg.pasos.toLocaleString() + ' pasos' : '') + (reg.cardio ? (reg.minCardio ? ', cardio ' + reg.minCardio + 'min' : ', cardio') : '') + '"' : '';
+        html += '<div class="rehab-heatmap-cell"' + tip + ' style="background:' + color + ';' + outline + opacity + '"></div>';
+      }
+    }
+
+    html += '</div>';
+    html += '<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);font-family:var(--font-mono);flex-wrap:wrap">'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#2E7D32;vertical-align:middle;margin-right:3px"></span>pasos+cardio</span>'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#81C784;vertical-align:middle;margin-right:3px"></span>uno de dos</span>'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#F9A825;vertical-align:middle;margin-right:3px"></span>por debajo</span>'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#E5E5E3;vertical-align:middle;margin-right:3px"></span>sin dato</span>'
+      + '</div>';
+    html += '</div>';
+  }
+
+  html += '</div>';
+  main.innerHTML = html;
+}
+
 // ── CONFIG VIEW ──
 function renderConfig(main) {
   const ghConnected = !!state.githubToken;
@@ -3994,6 +4147,7 @@ async function pushToGithub() {
       rehab: JSON.parse(localStorage.getItem(uk("rehab-datos")) || "{}"),
       cut: JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}"),
       test: JSON.parse(localStorage.getItem(uk("test-datos")) || "{}"),
+      actividad: JSON.parse(localStorage.getItem(uk("actividad-datos")) || "{}"),
       timestamp: new Date().toISOString()
     };
 
@@ -4085,12 +4239,20 @@ async function pullFromGithub() {
       localStorage.setItem(uk("test-datos"), JSON.stringify(data.test));
     }
 
+    if (data.actividad && Object.keys(data.actividad).length > 0) {
+      const localAct = JSON.parse(localStorage.getItem(uk("actividad-datos")) || "{}");
+      const mergedAct = Object.assign({}, localAct, data.actividad);
+      mergedAct.registros = Object.assign({}, localAct.registros || {}, data.actividad.registros || {});
+      localStorage.setItem(uk("actividad-datos"), JSON.stringify(mergedAct));
+    }
+
     showToast("Datos descargados ✓", "ok");
     render();
-    // Si estamos en rehab o cut, re-renderizar esa vista también
+    // Si estamos en rehab, cut o actividad, re-renderizar esa vista también
     const main = document.getElementById("mainContent");
     if (state.view === "rehab") renderRehab(main);
     if (state.view === "cut") renderCut(main);
+    if (state.view === "actividad") renderActividad(main);
   } catch(e) {
     console.error("Pull error:", e);
     showToast("Error: " + e.message, "err");
