@@ -677,6 +677,20 @@
       "reps": "12",
       "rir": "2",
       "checked": true
+    },
+    "M5-S2-mar-Remo 1 mano (DB)-2": {
+      "peso": "20",
+      "timestamp": "2026-07-14T19:09:29.245Z",
+      "reps": "12",
+      "rir": "2",
+      "checked": true
+    },
+    "M5-S2-mar-Remo 1 mano (DB)-3": {
+      "peso": "20",
+      "timestamp": "2026-07-14T19:09:34.489Z",
+      "reps": "12",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1118,5 +1132,5 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-14T18:45:53.418Z"
+  "timestamp": "2026-07-14T19:09:37.498Z"
 }
