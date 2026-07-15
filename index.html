@@ -3889,12 +3889,15 @@ function guardarActividad(fecha, campo, valor) {
     if (!isNaN(n) && n >= 0) d.registros[fecha].pasos = n;
     else delete d.registros[fecha].pasos;
   } else if (campo === "cardio") {
-    if (valor) d.registros[fecha].cardio = true;
-    else delete d.registros[fecha].cardio;
+    if (valor) { d.registros[fecha].cardio = true; }
+    else { delete d.registros[fecha].cardio; delete d.registros[fecha].minCardio; delete d.registros[fecha].tipoCardio; }
   } else if (campo === "minCardio") {
     const n = parseInt(valor);
     if (!isNaN(n) && n > 0) d.registros[fecha].minCardio = n;
     else delete d.registros[fecha].minCardio;
+  } else if (campo === "tipoCardio") {
+    if (valor) d.registros[fecha].tipoCardio = valor;
+    else delete d.registros[fecha].tipoCardio;
   }
   if (!d.registros[fecha].pasos && !d.registros[fecha].cardio) delete d.registros[fecha];
   saveActividadDatos(d);
@@ -3917,14 +3920,15 @@ function renderActividad(main) {
   const hoy = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
   const regHoy = d.registros?.[hoy] || {};
   const objetivo = d.objetivoPasos || 0;
+  const TIPOS_CARDIO = ['Caminata', 'Trote / Carrera', 'HIIT', 'Bici', 'Natación', 'Elíptica', 'Otro'];
 
   let html = '<div style="padding:16px;max-width:600px;margin:0 auto">';
 
-  // ── Setup / Registro de hoy ──
+  // ── Registro de hoy ──
   html += '<div class="rehab-card">';
   html += '<div class="rehab-title" style="margin-bottom:12px">Actividad diaria</div>';
 
-  // Objetivo de pasos (siempre visible, editable)
+  // Objetivo de pasos
   html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">';
   html += '<div style="font-size:12px;font-family:var(--font-mono);color:var(--muted);white-space:nowrap">Objetivo pasos:</div>';
   html += '<input class="cut-input" type="number" id="act-obj-input" value="' + (objetivo || "") + '" placeholder="p.ej. 8000" style="flex:1;padding:7px 8px;text-align:center">';
@@ -3932,52 +3936,65 @@ function renderActividad(main) {
   html += '</div>';
 
   if (objetivo > 0) {
-    // Pasos de hoy
-    const pasosHoy = regHoy.pasos;
-    const pct = pasosHoy ? Math.min(1, pasosHoy / objetivo) : 0;
+    const pasosHoy = regHoy.pasos || 0;
+    const pct = Math.min(1, pasosHoy > 0 ? pasosHoy / objetivo : 0);
     const cumple = pasosHoy >= objetivo;
+    const circ = (2 * Math.PI * 36).toFixed(2);
+    const dash = (pct * parseFloat(circ)).toFixed(2);
+    const strokeColor = cumple ? 'var(--ok)' : 'var(--accent)';
+    const stepLabel = pasosHoy >= 10000 ? (pasosHoy / 1000).toFixed(1) + 'k' : (pasosHoy || 0).toLocaleString();
+    const pctLabel = pasosHoy ? Math.min(100, Math.round(pct * 100)) + '%' : (objetivo >= 1000 ? (objetivo / 1000).toFixed(0) + 'k meta' : objetivo + ' meta');
 
-    html += '<div style="margin-bottom:14px">';
+    const donutSvg = '<svg width="90" height="90" viewBox="0 0 90 90" style="flex-shrink:0">'
+      + '<circle cx="45" cy="45" r="36" fill="none" style="stroke:var(--border)" stroke-width="8"/>'
+      + (pct > 0 ? '<circle cx="45" cy="45" r="36" fill="none" style="stroke:' + strokeColor + '" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + dash + ' ' + circ + '" transform="rotate(-90 45 45)"/>' : '')
+      + '<text x="45" y="43" text-anchor="middle" style="fill:var(--text);font-family:monospace;font-size:14px;font-weight:700">' + (pasosHoy ? stepLabel : '—') + '</text>'
+      + '<text x="45" y="57" text-anchor="middle" style="fill:' + (cumple ? 'var(--ok)' : 'var(--muted)') + ';font-family:monospace;font-size:10px">' + pctLabel + '</text>'
+      + '</svg>';
+
+    // Donut + pasos input
+    html += '<div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">';
+    html += donutSvg;
+    html += '<div style="flex:1">';
     html += '<div style="font-size:12px;font-family:var(--font-mono);color:var(--muted);margin-bottom:6px">Pasos hoy</div>';
-    html += '<input class="cut-input" type="number" id="act-pasos-hoy" value="' + (pasosHoy || "") + '" placeholder="0" style="width:100%;padding:8px;text-align:center;margin-bottom:6px" onchange="guardarActividad(\'' + hoy + '\',\'pasos\',this.value)">';
-    html += '<div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:' + (cumple ? 'var(--ok)' : 'var(--muted)') + ';margin-bottom:4px">';
-    html += '<span>' + (pasosHoy ? pasosHoy.toLocaleString() : '—') + '</span><span>' + objetivo.toLocaleString() + '</span></div>';
-    html += '<div style="background:var(--border);border-radius:3px;height:5px;overflow:hidden">';
-    html += '<div style="background:' + (cumple ? 'var(--ok)' : 'var(--accent)') + ';height:100%;width:' + Math.round(pct*100) + '%"></div>';
+    html += '<input class="cut-input" type="number" id="act-pasos-hoy" value="' + (regHoy.pasos || "") + '" placeholder="0" style="width:100%;padding:8px;text-align:center" onchange="guardarActividad(\'' + hoy + '\',\'pasos\',this.value)">';
+    html += '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:4px">Objetivo: ' + objetivo.toLocaleString() + '</div>';
     html += '</div></div>';
 
     // Cardio
-    html += '<div style="display:flex;align-items:center;gap:12px">';
-    html += '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px">';
+    html += '<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;margin-bottom:' + (regHoy.cardio ? '8px' : '0') + '">';
     html += '<input type="checkbox" ' + (regHoy.cardio ? 'checked' : '') + ' onchange="guardarActividad(\'' + hoy + '\',\'cardio\',this.checked)" style="width:16px;height:16px;cursor:pointer">';
     html += '<span>Cardio hoy</span></label>';
     if (regHoy.cardio) {
-      html += '<input class="cut-input" type="number" value="' + (regHoy.minCardio || "") + '" placeholder="min" style="width:65px;padding:6px 8px;text-align:center" onchange="guardarActividad(\'' + hoy + '\',\'minCardio\',this.value)">';
+      let tipoOpts = '<option value="">Tipo...</option>';
+      TIPOS_CARDIO.forEach(function(t) { tipoOpts += '<option value="' + t + '"' + (regHoy.tipoCardio === t ? ' selected' : '') + '>' + t + '</option>'; });
+      html += '<div style="display:flex;gap:8px;align-items:center">';
+      html += '<input class="cut-input" type="number" value="' + (regHoy.minCardio || "") + '" placeholder="min" style="width:70px;padding:6px 8px;text-align:center" onchange="guardarActividad(\'' + hoy + '\',\'minCardio\',this.value)">';
       html += '<span style="font-size:12px;color:var(--muted);font-family:var(--font-mono)">min</span>';
+      html += '<select class="cut-input" style="flex:1;padding:6px 8px" onchange="guardarActividad(\'' + hoy + '\',\'tipoCardio\',this.value)">' + tipoOpts + '</select>';
+      html += '</div>';
     }
-    html += '</div>';
   } else {
     html += '<div style="font-size:13px;color:var(--muted)">Define el objetivo de pasos arriba para empezar a registrar.</div>';
   }
 
   html += '</div>';
 
-  // ── Heatmap ──
-  if (objetivo > 0 && d.registros) {
-    const fechas = Object.keys(d.registros).sort();
+  // ── Heatmap — solo desde el primer registro, hoy en la ultima fila ──
+  const registros = d.registros || {};
+  const fechasRegistradas = Object.keys(registros).sort();
+  if (objetivo > 0 && fechasRegistradas.length > 0) {
     const todayMid = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const thisMonday = new Date(todayMid.getTime() - ((todayMid.getDay() + 6) % 7) * 86400000);
-    let hmStart = new Date(thisMonday.getTime() - 7 * 7 * 86400000); // 8 semanas atras
-    if (fechas.length > 0) {
-      const fp = fechas[0].split('-');
-      const firstDate = new Date(parseInt(fp[0]), parseInt(fp[1])-1, parseInt(fp[2]));
-      if (firstDate < hmStart) hmStart = new Date(firstDate.getTime() - ((firstDate.getDay() + 6) % 7) * 86400000);
-    }
+    const fp = fechasRegistradas[0].split('-');
+    const firstDate = new Date(parseInt(fp[0]), parseInt(fp[1]) - 1, parseInt(fp[2]));
+    const firstDow = (firstDate.getDay() + 6) % 7;
+    const hmStart = new Date(firstDate.getTime() - firstDow * 86400000);
     const numWeeks = Math.max(1, Math.round((thisMonday.getTime() - hmStart.getTime()) / (7 * 86400000)) + 1);
 
     html += '<div class="rehab-card"><div class="rehab-title" style="margin-bottom:10px">Historial</div>';
     html += '<div class="rehab-heatmap-grid">';
-    ['L','M','X','J','V','S','D'].forEach(d2 => { html += '<div class="rehab-heatmap-dow">'+d2+'</div>'; });
+    ['L','M','X','J','V','S','D'].forEach(function(lb) { html += '<div class="rehab-heatmap-dow">' + lb + '</div>'; });
 
     for (let row = 0; row < numWeeks; row++) {
       for (let col = 0; col < 7; col++) {
@@ -3985,12 +4002,12 @@ function renderActividad(main) {
         const cellStr = cellDate.getFullYear() + '-' + String(cellDate.getMonth()+1).padStart(2,'0') + '-' + String(cellDate.getDate()).padStart(2,'0');
         const isFuture = cellDate > todayMid;
         const isToday = cellStr === hoy;
-        const reg = d.registros[cellStr];
+        const reg = registros[cellStr];
         const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getActividadColor(reg, objetivo, isDark);
         const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
         const opacity = isFuture ? 'opacity:0.25;cursor:default;' : '';
-        const tip = !isFuture && reg ? ' title="' + cellStr + (reg.pasos ? ': ' + reg.pasos.toLocaleString() + ' pasos' : '') + (reg.cardio ? (reg.minCardio ? ', cardio ' + reg.minCardio + 'min' : ', cardio') : '') + '"' : '';
-        html += '<div class="rehab-heatmap-cell"' + tip + ' style="background:' + color + ';' + outline + opacity + '"></div>';
+        const onclick = isFuture ? '' : ' onclick="showActividadHeatmapDay(\'' + cellStr + '\')"';
+        html += '<div class="rehab-heatmap-cell"' + onclick + ' style="background:' + color + ';' + outline + opacity + '"></div>';
       }
     }
 
@@ -4001,11 +4018,46 @@ function renderActividad(main) {
       + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#F9A825;vertical-align:middle;margin-right:3px"></span>por debajo</span>'
       + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#E5E5E3;vertical-align:middle;margin-right:3px"></span>sin dato</span>'
       + '</div>';
+    html += '<div id="act-heatmap-tooltip" style="display:none" class="rehab-heatmap-tooltip"></div>';
     html += '</div>';
   }
 
   html += '</div>';
   main.innerHTML = html;
+}
+
+function showActividadHeatmapDay(fechaStr) {
+  const tooltip = document.getElementById('act-heatmap-tooltip');
+  if (!tooltip) return;
+  if (tooltip.dataset.fecha === fechaStr && tooltip.style.display !== 'none') {
+    tooltip.style.display = 'none'; return;
+  }
+  tooltip.dataset.fecha = fechaStr;
+  const d = getActividadDatos();
+  const reg = (d.registros || {})[fechaStr] || {};
+  let html = '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:8px">' + fechaStr + '</div>';
+  if (!reg.pasos && !reg.cardio) {
+    html += '<div style="font-size:12px;color:var(--muted)">Sin registro este día</div>';
+  } else {
+    if (reg.pasos) {
+      const obj = d.objetivoPasos || 0;
+      const pct = obj > 0 ? Math.round(reg.pasos / obj * 100) : null;
+      html += '<div style="margin-bottom:6px">'
+        + '<div style="font-size:12px;font-weight:600">Pasos</div>'
+        + '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">'
+        + reg.pasos.toLocaleString() + (pct !== null ? '  (' + pct + '% del objetivo)' : '')
+        + '</div></div>';
+    }
+    if (reg.cardio) {
+      html += '<div>'
+        + '<div style="font-size:12px;font-weight:600">Cardio</div>'
+        + '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted)">'
+        + (reg.tipoCardio || 'sin tipo') + (reg.minCardio ? '  ·  ' + reg.minCardio + ' min' : '')
+        + '</div></div>';
+    }
+  }
+  tooltip.innerHTML = html;
+  tooltip.style.display = 'block';
 }
 
 // ── CONFIG VIEW ──
