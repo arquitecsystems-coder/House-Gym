@@ -691,10 +691,21 @@
       "reps": "12",
       "rir": "1",
       "checked": true
+    },
+    "M5-S2-mar-Press Francés (barra)-1": {
+      "peso": "29",
+      "timestamp": "2026-07-15T01:48:29.212Z",
+      "reps": "8",
+      "rir": "0",
+      "checked": true
+    },
+    "M5-S2-mar-Press Francés (barra)-2": {
+      "peso": "29",
+      "timestamp": "2026-07-15T01:48:32.679Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-14T18:27:33.702Z",
+    "_syncTs": "2026-07-14T19:09:37.498Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -959,7 +970,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-14T18:27:33.702Z",
+    "_syncTs": "2026-07-14T19:09:37.498Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -1132,5 +1143,5 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-14T19:09:37.498Z"
+  "timestamp": "2026-07-15T01:48:32.228Z"
 }
