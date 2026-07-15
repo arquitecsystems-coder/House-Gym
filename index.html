@@ -1676,12 +1676,10 @@ const TEST_NATA = {
   label: "Test inicial — Nata",
   tipo: "test",
   dias: [
-    { key: "lun", label: "Lun", titulo: "Full Body A" },
-    { key: "mie", label: "Mié", titulo: "Full Body B" },
-    { key: "vie", label: "Vie", titulo: "Full Body A (variante)" },
+    { key: "test", label: "Test", titulo: "Test inicial completo" },
   ],
   ejercicios: {
-    lun: [
+    test: [
       {
         nombre: "Sentadilla trasera (barra)",
         tipo: "rampa_peso",
@@ -1697,34 +1695,18 @@ const TEST_NATA = {
         gif_busqueda: "barbell bench press"
       },
       {
-        nombre: "Remo Pendlay (barra)",
-        tipo: "rampa_peso",
-        instruccion: "Rampa hasta fallo en 6-8 reps. Referencia previa (equipo limitado): 20.5kg x 9-14.",
-        registrar: ["peso_kg", "reps"],
-        gif_busqueda: "pendlay row barbell"
-      },
-      {
-        nombre: "Curl bíceps (barra)",
-        tipo: "rampa_peso",
-        instruccion: "Rampa hasta fallo en 8-10 reps. Referencia previa: 6kg x 8-10 (mancuerna, equipo limitado).",
-        registrar: ["peso_kg", "reps"],
-        gif_busqueda: "barbell bicep curl"
-      },
-      {
-        nombre: "Plancha (core)",
-        tipo: "patron_motor",
-        instruccion: "Tiempo máximo sostenido con técnica correcta.",
-        registrar: ["tiempo_segundos"],
-        gif_busqueda: "plank hold"
-      }
-    ],
-    mie: [
-      {
         nombre: "RDL (barra)",
         tipo: "rampa_peso",
         instruccion: "Rampa hasta fallo en 6-8 reps. Referencia previa: 12kg x 7-14 (equipo muy limitado, esperar salto grande).",
         registrar: ["peso_kg", "reps"],
         gif_busqueda: "romanian deadlift barbell"
+      },
+      {
+        nombre: "Remo Pendlay (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 6-8 reps. Referencia previa (equipo limitado): 20.5kg x 9-14.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "pendlay row barbell"
       },
       {
         nombre: "Press militar (barra)",
@@ -1733,29 +1715,6 @@ const TEST_NATA = {
         registrar: ["peso_kg", "reps"],
         gif_busqueda: "barbell overhead press"
       },
-      {
-        nombre: "Remo 1 mano (mancuerna, banco)",
-        tipo: "rampa_peso",
-        instruccion: "Rampa hasta fallo en 8-10 reps.",
-        registrar: ["peso_kg", "reps"],
-        gif_busqueda: "single arm dumbbell row bench"
-      },
-      {
-        nombre: "Hip thrust (barra)",
-        tipo: "rampa_peso",
-        instruccion: "Rampa hasta fallo en 10-12 reps. Referencia previa: 20kg x 23-26 (mancuerna, equipo limitado).",
-        registrar: ["peso_kg", "reps"],
-        gif_busqueda: "barbell hip thrust"
-      },
-      {
-        nombre: "Crunch con peso",
-        tipo: "rampa_peso",
-        instruccion: "Rampa hasta fallo en 12-15 reps.",
-        registrar: ["peso_kg", "reps"],
-        gif_busqueda: "weighted crunch"
-      }
-    ],
-    vie: [
       {
         nombre: "Zancada estática (barra o mancuernas)",
         tipo: "rampa_peso",
@@ -1771,11 +1730,25 @@ const TEST_NATA = {
         gif_busqueda: "barbell incline press"
       },
       {
-        nombre: "Remo Pendlay técnico (barra)",
+        nombre: "Hip thrust (barra)",
         tipo: "rampa_peso",
-        instruccion: "Peso menor al de lunes, foco en técnica y control, 8-10 reps.",
+        instruccion: "Rampa hasta fallo en 10-12 reps. Referencia previa: 20kg x 23-26 (mancuerna, equipo limitado).",
         registrar: ["peso_kg", "reps"],
-        gif_busqueda: "pendlay row barbell"
+        gif_busqueda: "barbell hip thrust"
+      },
+      {
+        nombre: "Remo 1 mano (mancuerna, banco)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "single arm dumbbell row bench"
+      },
+      {
+        nombre: "Curl bíceps (barra)",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 8-10 reps. Referencia previa: 6kg x 8-10 (mancuerna, equipo limitado).",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "barbell bicep curl"
       },
       {
         nombre: "Curl martillo (mancuerna)",
@@ -1790,6 +1763,20 @@ const TEST_NATA = {
         instruccion: "Referencia previa: 5kg x 5-8. Rampa hasta fallo en 10-12 reps.",
         registrar: ["peso_kg", "reps"],
         gif_busqueda: "dumbbell lateral raise"
+      },
+      {
+        nombre: "Crunch con peso",
+        tipo: "rampa_peso",
+        instruccion: "Rampa hasta fallo en 12-15 reps.",
+        registrar: ["peso_kg", "reps"],
+        gif_busqueda: "weighted crunch"
+      },
+      {
+        nombre: "Plancha (core)",
+        tipo: "patron_motor",
+        instruccion: "Tiempo máximo sostenido con técnica correcta.",
+        registrar: ["tiempo_segundos"],
+        gif_busqueda: "plank hold"
       }
     ]
   }
@@ -2115,18 +2102,8 @@ function saveTestFieldNata(dia, exIdx, campo, valor) {
   const progEl = document.getElementById("test-progress");
   if (progEl) progEl.textContent = `${done}/${ejercicios.length} completados`;
 
-  TEST_NATA.dias.forEach(d => {
-    const total = TEST_NATA.ejercicios[d.key].length;
-    const doneDia = TEST_NATA.ejercicios[d.key].filter(e => {
-      const r3 = datos[d.key]?.[e.nombre];
-      return r3 && e.registrar.every(c => r3[c]);
-    }).length;
-    const chip = document.getElementById(`test-day-chip-${d.key}`);
-    if (chip) chip.textContent = `${doneDia}/${total}`;
-  });
-
   let allDone = true;
-  for (const d of ["lun", "mie", "vie"]) {
+  for (const d of ["test"]) {
     for (const e of TEST_NATA.ejercicios[d]) {
       const r4 = datos[d]?.[e.nombre];
       if (!r4 || e.registrar.some(c => !r4[c])) { allDone = false; break; }
@@ -2151,7 +2128,7 @@ function setTestDiaNata(dia) {
 
 function renderTestNata(main) {
   const datos = getTestDatos();
-  const dia = state.testDia || "lun";
+  const dia = "test";
   const ejercicios = TEST_NATA.ejercicios[dia];
   const doneDia = ejercicios.filter(ej => {
     const r = datos[dia]?.[ej.nombre];
@@ -2161,22 +2138,7 @@ function renderTestNata(main) {
   let html = `<div style="padding:16px;max-width:600px;margin:0 auto">`;
   html += `<div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px">Test inicial</div>`;
 
-  html += `<div style="display:flex;gap:8px;margin-bottom:16px">`;
-  TEST_NATA.dias.forEach(d => {
-    const active = d.key === dia;
-    const dDone = TEST_NATA.ejercicios[d.key].filter(ej => {
-      const r = datos[d.key]?.[ej.nombre];
-      return r && ej.registrar.every(c => r[c]);
-    }).length;
-    const dTotal = TEST_NATA.ejercicios[d.key].length;
-    html += `<button onclick="setTestDiaNata('${d.key}')" style="flex:1;padding:10px 8px;border:1px solid ${active ? "var(--accent)" : "var(--border)"};border-radius:var(--radius);background:${active ? "var(--accent-bg)" : "none"};color:${active ? "var(--accent)" : "var(--muted)"};font-family:var(--font-mono);font-size:12px;cursor:pointer;line-height:1.4">
-      <div style="font-weight:${active ? 700 : 400}">${d.label}</div>
-      <div id="test-day-chip-${d.key}" style="font-size:10px;margin-top:2px">${dDone}/${dTotal}</div>
-    </button>`;
-  });
-  html += `</div>`;
-
-  html += `<div style="font-size:14px;font-weight:700;margin-bottom:2px">${TEST_NATA.dias.find(d => d.key === dia).titulo}</div>`;
+  html += `<div style="font-size:14px;font-weight:700;margin-bottom:2px">Test inicial completo</div>`;
   html += `<div id="test-progress" style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:14px">${doneDia}/${ejercicios.length} completados</div>`;
 
   if (datos.completado) {
@@ -3610,7 +3572,7 @@ function renderProfile(main) {
       fuerzaBody = `<div style="font-size:13px;color:var(--muted);padding:4px 0">Completa el test inicial en 🏋️ para ver tu baseline aquí.</div>`;
     } else {
       let rows = '';
-      ['lun', 'mie', 'vie'].forEach(dia => {
+      ['test'].forEach(dia => {
         TEST_NATA.ejercicios[dia].forEach(ej => {
           const r = testDatosNata[dia]?.[ej.nombre];
           rows += `<div class="rm-row">
