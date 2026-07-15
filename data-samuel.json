@@ -969,6 +969,22 @@
             "completado": false
           }
         ]
+      },
+      "2026-07-14": {
+        "cuadrupedia": [
+          {
+            "tiempo": 120,
+            "completado": true
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          },
+          {
+            "tiempo": null,
+            "completado": false
+          }
+        ]
       }
     }
   },
@@ -1146,5 +1162,5 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-15T01:48:39.652Z"
+  "timestamp": "2026-07-15T01:48:50.322Z"
 }
