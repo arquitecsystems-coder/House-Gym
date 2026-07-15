@@ -3490,6 +3490,42 @@ function formatTestResultRM(ej, r) {
   return parts.join(' ');
 }
 
+function getProfileDatos() {
+  try { return JSON.parse(localStorage.getItem(uk("user-profile")) || "{}"); }
+  catch(e) { return {}; }
+}
+function saveProfileDatos(d) {
+  localStorage.setItem(uk("user-profile"), JSON.stringify(d));
+  queueSync();
+}
+function guardarNombrePerfil(valor) {
+  const d = getProfileDatos();
+  d.displayName = valor.trim();
+  saveProfileDatos(d);
+}
+function guardarFotoPerfil(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const size = 80;
+      canvas.width = size; canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      const min = Math.min(img.width, img.height);
+      ctx.drawImage(img, (img.width - min) / 2, (img.height - min) / 2, min, min, 0, 0, size, size);
+      const d = getProfileDatos();
+      d.photoData = canvas.toDataURL('image/jpeg', 0.85);
+      saveProfileDatos(d);
+      renderProfile(document.getElementById('mainContent'));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function renderProfile(main) {
   const cutDatos = getCutDatos();
   const hasCut = !!cutDatos.setup;
@@ -3653,7 +3689,22 @@ function renderProfile(main) {
     </div>`;
   }).join('');
 
+  const profileDatos = getProfileDatos();
+  const dn = (profileDatos.displayName || state.currentUser).replace(/"/g, '&quot;');
+  const initials = (profileDatos.displayName || state.currentUser).slice(0, 2).toUpperCase();
+  const avatarInner = profileDatos.photoData
+    ? '<img src="' + profileDatos.photoData + '" style="width:100%;height:100%;object-fit:cover">'
+    : '<span style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:var(--accent)">' + initials + '</span>';
+  const profileHeader = '<div style="display:flex;align-items:center;gap:16px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px">'
+    + '<div onclick="document.getElementById(\'foto-input\').click()" title="Cambiar foto" style="width:60px;height:60px;border-radius:50%;overflow:hidden;border:2px solid var(--border);cursor:pointer;flex-shrink:0;background:var(--accent-bg);display:flex;align-items:center;justify-content:center">' + avatarInner + '</div>'
+    + '<input type="file" id="foto-input" accept="image/*" style="display:none" onchange="guardarFotoPerfil(this)">'
+    + '<div style="flex:1;min-width:0">'
+    + '<input type="text" value="' + dn + '" placeholder="Nombre visible" onchange="guardarNombrePerfil(this.value)" class="cut-input" style="width:100%;font-size:15px;font-weight:600;padding:6px 8px">'
+    + '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-top:6px">' + state.currentUser + '  ·  toca la foto para cambiarla</div>'
+    + '</div></div>';
+
   const html = `<div style="padding:16px;max-width:600px;margin:0 auto">
+    ${profileHeader}
     ${acc('fuerza', '💪', 'Fuerza', fuerzaBody)}
     ${acc('comp', '⚖️', 'Composición corporal', compBody)}
     ${USUARIOS[state.currentUser]?.tieneRehab ? acc('rehab-crit', '🦶', 'Re-ingreso sentadilla', rehabBody) : ''}
@@ -4112,6 +4163,7 @@ async function pushToGithub() {
       cut: JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}"),
       test: JSON.parse(localStorage.getItem(uk("test-datos")) || "{}"),
       actividad: JSON.parse(localStorage.getItem(uk("actividad-datos")) || "{}"),
+      userProfile: JSON.parse(localStorage.getItem(uk("user-profile")) || "{}"),
       timestamp: new Date().toISOString()
     };
 
@@ -4210,13 +4262,19 @@ async function pullFromGithub() {
       localStorage.setItem(uk("actividad-datos"), JSON.stringify(mergedAct));
     }
 
+    if (data.userProfile && Object.keys(data.userProfile).length > 0) {
+      const localProfile = JSON.parse(localStorage.getItem(uk("user-profile")) || "{}");
+      localStorage.setItem(uk("user-profile"), JSON.stringify(Object.assign({}, localProfile, data.userProfile)));
+    }
+
     showToast("Datos descargados ✓", "ok");
     render();
-    // Si estamos en rehab, cut o actividad, re-renderizar esa vista también
+    // Si estamos en rehab, cut, actividad o profile, re-renderizar esa vista también
     const main = document.getElementById("mainContent");
     if (state.view === "rehab") renderRehab(main);
     if (state.view === "cut") renderCut(main);
     if (state.view === "actividad") renderActividad(main);
+    if (state.view === "profile") renderProfile(main);
   } catch(e) {
     console.error("Pull error:", e);
     showToast("Error: " + e.message, "err");
