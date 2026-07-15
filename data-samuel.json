@@ -981,7 +981,7 @@
             "completado": true
           },
           {
-            "tiempo": null,
+            "tiempo": 120,
             "completado": true
           }
         ]
@@ -1162,5 +1162,5 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-15T02:15:01.825Z"
+  "timestamp": "2026-07-15T02:15:05.332Z"
 }
