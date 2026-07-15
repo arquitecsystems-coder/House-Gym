@@ -708,7 +708,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-14T19:09:37.498Z",
+    "_syncTs": "2026-07-15T01:48:50.322Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -977,8 +977,8 @@
             "completado": true
           },
           {
-            "tiempo": null,
-            "completado": false
+            "tiempo": 120,
+            "completado": true
           },
           {
             "tiempo": null,
@@ -989,7 +989,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-14T19:09:37.498Z",
+    "_syncTs": "2026-07-15T01:48:50.322Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -1162,5 +1162,5 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-15T01:48:50.322Z"
+  "timestamp": "2026-07-15T01:56:36.944Z"
 }
