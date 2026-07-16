@@ -733,6 +733,13 @@
       "reps": "5",
       "rir": "0",
       "checked": true
+    },
+    "M5-S2-mie-RDL sin flexión de rodilla (barra)-1": {
+      "peso": "52,5",
+      "timestamp": "2026-07-16T17:17:54.855Z",
+      "reps": "6",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1191,5 +1198,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-16T16:45:51.249Z"
+  "timestamp": "2026-07-16T17:17:57.863Z"
 }
