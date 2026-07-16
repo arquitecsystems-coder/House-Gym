@@ -705,10 +705,17 @@
       "reps": "5",
       "checked": true,
       "rir": "0"
+    },
+    "M5-S2-mie-Sentadilla parcial (barra)-1": {
+      "peso": "75",
+      "timestamp": "2026-07-16T16:24:23.477Z",
+      "reps": "5",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-15T01:56:36.944Z",
+    "_syncTs": "2026-07-15T02:15:05.332Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -989,7 +996,7 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-15T01:56:36.944Z",
+    "_syncTs": "2026-07-15T02:15:05.332Z",
     "setup": {
       "pesoNoche": 77,
       "pesoAyunas": 75.6,
@@ -1162,5 +1169,6 @@
   },
   "test": {},
   "actividad": {},
-  "timestamp": "2026-07-15T02:15:05.332Z"
+  "userProfile": {},
+  "timestamp": "2026-07-16T16:24:26.482Z"
 }
