@@ -764,8 +764,10 @@
     },
     "M5-S2-jue-Press Inclinado (barra)-1": {
       "peso": "60",
-      "timestamp": "2026-07-17T21:40:23.891Z",
-      "reps": "7"
+      "timestamp": "2026-07-17T21:40:30.418Z",
+      "reps": "7",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1224,5 +1226,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-17T21:40:26.895Z"
+  "timestamp": "2026-07-17T21:40:33.426Z"
 }
