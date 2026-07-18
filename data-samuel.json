@@ -794,10 +794,22 @@
       "timestamp": "2026-07-17T22:03:04.403Z",
       "rir": "0",
       "checked": true
+    },
+    "M5-S2-jue-Laterales (DB)-1": {
+      "peso": "5",
+      "timestamp": "2026-07-18T00:53:16.841Z",
+      "reps": "15",
+      "checked": true
+    },
+    "M5-S2-jue-Laterales (DB)-2": {
+      "peso": "5",
+      "timestamp": "2026-07-18T00:53:17.060Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-16T17:34:54.039Z",
+    "_syncTs": "2026-07-17T22:03:07.409Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1078,19 +1090,19 @@
     }
   },
   "cut": {
-    "_syncTs": "2026-07-16T17:34:54.039Z",
     "setup": {
-      "pesoNoche": 77,
-      "pesoAyunas": 75.6,
+      "pesoNoche": 78,
+      "pesoAyunas": 77,
       "pctTarget": 9,
       "ganMus": 1,
-      "cals": 1950,
+      "cals": 2000,
       "edad": 24,
-      "fecha": "2026-06-24",
+      "fecha": "2026-07-17",
+      "genero": "hombre",
       "pctGrasaActual": 13.881545607577728,
-      "masaMagra": 65.10555152067123,
-      "pesoTarget": 72.64346320952882,
-      "grasaEliminar": 3.9565367904711684,
+      "masaMagra": 66.31120988216514,
+      "pesoTarget": 73.96836250787378,
+      "grasaEliminar": 4.031637492126211,
       "perdidaSemanal": 0.35,
       "semanas": 12,
       "deficitDiario": 385,
@@ -1114,7 +1126,7 @@
           "idx": 6
         }
       ],
-      "cinturaActual": 87,
+      "cinturaActual": 85,
       "plieguesIniciales": [
         7,
         14,
@@ -1136,121 +1148,85 @@
       "calendario": [
         {
           "semana": 1,
-          "fechaStr": "24 jun – 30 jun",
-          "targetNoche": 76.7,
-          "targetAyunas": 75.3
+          "fechaStr": "17 jul – 23 jul",
+          "targetNoche": 77.7,
+          "targetAyunas": 76.7
         },
         {
           "semana": 2,
-          "fechaStr": "1 jul – 7 jul",
-          "targetNoche": 76.4,
-          "targetAyunas": 75
+          "fechaStr": "24 jul – 30 jul",
+          "targetNoche": 77.4,
+          "targetAyunas": 76.4
         },
         {
           "semana": 3,
-          "fechaStr": "8 jul – 14 jul",
-          "targetNoche": 76.1,
-          "targetAyunas": 74.7
+          "fechaStr": "31 jul – 6 ago",
+          "targetNoche": 77.1,
+          "targetAyunas": 76.1
         },
         {
           "semana": 4,
-          "fechaStr": "15 jul – 21 jul",
-          "targetNoche": 75.8,
-          "targetAyunas": 74.4
+          "fechaStr": "7 ago – 13 ago",
+          "targetNoche": 76.8,
+          "targetAyunas": 75.8
         },
         {
           "semana": 5,
-          "fechaStr": "22 jul – 28 jul",
-          "targetNoche": 75.5,
-          "targetAyunas": 74.1
+          "fechaStr": "14 ago – 20 ago",
+          "targetNoche": 76.5,
+          "targetAyunas": 75.5
         },
         {
           "semana": 6,
-          "fechaStr": "29 jul – 4 ago",
-          "targetNoche": 75.2,
-          "targetAyunas": 73.8
+          "fechaStr": "21 ago – 27 ago",
+          "targetNoche": 76.2,
+          "targetAyunas": 75.2
         },
         {
           "semana": 7,
-          "fechaStr": "5 ago – 11 ago",
-          "targetNoche": 74.9,
-          "targetAyunas": 73.5
+          "fechaStr": "28 ago – 3 sep",
+          "targetNoche": 75.9,
+          "targetAyunas": 74.9
         },
         {
           "semana": 8,
-          "fechaStr": "12 ago – 18 ago",
-          "targetNoche": 74.6,
-          "targetAyunas": 73.2
+          "fechaStr": "4 sep – 10 sep",
+          "targetNoche": 75.6,
+          "targetAyunas": 74.6
         },
         {
           "semana": 9,
-          "fechaStr": "19 ago – 25 ago",
-          "targetNoche": 74.3,
-          "targetAyunas": 72.9
+          "fechaStr": "11 sep – 17 sep",
+          "targetNoche": 75.3,
+          "targetAyunas": 74.3
         },
         {
           "semana": 10,
-          "fechaStr": "26 ago – 1 sep",
-          "targetNoche": 74,
-          "targetAyunas": 72.6
+          "fechaStr": "18 sep – 24 sep",
+          "targetNoche": 75,
+          "targetAyunas": 74
         },
         {
           "semana": 11,
-          "fechaStr": "2 sep – 8 sep",
-          "targetNoche": 73.7,
-          "targetAyunas": 72.3
+          "fechaStr": "25 sep – 1 oct",
+          "targetNoche": 74.7,
+          "targetAyunas": 73.7
         },
         {
           "semana": 12,
-          "fechaStr": "9 sep – 15 sep",
-          "targetNoche": 73.4,
-          "targetAyunas": 72
+          "fechaStr": "2 oct – 8 oct",
+          "targetNoche": 74.4,
+          "targetAyunas": 73.4
         }
       ],
-      "fechaInicio": "2026-06-24"
+      "fechaInicio": "2026-07-17"
     },
-    "registrosDiarios": {
-      "2026-07-01": {
-        "ayunas": 76.9,
-        "noche": null
-      },
-      "2026-07-03": {
-        "ayunas": 76.65,
-        "noche": null
-      },
-      "2026-07-04": {
-        "ayunas": 77.4,
-        "noche": null
-      },
-      "2026-07-06": {
-        "ayunas": 78.5,
-        "noche": null
-      },
-      "2026-07-08": {
-        "ayunas": 77.45,
-        "noche": null
-      },
-      "2026-07-10": {
-        "ayunas": 77,
-        "noche": null
-      },
-      "2026-07-11": {
-        "ayunas": 76.65,
-        "noche": null
-      }
-    },
-    "registrosSemanales": {
-      "S2": {
-        "promAyunas": 76.9
-      },
-      "S3": {
-        "promAyunas": 77.5
-      }
-    },
+    "registrosDiarios": {},
+    "registrosSemanales": {},
     "registrosMensuales": {}
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-17T22:03:07.409Z"
+  "timestamp": "2026-07-18T01:05:55.525Z"
 }
