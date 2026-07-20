@@ -1521,6 +1521,51 @@ const MESOCICLOS = {
           semanas: ["× 12-15 (ref)","× 12-15","× 12-15","× 15","× 15","× 12 - 2s"] },
       ],
     }
+  },
+
+  // ── NATA ──
+  "N1": {
+    label: "M1 — Nata (Full Body técnico)",
+    tipo: "activo",
+    semanas: 6,
+    fechas: ["20–25 jul","27 jul–1 ago","3–8 ago","10–15 ago","17–22 ago","24–29 ago"],
+    dias: [
+      { key: "lun", label: "Lun", titulo: "Full Body A" },
+      { key: "mie", label: "Mié", titulo: "Full Body B" },
+      { key: "vie", label: "Vie", titulo: "Full Body A (técnico)" },
+    ],
+    plan: {
+      lun: [
+        { nombre: "Sentadilla trasera (barra)", series: 4,
+          semanas: ["40kg × 8","42.5kg × 8","45kg × 6-8","47.5kg × 6","50kg × 5-6","32.5kg × 10"] },
+        { nombre: "Press inclinado (barra)", series: 3,
+          semanas: ["22.5kg × 8","23.5kg × 8","25kg × 6-8","26kg × 6","27.5kg × 5-6","18kg × 10"] },
+        { nombre: "Curl bíceps (barra)", series: 3,
+          semanas: ["9kg × 10","9.5kg × 10","10kg × 8-10","10.5kg × 8","11kg × 6-8","7kg × 12"] },
+        { nombre: "Plancha (core)", series: 3,
+          semanas: ["35s","40s","40s","45s","45s (pico)","30s"] },
+      ],
+      mie: [
+        { nombre: "RDL (barra)", series: 4,
+          semanas: ["27.5kg × 8","30kg × 8","32.5kg × 6-8","35kg × 6","37.5kg × 5-6","22.5kg × 10"] },
+        { nombre: "Remo Pendlay (barra)", series: 3,
+          semanas: ["27.5kg × 8","28.5kg × 8","30kg × 6-8","31kg × 6","32.5kg × 5-6","20kg × 10"] },
+        { nombre: "Elevación lateral (mancuerna)", series: 3,
+          semanas: ["4kg × 10","4kg × 12","5kg × 10","5kg × 10","5kg × 8-10 (pico)","3kg × 12"] },
+        { nombre: "Pullover (mancuerna, banco)", series: 3,
+          semanas: ["8kg × 10","8kg × 12","10kg × 10","10kg × 10","10kg × 8-10 (pico)","6kg × 12"] },
+      ],
+      vie: [
+        { nombre: "Zancada estática (barra)", series: 3,
+          semanas: ["22.5kg × 8/8","24kg × 8/8","25kg × 6-8/8","26kg × 6/6","27.5kg × 5-6 (pico)","17.5kg × 10/10"] },
+        { nombre: "Hip thrust (barra)", series: 3,
+          semanas: ["35kg × 8","37.5kg × 8","40kg × 6-8","42.5kg × 6","45kg × 5-6 (pico)","27.5kg × 10"] },
+        { nombre: "Aperturas en banco (mancuerna)", series: 3,
+          semanas: ["6kg × 10","6kg × 12","8kg × 10","8kg × 10","8kg × 8-10 (pico)","5kg × 12"] },
+        { nombre: "Crunch con peso", series: 3,
+          semanas: ["15kg × 12","16kg × 12","18kg × 10","18kg × 10","20kg × 8-10 (pico)","12kg × 15"] },
+      ],
+    }
   }
 };
 
@@ -1555,7 +1600,7 @@ const RMS_REFERENCIA = {
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5'], tieneRehab: true,  renderTest: null },
   dolly:  { mesociclos: [],           tieneRehab: false, renderTest: 'dolly' },
-  nata:   { mesociclos: [],           tieneRehab: false, renderTest: 'nata' },
+  nata:   { mesociclos: ['N1'],        tieneRehab: false, renderTest: 'nata' },
 };
 
 // ============================================================
@@ -2192,7 +2237,13 @@ function renderTestNata(main) {
 function renderSession(main) {
   const usuarioCfg = USUARIOS[state.currentUser] || {};
   if (usuarioCfg.renderTest === 'dolly') { renderTestDolly(main); return; }
-  if (usuarioCfg.renderTest === 'nata') { renderTestNata(main); return; }
+  if (usuarioCfg.renderTest === 'nata') {
+    const testDatos = getTestDatos();
+    if (!testDatos.completado || !usuarioCfg.mesociclos?.length) {
+      renderTestNata(main); return;
+    }
+    // Test completado y mesociclo disponible: cae al render normal
+  }
   if (!usuarioCfg.mesociclos?.length) {
     main.innerHTML = '<div style="padding:48px 16px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:13px">Programa en construcción<br><span style="font-size:11px;opacity:0.6">Tu mesociclo se diseña en base al test inicial</span></div>';
     return;
@@ -4449,6 +4500,7 @@ if (savedTheme === 'dark') {
 
 // ── Auto-detección de posición por fecha ──
 function detectPosition() {
+  const userMesos = USUARIOS[state.currentUser]?.mesociclos || [];
   const today = new Date();
   const meses = {
     'ene':0,'feb':1,'mar':2,'abr':3,'may':4,'jun':5,
@@ -4464,6 +4516,7 @@ function detectPosition() {
   }
 
   for (const [mesoKey, meso] of Object.entries(MESOCICLOS)) {
+    if (!userMesos.includes(mesoKey)) continue;
     if (!meso.fechas) continue;
     for (let i = 0; i < meso.fechas.length; i++) {
       const rango = meso.fechas[i];
