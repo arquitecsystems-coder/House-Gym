@@ -806,10 +806,24 @@
       "timestamp": "2026-07-18T00:53:17.060Z",
       "reps": "10",
       "checked": true
+    },
+    "M5-S3-lun-Press Inclinado (barra)-1": {
+      "peso": "62,5",
+      "timestamp": "2026-07-24T17:38:37.137Z",
+      "reps": "5",
+      "rir": "1",
+      "checked": true
+    },
+    "M5-S3-lun-Press Inclinado (barra)-2": {
+      "peso": "62,5",
+      "timestamp": "2026-07-24T17:38:42.041Z",
+      "reps": "5",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-17T22:03:07.409Z",
+    "_syncTs": "2026-07-18T01:05:55.525Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1223,10 +1237,11 @@
     },
     "registrosDiarios": {},
     "registrosSemanales": {},
-    "registrosMensuales": {}
+    "registrosMensuales": {},
+    "_syncTs": "2026-07-18T01:05:55.525Z"
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-18T01:05:55.525Z"
+  "timestamp": "2026-07-24T17:38:45.059Z"
 }
