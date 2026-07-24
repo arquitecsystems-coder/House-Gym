@@ -846,6 +846,13 @@
       "reps": "8",
       "rir": "1",
       "checked": true
+    },
+    "M5-S3-lun-Curl Bíceps (barra)-2": {
+      "peso": "27,5",
+      "timestamp": "2026-07-24T18:40:47.883Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1269,5 +1276,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-24T18:06:20.820Z"
+  "timestamp": "2026-07-24T18:40:50.888Z"
 }
