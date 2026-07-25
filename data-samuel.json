@@ -891,9 +891,10 @@
     },
     "M5-S3-mar-Pullover (DB)-1": {
       "peso": "20",
-      "timestamp": "2026-07-25T18:36:38.760Z",
+      "timestamp": "2026-07-25T18:41:41.220Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "4"
     },
     "nota-sesion-M5-S3-mar": {
       "nota": "Tengo cierta sensación el dorsal izquierdo al hacer el pull over, el peso no es retador a nivel muscular parece un limitados a nivel de tendón.",
@@ -901,9 +902,10 @@
     },
     "M5-S3-mar-Pullover (DB)-2": {
       "peso": "20",
-      "timestamp": "2026-07-25T18:41:25.554Z",
+      "timestamp": "2026-07-25T18:41:42.328Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "4"
     }
   },
   "rehab": {
@@ -1336,5 +1338,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-25T18:41:28.562Z"
+  "timestamp": "2026-07-25T18:41:45.331Z"
 }
