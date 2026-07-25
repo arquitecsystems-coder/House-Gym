@@ -860,6 +860,20 @@
       "reps": "5",
       "rir": "2",
       "checked": true
+    },
+    "M5-S3-mar-Remo Pendlay (barra)-2": {
+      "peso": "60",
+      "timestamp": "2026-07-25T18:19:51.769Z",
+      "reps": "5",
+      "rir": "1",
+      "checked": true
+    },
+    "M5-S3-mar-Remo Pendlay (barra)-3": {
+      "peso": "60",
+      "timestamp": "2026-07-25T18:19:51.542Z",
+      "reps": "5",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1283,5 +1297,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-25T18:04:03.194Z"
+  "timestamp": "2026-07-25T18:19:54.778Z"
 }
