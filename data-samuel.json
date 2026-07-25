@@ -894,6 +894,10 @@
       "timestamp": "2026-07-25T18:36:38.760Z",
       "reps": "12",
       "checked": true
+    },
+    "nota-sesion-M5-S3-mar": {
+      "nota": "Tengo cierta sensación el dorsal izquierdo al hacer el pull over, el peso no es retador a nivel muscular parece un limitados a nivel de tendón.",
+      "timestamp": "2026-07-25T18:37:25.068Z"
     }
   },
   "rehab": {
@@ -1326,5 +1330,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-25T18:36:41.772Z"
+  "timestamp": "2026-07-25T18:37:28.069Z"
 }
