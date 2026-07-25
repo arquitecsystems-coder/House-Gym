@@ -874,6 +874,20 @@
       "reps": "5",
       "rir": "1",
       "checked": true
+    },
+    "M5-S3-mar-Remo 1 mano (DB)-1": {
+      "peso": "20",
+      "timestamp": "2026-07-25T18:30:16.490Z",
+      "reps": "12",
+      "rir": "2",
+      "checked": true
+    },
+    "M5-S3-mar-Remo 1 mano (DB)-2": {
+      "peso": "20",
+      "timestamp": "2026-07-25T18:30:16.970Z",
+      "reps": "12",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1289,13 +1303,22 @@
       ],
       "fechaInicio": "2026-07-17"
     },
-    "registrosDiarios": {},
-    "registrosSemanales": {},
+    "registrosDiarios": {
+      "2026-07-25": {
+        "ayunas": 78,
+        "noche": null
+      }
+    },
+    "registrosSemanales": {
+      "S2": {
+        "promAyunas": 78
+      }
+    },
     "registrosMensuales": {},
     "_syncTs": "2026-07-24T18:40:50.888Z"
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-25T18:19:54.778Z"
+  "timestamp": "2026-07-25T18:30:19.976Z"
 }
