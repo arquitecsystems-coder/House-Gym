@@ -888,10 +888,16 @@
       "reps": "12",
       "rir": "1",
       "checked": true
+    },
+    "M5-S3-mar-Pullover (DB)-1": {
+      "peso": "20",
+      "timestamp": "2026-07-25T18:36:38.760Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-24T18:40:50.888Z",
+    "_syncTs": "2026-07-25T18:30:19.976Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1315,10 +1321,10 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-07-24T18:40:50.888Z"
+    "_syncTs": "2026-07-25T18:30:19.976Z"
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-25T18:30:19.976Z"
+  "timestamp": "2026-07-25T18:36:41.772Z"
 }
