@@ -937,10 +937,15 @@
       "timestamp": "2026-07-26T22:01:48.507Z",
       "reps": "3",
       "checked": true
+    },
+    "M5-S4-lun-Press Inclinado (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-07-28T17:58:06.865Z",
+      "reps": "5"
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-26T21:54:48.066Z",
+    "_syncTs": "2026-07-26T22:01:51.522Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1362,6 +1367,14 @@
       "2026-07-25": {
         "ayunas": 78,
         "noche": null
+      },
+      "2026-07-26": {
+        "ayunas": null,
+        "noche": 79.35
+      },
+      "2026-07-27": {
+        "ayunas": 78.55,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -1370,10 +1383,10 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-07-26T21:54:48.066Z"
+    "_syncTs": "2026-07-26T22:01:51.522Z"
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-26T22:01:51.522Z"
+  "timestamp": "2026-07-28T17:58:05.762Z"
 }
