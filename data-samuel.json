@@ -940,8 +940,10 @@
     },
     "M5-S4-lun-Press Inclinado (barra)-1": {
       "peso": "65",
-      "timestamp": "2026-07-28T17:58:06.865Z",
-      "reps": "5"
+      "timestamp": "2026-07-28T17:58:10.311Z",
+      "reps": "5",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -1388,5 +1390,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-28T17:58:05.762Z"
+  "timestamp": "2026-07-28T17:58:13.328Z"
 }
