@@ -969,6 +969,12 @@
       "timestamp": "2026-07-28T18:25:18.708Z",
       "rir": "2",
       "checked": true
+    },
+    "M5-S4-lun-Deficit Push-ups (DB en suelo)-3": {
+      "reps": "10",
+      "timestamp": "2026-07-28T18:31:16.961Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1415,5 +1421,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-28T18:25:22.508Z"
+  "timestamp": "2026-07-28T18:31:19.974Z"
 }
