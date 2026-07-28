@@ -960,12 +960,15 @@
     },
     "M5-S4-lun-Deficit Push-ups (DB en suelo)-1": {
       "peso": "10",
-      "timestamp": "2026-07-28T18:25:13.910Z",
-      "reps": "6"
+      "timestamp": "2026-07-28T18:25:19.501Z",
+      "reps": "6",
+      "checked": true
     },
     "M5-S4-lun-Deficit Push-ups (DB en suelo)-2": {
       "reps": "10",
-      "timestamp": "2026-07-28T18:25:17.160Z"
+      "timestamp": "2026-07-28T18:25:18.708Z",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -1412,5 +1415,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-28T18:25:16.917Z"
+  "timestamp": "2026-07-28T18:25:22.508Z"
 }
