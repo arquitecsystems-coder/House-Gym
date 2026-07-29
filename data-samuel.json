@@ -989,10 +989,22 @@
       "reps": "5",
       "rir": "1",
       "checked": true
+    },
+    "M5-S4-mar-Remo Pendlay (barra)-2": {
+      "peso": "62,5",
+      "timestamp": "2026-07-29T17:01:48.447Z",
+      "reps": "5",
+      "checked": true
+    },
+    "M5-S4-mar-Remo Pendlay (barra)-3": {
+      "peso": "62,5",
+      "timestamp": "2026-07-29T17:01:48.217Z",
+      "reps": "4",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-28T18:58:26.530Z",
+    "_syncTs": "2026-07-29T16:37:17.650Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1434,10 +1446,8 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-07-28T18:58:26.530Z"
+    "_syncTs": "2026-07-29T16:37:17.650Z"
   },
   "test": {},
-  "actividad": {},
-  "userProfile": {},
-  "timestamp": "2026-07-29T16:37:17.650Z"
+  "timestamp": "2026-07-29T17:01:51.462Z"
 }
