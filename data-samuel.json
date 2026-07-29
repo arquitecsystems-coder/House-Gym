@@ -1027,6 +1027,13 @@
       "reps": "7",
       "rir": "0",
       "checked": true
+    },
+    "M5-S4-mar-Remo 1 mano (DB)-3": {
+      "peso": "20",
+      "timestamp": "2026-07-29T17:20:58.910Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -1475,5 +1482,5 @@
     "_syncTs": "2026-07-29T16:37:17.650Z"
   },
   "test": {},
-  "timestamp": "2026-07-29T17:15:56.381Z"
+  "timestamp": "2026-07-29T17:21:01.921Z"
 }
