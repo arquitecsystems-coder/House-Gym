@@ -1034,6 +1034,20 @@
       "reps": "10",
       "rir": "3",
       "checked": true
+    },
+    "M5-S4-mar-Press Francés (barra)-1": {
+      "peso": "31",
+      "timestamp": "2026-07-29T17:33:01.985Z",
+      "reps": "6",
+      "rir": "",
+      "checked": true
+    },
+    "M5-S4-mar-Press Francés (barra)-2": {
+      "peso": "31",
+      "timestamp": "2026-07-29T17:32:56.880Z",
+      "reps": "3",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1482,5 +1496,5 @@
     "_syncTs": "2026-07-29T16:37:17.650Z"
   },
   "test": {},
-  "timestamp": "2026-07-29T17:21:01.921Z"
+  "timestamp": "2026-07-29T17:33:04.994Z"
 }
