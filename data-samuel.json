@@ -1092,6 +1092,12 @@
       "timestamp": "2026-07-30T19:45:50.510Z",
       "reps": "5",
       "checked": true
+    },
+    "M5-S4-mie-Elevación de pie o sentado (gemelo/sóleo)-1": {
+      "peso": "20",
+      "timestamp": "2026-07-30T20:06:39.365Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -1542,5 +1548,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-30T19:45:53.516Z"
+  "timestamp": "2026-07-30T20:06:38.790Z"
 }
