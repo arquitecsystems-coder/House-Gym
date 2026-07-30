@@ -1051,11 +1051,20 @@
     },
     "M5-S4-mar-Pullover (DB)-3": {
       "peso": "20",
-      "timestamp": "2026-07-29T17:33:07.910Z"
+      "timestamp": "2026-07-29T17:33:13.535Z",
+      "reps": "11",
+      "checked": true
+    },
+    "M5-S4-mie-Sentadilla parcial (barra)-1": {
+      "peso": "80",
+      "timestamp": "2026-07-30T18:51:17.137Z",
+      "reps": "4",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-07-29T16:37:17.650Z",
+    "_syncTs": "2026-07-29T17:33:10.914Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1497,8 +1506,10 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-07-29T16:37:17.650Z"
+    "_syncTs": "2026-07-29T17:33:10.914Z"
   },
   "test": {},
-  "timestamp": "2026-07-29T17:33:10.914Z"
+  "actividad": {},
+  "userProfile": {},
+  "timestamp": "2026-07-30T18:51:20.150Z"
 }
