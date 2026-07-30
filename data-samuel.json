@@ -1074,6 +1074,18 @@
       "reps": "3",
       "checked": true,
       "rir": "1"
+    },
+    "M5-S4-mie-RDL sin flexión de rodilla (barra)-1": {
+      "peso": "57,5",
+      "timestamp": "2026-07-30T19:40:10.864Z",
+      "reps": "5",
+      "checked": true
+    },
+    "M5-S4-mie-RDL sin flexión de rodilla (barra)-2": {
+      "peso": "57,5",
+      "timestamp": "2026-07-30T19:40:14.659Z",
+      "reps": "4",
+      "checked": true
     }
   },
   "rehab": {
@@ -1524,5 +1536,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-30T19:10:27.403Z"
+  "timestamp": "2026-07-30T19:40:17.665Z"
 }
