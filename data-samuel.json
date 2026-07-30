@@ -1067,6 +1067,13 @@
       "timestamp": "2026-07-30T19:00:41.515Z",
       "reps": "3",
       "checked": true
+    },
+    "M5-S4-mie-Sentadilla parcial (barra)-3": {
+      "peso": "80",
+      "timestamp": "2026-07-30T19:10:24.397Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -1517,5 +1524,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-07-30T19:00:44.622Z"
+  "timestamp": "2026-07-30T19:10:27.403Z"
 }
