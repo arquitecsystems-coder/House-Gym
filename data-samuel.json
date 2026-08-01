@@ -1122,6 +1122,18 @@
       "timestamp": "2026-08-01T20:05:48.647Z",
       "reps": "7",
       "checked": true
+    },
+    "M5-S4-jue-Laterales (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-01T20:24:44.083Z",
+      "reps": "7",
+      "checked": true
+    },
+    "M5-S4-jue-Laterales (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-01T20:24:43.723Z",
+      "reps": "9",
+      "checked": true
     }
   },
   "rehab": {
@@ -1563,6 +1575,10 @@
       "2026-07-31": {
         "ayunas": 76.7,
         "noche": null
+      },
+      "2026-08-01": {
+        "ayunas": 77,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -1570,7 +1586,7 @@
         "promAyunas": 78
       },
       "S3": {
-        "promAyunas": 76.7
+        "promAyunas": 76.9
       }
     },
     "registrosMensuales": {},
@@ -1579,5 +1595,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-01T20:05:51.656Z"
+  "timestamp": "2026-08-01T20:24:47.092Z"
 }
