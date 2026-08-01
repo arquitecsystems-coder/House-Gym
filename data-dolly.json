@@ -1,0 +1,39 @@
+{
+  "registros": {},
+  "rehab": {},
+  "cut": {},
+  "test": {
+    "dom": {
+      "RDL unilateral con mancuerna": {},
+      "Remo unilateral con mancuerna": {
+        "peso_kg": "10",
+        "reps": "9"
+      },
+      "Lateral inclinado contra pared": {
+        "peso_kg": "2.5",
+        "reps": "15"
+      },
+      "Curl bíceps con mancuerna": {
+        "peso_kg": "5",
+        "reps": "8"
+      }
+    },
+    "sab": {
+      "Copa a una mano (tríceps)": {
+        "peso_kg": "5",
+        "reps": "10"
+      },
+      "Press inclinado con mancuerna (unilateral)": {
+        "peso_kg": "15",
+        "reps": "5"
+      },
+      "Flexión inclinada (banco)": {
+        "variante_lograda": "Banco alto (manos muy elevadas)",
+        "reps_logradas": "18"
+      }
+    }
+  },
+  "actividad": {},
+  "userProfile": {},
+  "timestamp": "2026-08-01T02:22:58.586Z"
+}
