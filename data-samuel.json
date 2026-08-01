@@ -1110,6 +1110,12 @@
       "timestamp": "2026-08-01T19:54:57.502Z",
       "reps": "5",
       "checked": true
+    },
+    "M5-S4-jue-Press Inclinado (barra)-3": {
+      "peso": "62,5",
+      "timestamp": "2026-08-01T20:00:15.512Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
@@ -1567,5 +1573,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-01T19:55:00.508Z"
+  "timestamp": "2026-08-01T20:00:18.520Z"
 }
