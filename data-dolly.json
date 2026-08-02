@@ -250,7 +250,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-06-29T17:43:42.916Z",
+    "_syncTs": "2026-08-02T13:51:22.533Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -308,7 +308,11 @@
   "cut": {},
   "test": {
     "dom": {
-      "RDL unilateral con mancuerna": {},
+      "RDL unilateral con mancuerna": {
+        "peso_kg": "17.5",
+        "reps_pierna_derecha": "1",
+        "reps_pierna_izquierda": "10"
+      },
       "Remo unilateral con mancuerna": {
         "peso_kg": "10",
         "reps": "9"
@@ -352,5 +356,5 @@
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T13:51:22.533Z"
+  "timestamp": "2026-08-02T15:34:40.684Z"
 }
