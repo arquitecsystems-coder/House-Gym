@@ -328,6 +328,9 @@
       "Negativa de dominada": {
         "reps_logradas": "8",
         "segundos_bajada": "0"
+      },
+      "Dead hang": {
+        "tiempo_segundos": "60"
       }
     },
     "sab": {
@@ -356,9 +359,10 @@
         "reps_logradas": "5",
         "segundos_bajada": "0"
       }
-    }
+    },
+    "completado": true
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T15:35:02.764Z"
+  "timestamp": "2026-08-02T15:35:06.970Z"
 }
