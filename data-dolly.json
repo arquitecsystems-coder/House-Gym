@@ -345,11 +345,12 @@
         "reps": "10"
       },
       "Negativas de fondo (excéntrico)": {
-        "reps_logradas": "5"
+        "reps_logradas": "5",
+        "segundos_bajada": "0"
       }
     }
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T13:51:18.156Z"
+  "timestamp": "2026-08-02T13:51:22.533Z"
 }
