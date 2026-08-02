@@ -324,6 +324,9 @@
       "Curl bíceps con mancuerna": {
         "peso_kg": "5",
         "reps": "8"
+      },
+      "Negativa de dominada": {
+        "reps_logradas": "8"
       }
     },
     "sab": {
@@ -356,5 +359,5 @@
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T15:34:45.369Z"
+  "timestamp": "2026-08-02T15:34:56.860Z"
 }
