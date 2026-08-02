@@ -32,11 +32,13 @@
         "reps_logradas": "18"
       },
       "Búlgaras con mancuerna": {
-        "peso_kg": "17.5"
+        "peso_kg": "17.5",
+        "reps_pierna_derecha": "8",
+        "reps_pierna_izquierda": "8"
       }
     }
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T02:05:52.114Z"
+  "timestamp": "2026-08-02T02:05:59.411Z"
 }
