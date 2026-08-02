@@ -310,8 +310,8 @@
     "dom": {
       "RDL unilateral con mancuerna": {
         "peso_kg": "17.5",
-        "reps_pierna_derecha": "1",
-        "reps_pierna_izquierda": "10"
+        "reps_pierna_derecha": "14",
+        "reps_pierna_izquierda": "14"
       },
       "Remo unilateral con mancuerna": {
         "peso_kg": "10",
@@ -356,5 +356,5 @@
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T15:34:40.684Z"
+  "timestamp": "2026-08-02T15:34:45.369Z"
 }
