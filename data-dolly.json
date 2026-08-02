@@ -326,7 +326,8 @@
         "reps": "8"
       },
       "Negativa de dominada": {
-        "reps_logradas": "8"
+        "reps_logradas": "8",
+        "segundos_bajada": "0"
       }
     },
     "sab": {
@@ -359,5 +360,5 @@
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T15:34:56.860Z"
+  "timestamp": "2026-08-02T15:35:02.764Z"
 }
