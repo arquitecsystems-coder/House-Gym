@@ -35,10 +35,14 @@
         "peso_kg": "17.5",
         "reps_pierna_derecha": "8",
         "reps_pierna_izquierda": "8"
+      },
+      "Copa a dos manos (tríceps)": {
+        "peso_kg": "10",
+        "reps": "10"
       }
     }
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T02:10:26.238Z"
+  "timestamp": "2026-08-02T02:11:22.374Z"
 }
