@@ -1164,6 +1164,12 @@
     "nota-sesion-M5-S5-lun": {
       "nota": "Tal vez salían 7 en la primera, sin embargo me costó del lado izquierdo la subida en la última rep. Sigue un poco descompensado.",
       "timestamp": "2026-08-03T17:49:07.175Z"
+    },
+    "M5-S5-lun-Press Inclinado (barra)-2": {
+      "peso": "67,5",
+      "timestamp": "2026-08-03T18:00:24.936Z",
+      "reps": "4",
+      "checked": true
     }
   },
   "rehab": {
@@ -1625,5 +1631,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-03T17:49:10.177Z"
+  "timestamp": "2026-08-03T18:00:27.954Z"
 }
