@@ -1197,6 +1197,12 @@
       "timestamp": "2026-08-03T18:36:43.447Z",
       "reps": "3",
       "checked": true
+    },
+    "M5-S5-lun-Curl Martillo (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-03T18:39:33.852Z",
+      "reps": "14",
+      "checked": true
     }
   },
   "rehab": {
@@ -1658,5 +1664,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-03T18:36:46.458Z"
+  "timestamp": "2026-08-03T18:39:33.073Z"
 }
