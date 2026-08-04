@@ -1266,6 +1266,10 @@
       "timestamp": "2026-08-04T18:14:45.764Z",
       "reps": "7",
       "checked": true
+    },
+    "M5-S5-mar-Press Francés (barra)-2": {
+      "peso": "33",
+      "timestamp": "2026-08-04T18:20:59.928Z"
     }
   },
   "rehab": {
@@ -1727,5 +1731,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-04T18:14:48.772Z"
+  "timestamp": "2026-08-04T18:21:02.937Z"
 }
