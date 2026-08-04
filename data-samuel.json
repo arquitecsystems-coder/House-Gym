@@ -1243,15 +1243,17 @@
     },
     "M5-S5-mar-Remo 1 mano (DB)-2": {
       "peso": "20",
-      "timestamp": "2026-08-04T17:45:23.346Z",
+      "timestamp": "2026-08-04T17:45:35.865Z",
       "reps": "10",
-      "checked": true
+      "checked": true,
+      "rir": "1"
     },
     "M5-S5-mar-Pullover (DB)-1": {
       "peso": "20",
-      "timestamp": "2026-08-04T17:45:28.725Z",
+      "timestamp": "2026-08-04T17:45:33.153Z",
       "reps": "9",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1713,5 +1715,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-04T17:45:31.733Z"
+  "timestamp": "2026-08-04T17:45:38.870Z"
 }
