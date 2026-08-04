@@ -1254,6 +1254,12 @@
       "reps": "9",
       "checked": true,
       "rir": "0"
+    },
+    "M5-S5-mar-Pullover (DB)-2": {
+      "peso": "20",
+      "timestamp": "2026-08-04T18:03:06.933Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -1715,5 +1721,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-04T17:45:38.870Z"
+  "timestamp": "2026-08-04T18:03:09.943Z"
 }
