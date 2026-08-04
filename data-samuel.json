@@ -1237,13 +1237,19 @@
     },
     "M5-S5-mar-Remo 1 mano (DB)-1": {
       "peso": "20",
-      "timestamp": "2026-08-04T17:34:18.539Z",
+      "timestamp": "2026-08-04T17:45:23.581Z",
       "reps": "12",
+      "checked": true
+    },
+    "M5-S5-mar-Remo 1 mano (DB)-2": {
+      "peso": "20",
+      "timestamp": "2026-08-04T17:45:23.346Z",
+      "reps": "10",
       "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-04T17:25:35.972Z",
+    "_syncTs": "2026-08-04T17:34:21.544Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1696,10 +1702,10 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-04T17:25:35.972Z"
+    "_syncTs": "2026-08-04T17:34:21.544Z"
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-04T17:34:21.544Z"
+  "timestamp": "2026-08-04T17:45:26.588Z"
 }
