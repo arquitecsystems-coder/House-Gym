@@ -1186,15 +1186,15 @@
       "rir": "0"
     },
     "M5-S5-lun-Curl Bíceps (barra)-1": {
-      "peso": "32,5",
-      "timestamp": "2026-08-03T18:31:56.834Z",
+      "peso": "33",
+      "timestamp": "2026-08-04T19:29:34.482Z",
       "reps": "5",
       "rir": "0",
       "checked": true
     },
     "M5-S5-lun-Curl Bíceps (barra)-2": {
-      "peso": "32,5",
-      "timestamp": "2026-08-03T18:36:43.447Z",
+      "peso": "33",
+      "timestamp": "2026-08-04T19:29:35.270Z",
       "reps": "3",
       "checked": true
     },
@@ -1733,5 +1733,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-04T18:21:07.194Z"
+  "timestamp": "2026-08-04T19:29:38.286Z"
 }
