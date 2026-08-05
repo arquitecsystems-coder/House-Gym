@@ -1292,6 +1292,18 @@
       "timestamp": "2026-08-05T18:04:22.254Z",
       "reps": "2",
       "checked": true
+    },
+    "M5-S5-mie-RDL sin flexión de rodilla (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-08-05T18:31:21.305Z",
+      "reps": "6",
+      "checked": true
+    },
+    "M5-S5-mie-RDL sin flexión de rodilla (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-08-05T18:31:23.895Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
@@ -1753,5 +1765,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-05T18:04:25.262Z"
+  "timestamp": "2026-08-05T18:31:26.905Z"
 }
