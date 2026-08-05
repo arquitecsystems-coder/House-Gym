@@ -1272,10 +1272,21 @@
       "timestamp": "2026-08-04T18:21:04.186Z",
       "reps": "4",
       "checked": true
+    },
+    "M5-S5-mie-Sentadilla parcial (barra)-1": {
+      "peso": "95",
+      "timestamp": "2026-08-05T17:53:10.007Z",
+      "reps": "2",
+      "rir": "0",
+      "checked": true
+    },
+    "M5-S5-mie-Sentadilla parcial (barra)-2": {
+      "peso": "85",
+      "timestamp": "2026-08-05T17:53:13.555Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-04T17:34:21.544Z",
+    "_syncTs": "2026-08-04T19:29:38.286Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1728,10 +1739,10 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-04T17:34:21.544Z"
+    "_syncTs": "2026-08-04T19:29:38.286Z"
   },
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-04T19:29:38.286Z"
+  "timestamp": "2026-08-05T17:53:13.021Z"
 }
