@@ -1275,14 +1275,16 @@
     },
     "M5-S5-mie-Sentadilla parcial (barra)-1": {
       "peso": "95",
-      "timestamp": "2026-08-05T17:53:10.007Z",
+      "timestamp": "2026-08-05T17:53:15.267Z",
       "reps": "2",
       "rir": "0",
       "checked": true
     },
     "M5-S5-mie-Sentadilla parcial (barra)-2": {
       "peso": "85",
-      "timestamp": "2026-08-05T17:53:13.555Z"
+      "timestamp": "2026-08-05T17:53:15.014Z",
+      "reps": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -1744,5 +1746,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-05T17:53:13.021Z"
+  "timestamp": "2026-08-05T17:53:18.279Z"
 }
