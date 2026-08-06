@@ -1327,6 +1327,12 @@
     "nota-sesion-M5-S5-jue": {
       "nota": "Sigue habiendo movimientos involuntarios del lado izquierdo que hacen que el manguito estabilice en el press.",
       "timestamp": "2026-08-06T20:16:53.880Z"
+    },
+    "M5-S5-jue-Press Inclinado (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-08-06T20:17:06.757Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
@@ -1792,5 +1798,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-06T20:16:56.893Z"
+  "timestamp": "2026-08-06T20:17:09.771Z"
 }
