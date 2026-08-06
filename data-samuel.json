@@ -1344,6 +1344,11 @@
       "reps": "13",
       "timestamp": "2026-08-06T20:23:41.217Z",
       "checked": true
+    },
+    "M5-S5-jue-Deficit Push-ups (DB en suelo)-2": {
+      "reps": "10",
+      "timestamp": "2026-08-06T20:28:04.180Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -1809,5 +1814,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-06T20:23:44.233Z"
+  "timestamp": "2026-08-06T20:28:07.189Z"
 }
