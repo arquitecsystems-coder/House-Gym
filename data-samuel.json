@@ -1361,6 +1361,13 @@
       "timestamp": "2026-08-06T20:36:26.473Z",
       "reps": "15",
       "checked": true
+    },
+    "M5-S5-jue-Curl Bíceps (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-08-06T20:52:17.518Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1826,5 +1833,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-06T20:36:29.484Z"
+  "timestamp": "2026-08-06T20:52:17.167Z"
 }
