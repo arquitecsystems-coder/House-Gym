@@ -1323,6 +1323,10 @@
       "reps": "7",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-M5-S5-jue": {
+      "nota": "Sigue habiendo movimientos involuntarios del lado izquierdo que hacen que el manguito estabilice en el press.",
+      "timestamp": "2026-08-06T20:16:53.880Z"
     }
   },
   "rehab": {
@@ -1788,5 +1792,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-06T20:08:07.192Z"
+  "timestamp": "2026-08-06T20:16:56.893Z"
 }
