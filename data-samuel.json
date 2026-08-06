@@ -1368,6 +1368,12 @@
       "reps": "8",
       "checked": true,
       "rir": "0"
+    },
+    "M5-S5-jue-Laterales (DB)-3": {
+      "reps": "15",
+      "timestamp": "2026-08-06T20:52:22.894Z",
+      "peso": "5",
+      "checked": true
     }
   },
   "rehab": {
@@ -1833,5 +1839,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-06T20:52:20.522Z"
+  "timestamp": "2026-08-06T20:52:25.900Z"
 }
