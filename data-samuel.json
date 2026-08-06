@@ -1349,6 +1349,18 @@
       "reps": "10",
       "timestamp": "2026-08-06T20:28:04.180Z",
       "checked": true
+    },
+    "M5-S5-jue-Laterales (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-06T20:36:23.282Z",
+      "reps": "9",
+      "checked": true
+    },
+    "M5-S5-jue-Laterales (DB)-2": {
+      "peso": "5",
+      "timestamp": "2026-08-06T20:36:26.473Z",
+      "reps": "15",
+      "checked": true
     }
   },
   "rehab": {
@@ -1814,5 +1826,5 @@
   "test": {},
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-06T20:28:07.189Z"
+  "timestamp": "2026-08-06T20:36:29.484Z"
 }
