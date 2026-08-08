@@ -250,7 +250,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-02T13:51:22.533Z",
+    "_syncTs": "2026-08-02T15:35:06.970Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -344,7 +344,7 @@
       },
       "Flexión inclinada (banco)": {
         "variante_lograda": "Banco alto (manos muy elevadas)",
-        "reps_logradas": "18"
+        "reps_logradas": "26"
       },
       "Búlgaras con mancuerna": {
         "peso_kg": "17.5",
@@ -364,5 +364,5 @@
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-02T15:35:06.970Z"
+  "timestamp": "2026-08-08T17:00:10.420Z"
 }
