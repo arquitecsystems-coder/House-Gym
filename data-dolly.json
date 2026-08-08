@@ -250,7 +250,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-02T15:35:06.970Z",
+    "_syncTs": "2026-08-08T17:00:10.420Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -352,8 +352,8 @@
         "reps_pierna_izquierda": "8"
       },
       "Copa a dos manos (tríceps)": {
-        "peso_kg": "10",
-        "reps": "10"
+        "reps": "10",
+        "peso_kg": "5"
       },
       "Negativas de fondo (excéntrico)": {
         "reps_logradas": "5",
@@ -364,5 +364,5 @@
   },
   "actividad": {},
   "userProfile": {},
-  "timestamp": "2026-08-08T17:00:10.420Z"
+  "timestamp": "2026-08-08T18:13:03.460Z"
 }
