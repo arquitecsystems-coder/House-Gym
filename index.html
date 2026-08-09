@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -1278,6 +1278,9 @@
   <div class="nav-item" id="nav-actividad" onclick="setView('actividad')">
     <span class="nav-icon">👟</span>actividad
   </div>
+  <div class="nav-item" id="nav-habitos" onclick="setView('habitos')">
+    <span class="nav-icon">⚛️</span>hábitos
+  </div>
   <div class="nav-item" id="nav-profile" onclick="setView('profile')">
     <span class="nav-icon">👤</span>perfil
   </div>
@@ -1566,8 +1569,7 @@ const MESOCICLOS = {
           semanas: ["15kg × 12","16kg × 12","18kg × 10","18kg × 10","20kg × 8-10 (pico)","12kg × 15"] },
       ],
     }
-  }
-  ,
+  },
   "D1": {
     label: "M1 — Dolly",
     tipo: "activo",
@@ -1636,7 +1638,7 @@ const RMS_REFERENCIA = {
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5'], tieneRehab: true,  renderTest: null },
   dolly:  { mesociclos: ['D1'],         tieneRehab: false, renderTest: null },
-  nata:   { mesociclos: ['N1'],        tieneRehab: false, renderTest: null },
+  nata:   { mesociclos: ['N1'],         tieneRehab: false, renderTest: null, tieneHabitos: true },
 };
 
 // ============================================================
@@ -1803,12 +1805,14 @@ function render() {
     renderProfile(main);
   } else if (state.view === "actividad") {
     renderActividad(main);
+  } else if (state.view === "habitos") {
+    renderHabitos(main);
   } else if (state.view === "config") {
     renderConfig(main);
   }
 
   // Nav activo
-  ["session","rehab","cut","actividad","profile","config"].forEach(v => {
+  ["session","rehab","cut","actividad","habitos","profile","config"].forEach(v => {
     document.getElementById("nav-"+v).classList.toggle("active", state.view === v);
   });
 }
@@ -3901,6 +3905,427 @@ function showActividadHeatmapDay(fechaStr) {
   tooltip.style.display = 'block';
 }
 
+
+// ============================================================
+// HÁBITOS (Nata only)
+// ============================================================
+const MENSAJES_HABITOS = {
+  100: [
+    'Todos hoy. Te lo mereces, mi amor 💚',
+    'Cumpliste con todo. Así se cuida una a sí misma.',
+    '100% hoy, orgullosa de ti.',
+    'Ningún hábito quedó atrás hoy. Qué bonito verte así.'
+  ],
+  80: [
+    'Casi todo hoy, y eso también cuenta muchísimo.',
+    'Vas muy bien. Un día más de constancia.',
+    'La mayoría cumplida — sigue así.',
+    'Buen día. No todo tiene que ser perfecto para ser valioso.'
+  ],
+  50: [
+    'La mitad hoy, y está bien. Mañana sigues.',
+    'Un día parcial también es un día que sumaste.',
+    'No fue completo, pero tampoco fue en vano.',
+    'Poquito a poquito. Así se construyen los hábitos de verdad.'
+  ]
+};
+
+let _habitosMsgUmbral = {};
+let _habitosFormVisible = false;
+let _habitosEditId = null;
+let _habitosFiltroId = '';
+
+function getHabitosDatos() {
+  try { return JSON.parse(localStorage.getItem(uk('habitos-datos')) || '{}'); }
+  catch(e) { return {}; }
+}
+function saveHabitosDatos(d) {
+  localStorage.setItem(uk('habitos-datos'), JSON.stringify(d));
+  queueSync();
+}
+function habDateStr(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function habWeekMonday(dateStr) {
+  const p = dateStr.split('-');
+  const d = new Date(parseInt(p[0]), parseInt(p[1])-1, parseInt(p[2]));
+  const dow = (d.getDay()+6)%7;
+  const mon = new Date(d.getTime() - dow*86400000);
+  return habDateStr(mon);
+}
+function calcHabitosPct(habitos, regDia) {
+  if (!habitos || !habitos.length) return null;
+  let completados = 0;
+  habitos.forEach(function(h) {
+    const r = (regDia || {})[h.id] || {};
+    if (r.completado) completados++;
+  });
+  return Math.round(completados / habitos.length * 100);
+}
+function getHabitosColor(pct, isDark) {
+  if (pct === null || pct === undefined) return isDark ? '#2a2a2a' : '#E5E5E3';
+  if (pct <= 0) return isDark ? '#2a2a2a' : '#E5E5E3';
+  if (pct >= 100) return isDark ? '#66bb6a' : '#2E7D32';
+  if (pct >= 50)  return '#81C784';
+  return '#F9A825';
+}
+function mostrarMensajeHabitos(hoy, pct) {
+  const umbrales = [100, 80, 50];
+  const prevUmbral = _habitosMsgUmbral[hoy] || 0;
+  for (let ui = 0; ui < umbrales.length; ui++) {
+    const u = umbrales[ui];
+    if (pct >= u && prevUmbral < u) {
+      const msgs = MENSAJES_HABITOS[u];
+      const msg = msgs[Math.floor(Math.random() * msgs.length)];
+      showToast(msg, 'ok');
+      _habitosMsgUmbral[hoy] = u;
+      return;
+    }
+  }
+}
+function toggleHabitoCheck(fecha, habitoId) {
+  const d = getHabitosDatos();
+  if (!d.registros) d.registros = {};
+  if (!d.registros[fecha]) d.registros[fecha] = {};
+  const prev = (d.registros[fecha][habitoId] || {}).completado;
+  d.registros[fecha][habitoId] = { completado: !prev };
+  saveHabitosDatos(d);
+  const pct = calcHabitosPct(d.habitos || [], d.registros[fecha]);
+  mostrarMensajeHabitos(fecha, pct);
+  renderHabitos(document.getElementById('mainContent'));
+}
+function guardarValorHabito(fecha, habitoId, valor) {
+  const d = getHabitosDatos();
+  if (!d.registros) d.registros = {};
+  if (!d.registros[fecha]) d.registros[fecha] = {};
+  const hab = (d.habitos || []).find(function(h) { return h.id === habitoId; });
+  const n = parseFloat(valor);
+  if (!isNaN(n) && n >= 0) {
+    const completado = (hab && hab.objetivo) ? n >= hab.objetivo : false;
+    d.registros[fecha][habitoId] = { valor: n, completado: completado };
+  } else {
+    delete d.registros[fecha][habitoId];
+  }
+  saveHabitosDatos(d);
+  const pct = calcHabitosPct(d.habitos || [], d.registros[fecha]);
+  mostrarMensajeHabitos(fecha, pct);
+  renderHabitos(document.getElementById('mainContent'));
+}
+function guardarHabitoNuevo() {
+  const nombreEl = document.getElementById('hab-form-nombre');
+  const tipoEl   = document.getElementById('hab-form-tipo');
+  const objEl    = document.getElementById('hab-form-objetivo');
+  const nombre = nombreEl ? nombreEl.value.trim() : '';
+  if (!nombre) { showToast('Escribe un nombre para el hábito', 'err'); return; }
+  const tipo = tipoEl ? tipoEl.value : 'binario';
+  const objetivo = (tipo === 'numerico' && objEl) ? parseFloat(objEl.value) : 0;
+  const d = getHabitosDatos();
+  if (!d.habitos) d.habitos = [];
+  d.habitos.push({ id: 'h_' + Date.now(), nombre: nombre, tipo: tipo, objetivo: objetivo || 0 });
+  _habitosFormVisible = false;
+  saveHabitosDatos(d);
+  renderHabitos(document.getElementById('mainContent'));
+}
+function guardarHabitoEdit() {
+  if (!_habitosEditId) return;
+  const nombreEl = document.getElementById('hab-edit-nombre');
+  const tipoEl   = document.getElementById('hab-edit-tipo');
+  const objEl    = document.getElementById('hab-edit-objetivo');
+  const nombre = nombreEl ? nombreEl.value.trim() : '';
+  if (!nombre) { showToast('Escribe un nombre', 'err'); return; }
+  const d = getHabitosDatos();
+  const idx = (d.habitos || []).findIndex(function(h) { return h.id === _habitosEditId; });
+  if (idx === -1) return;
+  d.habitos[idx].nombre = nombre;
+  d.habitos[idx].tipo = tipoEl ? tipoEl.value : d.habitos[idx].tipo;
+  d.habitos[idx].objetivo = objEl ? (parseFloat(objEl.value) || 0) : d.habitos[idx].objetivo;
+  _habitosEditId = null;
+  saveHabitosDatos(d);
+  renderHabitos(document.getElementById('mainContent'));
+}
+function iniciarEditHabito(id) {
+  _habitosEditId = id;
+  _habitosFormVisible = false;
+  renderHabitos(document.getElementById('mainContent'));
+}
+function eliminarHabito(id) {
+  if (!confirm('Eliminar este habito?')) return;
+  const d = getHabitosDatos();
+  d.habitos = (d.habitos || []).filter(function(h) { return h.id !== id; });
+  saveHabitosDatos(d);
+  renderHabitos(document.getElementById('mainContent'));
+}
+function toggleHabitosForm() {
+  _habitosFormVisible = !_habitosFormVisible;
+  _habitosEditId = null;
+  renderHabitos(document.getElementById('mainContent'));
+}
+function showHabitosHeatmapDay(fechaStr) {
+  const tooltip = document.getElementById('hab-heatmap-tooltip');
+  if (!tooltip) return;
+  if (tooltip.dataset.fecha === fechaStr && tooltip.style.display !== 'none') {
+    tooltip.style.display = 'none'; return;
+  }
+  tooltip.dataset.fecha = fechaStr;
+  const d = getHabitosDatos();
+  const habitos = d.habitos || [];
+  const regDia = (d.registros || {})[fechaStr] || {};
+  let html = '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:8px">' + fechaStr + '</div>';
+  if (!habitos.length || !Object.keys(regDia).length) {
+    html += '<div style="font-size:12px;color:var(--muted)">Sin registro este día</div>';
+  } else {
+    habitos.forEach(function(h) {
+      const r = regDia[h.id] || {};
+      const check = r.completado ? '✓' : '·';
+      const checkColor = r.completado ? 'var(--ok)' : 'var(--muted)';
+      let valStr = '';
+      if (h.tipo === 'numerico' && r.valor !== undefined) {
+        valStr = '  ' + r.valor + (h.objetivo ? ' / ' + h.objetivo : '');
+      }
+      html += '<div style="display:flex;gap:6px;font-size:12px;margin-bottom:4px">'
+        + '<span style="color:' + checkColor + ';font-weight:700;width:12px">' + check + '</span>'
+        + '<span>' + h.nombre + valStr + '</span>'
+        + '</div>';
+    });
+  }
+  tooltip.innerHTML = html;
+  tooltip.style.display = 'block';
+}
+function cambiarFiltroHabitos(val) {
+  _habitosFiltroId = val;
+  renderHabitos(document.getElementById('mainContent'));
+}
+function dismissResumenSemanal(weekKey) {
+  const d = getHabitosDatos();
+  if (!d.resumenVisto) d.resumenVisto = {};
+  d.resumenVisto[weekKey] = true;
+  saveHabitosDatos(d);
+  renderHabitos(document.getElementById('mainContent'));
+}
+function renderHabitosFormObjetivo(tipoVal, inputId) {
+  const el = document.getElementById(inputId);
+  if (el) el.style.display = tipoVal === 'numerico' ? 'block' : 'none';
+}
+
+function renderHabitos(main) {
+  const d = getHabitosDatos();
+  const isDark = document.body.classList.contains('dark');
+  const now = new Date();
+  const hoy = habDateStr(now);
+  const habitos = d.habitos || [];
+  const registros = d.registros || {};
+  const regHoy = registros[hoy] || {};
+
+  let html = '<div style="padding:16px;max-width:600px;margin:0 auto">';
+
+  // Resumen semanal
+  const todayMidR = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const lastMondayR = new Date(todayMidR.getTime() - ((todayMidR.getDay()+6)%7)*86400000);
+  const prevMondayR = new Date(lastMondayR.getTime() - 7*86400000);
+  const prevSundayR = new Date(lastMondayR.getTime() - 86400000);
+  const weekKey = 'w-' + habDateStr(prevMondayR);
+  const resumenVisto = (d.resumenVisto || {})[weekKey];
+
+  if (!resumenVisto && habitos.length > 0) {
+    const prevDays = [];
+    for (let i = 0; i < 7; i++) {
+      prevDays.push(habDateStr(new Date(prevMondayR.getTime() + i*86400000)));
+    }
+    const daysConReg = prevDays.filter(function(f) { return registros[f] && Object.keys(registros[f]).length > 0; });
+    if (daysConReg.length > 0) {
+      const pcts = prevDays.map(function(f) { return calcHabitosPct(habitos, registros[f] || {}); });
+      const pctsFilt = pcts.filter(function(p) { return p !== null; });
+      const avgPct = pctsFilt.length ? Math.round(pctsFilt.reduce(function(a,b){return a+b;},0)/pctsFilt.length) : 0;
+      let mejorH = null, mejorP = -1, peorH = null, peorP = 101;
+      habitos.forEach(function(h) {
+        let tot = 0, dias = 0;
+        prevDays.forEach(function(f) {
+          const r = (registros[f] || {})[h.id];
+          if (r) { dias++; if (r.completado) tot++; }
+        });
+        if (dias > 0) {
+          const p = Math.round(tot/dias*100);
+          if (p > mejorP) { mejorP = p; mejorH = h; }
+          if (p < peorP)  { peorP = p; peorH = h; }
+        }
+      });
+      let rachaMax = 0, rachaCur = 0;
+      prevDays.forEach(function(f) {
+        const p = calcHabitosPct(habitos, registros[f] || {});
+        if (p !== null && p >= 100) { rachaCur++; if (rachaCur > rachaMax) rachaMax = rachaCur; }
+        else rachaCur = 0;
+      });
+      const wLabel = habDateStr(prevMondayR).slice(5).replace('-','/') + ' al ' + habDateStr(prevSundayR).slice(5).replace('-','/');
+      let msg = 'Semana del ' + wLabel + ': ' + avgPct + '% promedio.';
+      if (mejorH) msg += ' Tu hábito más fiel fue ' + mejorH.nombre + ' 💚.';
+      if (peorH && peorH.id !== (mejorH && mejorH.id)) msg += ' ' + peorH.nombre + ' te costó un poco más — la próxima semana es nueva.';
+      if (rachaMax >= 2) msg += ' Racha más larga de días perfectos: ' + rachaMax + ' días seguidos.';
+      html += '<div class="rehab-card" style="background:var(--surface);border-left:3px solid var(--accent);margin-bottom:14px">';
+      html += '<div style="display:flex;align-items:flex-start;gap:8px">';
+      html += '<div style="flex:1;font-size:13px;line-height:1.6">' + msg + '</div>';
+      html += '<button onclick="dismissResumenSemanal(\'' + weekKey + '\')" style="flex-shrink:0;background:none;border:none;cursor:pointer;font-size:18px;color:var(--muted);padding:0 0 0 8px;line-height:1">&times;</button>';
+      html += '</div></div>';
+    }
+  }
+
+  // Lista de hábitos de hoy
+  html += '<div class="rehab-card">';
+  html += '<div class="rehab-title" style="margin-bottom:14px">Hoy</div>';
+  if (habitos.length === 0) {
+    html += '<div style="font-size:13px;color:var(--muted);margin-bottom:12px">Sin hábitos configurados aún. Agrega el primero abajo.</div>';
+  } else {
+    habitos.forEach(function(h) {
+      const reg = regHoy[h.id] || {};
+      if (_habitosEditId === h.id) {
+        html += '<div style="background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);padding:12px;margin-bottom:8px">';
+        html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:8px">Editar hábito</div>';
+        html += '<input class="cut-input" id="hab-edit-nombre" type="text" value="' + h.nombre.replace(/"/g,'&quot;') + '" placeholder="Nombre" style="width:100%;padding:7px 8px;margin-bottom:6px">';
+        html += '<select class="cut-input" id="hab-edit-tipo" style="width:100%;padding:7px 8px;margin-bottom:6px" onchange="renderHabitosFormObjetivo(this.value,\'hab-edit-objetivo\')">'
+          + '<option value="binario"' + (h.tipo==='binario'?' selected':'') + '>Binario (check)</option>'
+          + '<option value="numerico"' + (h.tipo==='numerico'?' selected':'') + '>Numerico</option>'
+          + '</select>';
+        html += '<input class="cut-input" id="hab-edit-objetivo" type="number" value="' + (h.objetivo||'') + '" placeholder="Objetivo" style="width:100%;padding:7px 8px;margin-bottom:8px;display:' + (h.tipo==='numerico'?'block':'none') + '">';
+        html += '<div style="display:flex;gap:8px">';
+        html += '<button onclick="guardarHabitoEdit()" style="flex:1;padding:8px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px">Guardar</button>';
+        html += '<button onclick="_habitosEditId=null;renderHabitos(document.getElementById(\'mainContent\'))" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:13px">Cancelar</button>';
+        html += '</div></div>';
+      } else {
+        html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">';
+        if (h.tipo === 'binario') {
+          html += '<input type="checkbox" ' + (reg.completado?'checked':'') + ' onchange="toggleHabitoCheck(\'' + hoy + '\',\'' + h.id + '\')" style="width:20px;height:20px;cursor:pointer;flex-shrink:0">';
+          html += '<span style="flex:1;font-size:14px' + (reg.completado?';color:var(--ok);text-decoration:line-through':'') + '">' + h.nombre + '</span>';
+        } else {
+          html += '<div style="flex:1">';
+          html += '<div style="font-size:13px;margin-bottom:4px' + (reg.completado?';color:var(--ok)':'') + '">' + h.nombre + '</div>';
+          html += '<div style="display:flex;align-items:center;gap:6px">';
+          html += '<input class="cut-input" type="number" value="' + (reg.valor!==undefined?reg.valor:'') + '" placeholder="0" style="width:90px;padding:6px 8px;text-align:center" onchange="guardarValorHabito(\'' + hoy + '\',\'' + h.id + '\',this.value)">';
+          if (h.objetivo) html += '<span style="font-size:12px;color:var(--muted);font-family:var(--font-mono)">/ ' + h.objetivo.toLocaleString() + '</span>';
+          if (reg.completado) html += '<span style="font-size:12px;color:var(--ok)">&#10003;</span>';
+          html += '</div></div>';
+        }
+        html += '<div style="display:flex;gap:4px;flex-shrink:0">';
+        html += '<button onclick="iniciarEditHabito(\'' + h.id + '\')" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--muted);padding:4px 6px" title="Editar">&#9998;</button>';
+        html += '<button onclick="eliminarHabito(\'' + h.id + '\')" style="background:none;border:none;cursor:pointer;font-size:14px;color:var(--muted);padding:4px 6px" title="Eliminar">&#128465;</button>';
+        html += '</div></div>';
+      }
+    });
+  }
+  if (_habitosFormVisible) {
+    html += '<div style="background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);padding:12px;margin-top:10px">';
+    html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:8px">Nuevo hábito</div>';
+    html += '<input class="cut-input" id="hab-form-nombre" type="text" placeholder="Nombre del hábito" style="width:100%;padding:7px 8px;margin-bottom:6px">';
+    html += '<select class="cut-input" id="hab-form-tipo" style="width:100%;padding:7px 8px;margin-bottom:6px" onchange="renderHabitosFormObjetivo(this.value,\'hab-form-objetivo\')">'
+      + '<option value="binario">Binario (check)</option>'
+      + '<option value="numerico">Numerico (con objetivo)</option>'
+      + '</select>';
+    html += '<input class="cut-input" id="hab-form-objetivo" type="number" placeholder="Objetivo (ej: 12000)" style="width:100%;padding:7px 8px;margin-bottom:8px;display:none">';
+    html += '<div style="display:flex;gap:8px">';
+    html += '<button onclick="guardarHabitoNuevo()" style="flex:1;padding:8px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px">Agregar</button>';
+    html += '<button onclick="toggleHabitosForm()" style="padding:8px 14px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:13px">Cancelar</button>';
+    html += '</div></div>';
+  } else {
+    html += '<button onclick="toggleHabitosForm()" style="margin-top:12px;padding:8px 16px;background:var(--surface);color:var(--accent);border:1px solid var(--accent);border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px;width:100%">+ Agregar hábito</button>';
+  }
+  html += '</div>';
+
+  // Heatmap
+  const fechasReg = Object.keys(registros).sort();
+  if (habitos.length > 0 && fechasReg.length > 0) {
+    const todayMid = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const thisMonday = new Date(todayMid.getTime() - ((todayMid.getDay()+6)%7)*86400000);
+    const fp = fechasReg[0].split('-');
+    const firstDate = new Date(parseInt(fp[0]), parseInt(fp[1])-1, parseInt(fp[2]));
+    const firstDow = (firstDate.getDay()+6)%7;
+    const hmStart = new Date(firstDate.getTime() - firstDow*86400000);
+    const numWeeks = Math.max(1, Math.round((thisMonday.getTime()-hmStart.getTime())/(7*86400000))+1);
+
+    html += '<div class="rehab-card"><div class="rehab-title" style="margin-bottom:10px">Historial</div>';
+    html += '<div class="rehab-heatmap-grid">';
+    ['L','M','X','J','V','S','D'].forEach(function(lb) { html += '<div class="rehab-heatmap-dow">' + lb + '</div>'; });
+    for (let row = 0; row < numWeeks; row++) {
+      for (let col = 0; col < 7; col++) {
+        const cellDate = new Date(hmStart.getTime() + (row*7+col)*86400000);
+        const cellStr = habDateStr(cellDate);
+        const isFuture = cellDate > todayMid;
+        const isToday = cellStr === hoy;
+        const pctCell = isFuture ? null : calcHabitosPct(habitos, registros[cellStr] || {});
+        const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getHabitosColor(pctCell, isDark);
+        const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
+        const opacity = isFuture ? 'opacity:0.25;cursor:default;' : '';
+        const onclick = isFuture ? '' : (' onclick="showHabitosHeatmapDay(\'' + cellStr + '\')"');
+        html += '<div class="rehab-heatmap-cell"' + onclick + ' style="background:' + color + ';' + outline + opacity + '"></div>';
+      }
+    }
+    html += '</div>';
+    html += '<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);font-family:var(--font-mono);flex-wrap:wrap">'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#2E7D32;vertical-align:middle;margin-right:3px"></span>100%</span>'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#81C784;vertical-align:middle;margin-right:3px"></span>50-99%</span>'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#F9A825;vertical-align:middle;margin-right:3px"></span>1-49%</span>'
+      + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#E5E5E3;vertical-align:middle;margin-right:3px"></span>sin dato</span>'
+      + '</div>';
+    html += '<div id="hab-heatmap-tooltip" style="display:none" class="rehab-heatmap-tooltip"></div>';
+    html += '</div>';
+
+    // Curva de crecimiento
+    const weekMap = {};
+    fechasReg.forEach(function(f) {
+      const wk = habWeekMonday(f);
+      if (!weekMap[wk]) weekMap[wk] = [];
+      const habitosFiltro = _habitosFiltroId ? habitos.filter(function(h){ return h.id===_habitosFiltroId; }) : habitos;
+      const pctF = calcHabitosPct(habitosFiltro, registros[f] || {});
+      if (pctF !== null) weekMap[wk].push(pctF);
+    });
+    const weekKeys = Object.keys(weekMap).sort();
+    if (weekKeys.length >= 2) {
+      const chartH = 70, chartY = 10, pointW = 36;
+      const svgW = Math.max(240, weekKeys.length * pointW + 20);
+      const yFor = function(p) { return chartY + chartH - (p / 100) * chartH; };
+      const xFor = function(i) { return 10 + i * pointW; };
+      const weekAvgs = weekKeys.map(function(wk) {
+        const arr = weekMap[wk];
+        return arr.reduce(function(a,b){return a+b;},0) / arr.length;
+      });
+      const pointsStr = weekKeys.map(function(wk, i) {
+        return xFor(i) + ',' + yFor(weekAvgs[i]).toFixed(1);
+      }).join(' ');
+      const dotsStr = weekKeys.map(function(wk, i) {
+        return '<circle cx="' + xFor(i) + '" cy="' + yFor(weekAvgs[i]).toFixed(1) + '" r="3" fill="var(--accent)"/>';
+      }).join('');
+      const labelsStr = weekKeys.map(function(wk, i) {
+        const lbl = wk.slice(5,10).replace('-','/');
+        return '<text x="' + xFor(i) + '" y="' + (chartY+chartH+16) + '" text-anchor="middle" style="fill:var(--muted);font-family:monospace;font-size:8px">' + lbl + '</text>';
+      }).join('');
+      const svgH = chartY + chartH + 24;
+      const svgStr = '<svg width="' + svgW + '" height="' + svgH + '" viewBox="0 0 ' + svgW + ' ' + svgH + '">'
+        + '<line x1="8" y1="' + chartY + '" x2="8" y2="' + (chartY+chartH) + '" stroke="var(--border)" stroke-width="1"/>'
+        + '<line x1="8" y1="' + (chartY+chartH) + '" x2="' + (svgW-4) + '" y2="' + (chartY+chartH) + '" stroke="var(--border)" stroke-width="1"/>'
+        + '<text x="6" y="' + (chartY+4) + '" text-anchor="end" style="fill:var(--muted);font-family:monospace;font-size:8px">100</text>'
+        + '<text x="6" y="' + (chartY+chartH/2+4) + '" text-anchor="end" style="fill:var(--muted);font-family:monospace;font-size:8px">50</text>'
+        + '<text x="6" y="' + (chartY+chartH+4) + '" text-anchor="end" style="fill:var(--muted);font-family:monospace;font-size:8px">0</text>'
+        + '<polyline points="' + pointsStr + '" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>'
+        + dotsStr + labelsStr + '</svg>';
+
+      html += '<div class="rehab-card">';
+      html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">';
+      html += '<div class="rehab-title" style="margin-bottom:0;flex:1">Curva de crecimiento</div>';
+      if (habitos.length > 1) {
+        let opts = '<option value="">General</option>';
+        habitos.forEach(function(h) {
+          opts += '<option value="' + h.id + '"' + (_habitosFiltroId===h.id?' selected':'') + '>' + h.nombre + '</option>';
+        });
+        html += '<select class="cut-input" style="padding:4px 6px;font-size:12px" onchange="cambiarFiltroHabitos(this.value)">' + opts + '</select>';
+      }
+      html += '</div>';
+      html += '<div style="overflow-x:auto">' + svgStr + '</div>';
+      html += '</div>';
+    }
+  }
+
+  html += '</div>';
+  main.innerHTML = html;
+}
+
+
 // ── CONFIG VIEW ──
 function renderConfig(main) {
   const ghConnected = !!state.githubToken;
@@ -4056,6 +4481,7 @@ async function pushToGithub() {
       cut: JSON.parse(localStorage.getItem(uk("cut-datos")) || "{}"),
       test: JSON.parse(localStorage.getItem(uk("test-datos")) || "{}"),
       actividad: JSON.parse(localStorage.getItem(uk("actividad-datos")) || "{}"),
+      habitos: JSON.parse(localStorage.getItem(uk("habitos-datos")) || "{}"),
       userProfile: JSON.parse(localStorage.getItem(uk("user-profile")) || "{}"),
       timestamp: new Date().toISOString()
     };
@@ -4155,6 +4581,15 @@ async function pullFromGithub() {
       localStorage.setItem(uk("actividad-datos"), JSON.stringify(mergedAct));
     }
 
+    if (data.habitos && Object.keys(data.habitos).length > 0) {
+      const localHab = JSON.parse(localStorage.getItem(uk("habitos-datos")) || "{}");
+      const mergedHab = Object.assign({}, localHab, data.habitos);
+      mergedHab.habitos = data.habitos.habitos || localHab.habitos || [];
+      mergedHab.registros = Object.assign({}, localHab.registros || {}, data.habitos.registros || {});
+      mergedHab.resumenVisto = Object.assign({}, localHab.resumenVisto || {}, data.habitos.resumenVisto || {});
+      localStorage.setItem(uk("habitos-datos"), JSON.stringify(mergedHab));
+    }
+
     if (data.userProfile && Object.keys(data.userProfile).length > 0) {
       const localProfile = JSON.parse(localStorage.getItem(uk("user-profile")) || "{}");
       localStorage.setItem(uk("user-profile"), JSON.stringify(Object.assign({}, localProfile, data.userProfile)));
@@ -4167,6 +4602,7 @@ async function pullFromGithub() {
     if (state.view === "rehab") renderRehab(main);
     if (state.view === "cut") renderCut(main);
     if (state.view === "actividad") renderActividad(main);
+    if (state.view === "habitos") renderHabitos(main);
     if (state.view === "profile") renderProfile(main);
   } catch(e) {
     console.error("Pull error:", e);
@@ -4470,6 +4906,12 @@ function initApp() {
   if (chip) chip.textContent = state.currentUser;
   const rehabNav = document.getElementById('nav-rehab');
   if (rehabNav) rehabNav.style.display = USUARIOS[state.currentUser]?.tieneRehab ? '' : 'none';
+  const tieneHabitos = !!USUARIOS[state.currentUser]?.tieneHabitos;
+  const actividadNav = document.getElementById('nav-actividad');
+  const habitosNav = document.getElementById('nav-habitos');
+  if (actividadNav) actividadNav.style.display = tieneHabitos ? 'none' : '';
+  if (habitosNav)   habitosNav.style.display   = tieneHabitos ? '' : 'none';
+  if (tieneHabitos && state.view === 'actividad') state.view = 'habitos';
   render();
   setTimeout(() => {
     const btn = document.getElementById('themeBtn');
