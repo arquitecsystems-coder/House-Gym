@@ -1567,6 +1567,42 @@ const MESOCICLOS = {
       ],
     }
   }
+  ,
+  "D1": {
+    label: "M1 — Dolly",
+    tipo: "activo",
+    semanas: 6,
+    dias: [
+      { key: "sab", label: "Sáb", titulo: "Cadena Anterior / Cuádriceps + Empuje" },
+      { key: "dom", label: "Dom", titulo: "Cadena Posterior / Isquios + Tracción" },
+    ],
+    plan: {
+      sab: [
+        { nombre: "Flexión inclinada (banco)", series: 4,
+          semanas: ["Banco medio × 8-10","Banco medio × 10-12","Banco medio-bajo × 8-10","Banco bajo × 6-8","Banco bajo × 8-10 (pico)","Banco medio × 12 (descarga)"] },
+        { nombre: "Búlgaras con mancuerna", series: 3,
+          semanas: ["37.5lb (17kg) × 8/8","37.5lb (17kg) × 10/10","37.5lb (17kg) × 12/12","42.5lb (19.3kg) × 6-8/8","42.5lb (19.3kg) × 8-10 (pico)","27.5lb (12.5kg) × 12/12 (descarga)"] },
+        { nombre: "Press inclinado mancuerna (unilateral)", series: 3,
+          semanas: ["17.5lb (7.9kg) × 8","17.5lb (7.9kg) × 10","20lb (9.1kg) × 6-8","20lb (9.1kg) × 8-10","22.5lb (10.2kg) × 5-6 (pico)","12.5lb (5.7kg) × 10 (descarga)"] },
+        { nombre: "Negativas de fondo (banco)", series: 4,
+          semanas: ["6 reps","6-7 reps","7 reps","8 reps","8-9 reps (pico)","5 reps (descarga)"] },
+        { nombre: "Copa a una mano (tríceps)", series: 3,
+          semanas: ["10lb (4.5kg) × 10","10lb (4.5kg) × 12","12.5lb (5.7kg) × 8-10","12.5lb (5.7kg) × 10","15lb (6.8kg) × 6-8 (pico)","10lb (4.5kg) × 12 (descarga)"] },
+      ],
+      dom: [
+        { nombre: "Dominada asistida (doble banda)", series: 4,
+          semanas: ["Doble banda × 8-9","Doble banda × 10","Banda gruesa × 6-8","Banda gruesa × 8-9","Banda gruesa × 9-10 (pico)","Doble banda × 10 (descarga)"] },
+        { nombre: "RDL unilateral con mancuerna", series: 3,
+          semanas: ["37.5lb (17kg) × 10/10","42.5lb (19.3kg) × 8-10","42.5lb (19.3kg) × 10-12","47.5lb (21.5kg) × 6-8","47.5lb (21.5kg) × 8-10 (pico)","32.5lb (14.7kg) × 12 (descarga)"] },
+        { nombre: "Remo unilateral con mancuerna", series: 3,
+          semanas: ["20lb (9.1kg) × 8-10","20lb (9.1kg) × 10-12","22.5lb (10.2kg) × 8","22.5lb (10.2kg) × 10","22.5lb (10.2kg) × 10-12 (pico)","15lb (6.8kg) × 12 (descarga)"] },
+        { nombre: "Curl bíceps con mancuerna", series: 3,
+          semanas: ["10lb (4.5kg) × 10","10lb (4.5kg) × 12","12.5lb (5.7kg) × 8-10","12.5lb (5.7kg) × 10","15lb (6.8kg) × 6-8 (pico)","10lb (4.5kg) × 12 (descarga)"] },
+        { nombre: "Lateral inclinado contra pared", series: 3,
+          semanas: ["7.5lb (3.4kg) × 12","7.5lb (3.4kg) × 15","10lb (4.5kg) × 10-12","10lb (4.5kg) × 12","10lb (4.5kg) × 12-15 (pico)","5lb (2.3kg) × 15 (descarga)"] },
+      ],
+    }
+  }
 };
 
 // RMs de referencia
@@ -1599,7 +1635,7 @@ const RMS_REFERENCIA = {
 // ============================================================
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5'], tieneRehab: true,  renderTest: null },
-  dolly:  { mesociclos: [],           tieneRehab: false, renderTest: 'dolly' },
+  dolly:  { mesociclos: ['D1'],         tieneRehab: false, renderTest: null },
   nata:   { mesociclos: ['N1'],        tieneRehab: false, renderTest: null },
 };
 
