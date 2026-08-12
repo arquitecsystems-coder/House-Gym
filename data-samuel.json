@@ -1408,10 +1408,10 @@
       "checked": true
     },
     "M5-S6-lun-Press Inclinado (barra)-2": {
-      "reps": "8",
-      "timestamp": "2026-08-12T16:14:00.656Z",
+      "reps": "10",
+      "timestamp": "2026-08-12T16:14:05.250Z",
       "peso": "45",
-      "rir": "2",
+      "rir": "1",
       "checked": true
     }
   },
@@ -1879,5 +1879,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-12T16:14:03.661Z"
+  "timestamp": "2026-08-12T16:14:08.252Z"
 }
