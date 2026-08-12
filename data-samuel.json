@@ -1396,9 +1396,9 @@
     },
     "M5-S6-mie-Sentadilla parcial (barra)-2": {
       "peso": "45",
-      "timestamp": "2026-08-12T16:13:41.753Z",
+      "timestamp": "2026-08-12T16:13:46.706Z",
       "reps": "8",
-      "checked": true
+      "checked": false
     }
   },
   "rehab": {
@@ -1865,5 +1865,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-12T16:13:44.769Z"
+  "timestamp": "2026-08-12T16:13:49.712Z"
 }
