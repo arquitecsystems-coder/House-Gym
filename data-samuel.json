@@ -1422,14 +1422,18 @@
       "checked": true
     },
     "M5-S6-lun-Deficit Push-ups (DB en suelo)-1": {
-      "peso": "10",
-      "timestamp": "2026-08-12T16:32:08.385Z",
+      "peso": "",
+      "timestamp": "2026-08-12T16:32:16.677Z",
       "checked": true,
-      "rir": "2"
+      "rir": "2",
+      "reps": "10"
     },
     "M5-S6-lun-Deficit Push-ups (DB en suelo)-2": {
-      "peso": "10",
-      "timestamp": "2026-08-12T16:32:11.445Z"
+      "peso": "",
+      "timestamp": "2026-08-12T16:32:18.784Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -1896,5 +1900,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-12T16:32:11.388Z"
+  "timestamp": "2026-08-12T16:32:21.789Z"
 }
