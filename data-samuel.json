@@ -1473,6 +1473,13 @@
       "reps": "8",
       "rir": "2",
       "checked": true
+    },
+    "M5-S6-mar-Remo 1 mano (DB)-1": {
+      "peso": "15",
+      "timestamp": "2026-08-14T23:36:17.757Z",
+      "reps": "12",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -1939,5 +1946,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-14T23:29:42.803Z"
+  "timestamp": "2026-08-14T23:36:20.767Z"
 }
