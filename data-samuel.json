@@ -1459,10 +1459,17 @@
     "M5-S6-lun-Deficit Push-ups (DB en suelo)-3": {
       "checked": false,
       "timestamp": "2026-08-14T23:12:55.064Z"
+    },
+    "M5-S6-mar-Remo Pendlay (barra)-3": {
+      "peso": "43",
+      "timestamp": "2026-08-14T23:17:37.419Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-12T16:36:33.918Z",
+    "_syncTs": "2026-08-14T23:12:58.071Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1919,11 +1926,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-12T16:36:33.918Z"
+    "_syncTs": "2026-08-14T23:12:58.071Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-14T23:12:58.071Z"
+  "timestamp": "2026-08-14T23:17:40.426Z"
 }
