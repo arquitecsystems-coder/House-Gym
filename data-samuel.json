@@ -1462,9 +1462,16 @@
     },
     "M5-S6-mar-Remo Pendlay (barra)-3": {
       "peso": "43",
-      "timestamp": "2026-08-14T23:17:37.419Z",
+      "timestamp": "2026-08-14T23:29:39.292Z",
       "reps": "8",
-      "rir": "1",
+      "rir": "2",
+      "checked": true
+    },
+    "M5-S6-mar-Remo Pendlay (barra)-4": {
+      "peso": "43",
+      "timestamp": "2026-08-14T23:29:39.790Z",
+      "reps": "8",
+      "rir": "2",
       "checked": true
     }
   },
@@ -1932,5 +1939,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-14T23:17:40.426Z"
+  "timestamp": "2026-08-14T23:29:42.803Z"
 }
