@@ -1441,10 +1441,24 @@
       "reps": "10",
       "checked": true,
       "rir": "3"
+    },
+    "M5-S6-mar-Remo Pendlay (barra)-1": {
+      "peso": "43",
+      "timestamp": "2026-08-14T23:11:49.421Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "2"
+    },
+    "M5-S6-mar-Remo Pendlay (barra)-2": {
+      "peso": "43",
+      "timestamp": "2026-08-14T23:11:50.630Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-08T20:41:38.409Z",
+    "_syncTs": "2026-08-12T16:36:33.918Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1901,11 +1915,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-08T20:41:38.409Z"
+    "_syncTs": "2026-08-12T16:36:33.918Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-12T16:36:33.918Z"
+  "timestamp": "2026-08-14T23:11:53.633Z"
 }
