@@ -256,8 +256,8 @@
       "checked": false
     },
     "D1-S1-sab-Flexión inclinada (banco)-2": {
-      "reps": "10",
-      "timestamp": "2026-08-15T02:41:08.632Z",
+      "reps": "",
+      "timestamp": "2026-08-15T02:41:11.642Z",
       "peso": "10",
       "rir": "3",
       "checked": true
@@ -379,5 +379,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T02:41:07.965Z"
+  "timestamp": "2026-08-15T02:41:11.638Z"
 }
