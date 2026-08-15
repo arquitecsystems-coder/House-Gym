@@ -4391,6 +4391,17 @@ function renderHabitos(main) {
 
 // ── TIMER ──
 const _timer = { active: false, paused: false, endTs: 0, pausedMs: 0, duration: 0, label: '', _iv: null };
+let _audioCtx = null;
+function _getAudioCtx() {
+  if (!_audioCtx) {
+    try { _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+  }
+  return _audioCtx;
+}
+document.addEventListener('touchstart', function() {
+  const ctx = _getAudioCtx();
+  if (ctx && ctx.state === 'suspended') ctx.resume();
+}, { passive: true });
 
 function getTimerConfig() {
   const saved = localStorage.getItem(uk('timer-config'));
@@ -4417,18 +4428,22 @@ function formatTimer(ms) {
 
 function playTimerBeep() {
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    [0, 0.15, 0.3].forEach((t, i) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.frequency.value = 520 + i * 120;
-      osc.type = 'sine';
-      gain.gain.setValueAtTime(0.4, ctx.currentTime + t);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.25);
-      osc.start(ctx.currentTime + t);
-      osc.stop(ctx.currentTime + t + 0.28);
+    const ctx = _getAudioCtx();
+    if (!ctx) return;
+    const resume = ctx.state === 'suspended' ? ctx.resume() : Promise.resolve();
+    resume.then(() => {
+      [0, 0.15, 0.3].forEach((t, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 520 + i * 120;
+        osc.type = 'sine';
+        gain.gain.setValueAtTime(0.4, ctx.currentTime + t);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.25);
+        osc.start(ctx.currentTime + t);
+        osc.stop(ctx.currentTime + t + 0.28);
+      });
     });
   } catch(e) {}
 }
