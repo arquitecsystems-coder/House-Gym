@@ -1389,15 +1389,15 @@
     },
     "M5-S6-mie-Sentadilla parcial (barra)-1": {
       "peso": "",
-      "timestamp": "2026-08-15T11:20:40.117Z",
-      "reps": "10",
-      "rir": "3",
+      "timestamp": "2026-08-15T11:20:54.464Z",
+      "reps": "",
+      "rir": "0",
       "checked": false
     },
     "M5-S6-mie-Sentadilla parcial (barra)-2": {
       "peso": "",
-      "timestamp": "2026-08-15T11:20:46.338Z",
-      "reps": "8",
+      "timestamp": "2026-08-15T11:20:52.460Z",
+      "reps": "",
       "checked": false
     },
     "M5-S6-lun-Press Inclinado (barra)-1": {
@@ -1971,5 +1971,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T11:20:49.344Z"
+  "timestamp": "2026-08-15T11:20:57.470Z"
 }
