@@ -1514,20 +1514,20 @@
     },
     "M5-S6-sab-Elevación de pie o sentado (gemelo/sóleo)-1": {
       "peso": "0",
-      "timestamp": "2026-08-15T11:30:26.903Z",
+      "timestamp": "2026-08-15T11:32:32.279Z",
       "reps": "12",
-      "checked": true
+      "checked": false
     },
     "M5-S6-sab-Elevación de pie o sentado (gemelo/sóleo)-2": {
       "peso": "0",
-      "timestamp": "2026-08-15T11:31:18.389Z",
+      "timestamp": "2026-08-15T11:32:32.028Z",
       "reps": "12",
-      "checked": true
+      "checked": false
     },
     "M5-S6-sab-Elevación de pie o sentado (gemelo/sóleo)-3": {
-      "reps": "12",
-      "timestamp": "2026-08-15T11:31:59.446Z",
-      "checked": true
+      "reps": "",
+      "timestamp": "2026-08-15T11:32:35.474Z",
+      "checked": false
     }
   },
   "rehab": {
@@ -1994,5 +1994,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T11:32:02.454Z"
+  "timestamp": "2026-08-15T11:32:35.285Z"
 }
