@@ -4379,10 +4379,17 @@ function renderHabitos(main) {
 
 // ── TIMER ──
 const _timer = { active: false, paused: false, endTs: 0, pausedMs: 0, duration: 0, label: '', _iv: null };
-// Genera WAV — tono continuo de 5 segundos, fade-in/out suave
+// Genera WAV — 3 pings ascendentes con envelope tipo campana, 4 repeticiones
 function _makeBeepSequenceWav() {
-  var sr = 22050, freq = 880, dur = 5.0;
-  var n = Math.floor(sr * dur);
+  var sr = 22050;
+  var freqs   = [1047, 1319, 1568]; // C6, E6, G6
+  var noteDur = 0.18;               // duracion de cada ping
+  var noteGap = 0.07;               // silencio entre pings del grupo
+  var groupGap = 0.72;              // pausa entre grupos
+  var reps = 4;
+  var groupDur = freqs.length * (noteDur + noteGap);
+  var totalDur = reps * (groupDur + groupGap);
+  var n = Math.floor(sr * totalDur);
   var ab = new ArrayBuffer(44 + n * 2);
   var v = new DataView(ab);
   var ws = function(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
@@ -4391,9 +4398,19 @@ function _makeBeepSequenceWav() {
   v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
   ws(36, 'data'); v.setUint32(40, n * 2, true);
   for (var i = 0; i < n; i++) {
-    var t = i / sr;
-    var env = Math.min(1, Math.min(t * 10, (dur - t) * 10));
-    v.setInt16(44 + i * 2, Math.round(Math.sin(2 * Math.PI * freq * t) * env * 0x5FFF), true);
+    var t = i / sr, sample = 0;
+    for (var r = 0; r < reps; r++) {
+      var tRep = t - r * (groupDur + groupGap);
+      if (tRep < 0 || tRep >= groupDur) continue;
+      for (var ni = 0; ni < freqs.length; ni++) {
+        var tNote = tRep - ni * (noteDur + noteGap);
+        if (tNote < 0 || tNote >= noteDur) continue;
+        // ataque rapido (8ms), decay exponencial — suena como campana/ping
+        var env = tNote < 0.008 ? tNote / 0.008 : Math.exp(-9 * (tNote - 0.008));
+        sample = Math.sin(2 * Math.PI * freqs[ni] * tNote) * env * 0x5FFF;
+      }
+    }
+    v.setInt16(44 + i * 2, Math.round(Math.max(-0x7FFF, Math.min(0x7FFF, sample))), true);
   }
   var u8 = new Uint8Array(ab), s = '';
   for (var i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]);
