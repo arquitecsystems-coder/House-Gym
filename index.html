@@ -4388,7 +4388,10 @@ function saveField(key, field, value) {
   if (!state.registros[key]) state.registros[key] = {};
   state.registros[key][field] = value;
   state.registros[key].timestamp = new Date().toISOString();
+  const reg = state.registros[key];
+  if (reg.peso && reg.reps) reg.checked = true;
   saveLocal();
+  render();
   queueSync();
 }
 
