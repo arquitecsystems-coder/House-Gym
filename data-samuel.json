@@ -1528,10 +1528,14 @@
       "reps": "",
       "timestamp": "2026-08-15T11:32:35.474Z",
       "checked": false
+    },
+    "M5-S6-sab-RDL sin flexión de rodilla (barra)-1": {
+      "checked": true,
+      "timestamp": "2026-08-15T12:16:50.239Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-15T11:31:21.396Z",
+    "_syncTs": "2026-08-15T11:32:49.514Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1988,11 +1992,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-15T11:31:21.396Z"
+    "_syncTs": "2026-08-15T11:32:49.514Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T11:32:49.514Z"
+  "timestamp": "2026-08-15T12:16:53.248Z"
 }
