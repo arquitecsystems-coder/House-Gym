@@ -254,10 +254,17 @@
       "reps": "10",
       "rir": "1",
       "checked": false
+    },
+    "D1-S1-sab-Flexión inclinada (banco)-2": {
+      "reps": "10",
+      "timestamp": "2026-08-15T02:41:08.632Z",
+      "peso": "10",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-08T18:14:19.772Z",
+    "_syncTs": "2026-08-15T02:34:52.122Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -372,5 +379,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T02:34:52.122Z"
+  "timestamp": "2026-08-15T02:41:07.965Z"
 }
