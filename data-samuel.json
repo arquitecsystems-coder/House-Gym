@@ -1395,10 +1395,10 @@
       "checked": true
     },
     "M5-S6-mie-Sentadilla parcial (barra)-2": {
-      "peso": "",
-      "timestamp": "2026-08-15T11:20:52.460Z",
-      "reps": "",
-      "checked": false
+      "peso": "45",
+      "timestamp": "2026-08-15T11:24:20.709Z",
+      "reps": "10",
+      "checked": true
     },
     "M5-S6-lun-Press Inclinado (barra)-1": {
       "peso": "45",
@@ -1505,10 +1505,16 @@
       "timestamp": "2026-08-15T02:41:50.716Z",
       "reps": "12",
       "checked": true
+    },
+    "M5-S6-mie-Sentadilla parcial (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-08-15T11:24:33.986Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-15T02:41:53.725Z",
+    "_syncTs": "2026-08-15T11:21:36.587Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1965,11 +1971,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-15T02:41:53.725Z"
+    "_syncTs": "2026-08-15T11:21:36.587Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T11:21:36.587Z"
+  "timestamp": "2026-08-15T11:24:33.775Z"
 }
