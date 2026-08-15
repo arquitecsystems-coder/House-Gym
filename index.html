@@ -592,6 +592,59 @@
 
   .nav-icon { font-size: 18px; }
 
+  /* ── TIMER BAR ── */
+  #timerBar {
+    position: fixed;
+    bottom: 57px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: var(--accent);
+    color: #fff;
+    display: none;
+    align-items: center;
+    padding: 0 12px;
+    height: 44px;
+    gap: 8px;
+    font-family: var(--font-mono);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.25s;
+  }
+  #timerBar.visible { display: flex; }
+  body.dark #timerBar { color: #000; }
+  #timerBar .tb-label {
+    flex: 1;
+    font-size: 11px;
+    opacity: 0.85;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #timerBar .tb-count {
+    font-size: 18px;
+    font-weight: 700;
+    min-width: 46px;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+  #timerBar .tb-btn {
+    background: rgba(255,255,255,0.22);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 9px;
+    font-size: 13px;
+    font-family: var(--font-mono);
+    line-height: 1;
+  }
+  body.dark #timerBar .tb-btn { background: rgba(0,0,0,0.2); color: #000; }
+  #timerBar.done { background: #22c55e; }
+  #timerBar.urgent { background: #ef4444; }
+  body.dark #timerBar.done,
+  body.dark #timerBar.urgent { color: #000; }
+
   /* ── ESTADO VACÍO ── */
   .empty-state {
     text-align: center;
@@ -1294,6 +1347,15 @@
 
 <!-- MAIN -->
 <main id="mainContent"></main>
+
+<!-- TIMER BAR -->
+<div id="timerBar">
+  <span class="tb-label" id="timerLabel">Descanso</span>
+  <button class="tb-btn" onclick="adjustTimer(-30)">-30</button>
+  <span class="tb-count" id="timerCount" onclick="pauseResumeTimer()">3:00</span>
+  <button class="tb-btn" onclick="adjustTimer(30)">+30</button>
+  <button class="tb-btn" onclick="cancelTimer()" style="opacity:0.7">&#x2715;</button>
+</div>
 
 <script>
 // ============================================================
@@ -4327,6 +4389,166 @@ function renderHabitos(main) {
 }
 
 
+
+// ── TIMER ──
+const _timer = { active: false, paused: false, endTs: 0, pausedMs: 0, duration: 0, label: '', _iv: null };
+
+function getTimerConfig() {
+  const saved = localStorage.getItem(uk('timer-config'));
+  const defaults = { tiempoFuerza: 180, tiempoAccesorio: 120 };
+  return saved ? Object.assign({}, defaults, JSON.parse(saved)) : defaults;
+}
+function saveTimerConfig(d) {
+  localStorage.setItem(uk('timer-config'), JSON.stringify(d));
+}
+function saveTimerConfigField(field, value) {
+  const cfg = getTimerConfig();
+  cfg[field] = value;
+  saveTimerConfig(cfg);
+  const main = document.getElementById('mainContent');
+  if (state.view === 'config') renderConfig(main);
+}
+
+function formatTimer(ms) {
+  const total = Math.max(0, Math.ceil(ms / 1000));
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  return m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function playTimerBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.15, 0.3].forEach((t, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 520 + i * 120;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.4, ctx.currentTime + t);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.25);
+      osc.start(ctx.currentTime + t);
+      osc.stop(ctx.currentTime + t + 0.28);
+    });
+  } catch(e) {}
+}
+
+function updateTimerBar() {
+  const bar = document.getElementById('timerBar');
+  const countEl = document.getElementById('timerCount');
+  if (!bar || !countEl) return;
+  if (!_timer.active) { bar.classList.remove('visible', 'done', 'urgent'); return; }
+
+  let remaining;
+  if (_timer.paused) {
+    remaining = _timer.pausedMs;
+  } else {
+    remaining = _timer.endTs - Date.now();
+  }
+
+  if (remaining <= 0 && !_timer.paused) {
+    countEl.textContent = '0:00';
+    bar.classList.remove('urgent');
+    bar.classList.add('done');
+    playTimerBeep();
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    clearInterval(_timer._iv);
+    _timer._iv = null;
+    setTimeout(cancelTimer, 3500);
+    return;
+  }
+
+  countEl.textContent = _timer.paused ? formatTimer(remaining) + ' ⏸' : formatTimer(remaining);
+
+  if (!_timer.paused && remaining < 10000) {
+    bar.classList.add('urgent');
+    bar.classList.remove('done');
+  } else {
+    bar.classList.remove('urgent', 'done');
+  }
+}
+
+function startTimer(duracionSeg, label) {
+  if (_timer._iv) clearInterval(_timer._iv);
+  _timer.active = true;
+  _timer.paused = false;
+  _timer.duration = duracionSeg * 1000;
+  _timer.endTs = Date.now() + _timer.duration;
+  _timer.pausedMs = 0;
+  _timer.label = label || 'Descanso';
+  const bar = document.getElementById('timerBar');
+  const labelEl = document.getElementById('timerLabel');
+  if (bar) bar.classList.add('visible');
+  if (labelEl) labelEl.textContent = _timer.label;
+  updateTimerBar();
+  _timer._iv = setInterval(updateTimerBar, 200);
+}
+
+function startTimerForKey(key) {
+  const cfg = getTimerConfig();
+  const parts = key.split('-');
+  const mesoKey = parts[0];
+  const meso = MESOCICLOS[mesoKey];
+  if (!meso) { startTimer(cfg.tiempoFuerza, 'Descanso'); return; }
+  const diaKey = parts[3];
+  const ejNombre = parts.slice(4, parts.length - 1).join('-');
+  const plan = meso.plan && meso.plan[diaKey] ? meso.plan[diaKey] : [];
+  const ej = plan.find(e => e.nombre === ejNombre);
+  const rol = ej ? ej.rol : null;
+  const duracion = (rol === 'accesorio') ? cfg.tiempoAccesorio : cfg.tiempoFuerza;
+  const label = ej ? ej.nombre : 'Descanso';
+  startTimer(duracion, label);
+}
+
+function pauseResumeTimer() {
+  if (!_timer.active) return;
+  if (_timer.paused) {
+    _timer.endTs = Date.now() + _timer.pausedMs;
+    _timer.paused = false;
+    if (!_timer._iv) _timer._iv = setInterval(updateTimerBar, 200);
+  } else {
+    _timer.pausedMs = _timer.endTs - Date.now();
+    _timer.paused = true;
+  }
+  updateTimerBar();
+}
+
+function adjustTimer(deltaSeg) {
+  if (!_timer.active) return;
+  const deltaMs = deltaSeg * 1000;
+  if (_timer.paused) {
+    _timer.pausedMs = Math.max(1000, _timer.pausedMs + deltaMs);
+  } else {
+    _timer.endTs = Math.max(Date.now() + 1000, _timer.endTs + deltaMs);
+  }
+  updateTimerBar();
+}
+
+function cancelTimer() {
+  if (_timer._iv) clearInterval(_timer._iv);
+  _timer.active = false;
+  _timer.paused = false;
+  _timer._iv = null;
+  const bar = document.getElementById('timerBar');
+  if (bar) bar.classList.remove('visible', 'done', 'urgent');
+}
+
+function renderTimerConfig() {
+  const cfg = getTimerConfig();
+  const opts = [60, 90, 120, 150, 180, 210, 240, 270, 300];
+  function chips(field, currentVal) {
+    return opts.map(s => {
+      const m = Math.floor(s/60), sec = s%60;
+      const lbl = m + ':' + (sec < 10 ? '0' : '') + sec;
+      const active = currentVal === s ? 'background:var(--accent);color:#fff;' : 'background:var(--surface-2,#f0f0f0);';
+      return '<button onclick="saveTimerConfigField(\'' + field + '\',' + s + ')" style="' + active + 'border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:12px;font-family:var(--font-mono)">' + lbl + '</button>';
+    }).join(' ');
+  }
+  return '<div class="config-panel"><div class="config-title">⏱ Temporizador de descanso</div><p style="font-size:12px;color:var(--text-muted);margin-bottom:8px">Se activa automtico al completar una serie. Toca el contador para pausar/reanudar.</p><div style="margin-bottom:10px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">Fuerza (principales)</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoFuerza', cfg.tiempoFuerza) + '</div></div><div><div style="font-size:12px;font-weight:600;margin-bottom:6px">Accesorios</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoAccesorio', cfg.tiempoAccesorio) + '</div></div></div>';
+}
+
+
 // ── CONFIG VIEW ──
 function renderConfig(main) {
   const ghConnected = !!state.githubToken;
@@ -4370,6 +4592,8 @@ function renderConfig(main) {
         <span style="color:var(--accent)">□</span> Pistol squat izquierdo inicia descenso sin bloqueo
       </div>
     </div>` : ''}
+
+    ${renderTimerConfig()}
   `;
 }
 
@@ -4389,19 +4613,23 @@ function saveField(key, field, value) {
   state.registros[key][field] = value;
   state.registros[key].timestamp = new Date().toISOString();
   const reg = state.registros[key];
+  const wasChecked = reg.checked;
   if (reg.peso && reg.reps) reg.checked = true;
   saveLocal();
   render();
   queueSync();
+  if (!wasChecked && reg.checked) startTimerForKey(key);
 }
 
 function toggleCheck(key) {
   if (!state.registros[key]) state.registros[key] = {};
-  state.registros[key].checked = !state.registros[key].checked;
+  const wasChecked = state.registros[key].checked;
+  state.registros[key].checked = !wasChecked;
   state.registros[key].timestamp = new Date().toISOString();
   saveLocal();
   render();
   queueSync();
+  if (!wasChecked && state.registros[key].checked) startTimerForKey(key);
 }
 
 function diaCompleto(meso, semana, dia) {
