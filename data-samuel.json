@@ -1523,10 +1523,15 @@
       "timestamp": "2026-08-15T11:31:18.389Z",
       "reps": "12",
       "checked": true
+    },
+    "M5-S6-sab-Elevación de pie o sentado (gemelo/sóleo)-3": {
+      "reps": "12",
+      "timestamp": "2026-08-15T11:31:59.446Z",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-15T11:21:36.587Z",
+    "_syncTs": "2026-08-15T11:31:21.396Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1983,11 +1988,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-15T11:21:36.587Z"
+    "_syncTs": "2026-08-15T11:31:21.396Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T11:31:21.396Z"
+  "timestamp": "2026-08-15T11:32:02.454Z"
 }
