@@ -4417,25 +4417,23 @@ function _makeBeepSequenceWav() {
   return 'data:audio/wav;base64,' + btoa(s);
 }
 
-var _beepAudio = null;
+// Pre-generar al cargar — iOS tiene tiempo de decodificar antes del primer toque
+var _beepAudio = (function() {
+  try {
+    var a = new Audio(_makeBeepSequenceWav());
+    a.preload = 'auto';
+    a.load();
+    return a;
+  } catch(e) { return null; }
+})();
 var _audioUnlocked = false;
 
-function _initBeepAudio() {
-  if (_beepAudio) return;
-  try {
-    _beepAudio = new Audio(_makeBeepSequenceWav());
-    _beepAudio.preload = 'auto';
-  } catch(e) {}
-}
-
 function _unlockAudio() {
-  if (_audioUnlocked) return;
-  _initBeepAudio();
-  if (!_beepAudio) return;
+  if (_audioUnlocked || !_beepAudio) return;
+  _audioUnlocked = true; // marcar antes del play para evitar doble llamada
   _beepAudio.play().then(function() {
     _beepAudio.pause();
     _beepAudio.currentTime = 0;
-    _audioUnlocked = true;
   }).catch(function() {});
 }
 
@@ -4466,7 +4464,6 @@ function formatTimer(ms) {
 }
 
 function playTimerBeep() {
-  _initBeepAudio();
   if (!_beepAudio) return;
   try {
     _beepAudio.currentTime = 0;
