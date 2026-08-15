@@ -639,10 +639,14 @@
     line-height: 1;
   }
   body.dark #timerBar .tb-btn { background: rgba(0,0,0,0.2); color: #000; }
-  #timerBar.done { background: #22c55e; }
+  #timerBar.done { background: #22c55e; animation: timerPulse 0.7s ease-in-out infinite; }
   #timerBar.urgent { background: #ef4444; }
   body.dark #timerBar.done,
   body.dark #timerBar.urgent { color: #000; }
+  @keyframes timerPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.45; }
+  }
 
   /* ── ESTADO VACÍO ── */
   .empty-state {
@@ -4511,7 +4515,12 @@ function updateTimerBar() {
     if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
     clearInterval(_timer._iv);
     _timer._iv = null;
-    setTimeout(cancelTimer, 3500);
+    // Ocultar al terminar el audio; si no hay audio, fallback 4s
+    if (_beepAudio) {
+      _beepAudio.onended = function() { _beepAudio.onended = null; cancelTimer(); };
+    } else {
+      setTimeout(cancelTimer, 4000);
+    }
     return;
   }
 
