@@ -1513,8 +1513,10 @@
       "checked": false
     },
     "M5-S6-sab-Elevación de pie o sentado (gemelo/sóleo)-1": {
-      "peso": "12",
-      "timestamp": "2026-08-15T11:30:16.939Z"
+      "peso": "0",
+      "timestamp": "2026-08-15T11:30:26.903Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -1981,5 +1983,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T11:30:19.944Z"
+  "timestamp": "2026-08-15T11:30:26.798Z"
 }
