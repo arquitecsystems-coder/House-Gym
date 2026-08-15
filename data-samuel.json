@@ -1489,12 +1489,26 @@
       "checked": true
     },
     "M5-S6-mar-Pullover (DB)-1": {
-      "peso": "20",
-      "timestamp": "2026-08-14T23:52:54.020Z"
+      "peso": "15",
+      "timestamp": "2026-08-14T23:53:04.192Z",
+      "reps": "10",
+      "checked": true
+    },
+    "M5-S6-mar-Press Francés (barra)-1": {
+      "peso": "21",
+      "timestamp": "2026-08-15T02:41:44.924Z",
+      "reps": "12",
+      "checked": true
+    },
+    "M5-S6-mar-Press Francés (barra)-2": {
+      "peso": "21",
+      "timestamp": "2026-08-15T02:41:50.716Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-14T23:12:58.071Z",
+    "_syncTs": "2026-08-14T23:52:57.027Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1951,11 +1965,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-14T23:12:58.071Z"
+    "_syncTs": "2026-08-14T23:52:57.027Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-14T23:52:57.027Z"
+  "timestamp": "2026-08-15T02:41:53.725Z"
 }
