@@ -4417,7 +4417,7 @@ function _makeBeepSequenceWav() {
   return 'data:audio/wav;base64,' + btoa(s);
 }
 
-// Pre-generar al cargar — iOS tiene tiempo de decodificar antes del primer toque
+// Pre-generar al cargar
 var _beepAudio = (function() {
   try {
     var a = new Audio(_makeBeepSequenceWav());
@@ -4426,19 +4426,38 @@ var _beepAudio = (function() {
     return a;
   } catch(e) { return null; }
 })();
-var _audioUnlocked = false;
+
+// Audio mudo en loop: mantiene la sesion de audio activa en iOS
+// para que play() funcione desde setInterval cuando el timer termina
+function _makeSilentWav() {
+  var sr = 22050, n = sr; // 1 segundo de silencio
+  var ab = new ArrayBuffer(44 + n * 2);
+  var v = new DataView(ab);
+  var ws = function(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  ws(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true);
+  ws(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  ws(36, 'data'); v.setUint32(40, n * 2, true);
+  var u8 = new Uint8Array(ab), s = '';
+  for (var i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]);
+  return 'data:audio/wav;base64,' + btoa(s);
+}
+var _keepAlive = (function() {
+  try {
+    var a = new Audio(_makeSilentWav());
+    a.loop = true;
+    a.volume = 0;
+    return a;
+  } catch(e) { return null; }
+})();
 
 function _unlockAudio() {
-  if (_audioUnlocked || !_beepAudio) return;
-  _audioUnlocked = true; // marcar antes del play para evitar doble llamada
-  _beepAudio.play().then(function() {
-    _beepAudio.pause();
-    _beepAudio.currentTime = 0;
-  }).catch(function() {});
+  if (_keepAlive) _keepAlive.play().catch(function() {});
+  if (_beepAudio) { _beepAudio.play().then(function() { _beepAudio.pause(); _beepAudio.currentTime = 0; }).catch(function() {}); }
 }
 
-document.addEventListener('touchstart', _unlockAudio, { passive: true });
-document.addEventListener('click', _unlockAudio, { passive: true });
+document.addEventListener('touchstart', _unlockAudio, { passive: true, once: true });
+document.addEventListener('click',      _unlockAudio, { passive: true, once: true });
 
 function getTimerConfig() {
   const saved = localStorage.getItem(uk('timer-config'));
@@ -4518,6 +4537,8 @@ function startTimer(duracionSeg, label) {
   const labelEl = document.getElementById('timerLabel');
   if (bar) bar.classList.add('visible');
   if (labelEl) labelEl.textContent = _timer.label;
+  // Mantener sesion de audio activa en iOS durante el timer
+  if (_keepAlive) _keepAlive.play().catch(function() {});
   updateTimerBar();
   _timer._iv = setInterval(updateTimerBar, 200);
 }
@@ -4567,6 +4588,7 @@ function cancelTimer() {
   _timer.active = false;
   _timer.paused = false;
   _timer._iv = null;
+  if (_keepAlive) { _keepAlive.pause(); _keepAlive.currentTime = 0; }
   const bar = document.getElementById('timerBar');
   if (bar) bar.classList.remove('visible', 'done', 'urgent');
 }
