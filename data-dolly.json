@@ -261,10 +261,14 @@
       "peso": "",
       "rir": "",
       "checked": false
+    },
+    "D1-S1-dom-RDL unilateral con mancuerna-1": {
+      "peso": "35",
+      "timestamp": "2026-08-16T16:43:58.670Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-15T02:34:52.122Z",
+    "_syncTs": "2026-08-15T02:41:26.920Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -379,5 +383,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-15T02:41:26.920Z"
+  "timestamp": "2026-08-16T16:44:01.685Z"
 }
