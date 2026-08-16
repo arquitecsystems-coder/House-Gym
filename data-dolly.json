@@ -269,10 +269,14 @@
     "D1-S1-dom-Remo unilateral con mancuerna-1": {
       "peso": "20",
       "timestamp": "2026-08-16T16:44:34.361Z"
+    },
+    "D1-S1-dom-Curl bíceps con mancuerna-1": {
+      "peso": "5.7",
+      "timestamp": "2026-08-16T16:59:20.629Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-15T02:41:26.920Z",
+    "_syncTs": "2026-08-16T16:44:37.373Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -387,5 +391,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-16T16:44:37.373Z"
+  "timestamp": "2026-08-16T16:59:23.644Z"
 }
