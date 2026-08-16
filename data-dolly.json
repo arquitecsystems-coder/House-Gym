@@ -264,9 +264,9 @@
     },
     "D1-S1-dom-RDL unilateral con mancuerna-1": {
       "peso": "35",
-      "timestamp": "2026-08-16T17:09:32.270Z",
+      "timestamp": "2026-08-16T17:09:51.206Z",
       "reps": "10",
-      "checked": true
+      "checked": false
     },
     "D1-S1-dom-Remo unilateral con mancuerna-1": {
       "peso": "20",
@@ -403,5 +403,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-16T17:09:37.575Z"
+  "timestamp": "2026-08-16T17:09:54.213Z"
 }
