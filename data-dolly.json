@@ -273,10 +273,14 @@
     "D1-S1-dom-Curl bíceps con mancuerna-1": {
       "peso": "5.7",
       "timestamp": "2026-08-16T16:59:20.629Z"
+    },
+    "D1-S1-dom-Lateral inclinado contra pared-1": {
+      "peso": "3.4",
+      "timestamp": "2026-08-16T17:08:29.629Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-16T16:44:37.373Z",
+    "_syncTs": "2026-08-16T16:59:23.644Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -391,5 +395,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-16T16:59:23.644Z"
+  "timestamp": "2026-08-16T17:08:32.648Z"
 }
