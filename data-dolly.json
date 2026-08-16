@@ -264,13 +264,15 @@
     },
     "D1-S1-dom-RDL unilateral con mancuerna-1": {
       "peso": "35",
-      "timestamp": "2026-08-16T16:43:58.670Z"
+      "timestamp": "2026-08-16T17:09:32.270Z",
+      "reps": "10",
+      "checked": true
     },
     "D1-S1-dom-Remo unilateral con mancuerna-1": {
       "peso": "20",
-      "timestamp": "2026-08-16T17:09:18.079Z",
+      "timestamp": "2026-08-16T17:09:34.566Z",
       "reps": "10",
-      "checked": true
+      "checked": false
     },
     "D1-S1-dom-Curl bíceps con mancuerna-1": {
       "peso": "5.7",
@@ -401,5 +403,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-16T17:09:21.088Z"
+  "timestamp": "2026-08-16T17:09:37.575Z"
 }
