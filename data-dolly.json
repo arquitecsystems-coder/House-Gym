@@ -276,15 +276,15 @@
     },
     "D1-S1-dom-Curl bíceps con mancuerna-1": {
       "peso": "5.7",
-      "timestamp": "2026-08-16T17:08:52.634Z",
+      "timestamp": "2026-08-16T17:10:19.097Z",
       "reps": "10",
-      "checked": true
+      "checked": false
     },
     "D1-S1-dom-Lateral inclinado contra pared-1": {
       "peso": "3.4",
-      "timestamp": "2026-08-16T17:08:46.427Z",
+      "timestamp": "2026-08-16T17:10:22.132Z",
       "reps": "10",
-      "checked": true
+      "checked": false
     }
   },
   "rehab": {
@@ -403,5 +403,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-16T17:10:18.825Z"
+  "timestamp": "2026-08-16T17:10:22.104Z"
 }
