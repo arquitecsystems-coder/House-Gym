@@ -1553,6 +1553,17 @@
       "reps": "4",
       "checked": true,
       "rir": "1"
+    },
+    "nota-sesion-M6-S1-lun": {
+      "nota": "Sigue habiendo un punzón en el manguito rotador pero con menos intensidad.",
+      "timestamp": "2026-08-17T16:46:30.115Z"
+    },
+    "M6-S1-lun-Elevación Lateral (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-17T16:52:38.176Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -2027,5 +2038,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:44:32.574Z"
+  "timestamp": "2026-08-17T16:52:37.196Z"
 }
