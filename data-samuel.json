@@ -1588,9 +1588,17 @@
     },
     "M6-S1-lun-Curl Martillo (DB)-1": {
       "peso": "10",
-      "timestamp": "2026-08-17T17:09:39.977Z",
+      "timestamp": "2026-08-17T17:12:07.525Z",
       "reps": "10",
-      "checked": true
+      "checked": true,
+      "rir": "0"
+    },
+    "M6-S1-lun-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-17T17:12:06.146Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -2065,5 +2073,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T17:09:42.983Z"
+  "timestamp": "2026-08-17T17:12:10.529Z"
 }
