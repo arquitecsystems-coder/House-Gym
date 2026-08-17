@@ -285,9 +285,10 @@
     },
     "D1-S1-dom-Lateral inclinado contra pared-1": {
       "peso": "3.4",
-      "timestamp": "2026-08-16T17:10:22.132Z",
+      "timestamp": "2026-08-17T16:08:16.206Z",
       "reps": "10",
-      "checked": false
+      "checked": true,
+      "rir": "3"
     },
     "D1-S1-dom-RDL unilateral con mancuerna-2": {
       "peso": "",
@@ -423,5 +424,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:07:47.011Z"
+  "timestamp": "2026-08-17T16:08:19.212Z"
 }
