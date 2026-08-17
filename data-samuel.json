@@ -1539,6 +1539,20 @@
       "reps": "5",
       "checked": true,
       "rir": "3"
+    },
+    "M6-S1-lun-Press Inclinado (barra)-2": {
+      "peso": "62,5",
+      "timestamp": "2026-08-17T16:40:23.750Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "2"
+    },
+    "M6-S1-lun-Press Inclinado (barra)-3": {
+      "peso": "62,5",
+      "timestamp": "2026-08-17T16:44:29.572Z",
+      "reps": "4",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -2013,5 +2027,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:36:17.585Z"
+  "timestamp": "2026-08-17T16:44:32.574Z"
 }
