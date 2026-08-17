@@ -295,6 +295,10 @@
     "nota-sesion-D1-S1-dom": {
       "nota": "Hola por acá letras\n",
       "timestamp": "2026-08-16T18:22:44.111Z"
+    },
+    "D1-S1-dom-Dominada asistida (doble banda)-1": {
+      "peso": "30",
+      "timestamp": "2026-08-17T16:02:33.545Z"
     }
   },
   "rehab": {
@@ -413,5 +417,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:01:36.469Z"
+  "timestamp": "2026-08-17T16:02:36.563Z"
 }
