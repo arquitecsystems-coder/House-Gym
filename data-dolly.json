@@ -316,10 +316,14 @@
     },
     "D1-S1-sab-Press inclinado mancuerna (unilateral)-1": {
       "peso": "15",
-      "timestamp": "2026-08-17T16:41:17.598Z",
+      "timestamp": "2026-08-17T16:46:44.083Z",
       "reps": "8",
       "checked": true,
-      "rir": "1"
+      "rir": "2"
+    },
+    "nota-sesion-D1-S1-sab": {
+      "nota": "-He mejorado Flexión I.Hice 2series de 8 y con las otras 2 series completé 29",
+      "timestamp": "2026-08-17T16:49:46.150Z"
     }
   },
   "rehab": {
@@ -438,5 +442,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:41:20.613Z"
+  "timestamp": "2026-08-17T16:49:49.152Z"
 }
