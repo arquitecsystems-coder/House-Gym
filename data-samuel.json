@@ -1532,10 +1532,17 @@
     "M5-S6-sab-RDL sin flexión de rodilla (barra)-1": {
       "checked": false,
       "timestamp": "2026-08-15T13:21:13.922Z"
+    },
+    "M6-S1-lun-Press Inclinado (barra)-1": {
+      "peso": "62,5",
+      "timestamp": "2026-08-17T16:36:14.576Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "3"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-15T13:21:16.926Z",
+    "_syncTs": "2026-08-17T02:53:22.767Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2000,11 +2007,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-15T13:21:16.926Z"
+    "_syncTs": "2026-08-17T02:53:22.767Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T02:53:22.767Z"
+  "timestamp": "2026-08-17T16:36:17.585Z"
 }
