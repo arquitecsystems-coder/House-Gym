@@ -298,7 +298,9 @@
     },
     "D1-S1-dom-Dominada asistida (doble banda)-1": {
       "peso": "30",
-      "timestamp": "2026-08-17T16:02:33.545Z"
+      "timestamp": "2026-08-17T16:02:43.635Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -417,5 +419,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:02:36.563Z"
+  "timestamp": "2026-08-17T16:02:46.639Z"
 }
