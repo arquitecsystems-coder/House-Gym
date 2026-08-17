@@ -328,10 +328,14 @@
     "D1-S1-sab-Negativas de fondo (banco)-1": {
       "checked": true,
       "timestamp": "2026-08-17T16:58:59.933Z"
+    },
+    "D1-S1-sab-Copa a una mano (tríceps)-1": {
+      "peso": "5",
+      "timestamp": "2026-08-17T17:34:29.239Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-17T16:54:10.715Z",
+    "_syncTs": "2026-08-17T16:59:02.940Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -446,5 +450,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:59:02.940Z"
+  "timestamp": "2026-08-17T17:34:32.260Z"
 }
