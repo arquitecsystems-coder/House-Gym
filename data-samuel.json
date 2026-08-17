@@ -1564,6 +1564,13 @@
       "reps": "9",
       "checked": true,
       "rir": "1"
+    },
+    "M6-S1-lun-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-17T16:58:19.853Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -2038,5 +2045,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T16:52:41.183Z"
+  "timestamp": "2026-08-17T16:58:22.859Z"
 }
