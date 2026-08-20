@@ -315,8 +315,8 @@
       "rir": "3"
     },
     "D1-S1-sab-Press inclinado mancuerna (unilateral)-1": {
-      "peso": "15",
-      "timestamp": "2026-08-17T16:55:57.900Z",
+      "peso": "12.5",
+      "timestamp": "2026-08-20T02:32:01.817Z",
       "reps": "8",
       "checked": true,
       "rir": "3"
@@ -453,5 +453,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-20T02:28:51.186Z"
+  "timestamp": "2026-08-20T02:32:04.842Z"
 }
