@@ -301,8 +301,8 @@
       "timestamp": "2026-08-20T02:34:46.577Z"
     },
     "D1-S1-dom-Dominada asistida (doble banda)-1": {
-      "peso": "30",
-      "timestamp": "2026-08-17T16:02:52.697Z",
+      "peso": "",
+      "timestamp": "2026-08-20T02:34:55.275Z",
       "reps": "8",
       "checked": true,
       "rir": "4"
@@ -455,5 +455,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-20T02:34:49.580Z"
+  "timestamp": "2026-08-20T02:34:58.293Z"
 }
