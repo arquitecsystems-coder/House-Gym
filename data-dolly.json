@@ -327,7 +327,8 @@
     },
     "D1-S1-sab-Negativas de fondo (banco)-1": {
       "checked": true,
-      "timestamp": "2026-08-17T16:58:59.933Z"
+      "timestamp": "2026-08-20T02:32:16.318Z",
+      "reps": "4"
     },
     "D1-S1-sab-Copa a una mano (tríceps)-1": {
       "peso": "5",
@@ -453,5 +454,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-20T02:32:04.842Z"
+  "timestamp": "2026-08-20T02:32:19.328Z"
 }
