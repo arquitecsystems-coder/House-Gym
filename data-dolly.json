@@ -322,8 +322,8 @@
       "rir": "3"
     },
     "nota-sesion-D1-S1-sab": {
-      "nota": "-He mejorado Flexión I.Hice 2series de 8 y con las otras 2 series completé 29",
-      "timestamp": "2026-08-17T16:49:46.150Z"
+      "nota": "-He mejorado Flexión I.Hice 2series de 8 y con las otras 2 series completé 29\n",
+      "timestamp": "2026-08-20T02:28:48.182Z"
     },
     "D1-S1-sab-Negativas de fondo (banco)-1": {
       "checked": true,
@@ -331,13 +331,14 @@
     },
     "D1-S1-sab-Copa a una mano (tríceps)-1": {
       "peso": "5",
-      "timestamp": "2026-08-17T17:34:34.234Z",
+      "timestamp": "2026-08-17T17:47:34.457Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "3"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-17T16:59:02.940Z",
+    "_syncTs": "2026-08-17T17:34:37.240Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -452,5 +453,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T17:34:37.240Z"
+  "timestamp": "2026-08-20T02:28:51.186Z"
 }
