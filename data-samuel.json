@@ -1647,6 +1647,12 @@
       "reps": "8",
       "checked": true,
       "rir": "0"
+    },
+    "M6-S1-mar-Press Francés (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-08-21T21:02:03.769Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -2121,5 +2127,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-21T20:48:05.518Z"
+  "timestamp": "2026-08-21T21:02:02.982Z"
 }
