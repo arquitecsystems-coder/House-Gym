@@ -1599,10 +1599,16 @@
       "reps": "7",
       "checked": true,
       "rir": "0"
+    },
+    "M6-S1-mar-Remo Pendlay (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-08-21T20:06:18.726Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-17T02:53:22.767Z",
+    "_syncTs": "2026-08-17T17:12:10.529Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2067,11 +2073,11 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-17T02:53:22.767Z"
+    "_syncTs": "2026-08-17T17:12:10.529Z"
   },
   "test": {},
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-17T17:12:10.529Z"
+  "timestamp": "2026-08-21T20:06:18.187Z"
 }
