@@ -1640,6 +1640,13 @@
       "timestamp": "2026-08-21T20:42:02.637Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S1-mar-Pullover (DB)-1": {
+      "peso": "20",
+      "timestamp": "2026-08-21T20:48:02.515Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -2114,5 +2121,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-21T20:42:05.641Z"
+  "timestamp": "2026-08-21T20:48:05.518Z"
 }
