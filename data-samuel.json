@@ -1613,6 +1613,13 @@
       "reps": "6",
       "checked": true,
       "rir": "1"
+    },
+    "M6-S1-mar-Remo Pendlay (barra)-3": {
+      "peso": "55",
+      "timestamp": "2026-08-21T20:17:29.150Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -2087,5 +2094,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-21T20:10:08.913Z"
+  "timestamp": "2026-08-21T20:17:32.153Z"
 }
