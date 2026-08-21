@@ -1627,6 +1627,13 @@
       "reps": "7",
       "checked": true,
       "rir": "1"
+    },
+    "M6-S1-mar-Remo Supino (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-08-21T20:38:04.120Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -2101,5 +2108,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-21T20:32:56.103Z"
+  "timestamp": "2026-08-21T20:38:07.124Z"
 }
