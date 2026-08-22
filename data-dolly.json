@@ -309,10 +309,10 @@
     },
     "D1-S1-sab-Búlgaras con mancuerna-1": {
       "peso": "30",
-      "timestamp": "2026-08-22T19:32:50.115Z",
+      "timestamp": "2026-08-22T19:32:54.655Z",
       "reps": "8",
       "checked": true,
-      "rir": "1"
+      "rir": "2"
     },
     "D1-S1-sab-Press inclinado mancuerna (unilateral)-1": {
       "peso": "12.5",
@@ -381,11 +381,13 @@
     },
     "D1-S1-sab-Búlgaras con mancuerna-2": {
       "reps": "8",
-      "timestamp": "2026-08-22T19:32:40.179Z"
+      "timestamp": "2026-08-22T19:32:59.366Z",
+      "rir": "2"
     },
     "D1-S1-sab-Búlgaras con mancuerna-3": {
       "reps": "8",
-      "timestamp": "2026-08-22T19:32:46.019Z"
+      "timestamp": "2026-08-22T19:33:02.546Z",
+      "rir": "2"
     }
   },
   "rehab": {
@@ -504,5 +506,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:32:53.140Z"
+  "timestamp": "2026-08-22T19:33:02.380Z"
 }
