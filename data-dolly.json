@@ -454,12 +454,19 @@
     },
     "D1-S2-sab-Negativas de fondo (banco)-2": {
       "reps": "7",
-      "timestamp": "2026-08-22T20:42:10.155Z",
-      "rir": "0"
+      "timestamp": "2026-08-22T20:52:31.284Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D1-S2-sab-Negativas de fondo (banco)-3": {
+      "reps": "7",
+      "timestamp": "2026-08-22T20:52:30.158Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-22T20:33:39.561Z",
+    "_syncTs": "2026-08-22T20:42:13.166Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -574,5 +581,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T20:42:13.166Z"
+  "timestamp": "2026-08-22T20:52:34.298Z"
 }
