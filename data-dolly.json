@@ -333,10 +333,10 @@
     },
     "D1-S1-sab-Copa a una mano (tríceps)-1": {
       "peso": "5",
-      "timestamp": "2026-08-20T02:33:20.708Z",
+      "timestamp": "2026-08-22T21:02:44.978Z",
       "reps": "12",
       "checked": true,
-      "rir": "3"
+      "rir": "0"
     },
     "D1-S2-sab-Flexión inclinada (banco)-1": {
       "reps": "8",
@@ -605,5 +605,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T21:02:21.966Z"
+  "timestamp": "2026-08-22T21:02:47.987Z"
 }
