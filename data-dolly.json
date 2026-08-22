@@ -382,6 +382,10 @@
     "D1-S1-sab-Búlgaras con mancuerna-2": {
       "reps": "8",
       "timestamp": "2026-08-22T19:32:40.179Z"
+    },
+    "D1-S1-sab-Búlgaras con mancuerna-3": {
+      "reps": "8",
+      "timestamp": "2026-08-22T19:32:46.019Z"
     }
   },
   "rehab": {
@@ -500,5 +504,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:32:43.189Z"
+  "timestamp": "2026-08-22T19:32:49.029Z"
 }
