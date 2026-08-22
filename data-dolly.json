@@ -504,9 +504,9 @@
     },
     "D1-S2-sab-Copa a una mano (tríceps)-1": {
       "peso": "5",
-      "timestamp": "2026-08-22T21:09:14.799Z",
+      "timestamp": "2026-08-22T21:16:49.691Z",
       "reps": "12",
-      "checked": false,
+      "checked": true,
       "rir": "0"
     },
     "D1-S2-sab-Copa a una mano (tríceps)-2": {
@@ -637,5 +637,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T21:16:47.229Z"
+  "timestamp": "2026-08-22T21:16:52.700Z"
 }
