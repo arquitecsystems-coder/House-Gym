@@ -309,10 +309,10 @@
     },
     "D1-S1-sab-Búlgaras con mancuerna-1": {
       "peso": "30",
-      "timestamp": "2026-08-22T19:32:37.184Z",
+      "timestamp": "2026-08-22T19:32:50.115Z",
       "reps": "8",
       "checked": true,
-      "rir": "3"
+      "rir": "1"
     },
     "D1-S1-sab-Press inclinado mancuerna (unilateral)-1": {
       "peso": "12.5",
@@ -504,5 +504,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:32:49.029Z"
+  "timestamp": "2026-08-22T19:32:53.140Z"
 }
