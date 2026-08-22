@@ -4473,7 +4473,8 @@ function renderHabitos(main) {
 
 
 // ── TIMER ──
-const _timer = { active: false, paused: false, endTs: 0, pausedMs: 0, duration: 0, label: '', _iv: null };
+const _timer = { active: false, paused: false, endTs: 0, pausedMs: 0, duration: 0, label: '', _iv: null, beepFired: false };
+var _wakeLock = null;
 // Genera WAV — 3 pings ascendentes con envelope tipo campana, 4 repeticiones
 function _makeBeepSequenceWav() {
   var sr = 22050;
@@ -4602,8 +4603,11 @@ function updateTimerBar() {
     countEl.textContent = '0:00';
     bar.classList.remove('urgent');
     bar.classList.add('done');
-    playTimerBeep();
-    if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    if (!_timer.beepFired) {
+      _timer.beepFired = true;
+      playTimerBeep();
+      if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    }
     clearInterval(_timer._iv);
     _timer._iv = null;
     // Ocultar al terminar el audio; si no hay audio, fallback 4s
@@ -4625,10 +4629,22 @@ function updateTimerBar() {
   }
 }
 
+function _acquireWakeLock() {
+  if (!('wakeLock' in navigator)) return;
+  navigator.wakeLock.request('screen').then(function(wl) {
+    _wakeLock = wl;
+    _wakeLock.addEventListener('release', function() { _wakeLock = null; });
+  }).catch(function() {});
+}
+function _releaseWakeLock() {
+  if (_wakeLock) { try { _wakeLock.release(); } catch(e) {} _wakeLock = null; }
+}
+
 function startTimer(duracionSeg, label) {
   if (_timer._iv) clearInterval(_timer._iv);
   _timer.active = true;
   _timer.paused = false;
+  _timer.beepFired = false;
   _timer.duration = duracionSeg * 1000;
   _timer.endTs = Date.now() + _timer.duration;
   _timer.pausedMs = 0;
@@ -4639,6 +4655,7 @@ function startTimer(duracionSeg, label) {
   if (labelEl) labelEl.textContent = _timer.label;
   // Mantener sesion de audio activa en iOS durante el timer
   if (_keepAlive) _keepAlive.play().catch(function() {});
+  _acquireWakeLock();
   updateTimerBar();
   _timer._iv = setInterval(updateTimerBar, 200);
 }
@@ -4689,9 +4706,39 @@ function cancelTimer() {
   _timer.paused = false;
   _timer._iv = null;
   if (_keepAlive) { _keepAlive.pause(); _keepAlive.currentTime = 0; }
+  _releaseWakeLock();
   const bar = document.getElementById('timerBar');
   if (bar) bar.classList.remove('visible', 'done', 'urgent');
 }
+
+// Al volver a la app desde background: restaurar audio y disparar alarma si el timer ya expiró
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState !== 'visible' || !_timer.active || _timer.paused) return;
+  // Re-establecer sesión de audio (iOS la suspende en background)
+  if (_keepAlive) _keepAlive.play().catch(function() {});
+  var remaining = _timer.endTs - Date.now();
+  if (remaining <= 0) {
+    // Timer expiró mientras estábamos en background
+    var bar = document.getElementById('timerBar');
+    var countEl = document.getElementById('timerCount');
+    if (bar) { bar.classList.remove('urgent'); bar.classList.add('done'); }
+    if (countEl) countEl.textContent = '0:00';
+    if (!_timer.beepFired) {
+      _timer.beepFired = true;
+      playTimerBeep();
+      if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    }
+    if (_beepAudio) {
+      _beepAudio.onended = function() { _beepAudio.onended = null; cancelTimer(); };
+    } else {
+      setTimeout(cancelTimer, 4000);
+    }
+  } else {
+    // Timer aún activo — re-adquirir wake lock (OS lo libera en background)
+    _acquireWakeLock();
+    if (!_timer._iv) _timer._iv = setInterval(updateTimerBar, 200);
+  }
+});
 
 function renderTimerConfig() {
   const cfg = getTimerConfig();
