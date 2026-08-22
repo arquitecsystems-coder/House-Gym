@@ -512,10 +512,14 @@
     "D1-S2-sab-Copa a una mano (tríceps)-2": {
       "peso": "5",
       "timestamp": "2026-08-22T21:11:40.214Z"
+    },
+    "D1-S2-sab-Copa a una mano (tríceps)-3": {
+      "peso": "5",
+      "timestamp": "2026-08-22T21:16:37.076Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-22T20:52:34.298Z",
+    "_syncTs": "2026-08-22T21:11:43.226Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -630,5 +634,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T21:11:43.226Z"
+  "timestamp": "2026-08-22T21:16:40.101Z"
 }
