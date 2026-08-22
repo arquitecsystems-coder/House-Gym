@@ -339,8 +339,9 @@
       "rir": "3"
     },
     "D1-S2-sab-Flexión inclinada (banco)-1": {
-      "reps": "1",
-      "timestamp": "2026-08-22T19:12:30.335Z"
+      "reps": "8",
+      "timestamp": "2026-08-22T19:12:46.913Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -459,5 +460,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:12:33.365Z"
+  "timestamp": "2026-08-22T19:12:49.928Z"
 }
