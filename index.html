@@ -1319,7 +1319,7 @@
     <span class="nav-icon">🔥</span>cut
   </div>
   <div class="nav-item" id="nav-actividad" onclick="setView('actividad')">
-    <span class="nav-icon">👟</span>actividad
+    <span class="nav-icon">📋</span>registro
   </div>
   <div class="nav-item" id="nav-habitos" onclick="setView('habitos')">
     <span class="nav-icon">⚛️</span>hábitos
@@ -3889,7 +3889,7 @@ function guardarActividad(fecha, campo, valor) {
     if (valor) d.registros[fecha].tipoCardio = valor;
     else delete d.registros[fecha].tipoCardio;
   }
-  if (!d.registros[fecha].pasos && !d.registros[fecha].cardio) delete d.registros[fecha];
+  if (!d.registros[fecha].pasos && !d.registros[fecha].cardio && !d.registros[fecha].comidas?.length) delete d.registros[fecha];
   saveActividadDatos(d);
   renderActividad(document.getElementById("mainContent"));
 }
@@ -3916,7 +3916,7 @@ function renderActividad(main) {
 
   // ── Registro de hoy ──
   html += '<div class="rehab-card">';
-  html += '<div class="rehab-title" style="margin-bottom:12px">Actividad diaria</div>';
+  html += '<div class="rehab-title" style="margin-bottom:12px">Actividad</div>';
 
   // Objetivo de pasos
   html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">';
@@ -4013,6 +4013,126 @@ function renderActividad(main) {
   }
 
   html += '</div>';
+
+  // ── Calorías de hoy ──
+  const lib = getFoodLibrary();
+  const comidas = regHoy.comidas || [];
+  const totales = calcDayTotals(comidas);
+  const cutSetup = getCutDatos().setup;
+  const kcalTarget = cutSetup ? cutSetup.cals : 0;
+
+  html += '<div class="rehab-card">';
+  html += '<div class="rehab-title" style="margin-bottom:12px">Calorías</div>';
+
+  if (comidas.length > 0) {
+    // Totales macro row
+    html += '<div style="display:flex;gap:8px;text-align:center;margin-bottom:12px">';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + totales.kcal + '</div><div style="font-size:10px;color:var(--muted)">kcal</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + Math.round(totales.prot) + 'g</div><div style="font-size:10px;color:var(--muted)">prot</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + Math.round(totales.carbs) + 'g</div><div style="font-size:10px;color:var(--muted)">carbs</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + Math.round(totales.grasas) + 'g</div><div style="font-size:10px;color:var(--muted)">grasas</div></div>';
+    html += '</div>';
+    if (kcalTarget > 0) {
+      const pct = Math.min(1, totales.kcal / kcalTarget);
+      const barColor = totales.kcal > kcalTarget * 1.05 ? 'var(--warn)' : 'var(--ok)';
+      html += '<div style="background:var(--border);border-radius:4px;height:6px;margin-bottom:10px">';
+      html += '<div style="background:' + barColor + ';height:6px;border-radius:4px;width:' + Math.round(pct*100) + '%"></div></div>';
+      html += '<div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-bottom:10px;text-align:right">' + totales.kcal + ' / ' + kcalTarget + ' kcal objetivo</div>';
+    }
+    // List of today's foods
+    comidas.forEach(function(c, i) {
+      html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">';
+      html += '<div style="flex:1"><div style="font-size:13px">' + c.nombre + '</div>';
+      html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted)">' + c.gramos + 'g &nbsp;· ' + c.kcal + ' kcal &nbsp;P:' + c.prot + 'g C:' + c.carbs + 'g G:' + c.grasas + 'g</div></div>';
+      html += '<button onclick="removeLogEntry(\'' + hoy + '\',' + i + ')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px 6px">&#xD7;</button>';
+      html += '</div>';
+    });
+  } else {
+    html += '<div style="font-size:12px;color:var(--muted);margin-bottom:10px">Sin registro de calorías hoy.</div>';
+  }
+
+  // Add food button / inline form
+  if (lib.length === 0) {
+    html += '<div style="font-size:12px;color:var(--muted);border:1px dashed var(--border);border-radius:var(--radius);padding:10px;text-align:center">Agrega alimentos a tu biblioteca para empezar a registrar.</div>';
+  } else {
+    html += '<button onclick="toggleAddFoodPanel()" style="width:100%;margin-top:8px;padding:9px;background:var(--surface-2,#f0f0f0);border:1px dashed var(--border);border-radius:var(--radius);cursor:pointer;font-size:13px;color:var(--accent);font-family:var(--font-mono)">+ Agregar alimento</button>';
+    html += '<div id="add-food-panel" style="display:none;margin-top:8px">';
+    html += '<select id="food-select" class="cut-input" style="width:100%;padding:7px 8px;margin-bottom:6px"><option value="">Seleccionar alimento...</option>';
+    lib.forEach(function(f) {
+      html += '<option value="' + f.id + '">' + f.nombre + ' (' + f.kcal + ' kcal/100g)</option>';
+    });
+    html += '</select>';
+    html += '<div style="display:flex;gap:6px">';
+    html += '<input id="food-gramos" class="cut-input" type="number" placeholder="gramos" style="flex:1;padding:7px 8px;text-align:center">';
+    html += '<button onclick="logFoodEntryFromUI(\'' + hoy + '\')" style="padding:7px 16px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px;white-space:nowrap">OK</button>';
+    html += '</div></div>';
+  }
+  html += '</div>';
+
+  // ── TDEE Estimado ──
+  const tdeeData = estimateTDEE();
+  if (tdeeData.length >= 2) {
+    const avgTDEE = Math.round(tdeeData.reduce(function(a,w){return a+w.tdee;},0) / tdeeData.length);
+    html += '<div class="rehab-card">';
+    html += '<div class="rehab-title" style="margin-bottom:8px">Gasto estimado real</div>';
+    html += '<div style="font-family:var(--font-mono);font-size:24px;font-weight:700;text-align:center;color:var(--text)">' + avgTDEE.toLocaleString() + ' kcal</div>';
+    html += '<div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:14px">promedio de ' + tdeeData.length + ' semanas · consumo vs cambio real de peso</div>';
+    html += '<table style="width:100%;border-collapse:collapse;font-size:11px;font-family:var(--font-mono)">';
+    html += '<tr><td style="padding:2px 0;color:var(--muted)">Semana</td><td style="text-align:right;color:var(--muted)">Consumo</td><td style="text-align:right;color:var(--muted)">Delta peso</td><td style="text-align:right;color:var(--muted)">TDEE</td></tr>';
+    tdeeData.forEach(function(w) {
+      var arrow = w.deltaPeso < 0 ? '-' : w.deltaPeso > 0 ? '+' : '=';
+      var col = w.deltaPeso < 0 ? 'var(--ok)' : w.deltaPeso > 0 ? 'var(--warn)' : 'var(--muted)';
+      html += '<tr style="border-top:1px solid var(--border)">';
+      html += '<td style="padding:4px 0;color:var(--muted)">' + w.semana.slice(5) + '</td>';
+      html += '<td style="text-align:right">' + w.avgKcal.toLocaleString() + '</td>';
+      html += '<td style="text-align:right;color:' + col + '">' + arrow + Math.abs(w.deltaPeso) + 'kg</td>';
+      html += '<td style="text-align:right;font-weight:700">' + w.tdee.toLocaleString() + '</td>';
+      html += '</tr>';
+    });
+    html += '</table>';
+    if (kcalTarget > 0) {
+      var diff = kcalTarget - avgTDEE;
+      var diffLabel = diff > 0 ? ('+' + diff + ' kcal sobre TDEE (superavit)') : (diff + ' kcal bajo TDEE (deficit real)');
+      html += '<div style="margin-top:10px;padding:8px;background:var(--surface-2,#f5f5f3);border-radius:var(--radius);font-size:11px;font-family:var(--font-mono);color:var(--muted)">Plan cut: ' + kcalTarget + ' kcal  &nbsp;|&nbsp; ' + diffLabel + '</div>';
+    }
+    html += '</div>';
+  }
+
+  // ── Biblioteca de alimentos ──
+  html += '<div class="rehab-card">';
+  html += '<div onclick="toggleBiblioteca()" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:0">';
+  html += '<div class="rehab-title">Biblioteca de alimentos</div>';
+  html += '<span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">' + (lib.length ? lib.length + ' alimentos' : 'vacía') + ' &nbsp;&#x25BC;</span>';
+  html += '</div>';
+  html += '<div id="bib-body" style="display:none;margin-top:12px">';
+
+  // Form to add new food
+  html += '<div style="padding:10px;background:var(--surface-2,#f5f5f3);border-radius:var(--radius);margin-bottom:10px">';
+  html += '<div style="font-size:12px;font-weight:600;margin-bottom:8px">Nuevo alimento (valores por 100g)</div>';
+  html += '<input id="bib-nombre" class="cut-input" type="text" placeholder="Nombre del alimento" style="width:100%;padding:7px 8px;margin-bottom:6px">';
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">';
+  html += '<input id="bib-kcal" class="cut-input" type="number" placeholder="kcal" style="padding:7px 8px;text-align:center">';
+  html += '<input id="bib-prot" class="cut-input" type="number" placeholder="prot g" style="padding:7px 8px;text-align:center">';
+  html += '<input id="bib-carbs" class="cut-input" type="number" placeholder="carbs g" style="padding:7px 8px;text-align:center">';
+  html += '<input id="bib-grasas" class="cut-input" type="number" placeholder="grasas g" style="padding:7px 8px;text-align:center">';
+  html += '</div>';
+  html += '<button onclick="saveNewFoodItem()" style="width:100%;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px">Guardar alimento</button>';
+  html += '</div>';
+
+  if (lib.length === 0) {
+    html += '<div style="font-size:12px;color:var(--muted)">Sin alimentos. Agrega el primero usando el formulario.</div>';
+  } else {
+    lib.forEach(function(f) {
+      html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">';
+      html += '<div style="flex:1"><div style="font-size:13px">' + f.nombre + '</div>';
+      html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted)">' + f.kcal + ' kcal &nbsp;P:' + f.prot + 'g C:' + f.carbs + 'g G:' + f.grasas + 'g &nbsp;/&nbsp; 100g</div></div>';
+      html += '<button onclick="deleteFoodFromLibrary(\'' + f.id + '\')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px 6px">&#xD7;</button>';
+      html += '</div>';
+    });
+  }
+  html += '</div></div>';
+
+  html += '</div>';
   main.innerHTML = html;
 }
 
@@ -4050,6 +4170,144 @@ function showActividadHeatmapDay(fechaStr) {
   tooltip.style.display = 'block';
 }
 
+// ============================================================
+// REGISTRO DIARIO — BIBLIOTECA Y CALORIAS
+// ============================================================
+
+function getFoodLibrary() {
+  try { return JSON.parse(localStorage.getItem(state.currentUser + '-food-library') || '[]'); }
+  catch(e) { return []; }
+}
+function saveFoodLibrary(lib) {
+  localStorage.setItem(state.currentUser + '-food-library', JSON.stringify(lib));
+}
+function addFoodToLibrary(nombre, kcal, prot, carbs, grasas) {
+  const lib = getFoodLibrary();
+  const id = Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+  lib.push({ id: id, nombre: nombre.trim(), kcal: +kcal, prot: +(prot||0), carbs: +(carbs||0), grasas: +(grasas||0) });
+  saveFoodLibrary(lib);
+}
+function deleteFoodFromLibrary(id) {
+  saveFoodLibrary(getFoodLibrary().filter(function(f) { return f.id !== id; }));
+  renderActividad(document.getElementById('mainContent'));
+}
+
+function logFoodEntry(fecha, foodId, gramos) {
+  const lib = getFoodLibrary();
+  const food = lib.find(function(f) { return f.id === foodId; });
+  if (!food || !gramos) return;
+  const g = parseFloat(gramos);
+  if (isNaN(g) || g <= 0) return;
+  const factor = g / 100;
+  const entry = {
+    foodId: foodId, nombre: food.nombre, gramos: g,
+    kcal: Math.round(food.kcal * factor),
+    prot: Math.round(food.prot * factor * 10) / 10,
+    carbs: Math.round(food.carbs * factor * 10) / 10,
+    grasas: Math.round(food.grasas * factor * 10) / 10,
+  };
+  const d = getActividadDatos();
+  if (!d.registros) d.registros = {};
+  if (!d.registros[fecha]) d.registros[fecha] = {};
+  if (!d.registros[fecha].comidas) d.registros[fecha].comidas = [];
+  d.registros[fecha].comidas.push(entry);
+  saveActividadDatos(d);
+  renderActividad(document.getElementById('mainContent'));
+}
+function removeLogEntry(fecha, idx) {
+  const d = getActividadDatos();
+  if (!d.registros || !d.registros[fecha] || !d.registros[fecha].comidas) return;
+  d.registros[fecha].comidas.splice(idx, 1);
+  if (!d.registros[fecha].comidas.length) delete d.registros[fecha].comidas;
+  if (!d.registros[fecha].pasos && !d.registros[fecha].cardio && !d.registros[fecha].comidas) delete d.registros[fecha];
+  saveActividadDatos(d);
+  renderActividad(document.getElementById('mainContent'));
+}
+function calcDayTotals(comidas) {
+  return (comidas || []).reduce(function(acc, c) {
+    return { kcal: acc.kcal+(c.kcal||0), prot: acc.prot+(c.prot||0), carbs: acc.carbs+(c.carbs||0), grasas: acc.grasas+(c.grasas||0) };
+  }, { kcal: 0, prot: 0, carbs: 0, grasas: 0 });
+}
+
+function estimateTDEE() {
+  const actDatos = getActividadDatos();
+  const cutDatos = getCutDatos();
+  if (!cutDatos.setup) return [];
+  const registros = actDatos.registros || {};
+  const pesosDiarios = cutDatos.registrosDiarios || {};
+  const pesoFechas = Object.keys(pesosDiarios).sort().filter(function(f) {
+    return pesosDiarios[f] && (pesosDiarios[f].ayunas || pesosDiarios[f].noche);
+  });
+  if (pesoFechas.length < 2) return [];
+
+  // Group calorie data by ISO week (Monday)
+  const weekMap = {};
+  Object.keys(registros).forEach(function(fecha) {
+    const reg = registros[fecha];
+    if (!reg.comidas || !reg.comidas.length) return;
+    const parts = fecha.split('-').map(Number);
+    const dt = new Date(parts[0], parts[1]-1, parts[2]);
+    const dow = (dt.getDay() + 6) % 7;
+    const mon = new Date(dt.getTime() - dow * 86400000);
+    const wk = mon.getFullYear() + '-' + String(mon.getMonth()+1).padStart(2,'0') + '-' + String(mon.getDate()).padStart(2,'0');
+    if (!weekMap[wk]) weekMap[wk] = [];
+    weekMap[wk].push(calcDayTotals(reg.comidas).kcal);
+  });
+
+  const results = [];
+  Object.keys(weekMap).sort().forEach(function(wkMon) {
+    const kcals = weekMap[wkMon];
+    if (kcals.length < 3) return;
+    const avgKcal = Math.round(kcals.reduce(function(a,b){return a+b;},0) / kcals.length);
+    const p = wkMon.split('-').map(Number);
+    const sunDt = new Date(p[0], p[1]-1, p[2]+6);
+    const wkSun = sunDt.getFullYear() + '-' + String(sunDt.getMonth()+1).padStart(2,'0') + '-' + String(sunDt.getDate()).padStart(2,'0');
+    // Last peso before week start, last peso through week end
+    const atStart = pesoFechas.filter(function(f){ return f < wkMon; });
+    const throughEnd = pesoFechas.filter(function(f){ return f <= wkSun; });
+    if (!atStart.length || !throughEnd.length) return;
+    const startFecha = atStart[atStart.length-1];
+    const endFecha = throughEnd[throughEnd.length-1];
+    if (startFecha === endFecha) return;
+    const sp = startFecha.split('-').map(Number);
+    const ep = endFecha.split('-').map(Number);
+    const days = Math.round((new Date(ep[0],ep[1]-1,ep[2]) - new Date(sp[0],sp[1]-1,sp[2])) / 86400000);
+    if (days < 3) return;
+    const pesoStart = pesosDiarios[startFecha].ayunas || pesosDiarios[startFecha].noche;
+    const pesoEnd = pesosDiarios[endFecha].ayunas || pesosDiarios[endFecha].noche;
+    if (!pesoStart || !pesoEnd) return;
+    const deltaPerDay = (pesoEnd - pesoStart) / days;
+    const tdee = Math.round(avgKcal - deltaPerDay * 7700);
+    if (tdee < 1000 || tdee > 6000) return;
+    results.push({ semana: wkMon, avgKcal: avgKcal, deltaPeso: Math.round((pesoEnd-pesoStart)*100)/100, dias: kcals.length, tdee: tdee });
+  });
+  return results;
+}
+
+function toggleAddFoodPanel() {
+  const p = document.getElementById('add-food-panel');
+  if (p) p.style.display = p.style.display === 'none' ? '' : 'none';
+}
+function toggleBiblioteca() {
+  const b = document.getElementById('bib-body');
+  if (b) b.style.display = b.style.display === 'none' ? '' : 'none';
+}
+function logFoodEntryFromUI(fecha) {
+  const sel = document.getElementById('food-select');
+  const gr = document.getElementById('food-gramos');
+  if (!sel || !sel.value || !gr || !gr.value) return;
+  logFoodEntry(fecha, sel.value, gr.value);
+}
+function saveNewFoodItem() {
+  const nombre = (document.getElementById('bib-nombre') || {}).value;
+  const kcal = document.getElementById('bib-kcal');
+  const prot = document.getElementById('bib-prot');
+  const carbs = document.getElementById('bib-carbs');
+  const grasas = document.getElementById('bib-grasas');
+  if (!nombre || !nombre.trim() || !kcal || isNaN(parseFloat(kcal.value))) return;
+  addFoodToLibrary(nombre, kcal.value, prot ? prot.value : 0, carbs ? carbs.value : 0, grasas ? grasas.value : 0);
+  renderActividad(document.getElementById('mainContent'));
+}
 
 // ============================================================
 // HÁBITOS (Nata only)
