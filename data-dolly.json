@@ -297,8 +297,8 @@
       "checked": false
     },
     "nota-sesion-D1-S1-dom": {
-      "nota": "\n",
-      "timestamp": "2026-08-20T02:34:46.577Z"
+      "nota": "De las dominadas hice 4 series pero la última serie de 5.\nLateral inclinado 2series 7.5 L 10 reps pero no subo mucho el brazo.Entonces terminé con 2series 5L 18 reps.",
+      "timestamp": "2026-08-20T02:45:20.475Z"
     },
     "D1-S1-dom-Dominada asistida (doble banda)-1": {
       "peso": "",
@@ -337,10 +337,14 @@
       "reps": "12",
       "checked": true,
       "rir": "3"
+    },
+    "D1-S2-sab-Flexión inclinada (banco)-1": {
+      "reps": "1",
+      "timestamp": "2026-08-22T19:12:30.335Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-17T17:34:37.240Z",
+    "_syncTs": "2026-08-20T02:34:58.293Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -455,5 +459,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-20T02:34:58.293Z"
+  "timestamp": "2026-08-22T19:12:33.365Z"
 }
