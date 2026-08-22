@@ -392,10 +392,14 @@
       "rir": "2",
       "peso": "30",
       "checked": true
+    },
+    "D1-S2-sab-Búlgaras con mancuerna-2": {
+      "peso": "30",
+      "timestamp": "2026-08-22T19:44:55.413Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-22T19:25:53.292Z",
+    "_syncTs": "2026-08-22T19:34:40.847Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -510,5 +514,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:34:40.847Z"
+  "timestamp": "2026-08-22T19:44:58.447Z"
 }
