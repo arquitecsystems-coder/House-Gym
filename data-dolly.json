@@ -434,6 +434,10 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-D1-S2-sab": {
+      "nota": "Bien.Sólo me agito bastante con las búlgaras ",
+      "timestamp": "2026-08-22T20:07:15.346Z"
     }
   },
   "rehab": {
@@ -552,5 +556,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T20:04:39.797Z"
+  "timestamp": "2026-08-22T20:07:18.349Z"
 }
