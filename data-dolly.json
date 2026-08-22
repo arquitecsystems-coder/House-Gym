@@ -438,10 +438,16 @@
     "nota-sesion-D1-S2-sab": {
       "nota": "Bien.Sólo me agito bastante con las búlgaras ",
       "timestamp": "2026-08-22T20:07:15.346Z"
+    },
+    "D1-S2-sab-Press inclinado mancuerna (unilateral)-3": {
+      "peso": "12.5",
+      "timestamp": "2026-08-22T20:16:37.098Z",
+      "reps": "11",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-22T20:03:39.119Z",
+    "_syncTs": "2026-08-22T20:07:18.349Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -556,5 +562,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T20:07:18.349Z"
+  "timestamp": "2026-08-22T20:16:37.044Z"
 }
