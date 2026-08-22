@@ -395,7 +395,9 @@
     },
     "D1-S2-sab-Búlgaras con mancuerna-2": {
       "peso": "30",
-      "timestamp": "2026-08-22T19:44:55.413Z"
+      "timestamp": "2026-08-22T19:44:59.781Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -514,5 +516,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:44:58.447Z"
+  "timestamp": "2026-08-22T19:45:02.793Z"
 }
