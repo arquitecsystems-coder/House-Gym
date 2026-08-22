@@ -371,10 +371,14 @@
       "reps": "7",
       "timestamp": "2026-08-22T19:25:40.776Z",
       "rir": "0"
+    },
+    "D1-S2-sab-Búlgaras con mancuerna-1": {
+      "peso": "30",
+      "timestamp": "2026-08-22T19:31:56.235Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-20T02:34:58.293Z",
+    "_syncTs": "2026-08-22T19:25:53.292Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -489,5 +493,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-22T19:25:53.292Z"
+  "timestamp": "2026-08-22T19:31:59.257Z"
 }
