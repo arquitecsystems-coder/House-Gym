@@ -563,8 +563,9 @@
     },
     "D1-S2-dom-Dominada asistida (doble banda)-3": {
       "reps": "6",
-      "timestamp": "2026-08-23T16:08:17.135Z",
-      "rir": "0"
+      "timestamp": "2026-08-23T16:08:19.071Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -683,5 +684,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:08:16.827Z"
+  "timestamp": "2026-08-23T16:08:22.087Z"
 }
