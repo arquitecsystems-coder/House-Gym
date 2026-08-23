@@ -614,9 +614,10 @@
     },
     "D1-S2-dom-Remo unilateral con mancuerna-1": {
       "peso": "20",
-      "timestamp": "2026-08-23T16:37:37.945Z",
+      "timestamp": "2026-08-23T16:37:41.514Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -735,5 +736,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:37:40.953Z"
+  "timestamp": "2026-08-23T16:37:44.522Z"
 }
