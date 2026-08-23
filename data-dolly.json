@@ -271,10 +271,10 @@
     },
     "D1-S1-dom-Remo unilateral con mancuerna-1": {
       "peso": "20",
-      "timestamp": "2026-08-17T16:06:09.247Z",
+      "timestamp": "2026-08-23T16:27:10.311Z",
       "reps": "10",
       "checked": true,
-      "rir": "3"
+      "rir": "0"
     },
     "D1-S1-dom-Curl bíceps con mancuerna-1": {
       "peso": "7.5",
@@ -593,13 +593,16 @@
     },
     "D1-S1-dom-Remo unilateral con mancuerna-2": {
       "reps": "10",
-      "timestamp": "2026-08-23T16:26:59.814Z",
+      "timestamp": "2026-08-23T16:27:12.361Z",
       "peso": "20",
-      "checked": true
+      "checked": true,
+      "rir": "1"
     },
     "D1-S1-dom-Remo unilateral con mancuerna-3": {
       "reps": "10",
-      "timestamp": "2026-08-23T16:26:56.481Z"
+      "timestamp": "2026-08-23T16:27:07.463Z",
+      "peso": "20",
+      "checked": true
     }
   },
   "rehab": {
@@ -718,5 +721,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:27:02.824Z"
+  "timestamp": "2026-08-23T16:27:15.376Z"
 }
