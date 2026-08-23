@@ -684,7 +684,10 @@
     },
     "D1-S2-dom-Lateral inclinado contra pared-1": {
       "peso": "7.5",
-      "timestamp": "2026-08-23T17:04:37.021Z"
+      "timestamp": "2026-08-23T17:05:58.238Z",
+      "reps": "13",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -803,5 +806,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T17:04:40.038Z"
+  "timestamp": "2026-08-23T17:06:01.259Z"
 }
