@@ -535,18 +535,21 @@
     },
     "D1-S1-dom-Dominada asistida (doble banda)-2": {
       "reps": "8",
-      "timestamp": "2026-08-23T16:01:54.113Z",
-      "rir": "0"
+      "timestamp": "2026-08-23T16:02:01.785Z",
+      "rir": "0",
+      "checked": true
     },
     "D1-S1-dom-Dominada asistida (doble banda)-3": {
       "reps": "8",
-      "timestamp": "2026-08-23T16:01:56.542Z",
-      "rir": "0"
+      "timestamp": "2026-08-23T16:02:02.355Z",
+      "rir": "0",
+      "checked": true
     },
     "D1-S1-dom-Dominada asistida (doble banda)-4": {
       "reps": "5",
-      "timestamp": "2026-08-23T16:01:59.609Z",
-      "rir": "0"
+      "timestamp": "2026-08-23T16:02:03.269Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -665,5 +668,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:01:59.554Z"
+  "timestamp": "2026-08-23T16:02:06.284Z"
 }
