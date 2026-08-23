@@ -674,6 +674,12 @@
       "reps": "14",
       "checked": true,
       "rir": "0"
+    },
+    "D1-S1-dom-Lateral inclinado contra pared-3": {
+      "peso": "0",
+      "timestamp": "2026-08-23T17:03:27.584Z",
+      "reps": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -792,5 +798,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T17:02:43.882Z"
+  "timestamp": "2026-08-23T17:03:27.434Z"
 }
