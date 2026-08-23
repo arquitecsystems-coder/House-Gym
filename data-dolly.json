@@ -663,14 +663,14 @@
     },
     "D1-S2-dom-Curl bíceps con mancuerna-2": {
       "peso": "10",
-      "timestamp": "2026-08-23T16:58:04.720Z",
+      "timestamp": "2026-08-23T17:00:01.853Z",
       "reps": "15",
-      "checked": true,
+      "checked": false,
       "rir": "3"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-23T16:42:12.262Z",
+    "_syncTs": "2026-08-23T16:58:07.733Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -785,5 +785,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:58:07.733Z"
+  "timestamp": "2026-08-23T17:00:04.873Z"
 }
