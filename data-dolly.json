@@ -593,16 +593,17 @@
     },
     "D1-S1-dom-Remo unilateral con mancuerna-2": {
       "reps": "10",
-      "timestamp": "2026-08-23T16:27:12.361Z",
+      "timestamp": "2026-08-23T16:27:17.610Z",
       "peso": "20",
       "checked": true,
-      "rir": "1"
+      "rir": "0"
     },
     "D1-S1-dom-Remo unilateral con mancuerna-3": {
       "reps": "10",
-      "timestamp": "2026-08-23T16:27:07.463Z",
+      "timestamp": "2026-08-23T16:27:20.416Z",
       "peso": "20",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -721,5 +722,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:27:15.376Z"
+  "timestamp": "2026-08-23T16:27:23.427Z"
 }
