@@ -572,6 +572,10 @@
       "timestamp": "2026-08-23T16:13:31.962Z",
       "rir": "0",
       "checked": true
+    },
+    "D1-S2-dom-RDL unilateral con mancuerna-1": {
+      "peso": "35",
+      "timestamp": "2026-08-23T16:16:45.093Z"
     }
   },
   "rehab": {
@@ -690,5 +694,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:13:34.974Z"
+  "timestamp": "2026-08-23T16:16:48.107Z"
 }
