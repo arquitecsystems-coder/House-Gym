@@ -590,10 +590,18 @@
     "nota-sesion-D1-S2-dom": {
       "nota": "La Dominada me sale mejor si la hago empezando el ciclo.Al hacerla el Domingo estoy cansada.\nCon la RDL me tambaleo un poco por el peso y la hago despacio pero lo logro",
       "timestamp": "2026-08-23T16:22:37.504Z"
+    },
+    "D1-S1-dom-Remo unilateral con mancuerna-2": {
+      "reps": "10",
+      "timestamp": "2026-08-23T16:26:53.142Z"
+    },
+    "D1-S1-dom-Remo unilateral con mancuerna-3": {
+      "reps": "10",
+      "timestamp": "2026-08-23T16:26:56.481Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-23T16:08:22.087Z",
+    "_syncTs": "2026-08-23T16:25:33.888Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -708,5 +716,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:25:33.888Z"
+  "timestamp": "2026-08-23T16:26:56.162Z"
 }
