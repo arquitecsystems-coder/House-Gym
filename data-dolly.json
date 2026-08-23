@@ -302,10 +302,10 @@
     },
     "D1-S1-dom-Dominada asistida (doble banda)-1": {
       "peso": "",
-      "timestamp": "2026-08-20T02:34:55.275Z",
+      "timestamp": "2026-08-23T16:01:52.189Z",
       "reps": "8",
       "checked": true,
-      "rir": "4"
+      "rir": "0"
     },
     "D1-S1-sab-Búlgaras con mancuerna-1": {
       "peso": "30",
@@ -535,11 +535,18 @@
     },
     "D1-S1-dom-Dominada asistida (doble banda)-2": {
       "reps": "8",
-      "timestamp": "2026-08-23T16:01:25.207Z"
+      "timestamp": "2026-08-23T16:01:54.113Z",
+      "rir": "0"
     },
     "D1-S1-dom-Dominada asistida (doble banda)-3": {
       "reps": "8",
-      "timestamp": "2026-08-23T16:01:45.676Z"
+      "timestamp": "2026-08-23T16:01:56.542Z",
+      "rir": "0"
+    },
+    "D1-S1-dom-Dominada asistida (doble banda)-4": {
+      "reps": "5",
+      "timestamp": "2026-08-23T16:01:59.609Z",
+      "rir": "0"
     }
   },
   "rehab": {
@@ -658,5 +665,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:01:48.689Z"
+  "timestamp": "2026-08-23T16:01:59.554Z"
 }
