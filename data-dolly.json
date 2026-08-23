@@ -566,10 +566,16 @@
       "timestamp": "2026-08-23T16:08:19.071Z",
       "rir": "0",
       "checked": true
+    },
+    "D1-S2-dom-Dominada asistida (doble banda)-4": {
+      "reps": "2",
+      "timestamp": "2026-08-23T16:13:31.962Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-23T16:02:47.899Z",
+    "_syncTs": "2026-08-23T16:08:22.087Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -684,5 +690,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:08:22.087Z"
+  "timestamp": "2026-08-23T16:13:34.974Z"
 }
