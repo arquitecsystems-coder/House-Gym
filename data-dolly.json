@@ -625,10 +625,17 @@
       "reps": "12",
       "checked": true,
       "rir": "0"
+    },
+    "D1-S2-dom-Remo unilateral con mancuerna-3": {
+      "peso": "20",
+      "timestamp": "2026-08-23T16:47:52.046Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-23T16:32:49.410Z",
+    "_syncTs": "2026-08-23T16:42:12.262Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -743,5 +750,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:42:12.262Z"
+  "timestamp": "2026-08-23T16:47:55.073Z"
 }
