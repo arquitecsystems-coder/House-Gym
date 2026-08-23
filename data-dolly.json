@@ -583,6 +583,10 @@
     "D1-S2-dom-RDL unilateral con mancuerna-2": {
       "peso": "35",
       "timestamp": "2026-08-23T16:19:01.976Z"
+    },
+    "nota-sesion-D1-S2-dom": {
+      "nota": "Con la RDL me tambaleo un poco por el peso y la hago despacio pero lo logro",
+      "timestamp": "2026-08-23T16:20:04.814Z"
     }
   },
   "rehab": {
@@ -701,5 +705,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:19:04.985Z"
+  "timestamp": "2026-08-23T16:20:07.815Z"
 }
