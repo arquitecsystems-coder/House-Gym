@@ -554,8 +554,10 @@
     },
     "D1-S1-dom-RDL unilateral con mancuerna-3": {
       "rir": "0",
-      "timestamp": "2026-08-23T16:02:44.881Z",
-      "reps": "10"
+      "timestamp": "2026-08-23T16:05:47.271Z",
+      "reps": "10",
+      "peso": "35",
+      "checked": true
     }
   },
   "rehab": {
@@ -674,5 +676,5 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T16:05:18.472Z"
+  "timestamp": "2026-08-23T16:05:50.283Z"
 }
