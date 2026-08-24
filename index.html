@@ -4211,17 +4211,15 @@ function seedFoodLibraryIfEmpty() {
 
 function migrateFoodLibraryV2() {
   if (state.currentUser !== 'samuel') return;
-  var flagKey = state.currentUser + '-food-lib-v2';
-  if (localStorage.getItem(flagKey)) return;
   var lib = getFoodLibrary();
   if (lib.length === 0) return;
   var changed = false;
   lib.forEach(function(f) {
-    if (f.id === 'contramuslo_pollo') {
+    if (f.id === 'contramuslo_pollo' && f.kcal !== 160) {
       f.nombre = 'Contramuslo de pollo (con hueso y piel)'; f.kcal = 160; f.prot = 14.5; f.grasas = 11; changed = true;
-    } else if (f.id === 'muslo_pollo') {
+    } else if (f.id === 'muslo_pollo' && f.kcal !== 128) {
       f.nombre = 'Muslo de pollo (con hueso y piel)'; f.kcal = 128; f.prot = 18.7; f.grasas = 5.4; changed = true;
-    } else if (f.id === 'pernil_pollo') {
+    } else if (f.id === 'pernil_pollo' && f.kcal !== 144) {
       f.nombre = 'Pernil de pollo (con hueso y piel)'; f.kcal = 144; f.prot = 16.8; f.grasas = 8.2; changed = true;
     } else if (f.id === 'huevo' && !f.unidad) {
       f.unidad = 'unidad'; f.grPorUnidad = 58; changed = true;
@@ -4232,7 +4230,6 @@ function migrateFoodLibraryV2() {
   if (ids.indexOf('cuajada') === -1) { lib.push({ id: 'cuajada', nombre: 'Cuajada', kcal: 290, prot: 17, carbs: 0, grasas: 23 }); changed = true; }
   if (ids.indexOf('mozzarella') === -1) { lib.push({ id: 'mozzarella', nombre: 'Mozzarella', kcal: 280, prot: 22, carbs: 2.2, grasas: 22 }); changed = true; }
   if (changed) saveFoodLibrary(lib);
-  localStorage.setItem(flagKey, '1');
 }
 
 function getFoodLibrary() {
