@@ -1561,6 +1561,10 @@
       "reps": "63",
       "timestamp": "2026-08-24T23:07:46.686Z",
       "checked": true
+    },
+    "N1-S5-lun-Press inclinado (barra)-1": {
+      "reps": "12",
+      "timestamp": "2026-08-24T23:39:26.914Z"
     }
   },
   "rehab": {},
@@ -1999,5 +2003,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-24T23:07:49.847Z"
+  "timestamp": "2026-08-24T23:39:29.931Z"
 }
