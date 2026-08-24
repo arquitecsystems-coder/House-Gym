@@ -1659,10 +1659,16 @@
       "timestamp": "2026-08-21T21:06:41.418Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S2-lun-Press Inclinado (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-08-24T17:56:29.595Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-21T21:06:44.423Z",
+    "_syncTs": "2026-08-24T14:50:12.286Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2127,11 +2133,12 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-21T21:06:44.423Z"
+    "_syncTs": "2026-08-24T14:50:12.286Z"
   },
   "test": {},
   "actividad": {
     "objetivoPasos": 4000,
+    "registros": {},
     "biblioteca": [
       {
         "id": "carne_molida_80_20",
@@ -2274,5 +2281,143 @@
   },
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-24T14:50:12.286Z"
+  "foodLibrary": [
+    {
+      "id": "carne_molida_80_20",
+      "nombre": "Carne molida 80/20",
+      "kcal": 254,
+      "prot": 17.2,
+      "carbs": 0,
+      "grasas": 20
+    },
+    {
+      "id": "carne_molida_75_25",
+      "nombre": "Carne molida 75/25",
+      "kcal": 280,
+      "prot": 16,
+      "carbs": 0,
+      "grasas": 24
+    },
+    {
+      "id": "brazuelo_cerdo",
+      "nombre": "Brazuelo de cerdo",
+      "kcal": 230,
+      "prot": 17,
+      "carbs": 0,
+      "grasas": 18
+    },
+    {
+      "id": "lomo_cerdo",
+      "nombre": "Lomo de cerdo",
+      "kcal": 143,
+      "prot": 21,
+      "carbs": 0,
+      "grasas": 6
+    },
+    {
+      "id": "chuleton_cerdo",
+      "nombre": "Chuletón de cerdo (con grasa)",
+      "kcal": 231,
+      "prot": 17,
+      "carbs": 0,
+      "grasas": 18
+    },
+    {
+      "id": "arroz_cocinado",
+      "nombre": "Arroz cocinado",
+      "kcal": 130,
+      "prot": 2.7,
+      "carbs": 28,
+      "grasas": 0.3
+    },
+    {
+      "id": "papa_cruda_sin_cascara",
+      "nombre": "Papa cruda sin cáscara",
+      "kcal": 77,
+      "prot": 2,
+      "carbs": 17,
+      "grasas": 0.1
+    },
+    {
+      "id": "papa_cruda_con_cascara",
+      "nombre": "Papa cruda con cáscara",
+      "kcal": 77,
+      "prot": 2,
+      "carbs": 17.5,
+      "grasas": 0.1
+    },
+    {
+      "id": "huevo",
+      "nombre": "Huevo (doble A)",
+      "kcal": 155,
+      "prot": 13,
+      "carbs": 1.1,
+      "grasas": 11
+    },
+    {
+      "id": "atun_agua",
+      "nombre": "Atún en agua (lata)",
+      "kcal": 116,
+      "prot": 26,
+      "carbs": 0,
+      "grasas": 0.8
+    },
+    {
+      "id": "banano",
+      "nombre": "Banano",
+      "kcal": 89,
+      "prot": 1.1,
+      "carbs": 23,
+      "grasas": 0.3
+    },
+    {
+      "id": "leche_entera",
+      "nombre": "Leche entera",
+      "kcal": 61,
+      "prot": 3.2,
+      "carbs": 4.8,
+      "grasas": 3.3
+    },
+    {
+      "id": "cacao_polvo",
+      "nombre": "Cacao en polvo",
+      "kcal": 228,
+      "prot": 19.6,
+      "carbs": 57.9,
+      "grasas": 13.7
+    },
+    {
+      "id": "azucar",
+      "nombre": "Azúcar",
+      "kcal": 387,
+      "prot": 0,
+      "carbs": 100,
+      "grasas": 0
+    },
+    {
+      "id": "contramuslo_pollo",
+      "nombre": "Contramuslo de pollo (con piel)",
+      "kcal": 188,
+      "prot": 17.1,
+      "carbs": 0,
+      "grasas": 13
+    },
+    {
+      "id": "muslo_pollo",
+      "nombre": "Muslo de pollo (con piel)",
+      "kcal": 156,
+      "prot": 22.8,
+      "carbs": 0,
+      "grasas": 6.6
+    },
+    {
+      "id": "pernil_pollo",
+      "nombre": "Pernil de pollo (con piel, sin hueso)",
+      "kcal": 172,
+      "prot": 20,
+      "carbs": 0,
+      "grasas": 9.8
+    }
+  ],
+  "timestamp": "2026-08-24T17:56:32.656Z"
 }
