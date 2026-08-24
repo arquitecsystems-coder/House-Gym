@@ -1556,6 +1556,11 @@
       "reps": "62",
       "timestamp": "2026-08-24T23:01:48.635Z",
       "checked": true
+    },
+    "N1-S5-lun-Plancha (core)-3": {
+      "reps": "63",
+      "timestamp": "2026-08-24T23:07:46.686Z",
+      "checked": true
     }
   },
   "rehab": {},
@@ -1994,5 +1999,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-24T23:01:51.845Z"
+  "timestamp": "2026-08-24T23:07:49.847Z"
 }
