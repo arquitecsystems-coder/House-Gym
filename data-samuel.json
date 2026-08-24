@@ -1706,7 +1706,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-24T20:10:54.117Z",
+    "_syncTs": "2026-08-24T21:06:06.527Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2171,7 +2171,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-24T20:10:54.117Z"
+    "_syncTs": "2026-08-24T21:06:06.527Z"
   },
   "test": {},
   "actividad": {
@@ -2532,7 +2532,31 @@
       "prot": 20,
       "carbs": 0,
       "grasas": 9.8
+    },
+    {
+      "id": "queso_campesino",
+      "nombre": "Queso campesino",
+      "kcal": 300,
+      "prot": 20,
+      "carbs": 3,
+      "grasas": 23
+    },
+    {
+      "id": "cuajada",
+      "nombre": "Cuajada",
+      "kcal": 290,
+      "prot": 17,
+      "carbs": 0,
+      "grasas": 23
+    },
+    {
+      "id": "mozzarella",
+      "nombre": "Mozzarella",
+      "kcal": 280,
+      "prot": 22,
+      "carbs": 2.2,
+      "grasas": 22
     }
   ],
-  "timestamp": "2026-08-24T21:06:06.527Z"
+  "timestamp": "2026-08-24T22:55:36.495Z"
 }
