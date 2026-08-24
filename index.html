@@ -5179,6 +5179,7 @@ async function pushToGithub() {
       actividad: JSON.parse(localStorage.getItem(uk("actividad-datos")) || "{}"),
       habitos: JSON.parse(localStorage.getItem(uk("habitos-datos")) || "{}"),
       userProfile: JSON.parse(localStorage.getItem(uk("user-profile")) || "{}"),
+      foodLibrary: JSON.parse(localStorage.getItem(state.currentUser + "-food-library") || "[]"),
       timestamp: new Date().toISOString()
     };
 
@@ -5289,6 +5290,17 @@ async function pullFromGithub() {
     if (data.userProfile && Object.keys(data.userProfile).length > 0) {
       const localProfile = JSON.parse(localStorage.getItem(uk("user-profile")) || "{}");
       localStorage.setItem(uk("user-profile"), JSON.stringify(Object.assign({}, localProfile, data.userProfile)));
+    }
+
+    if (Array.isArray(data.foodLibrary) && data.foodLibrary.length > 0) {
+      const localLib = JSON.parse(localStorage.getItem(state.currentUser + "-food-library") || "[]");
+      const merged = Object.values(
+        [...localLib, ...data.foodLibrary].reduce(function(acc, f) {
+          if (!acc[f.id] || data.foodLibrary.find(function(r){ return r.id === f.id; })) acc[f.id] = f;
+          return acc;
+        }, {})
+      );
+      localStorage.setItem(state.currentUser + "-food-library", JSON.stringify(merged));
     }
 
     showToast("Datos descargados ✓", "ok");
