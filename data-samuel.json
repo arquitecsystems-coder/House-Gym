@@ -1695,6 +1695,12 @@
       "timestamp": "2026-08-24T19:12:37.473Z",
       "reps": "7",
       "checked": true
+    },
+    "M6-S2-lun-Curl Bíceps (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-08-24T19:21:10.575Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {
@@ -2449,5 +2455,5 @@
       "grasas": 9.8
     }
   ],
-  "timestamp": "2026-08-24T19:12:40.539Z"
+  "timestamp": "2026-08-24T19:21:13.584Z"
 }
