@@ -4043,7 +4043,8 @@ function renderActividad(main) {
     comidas.forEach(function(c, i) {
       html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">';
       html += '<div style="flex:1"><div style="font-size:13px">' + c.nombre + '</div>';
-      html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted)">' + c.gramos + 'g &nbsp;· ' + c.kcal + ' kcal &nbsp;P:' + c.prot + 'g C:' + c.carbs + 'g G:' + c.grasas + 'g</div></div>';
+      var cantLabel = c.unidades != null ? c.unidades + (c.unidades === 1 ? ' unidad' : ' unidades') : c.gramos + 'g';
+      html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted)">' + cantLabel + ' &nbsp;· ' + c.kcal + ' kcal &nbsp;P:' + c.prot + 'g C:' + c.carbs + 'g G:' + c.grasas + 'g</div></div>';
       html += '<button onclick="removeLogEntry(\'' + hoy + '\',' + i + ')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px 6px">&#xD7;</button>';
       html += '</div>';
     });
@@ -4057,13 +4058,14 @@ function renderActividad(main) {
   } else {
     html += '<button onclick="toggleAddFoodPanel()" style="width:100%;margin-top:8px;padding:9px;background:var(--surface-2,#f0f0f0);border:1px dashed var(--border);border-radius:var(--radius);cursor:pointer;font-size:13px;color:var(--accent);font-family:var(--font-mono)">+ Agregar alimento</button>';
     html += '<div id="add-food-panel" style="display:none;margin-top:8px">';
-    html += '<select id="food-select" class="cut-input" style="width:100%;padding:7px 8px;margin-bottom:6px"><option value="">Seleccionar alimento...</option>';
+    html += '<select id="food-select" class="cut-input" onchange="updateFoodUnitLabel()" style="width:100%;padding:7px 8px;margin-bottom:6px"><option value="">Seleccionar alimento...</option>';
     lib.forEach(function(f) {
-      html += '<option value="' + f.id + '">' + f.nombre + ' (' + f.kcal + ' kcal/100g)</option>';
+      html += '<option value="' + f.id + '">' + f.nombre + (f.unidad === 'unidad' ? ' (por unidad)' : ' (' + f.kcal + ' kcal/100g)') + '</option>';
     });
     html += '</select>';
-    html += '<div style="display:flex;gap:6px">';
-    html += '<input id="food-gramos" class="cut-input" type="number" placeholder="gramos" style="flex:1;padding:7px 8px;text-align:center">';
+    html += '<div style="display:flex;gap:6px;align-items:center">';
+    html += '<input id="food-gramos" class="cut-input" type="number" placeholder="gramos" step="any" style="flex:1;padding:7px 8px;text-align:center">';
+    html += '<span id="food-unit-label" style="font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap">g</span>';
     html += '<button onclick="logFoodEntryFromUI(\'' + hoy + '\')" style="padding:7px 16px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px;white-space:nowrap">OK</button>';
     html += '</div></div>';
   }
@@ -4184,15 +4186,18 @@ const BIBLIOTECA_INICIAL = {
     { id: "arroz_cocinado",          nombre: "Arroz cocinado",                            kcal: 130, prot: 2.7,  carbs: 28,   grasas: 0.3  },
     { id: "papa_cruda_sin_cascara",  nombre: "Papa cruda sin cáscara",              kcal: 77,  prot: 2,    carbs: 17,   grasas: 0.1  },
     { id: "papa_cruda_con_cascara",  nombre: "Papa cruda con cáscara",              kcal: 77,  prot: 2,    carbs: 17.5, grasas: 0.1  },
-    { id: "huevo",                   nombre: "Huevo (doble A)",                           kcal: 155, prot: 13,   carbs: 1.1,  grasas: 11   },
+    { id: "huevo",                   nombre: "Huevo (doble A)",          unidad: "unidad", grPorUnidad: 58, kcal: 155, prot: 13,   carbs: 1.1,  grasas: 11   },
     { id: "atun_agua",               nombre: "Atún en agua (lata)",                 kcal: 116, prot: 26,   carbs: 0,    grasas: 0.8  },
     { id: "banano",                  nombre: "Banano",                                    kcal: 89,  prot: 1.1,  carbs: 23,   grasas: 0.3  },
     { id: "leche_entera",            nombre: "Leche entera",                              kcal: 61,  prot: 3.2,  carbs: 4.8,  grasas: 3.3  },
     { id: "cacao_polvo",             nombre: "Cacao en polvo",                            kcal: 228, prot: 19.6, carbs: 57.9, grasas: 13.7 },
     { id: "azucar",                  nombre: "Azúcar",                              kcal: 387, prot: 0,    carbs: 100,  grasas: 0    },
-    { id: "contramuslo_pollo",       nombre: "Contramuslo de pollo (con piel)",           kcal: 188, prot: 17.1, carbs: 0,    grasas: 13   },
-    { id: "muslo_pollo",             nombre: "Muslo de pollo (con piel)",                kcal: 156, prot: 22.8, carbs: 0,    grasas: 6.6  },
-    { id: "pernil_pollo",            nombre: "Pernil de pollo (con piel, sin hueso)",    kcal: 172, prot: 20,   carbs: 0,    grasas: 9.8  },
+    { id: "contramuslo_pollo",       nombre: "Contramuslo de pollo (con hueso y piel)",  kcal: 160, prot: 14.5, carbs: 0,    grasas: 11   },
+    { id: "muslo_pollo",             nombre: "Muslo de pollo (con hueso y piel)",        kcal: 128, prot: 18.7, carbs: 0,    grasas: 5.4  },
+    { id: "pernil_pollo",            nombre: "Pernil de pollo (con hueso y piel)",       kcal: 144, prot: 16.8, carbs: 0,    grasas: 8.2  },
+    { id: "queso_campesino",         nombre: "Queso campesino",                          kcal: 300, prot: 20,   carbs: 3,    grasas: 23   },
+    { id: "cuajada",                 nombre: "Cuajada",                                  kcal: 290, prot: 17,   carbs: 0,    grasas: 23   },
+    { id: "mozzarella",              nombre: "Mozzarella",                               kcal: 280, prot: 22,   carbs: 2.2,  grasas: 22   },
   ]
 };
 
@@ -4202,6 +4207,32 @@ function seedFoodLibraryIfEmpty() {
   var current = getFoodLibrary();
   if (current.length > 0) return;
   saveFoodLibrary(initial);
+}
+
+function migrateFoodLibraryV2() {
+  if (state.currentUser !== 'samuel') return;
+  var flagKey = state.currentUser + '-food-lib-v2';
+  if (localStorage.getItem(flagKey)) return;
+  var lib = getFoodLibrary();
+  if (lib.length === 0) return;
+  var changed = false;
+  lib.forEach(function(f) {
+    if (f.id === 'contramuslo_pollo') {
+      f.nombre = 'Contramuslo de pollo (con hueso y piel)'; f.kcal = 160; f.prot = 14.5; f.grasas = 11; changed = true;
+    } else if (f.id === 'muslo_pollo') {
+      f.nombre = 'Muslo de pollo (con hueso y piel)'; f.kcal = 128; f.prot = 18.7; f.grasas = 5.4; changed = true;
+    } else if (f.id === 'pernil_pollo') {
+      f.nombre = 'Pernil de pollo (con hueso y piel)'; f.kcal = 144; f.prot = 16.8; f.grasas = 8.2; changed = true;
+    } else if (f.id === 'huevo' && !f.unidad) {
+      f.unidad = 'unidad'; f.grPorUnidad = 58; changed = true;
+    }
+  });
+  var ids = lib.map(function(f) { return f.id; });
+  if (ids.indexOf('queso_campesino') === -1) { lib.push({ id: 'queso_campesino', nombre: 'Queso campesino', kcal: 300, prot: 20, carbs: 3, grasas: 23 }); changed = true; }
+  if (ids.indexOf('cuajada') === -1) { lib.push({ id: 'cuajada', nombre: 'Cuajada', kcal: 290, prot: 17, carbs: 0, grasas: 23 }); changed = true; }
+  if (ids.indexOf('mozzarella') === -1) { lib.push({ id: 'mozzarella', nombre: 'Mozzarella', kcal: 280, prot: 22, carbs: 2.2, grasas: 22 }); changed = true; }
+  if (changed) saveFoodLibrary(lib);
+  localStorage.setItem(flagKey, '1');
 }
 
 function getFoodLibrary() {
@@ -4222,12 +4253,13 @@ function deleteFoodFromLibrary(id) {
   renderActividad(document.getElementById('mainContent'));
 }
 
-function logFoodEntry(fecha, foodId, gramos) {
+function logFoodEntry(fecha, foodId, cantidad) {
   const lib = getFoodLibrary();
   const food = lib.find(function(f) { return f.id === foodId; });
-  if (!food || !gramos) return;
-  const g = parseFloat(gramos);
-  if (isNaN(g) || g <= 0) return;
+  if (!food || !cantidad) return;
+  const qty = parseFloat(cantidad);
+  if (isNaN(qty) || qty <= 0) return;
+  const g = (food.unidad === 'unidad' && food.grPorUnidad) ? qty * food.grPorUnidad : qty;
   const factor = g / 100;
   const entry = {
     foodId: foodId, nombre: food.nombre, gramos: g,
@@ -4236,6 +4268,7 @@ function logFoodEntry(fecha, foodId, gramos) {
     carbs: Math.round(food.carbs * factor * 10) / 10,
     grasas: Math.round(food.grasas * factor * 10) / 10,
   };
+  if (food.unidad === 'unidad') entry.unidades = qty;
   const d = getActividadDatos();
   if (!d.registros) d.registros = {};
   if (!d.registros[fecha]) d.registros[fecha] = {};
@@ -4321,6 +4354,21 @@ function toggleAddFoodPanel() {
 function toggleBiblioteca() {
   const b = document.getElementById('bib-body');
   if (b) b.style.display = b.style.display === 'none' ? '' : 'none';
+}
+function updateFoodUnitLabel() {
+  const sel = document.getElementById('food-select');
+  const label = document.getElementById('food-unit-label');
+  const input = document.getElementById('food-gramos');
+  if (!sel || !label || !input) return;
+  const lib = getFoodLibrary();
+  const food = lib.find(function(f) { return f.id === sel.value; });
+  if (food && food.unidad === 'unidad') {
+    label.textContent = 'und';
+    input.placeholder = 'cant. huevos';
+  } else {
+    label.textContent = 'g';
+    input.placeholder = 'gramos';
+  }
 }
 function logFoodEntryFromUI(fecha) {
   const sel = document.getElementById('food-select');
@@ -5615,6 +5663,7 @@ function initApp() {
   migrateOldData();
   loadLocal();
   seedFoodLibraryIfEmpty();
+  migrateFoodLibraryV2();
   const userMesos = USUARIOS[state.currentUser]?.mesociclos || [];
   const pos = detectPosition();
   if (pos && userMesos.includes(pos.meso)) {
