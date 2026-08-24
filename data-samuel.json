@@ -1706,7 +1706,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-24T18:11:19.280Z",
+    "_syncTs": "2026-08-24T19:21:18.923Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2171,12 +2171,26 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-24T18:11:19.280Z"
+    "_syncTs": "2026-08-24T19:21:18.923Z"
   },
   "test": {},
   "actividad": {
     "objetivoPasos": 4000,
-    "registros": {},
+    "registros": {
+      "2026-08-24": {
+        "comidas": [
+          {
+            "foodId": "brazuelo_cerdo",
+            "nombre": "Brazuelo de cerdo",
+            "gramos": 92,
+            "kcal": 212,
+            "prot": 15.6,
+            "carbs": 0,
+            "grasas": 16.6
+          }
+        ]
+      }
+    },
     "biblioteca": [
       {
         "id": "carne_molida_80_20",
@@ -2457,5 +2471,5 @@
       "grasas": 9.8
     }
   ],
-  "timestamp": "2026-08-24T19:21:18.923Z"
+  "timestamp": "2026-08-24T20:09:59.300Z"
 }
