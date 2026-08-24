@@ -1677,10 +1677,16 @@
       "timestamp": "2026-08-24T18:11:16.225Z",
       "reps": "5",
       "checked": true
+    },
+    "M6-S2-lun-Elevación Lateral (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-24T19:01:00.090Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-24T14:50:12.286Z",
+    "_syncTs": "2026-08-24T18:11:19.280Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2145,7 +2151,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-24T14:50:12.286Z"
+    "_syncTs": "2026-08-24T18:11:19.280Z"
   },
   "test": {},
   "actividad": {
@@ -2431,5 +2437,5 @@
       "grasas": 9.8
     }
   ],
-  "timestamp": "2026-08-24T18:11:19.280Z"
+  "timestamp": "2026-08-24T19:01:03.096Z"
 }
