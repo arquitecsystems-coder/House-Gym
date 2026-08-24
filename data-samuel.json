@@ -1662,7 +1662,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-17T17:12:10.529Z",
+    "_syncTs": "2026-08-21T21:06:44.423Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2127,11 +2127,13 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-17T17:12:10.529Z"
+    "_syncTs": "2026-08-21T21:06:44.423Z"
   },
   "test": {},
-  "actividad": {},
+  "actividad": {
+    "objetivoPasos": 4000
+  },
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-21T21:06:44.423Z"
+  "timestamp": "2026-08-24T14:50:12.286Z"
 }
