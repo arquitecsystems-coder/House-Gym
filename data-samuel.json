@@ -1706,7 +1706,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-24T19:21:18.923Z",
+    "_syncTs": "2026-08-24T20:10:54.117Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2171,7 +2171,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-24T19:21:18.923Z"
+    "_syncTs": "2026-08-24T20:10:54.117Z"
   },
   "test": {},
   "actividad": {
@@ -2205,6 +2205,15 @@
             "prot": 2.7,
             "carbs": 28,
             "grasas": 0.3
+          },
+          {
+            "foodId": "azucar",
+            "nombre": "Azúcar",
+            "gramos": 9,
+            "kcal": 35,
+            "prot": 0,
+            "carbs": 9,
+            "grasas": 0
           }
         ]
       }
@@ -2489,5 +2498,5 @@
       "grasas": 9.8
     }
   ],
-  "timestamp": "2026-08-24T20:10:54.117Z"
+  "timestamp": "2026-08-24T21:05:13.334Z"
 }
