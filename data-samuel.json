@@ -1754,7 +1754,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-25T11:20:20.724Z",
+    "_syncTs": "2026-08-25T19:42:06.379Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2226,7 +2226,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-25T11:20:20.724Z"
+    "_syncTs": "2026-08-25T19:42:06.379Z"
   },
   "test": {},
   "actividad": {
@@ -2313,6 +2313,19 @@
             "prot": 15.4,
             "carbs": 1.5,
             "grasas": 15.4
+          }
+        ]
+      },
+      "2026-08-25": {
+        "comidas": [
+          {
+            "foodId": "contramuslo_pollo",
+            "nombre": "Contramuslo de pollo (con hueso y piel)",
+            "gramos": 150,
+            "kcal": 240,
+            "prot": 21.8,
+            "carbs": 0,
+            "grasas": 16.5
           }
         ]
       }
@@ -2623,5 +2636,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-25T19:42:06.379Z"
+  "timestamp": "2026-08-25T21:24:27.977Z"
 }
