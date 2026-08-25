@@ -5376,6 +5376,7 @@ async function pullFromGithub() {
         }, {})
       );
       localStorage.setItem(state.currentUser + "-food-library", JSON.stringify(merged));
+      migrateFoodLibraryV2();
     }
 
     showToast("Datos descargados ✓", "ok");
