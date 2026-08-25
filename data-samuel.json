@@ -1706,7 +1706,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-24T21:06:06.527Z",
+    "_syncTs": "2026-08-24T22:55:46.767Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2152,6 +2152,10 @@
       "2026-08-06": {
         "ayunas": 77.15,
         "noche": null
+      },
+      "2026-08-25": {
+        "ayunas": 77.3,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -2168,14 +2172,16 @@
           15
         ],
         "cintura": 87
+      },
+      "S6": {
+        "promAyunas": 77.3
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-24T21:06:06.527Z"
+    "_syncTs": "2026-08-24T22:55:46.767Z"
   },
   "test": {},
   "actividad": {
-    "objetivoPasos": 4000,
     "registros": {
       "2026-08-24": {
         "comidas": [
@@ -2476,7 +2482,9 @@
       "kcal": 155,
       "prot": 13,
       "carbs": 1.1,
-      "grasas": 11
+      "grasas": 11,
+      "unidad": "unidad",
+      "grPorUnidad": 58
     },
     {
       "id": "atun_agua",
@@ -2520,27 +2528,27 @@
     },
     {
       "id": "contramuslo_pollo",
-      "nombre": "Contramuslo de pollo (con piel)",
-      "kcal": 188,
-      "prot": 17.1,
+      "nombre": "Contramuslo de pollo (con hueso y piel)",
+      "kcal": 160,
+      "prot": 14.5,
       "carbs": 0,
-      "grasas": 13
+      "grasas": 11
     },
     {
       "id": "muslo_pollo",
-      "nombre": "Muslo de pollo (con piel)",
-      "kcal": 156,
-      "prot": 22.8,
+      "nombre": "Muslo de pollo (con hueso y piel)",
+      "kcal": 128,
+      "prot": 18.7,
       "carbs": 0,
-      "grasas": 6.6
+      "grasas": 5.4
     },
     {
       "id": "pernil_pollo",
-      "nombre": "Pernil de pollo (con piel, sin hueso)",
-      "kcal": 172,
-      "prot": 20,
+      "nombre": "Pernil de pollo (con hueso y piel)",
+      "kcal": 144,
+      "prot": 16.8,
       "carbs": 0,
-      "grasas": 9.8
+      "grasas": 8.2
     },
     {
       "id": "queso_campesino",
@@ -2567,5 +2575,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-24T22:55:46.767Z"
+  "timestamp": "2026-08-25T11:20:20.724Z"
 }
