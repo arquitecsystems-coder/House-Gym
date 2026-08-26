@@ -1813,7 +1813,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-25T21:25:24.524Z",
+    "_syncTs": "2026-08-26T17:31:16.450Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2289,7 +2289,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-25T21:25:24.524Z"
+    "_syncTs": "2026-08-26T17:31:16.450Z"
   },
   "test": {},
   "actividad": {
@@ -2435,6 +2435,19 @@
             "prot": 7,
             "carbs": 59.5,
             "grasas": 0.4
+          }
+        ]
+      },
+      "2026-08-26": {
+        "comidas": [
+          {
+            "foodId": "cacao_polvo",
+            "nombre": "Cacao en polvo",
+            "gramos": 9,
+            "kcal": 21,
+            "prot": 1.8,
+            "carbs": 5.2,
+            "grasas": 1.2
           }
         ]
       }
@@ -2745,5 +2758,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T17:31:16.450Z"
+  "timestamp": "2026-08-26T17:55:56.877Z"
 }
