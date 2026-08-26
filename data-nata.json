@@ -1617,7 +1617,9 @@
     },
     "N1-S5-mie-Remo Pendlay (barra)-2": {
       "peso": "31.8",
-      "timestamp": "2026-08-26T21:56:57.840Z"
+      "timestamp": "2026-08-26T22:00:57.202Z",
+      "reps": "4",
+      "checked": true
     },
     "N1-S5-mie-Remo Pendlay (barra)-3": {
       "peso": "31.8",
@@ -2107,5 +2109,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T21:57:50.664Z"
+  "timestamp": "2026-08-26T22:01:00.216Z"
 }
