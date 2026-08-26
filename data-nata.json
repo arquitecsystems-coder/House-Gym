@@ -1646,6 +1646,18 @@
       "timestamp": "2026-08-26T22:14:11.109Z",
       "reps": "10",
       "checked": true
+    },
+    "N1-S5-mie-Pullover (mancuerna, banco)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-26T22:18:10.729Z"
+    },
+    "N1-S5-mie-Pullover (mancuerna, banco)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-26T22:18:13.218Z"
+    },
+    "N1-S5-mie-Pullover (mancuerna, banco)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-26T22:18:16.281Z"
     }
   },
   "rehab": {},
@@ -2131,5 +2143,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T22:14:14.120Z"
+  "timestamp": "2026-08-26T22:18:16.234Z"
 }
