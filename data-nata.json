@@ -2026,8 +2026,8 @@
           "completado": true
         },
         "h_1786988229310": {
-          "valor": 1500,
-          "completado": false
+          "valor": 2000,
+          "completado": true
         },
         "h_1786988255762": {
           "valor": 5,
@@ -2049,5 +2049,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T01:19:23.778Z"
+  "timestamp": "2026-08-26T01:19:43.668Z"
 }
