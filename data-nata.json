@@ -1637,7 +1637,9 @@
     },
     "N1-S5-mie-Elevación lateral (mancuerna)-2": {
       "peso": "5",
-      "timestamp": "2026-08-26T22:06:47.805Z"
+      "timestamp": "2026-08-26T22:11:09.645Z",
+      "reps": "12",
+      "checked": true
     },
     "N1-S5-mie-Elevación lateral (mancuerna)-3": {
       "peso": "5",
@@ -2127,5 +2129,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T22:07:52.143Z"
+  "timestamp": "2026-08-26T22:11:13.171Z"
 }
