@@ -1579,6 +1579,10 @@
       "timestamp": "2026-08-24T23:47:38.195Z",
       "reps": "14",
       "checked": true
+    },
+    "N1-S5-mie-RDL (barra)-1": {
+      "peso": "36.59",
+      "timestamp": "2026-08-26T21:35:38.338Z"
     }
   },
   "rehab": {},
@@ -1759,7 +1763,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-26T01:19:51.691Z"
+    "_syncTs": "2026-08-26T15:48:34.793Z"
   },
   "test": {
     "test": {
@@ -2064,5 +2068,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T15:48:34.793Z"
+  "timestamp": "2026-08-26T21:35:41.397Z"
 }
