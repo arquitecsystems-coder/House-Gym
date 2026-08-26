@@ -1759,7 +1759,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-25T03:02:55.724Z"
+    "_syncTs": "2026-08-26T01:19:51.691Z"
   },
   "test": {
     "test": {
@@ -2043,6 +2043,18 @@
         "h_1787094648824": {
           "completado": true
         }
+      },
+      "2026-08-26": {
+        "h_1786826760933": {
+          "valor": 13500,
+          "completado": true
+        },
+        "h_1786988283320": {
+          "completado": true
+        },
+        "h_1787094679389": {
+          "completado": true
+        }
       }
     },
     "resumenVisto": {}
@@ -2052,5 +2064,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T01:19:51.691Z"
+  "timestamp": "2026-08-26T15:48:34.793Z"
 }
