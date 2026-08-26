@@ -1754,9 +1754,10 @@
     },
     "M6-S2-mie-Sentadilla (barra + cuña)-1": {
       "peso": "75",
-      "timestamp": "2026-08-26T16:33:26.107Z",
+      "timestamp": "2026-08-26T16:33:30.067Z",
       "reps": "3",
-      "checked": true
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -2692,5 +2693,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T16:33:29.113Z"
+  "timestamp": "2026-08-26T16:33:33.071Z"
 }
