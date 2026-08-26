@@ -1774,6 +1774,12 @@
       "timestamp": "2026-08-26T16:57:07.344Z",
       "rir": "0",
       "checked": true
+    },
+    "M6-S2-mie-RDL sin flexión de rodilla (barra)-2": {
+      "reps": "8",
+      "timestamp": "2026-08-26T17:04:23.330Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2709,5 +2715,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T16:57:10.349Z"
+  "timestamp": "2026-08-26T17:04:26.338Z"
 }
