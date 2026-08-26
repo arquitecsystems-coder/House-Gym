@@ -1785,6 +1785,12 @@
       "reps": "3",
       "timestamp": "2026-08-26T17:09:35.837Z",
       "checked": true
+    },
+    "M6-S2-mie-Hip Thrust (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-08-26T17:17:25.220Z",
+      "reps": "9",
+      "checked": true
     }
   },
   "rehab": {
@@ -2720,5 +2726,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T17:09:38.844Z"
+  "timestamp": "2026-08-26T17:17:28.227Z"
 }
