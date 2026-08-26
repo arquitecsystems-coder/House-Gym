@@ -2448,6 +2448,15 @@
             "prot": 1.8,
             "carbs": 5.2,
             "grasas": 1.2
+          },
+          {
+            "foodId": "leche_entera",
+            "nombre": "Leche entera",
+            "gramos": 110,
+            "kcal": 67,
+            "prot": 3.5,
+            "carbs": 5.3,
+            "grasas": 3.6
           }
         ]
       }
@@ -2758,5 +2767,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T17:55:56.877Z"
+  "timestamp": "2026-08-26T17:56:32.105Z"
 }
