@@ -1589,14 +1589,17 @@
     },
     "N1-S5-mie-RDL (barra)-2": {
       "peso": "36.59",
-      "timestamp": "2026-08-26T21:40:55.508Z",
-      "reps": "6",
+      "timestamp": "2026-08-26T21:47:23.356Z",
+      "reps": "7",
       "checked": true,
       "rir": "1"
     },
     "N1-S5-mie-RDL (barra)-3": {
       "peso": "36.59",
-      "timestamp": "2026-08-26T21:35:46.899Z"
+      "timestamp": "2026-08-26T21:47:26.007Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "1"
     },
     "N1-S5-mie-RDL (barra)-4": {
       "peso": "36.59",
@@ -2086,5 +2089,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T21:40:59.143Z"
+  "timestamp": "2026-08-26T21:47:29.032Z"
 }
