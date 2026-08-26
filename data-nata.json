@@ -1662,7 +1662,9 @@
     },
     "N1-S5-mie-Pullover (mancuerna, banco)-3": {
       "peso": "10",
-      "timestamp": "2026-08-26T22:18:16.281Z"
+      "timestamp": "2026-08-26T22:27:31.945Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {},
@@ -2148,5 +2150,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-26T22:23:57.143Z"
+  "timestamp": "2026-08-26T22:27:34.961Z"
 }
