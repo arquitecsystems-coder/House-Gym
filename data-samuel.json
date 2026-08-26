@@ -1768,6 +1768,12 @@
     "nota-sesion-M6-S2-mie": {
       "nota": "Sentadilla sin cuña, curl nórdico remplazo rumano",
       "timestamp": "2026-08-26T16:56:54.905Z"
+    },
+    "M6-S2-mie-RDL sin flexión de rodilla (barra)-1": {
+      "reps": "12",
+      "timestamp": "2026-08-26T16:57:07.344Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2703,5 +2709,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T16:56:57.909Z"
+  "timestamp": "2026-08-26T16:57:10.349Z"
 }
