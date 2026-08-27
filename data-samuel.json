@@ -1810,10 +1810,16 @@
       "timestamp": "2026-08-26T17:31:13.442Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S2-jue-Press Inclinado (barra)-1": {
+      "peso": "50",
+      "timestamp": "2026-08-27T19:59:06.452Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-26T17:31:16.450Z",
+    "_syncTs": "2026-08-26T17:58:44.964Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2267,6 +2273,10 @@
       "2026-08-26": {
         "ayunas": 77,
         "noche": null
+      },
+      "2026-08-27": {
+        "ayunas": 77.1,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -2289,7 +2299,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-26T17:31:16.450Z"
+    "_syncTs": "2026-08-26T17:58:44.964Z"
   },
   "test": {},
   "actividad": {
@@ -2813,5 +2823,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-26T17:58:44.964Z"
+  "timestamp": "2026-08-27T19:59:09.459Z"
 }
