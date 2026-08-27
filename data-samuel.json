@@ -1852,6 +1852,12 @@
       "timestamp": "2026-08-27T20:55:38.218Z",
       "reps": "9",
       "checked": true
+    },
+    "M6-S2-jue-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-27T20:58:23.587Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {
@@ -2859,5 +2865,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-27T20:55:41.228Z"
+  "timestamp": "2026-08-27T20:58:26.594Z"
 }
