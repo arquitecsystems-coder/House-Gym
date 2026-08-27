@@ -1865,6 +1865,12 @@
       "reps": "12",
       "checked": true,
       "rir": "1"
+    },
+    "M6-S2-jue-Curl Bíceps (barra)-2": {
+      "peso": "25",
+      "timestamp": "2026-08-27T21:12:15.426Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -2872,5 +2878,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-27T21:07:42.129Z"
+  "timestamp": "2026-08-27T21:12:18.431Z"
 }
