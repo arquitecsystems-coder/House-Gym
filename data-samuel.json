@@ -1822,6 +1822,12 @@
       "timestamp": "2026-08-27T20:03:19.260Z",
       "reps": "10",
       "checked": true
+    },
+    "M6-S2-jue-Press Inclinado (barra)-3": {
+      "peso": "50",
+      "timestamp": "2026-08-27T20:10:02.745Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -2829,5 +2835,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-27T20:03:22.269Z"
+  "timestamp": "2026-08-27T20:10:05.755Z"
 }
