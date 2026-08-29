@@ -1665,6 +1665,14 @@
       "timestamp": "2026-08-26T22:27:31.945Z",
       "reps": "10",
       "checked": true
+    },
+    "N1-S5-vie-Zancada estática (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-08-29T00:07:05.085Z"
+    },
+    "N1-S5-vie-Zancada estática (barra)-2": {
+      "peso": "20",
+      "timestamp": "2026-08-29T00:07:08.378Z"
     }
   },
   "rehab": {},
@@ -1845,7 +1853,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-26T15:48:34.793Z"
+    "_syncTs": "2026-08-27T02:23:08.654Z"
   },
   "test": {
     "test": {
@@ -2165,5 +2173,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-27T02:23:08.654Z"
+  "timestamp": "2026-08-29T00:07:08.107Z"
 }
