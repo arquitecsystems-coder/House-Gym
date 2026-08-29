@@ -1713,7 +1713,9 @@
     },
     "N1-S5-vie-Crunch con peso-2": {
       "peso": "20",
-      "timestamp": "2026-08-29T00:53:02.883Z"
+      "timestamp": "2026-08-29T00:56:56.028Z",
+      "reps": "28",
+      "checked": true
     },
     "N1-S5-vie-Crunch con peso-3": {
       "peso": "20",
@@ -2235,5 +2237,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-29T00:53:11.759Z"
+  "timestamp": "2026-08-29T00:56:59.039Z"
 }
