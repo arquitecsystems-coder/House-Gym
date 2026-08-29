@@ -1686,8 +1686,8 @@
     },
     "N1-S5-vie-Aperturas en banco (mancuerna)-1": {
       "peso": "5",
-      "timestamp": "2026-08-29T00:37:57.236Z",
-      "reps": "10",
+      "timestamp": "2026-08-29T00:43:16.218Z",
+      "reps": "13",
       "checked": true,
       "rir": "1"
     },
@@ -2215,5 +2215,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-29T00:38:00.243Z"
+  "timestamp": "2026-08-29T00:43:19.251Z"
 }
