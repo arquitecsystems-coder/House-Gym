@@ -1680,7 +1680,9 @@
     },
     "N1-S5-vie-Zancada estática (barra)-3": {
       "peso": "20",
-      "timestamp": "2026-08-29T00:09:00.887Z"
+      "timestamp": "2026-08-29T00:27:35.412Z",
+      "reps": "15",
+      "checked": true
     }
   },
   "rehab": {},
@@ -2181,5 +2183,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-29T00:19:53.312Z"
+  "timestamp": "2026-08-29T00:27:39.306Z"
 }
