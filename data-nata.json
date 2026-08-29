@@ -1683,6 +1683,18 @@
       "timestamp": "2026-08-29T00:27:35.412Z",
       "reps": "15",
       "checked": true
+    },
+    "N1-S5-vie-Aperturas en banco (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-08-29T00:35:53.580Z"
+    },
+    "N1-S5-vie-Aperturas en banco (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-08-29T00:35:56.311Z"
+    },
+    "N1-S5-vie-Aperturas en banco (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-08-29T00:35:58.964Z"
     }
   },
   "rehab": {},
@@ -2200,5 +2212,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-29T00:29:42.775Z"
+  "timestamp": "2026-08-29T00:36:01.991Z"
 }
