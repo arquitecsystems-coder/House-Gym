@@ -1932,8 +1932,8 @@
     },
     "M6-S3-lun-Curl Martillo (DB)-1": {
       "peso": "10",
-      "timestamp": "2026-08-31T22:14:36.170Z",
-      "reps": "12",
+      "timestamp": "2026-08-31T22:14:40.363Z",
+      "reps": "11",
       "checked": true
     }
   },
@@ -2942,5 +2942,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-31T22:14:39.178Z"
+  "timestamp": "2026-08-31T22:14:43.376Z"
 }
