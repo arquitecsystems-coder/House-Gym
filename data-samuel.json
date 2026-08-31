@@ -1909,6 +1909,12 @@
       "timestamp": "2026-08-31T21:43:36.201Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S3-lun-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-31T21:48:23.846Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -2916,5 +2922,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-31T21:43:39.214Z"
+  "timestamp": "2026-08-31T21:48:26.853Z"
 }
