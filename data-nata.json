@@ -1722,6 +1722,18 @@
       "timestamp": "2026-08-29T01:02:42.629Z",
       "reps": "25",
       "checked": true
+    },
+    "N1-S5-vie-Hip thrust (barra)-1": {
+      "checked": true,
+      "timestamp": "2026-08-31T02:07:11.207Z"
+    },
+    "N1-S5-vie-Hip thrust (barra)-2": {
+      "checked": true,
+      "timestamp": "2026-08-31T02:07:11.791Z"
+    },
+    "N1-S5-vie-Hip thrust (barra)-3": {
+      "checked": true,
+      "timestamp": "2026-08-31T02:07:12.271Z"
     }
   },
   "rehab": {},
@@ -1902,7 +1914,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-27T02:23:08.654Z"
+    "_syncTs": "2026-08-29T02:03:49.344Z"
   },
   "test": {
     "test": {
@@ -2242,5 +2254,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-08-29T02:03:49.344Z"
+  "timestamp": "2026-08-31T02:07:15.280Z"
 }
