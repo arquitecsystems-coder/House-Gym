@@ -1915,6 +1915,20 @@
       "timestamp": "2026-08-31T21:48:23.846Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S3-lun-Curl Bíceps (barra)-1": {
+      "peso": "31",
+      "timestamp": "2026-08-31T22:13:28.623Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "0"
+    },
+    "M6-S3-lun-Curl Bíceps (barra)-2": {
+      "peso": "31",
+      "timestamp": "2026-08-31T22:13:34.097Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -2922,5 +2936,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-31T21:48:26.853Z"
+  "timestamp": "2026-08-31T22:13:37.106Z"
 }
