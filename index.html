@@ -4412,6 +4412,7 @@ let _habitosMsgUmbral = {};
 let _habitosFormVisible = false;
 let _habitosEditId = null;
 let _habitosFiltroId = '';
+let _habitosViewFecha = '';
 
 function getHabitosDatos() {
   try { return JSON.parse(localStorage.getItem(uk('habitos-datos')) || '{}'); }
@@ -4539,35 +4540,30 @@ function toggleHabitosForm() {
   renderHabitos(document.getElementById('mainContent'));
 }
 function showHabitosHeatmapDay(fechaStr) {
-  const tooltip = document.getElementById('hab-heatmap-tooltip');
-  if (!tooltip) return;
-  if (tooltip.dataset.fecha === fechaStr && tooltip.style.display !== 'none') {
-    tooltip.style.display = 'none'; return;
-  }
-  tooltip.dataset.fecha = fechaStr;
-  const d = getHabitosDatos();
-  const habitos = d.habitos || [];
-  const regDia = (d.registros || {})[fechaStr] || {};
-  let html = '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:8px">' + fechaStr + '</div>';
-  if (!habitos.length || !Object.keys(regDia).length) {
-    html += '<div style="font-size:12px;color:var(--muted)">Sin registro este día</div>';
-  } else {
-    habitos.forEach(function(h) {
-      const r = regDia[h.id] || {};
-      const check = r.completado ? '✓' : '·';
-      const checkColor = r.completado ? 'var(--ok)' : 'var(--muted)';
-      let valStr = '';
-      if (h.tipo === 'numerico' && r.valor !== undefined) {
-        valStr = '  ' + r.valor + (h.objetivo ? ' / ' + h.objetivo : '');
-      }
-      html += '<div style="display:flex;gap:6px;font-size:12px;margin-bottom:4px">'
-        + '<span style="color:' + checkColor + ';font-weight:700;width:12px">' + check + '</span>'
-        + '<span>' + h.nombre + valStr + '</span>'
-        + '</div>';
-    });
-  }
-  tooltip.innerHTML = html;
-  tooltip.style.display = 'block';
+  const hoy = habDateStr(new Date());
+  _habitosViewFecha = (fechaStr === hoy) ? '' : fechaStr;
+  renderHabitos(document.getElementById('mainContent'));
+  const mc = document.getElementById('mainContent');
+  if (mc) mc.scrollTop = 0;
+}
+function navHabitosFecha(delta) {
+  const hoy = habDateStr(new Date());
+  const base = _habitosViewFecha || hoy;
+  const p = base.split('-');
+  const d = new Date(parseInt(p[0]), parseInt(p[1])-1, parseInt(p[2]));
+  d.setDate(d.getDate() + delta);
+  const nueva = habDateStr(d);
+  if (nueva > hoy) return;
+  _habitosViewFecha = (nueva === hoy) ? '' : nueva;
+  renderHabitos(document.getElementById('mainContent'));
+}
+function habitosFechaLabel(fechaStr) {
+  if (!fechaStr) return 'Hoy';
+  const p = fechaStr.split('-');
+  const d = new Date(parseInt(p[0]), parseInt(p[1])-1, parseInt(p[2]));
+  const dias = ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'];
+  const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return dias[d.getDay()] + ' ' + d.getDate() + ' ' + meses[d.getMonth()];
 }
 function cambiarFiltroHabitos(val) {
   _habitosFiltroId = val;
@@ -4590,9 +4586,10 @@ function renderHabitos(main) {
   const isDark = document.body.classList.contains('dark');
   const now = new Date();
   const hoy = habDateStr(now);
+  const viewFecha = _habitosViewFecha || hoy;
   const habitos = d.habitos || [];
   const registros = d.registros || {};
-  const regHoy = registros[hoy] || {};
+  const regView = registros[viewFecha] || {};
 
   let html = '<div style="padding:16px;max-width:600px;margin:0 auto">';
 
@@ -4646,14 +4643,22 @@ function renderHabitos(main) {
     }
   }
 
-  // Lista de hábitos de hoy
+  // Lista de hábitos del día seleccionado
+  const esPasado = viewFecha !== hoy;
   html += '<div class="rehab-card">';
-  html += '<div class="rehab-title" style="margin-bottom:14px">Hoy</div>';
+  html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">';
+  html += '<button onclick="navHabitosFecha(-1)" style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--accent);padding:0 6px;line-height:1">&lsaquo;</button>';
+  html += '<span class="rehab-title" style="margin:0;flex:1;text-align:center">' + habitosFechaLabel(esPasado ? viewFecha : '') + '</span>';
+  html += '<button onclick="navHabitosFecha(1)" style="background:none;border:none;cursor:pointer;font-size:18px;padding:0 6px;line-height:1;' + (esPasado ? 'color:var(--accent)' : 'color:var(--border);cursor:default') + '">&rsaquo;</button>';
+  html += '</div>';
+  if (esPasado) {
+    html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);text-align:center;margin-bottom:10px;margin-top:-8px">' + viewFecha + '</div>';
+  }
   if (habitos.length === 0) {
     html += '<div style="font-size:13px;color:var(--muted);margin-bottom:12px">Sin hábitos configurados aún. Agrega el primero abajo.</div>';
   } else {
     habitos.forEach(function(h) {
-      const reg = regHoy[h.id] || {};
+      const reg = regView[h.id] || {};
       if (_habitosEditId === h.id) {
         html += '<div style="background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);padding:12px;margin-bottom:8px">';
         html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:8px">Editar hábito</div>';
@@ -4670,13 +4675,13 @@ function renderHabitos(main) {
       } else {
         html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)">';
         if (h.tipo === 'binario') {
-          html += '<input type="checkbox" ' + (reg.completado?'checked':'') + ' onchange="toggleHabitoCheck(\'' + hoy + '\',\'' + h.id + '\')" style="width:20px;height:20px;cursor:pointer;flex-shrink:0">';
+          html += '<input type="checkbox" ' + (reg.completado?'checked':'') + ' onchange="toggleHabitoCheck(\'' + viewFecha + '\',\'' + h.id + '\')" style="width:20px;height:20px;cursor:pointer;flex-shrink:0">';
           html += '<span style="flex:1;font-size:14px' + (reg.completado?';color:var(--ok);text-decoration:line-through':'') + '">' + h.nombre + '</span>';
         } else {
           html += '<div style="flex:1">';
           html += '<div style="font-size:13px;margin-bottom:4px' + (reg.completado?';color:var(--ok)':'') + '">' + h.nombre + '</div>';
           html += '<div style="display:flex;align-items:center;gap:6px">';
-          html += '<input class="cut-input" type="number" value="' + (reg.valor!==undefined?reg.valor:'') + '" placeholder="0" style="width:90px;padding:6px 8px;text-align:center" onchange="guardarValorHabito(\'' + hoy + '\',\'' + h.id + '\',this.value)">';
+          html += '<input class="cut-input" type="number" value="' + (reg.valor!==undefined?reg.valor:'') + '" placeholder="0" style="width:90px;padding:6px 8px;text-align:center" onchange="guardarValorHabito(\'' + viewFecha + '\',\'' + h.id + '\',this.value)">';
           if (h.objetivo) html += '<span style="font-size:12px;color:var(--muted);font-family:var(--font-mono)">/ ' + h.objetivo.toLocaleString() + '</span>';
           if (reg.completado) html += '<span style="font-size:12px;color:var(--ok)">&#10003;</span>';
           html += '</div></div>';
@@ -4741,7 +4746,6 @@ function renderHabitos(main) {
       + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#F9A825;vertical-align:middle;margin-right:3px"></span>1-49%</span>'
       + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#E5E5E3;vertical-align:middle;margin-right:3px"></span>sin dato</span>'
       + '</div>';
-    html += '<div id="hab-heatmap-tooltip" style="display:none" class="rehab-heatmap-tooltip"></div>';
     html += '</div>';
 
     // Curva de crecimiento
