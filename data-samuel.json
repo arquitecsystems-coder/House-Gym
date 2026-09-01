@@ -1980,7 +1980,13 @@
     },
     "M6-S3-mar-Press Francés (barra)-1": {
       "peso": "33",
-      "timestamp": "2026-09-01T16:16:01.064Z",
+      "timestamp": "2026-09-01T16:16:15.450Z",
+      "reps": "7",
+      "checked": true
+    },
+    "M6-S3-mar-Press Francés (barra)-2": {
+      "peso": "33",
+      "timestamp": "2026-09-01T16:16:17.058Z",
       "reps": "6",
       "checked": true
     }
@@ -2990,5 +2996,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-09-01T16:16:04.073Z"
+  "timestamp": "2026-09-01T16:16:20.064Z"
 }
