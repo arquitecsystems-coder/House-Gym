@@ -1935,10 +1935,22 @@
       "timestamp": "2026-08-31T22:14:40.363Z",
       "reps": "11",
       "checked": true
+    },
+    "M6-S3-lun-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-31T22:20:19.596Z",
+      "reps": "10",
+      "checked": true
+    },
+    "M6-S3-mar-Remo Pendlay (barra)-1": {
+      "peso": "60",
+      "timestamp": "2026-09-01T15:28:38.406Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-31T21:37:35.317Z",
+    "_syncTs": "2026-08-31T22:14:43.376Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2418,7 +2430,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-31T21:37:35.317Z"
+    "_syncTs": "2026-08-31T22:14:43.376Z"
   },
   "test": {},
   "actividad": {
@@ -2942,5 +2954,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-08-31T22:14:43.376Z"
+  "timestamp": "2026-09-01T15:28:41.458Z"
 }
