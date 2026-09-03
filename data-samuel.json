@@ -2044,10 +2044,16 @@
       "timestamp": "2026-09-03T20:05:57.909Z",
       "reps": "10",
       "checked": true
+    },
+    "M6-S3-jue-Curl Bíceps (barra)-2": {
+      "peso": "25",
+      "timestamp": "2026-09-03T20:07:03.497Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-01T16:16:20.064Z",
+    "_syncTs": "2026-09-03T20:06:00.923Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2527,7 +2533,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-01T16:16:20.064Z"
+    "_syncTs": "2026-09-03T20:06:00.923Z"
   },
   "test": {},
   "actividad": {
@@ -2741,6 +2747,19 @@
             "carbs": 2.6,
             "grasas": 25.5,
             "unidades": 4
+          }
+        ]
+      },
+      "2026-09-03": {
+        "comidas": [
+          {
+            "foodId": "arroz_cocinado",
+            "nombre": "Arroz cocinado",
+            "gramos": 150,
+            "kcal": 195,
+            "prot": 4.1,
+            "carbs": 42,
+            "grasas": 0.5
           }
         ]
       }
@@ -3051,5 +3070,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-09-03T20:06:00.923Z"
+  "timestamp": "2026-09-03T20:45:02.521Z"
 }
