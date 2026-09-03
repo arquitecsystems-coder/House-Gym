@@ -2796,6 +2796,15 @@
             "prot": 0,
             "carbs": 9,
             "grasas": 0
+          },
+          {
+            "foodId": "lomo_cerdo",
+            "nombre": "Lomo de cerdo",
+            "gramos": 150,
+            "kcal": 215,
+            "prot": 31.5,
+            "carbs": 0,
+            "grasas": 9
           }
         ]
       }
@@ -3106,5 +3115,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-09-03T20:45:49.309Z"
+  "timestamp": "2026-09-03T20:46:16.637Z"
 }
