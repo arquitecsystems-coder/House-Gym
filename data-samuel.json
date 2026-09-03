@@ -1989,10 +1989,17 @@
       "timestamp": "2026-09-01T16:16:17.058Z",
       "reps": "6",
       "checked": true
+    },
+    "M6-S3-jue-Press Inclinado (barra)-1": {
+      "peso": "52,5",
+      "timestamp": "2026-09-03T19:08:07.506Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-31T22:14:43.376Z",
+    "_syncTs": "2026-09-01T16:16:20.064Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2472,7 +2479,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-08-31T22:14:43.376Z"
+    "_syncTs": "2026-09-01T16:16:20.064Z"
   },
   "test": {},
   "actividad": {
@@ -2996,5 +3003,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-09-01T16:16:20.064Z"
+  "timestamp": "2026-09-03T19:08:06.272Z"
 }
