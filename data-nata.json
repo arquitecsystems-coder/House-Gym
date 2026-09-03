@@ -1764,7 +1764,10 @@
     },
     "N1-S6-lun-Curl bíceps (barra)-1": {
       "peso": "5",
-      "timestamp": "2026-09-03T21:56:05.752Z"
+      "timestamp": "2026-09-03T21:58:11.809Z",
+      "reps": "14",
+      "checked": true,
+      "rir": "0"
     },
     "N1-S6-lun-Curl bíceps (barra)-2": {
       "peso": "5",
@@ -2411,5 +2414,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-03T21:56:56.485Z"
+  "timestamp": "2026-09-03T21:58:14.830Z"
 }
