@@ -2008,6 +2008,16 @@
       "timestamp": "2026-09-03T19:18:16.098Z",
       "reps": "10",
       "checked": true
+    },
+    "M6-S3-jue-Press Banca (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-09-03T19:43:43.482Z",
+      "reps": "5",
+      "checked": true
+    },
+    "M6-S3-jue-Press Banca (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-09-03T19:43:46.825Z"
     }
   },
   "rehab": {
@@ -3015,5 +3025,5 @@
       "grasas": 22
     }
   ],
-  "timestamp": "2026-09-03T19:18:19.104Z"
+  "timestamp": "2026-09-03T19:43:46.491Z"
 }
