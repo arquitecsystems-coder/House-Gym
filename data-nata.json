@@ -1734,6 +1734,18 @@
     "N1-S5-vie-Hip thrust (barra)-3": {
       "checked": true,
       "timestamp": "2026-08-31T02:07:12.271Z"
+    },
+    "N1-S6-lun-Sentadilla trasera (barra)-1": {
+      "peso": "35",
+      "timestamp": "2026-09-03T21:41:51.855Z"
+    },
+    "N1-S6-lun-Sentadilla trasera (barra)-2": {
+      "peso": "35",
+      "timestamp": "2026-09-03T21:41:54.551Z"
+    },
+    "N1-S6-lun-Sentadilla trasera (barra)-3": {
+      "peso": "35",
+      "timestamp": "2026-09-03T21:41:57.474Z"
     }
   },
   "rehab": {},
@@ -2372,5 +2384,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-03T21:35:59.493Z"
+  "timestamp": "2026-09-03T21:42:00.482Z"
 }
