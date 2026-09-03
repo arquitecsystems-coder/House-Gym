@@ -1914,7 +1914,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-01T01:07:45.937Z"
+    "_syncTs": "2026-09-02T03:20:57.530Z"
   },
   "test": {
     "test": {
@@ -2350,6 +2350,11 @@
           "valor": 1500,
           "completado": false
         }
+      },
+      "2026-09-03": {
+        "h_1786988283320": {
+          "completado": true
+        }
       }
     },
     "resumenVisto": {}
@@ -2359,5 +2364,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-02T03:20:57.530Z"
+  "timestamp": "2026-09-03T21:35:38.416Z"
 }
