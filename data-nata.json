@@ -1834,6 +1834,14 @@
       "reps": "9",
       "checked": true,
       "rir": "0"
+    },
+    "N1-S6-mie-RDL (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-09-04T22:39:41.447Z"
+    },
+    "N1-S6-mie-RDL (barra)-2": {
+      "peso": "25",
+      "timestamp": "2026-09-04T22:39:43.942Z"
     }
   },
   "rehab": {},
@@ -2504,5 +2512,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T22:37:18.950Z"
+  "timestamp": "2026-09-04T22:39:46.953Z"
 }
