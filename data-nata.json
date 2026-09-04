@@ -1885,16 +1885,16 @@
       "rir": "1"
     },
     "N1-S6-mie-Remo Pendlay (barra)-1": {
-      "peso": "20",
-      "timestamp": "2026-09-04T23:27:55.386Z"
+      "peso": "25",
+      "timestamp": "2026-09-04T23:30:13.217Z"
     },
     "N1-S6-mie-Remo Pendlay (barra)-2": {
-      "peso": "20",
-      "timestamp": "2026-09-04T23:27:58.156Z"
+      "peso": "25",
+      "timestamp": "2026-09-04T23:30:15.940Z"
     },
     "N1-S6-mie-Remo Pendlay (barra)-3": {
-      "peso": "2",
-      "timestamp": "2026-09-04T23:28:00.906Z"
+      "peso": "25",
+      "timestamp": "2026-09-04T23:30:18.925Z"
     }
   },
   "rehab": {},
@@ -2565,5 +2565,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T23:28:03.940Z"
+  "timestamp": "2026-09-04T23:30:21.934Z"
 }
