@@ -1813,6 +1813,18 @@
       "reps": "60",
       "timestamp": "2026-09-03T22:49:03.301Z",
       "checked": true
+    },
+    "N1-S6-mie-Elevación lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-09-04T22:29:33.123Z"
+    },
+    "N1-S6-mie-Elevación lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-04T22:29:36.012Z"
+    },
+    "N1-S6-mie-Elevación lateral (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-09-04T22:29:37.907Z"
     }
   },
   "rehab": {},
@@ -2483,5 +2495,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T22:27:09.711Z"
+  "timestamp": "2026-09-04T22:29:41.387Z"
 }
