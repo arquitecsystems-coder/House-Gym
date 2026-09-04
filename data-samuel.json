@@ -2855,6 +2855,15 @@
             "prot": 4.1,
             "carbs": 42,
             "grasas": 0.5
+          },
+          {
+            "foodId": "mtn9u8wwn0rc",
+            "nombre": "Plátano Maduro Frito",
+            "gramos": 35,
+            "kcal": 81,
+            "prot": 0.4,
+            "carbs": 11.2,
+            "grasas": 3.9
           }
         ]
       }
@@ -3163,7 +3172,15 @@
       "prot": 22,
       "carbs": 2.2,
       "grasas": 22
+    },
+    {
+      "id": "mtn9u8wwn0rc",
+      "nombre": "Plátano Maduro Frito",
+      "kcal": 230,
+      "prot": 1,
+      "carbs": 32,
+      "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T18:10:06.580Z"
+  "timestamp": "2026-09-04T18:12:44.845Z"
 }
