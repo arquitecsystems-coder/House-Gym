@@ -1886,13 +1886,17 @@
     },
     "N1-S6-mie-Remo Pendlay (barra)-1": {
       "peso": "25",
-      "timestamp": "2026-09-04T23:30:26.072Z",
+      "timestamp": "2026-09-04T23:33:39.780Z",
       "reps": "8",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     },
     "N1-S6-mie-Remo Pendlay (barra)-2": {
       "peso": "25",
-      "timestamp": "2026-09-04T23:30:15.940Z"
+      "timestamp": "2026-09-04T23:33:41.660Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     },
     "N1-S6-mie-Remo Pendlay (barra)-3": {
       "peso": "25",
@@ -2567,5 +2571,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T23:30:29.078Z"
+  "timestamp": "2026-09-04T23:33:44.678Z"
 }
