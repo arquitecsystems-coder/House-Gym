@@ -2086,6 +2086,12 @@
       "timestamp": "2026-09-04T22:34:07.798Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S3-vie-Pullover (DB)-1": {
+      "peso": "0",
+      "timestamp": "2026-09-04T22:37:32.031Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -3218,5 +3224,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T22:34:10.805Z"
+  "timestamp": "2026-09-04T22:37:35.038Z"
 }
