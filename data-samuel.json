@@ -2056,6 +2056,12 @@
       "timestamp": "2026-09-04T22:14:14.352Z",
       "reps": "9",
       "checked": true
+    },
+    "M6-S3-vie-Remo Pendlay (barra)-2": {
+      "peso": "50",
+      "timestamp": "2026-09-04T22:19:08.329Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -3188,5 +3194,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T22:14:17.364Z"
+  "timestamp": "2026-09-04T22:19:11.338Z"
 }
