@@ -2096,6 +2096,12 @@
     "nota-sesion-M6-S3-vie": {
       "nota": "Las series que apunten en el PB realmente son series de elevaciones de pierna ",
       "timestamp": "2026-09-04T22:38:26.633Z"
+    },
+    "M6-S3-vie-Pullover (DB)-2": {
+      "peso": "0",
+      "timestamp": "2026-09-04T22:42:52.687Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -3228,5 +3234,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T22:38:29.635Z"
+  "timestamp": "2026-09-04T22:42:55.695Z"
 }
