@@ -2102,6 +2102,12 @@
       "timestamp": "2026-09-04T22:42:52.687Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S3-vie-Press Francés (barra)-1": {
+      "peso": "27,5",
+      "timestamp": "2026-09-04T22:59:13.762Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -3234,5 +3240,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T22:42:55.695Z"
+  "timestamp": "2026-09-04T22:59:16.834Z"
 }
