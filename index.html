@@ -3903,12 +3903,22 @@ function getActividadColor(reg, objetivo, isDark) {
   return '#F9A825';
 }
 
+var _actividadViewFecha = '';
+var _analisisView = false;
+var _analisisIntervalo = 7;
+var _analisisTipo = 'kcal';
+var _analisisExpandedDay = '';
+var MACRO_COL = { kcal: '#2563EB', prot: '#16A34A', carbs: '#DC2626', grasas: '#EA580C' };
+
 function renderActividad(main) {
+  if (_analisisView) { renderAnalisisView(main); return; }
   const d = getActividadDatos();
   const isDark = document.body.classList.contains('dark');
   const now = new Date();
   const hoy = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+  const viewFecha = _actividadViewFecha || hoy;
   const regHoy = d.registros?.[hoy] || {};
+  const regView = d.registros?.[viewFecha] || {};
   const objetivo = d.objetivoPasos || 0;
   const TIPOS_CARDIO = ['Caminata', 'Trote / Carrera', 'HIIT', 'Bici', 'Natación', 'Elíptica', 'Otro'];
 
@@ -4014,45 +4024,56 @@ function renderActividad(main) {
 
   html += '</div>';
 
-  // ── Calorías de hoy ──
+  // ── Calorías (dia navegable) ──
   const lib = getFoodLibrary();
-  const comidas = regHoy.comidas || [];
+  const comidas = regView.comidas || [];
   const totales = calcDayTotals(comidas);
   const cutSetup = getCutDatos().setup;
   const kcalTarget = cutSetup ? cutSetup.cals : 0;
+  const esPasadoCal = viewFecha !== hoy;
+  var fechaCalLabel = 'Hoy';
+  if (esPasadoCal) {
+    var _fcp = viewFecha.split('-');
+    var _fcd = new Date(parseInt(_fcp[0]), parseInt(_fcp[1])-1, parseInt(_fcp[2]));
+    var _dias7 = ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'];
+    var _mes7 = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    fechaCalLabel = _dias7[_fcd.getDay()] + ' ' + _fcd.getDate() + ' ' + _mes7[_fcd.getMonth()];
+  }
 
   html += '<div class="rehab-card">';
-  html += '<div class="rehab-title" style="margin-bottom:12px">Calorías</div>';
+  html += '<div style="display:flex;align-items:center;gap:4px;margin-bottom:12px">';
+  html += '<button onclick="navActividadFecha(-1)" style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--accent);padding:0 4px;line-height:1;flex-shrink:0">&lsaquo;</button>';
+  html += '<span class="rehab-title" style="flex:1;text-align:center;margin:0">Calorias &nbsp;<span style="font-weight:400;font-size:11px;color:var(--muted)">' + fechaCalLabel + '</span></span>';
+  html += '<button onclick="navActividadFecha(1)" style="background:none;border:none;cursor:pointer;font-size:20px;padding:0 4px;line-height:1;flex-shrink:0;' + (esPasadoCal ? 'color:var(--accent)' : 'color:var(--border);pointer-events:none') + '">&rsaquo;</button>';
+  html += '<button onclick="openAnalisis()" style="flex-shrink:0;background:none;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:11px;color:var(--accent);padding:3px 7px;font-family:var(--font-mono)">...</button>';
+  html += '</div>';
 
   if (comidas.length > 0) {
-    // Totales macro row
     html += '<div style="display:flex;gap:8px;text-align:center;margin-bottom:12px">';
-    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + totales.kcal + '</div><div style="font-size:10px;color:var(--muted)">kcal</div></div>';
-    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + Math.round(totales.prot) + 'g</div><div style="font-size:10px;color:var(--muted)">prot</div></div>';
-    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + Math.round(totales.carbs) + 'g</div><div style="font-size:10px;color:var(--muted)">carbs</div></div>';
-    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700">' + Math.round(totales.grasas) + 'g</div><div style="font-size:10px;color:var(--muted)">grasas</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:' + MACRO_COL.kcal + '">' + totales.kcal + '</div><div style="font-size:10px;color:var(--muted)">kcal</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:' + MACRO_COL.prot + '">' + Math.round(totales.prot) + 'g</div><div style="font-size:10px;color:var(--muted)">prot</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:' + MACRO_COL.carbs + '">' + Math.round(totales.carbs) + 'g</div><div style="font-size:10px;color:var(--muted)">carbs</div></div>';
+    html += '<div style="flex:1"><div style="font-family:var(--font-mono);font-size:20px;font-weight:700;color:' + MACRO_COL.grasas + '">' + Math.round(totales.grasas) + 'g</div><div style="font-size:10px;color:var(--muted)">grasas</div></div>';
     html += '</div>';
     if (kcalTarget > 0) {
       const pct = Math.min(1, totales.kcal / kcalTarget);
-      const barColor = totales.kcal > kcalTarget * 1.05 ? 'var(--warn)' : 'var(--ok)';
+      const barColor = totales.kcal > kcalTarget * 1.05 ? 'var(--warn)' : MACRO_COL.kcal;
       html += '<div style="background:var(--border);border-radius:4px;height:6px;margin-bottom:10px">';
       html += '<div style="background:' + barColor + ';height:6px;border-radius:4px;width:' + Math.round(pct*100) + '%"></div></div>';
       html += '<div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-bottom:10px;text-align:right">' + totales.kcal + ' / ' + kcalTarget + ' kcal objetivo</div>';
     }
-    // List of today's foods
     comidas.forEach(function(c, i) {
       html += '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">';
       html += '<div style="flex:1"><div style="font-size:13px">' + c.nombre + '</div>';
       var cantLabel = c.unidades != null ? c.unidades + (c.unidades === 1 ? ' unidad' : ' unidades') : c.gramos + 'g';
-      html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted)">' + cantLabel + ' &nbsp;· ' + c.kcal + ' kcal &nbsp;P:' + c.prot + 'g C:' + c.carbs + 'g G:' + c.grasas + 'g</div></div>';
-      html += '<button onclick="removeLogEntry(\'' + hoy + '\',' + i + ')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px 6px">&#xD7;</button>';
+      html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted)">' + cantLabel + ' &nbsp;&middot; <span style="color:' + MACRO_COL.kcal + '">' + c.kcal + 'kcal</span> P:<span style="color:' + MACRO_COL.prot + '">' + c.prot + '</span> C:<span style="color:' + MACRO_COL.carbs + '">' + c.carbs + '</span> G:<span style="color:' + MACRO_COL.grasas + '">' + c.grasas + '</span>g</div></div>';
+      html += '<button onclick="removeLogEntry(\'' + viewFecha + '\',' + i + ')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px 6px">&#xD7;</button>';
       html += '</div>';
     });
   } else {
-    html += '<div style="font-size:12px;color:var(--muted);margin-bottom:10px">Sin registro de calorías hoy.</div>';
+    html += '<div style="font-size:12px;color:var(--muted);margin-bottom:10px">Sin registro de calorias ' + (esPasadoCal ? 'ese dia.' : 'hoy.') + '</div>';
   }
 
-  // Add food button / inline form
   if (lib.length === 0) {
     html += '<div style="font-size:12px;color:var(--muted);border:1px dashed var(--border);border-radius:var(--radius);padding:10px;text-align:center">Agrega alimentos a tu biblioteca para empezar a registrar.</div>';
   } else {
@@ -4066,10 +4087,38 @@ function renderActividad(main) {
     html += '<div style="display:flex;gap:6px;align-items:center">';
     html += '<input id="food-gramos" class="cut-input" type="number" placeholder="gramos" step="any" style="flex:1;padding:7px 8px;text-align:center">';
     html += '<span id="food-unit-label" style="font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap">g</span>';
-    html += '<button onclick="logFoodEntryFromUI(\'' + hoy + '\')" style="padding:7px 16px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px;white-space:nowrap">OK</button>';
+    html += '<button onclick="logFoodEntryFromUI(\'' + viewFecha + '\')" style="padding:7px 16px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:13px;white-space:nowrap">OK</button>';
     html += '</div></div>';
   }
   html += '</div>';
+
+  // ── Promedios 7 dias (donas) ──
+  var dias7 = getAnalisisDias(7);
+  var dias7Data = dias7.filter(function(d) { return d.kcal > 0; });
+  if (dias7Data.length >= 2) {
+    var avg7 = function(key) { return Math.round(dias7Data.reduce(function(a,d){return a+d[key];},0)/dias7Data.length); };
+    var avgK = avg7('kcal'), avgP = avg7('prot'), avgC = avg7('carbs'), avgG = avg7('grasas');
+    var mkDona = function(val, max, col, lbl) {
+      var pct = max > 0 ? Math.min(1, val/max) : 0;
+      var r = 22, cx = 28, cy = 28, sz = 56, circ = +(2*3.14159*r).toFixed(1), dash = +(pct*circ).toFixed(1);
+      return '<div style="flex:1;text-align:center">'
+        + '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 ' + sz + ' ' + sz + '">'
+        + '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="var(--border)" stroke-width="5"/>'
+        + (pct > 0 ? '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="5" stroke-linecap="round" stroke-dasharray="' + dash + ' ' + circ + '" transform="rotate(-90 ' + cx + ' ' + cy + ')"/>' : '')
+        + '<text x="' + cx + '" y="' + (cy+4) + '" text-anchor="middle" style="fill:var(--text);font-size:9px;font-family:monospace;font-weight:700">' + val + '</text>'
+        + '</svg>'
+        + '<div style="font-size:10px;color:' + col + ';font-family:var(--font-mono)">' + lbl + '</div>'
+        + '</div>';
+    };
+    html += '<div class="rehab-card" style="padding:10px 12px">';
+    html += '<div class="rehab-title" style="margin-bottom:10px;font-size:10px">Promedio 7 dias</div>';
+    html += '<div style="display:flex;gap:4px">';
+    html += mkDona(avgK, kcalTarget, MACRO_COL.kcal, 'kcal');
+    html += mkDona(avgP, 0, MACRO_COL.prot, 'prot');
+    html += mkDona(avgC, 0, MACRO_COL.carbs, 'carbs');
+    html += mkDona(avgG, 0, MACRO_COL.grasas, 'grasas');
+    html += '</div></div>';
+  }
 
   // ── TDEE Estimado ──
   const tdeeData = estimateTDEE();
@@ -4170,6 +4219,168 @@ function showActividadHeatmapDay(fechaStr) {
   }
   tooltip.innerHTML = html;
   tooltip.style.display = 'block';
+}
+
+// ── Actividad / Calorias: funciones de navegacion y analisis ──
+
+function navActividadFecha(delta) {
+  var now = new Date();
+  var hoy = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+  var base = _actividadViewFecha || hoy;
+  var p = base.split('-');
+  var d = new Date(parseInt(p[0]), parseInt(p[1])-1, parseInt(p[2]));
+  d.setDate(d.getDate() + delta);
+  var nueva = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  if (nueva > hoy) return;
+  _actividadViewFecha = (nueva === hoy) ? '' : nueva;
+  renderActividad(document.getElementById('mainContent'));
+}
+function openAnalisis() { _analisisView = true; _analisisExpandedDay = ''; renderActividad(document.getElementById('mainContent')); }
+function closeAnalisis() { _analisisView = false; renderActividad(document.getElementById('mainContent')); }
+function setAnalisisIntervalo(n) { _analisisIntervalo = n; _analisisExpandedDay = ''; renderActividad(document.getElementById('mainContent')); }
+function setAnalisisTipo(t) { _analisisTipo = t; renderActividad(document.getElementById('mainContent')); }
+function toggleAnalisisDia(f) { _analisisExpandedDay = (_analisisExpandedDay === f) ? '' : f; renderActividad(document.getElementById('mainContent')); }
+
+function getAnalisisDias(intervalo) {
+  var d = getActividadDatos();
+  var registros = d.registros || {};
+  var now = new Date();
+  var days = [];
+  for (var i = intervalo - 1; i >= 0; i--) {
+    var dt = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+    var f = dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0') + '-' + String(dt.getDate()).padStart(2,'0');
+    var reg = registros[f] || {};
+    var t = calcDayTotals(reg.comidas || []);
+    days.push({ fecha: f, kcal: t.kcal, prot: Math.round(t.prot), carbs: Math.round(t.carbs), grasas: Math.round(t.grasas), comidas: reg.comidas || [] });
+  }
+  return days;
+}
+
+function buildBarChartSVG(dias, tipo, target) {
+  var color = MACRO_COL[tipo];
+  var vals = dias.map(function(d) { return d[tipo] || 0; });
+  var daysWithData = dias.filter(function(d) { return d.kcal > 0; });
+  var avg = daysWithData.length > 0 ? Math.round(daysWithData.reduce(function(a,d){return a+d[tipo];},0)/daysWithData.length) : 0;
+  var maxVal = Math.max.apply(null, [target || 0, avg, 1].concat(vals));
+  var barW = 26, gap = 3, padL = 34, padR = 44, padT = 12, padB = 22, chartH = 110;
+  var N = dias.length;
+  var svgW = padL + (N+1)*(barW+gap) + padR;
+  var svgH = chartH + padT + padB;
+  var yFor = function(v) { return padT + chartH - Math.round((v/maxVal)*chartH); };
+  var xFor = function(i) { return padL + i*(barW+gap); };
+  var s = '<svg width="' + svgW + '" height="' + svgH + '" style="display:block">';
+  s += '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT+chartH) + '" stroke="var(--border)" stroke-width="1"/>';
+  s += '<line x1="' + padL + '" y1="' + (padT+chartH) + '" x2="' + (svgW-padR+4) + '" y2="' + (padT+chartH) + '" stroke="var(--border)" stroke-width="1"/>';
+  var mxLbl = maxVal >= 1000 ? (maxVal/1000).toFixed(1)+'k' : String(Math.round(maxVal));
+  s += '<text x="' + (padL-3) + '" y="' + (padT+8) + '" text-anchor="end" style="fill:var(--muted);font-size:9px;font-family:monospace">' + mxLbl + '</text>';
+  s += '<text x="' + (padL-3) + '" y="' + (padT+chartH) + '" text-anchor="end" style="fill:var(--muted);font-size:9px;font-family:monospace">0</text>';
+  if (target > 0) {
+    var ty = yFor(target);
+    s += '<line x1="' + padL + '" y1="' + ty + '" x2="' + (padL+(N+1)*(barW+gap)) + '" y2="' + ty + '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 3"/>';
+    var tLbl = target >= 1000 ? (target/1000).toFixed(1)+'k' : String(target);
+    s += '<text x="' + (padL+(N+1)*(barW+gap)+4) + '" y="' + (ty+4) + '" style="fill:var(--muted);font-size:9px;font-family:monospace">' + tLbl + '</text>';
+  }
+  dias.forEach(function(d, i) {
+    var v = d[tipo] || 0;
+    var bH = v > 0 ? Math.max(3, Math.round((v/maxVal)*chartH)) : 2;
+    var by = v > 0 ? yFor(v) : (padT+chartH-2);
+    var x = xFor(i);
+    s += '<rect x="' + x + '" y="' + by + '" width="' + barW + '" height="' + bH + '" rx="2" fill="' + (v > 0 ? color : '#ddd') + '" fill-opacity="' + (v > 0 ? '0.8' : '1') + '"/>';
+    var dparts = d.fecha.split('-');
+    s += '<text x="' + (x+barW/2) + '" y="' + (padT+chartH+14) + '" text-anchor="middle" style="fill:var(--muted);font-size:9px;font-family:monospace">' + parseInt(dparts[2]) + '</text>';
+    if (v > 0 && bH > 16) {
+      var vLbl = v >= 1000 ? (v/1000).toFixed(1)+'k' : String(v);
+      s += '<text x="' + (x+barW/2) + '" y="' + (by+11) + '" text-anchor="middle" style="fill:#fff;font-size:8px;font-family:monospace;font-weight:700">' + vLbl + '</text>';
+    }
+  });
+  var ax = xFor(N);
+  var abH = avg > 0 ? Math.max(3, Math.round((avg/maxVal)*chartH)) : 2;
+  var ay = avg > 0 ? yFor(avg) : (padT+chartH-2);
+  s += '<rect x="' + ax + '" y="' + ay + '" width="' + barW + '" height="' + abH + '" rx="2" fill="var(--text)"/>';
+  var aLbl = avg >= 1000 ? (avg/1000).toFixed(1)+'k' : String(avg);
+  s += '<text x="' + (ax+barW/2) + '" y="' + (ay-4) + '" text-anchor="middle" style="fill:var(--text);font-size:10px;font-family:monospace;font-weight:700">' + aLbl + '</text>';
+  s += '<text x="' + (ax+barW/2) + '" y="' + (padT+chartH+14) + '" text-anchor="middle" style="fill:var(--text);font-size:9px;font-family:monospace;font-weight:700">avg</text>';
+  s += '</svg>';
+  return { svg: s, avg: avg };
+}
+
+function renderAnalisisView(main) {
+  var dias = getAnalisisDias(_analisisIntervalo);
+  var cutSetup = getCutDatos().setup;
+  var kcalTarget = cutSetup ? cutSetup.cals : 0;
+  var target = _analisisTipo === 'kcal' ? kcalTarget : 0;
+  var chart = buildBarChartSVG(dias, _analisisTipo, target);
+  var TIPO_LABELS = { kcal: 'Calorias', prot: 'Proteina', carbs: 'Carbohidratos', grasas: 'Grasa' };
+  var TIPO_UNIDAD = { kcal: 'kcal', prot: 'g', carbs: 'g', grasas: 'g' };
+
+  var html = '<div style="padding:16px;max-width:600px;margin:0 auto">';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">';
+  html += '<button onclick="closeAnalisis()" style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--accent);padding:0;line-height:1">&larr;</button>';
+  html += '<span style="font-size:16px;font-weight:700;font-family:var(--font-mono)">Analisis</span>';
+  html += '</div>';
+
+  // Interval selector
+  html += '<div style="display:flex;gap:6px;margin-bottom:10px">';
+  [7, 14, 30].forEach(function(n) {
+    var active = _analisisIntervalo === n;
+    html += '<button onclick="setAnalisisIntervalo(' + n + ')" style="flex:1;padding:7px;border:1px solid ' + (active ? 'var(--accent)' : 'var(--border)') + ';background:' + (active ? 'var(--accent)' : 'var(--surface)') + ';color:' + (active ? '#fff' : 'var(--text)') + ';border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:12px">' + n + ' dias</button>';
+  });
+  html += '</div>';
+
+  // Type selector
+  html += '<div style="display:flex;gap:6px;margin-bottom:14px">';
+  ['kcal','prot','carbs','grasas'].forEach(function(t) {
+    var active = _analisisTipo === t;
+    var col = MACRO_COL[t];
+    html += '<button onclick="setAnalisisTipo(\'' + t + '\')" style="flex:1;padding:7px 4px;border:1px solid ' + (active ? col : 'var(--border)') + ';background:' + (active ? col : 'var(--surface)') + ';color:' + (active ? '#fff' : 'var(--text)') + ';border-radius:var(--radius);cursor:pointer;font-family:var(--font-mono);font-size:11px">' + TIPO_LABELS[t] + '</button>';
+  });
+  html += '</div>';
+
+  // Bar chart
+  html += '<div class="rehab-card" style="padding:12px;overflow-x:auto">';
+  html += '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:8px">' + TIPO_LABELS[_analisisTipo] + ' (' + TIPO_UNIDAD[_analisisTipo] + ') &nbsp;&middot; promedio: <span style="color:var(--text);font-weight:700">' + chart.avg + ' ' + TIPO_UNIDAD[_analisisTipo] + '</span></div>';
+  html += chart.svg;
+  html += '</div>';
+
+  // Expandable day list
+  html += '<div class="rehab-card">';
+  html += '<div style="font-size:13px;font-weight:600;margin-bottom:10px">Detalle por dia</div>';
+  var diasRev = dias.slice().reverse();
+  diasRev.forEach(function(d) {
+    var v = d[_analisisTipo] || 0;
+    var col = v > 0 ? MACRO_COL[_analisisTipo] : 'var(--muted)';
+    var isExpanded = _analisisExpandedDay === d.fecha;
+    html += '<div style="border-bottom:1px solid var(--border)">';
+    html += '<div onclick="toggleAnalisisDia(\'' + d.fecha + '\')" style="display:flex;align-items:center;gap:8px;padding:8px 0;cursor:pointer">';
+    html += '<span style="font-family:var(--font-mono);font-size:11px;color:var(--muted);width:76px;flex-shrink:0">' + d.fecha.slice(5).replace('-','/') + '</span>';
+    html += '<span style="font-family:var(--font-mono);font-size:14px;font-weight:700;flex:1;color:' + col + '">' + (v > 0 ? v + ' ' + TIPO_UNIDAD[_analisisTipo] : '—') + '</span>';
+    if (d.comidas.length > 0) {
+      html += '<span style="font-size:10px;color:var(--muted)">' + d.comidas.length + ' comidas &nbsp;' + (isExpanded ? '&#x25B2;' : '&#x25BC;') + '</span>';
+    }
+    html += '</div>';
+    if (isExpanded && d.comidas.length > 0) {
+      html += '<div style="padding-bottom:10px">';
+      d.comidas.forEach(function(c) {
+        var cl = c.unidades != null ? c.unidades + (c.unidades===1?' unidad':' unidades') : c.gramos+'g';
+        html += '<div style="display:flex;gap:8px;padding:4px 0;font-size:12px">';
+        html += '<span style="flex:1;color:var(--text)">' + c.nombre + '</span>';
+        html += '<span style="font-family:var(--font-mono);color:var(--muted)">' + cl + '</span>';
+        html += '<span style="font-family:var(--font-mono);color:' + MACRO_COL[_analisisTipo] + ';font-weight:600;min-width:60px;text-align:right">' + c[_analisisTipo] + ' ' + TIPO_UNIDAD[_analisisTipo] + '</span>';
+        html += '</div>';
+      });
+      var t = calcDayTotals(d.comidas);
+      html += '<div style="display:flex;gap:8px;padding:6px 0;border-top:1px solid var(--border);font-size:11px;font-family:var(--font-mono)">';
+      html += '<span style="color:' + MACRO_COL.kcal + '">' + t.kcal + ' kcal</span>';
+      html += '<span style="color:' + MACRO_COL.prot + '">P:' + Math.round(t.prot) + 'g</span>';
+      html += '<span style="color:' + MACRO_COL.carbs + '">C:' + Math.round(t.carbs) + 'g</span>';
+      html += '<span style="color:' + MACRO_COL.grasas + '">G:' + Math.round(t.grasas) + 'g</span>';
+      html += '</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+  html += '</div></div>';
+  main.innerHTML = html;
 }
 
 // ============================================================
