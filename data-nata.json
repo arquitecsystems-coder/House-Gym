@@ -1837,7 +1837,10 @@
     },
     "N1-S6-mie-RDL (barra)-1": {
       "peso": "25",
-      "timestamp": "2026-09-04T22:39:41.447Z"
+      "timestamp": "2026-09-04T22:41:45.204Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "2"
     },
     "N1-S6-mie-RDL (barra)-2": {
       "peso": "25",
@@ -2520,5 +2523,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T22:39:54.366Z"
+  "timestamp": "2026-09-04T22:41:45.018Z"
 }
