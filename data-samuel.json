@@ -2050,10 +2050,16 @@
       "timestamp": "2026-09-03T20:07:03.497Z",
       "reps": "7",
       "checked": true
+    },
+    "M6-S3-vie-Remo Pendlay (barra)-1": {
+      "peso": "50",
+      "timestamp": "2026-09-04T22:14:14.352Z",
+      "reps": "9",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-03T21:35:23.618Z",
+    "_syncTs": "2026-09-04T18:12:44.845Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2533,7 +2539,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-03T21:35:23.618Z"
+    "_syncTs": "2026-09-04T18:12:44.845Z"
   },
   "test": {},
   "actividad": {
@@ -3182,5 +3188,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T18:12:44.845Z"
+  "timestamp": "2026-09-04T22:14:17.364Z"
 }
