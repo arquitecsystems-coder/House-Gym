@@ -2092,6 +2092,10 @@
       "timestamp": "2026-09-04T22:37:32.031Z",
       "reps": "12",
       "checked": true
+    },
+    "nota-sesion-M6-S3-vie": {
+      "nota": "Las series que apunten en el PB realmente son series de elevaciones de pierna ",
+      "timestamp": "2026-09-04T22:38:26.633Z"
     }
   },
   "rehab": {
@@ -3224,5 +3228,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T22:37:35.038Z"
+  "timestamp": "2026-09-04T22:38:29.635Z"
 }
