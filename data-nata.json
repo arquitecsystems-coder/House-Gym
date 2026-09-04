@@ -1830,7 +1830,10 @@
     },
     "N1-S6-mie-Elevación lateral (mancuerna)-3": {
       "peso": "5",
-      "timestamp": "2026-09-04T22:29:37.907Z"
+      "timestamp": "2026-09-04T22:37:15.932Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {},
@@ -2501,5 +2504,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T22:34:24.017Z"
+  "timestamp": "2026-09-04T22:37:15.541Z"
 }
