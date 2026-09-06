@@ -703,8 +703,10 @@
       "checked": true
     },
     "D1-S4-sab-Flexión inclinada (banco)-1": {
-      "reps": "1",
-      "timestamp": "2026-09-06T15:33:24.489Z"
+      "reps": "6",
+      "timestamp": "2026-09-06T15:33:46.922Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -824,5 +826,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T15:33:27.503Z"
+  "timestamp": "2026-09-06T15:33:49.941Z"
 }
