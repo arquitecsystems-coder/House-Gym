@@ -701,10 +701,14 @@
       "timestamp": "2026-08-23T17:13:57.954Z",
       "reps": "13",
       "checked": true
+    },
+    "D1-S4-sab-Flexión inclinada (banco)-1": {
+      "reps": "1",
+      "timestamp": "2026-09-06T15:33:24.489Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-23T16:58:07.733Z",
+    "_syncTs": "2026-08-23T17:14:00.964Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -819,5 +823,6 @@
   "actividad": {},
   "habitos": {},
   "userProfile": {},
-  "timestamp": "2026-08-23T17:14:00.964Z"
+  "foodLibrary": [],
+  "timestamp": "2026-09-06T15:33:27.503Z"
 }
