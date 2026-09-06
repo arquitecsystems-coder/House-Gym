@@ -829,7 +829,8 @@
     },
     "D1-S4-dom-Dominada asistida (doble banda)-3": {
       "reps": "5",
-      "timestamp": "2026-09-06T17:25:33.721Z"
+      "timestamp": "2026-09-06T17:25:36.765Z",
+      "rir": "0"
     }
   },
   "rehab": {
@@ -949,5 +950,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:25:32.685Z"
+  "timestamp": "2026-09-06T17:25:36.734Z"
 }
