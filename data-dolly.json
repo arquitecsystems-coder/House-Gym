@@ -725,10 +725,14 @@
       "timestamp": "2026-09-06T15:43:49.455Z",
       "rir": "0",
       "checked": true
+    },
+    "D1-S4-sab-Búlgaras con mancuerna-1": {
+      "peso": "30",
+      "timestamp": "2026-09-06T15:49:37.489Z"
     }
   },
   "rehab": {
-    "_syncTs": "2026-08-23T17:14:00.964Z",
+    "_syncTs": "2026-09-06T15:43:52.460Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -844,5 +848,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T15:43:52.460Z"
+  "timestamp": "2026-09-06T15:49:40.507Z"
 }
