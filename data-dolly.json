@@ -855,11 +855,14 @@
     },
     "D1-S4-dom-Remo unilateral con mancuerna-3": {
       "peso": "22.5",
-      "timestamp": "2026-09-06T17:41:03.158Z"
+      "timestamp": "2026-09-06T17:45:34.664Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-06T17:25:40.735Z",
+    "_syncTs": "2026-09-06T17:41:06.167Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -975,5 +978,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:41:06.167Z"
+  "timestamp": "2026-09-06T17:45:37.677Z"
 }
