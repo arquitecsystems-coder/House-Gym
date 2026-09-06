@@ -838,6 +838,10 @@
       "timestamp": "2026-09-06T17:33:34.882Z",
       "rir": "0",
       "checked": true
+    },
+    "D1-S4-dom-Remo unilateral con mancuerna-1": {
+      "peso": "22.5",
+      "timestamp": "2026-09-06T17:37:02.641Z"
     }
   },
   "rehab": {
@@ -957,5 +961,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:33:37.900Z"
+  "timestamp": "2026-09-06T17:37:05.653Z"
 }
