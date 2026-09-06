@@ -880,6 +880,10 @@
       "reps": "12",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-D1-S4-dom": {
+      "nota": "Con el curl bíceps con el peso de 15 Libras para el brazo izquierdo alcé 2 series menos respecto al derecho ",
+      "timestamp": "2026-09-06T17:58:38.752Z"
     }
   },
   "rehab": {
@@ -999,5 +1003,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:56:56.695Z"
+  "timestamp": "2026-09-06T17:58:41.755Z"
 }
