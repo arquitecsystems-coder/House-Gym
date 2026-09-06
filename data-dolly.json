@@ -814,6 +814,12 @@
     "nota-sesion-D1-S4-sab": {
       "nota": "Siento que me he demorado mucho en la sección.La parte de elevar y hacer fuerza me cuesta por ejemplo en la copa al final hice 8s derecha,7s izquierda.",
       "timestamp": "2026-09-06T17:12:56.407Z"
+    },
+    "D1-S4-dom-Dominada asistida (doble banda)-1": {
+      "reps": "7",
+      "timestamp": "2026-09-06T17:16:09.183Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -933,5 +939,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:12:59.409Z"
+  "timestamp": "2026-09-06T17:16:12.194Z"
 }
