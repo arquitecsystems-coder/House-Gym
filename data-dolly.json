@@ -869,9 +869,10 @@
     },
     "D1-S4-dom-Curl bíceps con mancuerna-2": {
       "peso": "15",
-      "timestamp": "2026-09-06T17:53:02.380Z",
+      "timestamp": "2026-09-06T17:53:06.859Z",
       "reps": "10",
-      "checked": true
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -991,5 +992,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:53:05.390Z"
+  "timestamp": "2026-09-06T17:53:09.869Z"
 }
