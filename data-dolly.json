@@ -776,7 +776,9 @@
     },
     "D1-S4-sab-Negativas de fondo (banco)-2": {
       "reps": "8",
-      "timestamp": "2026-09-06T16:48:41.646Z"
+      "timestamp": "2026-09-06T16:48:48.458Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -896,5 +898,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T16:48:44.663Z"
+  "timestamp": "2026-09-06T16:48:51.479Z"
 }
