@@ -798,6 +798,12 @@
       "rir": "0",
       "peso": "5",
       "checked": true
+    },
+    "D1-S4-sab-Copa a una mano (tríceps)-2": {
+      "reps": "10",
+      "timestamp": "2026-09-06T17:08:08.423Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -917,5 +923,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-06T17:04:40.654Z"
+  "timestamp": "2026-09-06T17:08:11.440Z"
 }
