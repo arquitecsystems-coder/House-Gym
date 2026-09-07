@@ -2108,10 +2108,22 @@
       "timestamp": "2026-09-04T22:59:13.762Z",
       "reps": "8",
       "checked": true
+    },
+    "M6-S3-vie-Press Francés (barra)-2": {
+      "peso": "27,8",
+      "timestamp": "2026-09-04T23:06:59.269Z",
+      "reps": "8",
+      "checked": true
+    },
+    "M6-S4-lun-Press Inclinado (barra)-1": {
+      "peso": "70",
+      "timestamp": "2026-09-07T17:35:05.859Z",
+      "reps": "4",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-04T18:12:44.845Z",
+    "_syncTs": "2026-09-04T22:59:16.834Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2591,7 +2603,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-04T18:12:44.845Z"
+    "_syncTs": "2026-09-04T22:59:16.834Z"
   },
   "test": {},
   "actividad": {
@@ -3240,5 +3252,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-04T22:59:16.834Z"
+  "timestamp": "2026-09-07T17:35:08.948Z"
 }
