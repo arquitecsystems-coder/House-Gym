@@ -1581,7 +1581,7 @@ const MESOCICLOS = {
   // ── NATA ──
   "N1": {
     label: "M1 — Nata (Full Body técnico)",
-    tipo: "activo",
+    tipo: "pasado",
     semanas: 6,
     fechas: ["27 jul–1 ago","3–8 ago","10–15 ago","17–22 ago","24–29 ago","31 ago–5 sep"],
     dias: [
@@ -1620,6 +1620,83 @@ const MESOCICLOS = {
         { nombre: "Crunch con peso", series: 3,
           semanas: ["15kg × 12","16kg × 12","18kg × 10","18kg × 10","20kg × 8-10 (pico)","12kg × 15"] },
       ],
+    }
+  },
+  "N2": {
+    label: "N2 — Nata",
+    tipo: "activo",
+    semanas: 6,
+    fechas: ["7–12 sep","14–19 sep","21–26 sep","28 sep–3 oct","5–10 oct","12–17 oct"],
+    dias: [
+      { key: "lun", label: "Lun", titulo: "Full Body A — Pesado" },
+      { key: "mie", label: "Mié", titulo: "Full Body B — Tracción" },
+      { key: "vie", label: "Vie", titulo: "Full Body A — Técnico" },
+    ],
+    plan: {
+      lun: [
+        { nombre: "Sentadilla trasera (barra)", orden: 1, rol: "fuerza",
+          nota: "RM real N1: 68kg estimado (55kg x7 RIR1, S5). Arranca con margen conservador.",
+          series: 4,
+          semanas: ["50kg x 6","52.5kg x 6","55kg x 5","57.5kg x 5","60kg x 4-5 (pico)","37.5kg x 10"] },
+        { nombre: "Press Inclinado (barra)", orden: 2, rol: "fuerza",
+          nota: "RE-TEST real — mantenido en 15kg todo N1 por decisión técnica, no por límite de fuerza. S1 es rampa para encontrar peso real de trabajo.",
+          series: 3,
+          semanas: ["RAMPA — encontrar peso a RIR2-3 x6-8","+2.5kg sobre S1","+2.5kg sobre S2","+2.5kg sobre S3","peso más alto logrado x5 (pico)","60% del pico x10"] },
+        { nombre: "Curl Bíceps (2 mancuernas)", orden: 3, rol: "accesorio",
+          nota: "RM real N1: 2x5kg (10kg total) x10-15 diversas RIR. Confirmado con mancuerna real, no barra.",
+          series: 3,
+          semanas: ["2x5kg x 12","2x5kg x 15","2x10kg x 8-10","2x10kg x 10","2x10kg x 10-12 (pico)","2x5kg x 15"] },
+        { nombre: "Elevación de Piernas", orden: 4, rol: "core",
+          series: 3,
+          semanas: ["x 10","x 12","x 12","x 15","x 15 (pico)","x 10"] },
+        { nombre: "Elevación Lateral (mancuerna)", orden: 5, rol: "accesorio",
+          nota: "Topada en equipo (5-10-20kg sin intermedio). Progresión por reps; frecuencia 2x/semana compensa el techo de carga.",
+          series: 2,
+          semanas: ["5kg x 12","5kg x 15","5kg x 18","5kg x 20","5kg x 20+ (pico)","5kg x 12"] },
+      ],
+      mie: [
+        { nombre: "RDL (barra)", orden: 1, rol: "fuerza",
+          nota: "RM real N1: 36.59kg x6 RIR1 (S5) — usando discos de libra fina.",
+          series: 4,
+          semanas: ["27.5kg x 8","30kg x 8","32.5kg x 6-8","35kg x 6","37.5kg x 5-6 (pico)","22.5kg x 10"] },
+        { nombre: "Remo Pendlay (barra)", orden: 2, rol: "fuerza",
+          nota: "Dato N1 inconsistente (bajó a 20kg en S2, subió a 31.8kg en S5) — arrancar conservador, priorizar consistencia sobre carga máxima.",
+          series: 3,
+          semanas: ["22.5kg x 8","25kg x 8","27.5kg x 6-8","28.75kg x 6","30kg x 6 (pico)","20kg x 10"] },
+        { nombre: "Press Francés (barra)", orden: 3, rol: "accesorio",
+          nota: "Ejercicio NUEVO — cubre hueco de tríceps directo (antes casi en cero). Antagonista correcto de Pendlay/tracción.",
+          series: 3,
+          semanas: ["15kg x 10","16.25kg x 10","17.5kg x 8-10","18.75kg x 8","20kg x 6-8 (pico)","15kg x 12"] },
+        { nombre: "Pullover (mancuerna)", orden: 4, rol: "accesorio",
+          nota: "Escalera de techo: 10kg puro, mezcla 10/15kg, 15kg puro. NO usar barra (biomecánica distinta — barra cambia el énfasis a pecho/tríceps por el ancho de agarre).",
+          series: 3,
+          semanas: ["10kg x 12","10kg x 15","10kg+15kg alternado x10","15kg x 10","15kg x 10-12 (pico)","10kg x 15"] },
+        { nombre: "Aperturas en banco (mancuerna)", orden: 5, rol: "accesorio",
+          nota: "Topada en equipo, mismo criterio que elevación lateral — progresión por reps.",
+          series: 3,
+          semanas: ["5kg x 12","5kg x 15","5kg x 15","5kg x 18","5kg x 18-20 (pico)","5kg x 12"] },
+      ],
+      vie: [
+        { nombre: "Curl Nórdico Asistido (banda)", orden: 1, rol: "patron_motor",
+          nota: "SIEMPRE PRIMERO — sin perilla de ajuste, no puede absorber fatiga previa. Primera sesión: 3-4 reps por serie, detener al perder control. Banda reduce carga excéntrica en todo el recorrido.",
+          series: 3,
+          semanas: ["Calibración: 3-4 reps controladas","según respuesta S1","+control/reps","+control/reps","tope de control (pico)","reps bajas (descarga)"] },
+        { nombre: "Sentadilla trasera (barra)", orden: 2, rol: "tecnico",
+          series: 3,
+          semanas: ["45kg x 10","47.5kg x 10","50kg x 8","52.5kg x 8","55kg x 8 (pico)","35kg x 12"] },
+        { nombre: "Hip Thrust (barra)", orden: 3, rol: "accesorio",
+          nota: "RM real N1: 45kg x10 RIR2-4 (S4) — el ejercicio mejor calibrado de todo N1.",
+          series: 3,
+          semanas: ["40kg x 10","42.5kg x 10","45kg x 8-10","47.5kg x 8","50kg x 8-10 (pico)","30kg x 12"] },
+        { nombre: "Crunch con peso", orden: 4, rol: "core",
+          nota: "RM real N1: 20kg x30 (S5) — progresión sólida y limpia.",
+          series: 3,
+          semanas: ["20kg x 20","20kg x 22","22.5kg x 18","22.5kg x 20","25kg x 15-18 (pico)","15kg x 25"] },
+        { nombre: "Elevación Lateral (mancuerna)", orden: 5, rol: "accesorio",
+          nota: "Segunda frecuencia semanal — mismo criterio que lunes.",
+          series: 2,
+          semanas: ["5kg x 12","5kg x 15","5kg x 18","5kg x 20","5kg x 20+ (pico)","5kg x 12"] },
+      ]
     }
   },
   "D1": {
@@ -1782,7 +1859,7 @@ const RMS_REFERENCIA = {
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5', 'M6'], tieneRehab: true,  renderTest: null },
   dolly:  { mesociclos: ['D1'],         tieneRehab: false, renderTest: null },
-  nata:   { mesociclos: ['N1'],         tieneRehab: false, renderTest: null, tieneHabitos: true },
+  nata:   { mesociclos: ['N1','N2'],     tieneRehab: false, renderTest: null, tieneHabitos: true },
 };
 
 // ============================================================
