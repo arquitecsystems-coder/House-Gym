@@ -2126,6 +2126,12 @@
       "timestamp": "2026-09-07T17:39:06.083Z",
       "reps": "2",
       "checked": true
+    },
+    "M6-S4-lun-Press Inclinado (barra)-3": {
+      "peso": "70",
+      "timestamp": "2026-09-07T17:47:22.459Z",
+      "reps": "4",
+      "checked": true
     }
   },
   "rehab": {
@@ -3258,5 +3264,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-07T17:39:09.091Z"
+  "timestamp": "2026-09-07T17:47:25.469Z"
 }
