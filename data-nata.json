@@ -1931,6 +1931,18 @@
       "reps": "8",
       "checked": true,
       "rir": "0"
+    },
+    "N2-S1-lun-Curl Bíceps (2 mancuernas)-1": {
+      "peso": "5",
+      "timestamp": "2026-09-08T21:11:24.669Z"
+    },
+    "N2-S1-lun-Curl Bíceps (2 mancuernas)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-08T21:11:27.348Z"
+    },
+    "N2-S1-lun-Curl Bíceps (2 mancuernas)-3": {
+      "peso": "5",
+      "timestamp": "2026-09-08T21:11:30.525Z"
     }
   },
   "rehab": {},
@@ -2669,5 +2681,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-08T21:08:01.931Z"
+  "timestamp": "2026-09-08T21:11:30.379Z"
 }
