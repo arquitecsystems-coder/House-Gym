@@ -3040,6 +3040,15 @@
             "prot": 1.7,
             "carbs": 34.5,
             "grasas": 0.5
+          },
+          {
+            "foodId": "mtsk9qasrz1b",
+            "nombre": "Yogurt",
+            "gramos": 250,
+            "kcal": 210,
+            "prot": 12,
+            "carbs": 12,
+            "grasas": 12.5
           }
         ]
       }
@@ -3356,7 +3365,15 @@
       "prot": 1,
       "carbs": 32,
       "grasas": 11
+    },
+    {
+      "id": "mtsk9qasrz1b",
+      "nombre": "Yogurt",
+      "kcal": 84,
+      "prot": 4.8,
+      "carbs": 4.8,
+      "grasas": 5
     }
   ],
-  "timestamp": "2026-09-08T11:02:29.463Z"
+  "timestamp": "2026-09-08T11:03:30.878Z"
 }
