@@ -1955,8 +1955,9 @@
     },
     "N2-S1-lun-Elevación de Piernas-1": {
       "reps": "14",
-      "timestamp": "2026-09-08T21:22:26.211Z",
-      "rir": "3"
+      "timestamp": "2026-09-08T21:22:28.194Z",
+      "rir": "3",
+      "checked": true
     }
   },
   "rehab": {},
@@ -2695,5 +2696,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-08T21:22:25.840Z"
+  "timestamp": "2026-09-08T21:22:31.203Z"
 }
