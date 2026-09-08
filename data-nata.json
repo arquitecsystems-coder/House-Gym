@@ -1969,6 +1969,14 @@
       "reps": "12",
       "timestamp": "2026-09-08T21:33:16.072Z",
       "checked": true
+    },
+    "N2-S1-lun-Elevación Lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-09-08T21:37:31.403Z"
+    },
+    "N2-S1-lun-Elevación Lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-08T21:37:33.785Z"
     }
   },
   "rehab": {},
@@ -2707,5 +2715,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-08T21:33:19.088Z"
+  "timestamp": "2026-09-08T21:37:36.810Z"
 }
