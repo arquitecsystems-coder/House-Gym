@@ -3049,6 +3049,15 @@
             "prot": 12,
             "carbs": 12,
             "grasas": 12.5
+          },
+          {
+            "foodId": "mozzarella",
+            "nombre": "Mozzarella",
+            "gramos": 50,
+            "kcal": 140,
+            "prot": 11,
+            "carbs": 1.1,
+            "grasas": 11
           }
         ]
       }
@@ -3375,5 +3384,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-08T11:03:30.878Z"
+  "timestamp": "2026-09-08T11:03:50.917Z"
 }
