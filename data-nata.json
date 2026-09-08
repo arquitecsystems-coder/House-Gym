@@ -1906,7 +1906,10 @@
     },
     "N2-S1-lun-Sentadilla trasera (barra)-1": {
       "peso": "45",
-      "timestamp": "2026-09-08T20:57:27.154Z"
+      "timestamp": "2026-09-08T20:58:54.618Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
     },
     "N2-S1-lun-Sentadilla trasera (barra)-2": {
       "peso": "45",
@@ -2610,5 +2613,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-08T20:58:51.521Z"
+  "timestamp": "2026-09-08T20:58:57.638Z"
 }
