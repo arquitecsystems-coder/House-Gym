@@ -2180,10 +2180,16 @@
       "timestamp": "2026-09-07T18:28:53.080Z",
       "reps": "11",
       "checked": true
+    },
+    "M6-S4-lun-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-09-07T18:30:42.852Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-04T22:59:16.834Z",
+    "_syncTs": "2026-09-07T18:28:56.091Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2663,7 +2669,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-04T22:59:16.834Z"
+    "_syncTs": "2026-09-07T18:28:56.091Z"
   },
   "test": {},
   "actividad": {
@@ -2996,6 +3002,19 @@
             "grasas": 3.9
           }
         ]
+      },
+      "2026-09-07": {
+        "comidas": [
+          {
+            "foodId": "contramuslo_pollo",
+            "nombre": "Contramuslo de pollo (con hueso y piel)",
+            "gramos": 500,
+            "kcal": 800,
+            "prot": 72.5,
+            "carbs": 0,
+            "grasas": 55
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -3312,5 +3331,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-07T18:28:56.091Z"
+  "timestamp": "2026-09-08T11:02:02.107Z"
 }
