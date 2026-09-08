@@ -3031,6 +3031,15 @@
             "prot": 7,
             "carbs": 61.3,
             "grasas": 0.4
+          },
+          {
+            "foodId": "banano",
+            "nombre": "Banano",
+            "gramos": 150,
+            "kcal": 134,
+            "prot": 1.7,
+            "carbs": 34.5,
+            "grasas": 0.5
           }
         ]
       }
@@ -3349,5 +3358,5 @@
       "grasas": 11
     }
   ],
-  "timestamp": "2026-09-08T11:02:17.793Z"
+  "timestamp": "2026-09-08T11:02:29.463Z"
 }
