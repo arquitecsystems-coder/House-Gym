@@ -1903,6 +1903,14 @@
       "timestamp": "2026-09-04T23:36:20.706Z",
       "reps": "8",
       "checked": true
+    },
+    "N2-S1-lun-Sentadilla trasera (barra)-1": {
+      "peso": "45",
+      "timestamp": "2026-09-08T20:57:27.154Z"
+    },
+    "N2-S1-lun-Sentadilla trasera (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-09-08T20:57:30.315Z"
     }
   },
   "rehab": {},
@@ -2083,7 +2091,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-04T03:05:34.616Z"
+    "_syncTs": "2026-09-04T23:36:23.726Z"
   },
   "test": {
     "test": {
@@ -2564,6 +2572,27 @@
           "valor": 2,
           "completado": true
         }
+      },
+      "2026-09-05": {
+        "h_1786826760933": {
+          "valor": 10700,
+          "completado": false
+        },
+        "h_1786988229310": {
+          "valor": 2000,
+          "completado": true
+        },
+        "h_1786988255762": {
+          "valor": 5,
+          "completado": true
+        },
+        "h_1787094648824": {
+          "completado": true
+        },
+        "h_1787168431220": {
+          "valor": 2,
+          "completado": true
+        }
       }
     },
     "resumenVisto": {}
@@ -2573,5 +2602,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-04T23:36:23.726Z"
+  "timestamp": "2026-09-08T20:57:30.202Z"
 }
