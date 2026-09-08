@@ -1941,7 +1941,10 @@
     },
     "N2-S1-lun-Curl Bíceps (2 mancuernas)-2": {
       "peso": "5",
-      "timestamp": "2026-09-08T21:11:27.348Z"
+      "timestamp": "2026-09-08T21:15:22.134Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "1"
     },
     "N2-S1-lun-Curl Bíceps (2 mancuernas)-3": {
       "peso": "5",
@@ -2684,5 +2687,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-08T21:12:23.907Z"
+  "timestamp": "2026-09-08T21:15:26.185Z"
 }
