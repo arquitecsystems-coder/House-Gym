@@ -2205,6 +2205,12 @@
       "timestamp": "2026-09-09T19:38:26.680Z",
       "reps": "5",
       "checked": true
+    },
+    "M6-S4-mar-Remo Supino (barra)-1": {
+      "peso": "52,5",
+      "timestamp": "2026-09-09T19:42:38.928Z",
+      "reps": "6",
+      "checked": true
     }
   },
   "rehab": {
@@ -3471,5 +3477,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-09T19:38:29.687Z"
+  "timestamp": "2026-09-09T19:42:41.934Z"
 }
