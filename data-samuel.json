@@ -2238,7 +2238,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-08T11:03:50.917Z",
+    "_syncTs": "2026-09-09T20:13:00.024Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2718,7 +2718,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-08T11:03:50.917Z"
+    "_syncTs": "2026-09-09T20:13:00.024Z"
   },
   "test": {},
   "actividad": {
@@ -3177,6 +3177,19 @@
             "grasas": 23
           }
         ]
+      },
+      "2026-09-09": {
+        "comidas": [
+          {
+            "foodId": "lomo_cerdo",
+            "nombre": "Lomo de cerdo",
+            "gramos": 150,
+            "kcal": 215,
+            "prot": 31.5,
+            "carbs": 0,
+            "grasas": 9
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -3501,5 +3514,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-09T20:13:00.024Z"
+  "timestamp": "2026-09-09T23:26:49.861Z"
 }
