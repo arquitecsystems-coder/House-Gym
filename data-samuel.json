@@ -3099,6 +3099,15 @@
             "prot": 37.4,
             "carbs": 0,
             "grasas": 39.6
+          },
+          {
+            "foodId": "papa_cruda_con_cascara",
+            "nombre": "Papa cruda con cáscara",
+            "gramos": 350,
+            "kcal": 270,
+            "prot": 7,
+            "carbs": 61.3,
+            "grasas": 0.4
           }
         ]
       }
@@ -3425,5 +3434,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-09T10:32:26.090Z"
+  "timestamp": "2026-09-09T10:32:37.007Z"
 }
