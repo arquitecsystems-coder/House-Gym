@@ -3188,6 +3188,15 @@
             "prot": 31.5,
             "carbs": 0,
             "grasas": 9
+          },
+          {
+            "foodId": "brazuelo_cerdo",
+            "nombre": "Brazuelo de cerdo",
+            "gramos": 220,
+            "kcal": 506,
+            "prot": 37.4,
+            "carbs": 0,
+            "grasas": 39.6
           }
         ]
       }
@@ -3514,5 +3523,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-09T23:26:49.861Z"
+  "timestamp": "2026-09-09T23:26:54.790Z"
 }
