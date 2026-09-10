@@ -2011,6 +2011,10 @@
     "N2-S1-mie-RDL (barra)-2": {
       "peso": "28,4",
       "timestamp": "2026-09-10T23:49:02.389Z"
+    },
+    "N2-S1-mie-RDL (barra)-3": {
+      "peso": "28,4",
+      "timestamp": "2026-09-10T23:49:07.243Z"
     }
   },
   "rehab": {},
@@ -2783,5 +2787,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-10T23:49:05.396Z"
+  "timestamp": "2026-09-10T23:49:10.251Z"
 }
