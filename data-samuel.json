@@ -3266,6 +3266,15 @@
             "prot": 2.2,
             "carbs": 3.4,
             "grasas": 2.3
+          },
+          {
+            "foodId": "cacao_polvo",
+            "nombre": "Cacao en polvo",
+            "gramos": 6,
+            "kcal": 14,
+            "prot": 1.2,
+            "carbs": 3.5,
+            "grasas": 0.8
           }
         ]
       }
@@ -3592,5 +3601,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-10T21:24:26.386Z"
+  "timestamp": "2026-09-10T21:25:41.066Z"
 }
