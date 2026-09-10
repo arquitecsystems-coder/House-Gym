@@ -3275,6 +3275,15 @@
             "prot": 1.2,
             "carbs": 3.5,
             "grasas": 0.8
+          },
+          {
+            "foodId": "azucar",
+            "nombre": "Azúcar",
+            "gramos": 5,
+            "kcal": 19,
+            "prot": 0,
+            "carbs": 5,
+            "grasas": 0
           }
         ]
       }
@@ -3601,5 +3610,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-10T21:25:41.066Z"
+  "timestamp": "2026-09-10T21:25:55.810Z"
 }
