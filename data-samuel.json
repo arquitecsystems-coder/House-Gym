@@ -3284,6 +3284,15 @@
             "prot": 0,
             "carbs": 5,
             "grasas": 0
+          },
+          {
+            "foodId": "queso_campesino",
+            "nombre": "Queso campesino",
+            "gramos": 100,
+            "kcal": 300,
+            "prot": 20,
+            "carbs": 3,
+            "grasas": 23
           }
         ]
       }
@@ -3610,5 +3619,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-10T21:25:55.810Z"
+  "timestamp": "2026-09-10T21:26:13.832Z"
 }
