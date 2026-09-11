@@ -2086,7 +2086,9 @@
     },
     "N2-S1-mie-Aperturas en banco (mancuerna)-3": {
       "peso": "5",
-      "timestamp": "2026-09-11T00:47:49.518Z"
+      "timestamp": "2026-09-11T00:59:50.164Z",
+      "reps": "8",
+      "checked": true
     },
     "N2-S1-mie-Press Francés (barra)-1": {
       "peso": "15",
@@ -2892,5 +2894,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-11T00:55:43.153Z"
+  "timestamp": "2026-09-11T00:59:54.156Z"
 }
