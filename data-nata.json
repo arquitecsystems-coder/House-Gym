@@ -2092,7 +2092,9 @@
     },
     "N2-S1-mie-Press Francés (barra)-1": {
       "peso": "15",
-      "timestamp": "2026-09-11T00:52:50.988Z"
+      "timestamp": "2026-09-11T01:07:27.349Z",
+      "reps": "7",
+      "checked": true
     },
     "N2-S1-mie-Press Francés (barra)-2": {
       "peso": "15",
@@ -2894,5 +2896,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-11T00:59:54.156Z"
+  "timestamp": "2026-09-11T01:07:30.378Z"
 }
