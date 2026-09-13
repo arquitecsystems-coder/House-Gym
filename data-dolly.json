@@ -932,7 +932,10 @@
     },
     "D1-S5-dom-RDL unilateral con mancuerna-1": {
       "peso": "35",
-      "timestamp": "2026-09-13T18:00:02.998Z"
+      "timestamp": "2026-09-13T18:00:08.978Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1052,5 +1055,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:00:06.012Z"
+  "timestamp": "2026-09-13T18:00:11.989Z"
 }
