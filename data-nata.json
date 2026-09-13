@@ -2110,7 +2110,9 @@
     },
     "N2-S1-vie-Elevación Lateral (mancuerna)-1": {
       "peso": "5",
-      "timestamp": "2026-09-13T14:14:21.082Z"
+      "timestamp": "2026-09-13T14:15:25.219Z",
+      "reps": "12",
+      "checked": true
     },
     "N2-S1-vie-Elevación Lateral (mancuerna)-2": {
       "peso": "5",
@@ -2908,5 +2910,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-13T14:14:26.662Z"
+  "timestamp": "2026-09-13T14:15:28.227Z"
 }
