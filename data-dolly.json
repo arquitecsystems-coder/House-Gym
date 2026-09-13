@@ -920,7 +920,13 @@
     },
     "D1-S5-dom-Dominada asistida (doble banda)-3": {
       "reps": "6",
-      "timestamp": "2026-09-13T17:52:10.336Z"
+      "timestamp": "2026-09-13T17:52:16.621Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D1-S5-dom-Dominada asistida (doble banda)-4": {
+      "reps": "6",
+      "timestamp": "2026-09-13T17:52:19.633Z"
     }
   },
   "rehab": {
@@ -1040,5 +1046,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T17:52:13.353Z"
+  "timestamp": "2026-09-13T17:52:22.643Z"
 }
