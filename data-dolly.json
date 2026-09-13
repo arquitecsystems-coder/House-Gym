@@ -996,10 +996,16 @@
       "reps": "7",
       "checked": true,
       "rir": "0"
+    },
+    "D1-S5-dom-Lateral inclinado contra pared-1": {
+      "peso": "7.5",
+      "timestamp": "2026-09-13T19:05:21.729Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-13T18:25:07.422Z",
+    "_syncTs": "2026-09-13T18:55:08.175Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1115,5 +1121,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:55:08.175Z"
+  "timestamp": "2026-09-13T19:05:21.469Z"
 }
