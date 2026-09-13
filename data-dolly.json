@@ -939,14 +939,14 @@
     },
     "D1-S5-dom-RDL unilateral con mancuerna-2": {
       "peso": "35",
-      "timestamp": "2026-09-13T18:04:26.736Z",
+      "timestamp": "2026-09-13T18:05:17.855Z",
       "reps": "10",
       "checked": true,
       "rir": "0"
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-13T17:38:29.885Z",
+    "_syncTs": "2026-09-13T18:04:29.830Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1062,5 +1062,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:04:29.830Z"
+  "timestamp": "2026-09-13T18:05:20.876Z"
 }
