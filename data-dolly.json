@@ -957,9 +957,10 @@
     },
     "D1-S5-dom-Remo unilateral con mancuerna-1": {
       "peso": "22.5",
-      "timestamp": "2026-09-13T18:17:09.884Z",
+      "timestamp": "2026-09-13T18:17:12.446Z",
       "reps": "10",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1079,5 +1080,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:17:09.097Z"
+  "timestamp": "2026-09-13T18:17:15.462Z"
 }
