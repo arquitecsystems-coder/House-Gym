@@ -975,10 +975,16 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "D1-S5-dom-Curl bíceps con mancuerna-1": {
+      "peso": "12.5",
+      "timestamp": "2026-09-13T18:44:35.788Z",
+      "reps": "6",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-13T18:04:29.830Z",
+    "_syncTs": "2026-09-13T18:25:07.422Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1094,5 +1100,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:25:07.422Z"
+  "timestamp": "2026-09-13T18:44:35.777Z"
 }
