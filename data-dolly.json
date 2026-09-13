@@ -954,6 +954,12 @@
     "nota-sesion-D1-S5-dom": {
       "nota": "RDL me puede mucho el peso de la mancuerna en la mano.Al final hice 10 izq 5 derecha",
       "timestamp": "2026-09-13T18:11:54.813Z"
+    },
+    "D1-S5-dom-Remo unilateral con mancuerna-1": {
+      "peso": "22.5",
+      "timestamp": "2026-09-13T18:17:09.884Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -1073,5 +1079,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:11:58.526Z"
+  "timestamp": "2026-09-13T18:17:09.097Z"
 }
