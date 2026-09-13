@@ -2124,8 +2124,8 @@
     },
     "N2-S1-vie-Crunch con peso-1": {
       "peso": "20",
-      "timestamp": "2026-09-13T14:26:59.174Z",
-      "reps": "25",
+      "timestamp": "2026-09-13T14:36:51.430Z",
+      "reps": "30",
       "checked": true,
       "rir": "4"
     },
@@ -2138,9 +2138,10 @@
     },
     "N2-S1-vie-Crunch con peso-3": {
       "peso": "20",
-      "timestamp": "2026-09-13T14:36:45.840Z",
+      "timestamp": "2026-09-13T14:36:54.476Z",
       "reps": "30",
-      "checked": true
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {},
@@ -2934,5 +2935,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-13T14:36:48.852Z"
+  "timestamp": "2026-09-13T14:36:54.437Z"
 }
