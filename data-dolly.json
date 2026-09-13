@@ -950,6 +950,10 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-D1-S5-dom": {
+      "nota": "RDL me puede mucho el peso de la mancuerna en la mano.Al final hice 10 izq 5 derecha",
+      "timestamp": "2026-09-13T18:11:54.813Z"
     }
   },
   "rehab": {
@@ -1069,5 +1073,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-13T18:10:44.363Z"
+  "timestamp": "2026-09-13T18:11:58.526Z"
 }
