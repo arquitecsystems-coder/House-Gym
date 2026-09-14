@@ -3536,6 +3536,15 @@
             "prot": 3.2,
             "carbs": 4.8,
             "grasas": 3.3
+          },
+          {
+            "foodId": "mu1s30c61wzd",
+            "nombre": "Queso Crema",
+            "gramos": 50,
+            "kcal": 135,
+            "prot": 3,
+            "carbs": 2,
+            "grasas": 12.5
           }
         ]
       }
@@ -3860,7 +3869,15 @@
       "prot": 4.8,
       "carbs": 4.8,
       "grasas": 5
+    },
+    {
+      "id": "mu1s30c61wzd",
+      "nombre": "Queso Crema",
+      "kcal": 270,
+      "prot": 6,
+      "carbs": 4,
+      "grasas": 25
     }
   ],
-  "timestamp": "2026-09-14T21:50:48.607Z"
+  "timestamp": "2026-09-14T21:52:05.174Z"
 }
