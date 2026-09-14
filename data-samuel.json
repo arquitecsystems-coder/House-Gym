@@ -2337,10 +2337,16 @@
       "timestamp": "2026-09-12T16:33:50.724Z",
       "reps": "12",
       "checked": true
+    },
+    "M6-S5-lun-Press Inclinado (barra)-1": {
+      "peso": "72,5",
+      "timestamp": "2026-09-14T20:19:22.396Z",
+      "reps": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-10T22:58:36.096Z",
+    "_syncTs": "2026-09-12T16:33:53.732Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2820,7 +2826,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-10T22:58:36.096Z"
+    "_syncTs": "2026-09-12T16:33:53.732Z"
   },
   "test": {},
   "actividad": {
@@ -3739,5 +3745,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-12T16:33:53.732Z"
+  "timestamp": "2026-09-14T20:19:25.434Z"
 }
