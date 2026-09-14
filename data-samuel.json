@@ -3518,6 +3518,15 @@
             "prot": 37.4,
             "carbs": 0,
             "grasas": 39.6
+          },
+          {
+            "foodId": "cuajada",
+            "nombre": "Cuajada",
+            "gramos": 70,
+            "kcal": 203,
+            "prot": 11.9,
+            "carbs": 0,
+            "grasas": 16.1
           }
         ]
       }
@@ -3844,5 +3853,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-14T21:50:17.411Z"
+  "timestamp": "2026-09-14T21:50:39.727Z"
 }
