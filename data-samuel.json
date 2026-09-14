@@ -2405,6 +2405,12 @@
       "timestamp": "2026-09-14T21:27:29.345Z",
       "reps": "16",
       "checked": true
+    },
+    "M6-S5-lun-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-09-14T21:32:25.707Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -3807,5 +3813,5 @@
       "grasas": 5
     }
   ],
-  "timestamp": "2026-09-14T21:27:32.353Z"
+  "timestamp": "2026-09-14T21:32:28.716Z"
 }
