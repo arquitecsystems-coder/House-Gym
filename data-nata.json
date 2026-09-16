@@ -2162,6 +2162,30 @@
       "timestamp": "2026-09-13T15:10:00.029Z",
       "reps": "10",
       "checked": true
+    },
+    "N2-S1-vie-Curl Nórdico Asistido (banda)-1": {
+      "checked": true,
+      "timestamp": "2026-09-16T03:24:30.351Z"
+    },
+    "N2-S1-vie-Curl Nórdico Asistido (banda)-2": {
+      "checked": true,
+      "timestamp": "2026-09-16T03:24:30.822Z"
+    },
+    "N2-S1-vie-Curl Nórdico Asistido (banda)-3": {
+      "checked": true,
+      "timestamp": "2026-09-16T03:24:31.287Z"
+    },
+    "N2-S1-vie-Hip Thrust (barra)-1": {
+      "checked": true,
+      "timestamp": "2026-09-16T03:24:33.811Z"
+    },
+    "N2-S1-vie-Hip Thrust (barra)-2": {
+      "checked": true,
+      "timestamp": "2026-09-16T03:24:34.289Z"
+    },
+    "N2-S1-vie-Hip Thrust (barra)-3": {
+      "checked": true,
+      "timestamp": "2026-09-16T03:24:34.573Z"
     }
   },
   "rehab": {},
@@ -3043,5 +3067,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-16T03:23:55.232Z"
+  "timestamp": "2026-09-16T03:24:37.583Z"
 }
