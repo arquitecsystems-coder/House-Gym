@@ -3003,6 +3003,12 @@
         "h_1787094679389": {
           "completado": true
         }
+      },
+      "2026-09-13": {
+        "h_1786826760933": {
+          "valor": 3000,
+          "completado": false
+        }
       }
     },
     "resumenVisto": {}
@@ -3012,5 +3018,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-16T03:22:54.375Z"
+  "timestamp": "2026-09-16T03:23:13.063Z"
 }
