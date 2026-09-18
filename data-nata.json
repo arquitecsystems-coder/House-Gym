@@ -2186,6 +2186,10 @@
     "N2-S1-vie-Hip Thrust (barra)-3": {
       "checked": true,
       "timestamp": "2026-09-16T03:24:34.573Z"
+    },
+    "N2-S2-lun-Sentadilla trasera (barra)-1": {
+      "peso": "52,9",
+      "timestamp": "2026-09-18T23:19:43.883Z"
     }
   },
   "rehab": {},
@@ -2366,7 +2370,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-13T15:10:03.204Z"
+    "_syncTs": "2026-09-16T03:24:37.583Z"
   },
   "test": {
     "test": {
@@ -3067,5 +3071,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-16T03:24:37.583Z"
+  "timestamp": "2026-09-18T23:19:46.917Z"
 }
