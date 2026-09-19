@@ -1055,6 +1055,13 @@
       "reps": "12",
       "checked": true,
       "rir": "0"
+    },
+    "D1-S6-sab-Búlgaras con mancuerna-3": {
+      "peso": "30",
+      "timestamp": "2026-09-19T17:46:34.895Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1174,5 +1181,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-19T17:41:26.929Z"
+  "timestamp": "2026-09-19T17:46:37.910Z"
 }
