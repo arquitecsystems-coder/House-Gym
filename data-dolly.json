@@ -1032,7 +1032,7 @@
     },
     "D1-S6-sab-Flexión inclinada (banco)-3": {
       "reps": "12",
-      "timestamp": "2026-09-19T17:24:20.879Z",
+      "timestamp": "2026-09-19T17:36:56.679Z",
       "rir": "0",
       "checked": true
     },
@@ -1167,5 +1167,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-19T17:36:41.098Z"
+  "timestamp": "2026-09-19T17:36:59.706Z"
 }
