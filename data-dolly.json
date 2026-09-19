@@ -1079,9 +1079,10 @@
     },
     "D1-S6-sab-Press inclinado mancuerna (unilateral)-3": {
       "peso": "12.5",
-      "timestamp": "2026-09-19T18:04:01.943Z",
+      "timestamp": "2026-09-19T18:04:04.117Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1201,5 +1202,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-19T18:04:01.933Z"
+  "timestamp": "2026-09-19T18:04:07.129Z"
 }
