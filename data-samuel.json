@@ -3689,6 +3689,20 @@
             "unidades": 4
           }
         ]
+      },
+      "2026-09-19": {
+        "comidas": [
+          {
+            "foodId": "huevo",
+            "nombre": "Huevo (doble A)",
+            "gramos": 232,
+            "kcal": 360,
+            "prot": 30.2,
+            "carbs": 2.6,
+            "grasas": 25.5,
+            "unidades": 4
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -4037,5 +4051,5 @@
       "grasas": 1
     }
   ],
-  "timestamp": "2026-09-20T00:01:18.758Z"
+  "timestamp": "2026-09-20T00:20:14.548Z"
 }
