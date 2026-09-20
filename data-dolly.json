@@ -1124,17 +1124,24 @@
     },
     "D1-S6-dom-Dominada asistida (doble banda)-1": {
       "peso": "",
-      "timestamp": "2026-09-20T19:54:22.386Z",
-      "reps": "",
-      "checked": false
+      "timestamp": "2026-09-20T19:54:38.391Z",
+      "reps": "7",
+      "checked": true
     },
     "D1-S6-dom-Dominada asistida (doble banda)-2": {
-      "checked": false,
-      "timestamp": "2026-09-20T19:54:22.026Z"
+      "checked": true,
+      "timestamp": "2026-09-20T19:54:42.130Z",
+      "reps": "5"
     },
     "D1-S6-dom-Dominada asistida (doble banda)-3": {
-      "checked": false,
-      "timestamp": "2026-09-20T19:54:22.835Z"
+      "checked": true,
+      "timestamp": "2026-09-20T19:54:44.628Z",
+      "reps": "6"
+    },
+    "D1-S6-dom-Dominada asistida (doble banda)-4": {
+      "reps": "6",
+      "timestamp": "2026-09-20T19:54:47.553Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -1254,5 +1261,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:54:25.852Z"
+  "timestamp": "2026-09-20T19:54:50.567Z"
 }
