@@ -2508,7 +2508,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-19T00:27:06.063Z",
+    "_syncTs": "2026-09-20T00:24:03.765Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2970,6 +2970,10 @@
       "2026-09-14": {
         "ayunas": null,
         "noche": 78.8
+      },
+      "2026-09-20": {
+        "ayunas": 79,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -2992,10 +2996,19 @@
       },
       "S9": {
         "promNoche": 78.8
+      },
+      "S10": {
+        "pliegues": [
+          19,
+          16,
+          18
+        ],
+        "cintura": 85,
+        "promAyunas": 79
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-19T00:27:06.063Z"
+    "_syncTs": "2026-09-20T00:24:03.765Z"
   },
   "test": {},
   "actividad": {
@@ -4086,5 +4099,5 @@
       "grasas": 1
     }
   ],
-  "timestamp": "2026-09-20T00:24:03.765Z"
+  "timestamp": "2026-09-20T15:45:35.975Z"
 }
