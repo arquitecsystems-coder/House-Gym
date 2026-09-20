@@ -1148,6 +1148,18 @@
       "timestamp": "2026-09-20T19:57:02.933Z",
       "reps": "12",
       "checked": true
+    },
+    "D1-S6-dom-RDL unilateral con mancuerna-2": {
+      "peso": "30",
+      "timestamp": "2026-09-20T19:57:11.517Z",
+      "reps": "12",
+      "checked": true
+    },
+    "D1-S6-dom-RDL unilateral con mancuerna-3": {
+      "peso": "30",
+      "timestamp": "2026-09-20T19:57:15.358Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -1267,5 +1279,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:57:05.954Z"
+  "timestamp": "2026-09-20T19:57:18.370Z"
 }
