@@ -1123,10 +1123,18 @@
       "rir": "0"
     },
     "D1-S6-dom-Dominada asistida (doble banda)-1": {
-      "peso": "10",
-      "timestamp": "2026-09-20T19:54:09.880Z",
-      "reps": "5",
-      "checked": true
+      "peso": "",
+      "timestamp": "2026-09-20T19:54:22.386Z",
+      "reps": "",
+      "checked": false
+    },
+    "D1-S6-dom-Dominada asistida (doble banda)-2": {
+      "checked": false,
+      "timestamp": "2026-09-20T19:54:22.026Z"
+    },
+    "D1-S6-dom-Dominada asistida (doble banda)-3": {
+      "checked": false,
+      "timestamp": "2026-09-20T19:54:22.835Z"
     }
   },
   "rehab": {
@@ -1246,5 +1254,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:54:12.898Z"
+  "timestamp": "2026-09-20T19:54:25.852Z"
 }
