@@ -1121,10 +1121,16 @@
       "reps": "12",
       "checked": true,
       "rir": "0"
+    },
+    "D1-S6-dom-Dominada asistida (doble banda)-1": {
+      "peso": "10",
+      "timestamp": "2026-09-20T19:54:09.880Z",
+      "reps": "5",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-19T18:49:22.644Z",
+    "_syncTs": "2026-09-19T18:55:56.171Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1240,5 +1246,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-19T18:55:56.171Z"
+  "timestamp": "2026-09-20T19:54:12.898Z"
 }
