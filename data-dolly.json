@@ -1163,7 +1163,15 @@
     },
     "D1-S6-dom-Remo unilateral con mancuerna-1": {
       "peso": "15",
-      "timestamp": "2026-09-20T19:58:00.331Z"
+      "timestamp": "2026-09-20T19:58:06.533Z",
+      "reps": "12",
+      "checked": true
+    },
+    "D1-S6-dom-Remo unilateral con mancuerna-2": {
+      "peso": "15",
+      "timestamp": "2026-09-20T19:58:14.759Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -1283,5 +1291,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:58:03.347Z"
+  "timestamp": "2026-09-20T19:58:14.733Z"
 }
