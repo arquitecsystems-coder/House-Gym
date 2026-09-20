@@ -3701,6 +3701,15 @@
             "carbs": 2.6,
             "grasas": 25.5,
             "unidades": 4
+          },
+          {
+            "foodId": "mu92otuu92ou",
+            "nombre": "Arepa de Maiz",
+            "gramos": 150,
+            "kcal": 150,
+            "prot": 4.5,
+            "carbs": 28.5,
+            "grasas": 1.5
           }
         ]
       }
@@ -4049,7 +4058,15 @@
       "prot": 26,
       "carbs": 0,
       "grasas": 1
+    },
+    {
+      "id": "mu92otuu92ou",
+      "nombre": "Arepa de Maiz",
+      "kcal": 100,
+      "prot": 3,
+      "carbs": 19,
+      "grasas": 1
     }
   ],
-  "timestamp": "2026-09-20T00:20:14.548Z"
+  "timestamp": "2026-09-20T00:23:26.892Z"
 }
