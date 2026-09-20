@@ -1199,7 +1199,19 @@
     },
     "D1-S6-dom-Lateral inclinado contra pared-1": {
       "peso": "7.5",
-      "timestamp": "2026-09-20T19:59:31.114Z"
+      "timestamp": "2026-09-20T19:59:42.890Z",
+      "reps": "15",
+      "checked": true
+    },
+    "D1-S6-dom-Lateral inclinado contra pared-2": {
+      "peso": "7.5",
+      "timestamp": "2026-09-20T19:59:46.751Z",
+      "reps": "15",
+      "checked": true
+    },
+    "D1-S6-dom-Lateral inclinado contra pared-3": {
+      "peso": "7.5",
+      "timestamp": "2026-09-20T19:59:49.665Z"
     }
   },
   "rehab": {
@@ -1319,5 +1331,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:59:34.131Z"
+  "timestamp": "2026-09-20T19:59:52.680Z"
 }
