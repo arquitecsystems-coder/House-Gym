@@ -1142,6 +1142,12 @@
       "reps": "6",
       "timestamp": "2026-09-20T19:54:47.553Z",
       "checked": true
+    },
+    "D1-S6-dom-RDL unilateral con mancuerna-1": {
+      "peso": "30",
+      "timestamp": "2026-09-20T19:57:02.933Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -1261,5 +1267,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:54:50.567Z"
+  "timestamp": "2026-09-20T19:57:05.954Z"
 }
