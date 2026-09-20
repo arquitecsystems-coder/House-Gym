@@ -1181,7 +1181,21 @@
     },
     "D1-S6-dom-Curl bíceps con mancuerna-1": {
       "peso": "12.5",
-      "timestamp": "2026-09-20T19:59:04.007Z"
+      "timestamp": "2026-09-20T19:59:10.119Z",
+      "reps": "12",
+      "checked": true
+    },
+    "D1-S6-dom-Curl bíceps con mancuerna-2": {
+      "peso": "12.5",
+      "timestamp": "2026-09-20T19:59:14.190Z",
+      "reps": "12",
+      "checked": true
+    },
+    "D1-S6-dom-Curl bíceps con mancuerna-3": {
+      "peso": "12.5",
+      "timestamp": "2026-09-20T19:59:17.787Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -1301,5 +1315,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-20T19:59:07.025Z"
+  "timestamp": "2026-09-20T19:59:20.802Z"
 }
