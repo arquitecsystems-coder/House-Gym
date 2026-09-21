@@ -2423,7 +2423,9 @@
     },
     "N2-S2-mie-RDL (barra)-3": {
       "peso": "30,27",
-      "timestamp": "2026-09-21T02:44:45.270Z"
+      "timestamp": "2026-09-21T02:53:20.462Z",
+      "reps": "8",
+      "checked": true
     },
     "N2-S2-mie-RDL (barra)-4": {
       "peso": "30,27",
@@ -3309,5 +3311,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T02:50:07.386Z"
+  "timestamp": "2026-09-21T02:53:23.483Z"
 }
