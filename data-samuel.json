@@ -2505,10 +2505,16 @@
       "reps": "13",
       "timestamp": "2026-09-20T00:01:15.754Z",
       "checked": true
+    },
+    "M6-S5-mie-Sentadilla (barra + cuña)-3": {
+      "peso": "85",
+      "timestamp": "2026-09-21T21:12:15.766Z",
+      "reps": "3",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-20T00:24:03.765Z",
+    "_syncTs": "2026-09-20T15:45:46.890Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3008,7 +3014,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-20T00:24:03.765Z"
+    "_syncTs": "2026-09-20T15:45:46.890Z"
   },
   "test": {},
   "actividad": {
@@ -4099,5 +4105,5 @@
       "grasas": 1
     }
   ],
-  "timestamp": "2026-09-20T15:45:46.890Z"
+  "timestamp": "2026-09-21T21:12:18.775Z"
 }
