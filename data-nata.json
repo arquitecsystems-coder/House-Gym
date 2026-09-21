@@ -2270,6 +2270,10 @@
       "timestamp": "2026-09-21T00:26:59.862Z",
       "peso": "5",
       "checked": true
+    },
+    "N2-S2-vie-Elevación Lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-21T00:27:04.463Z"
     }
   },
   "rehab": {},
@@ -3151,5 +3155,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T00:27:02.875Z"
+  "timestamp": "2026-09-21T00:27:07.793Z"
 }
