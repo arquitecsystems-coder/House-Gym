@@ -2335,7 +2335,9 @@
     },
     "N2-S2-mie-Pullover (mancuerna)-3": {
       "peso": "10",
-      "timestamp": "2026-09-21T00:57:21.390Z"
+      "timestamp": "2026-09-21T01:58:41.225Z",
+      "reps": "11",
+      "checked": true
     },
     "N2-S2-mie-Remo Pendlay (barra)-1": {
       "peso": "25",
@@ -3253,5 +3255,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T01:52:54.046Z"
+  "timestamp": "2026-09-21T01:58:44.252Z"
 }
