@@ -2302,7 +2302,10 @@
     },
     "N2-S2-mie-Aperturas en banco (mancuerna)-1": {
       "peso": "5",
-      "timestamp": "2026-09-21T00:43:12.633Z"
+      "timestamp": "2026-09-21T00:44:52.879Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
     },
     "N2-S2-mie-Aperturas en banco (mancuerna)-2": {
       "peso": "5",
@@ -3192,5 +3195,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T00:43:23.583Z"
+  "timestamp": "2026-09-21T00:44:55.920Z"
 }
