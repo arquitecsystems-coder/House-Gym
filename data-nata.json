@@ -2389,6 +2389,14 @@
       "reps": "4",
       "timestamp": "2026-09-21T02:21:38.904Z",
       "checked": true
+    },
+    "N2-S2-vie-Sentadilla trasera (barra)-1": {
+      "peso": "47,5",
+      "timestamp": "2026-09-21T02:29:42.516Z"
+    },
+    "N2-S2-vie-Sentadilla trasera (barra)-2": {
+      "peso": "47,5",
+      "timestamp": "2026-09-21T02:29:46.218Z"
     }
   },
   "rehab": {},
@@ -3270,5 +3278,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T02:21:42.209Z"
+  "timestamp": "2026-09-21T02:29:45.537Z"
 }
