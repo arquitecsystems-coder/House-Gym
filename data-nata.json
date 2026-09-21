@@ -2303,6 +2303,14 @@
     "N2-S2-mie-Aperturas en banco (mancuerna)-1": {
       "peso": "5",
       "timestamp": "2026-09-21T00:43:12.633Z"
+    },
+    "N2-S2-mie-Aperturas en banco (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-21T00:43:17.361Z"
+    },
+    "N2-S2-mie-Aperturas en banco (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-09-21T00:43:20.571Z"
     }
   },
   "rehab": {},
@@ -3184,5 +3192,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T00:43:15.642Z"
+  "timestamp": "2026-09-21T00:43:20.370Z"
 }
