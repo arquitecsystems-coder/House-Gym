@@ -2320,6 +2320,14 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "N2-S2-mie-Pullover (mancuerna)-1": {
+      "peso": "10",
+      "timestamp": "2026-09-21T00:57:06.622Z"
+    },
+    "N2-S2-mie-Pullover (mancuerna)-2": {
+      "peso": "10",
+      "timestamp": "2026-09-21T00:57:09.700Z"
     }
   },
   "rehab": {},
@@ -3201,5 +3209,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T00:52:58.415Z"
+  "timestamp": "2026-09-21T00:57:09.654Z"
 }
