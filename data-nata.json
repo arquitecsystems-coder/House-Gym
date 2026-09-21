@@ -2374,6 +2374,11 @@
       "timestamp": "2026-09-21T01:40:34.722Z",
       "reps": "8",
       "checked": true
+    },
+    "N2-S2-vie-Curl Nórdico Asistido (banda)-1": {
+      "reps": "4",
+      "timestamp": "2026-09-21T02:10:14.606Z",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3255,5 +3260,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T01:58:51.659Z"
+  "timestamp": "2026-09-21T02:10:17.630Z"
 }
