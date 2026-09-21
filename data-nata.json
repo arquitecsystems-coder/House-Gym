@@ -2405,7 +2405,9 @@
     },
     "N2-S2-vie-Sentadilla trasera (barra)-3": {
       "peso": "47,5",
-      "timestamp": "2026-09-21T02:30:03.436Z"
+      "timestamp": "2026-09-21T02:39:58.918Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3287,5 +3289,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T02:36:40.384Z"
+  "timestamp": "2026-09-21T02:40:02.360Z"
 }
