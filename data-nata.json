@@ -2267,13 +2267,17 @@
     },
     "N2-S2-vie-Elevación Lateral (mancuerna)-1": {
       "reps": "10",
-      "timestamp": "2026-09-21T00:26:59.862Z",
+      "timestamp": "2026-09-21T00:29:27.217Z",
       "peso": "5",
-      "checked": true
+      "checked": true,
+      "rir": "1"
     },
     "N2-S2-vie-Elevación Lateral (mancuerna)-2": {
       "peso": "5",
-      "timestamp": "2026-09-21T00:27:04.463Z"
+      "timestamp": "2026-09-21T00:29:31.838Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {},
@@ -3155,5 +3159,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T00:27:07.793Z"
+  "timestamp": "2026-09-21T00:29:35.768Z"
 }
