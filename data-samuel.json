@@ -2517,6 +2517,12 @@
       "timestamp": "2026-09-21T21:12:29.347Z",
       "reps": "6",
       "checked": true
+    },
+    "M6-S6-lun-Press Banca (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-09-21T21:30:41.311Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -4111,5 +4117,5 @@
       "grasas": 1
     }
   ],
-  "timestamp": "2026-09-21T21:12:32.354Z"
+  "timestamp": "2026-09-21T21:30:44.320Z"
 }
