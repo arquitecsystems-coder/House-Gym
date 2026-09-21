@@ -2334,6 +2334,10 @@
     "N2-S2-mie-Pullover (mancuerna)-3": {
       "peso": "10",
       "timestamp": "2026-09-21T00:57:21.390Z"
+    },
+    "N2-S2-mie-Remo Pendlay (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-09-21T01:06:23.951Z"
     }
   },
   "rehab": {},
@@ -3215,5 +3219,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T01:00:38.775Z"
+  "timestamp": "2026-09-21T01:06:27.797Z"
 }
