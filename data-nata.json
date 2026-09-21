@@ -2352,6 +2352,12 @@
       "timestamp": "2026-09-21T01:14:50.636Z",
       "reps": "7",
       "checked": true
+    },
+    "N2-S2-mie-Press Francés (barra)-1": {
+      "peso": "7",
+      "timestamp": "2026-09-21T01:28:39.858Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3233,5 +3239,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T01:14:53.649Z"
+  "timestamp": "2026-09-21T01:28:42.875Z"
 }
