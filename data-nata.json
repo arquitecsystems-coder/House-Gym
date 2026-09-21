@@ -2278,6 +2278,10 @@
       "reps": "10",
       "checked": true,
       "rir": "1"
+    },
+    "N2-S2-vie-Crunch con peso-1": {
+      "peso": "2",
+      "timestamp": "2026-09-21T00:30:44.609Z"
     }
   },
   "rehab": {},
@@ -3159,5 +3163,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T00:29:35.768Z"
+  "timestamp": "2026-09-21T00:30:47.631Z"
 }
