@@ -2432,6 +2432,18 @@
       "timestamp": "2026-09-21T02:56:51.748Z",
       "reps": "8",
       "checked": true
+    },
+    "N2-S2-lun-Press Inclinado (barra)-1": {
+      "checked": true,
+      "timestamp": "2026-09-22T19:49:26.022Z"
+    },
+    "N2-S2-lun-Press Inclinado (barra)-2": {
+      "checked": true,
+      "timestamp": "2026-09-22T19:49:26.419Z"
+    },
+    "N2-S2-lun-Press Inclinado (barra)-3": {
+      "checked": true,
+      "timestamp": "2026-09-22T19:49:26.779Z"
     }
   },
   "rehab": {},
@@ -2612,7 +2624,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-19T00:27:08.621Z"
+    "_syncTs": "2026-09-21T02:57:01.384Z"
   },
   "test": {
     "test": {
@@ -3313,5 +3325,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-21T02:57:01.384Z"
+  "timestamp": "2026-09-22T19:49:29.789Z"
 }
