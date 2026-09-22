@@ -2594,6 +2594,11 @@
       "reps": "10",
       "checked": true,
       "rir": "3"
+    },
+    "M6-S6-mar-Pullover (DB)-1": {
+      "reps": "14",
+      "timestamp": "2026-09-22T20:06:43.424Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -4246,5 +4251,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-22T20:03:36.099Z"
+  "timestamp": "2026-09-22T20:06:46.427Z"
 }
