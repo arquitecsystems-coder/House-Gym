@@ -2556,7 +2556,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-20T15:45:46.890Z",
+    "_syncTs": "2026-09-21T22:16:45.954Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3056,7 +3056,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-20T15:45:46.890Z"
+    "_syncTs": "2026-09-21T22:16:45.954Z"
   },
   "test": {},
   "actividad": {
@@ -3791,6 +3791,19 @@
             "grasas": 0.3
           }
         ]
+      },
+      "2026-09-22": {
+        "comidas": [
+          {
+            "foodId": "mucqupx5474z",
+            "nombre": "Contramuslo(Sin piel - Con hueso)",
+            "gramos": 230,
+            "kcal": 241,
+            "prot": 32.2,
+            "carbs": 0,
+            "grasas": 9.2
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -4145,7 +4158,15 @@
       "prot": 3,
       "carbs": 19,
       "grasas": 1
+    },
+    {
+      "id": "mucqupx5474z",
+      "nombre": "Contramuslo(Sin piel - Con hueso)",
+      "kcal": 105,
+      "prot": 14,
+      "carbs": 0,
+      "grasas": 4
     }
   ],
-  "timestamp": "2026-09-21T22:16:45.954Z"
+  "timestamp": "2026-09-22T14:03:08.870Z"
 }
