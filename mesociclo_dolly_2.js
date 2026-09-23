@@ -83,12 +83,66 @@ const MESOCICLO_DOLLY_2 = {
   semanas: 6,
   fechas: ["26–27 sep", "3–4 oct", "10–11 oct", "17–18 oct", "24–25 oct", "31 oct–1 nov"],
   dias: [
-    { key: "sab", label: "Sáb", titulo: "Full body A — sesión principal" },
-    { key: "dom", label: "Dom", titulo: "Full body B — sesión secundaria" },
     { key: "mar", label: "Mar", titulo: "Práctica (3-4 min) — sin fallo" },
     { key: "jue", label: "Jue", titulo: "Práctica (3-4 min) — sin fallo" },
+    { key: "sab", label: "Sáb", titulo: "Full body A — sesión principal" },
+    { key: "dom", label: "Dom", titulo: "Full body B — sesión secundaria" },
   ],
   plan: {
+    // ────────── MARTES — PRÁCTICA ──────────
+    mar: [
+      {
+        nombre: "Dead hang",
+        series: 2,
+        info: "Colgarte de la barra con los brazos estirados y aguantar. Anota los SEGUNDOS en la casilla de reps. NUNCA hasta que se te suelten las manos: para con margen. Trabaja el agarre, que es el cuello de botella tanto de la dominada como del RDL.",
+        semanas: [
+          "2 × 20-25 s", "2 × 25 s", "2 × 25-30 s",
+          "2 × 30 s", "2 × 30-35 s", "2 × 20 s (suave)"
+        ]
+      },
+      {
+        nombre: "Isométrico arriba (banda gruesa)",
+        series: 2,
+        info: "Igual que el del sábado pero sin fatiga previa: sube con la banda gruesa, sostén con la barbilla arriba y anota los SEGUNDOS. Aquí se acumula la práctica del tramo que decide la dominada.",
+        semanas: [
+          "2 × 8-10 s", "2 × 10 s", "2 × 10-12 s",
+          "2 × 12 s", "2 × 12-15 s", "2 × 8 s (suave)"
+        ]
+      },
+      {
+        nombre: "Retracciones escapulares colgada",
+        series: 1,
+        info: "Colgada con los brazos ESTIRADOS, hunde los hombros hacia abajo sin doblar los codos, y suelta. Es un movimiento corto. Enseña a activar la espalda antes de tirar, que es lo primero que falla al aprender la dominada.",
+        semanas: ["1 × 5", "1 × 6", "1 × 6", "1 × 8", "1 × 8", "1 × 5 (suave)"]
+      }
+    ],
+    // ────────── JUEVES — PRÁCTICA ──────────
+    jue: [
+      {
+        nombre: "Dead hang",
+        series: 2,
+        info: "Colgarte de la barra con los brazos estirados y aguantar. Anota los SEGUNDOS en la casilla de reps. NUNCA hasta que se te suelten las manos: para con margen. Trabaja el agarre, que es el cuello de botella tanto de la dominada como del RDL.",
+        semanas: [
+          "2 × 20-25 s", "2 × 25 s", "2 × 25-30 s",
+          "2 × 30 s", "2 × 30-35 s", "2 × 20 s (suave)"
+        ]
+      },
+      {
+        nombre: "Isométrico arriba (banda gruesa)",
+        series: 2,
+        info: "Igual que el del sábado pero sin fatiga previa: sube con la banda gruesa, sostén con la barbilla arriba y anota los SEGUNDOS. Aquí se acumula la práctica del tramo que decide la dominada.",
+        semanas: [
+          "2 × 8-10 s", "2 × 10 s", "2 × 10-12 s",
+          "2 × 12 s", "2 × 12-15 s", "2 × 8 s (suave)"
+        ]
+      },
+      {
+        nombre: "Retracciones escapulares colgada",
+        series: 1,
+        info: "Colgada con los brazos ESTIRADOS, hunde los hombros hacia abajo sin doblar los codos, y suelta. Es un movimiento corto. Enseña a activar la espalda antes de tirar, que es lo primero que falla al aprender la dominada.",
+        semanas: ["1 × 5", "1 × 6", "1 × 6", "1 × 8", "1 × 8", "1 × 5 (suave)"]
+      }
+    ],
     // ────────── SÁBADO — FULL BODY A ──────────
     sab: [
       {
@@ -183,7 +237,6 @@ const MESOCICLO_DOLLY_2 = {
         ]
       }
     ],
-
     // ────────── DOMINGO — FULL BODY B ──────────
     dom: [
       {
@@ -263,62 +316,6 @@ const MESOCICLO_DOLLY_2 = {
           "12.5 lb × 10-12 (pico)",
           "7.5 lb × 15 (descarga)"
         ]
-      }
-    ],
-
-    // ────────── MARTES — PRÁCTICA ──────────
-    mar: [
-      {
-        nombre: "Dead hang",
-        series: 2,
-        info: "Colgarte de la barra con los brazos estirados y aguantar. Anota los SEGUNDOS en la casilla de reps. NUNCA hasta que se te suelten las manos: para con margen. Trabaja el agarre, que es el cuello de botella tanto de la dominada como del RDL.",
-        semanas: [
-          "2 × 20-25 s", "2 × 25 s", "2 × 25-30 s",
-          "2 × 30 s", "2 × 30-35 s", "2 × 20 s (suave)"
-        ]
-      },
-      {
-        nombre: "Isométrico arriba (banda gruesa)",
-        series: 2,
-        info: "Igual que el del sábado pero sin fatiga previa: sube con la banda gruesa, sostén con la barbilla arriba y anota los SEGUNDOS. Aquí se acumula la práctica del tramo que decide la dominada.",
-        semanas: [
-          "2 × 8-10 s", "2 × 10 s", "2 × 10-12 s",
-          "2 × 12 s", "2 × 12-15 s", "2 × 8 s (suave)"
-        ]
-      },
-      {
-        nombre: "Retracciones escapulares colgada",
-        series: 1,
-        info: "Colgada con los brazos ESTIRADOS, hunde los hombros hacia abajo sin doblar los codos, y suelta. Es un movimiento corto. Enseña a activar la espalda antes de tirar, que es lo primero que falla al aprender la dominada.",
-        semanas: ["1 × 5", "1 × 6", "1 × 6", "1 × 8", "1 × 8", "1 × 5 (suave)"]
-      }
-    ],
-
-    // ────────── JUEVES — PRÁCTICA ──────────
-    jue: [
-      {
-        nombre: "Dead hang",
-        series: 2,
-        info: "Colgarte de la barra con los brazos estirados y aguantar. Anota los SEGUNDOS en la casilla de reps. NUNCA hasta que se te suelten las manos: para con margen. Trabaja el agarre, que es el cuello de botella tanto de la dominada como del RDL.",
-        semanas: [
-          "2 × 20-25 s", "2 × 25 s", "2 × 25-30 s",
-          "2 × 30 s", "2 × 30-35 s", "2 × 20 s (suave)"
-        ]
-      },
-      {
-        nombre: "Isométrico arriba (banda gruesa)",
-        series: 2,
-        info: "Igual que el del sábado pero sin fatiga previa: sube con la banda gruesa, sostén con la barbilla arriba y anota los SEGUNDOS. Aquí se acumula la práctica del tramo que decide la dominada.",
-        semanas: [
-          "2 × 8-10 s", "2 × 10 s", "2 × 10-12 s",
-          "2 × 12 s", "2 × 12-15 s", "2 × 8 s (suave)"
-        ]
-      },
-      {
-        nombre: "Retracciones escapulares colgada",
-        series: 1,
-        info: "Colgada con los brazos ESTIRADOS, hunde los hombros hacia abajo sin doblar los codos, y suelta. Es un movimiento corto. Enseña a activar la espalda antes de tirar, que es lo primero que falla al aprender la dominada.",
-        semanas: ["1 × 5", "1 × 6", "1 × 6", "1 × 8", "1 × 8", "1 × 5 (suave)"]
       }
     ]
   }
