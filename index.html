@@ -685,6 +685,21 @@
   .session-note::placeholder { color: var(--muted); }
 
   /* ── REHAB ── */
+  .info-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 17px; height: 17px; margin-left: 7px; padding: 0;
+    border: 1px solid var(--border); border-radius: 50%;
+    background: transparent; color: var(--muted);
+    font-family: var(--font-mono); font-size: 11px; font-style: italic;
+    line-height: 1; cursor: pointer; vertical-align: middle;
+  }
+  .info-btn.open { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .info-panel {
+    margin: 6px 0 2px; padding: 8px 10px;
+    border-left: 2px solid var(--accent);
+    background: var(--bg); border-radius: 6px;
+    font-size: 12px; line-height: 1.45; color: var(--muted);
+  }
   .rehab-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -1735,6 +1750,252 @@ const MESOCICLOS = {
       ],
     }
   },
+  "D2": {
+    label: "M2 — Dolly",
+    tipo: "activo",
+    semanas: 6,
+    fechas: ["26–27 sep", "3–4 oct", "10–11 oct", "17–18 oct", "24–25 oct", "31 oct–1 nov"],
+    dias: [
+      { key: "sab", label: "Sáb", titulo: "Full body A — sesión principal" },
+      { key: "dom", label: "Dom", titulo: "Full body B — sesión secundaria" },
+      { key: "mar", label: "Mar", titulo: "Práctica (3-4 min) — sin fallo" },
+      { key: "jue", label: "Jue", titulo: "Práctica (3-4 min) — sin fallo" },
+    ],
+    plan: {
+      // ────────── SÁBADO — FULL BODY A ──────────
+      sab: [
+        {
+          nombre: "Dominada asistida (doble banda)",
+          series: 3,
+          info: "Movimiento completo con las dos bandas. PARA CON 1 REP EN EL TANQUE (RIR 1), no llegues al fallo: aquí buscamos reps limpias, no reps máximas. Si la técnica se rompe, la serie terminó.",
+          semanas: [
+            "Doble banda × 5-6 (RIR 1)",
+            "Doble banda × 6 (RIR 1)",
+            "Doble banda × 6-7 (RIR 1)",
+            "Doble banda × 7 (RIR 1)",
+            "Doble banda × 7-8 (RIR 1)",
+            "Doble banda × 5 (descarga)"
+          ]
+        },
+        {
+          nombre: "Isométrico arriba (banda gruesa)",
+          series: 2,
+          info: "Solo con la banda gruesa. Sube como puedas hasta tener la barbilla por encima de la barra y SOSTÉN ahí. Anota los SEGUNDOS que aguantaste en la casilla de reps. Esta es la métrica principal del bloque: ataca justo el tramo alto donde la banda casi no ayuda.",
+          semanas: [
+            "2 × 10-12 s",
+            "2 × 12 s",
+            "2 × 12-15 s",
+            "2 × 15 s",
+            "2 × 15-18 s",
+            "2 × 10 s (descarga)"
+          ]
+        },
+        {
+          nombre: "Flexión inclinada (banco)",
+          series: 4,
+          info: "Progresa bajando la altura de las manos, no añadiendo peso. ANOTA LA ALTURA usada en la casilla de peso (alto / medio / medio-bajo / bajo): sin ese dato no se puede comparar entre semanas.",
+          semanas: [
+            "Banco medio × 10-12",
+            "Banco medio × 12-15",
+            "Banco medio-bajo × 8-10",
+            "Banco medio-bajo × 10-12",
+            "Banco bajo × 6-8 (pico)",
+            "Banco medio × 12 (descarga)"
+          ]
+        },
+        {
+          nombre: "Búlgara con mancuerna",
+          series: 3,
+          info: "Pie de atrás sobre el banco, mancuerna en una mano y la otra apoyada en la pared para el equilibrio. Sube reps dentro del mismo peso hasta llegar a 12; solo ahí salta al siguiente escalón. Última serie al fallo.",
+          semanas: [
+            "30 lb × 8/8",
+            "30 lb × 10/10",
+            "30 lb × 12/12",
+            "35 lb × 8/8",
+            "35 lb × 10/10 (pico)",
+            "25 lb × 10/10 (descarga)"
+          ]
+        },
+        {
+          nombre: "Press inclinado mancuerna (unilateral)",
+          series: 3,
+          info: "Banco inclinado, un brazo por vez. Punto de partida calibrado desde lo último que demostró de verdad (12.5 lb × 12), no desde el test. Última serie al fallo.",
+          semanas: [
+            "15 lb × 8",
+            "15 lb × 10",
+            "15 lb × 12",
+            "17.5 lb × 8",
+            "17.5 lb × 10 (pico)",
+            "12.5 lb × 10 (descarga)"
+          ]
+        },
+        {
+          nombre: "Remo unilateral con mancuerna",
+          series: 3,
+          info: "Apoyo de rodilla y mano en el banco. Fue el ejercicio que mejor progresó en el M1, así que sigue la misma lógica: reps hasta el tope del rango y luego sube escalón. Última serie al fallo.",
+          semanas: [
+            "25 lb × 8",
+            "25 lb × 10",
+            "25 lb × 12",
+            "30 lb × 8",
+            "30 lb × 10 (pico)",
+            "20 lb × 10 (descarga)"
+          ]
+        },
+        {
+          nombre: "Copa a una mano (tríceps)",
+          series: 2,
+          info: "Tríceps por encima de la cabeza, una mano. Estuvo plano todo el M1 en 5 lb, así que sube a 7.5 lb. Si se corta la sesión por tiempo, este ejercicio es el primero en salir.",
+          semanas: [
+            "7.5 lb × 10",
+            "7.5 lb × 12",
+            "10 lb × 8",
+            "10 lb × 10",
+            "10 lb × 12 (pico)",
+            "7.5 lb × 10 (descarga)"
+          ]
+        }
+      ],
+  
+      // ────────── DOMINGO — FULL BODY B ──────────
+      dom: [
+        {
+          nombre: "Dominada asistida (práctica)",
+          series: 2,
+          info: "Doble banda, LEJOS DEL FALLO. Esto NO es una segunda sesión dura: son dos series cortas para sumar exposición al patrón con 24 h de diferencia. Si terminas agotada, te pasaste.",
+          semanas: [
+            "Doble banda × 4-5",
+            "Doble banda × 5",
+            "Doble banda × 5",
+            "Doble banda × 5-6",
+            "Doble banda × 6",
+            "Doble banda × 4 (descarga)"
+          ]
+        },
+        {
+          nombre: "Negativas de fondo (banco)",
+          series: 4,
+          info: "En el soporte de pared, con los pies sin tocar el suelo. Solo la fase de BAJADA, controlada. Progresó bien en el M1 (de 6 a 8 reps), así que se mantiene la misma vía. En S4 la bajada se alarga a 5 segundos.",
+          semanas: [
+            "6 reps",
+            "7 reps",
+            "8 reps",
+            "8 reps (bajada 5 s)",
+            "8-9 reps (pico)",
+            "5 reps (descarga)"
+          ]
+        },
+        {
+          nombre: "RDL unilateral con apoyo",
+          series: 3,
+          info: "CAMBIO IMPORTANTE: la mano libre va apoyada en la pared o el banco. En el M1 el ejercicio moría por equilibrio y agarre, no por isquios, así que el registro anterior no sirve de referencia. Reinicia en 30 lb y sube rápido si el agarre aguanta. Anota las reps de cada pierna.",
+          semanas: [
+            "30 lb × 10/10",
+            "35 lb × 10/10",
+            "40 lb × 10/10",
+            "40 lb × 12/12",
+            "45 lb × 8-10 (pico)",
+            "30 lb × 10/10 (descarga)"
+          ]
+        },
+        {
+          nombre: "Sentadilla goblet",
+          series: 3,
+          info: "Mancuerna sostenida vertical contra el pecho, con las dos manos. Entra nueva en este bloque: da una vía de carga de pierna que no depende del agarre ni del equilibrio en una sola pierna.",
+          semanas: [
+            "25 lb × 10",
+            "30 lb × 10",
+            "30 lb × 12",
+            "35 lb × 10",
+            "35 lb × 12 (pico)",
+            "25 lb × 12 (descarga)"
+          ]
+        },
+        {
+          nombre: "Curl bíceps con mancuerna",
+          series: 3,
+          info: "Un brazo por vez. En el M1 el brazo izquierdo rindió menos que el derecho: iguala el número de reps al del lado MÁS DÉBIL en lugar de forzar el fuerte. Última serie al fallo.",
+          semanas: [
+            "15 lb × 8",
+            "15 lb × 10",
+            "15 lb × 12",
+            "17.5 lb × 8",
+            "17.5 lb × 10 (pico)",
+            "12.5 lb × 12 (descarga)"
+          ]
+        },
+        {
+          nombre: "Lateral inclinado contra pared",
+          series: 3,
+          info: "Inclinada contra la pared, elevación lateral. Se quedó en 7.5 lb todo el M1 llegando a 15 reps, así que ahora sube a 10 lb. Si el brazo no llega a la altura del hombro, baja el peso antes que acortar el recorrido.",
+          semanas: [
+            "10 lb × 10",
+            "10 lb × 12",
+            "10 lb × 15",
+            "12.5 lb × 8-10",
+            "12.5 lb × 10-12 (pico)",
+            "7.5 lb × 15 (descarga)"
+          ]
+        }
+      ],
+  
+      // ────────── MARTES — PRÁCTICA ──────────
+      mar: [
+        {
+          nombre: "Dead hang",
+          series: 2,
+          info: "Colgarte de la barra con los brazos estirados y aguantar. Anota los SEGUNDOS en la casilla de reps. NUNCA hasta que se te suelten las manos: para con margen. Trabaja el agarre, que es el cuello de botella tanto de la dominada como del RDL.",
+          semanas: [
+            "2 × 20-25 s", "2 × 25 s", "2 × 25-30 s",
+            "2 × 30 s", "2 × 30-35 s", "2 × 20 s (suave)"
+          ]
+        },
+        {
+          nombre: "Isométrico arriba (banda gruesa)",
+          series: 2,
+          info: "Igual que el del sábado pero sin fatiga previa: sube con la banda gruesa, sostén con la barbilla arriba y anota los SEGUNDOS. Aquí se acumula la práctica del tramo que decide la dominada.",
+          semanas: [
+            "2 × 8-10 s", "2 × 10 s", "2 × 10-12 s",
+            "2 × 12 s", "2 × 12-15 s", "2 × 8 s (suave)"
+          ]
+        },
+        {
+          nombre: "Retracciones escapulares colgada",
+          series: 1,
+          info: "Colgada con los brazos ESTIRADOS, hunde los hombros hacia abajo sin doblar los codos, y suelta. Es un movimiento corto. Enseña a activar la espalda antes de tirar, que es lo primero que falla al aprender la dominada.",
+          semanas: ["1 × 5", "1 × 6", "1 × 6", "1 × 8", "1 × 8", "1 × 5 (suave)"]
+        }
+      ],
+  
+      // ────────── JUEVES — PRÁCTICA ──────────
+      jue: [
+        {
+          nombre: "Dead hang",
+          series: 2,
+          info: "Colgarte de la barra con los brazos estirados y aguantar. Anota los SEGUNDOS en la casilla de reps. NUNCA hasta que se te suelten las manos: para con margen. Trabaja el agarre, que es el cuello de botella tanto de la dominada como del RDL.",
+          semanas: [
+            "2 × 20-25 s", "2 × 25 s", "2 × 25-30 s",
+            "2 × 30 s", "2 × 30-35 s", "2 × 20 s (suave)"
+          ]
+        },
+        {
+          nombre: "Isométrico arriba (banda gruesa)",
+          series: 2,
+          info: "Igual que el del sábado pero sin fatiga previa: sube con la banda gruesa, sostén con la barbilla arriba y anota los SEGUNDOS. Aquí se acumula la práctica del tramo que decide la dominada.",
+          semanas: [
+            "2 × 8-10 s", "2 × 10 s", "2 × 10-12 s",
+            "2 × 12 s", "2 × 12-15 s", "2 × 8 s (suave)"
+          ]
+        },
+        {
+          nombre: "Retracciones escapulares colgada",
+          series: 1,
+          info: "Colgada con los brazos ESTIRADOS, hunde los hombros hacia abajo sin doblar los codos, y suelta. Es un movimiento corto. Enseña a activar la espalda antes de tirar, que es lo primero que falla al aprender la dominada.",
+          semanas: ["1 × 5", "1 × 6", "1 × 6", "1 × 8", "1 × 8", "1 × 5 (suave)"]
+        }
+      ]
+    }
+  },
   "M6": {
     label: "M6 — 2026",
     tipo: "activo",
@@ -1858,7 +2119,7 @@ const RMS_REFERENCIA = {
 // ============================================================
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5', 'M6'], tieneRehab: true,  renderTest: null },
-  dolly:  { mesociclos: ['D1'],         tieneRehab: false, renderTest: null },
+  dolly:  { mesociclos: ['D1','D2'],    tieneRehab: false, renderTest: null },
   nata:   { mesociclos: ['N1','N2'],     tieneRehab: false, renderTest: null, tieneHabitos: true },
 };
 
@@ -2420,7 +2681,8 @@ function renderEjercicioCard(ej, meso, semana, dia) {
   return `<div class="exercise-card">
     <div class="exercise-header" onclick="toggleCard(this)">
       <div>
-        <div class="exercise-name">${ej.nombre}</div>
+        <div class="exercise-name">${ej.nombre}${ej.info ? `<button class="info-btn" onclick="event.stopPropagation();toggleInfo(this)" aria-label="Qué es este ejercicio">i</button>` : ""}</div>
+        ${ej.info ? `<div class="info-panel" style="display:none">${ej.info}</div>` : ""}
         <div class="exercise-meta">${ej.series} series — objetivo: ${planActual}</div>
       </div>
       <div class="exercise-badge ${allChecked ? 'done' : ''}">
@@ -2434,6 +2696,14 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       ${setsHtml}
     </div>
   </div>`;
+}
+
+function toggleInfo(btn) {
+  const panel = btn.parentElement.nextElementSibling;
+  if (!panel || !panel.classList.contains("info-panel")) return;
+  const hidden = panel.style.display === "none";
+  panel.style.display = hidden ? "block" : "none";
+  btn.classList.toggle("open", hidden);
 }
 
 function toggleCard(header) {
