@@ -2642,7 +2642,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-23T21:04:31.748Z",
+    "_syncTs": "2026-09-23T21:35:53.514Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3142,7 +3142,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-23T21:04:31.748Z"
+    "_syncTs": "2026-09-23T21:35:53.514Z"
   },
   "test": {},
   "actividad": {
@@ -3976,6 +3976,20 @@
             "grasas": 72
           }
         ]
+      },
+      "2026-09-24": {
+        "comidas": [
+          {
+            "foodId": "huevo",
+            "nombre": "Huevo (doble A)",
+            "gramos": 232,
+            "kcal": 360,
+            "prot": 30.2,
+            "carbs": 2.6,
+            "grasas": 25.5,
+            "unidades": 4
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -4340,5 +4354,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-23T21:35:53.514Z"
+  "timestamp": "2026-09-24T23:44:09.259Z"
 }
