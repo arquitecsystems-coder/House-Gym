@@ -1226,6 +1226,10 @@
       "timestamp": "2026-09-24T03:14:53.799Z",
       "rir": "4",
       "checked": true
+    },
+    "D2-S1-mar-Isométrico arriba (banda gruesa)-1": {
+      "reps": "10",
+      "timestamp": "2026-09-24T03:19:02.156Z"
     }
   },
   "rehab": {
@@ -1345,5 +1349,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-24T03:14:56.813Z"
+  "timestamp": "2026-09-24T03:19:05.193Z"
 }
