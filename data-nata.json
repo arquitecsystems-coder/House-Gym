@@ -2516,6 +2516,14 @@
       "timestamp": "2026-09-24T01:00:51.073Z",
       "reps": "9",
       "checked": true
+    },
+    "N2-S3-mie-Aperturas en banco (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-09-24T01:03:14.398Z"
+    },
+    "N2-S3-mie-Aperturas en banco (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-24T01:03:17.010Z"
     }
   },
   "rehab": {},
@@ -3397,5 +3405,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-24T01:00:54.749Z"
+  "timestamp": "2026-09-24T01:03:20.032Z"
 }
