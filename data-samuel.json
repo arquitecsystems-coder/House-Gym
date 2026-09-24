@@ -3997,6 +3997,15 @@
             "prot": 7.5,
             "carbs": 47.5,
             "grasas": 2.5
+          },
+          {
+            "foodId": "carne_molida_75_25",
+            "nombre": "Carne molida 75/25",
+            "gramos": 250,
+            "kcal": 700,
+            "prot": 40,
+            "carbs": 0,
+            "grasas": 60
           }
         ]
       }
@@ -4363,5 +4372,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-24T23:44:25.537Z"
+  "timestamp": "2026-09-24T23:44:31.876Z"
 }
