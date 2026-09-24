@@ -2536,6 +2536,14 @@
       "timestamp": "2026-09-24T01:19:15.539Z",
       "reps": "10",
       "checked": true
+    },
+    "N2-S3-mie-Press Francés (barra)-1": {
+      "peso": "16,5",
+      "timestamp": "2026-09-24T01:34:44.754Z"
+    },
+    "N2-S3-mie-Press Francés (barra)-2": {
+      "peso": "16,5",
+      "timestamp": "2026-09-24T01:34:48.559Z"
     }
   },
   "rehab": {},
@@ -3417,5 +3425,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-24T01:19:18.551Z"
+  "timestamp": "2026-09-24T01:34:47.778Z"
 }
