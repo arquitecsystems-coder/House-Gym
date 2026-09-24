@@ -1217,7 +1217,8 @@
     },
     "D2-S1-mar-Dead hang-1": {
       "reps": "25",
-      "timestamp": "2026-09-24T03:10:31.050Z"
+      "timestamp": "2026-09-24T03:10:37.809Z",
+      "rir": "4"
     }
   },
   "rehab": {
@@ -1337,5 +1338,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-24T03:10:34.094Z"
+  "timestamp": "2026-09-24T03:10:40.826Z"
 }
