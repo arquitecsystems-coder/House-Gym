@@ -2456,6 +2456,14 @@
     "N2-S2-vie-Hip Thrust (barra)-3": {
       "checked": true,
       "timestamp": "2026-09-22T19:49:34.099Z"
+    },
+    "N2-S3-mie-RDL (barra)-1": {
+      "peso": "32,5",
+      "timestamp": "2026-09-24T00:11:03.683Z"
+    },
+    "N2-S3-mie-RDL (barra)-2": {
+      "peso": "32,5",
+      "timestamp": "2026-09-24T00:11:07.497Z"
     }
   },
   "rehab": {},
@@ -2636,7 +2644,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-21T02:57:01.384Z"
+    "_syncTs": "2026-09-22T19:49:37.110Z"
   },
   "test": {
     "test": {
@@ -3337,5 +3345,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-22T19:49:37.110Z"
+  "timestamp": "2026-09-24T00:11:06.725Z"
 }
