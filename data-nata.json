@@ -2495,7 +2495,9 @@
     },
     "N2-S3-mie-Remo Pendlay (barra)-3": {
       "peso": "27,7",
-      "timestamp": "2026-09-24T00:29:13.219Z"
+      "timestamp": "2026-09-24T00:39:20.365Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3377,5 +3379,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-24T00:36:26.821Z"
+  "timestamp": "2026-09-24T00:39:23.777Z"
 }
