@@ -1238,6 +1238,10 @@
       "timestamp": "2026-09-24T03:22:06.390Z",
       "rir": "3",
       "checked": true
+    },
+    "nota-sesion-D2-S1-mar": {
+      "nota": "En la retracción escapular no pude retraer mucho la espalda.",
+      "timestamp": "2026-09-24T03:27:02.438Z"
     }
   },
   "rehab": {
@@ -1357,5 +1361,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-24T03:22:09.397Z"
+  "timestamp": "2026-09-24T03:27:05.445Z"
 }
