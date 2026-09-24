@@ -1242,6 +1242,12 @@
     "nota-sesion-D2-S1-mar": {
       "nota": "En la retracción escapular no pude retraer mucho la espalda.",
       "timestamp": "2026-09-24T03:27:02.438Z"
+    },
+    "D2-S1-mar-Retracciones escapulares colgada-1": {
+      "reps": "5",
+      "timestamp": "2026-09-24T03:27:18.070Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1361,5 +1367,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-24T03:27:05.445Z"
+  "timestamp": "2026-09-24T03:27:21.083Z"
 }
