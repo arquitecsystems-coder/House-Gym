@@ -2563,7 +2563,9 @@
     },
     "N2-S3-lun-Sentadilla trasera (barra)-2": {
       "peso": "55",
-      "timestamp": "2026-09-25T00:47:25.653Z"
+      "timestamp": "2026-09-25T01:02:16.215Z",
+      "reps": "8",
+      "checked": true
     },
     "N2-S3-lun-Sentadilla trasera (barra)-3": {
       "peso": "55",
@@ -3453,5 +3455,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-25T00:53:46.617Z"
+  "timestamp": "2026-09-25T01:02:19.373Z"
 }
