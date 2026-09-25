@@ -2554,6 +2554,22 @@
       "timestamp": "2026-09-24T01:45:55.266Z",
       "reps": "10",
       "checked": true
+    },
+    "N2-S3-lun-Sentadilla trasera (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-09-25T00:47:22.749Z"
+    },
+    "N2-S3-lun-Sentadilla trasera (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-09-25T00:47:25.653Z"
+    },
+    "N2-S3-lun-Sentadilla trasera (barra)-3": {
+      "peso": "55",
+      "timestamp": "2026-09-25T00:47:28.374Z"
+    },
+    "N2-S3-lun-Sentadilla trasera (barra)-4": {
+      "peso": "55",
+      "timestamp": "2026-09-25T00:47:31.961Z"
     }
   },
   "rehab": {},
@@ -2734,7 +2750,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-22T19:49:37.110Z"
+    "_syncTs": "2026-09-24T01:45:58.281Z"
   },
   "test": {
     "test": {
@@ -3435,5 +3451,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-24T01:45:58.281Z"
+  "timestamp": "2026-09-25T00:47:31.405Z"
 }
