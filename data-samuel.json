@@ -2641,8 +2641,14 @@
       "checked": true
     },
     "M6-S6-jue-Press Inclinado (barra)-1": {
+      "peso": "",
+      "timestamp": "2026-09-25T20:46:51.393Z"
+    },
+    "M6-S6-jue-Press Banca (barra)-1": {
       "peso": "35",
-      "timestamp": "2026-09-25T20:46:44.516Z"
+      "timestamp": "2026-09-25T20:46:55.013Z",
+      "reps": "15",
+      "checked": true
     }
   },
   "rehab": {
@@ -4403,5 +4409,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-25T20:46:47.522Z"
+  "timestamp": "2026-09-25T20:46:58.027Z"
 }
