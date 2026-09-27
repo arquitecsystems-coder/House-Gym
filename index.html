@@ -2405,15 +2405,62 @@ function setView(v) {
 }
 
 // ── MESO TABS ──
+// Rango de fechas real de un mesociclo: desde el inicio de S1
+// hasta el ULTIMO DIA DE LA DESCARGA (fin de la ultima semana).
+function mesoRango(meso) {
+  if (!meso || !meso.fechas || !meso.fechas.length) return null;
+  const meses = {
+    'ene':0,'feb':1,'mar':2,'abr':3,'may':4,'jun':5,
+    'jul':6,'ago':7,'sep':8,'oct':9,'nov':10,'dic':11
+  };
+  function parseRango(rango) {
+    const dashIdx = rango.indexOf('\u2013');
+    if (dashIdx === -1) return null;
+    const startRaw = rango.slice(0, dashIdx).trim();
+    const endRaw   = rango.slice(dashIdx + 1).trim();
+    const endParts = endRaw.split(' ');
+    const endMon = meses[(endParts[1] || '').toLowerCase()];
+    const endDay = parseInt(endParts[0]);
+    if (isNaN(endDay) || endMon === undefined) return null;
+    const endDate = new Date(2026, endMon, endDay);
+    const startParts = startRaw.split(' ');
+    const startDay = parseInt(startParts[0]);
+    const startMon = startParts[1] ? meses[startParts[1].toLowerCase()] : endMon;
+    const startDate = new Date(2026, startMon, startDay);
+    return { start: startDate, end: endDate };
+  }
+  const first = parseRango(meso.fechas[0]);
+  const last  = parseRango(meso.fechas[meso.fechas.length - 1]);
+  if (!first || !last) return null;
+  return { start: first.start, end: last.end };
+}
+
+// Estado derivado de las fechas, no del campo tipo hardcodeado.
+// Se cierra solo el ultimo dia de la descarga.
+function mesoEstado(meso) {
+  if (meso && meso.tipo === "referencia") return "referencia";
+  const r = mesoRango(meso);
+  if (!r) return meso && meso.tipo === "activo" ? "activo" : "completado";
+  const hoy = new Date();
+  const h = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+  if (h < r.start) return "futuro";
+  if (h > r.end)   return "completado";
+  return "activo";
+}
+
 function renderMesoTabs() {
   const el = document.getElementById("mesoTabs");
   const userMesos = USUARIOS[state.currentUser]?.mesociclos || [];
   el.innerHTML = Object.entries(MESOCICLOS)
     .filter(([k]) => userMesos.includes(k))
-    .map(([k, m]) =>
-      `<button class="meso-tab ${state.meso === k ? "active" : ""}"
-        onclick="setMeso('${k}')">${m.label}</button>`
-    ).join("");
+    .map(([k, m]) => {
+      const est = mesoEstado(m);
+      const badge = est === "activo"
+        ? ' <span style="font-size:9px;opacity:.85">\u00b7 en curso</span>'
+        : (est === "futuro" ? ' <span style="font-size:9px;opacity:.6">\u00b7 pr\u00f3ximo</span>' : '');
+      return `<button class="meso-tab ${state.meso === k ? "active" : ""}"
+        onclick="setMeso('${k}')">${m.label}${badge}</button>`;
+    }).join("");
 }
 
 function setMeso(k) {
