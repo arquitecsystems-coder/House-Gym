@@ -2110,7 +2110,7 @@ const MESOCICLOS = {
     semanas: 6,
     fechas: ["28 sep–3 oct","5–10 oct","12–17 oct","19–24 oct","26–31 oct","2–7 nov"],
     modelo: "doble_progresion",
-    notaEquipo: "INCREMENTOS REALES (solo barra): par 0.5lb = +0.45kg | par 1.25lb = +1.13kg | par 2.5lb = +2.27kg | par 5lb = +4.54kg, combinables hasta +8.39kg. Las mancuernas NO tienen incremento fino hasta que lleguen las ajustables: pullover, lateral y martillo progresan por reps.",
+    notaEquipo: "EQUIPO: barra 15kg, disco kg mínimo 5kg (carga kg en saltos de 10kg). Microdiscos, un par de cada: par 0.5lb = +0.45kg | par 1.25lb = +1.13kg | par 2.5lb = +2.27kg | par 5lb = +4.54kg, combinables hasta +8.39kg. Las mancuernas NO tienen incremento fino hasta que lleguen las ajustables: pullover, lateral y martillo progresan por reps.",
     dias: [
       { key: "lun", label: "Lun", titulo: "Push — Pesado" },
       { key: "mar", label: "Mar", titulo: "Pull — Pesado" },
@@ -2123,7 +2123,7 @@ const MESOCICLOS = {
       lun: [
         { nombre: "Press Banca (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 2.27, cierre: "amrap" },
           nota: "PRINCIPAL. Reps fijas 3x8, peso prescrito +2.27kg/sem (apuesta a adaptación neural: ratio inclinado/banca estaba en 97%, normal 80-85%, el banca venía subdesarrollado). Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia AMRAP: M6 65kg x 8.",
-          semanas: ["62.5kg x 8","64.8kg x 8 (62.5 + par 2.5lb)","67kg x 8 (62.5 + par 5lb)","69.3kg x 8 (62.5 + 5lb + 2.5lb)","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
+          semanas: ["62.9kg x 8","65kg x 8","67.3kg x 8","69.5kg x 8","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
         { nombre: "Press Inclinado (barra)", series: 3, rol: "secundario",
           nota: "Pasa a secundario. Cuando lleguen las mancuernas ajustables: cambiar a mancuerna sin cortar el bloque. Trayectoria humeral libre, terapéutico para la asimetría escapular izquierda.",
           semanas: ["60kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","~60% x 15 (descarga)"] },
@@ -2138,8 +2138,8 @@ const MESOCICLOS = {
       ],
       mar: [
         { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap" },
-          nota: "REPS FIJAS 3x8, peso prescrito +1.13kg/sem. Arranca en 57.5 y no en 62.5: con e1RM ~79 (M6: 70x4), 62.5 es tu máximo de 8 reps y 3x8 fallaría desde S1. Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia: M6 65kg x 5.",
-          semanas: ["57.5kg x 8","58.6kg x 8 (57.5 + par 1.25lb)","59.8kg x 8 (57.5 + par 2.5lb)","60.9kg x 8 (57.5 + 2.5lb + 1.25lb)","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
+          nota: "REPS FIJAS 3x8, peso prescrito +1.13kg/sem. Arranca en 57.3 y no en 62.5: con e1RM ~79 (M6: 70x4), 62.5 es tu máximo de 8 reps y 3x8 fallaría desde S1. Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia: M6 65kg x 5.",
+          semanas: ["57.3kg x 8","58.4kg x 8","59.5kg x 8","60.7kg x 8","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
         { nombre: "Remo Supino (barra)", series: 3, rol: "fuerza",
           nota: "Cuando lleguen las mancuernas: SALE, entra Remo Unilateral (mayor rango, corrige asimetría, menos carga en erectores).",
           semanas: ["52.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","35kg x 15 (descarga)"] },
@@ -2152,7 +2152,7 @@ const MESOCICLOS = {
       mie: [
         { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 3, inc: 2.27, cierre: "triple" },
           nota: "REPS FIJAS 3x3, pesado para expresar fuerza sin ahogo. Peso prescrito +2.27kg/sem. Semana que no salgan 3x3: se cierra la subida y la siguiente es triple pesado (máximo x3 a RIR 0-1), sin AMRAP. Referencia: M6 95kg x 3 RIR 0 (antes de la lesión 115x2). Cuña bajo talón izquierdo confirmada necesaria: sin ella el cuerpo compensa con sumo funcional.",
-          semanas: ["87.5kg x 3","89.8kg x 3 (87.5 + par 2.5lb)","92kg x 3 (87.5 + par 5lb)","94.3kg x 3 (87.5 + 5lb + 2.5lb)","Triple pesado RIR 0-1 (pico)","60kg x 3 (descarga)"] },
+          semanas: ["87.3kg x 3","89.5kg x 3","91.8kg x 3","93.4kg x 3","Triple pesado RIR 0-1 (pico)","60kg x 3 (descarga)"] },
         { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "fuerza",
           nota: "REPS FIJAS a 5, progresión por RIR: S1-S2 RIR 3, S3-S4 RIR 2, S5 RIR 1. LÍMITE DURO: nunca RIR 0 (el fallo aquí es redondeo lumbar bajo carga máxima). Erectores ya en zona alta.",
           semanas: ["65kg x 5 (RIR 3)","65kg x 5 (RIR 3)","x 5 (RIR 2)","x 5 (RIR 2)","x 5 (RIR 1, pico)","45kg x 8 (descarga)"] },
@@ -2778,8 +2778,8 @@ function setDia(d) {
 // ── PROGRESIÓN AUTOMÁTICA (M7+) ──
 // Calcula el objetivo de la sesión a partir del último registro real,
 // no del calendario: si se salta una semana, el peso no "salta" solo.
-// Supuesto de equipo: discos en kg cargan en pasos de 2.5kg; encima,
-// UN par de cada microdisco en lb (0.5, 1.25, 2.5, 5).
+// Equipo real: barra 15kg, disco kg más pequeño 5kg (carga kg en pasos
+// de 10kg: 15, 25, 35...). Encima, UN par de cada microdisco en lb.
 const MICRO_DISCOS = [
   { kg: 0.45, label: "0.5lb" },
   { kg: 1.13, label: "1.25lb" },
@@ -2796,15 +2796,19 @@ function fmtKg(n) {
   return String(Math.round(n * 10) / 10);
 }
 
-// Mejor combinación discos kg (pasos 2.5) + microdiscos (máx 1 par de cada)
-function combinarDiscos(objetivo) {
+const BARRA_KG = 15, PASO_KG = 10;
+
+// Carga real más cercana: barra + discos kg (pasos de 10) + microdiscos (máx 1 par de cada).
+// minimo: la carga nunca queda por debajo de este valor (para que "subir" siempre suba).
+function combinarDiscos(objetivo, minimo = 0) {
   let best = null;
-  const baseTope = Math.floor((objetivo + 0.05) / 2.5) * 2.5;
-  for (const base of [baseTope, baseTope - 2.5, baseTope - 5]) {
-    if (base < 0) continue;
+  const baseTope = BARRA_KG + Math.floor((objetivo - BARRA_KG + 0.05) / PASO_KG) * PASO_KG;
+  for (const base of [baseTope - PASO_KG, baseTope, baseTope + PASO_KG]) {
+    if (base < BARRA_KG) continue;
     for (let mask = 0; mask < 16; mask++) {
       const usados = MICRO_DISCOS.filter((_, i) => mask & (1 << i));
       const total = base + usados.reduce((a, d) => a + d.kg, 0);
+      if (total < minimo) continue;
       const diff = Math.abs(total - objetivo);
       // Diferencias < 0.1kg cuentan como empate: gana la carga con menos discos
       if (!best || diff < best.diff - 0.1 || (diff <= best.diff + 0.1 && usados.length < best.usados.length)) {
@@ -2813,7 +2817,7 @@ function combinarDiscos(objetivo) {
     }
   }
   const micro = best.usados.slice().reverse().map(d => d.label);
-  best.texto = fmtKg(best.base) + "kg" + (micro.length ? " + par " + micro.join(" + par ") : "");
+  best.texto = fmtKg(best.base) + "kg en barra" + (micro.length ? " + par " + micro.join(" + par ") : "");
   return best;
 }
 
@@ -2843,11 +2847,20 @@ function ultimaSesion(ej, meso, semana, dia) {
   return null;
 }
 
+// Traduce el peso escrito en el plan a la carga real posible con barra
+function cargaRealPlan(ej, semana) {
+  if (!/\(barra/.test(ej.nombre)) return null;
+  const m = (ej.semanas[semana - 1] || "").match(/^~?(\d+(?:\.\d+)?)kg/);
+  if (!m) return null;
+  const d = combinarDiscos(+m[1]);
+  return { tipo: "info", texto: `Carga real: ${fmtKg(d.total)}kg = ${d.texto}` };
+}
+
 // Devuelve { tipo: "subir"|"mantener"|"cierre"|"info", texto } o null
 function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const meso = MESOCICLOS[mesoKey];
   if (!meso || meso.modelo !== "doble_progresion") return null;
-  if (semana <= 1 || semana >= meso.semanas) return null; // S1 trae peso escrito; descarga no progresa
+  if (semana <= 1 || semana >= meso.semanas) return cargaRealPlan(ej, semana); // S1 trae peso escrito; descarga no progresa
 
   // Lineal: reps fijas, peso prescrito, cierre al fallar
   if (ej.prog?.tipo === "lineal") {
@@ -2869,7 +2882,7 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
       return { tipo: "cierre", texto: `No salió ${ej.series}x${reps} en S${fallo.w}: se cierra la subida. Hoy ${test} y compara contra el bloque anterior.` };
     }
     if (ultimoOk && semana < meso.semanas - 1) {
-      const d = combinarDiscos(ultimoOk.peso + inc);
+      const d = combinarDiscos(ultimoOk.peso + inc, ultimoOk.peso + 0.3);
       return { tipo: "subir", texto: `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps}). Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` };
     }
     return null;
@@ -2882,7 +2895,7 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   if (!rango || !/kg/.test(txtBase)) return null;
   const min = +rango[1], max = +rango[2];
   const ult = ultimaSesion(ej, mesoKey, semana, dia);
-  if (!ult) return { tipo: "info", texto: `Sin registro previo en este bloque: usa el peso de S1.` };
+  if (!ult) return cargaRealPlan(ej, 1) || { tipo: "info", texto: `Sin registro previo en este bloque: usa el peso de S1.` };
   const peso = ult.sets[0].peso;
   if (peso == null) return null;
   const completas = ult.sets.length >= ej.series;
@@ -2891,7 +2904,7 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const inc = incrementoDoble(ej);
   if (alTope) {
     if (inc == null) return { tipo: "mantener", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Sin incremento disponible en mancuerna: mantén ${fmtKg(peso)}kg y sube reps hasta que llegue equipo nuevo.` };
-    const d = combinarDiscos(peso + inc);
+    const d = combinarDiscos(peso + inc, peso + 0.3);
     return { tipo: "subir", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg = ${d.texto}. Reps vuelven a ${min}+.` };
   }
   return { tipo: "mantener", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. Se sube cuando TODAS las series lleguen a ${max}.` };
