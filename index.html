@@ -2146,7 +2146,7 @@ const MESOCICLOS = {
         { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 3, inc: 2.27, cierre: "triple", ref: { peso: 95, reps: 3, rir: 0, label: "M6 95x3 RIR 0" } },
           nota: "REPS FIJAS 3x3, pesado para expresar fuerza sin ahogo. Peso prescrito +2.27kg/sem. Semana que no salgan 3x3: se cierra la subida y la siguiente es triple pesado (máximo x3 a RIR 0-1), sin AMRAP. Referencia: M6 95kg x 3 RIR 0 (antes de la lesión 115x2). Cuña bajo talón izquierdo confirmada necesaria: sin ella el cuerpo compensa con sumo funcional.",
           semanas: ["87.3kg x 3","89.5kg x 3","91.8kg x 3","93.4kg x 3","Triple pesado RIR 0-1 (pico)","60kg x 3 (descarga)"] },
-        { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "fuerza",
+        { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "fuerza", prog: { tipo: "rir", reps: 5, rirPlan: [3, 3, 2, 2, 1] },
           nota: "REPS FIJAS a 5, progresión por RIR: S1-S2 RIR 3, S3-S4 RIR 2, S5 RIR 1. LÍMITE DURO: nunca RIR 0 (el fallo aquí es redondeo lumbar bajo carga máxima). Erectores ya en zona alta.",
           semanas: ["65kg x 5 (RIR 3)","65kg x 5 (RIR 3)","x 5 (RIR 2)","x 5 (RIR 2)","x 5 (RIR 1, pico)","45kg x 8 (descarga)"] },
         { nombre: "Hip Thrust (barra)", series: 2, rol: "accesorio",
@@ -2793,7 +2793,7 @@ const BARRA_KG = 15, PASO_KG = 10;
 
 // Carga real más cercana: barra + discos kg (pasos de 10) + microdiscos (máx 1 par de cada).
 // minimo: la carga nunca queda por debajo de este valor (para que "subir" siempre suba).
-function combinarDiscos(objetivo, minimo = 0) {
+function combinarDiscos(objetivo, minimo = 0, maximo = Infinity) {
   let best = null;
   const baseTope = BARRA_KG + Math.floor((objetivo - BARRA_KG + 0.05) / PASO_KG) * PASO_KG;
   for (const base of [baseTope - PASO_KG, baseTope, baseTope + PASO_KG]) {
@@ -2801,7 +2801,7 @@ function combinarDiscos(objetivo, minimo = 0) {
     for (let mask = 0; mask < 16; mask++) {
       const usados = MICRO_DISCOS.filter((_, i) => mask & (1 << i));
       const total = base + usados.reduce((a, d) => a + d.kg, 0);
-      if (total < minimo) continue;
+      if (total < minimo || total > maximo) continue;
       const diff = Math.abs(total - objetivo);
       // Diferencias < 0.1kg cuentan como empate: gana la carga con menos discos
       if (!best || diff < best.diff - 0.1 || (diff <= best.diff + 0.1 && usados.length < best.usados.length)) {
@@ -2932,10 +2932,33 @@ function analizarLineal(ej, mesoKey, semana, dia) {
   };
 }
 
+// Reps fijas con RIR objetivo por semana (RDL): el peso sale del e1RM del último
+// registro. Siempre redondea HACIA ABAJO a una carga real: nunca pasarse del RIR pedido.
+function analizarRir(ej, mesoKey, semana, dia) {
+  const meso = MESOCICLOS[mesoKey];
+  const { reps, rirPlan } = ej.prog;
+  if (semana <= 1 || semana >= meso.semanas) return { sug: cargaRealPlan(ej, semana), e1: null };
+  const ult = ultimaSesion(ej, mesoKey, semana, dia);
+  const validos = ult ? ult.sets.filter(x => x.peso != null) : [];
+  if (!validos.length) return { sug: cargaRealPlan(ej, 1) || null, e1: null };
+  // Sin RIR anotado se asume el RIR que tocaba esa semana
+  const rirAsumido = rirPlan[ult.w - 1] ?? 2;
+  const e1s = validos.map(x => e1rm(x.peso, x.reps, x.rir ?? rirAsumido));
+  const e1 = e1s.reduce((a, b) => a + b, 0) / e1s.length;
+  const rirHoy = rirPlan[semana - 1] ?? 2;
+  const d = combinarDiscos(e1 / (1 + (reps + rirHoy) / 30), 0, e1 / (1 + (reps + rirHoy) / 30));
+  const sinRir = validos.some(x => x.rir == null);
+  const hubo0 = validos.some(x => x.rir === 0);
+  let texto = `S${ult.w}: ${fmtKg(validos[0].peso)}kg x ${validos.map(x => x.reps).join("/")}${sinRir ? ` (sin RIR anotado, se asumió RIR ${rirAsumido})` : ` RIR ${validos.map(x => x.rir).join("/")}`} = 1RM est. ${fmtKg(e1)}kg. Hoy RIR ${rirHoy}: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}.`;
+  if (hubo0) texto += ` Hubo RIR 0: límite duro del RDL, no volver a tocarlo.`;
+  return { sug: { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${reps} (RIR ${rirHoy})`, texto }, e1 };
+}
+
 // Chips de semanas: pasadas = lo registrado; futuras de básicos = proyección desde el peso real
 function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
   const meso = MESOCICLOS[mesoKey];
   const lin = ej.prog?.tipo === "lineal" && meso?.modelo === "doble_progresion" ? analizarLineal(ej, mesoKey, semana, dia) : null;
+  const rirA = ej.prog?.tipo === "rir" && meso?.modelo === "doble_progresion" ? analizarRir(ej, mesoKey, semana, dia) : null;
   return ej.semanas.map((w, i) => {
     const n = i + 1;
     if (n === semana) return planActual;
@@ -2945,6 +2968,10 @@ function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
       return w;
     }
     if (lin?.cerrado && n < meso.semanas) return "bloque cerrado";
+    if (rirA?.e1 && n < meso.semanas) {
+      const r = ej.prog.rirPlan[n - 1] ?? 2, t = rirA.e1 / (1 + (ej.prog.reps + r) / 30);
+      return `~${fmtKg(combinarDiscos(t, 0, t).total)}kg x ${ej.prog.reps} (RIR ${r})`;
+    }
     if (lin && !lin.cerrado && lin.pesoHoy != null && n < meso.semanas - 1) {
       const d = combinarDiscos(lin.pesoHoy + ej.prog.inc * (n - semana), lin.pesoHoy + 0.3 * (n - semana));
       return `~${fmtKg(d.total)}kg x ${ej.prog.reps}`;
@@ -2958,6 +2985,7 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const meso = MESOCICLOS[mesoKey];
   if (!meso || meso.modelo !== "doble_progresion") return null;
   if (ej.prog?.tipo === "lineal") return analizarLineal(ej, mesoKey, semana, dia).sug;
+  if (ej.prog?.tipo === "rir") return analizarRir(ej, mesoKey, semana, dia).sug;
   if (semana <= 1 || semana >= meso.semanas) return cargaRealPlan(ej, semana); // S1 trae peso escrito; descarga no progresa
 
   // Doble progresión: rango de reps + subir carga al llegar al tope en TODAS las series

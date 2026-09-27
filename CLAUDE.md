@@ -57,6 +57,7 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 ## Progresión automática M7 (implementada)
 
 - Básicos pesados (`prog.tipo: "lineal"` en el ejercicio): reps fijas, peso calculado desde el último registro real. Regla RIR: RIR >=4 en todas las series -> doble incremento; última serie a RIR 0 -> mantener una semana; resto -> incremento normal. Fallo de reps -> se cierra la subida y la semana siguiente es test (AMRAP, o triple pesado si `cierre: "triple"`). El test se compara por e1RM (Epley, suma RIR si está registrado) contra `prog.ref` del bloque anterior.
+- RDL pesado (`prog.tipo: "rir"`): reps fijas a 5 con RIR objetivo por semana (`rirPlan`). El peso sale del e1RM promedio del último registro (sin RIR anotado se asume el RIR planeado de esa semana) y se redondea SIEMPRE hacia abajo a carga real. Límite duro: nunca RIR 0.
 - Chips de semanas: pasadas = lo registrado; futuras de básicos = proyección desde el peso real; tras el cierre = "bloque cerrado".
 - Doble progresión (resto de ejercicios con barra): sube solo cuando TODAS las series llegan al tope del rango. Mancuernas (pares 5/10/20kg): solo reps, sin saltos de carga.
 - Equipo: barra 15kg, disco kg mínimo 5kg (saltos de 10kg), un par de cada microdisco 0.5/1.25/2.5/5lb. Constantes `BARRA_KG`, `PASO_KG`, `MICRO_DISCOS`.
