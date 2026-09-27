@@ -1386,10 +1386,16 @@
       "timestamp": "2026-09-27T16:51:15.416Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S1-dom-Dominada asistida (práctica)-2": {
+      "reps": "6",
+      "timestamp": "2026-09-27T17:00:15.151Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-27T02:27:37.037Z",
+    "_syncTs": "2026-09-27T16:51:18.432Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1505,5 +1511,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T16:51:18.432Z"
+  "timestamp": "2026-09-27T17:00:18.166Z"
 }
