@@ -2611,7 +2611,9 @@
     },
     "N2-S3-lun-Curl Bíceps (2 mancuernas)-3": {
       "peso": "15",
-      "timestamp": "2026-09-27T17:39:27.568Z"
+      "timestamp": "2026-09-27T17:50:52.923Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3493,5 +3495,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-27T17:45:06.256Z"
+  "timestamp": "2026-09-27T17:50:55.936Z"
 }
