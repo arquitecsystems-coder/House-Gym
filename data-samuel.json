@@ -2670,7 +2670,9 @@
     },
     "M7-S1-lun-Curl Bíceps (barra)-2": {
       "peso": "30",
-      "timestamp": "2026-09-27T13:30:42.566Z"
+      "timestamp": "2026-09-27T13:30:46.905Z",
+      "reps": "10",
+      "checked": true
     }
   },
   "rehab": {
@@ -4459,5 +4461,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-27T13:30:45.571Z"
+  "timestamp": "2026-09-27T13:30:49.908Z"
 }
