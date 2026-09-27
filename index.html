@@ -424,6 +424,26 @@
   }
 
   /* ── PROGRESS COMPARISON ── */
+  .prog-sug {
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  .prog-sug.mantener, .prog-sug.info { border-left-color: var(--muted); }
+  .prog-sug.cierre { border-left-color: #c0392b; }
+  .ej-nota {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--muted);
+    font-style: italic;
+  }
   .comparison {
     margin: 0 14px 12px;
     background: var(--surface);
@@ -2101,14 +2121,14 @@ const MESOCICLOS = {
     ],
     plan: {
       lun: [
-        { nombre: "Press Banca (barra)", series: 3, rol: "fuerza",
-          nota: "PRINCIPAL. Doble progresión: al lograr 10 reps en las 3 series con técnica limpia, +2.5kg. Ratio inclinado/banca estaba en 97% (normal 80-85%): el banca venía subdesarrollado.",
-          semanas: ["62.5kg x 6-10","x 6-10 · +1 par 2.5lb (2.27kg) al tope","x 6-10 · +1 par 2.5lb (2.27kg) al tope","x 6-10 · +1 par 2.5lb (2.27kg) al tope","x 6-10 (pico, RIR 0-1)","~60% x 12-15 (descarga)"] },
+        { nombre: "Press Banca (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 2.27, cierre: "amrap" },
+          nota: "PRINCIPAL. Reps fijas 3x8, peso prescrito +2.27kg/sem (apuesta a adaptación neural: ratio inclinado/banca estaba en 97%, normal 80-85%, el banca venía subdesarrollado). Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia AMRAP: M6 65kg x 8.",
+          semanas: ["62.5kg x 8","64.8kg x 8 (62.5 + par 2.5lb)","67kg x 8 (62.5 + par 5lb)","69.3kg x 8 (62.5 + 5lb + 2.5lb)","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
         { nombre: "Press Inclinado (barra)", series: 3, rol: "secundario",
           nota: "Pasa a secundario. Cuando lleguen las mancuernas ajustables: cambiar a mancuerna sin cortar el bloque. Trayectoria humeral libre, terapéutico para la asimetría escapular izquierda.",
-          semanas: ["60kg x 8-12","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 (pico)","~60% x 15 (descarga)"] },
+          semanas: ["60kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","~60% x 15 (descarga)"] },
         { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
-          semanas: ["30kg x 8-12","x 8-12 · +1 par 1.25lb (1.13kg) al tope","x 8-12 · +1 par 1.25lb al tope","x 8-12 · +1 par 1.25lb al tope","x 8-12 (pico)","20kg x 15 (descarga)"] },
+          semanas: ["30kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","20kg x 15 (descarga)"] },
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
           nota: "Topado en 10kg hasta que lleguen las ajustables. Progresa por reps hasta 25, luego +2.3kg. Braquial rezagado: único estímulo específico.",
           semanas: ["10kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","10kg x 15 (descarga)"] },
@@ -2117,42 +2137,42 @@ const MESOCICLOS = {
           semanas: ["10kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","10kg x 15 (descarga)"] },
       ],
       mar: [
-        { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza",
-          nota: "REPS FIJAS a 8. Cuando las 3 series salgan a 8 con RIR>=2 y técnica limpia, +2.5kg. Nunca bajar del rango. Con la tasa real (+4.4%/bloque) esperar un salto cada 2-3 semanas.",
-          semanas: ["62.5kg x 8","x 8 · +1 par 2.5lb (2.27kg) si RIR>=2","x 8 · +1 par 2.5lb (2.27kg) si RIR>=2","x 8 · +1 par 2.5lb (2.27kg) si RIR>=2","AMRAP techo 5 (pico)","40kg x 12 (descarga)"] },
+        { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap" },
+          nota: "REPS FIJAS 3x8, peso prescrito +1.13kg/sem. Arranca en 57.5 y no en 62.5: con e1RM ~79 (M6: 70x4), 62.5 es tu máximo de 8 reps y 3x8 fallaría desde S1. Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia: M6 65kg x 5.",
+          semanas: ["57.5kg x 8","58.6kg x 8 (57.5 + par 1.25lb)","59.8kg x 8 (57.5 + par 2.5lb)","60.9kg x 8 (57.5 + 2.5lb + 1.25lb)","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
         { nombre: "Remo Supino (barra)", series: 3, rol: "fuerza",
           nota: "Cuando lleguen las mancuernas: SALE, entra Remo Unilateral (mayor rango, corrige asimetría, menos carga en erectores).",
-          semanas: ["52.5kg x 8-12","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 (pico)","35kg x 15 (descarga)"] },
+          semanas: ["52.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","35kg x 15 (descarga)"] },
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
           nota: "VUELVE. Es el único ejercicio que carga el dorsal en estiramiento largo, ángulo que ningún remo alcanza. Topado en 20kg: reps hasta 25, luego +2.3kg con equipo nuevo.",
           semanas: ["20kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","15kg x 15 (descarga)"] },
         { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
-          semanas: ["32.5kg x 8-12","x 8-12 · +1 par 1.25lb (1.13kg) al tope","x 8-12 · +1 par 1.25lb al tope","x 8-12 · +1 par 1.25lb al tope","x 8-12 (pico)","22.5kg x 15 (descarga)"] },
+          semanas: ["32.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","22.5kg x 15 (descarga)"] },
       ],
       mie: [
-        { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza",
-          nota: "REPS FIJAS 3-5. Al lograr 5 en las 3 series con RIR>=1, +2.5-5kg. El pico puede ir a RIR 0. Cuña bajo talón izquierdo confirmada necesaria: sin ella el cuerpo compensa con sumo funcional.",
-          semanas: ["87.5kg x 3-5","x 3-5 · +1 par 2.5lb (2.27kg) al tope","x 3-5 · +1 par 2.5lb (2.27kg) al tope","x 3-5 · +1 par 2.5lb (2.27kg) al tope","x 3-5 (pico, RIR 0)","60kg x 8 (descarga)"] },
+        { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 3, inc: 2.27, cierre: "triple" },
+          nota: "REPS FIJAS 3x3, pesado para expresar fuerza sin ahogo. Peso prescrito +2.27kg/sem. Semana que no salgan 3x3: se cierra la subida y la siguiente es triple pesado (máximo x3 a RIR 0-1), sin AMRAP. Referencia: M6 95kg x 3 RIR 0 (antes de la lesión 115x2). Cuña bajo talón izquierdo confirmada necesaria: sin ella el cuerpo compensa con sumo funcional.",
+          semanas: ["87.5kg x 3","89.8kg x 3 (87.5 + par 2.5lb)","92kg x 3 (87.5 + par 5lb)","94.3kg x 3 (87.5 + 5lb + 2.5lb)","Triple pesado RIR 0-1 (pico)","60kg x 3 (descarga)"] },
         { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "fuerza",
           nota: "REPS FIJAS a 5, progresión por RIR: S1-S2 RIR 3, S3-S4 RIR 2, S5 RIR 1. LÍMITE DURO: nunca RIR 0 (el fallo aquí es redondeo lumbar bajo carga máxima). Erectores ya en zona alta.",
           semanas: ["65kg x 5 (RIR 3)","65kg x 5 (RIR 3)","x 5 (RIR 2)","x 5 (RIR 2)","x 5 (RIR 1, pico)","45kg x 8 (descarga)"] },
         { nombre: "Hip Thrust (barra)", series: 2, rol: "accesorio",
           nota: "Dato del M6 corrupto (25x9 cuando en M5 hacía 32.5kg). Recalibrado desde cero.",
-          semanas: ["40kg x 8-12","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb al tope","x 8-12 · +1 par 2.5lb al tope","x 8-12 (pico)","30kg x 15 (descarga)"] },
+          semanas: ["40kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","30kg x 15 (descarga)"] },
         { nombre: "Dragon Flag (negativas)", series: 3, rol: "core",
           nota: "PATRÓN MOTOR. Escala: 1 Elevación de piernas, 2 Negativas [ACTUAL], 3 Tuck (rodillas flexionadas), 4 Una pierna extendida, 5 Completo. Avanzar al controlar 3x8 limpias. Va ANTES del crunch: exige más control, se compensa con lumbar si llega fatigado.",
           semanas: ["Negativas x 6-8","Negativas x 8","Negativas x 8-10","Tuck si controla 3x8","Tuck (pico)","Negativas x 6 (descarga)"] },
         { nombre: "Crunch Abdominal", series: 2, rol: "core",
-          semanas: ["20kg x 12-30","x 12-30 · +1 par 2.5lb (2.27kg) al tope","x 12-30 · +1 par 2.5lb (2.27kg) al tope","x 12-30 · +1 par 2.5lb (2.27kg) al tope","x 12-30 (pico)","15kg x 20 (descarga)"] },
+          semanas: ["20kg x 12-30","x 12-30","x 12-30","x 12-30","x 12-30 (pico)","15kg x 20 (descarga)"] },
       ],
       jue: [
         { nombre: "Press Banca (barra)", series: 3, rol: "volumen",
           nota: "Día de volumen: ~72-75% del día pesado, RPE 7. La separación debe SENTIRSE distinta: en M5 la diferencia fue de 2.5kg y no se notó nada.",
-          semanas: ["50kg x 10-15","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 (pico)","35kg x 15 (descarga)"] },
+          semanas: ["50kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","35kg x 15 (descarga)"] },
         { nombre: "Press Inclinado (barra)", series: 3, rol: "volumen",
-          semanas: ["47.5kg x 10-15","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 (pico)","32.5kg x 15 (descarga)"] },
+          semanas: ["47.5kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","32.5kg x 15 (descarga)"] },
         { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
-          semanas: ["25kg x 12-20","x 12-20 · +1 par 1.25lb (1.13kg) al tope","x 12-20 · +1 par 1.25lb al tope","x 12-20 · +1 par 1.25lb al tope","x 12-20 (pico)","17.5kg x 20 (descarga)"] },
+          semanas: ["25kg x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","17.5kg x 20 (descarga)"] },
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
           semanas: ["10kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","10kg x 18 (descarga)"] },
         { nombre: "Elevación Lateral (DB)", series: 2, rol: "accesorio",
@@ -2161,13 +2181,13 @@ const MESOCICLOS = {
       vie: [
         { nombre: "Remo Pendlay (barra)", series: 3, rol: "volumen",
           nota: "Día de volumen: aquí SÍ se usa rango. Las reps fijas a 8 son solo el día pesado (martes).",
-          semanas: ["50kg x 10-12","x 10-12 · +1 par 2.5lb (2.27kg) al tope","x 10-12 · +1 par 2.5lb (2.27kg) al tope","x 10-12 · +1 par 2.5lb (2.27kg) al tope","x 10-12 (pico)","35kg x 15 (descarga)"] },
+          semanas: ["50kg x 10-12","x 10-12","x 10-12","x 10-12","x 10-12 (pico)","35kg x 15 (descarga)"] },
         { nombre: "Remo Supino (barra)", series: 3, rol: "volumen",
-          semanas: ["42.5kg x 10-15","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 · +1 par 2.5lb (2.27kg) al tope","x 10-15 (pico)","30kg x 15 (descarga)"] },
+          semanas: ["42.5kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","30kg x 15 (descarga)"] },
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
           semanas: ["20kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","15kg x 18 (descarga)"] },
         { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
-          semanas: ["27.5kg x 12-15","x 12-15 · +1 par 1.25lb (1.13kg) al tope","x 12-15 · +1 par 1.25lb al tope","x 12-15 · +1 par 1.25lb al tope","x 12-15 (pico)","20kg x 18 (descarga)"] },
+          semanas: ["27.5kg x 12-15","x 12-15","x 12-15","x 12-15","x 12-15 (pico)","20kg x 18 (descarga)"] },
       ],
       sab: [
         { nombre: "Curl Nórdico Asistido", series: 3, rol: "patron_motor",
@@ -2175,16 +2195,16 @@ const MESOCICLOS = {
           semanas: ["3-4 reps controladas","x 4-5","x 5-6","x 6","x 6-8 (pico)","x 4 (descarga)"] },
         { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "volumen",
           nota: "Día de volumen para RDL: aquí sí rango amplio. Las 5 reps fijas son solo miércoles.",
-          semanas: ["55kg x 8-12","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 (pico)","37.5kg x 15 (descarga)"] },
+          semanas: ["55kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","37.5kg x 15 (descarga)"] },
         { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "tecnico",
-          semanas: ["70kg x 8-12","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 · +1 par 2.5lb (2.27kg) al tope","x 8-12 (pico)","47.5kg x 12 (descarga)"] },
+          semanas: ["70kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","47.5kg x 12 (descarga)"] },
         { nombre: "Hip Thrust (barra)", series: 2, rol: "accesorio",
-          semanas: ["40kg x 12-15","x 12-15 · +1 par 2.5lb (2.27kg) al tope","x 12-15 · +1 par 2.5lb al tope","x 12-15 · +1 par 2.5lb al tope","x 12-15 (pico)","30kg x 18 (descarga)"] },
+          semanas: ["40kg x 12-15","x 12-15","x 12-15","x 12-15","x 12-15 (pico)","30kg x 18 (descarga)"] },
         { nombre: "Dragon Flag (negativas)", series: 3, rol: "core",
           nota: "Misma escala que miércoles.",
           semanas: ["Negativas x 6-8","Negativas x 8","Negativas x 8-10","Tuck si controla 3x8","Tuck (pico)","Negativas x 6 (descarga)"] },
         { nombre: "Crunch Abdominal", series: 2, rol: "core",
-          semanas: ["20kg x 15-30","x 15-30 · +1 par 2.5lb (2.27kg) al tope","x 15-30 · +1 par 2.5lb (2.27kg) al tope","x 15-30 · +1 par 2.5lb (2.27kg) al tope","x 15-30 (pico)","15kg x 20 (descarga)"] },
+          semanas: ["20kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","15kg x 20 (descarga)"] },
       ],
     }
   }
@@ -2755,6 +2775,128 @@ function setDia(d) {
   render();
 }
 
+// ── PROGRESIÓN AUTOMÁTICA (M7+) ──
+// Calcula el objetivo de la sesión a partir del último registro real,
+// no del calendario: si se salta una semana, el peso no "salta" solo.
+// Supuesto de equipo: discos en kg cargan en pasos de 2.5kg; encima,
+// UN par de cada microdisco en lb (0.5, 1.25, 2.5, 5).
+const MICRO_DISCOS = [
+  { kg: 0.45, label: "0.5lb" },
+  { kg: 1.13, label: "1.25lb" },
+  { kg: 2.27, label: "2.5lb" },
+  { kg: 4.54, label: "5lb" },
+];
+
+function parsePeso(v) {
+  const n = parseFloat(String(v ?? "").replace(",", ".").replace(/kg/i, ""));
+  return isNaN(n) ? null : n;
+}
+
+function fmtKg(n) {
+  return String(Math.round(n * 10) / 10);
+}
+
+// Mejor combinación discos kg (pasos 2.5) + microdiscos (máx 1 par de cada)
+function combinarDiscos(objetivo) {
+  let best = null;
+  const baseTope = Math.floor((objetivo + 0.05) / 2.5) * 2.5;
+  for (const base of [baseTope, baseTope - 2.5, baseTope - 5]) {
+    if (base < 0) continue;
+    for (let mask = 0; mask < 16; mask++) {
+      const usados = MICRO_DISCOS.filter((_, i) => mask & (1 << i));
+      const total = base + usados.reduce((a, d) => a + d.kg, 0);
+      const diff = Math.abs(total - objetivo);
+      // Diferencias < 0.1kg cuentan como empate: gana la carga con menos discos
+      if (!best || diff < best.diff - 0.1 || (diff <= best.diff + 0.1 && usados.length < best.usados.length)) {
+        best = { total, base, usados, diff };
+      }
+    }
+  }
+  const micro = best.usados.slice().reverse().map(d => d.label);
+  best.texto = fmtKg(best.base) + "kg" + (micro.length ? " + par " + micro.join(" + par ") : "");
+  return best;
+}
+
+function incrementoDoble(ej) {
+  if (ej.inc !== undefined) return ej.inc;
+  if (/\(DB\)/.test(ej.nombre)) return null; // mancuernas topadas: progresan por reps
+  if (/Curl Bíceps|Press Francés/.test(ej.nombre)) return 1.13;
+  return 2.27;
+}
+
+// Series registradas de una semana: [{peso, reps}] o null si no hay nada
+function seriesSemana(ej, meso, w, dia) {
+  const sets = [];
+  for (let s = 1; s <= ej.series; s++) {
+    const reg = state.registros[`${meso}-S${w}-${dia}-${ej.nombre}-${s}`];
+    const reps = parseInt(reg?.reps);
+    if (reg && !isNaN(reps)) sets.push({ peso: parsePeso(reg.peso), reps });
+  }
+  return sets.length ? sets : null;
+}
+
+function ultimaSesion(ej, meso, semana, dia) {
+  for (let w = semana - 1; w >= 1; w--) {
+    const sets = seriesSemana(ej, meso, w, dia);
+    if (sets) return { w, sets };
+  }
+  return null;
+}
+
+// Devuelve { tipo: "subir"|"mantener"|"cierre"|"info", texto } o null
+function sugerenciaProgresion(ej, mesoKey, semana, dia) {
+  const meso = MESOCICLOS[mesoKey];
+  if (!meso || meso.modelo !== "doble_progresion") return null;
+  if (semana <= 1 || semana >= meso.semanas) return null; // S1 trae peso escrito; descarga no progresa
+
+  // Lineal: reps fijas, peso prescrito, cierre al fallar
+  if (ej.prog?.tipo === "lineal") {
+    const { reps, inc, cierre } = ej.prog;
+    let fallo = null, ultimoOk = null;
+    for (let w = 1; w < semana; w++) {
+      const sets = seriesSemana(ej, mesoKey, w, dia);
+      if (!sets) continue;
+      if (fallo) return { tipo: "cierre", texto: `Bloque cerrado (falló S${fallo.w}, test hecho en S${w}). Esta semana: descarga y arranca el siguiente bloque.` };
+      const ok = sets.length >= ej.series && sets.every(x => x.reps >= reps);
+      if (ok) ultimoOk = { w, peso: sets[0].peso };
+      else fallo = { w, peso: sets[0].peso };
+    }
+    if (fallo) {
+      const pesoTest = ultimoOk?.peso ?? fallo.peso;
+      const test = cierre === "triple"
+        ? `triple pesado: sube desde ${fmtKg(pesoTest)}kg hasta el máximo x3 a RIR 0-1`
+        : `1 serie AMRAP con ${fmtKg(pesoTest)}kg`;
+      return { tipo: "cierre", texto: `No salió ${ej.series}x${reps} en S${fallo.w}: se cierra la subida. Hoy ${test} y compara contra el bloque anterior.` };
+    }
+    if (ultimoOk && semana < meso.semanas - 1) {
+      const d = combinarDiscos(ultimoOk.peso + inc);
+      return { tipo: "subir", texto: `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps}). Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` };
+    }
+    return null;
+  }
+
+  // Doble progresión: rango de reps + subir carga al llegar al tope en TODAS las series
+  if (ej.prog) return null;
+  const txtBase = ej.semanas[0] || "";
+  const rango = (ej.semanas[semana - 1] || "").match(/x (\d+)-(\d+)/) || txtBase.match(/x (\d+)-(\d+)/);
+  if (!rango || !/kg/.test(txtBase)) return null;
+  const min = +rango[1], max = +rango[2];
+  const ult = ultimaSesion(ej, mesoKey, semana, dia);
+  if (!ult) return { tipo: "info", texto: `Sin registro previo en este bloque: usa el peso de S1.` };
+  const peso = ult.sets[0].peso;
+  if (peso == null) return null;
+  const completas = ult.sets.length >= ej.series;
+  const alTope = completas && ult.sets.every(x => x.reps >= max && (x.peso ?? peso) >= peso);
+  const repsTxt = ult.sets.map(x => x.reps).join("/");
+  const inc = incrementoDoble(ej);
+  if (alTope) {
+    if (inc == null) return { tipo: "mantener", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Sin incremento disponible en mancuerna: mantén ${fmtKg(peso)}kg y sube reps hasta que llegue equipo nuevo.` };
+    const d = combinarDiscos(peso + inc);
+    return { tipo: "subir", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg = ${d.texto}. Reps vuelven a ${min}+.` };
+  }
+  return { tipo: "mantener", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. Se sube cuando TODAS las series lleguen a ${max}.` };
+}
+
 // ── EJERCICIO CARD ──
 function renderEjercicioCard(ej, meso, semana, dia) {
   const planActual = ej.semanas[semana - 1] || "—";
@@ -2783,6 +2925,10 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       </div>
     </div>`;
   }
+
+  // Sugerencia de progresión según último registro
+  const sug = sugerenciaProgresion(ej, meso, semana, dia);
+  const sugHtml = sug ? `<div class="prog-sug ${sug.tipo}">${sug.texto}</div>` : "";
 
   // Sets
   let labelsHtml = `<div class="set-labels">
@@ -2839,9 +2985,11 @@ function renderEjercicioCard(ej, meso, semana, dia) {
     </div>
     <div class="plan-weeks">${weeksHtml}</div>
     <div class="exercise-body">
+      ${sugHtml}
       ${compHtml}
       ${labelsHtml}
       ${setsHtml}
+      ${ej.nota ? `<div class="ej-nota">${ej.nota}</div>` : ""}
     </div>
   </div>`;
 }
