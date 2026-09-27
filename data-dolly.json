@@ -1369,14 +1369,14 @@
     },
     "D2-S1-sab-Copa a una mano (tríceps)-1": {
       "peso": "7.5",
-      "timestamp": "2026-09-27T02:16:29.817Z",
+      "timestamp": "2026-09-27T02:27:34.026Z",
       "reps": "5",
       "checked": true,
       "rir": "0"
     },
     "D2-S1-sab-Copa a una mano (tríceps)-2": {
       "peso": "5",
-      "timestamp": "2026-09-27T02:27:19.715Z",
+      "timestamp": "2026-09-27T02:27:32.508Z",
       "reps": "10",
       "checked": true,
       "rir": "0"
@@ -1499,5 +1499,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T02:27:22.738Z"
+  "timestamp": "2026-09-27T02:27:37.037Z"
 }
