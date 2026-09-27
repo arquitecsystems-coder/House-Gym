@@ -1454,7 +1454,10 @@
     },
     "D2-S1-dom-Sentadilla goblet-3": {
       "peso": "30",
-      "timestamp": "2026-09-27T17:49:12.164Z"
+      "timestamp": "2026-09-27T17:52:30.983Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1574,5 +1577,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T17:49:15.175Z"
+  "timestamp": "2026-09-27T17:52:34.008Z"
 }
