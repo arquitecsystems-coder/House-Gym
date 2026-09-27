@@ -2575,7 +2575,72 @@
     },
     "N2-S3-lun-Sentadilla trasera (barra)-4": {
       "peso": "55",
-      "timestamp": "2026-09-25T00:47:31.961Z"
+      "timestamp": "2026-09-27T17:29:50.925Z",
+      "reps": "7",
+      "checked": true
+    },
+    "N2-S3-lun-Press Inclinado (barra)-1": {
+      "peso": "27,5",
+      "timestamp": "2026-09-27T17:34:05.915Z",
+      "reps": "8",
+      "checked": true
+    },
+    "N2-S3-lun-Press Inclinado (barra)-2": {
+      "peso": "27,5",
+      "timestamp": "2026-09-27T17:34:09.427Z",
+      "reps": "8",
+      "checked": true
+    },
+    "N2-S3-lun-Press Inclinado (barra)-3": {
+      "peso": "27,5",
+      "timestamp": "2026-09-27T17:34:12.162Z",
+      "reps": "8",
+      "checked": true
+    },
+    "N2-S3-lun-Curl Bíceps (2 mancuernas)-1": {
+      "peso": "15",
+      "timestamp": "2026-09-27T17:39:19.824Z",
+      "reps": "6",
+      "checked": true
+    },
+    "N2-S3-lun-Curl Bíceps (2 mancuernas)-2": {
+      "peso": "15",
+      "timestamp": "2026-09-27T17:45:03.216Z",
+      "reps": "6",
+      "checked": true
+    },
+    "N2-S3-lun-Curl Bíceps (2 mancuernas)-3": {
+      "peso": "15",
+      "timestamp": "2026-09-27T17:50:52.923Z",
+      "reps": "7",
+      "checked": true
+    },
+    "N2-S3-lun-Elevación de Piernas-1": {
+      "reps": "12",
+      "timestamp": "2026-09-27T17:55:19.343Z",
+      "checked": true
+    },
+    "N2-S3-lun-Elevación de Piernas-2": {
+      "reps": "10",
+      "timestamp": "2026-09-27T17:58:51.273Z",
+      "checked": true
+    },
+    "N2-S3-lun-Elevación de Piernas-3": {
+      "reps": "10",
+      "timestamp": "2026-09-27T18:04:51.297Z",
+      "checked": true
+    },
+    "N2-S3-lun-Elevación Lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-09-27T18:07:57.816Z",
+      "reps": "12",
+      "checked": true
+    },
+    "N2-S3-lun-Elevación Lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-09-27T18:10:51.990Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {},
@@ -2756,7 +2821,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-24T01:45:58.281Z"
+    "_syncTs": "2026-09-25T01:07:14.377Z"
   },
   "test": {
     "test": {
@@ -3457,5 +3522,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-25T01:07:14.377Z"
+  "timestamp": "2026-09-27T18:10:55.013Z"
 }
