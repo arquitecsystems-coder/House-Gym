@@ -1341,9 +1341,10 @@
     },
     "D2-S1-sab-Remo unilateral con mancuerna-1": {
       "reps": "8",
-      "timestamp": "2026-09-27T02:01:17.266Z",
+      "timestamp": "2026-09-27T02:01:19.355Z",
       "peso": "25",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     },
     "D2-S1-sab-Press inclinado mancuerna (unilateral)-3": {
       "peso": "15",
@@ -1470,5 +1471,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T02:01:17.211Z"
+  "timestamp": "2026-09-27T02:01:22.365Z"
 }
