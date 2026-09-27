@@ -437,13 +437,6 @@
   }
   .prog-sug.mantener, .prog-sug.info { border-left-color: var(--muted); }
   .prog-sug.cierre { border-left-color: #c0392b; }
-  .ej-nota {
-    margin-top: 10px;
-    font-size: 11px;
-    line-height: 1.45;
-    color: var(--muted);
-    font-style: italic;
-  }
   .comparison {
     margin: 0 14px 12px;
     background: var(--surface);
@@ -2130,7 +2123,7 @@ const MESOCICLOS = {
         { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
           semanas: ["30kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","20kg x 15 (descarga)"] },
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
-          nota: "Topado en 10kg hasta que lleguen las ajustables. Progresa por reps hasta 25, luego +2.3kg. Braquial rezagado: único estímulo específico.",
+          nota: "Topado en 10kg hasta que lleguen las ajustables. Pares disponibles 5/10/20kg: el siguiente salto es a 20kg (+100%), inviable. Progresa solo por reps hasta que lleguen las ajustables. Braquial rezagado: único estímulo específico.",
           semanas: ["10kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","10kg x 15 (descarga)"] },
         { nombre: "Elevación Lateral (DB)", series: 2, rol: "accesorio",
           nota: "El rango 12-25 NO es subóptimo: estímulo equivalente entre 5-30 reps cerca del fallo. OJO: por encima de 20 reps el RIR percibido suele estar subestimado 1-2 reps (limita el ardor, no el músculo).",
@@ -2144,7 +2137,7 @@ const MESOCICLOS = {
           nota: "Cuando lleguen las mancuernas: SALE, entra Remo Unilateral (mayor rango, corrige asimetría, menos carga en erectores).",
           semanas: ["52.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","35kg x 15 (descarga)"] },
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
-          nota: "VUELVE. Es el único ejercicio que carga el dorsal en estiramiento largo, ángulo que ningún remo alcanza. Topado en 20kg: reps hasta 25, luego +2.3kg con equipo nuevo.",
+          nota: "VUELVE. Es el único ejercicio que carga el dorsal en estiramiento largo, ángulo que ningún remo alcanza. Topado en 20kg (pares disponibles 5/10/20kg): progresa solo por reps hasta que lleguen las ajustables.",
           semanas: ["20kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","15kg x 15 (descarga)"] },
         { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
           semanas: ["32.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","22.5kg x 15 (descarga)"] },
@@ -2883,7 +2876,7 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
     }
     if (ultimoOk && semana < meso.semanas - 1) {
       const d = combinarDiscos(ultimoOk.peso + inc, ultimoOk.peso + 0.3);
-      return { tipo: "subir", texto: `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps}). Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` };
+      return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${reps}`, texto: `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps}). Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` };
     }
     return null;
   }
@@ -2903,29 +2896,35 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const repsTxt = ult.sets.map(x => x.reps).join("/");
   const inc = incrementoDoble(ej);
   if (alTope) {
-    if (inc == null) return { tipo: "mantener", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Sin incremento disponible en mancuerna: mantén ${fmtKg(peso)}kg y sube reps hasta que llegue equipo nuevo.` };
+    if (inc == null) return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Mancuernas solo en pares de 5/10/20kg: no hay salto posible. Mantén ${fmtKg(peso)}kg y sigue sumando reps hasta que lleguen las ajustables.` };
     const d = combinarDiscos(peso + inc, peso + 0.3);
-    return { tipo: "subir", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg = ${d.texto}. Reps vuelven a ${min}+.` };
+    return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg = ${d.texto}. Reps vuelven a ${min}+.` };
   }
-  return { tipo: "mantener", texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. Se sube cuando TODAS las series lleguen a ${max}.` };
+  return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. Se sube cuando TODAS las series lleguen a ${max}.` };
 }
 
 // ── EJERCICIO CARD ──
 function renderEjercicioCard(ej, meso, semana, dia) {
-  const planActual = ej.semanas[semana - 1] || "—";
+  // Sugerencia de progresión según último registro (define el objetivo real de hoy)
+  const sug = sugerenciaProgresion(ej, meso, semana, dia);
+  const sugHtml = sug ? `<div class="prog-sug ${sug.tipo}">${sug.texto}</div>` : "";
+  const planActual = sug?.objetivo || ej.semanas[semana - 1] || "—";
   const key = (n, s) => `${meso}-S${semana}-${dia}-${ej.nombre}-${s}`;
   const allChecked = Array.from({length: ej.series}, (_, i) => i + 1)
     .every(s => state.registros[key(ej.nombre, s)]?.checked);
 
   // Progresión por semanas
   let weeksHtml = ej.semanas.map((w, i) =>
-    `<div class="plan-week-chip ${i + 1 === semana ? "current" : ""}">S${i+1}: ${w}</div>`
+    `<div class="plan-week-chip ${i + 1 === semana ? "current" : ""}">S${i+1}: ${i + 1 === semana ? planActual : w}</div>`
   ).join("");
 
   // Comparación vs semana anterior
   let compHtml = "";
   if (semana > 1) {
-    const prevPlan = ej.semanas[semana - 2];
+    const prevSets = seriesSemana(ej, meso, semana - 1, dia);
+    const prevPlan = prevSets && prevSets[0].peso != null
+      ? `${fmtKg(prevSets[0].peso)}kg x ${prevSets.map(x => x.reps).join("/")}`
+      : ej.semanas[semana - 2];
     compHtml = `<div class="comparison">
       <div class="comp-item">
         <div class="comp-val" style="color:var(--muted)">${prevPlan}</div>
@@ -2938,10 +2937,6 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       </div>
     </div>`;
   }
-
-  // Sugerencia de progresión según último registro
-  const sug = sugerenciaProgresion(ej, meso, semana, dia);
-  const sugHtml = sug ? `<div class="prog-sug ${sug.tipo}">${sug.texto}</div>` : "";
 
   // Sets
   let labelsHtml = `<div class="set-labels">
@@ -3002,7 +2997,6 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       ${compHtml}
       ${labelsHtml}
       ${setsHtml}
-      ${ej.nota ? `<div class="ej-nota">${ej.nota}</div>` : ""}
     </div>
   </div>`;
 }
