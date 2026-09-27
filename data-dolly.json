@@ -1266,10 +1266,15 @@
       "timestamp": "2026-09-27T00:38:02.993Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S1-sab-Isométrico arriba (banda gruesa)-1": {
+      "reps": "20",
+      "timestamp": "2026-09-27T00:41:21.718Z",
+      "rir": "0"
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-24T03:27:21.083Z",
+    "_syncTs": "2026-09-27T00:38:06.015Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1385,5 +1390,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T00:38:06.015Z"
+  "timestamp": "2026-09-27T00:41:24.740Z"
 }
