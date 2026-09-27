@@ -2114,7 +2114,7 @@ const MESOCICLOS = {
     ],
     plan: {
       lun: [
-        { nombre: "Press Banca (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 2.27, cierre: "amrap" },
+        { nombre: "Press Banca (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 2.27, cierre: "amrap", ref: { peso: 65, reps: 8, label: "M6 65x8" } },
           nota: "PRINCIPAL. Reps fijas 3x8, peso prescrito +2.27kg/sem (apuesta a adaptación neural: ratio inclinado/banca estaba en 97%, normal 80-85%, el banca venía subdesarrollado). Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia AMRAP: M6 65kg x 8.",
           semanas: ["62.9kg x 8","65kg x 8","67.3kg x 8","69.5kg x 8","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
         { nombre: "Press Inclinado (barra)", series: 3, rol: "secundario",
@@ -2130,7 +2130,7 @@ const MESOCICLOS = {
           semanas: ["10kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","10kg x 15 (descarga)"] },
       ],
       mar: [
-        { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap" },
+        { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap", ref: { peso: 70, reps: 4, label: "M6 70x4" } },
           nota: "REPS FIJAS 3x8, peso prescrito +1.13kg/sem. Arranca en 57.3 y no en 62.5: con e1RM ~79 (M6: 70x4), 62.5 es tu máximo de 8 reps y 3x8 fallaría desde S1. Semana que no salgan 3x8: se cierra la subida y la siguiente es AMRAP con el último peso completado. Referencia: M6 65kg x 5.",
           semanas: ["57.3kg x 8","58.4kg x 8","59.5kg x 8","60.7kg x 8","AMRAP con último peso completado (pico)","40kg x 10 (descarga)"] },
         { nombre: "Remo Supino (barra)", series: 3, rol: "fuerza",
@@ -2143,7 +2143,7 @@ const MESOCICLOS = {
           semanas: ["32.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","22.5kg x 15 (descarga)"] },
       ],
       mie: [
-        { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 3, inc: 2.27, cierre: "triple" },
+        { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 3, inc: 2.27, cierre: "triple", ref: { peso: 95, reps: 3, rir: 0, label: "M6 95x3 RIR 0" } },
           nota: "REPS FIJAS 3x3, pesado para expresar fuerza sin ahogo. Peso prescrito +2.27kg/sem. Semana que no salgan 3x3: se cierra la subida y la siguiente es triple pesado (máximo x3 a RIR 0-1), sin AMRAP. Referencia: M6 95kg x 3 RIR 0 (antes de la lesión 115x2). Cuña bajo talón izquierdo confirmada necesaria: sin ella el cuerpo compensa con sumo funcional.",
           semanas: ["87.3kg x 3","89.5kg x 3","91.8kg x 3","93.4kg x 3","Triple pesado RIR 0-1 (pico)","60kg x 3 (descarga)"] },
         { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "fuerza",
@@ -2827,7 +2827,8 @@ function seriesSemana(ej, meso, w, dia) {
   for (let s = 1; s <= ej.series; s++) {
     const reg = state.registros[`${meso}-S${w}-${dia}-${ej.nombre}-${s}`];
     const reps = parseInt(reg?.reps);
-    if (reg && !isNaN(reps)) sets.push({ peso: parsePeso(reg.peso), reps });
+    const rir = parseInt(reg?.rir);
+    if (reg && !isNaN(reps)) sets.push({ peso: parsePeso(reg.peso), reps, rir: isNaN(rir) ? null : rir });
   }
   return sets.length ? sets : null;
 }
@@ -2849,37 +2850,115 @@ function cargaRealPlan(ej, semana) {
   return { tipo: "info", texto: `Carga real: ${fmtKg(d.total)}kg = ${d.texto}` };
 }
 
+// 1RM estimado (Epley). Si hay RIR registrado, cuenta las reps que quedaban.
+function e1rm(peso, reps, rir) {
+  return peso * (1 + (reps + (rir || 0)) / 30);
+}
+
+function pesoPlan(ej, semana) {
+  const m = (ej.semanas[semana - 1] || "").match(/^~?(\d+(?:\.\d+)?)kg/);
+  return m ? +m[1] : null;
+}
+
+// Básicos pesados (prog lineal): reps fijas, peso sube cada semana, regla RIR,
+// cierre al fallar reps y test (AMRAP o triple) comparado contra el bloque anterior.
+// Devuelve { sug, pesoHoy, cerrado }: pesoHoy alimenta la proyección de semanas futuras.
+function analizarLineal(ej, mesoKey, semana, dia) {
+  const meso = MESOCICLOS[mesoKey];
+  const { reps, inc, cierre, ref } = ej.prog;
+  const pico = meso.semanas - 1;
+  const refE1 = ref ? e1rm(ref.peso, ref.reps, ref.rir) : null;
+  const esTriple = cierre === "triple";
+
+  let proximo = pesoPlan(ej, 1), motivo = null, ultimoOk = null, fallo = null, test = null;
+  for (let w = 1; w < semana; w++) {
+    const sets = seriesSemana(ej, mesoKey, w, dia);
+    if (!sets) continue;
+    if (fallo || w === pico) { test = { w, sets }; break; }
+    const peso = sets[0].peso;
+    const ok = sets.length >= ej.series && sets.every(x => x.reps >= reps);
+    if (!ok) { fallo = { w, peso }; continue; }
+    ultimoOk = { w, peso };
+    const rirs = sets.map(x => x.rir);
+    if (rirs.every(r => r != null && r >= 4)) { proximo = peso + 2 * inc; motivo = `RIR 4+ en todas las series: doble subida`; }
+    else if (rirs[rirs.length - 1] === 0) { proximo = peso; motivo = `última serie a RIR 0: se mantiene el peso una semana`; }
+    else { proximo = peso + inc; motivo = null; }
+  }
+
+  // Test ya hecho: mostrar resultado contra el bloque anterior
+  if (test) {
+    const mejor = test.sets.reduce((m, x) => x.peso != null && e1rm(x.peso, x.reps, x.rir) > m.e ? { e: e1rm(x.peso, x.reps, x.rir), x } : m, { e: 0, x: null });
+    let txt = `Test S${test.w}: ${fmtKg(mejor.x?.peso ?? 0)}kg x ${mejor.x?.reps ?? "-"} = 1RM est. ${fmtKg(mejor.e)}kg`;
+    if (refE1) {
+      const pct = (mejor.e / refE1 - 1) * 100;
+      txt += ` vs ${fmtKg(refE1)}kg en ${ref.label} (${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%)`;
+    }
+    txt += `. Bloque cerrado: ${semana >= meso.semanas ? "descarga" : "pasa a descarga"} y arranca el siguiente.`;
+    return { sug: { tipo: "cierre", objetivo: ej.semanas[meso.semanas - 1], texto: txt }, pesoHoy: null, cerrado: true };
+  }
+
+  // Semana de test: tras un fallo, o en el pico
+  if (fallo || semana === pico) {
+    const pesoTest = ultimoOk?.peso ?? fallo?.peso ?? pesoPlan(ej, 1);
+    const d = combinarDiscos(pesoTest);
+    const intro = fallo ? `No salió ${ej.series}x${reps} en S${fallo.w}: se cierra la subida. ` : `Semana de test. `;
+    let txt, objetivo;
+    if (esTriple) {
+      objetivo = `Triple pesado desde ${fmtKg(d.total)}kg`;
+      txt = intro + `Hoy triple pesado: sube desde ${fmtKg(d.total)}kg hasta el máximo x3 a RIR 0-1.`;
+      if (refE1) txt += ` Para superar ${ref.label} necesitas más de ${fmtKg(refE1 / 1.1)}kg x3.`;
+    } else {
+      objetivo = `AMRAP ${fmtKg(d.total)}kg`;
+      txt = intro + `Hoy 1 serie AMRAP con ${fmtKg(d.total)}kg (${d.texto}).`;
+      if (refE1) {
+        const necesarias = Math.max(1, Math.floor(30 * (refE1 / d.total - 1)) + 1);
+        txt += ` Para superar ${ref.label} (1RM est. ${fmtKg(refE1)}kg) necesitas ${necesarias}+ reps.`;
+      }
+    }
+    txt += ` Solo con seguros o soportes puestos; si no hay, para en RIR 1 y anótalo.`;
+    return { sug: { tipo: "cierre", objetivo, texto: txt }, pesoHoy: null, cerrado: true };
+  }
+
+  if (semana >= meso.semanas) return { sug: cargaRealPlan(ej, semana), pesoHoy: null, cerrado: true };
+  if (!ultimoOk) {
+    const p = pesoPlan(ej, semana) ?? proximo;
+    return { sug: semana === 1 ? cargaRealPlan(ej, 1) : null, pesoHoy: p, cerrado: false };
+  }
+  const d = combinarDiscos(proximo, motivo?.startsWith("última") ? 0 : ultimoOk.peso + 0.3);
+  const base = `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps})` + (motivo ? `, ${motivo}` : "");
+  return {
+    sug: { tipo: motivo?.startsWith("última") ? "mantener" : "subir", objetivo: `${fmtKg(d.total)}kg x ${reps}`, texto: `${base}. Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` },
+    pesoHoy: d.total, cerrado: false,
+  };
+}
+
+// Chips de semanas: pasadas = lo registrado; futuras de básicos = proyección desde el peso real
+function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
+  const meso = MESOCICLOS[mesoKey];
+  const lin = ej.prog?.tipo === "lineal" && meso?.modelo === "doble_progresion" ? analizarLineal(ej, mesoKey, semana, dia) : null;
+  return ej.semanas.map((w, i) => {
+    const n = i + 1;
+    if (n === semana) return planActual;
+    if (n < semana) {
+      const sets = seriesSemana(ej, mesoKey, n, dia);
+      if (sets && sets[0].peso != null) return `${fmtKg(sets[0].peso)}kg x ${sets.map(x => x.reps).join("/")}`;
+      return w;
+    }
+    if (lin?.cerrado && n < meso.semanas) return "bloque cerrado";
+    if (lin && !lin.cerrado && lin.pesoHoy != null && n < meso.semanas - 1) {
+      const d = combinarDiscos(lin.pesoHoy + ej.prog.inc * (n - semana), lin.pesoHoy + 0.3 * (n - semana));
+      return `~${fmtKg(d.total)}kg x ${ej.prog.reps}`;
+    }
+    return w;
+  });
+}
+
 // Devuelve { tipo: "subir"|"mantener"|"cierre"|"info", texto } o null
 function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const meso = MESOCICLOS[mesoKey];
   if (!meso || meso.modelo !== "doble_progresion") return null;
+  if (ej.prog?.tipo === "lineal") return analizarLineal(ej, mesoKey, semana, dia).sug;
   if (semana <= 1 || semana >= meso.semanas) return cargaRealPlan(ej, semana); // S1 trae peso escrito; descarga no progresa
-
-  // Lineal: reps fijas, peso prescrito, cierre al fallar
-  if (ej.prog?.tipo === "lineal") {
-    const { reps, inc, cierre } = ej.prog;
-    let fallo = null, ultimoOk = null;
-    for (let w = 1; w < semana; w++) {
-      const sets = seriesSemana(ej, mesoKey, w, dia);
-      if (!sets) continue;
-      if (fallo) return { tipo: "cierre", texto: `Bloque cerrado (falló S${fallo.w}, test hecho en S${w}). Esta semana: descarga y arranca el siguiente bloque.` };
-      const ok = sets.length >= ej.series && sets.every(x => x.reps >= reps);
-      if (ok) ultimoOk = { w, peso: sets[0].peso };
-      else fallo = { w, peso: sets[0].peso };
-    }
-    if (fallo) {
-      const pesoTest = ultimoOk?.peso ?? fallo.peso;
-      const test = cierre === "triple"
-        ? `triple pesado: sube desde ${fmtKg(pesoTest)}kg hasta el máximo x3 a RIR 0-1`
-        : `1 serie AMRAP con ${fmtKg(pesoTest)}kg`;
-      return { tipo: "cierre", texto: `No salió ${ej.series}x${reps} en S${fallo.w}: se cierra la subida. Hoy ${test} y compara contra el bloque anterior.` };
-    }
-    if (ultimoOk && semana < meso.semanas - 1) {
-      const d = combinarDiscos(ultimoOk.peso + inc, ultimoOk.peso + 0.3);
-      return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${reps}`, texto: `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps}). Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` };
-    }
-    return null;
-  }
 
   // Doble progresión: rango de reps + subir carga al llegar al tope en TODAS las series
   if (ej.prog) return null;
@@ -2914,8 +2993,8 @@ function renderEjercicioCard(ej, meso, semana, dia) {
     .every(s => state.registros[key(ej.nombre, s)]?.checked);
 
   // Progresión por semanas
-  let weeksHtml = ej.semanas.map((w, i) =>
-    `<div class="plan-week-chip ${i + 1 === semana ? "current" : ""}">S${i+1}: ${i + 1 === semana ? planActual : w}</div>`
+  let weeksHtml = chipsSemanas(ej, meso, semana, dia, planActual).map((w, i) =>
+    `<div class="plan-week-chip ${i + 1 === semana ? "current" : ""}">S${i+1}: ${w}</div>`
   ).join("");
 
   // Comparación vs semana anterior

@@ -54,11 +54,19 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 - Revisión mensual de pliegues completos (7) con recálculo de % grasa real — mencionada como concepto pero sin UI construida.
 - Multi-usuario: arquitectura pensada para escalar (cada usuario su propio `data-{nombre}.json`) pero no implementada — actualmente todo es un solo usuario, un solo `data.json`.
 
-## Pendientes M7 (acordados, por implementar en un solo cambio)
+## Progresión automática M7 (implementada)
 
-- **Regla RIR en básicos pesados (prog lineal):** RIR >=4 en todas las series -> siguiente semana doble incremento; reps completas pero RIR 0 en la última -> mantener peso una semana; resto -> subida normal. El selector de RIR llega a 4 = "4 o más".
-- **Proyección dinámica de chips:** los pesos de semanas futuras de los básicos pesados deben recalcularse desde el último peso real (si hubo doble salto, S3/S4 cambian), no quedar fijos en el texto del plan.
-- **AMRAP comparable entre bloques:** calcular e1RM (Epley) del AMRAP y compararlo contra el e1RM de referencia del bloque anterior (banca M6 65x8, Pendlay M6 70x4 / 65x5, sentadilla M6 95x3 RIR0). Mostrar "reps a superar" con el peso del día.
+- Básicos pesados (`prog.tipo: "lineal"` en el ejercicio): reps fijas, peso calculado desde el último registro real. Regla RIR: RIR >=4 en todas las series -> doble incremento; última serie a RIR 0 -> mantener una semana; resto -> incremento normal. Fallo de reps -> se cierra la subida y la semana siguiente es test (AMRAP, o triple pesado si `cierre: "triple"`). El test se compara por e1RM (Epley, suma RIR si está registrado) contra `prog.ref` del bloque anterior.
+- Chips de semanas: pasadas = lo registrado; futuras de básicos = proyección desde el peso real; tras el cierre = "bloque cerrado".
+- Doble progresión (resto de ejercicios con barra): sube solo cuando TODAS las series llegan al tope del rango. Mancuernas (pares 5/10/20kg): solo reps, sin saltos de carga.
+- Equipo: barra 15kg, disco kg mínimo 5kg (saltos de 10kg), un par de cada microdisco 0.5/1.25/2.5/5lb. Constantes `BARRA_KG`, `PASO_KG`, `MICRO_DISCOS`.
+
+## Pendiente: generador de mesociclos (mediados de octubre, semana 4-5 del M7)
+
+- Objetivo: que la app genere el siguiente mesociclo desde los resultados del anterior, y el usuario lo revise con Claude en vez de escribirlo desde cero.
+- Cambio estructural previo: los mesociclos hoy son código dentro de `MESOCICLOS` en index.html; tienen que pasar a datos (`data-{usuario}.json`) para generarse sin tocar código.
+- Reglas: arranque de básicos = e1RM del test x % según reps objetivo; doble progresión = último peso con tope; estancamiento 2 bloques sin mejora de e1RM -> cambiar variante o rango. Cambios de ejercicios (equipo nuevo, lesión) quedan a criterio humano.
+- Construirlo con los datos reales del M7, no antes.
 
 ## Flujo de deploy
 
