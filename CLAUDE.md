@@ -54,6 +54,12 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 - Revisión mensual de pliegues completos (7) con recálculo de % grasa real — mencionada como concepto pero sin UI construida.
 - Multi-usuario: arquitectura pensada para escalar (cada usuario su propio `data-{nombre}.json`) pero no implementada — actualmente todo es un solo usuario, un solo `data.json`.
 
+## Pendientes M7 (acordados, por implementar en un solo cambio)
+
+- **Regla RIR en básicos pesados (prog lineal):** RIR >=4 en todas las series -> siguiente semana doble incremento; reps completas pero RIR 0 en la última -> mantener peso una semana; resto -> subida normal. El selector de RIR llega a 4 = "4 o más".
+- **Proyección dinámica de chips:** los pesos de semanas futuras de los básicos pesados deben recalcularse desde el último peso real (si hubo doble salto, S3/S4 cambian), no quedar fijos en el texto del plan.
+- **AMRAP comparable entre bloques:** calcular e1RM (Epley) del AMRAP y compararlo contra el e1RM de referencia del bloque anterior (banca M6 65x8, Pendlay M6 70x4 / 65x5, sentadilla M6 95x3 RIR0). Mostrar "reps a superar" con el peso del día.
+
 ## Flujo de deploy
 
 No hay CI/CD. Cada cambio a `index.html` (o cualquier asset) se sube directo al repo vía API de GitHub (o manualmente desde la interfaz web). GitHub Pages redeploya automáticamente en 1-2 minutos tras cualquier push a `main`. Verificar siempre sintaxis JS con `node --check` antes de subir — no hay otro paso de validación.
