@@ -1276,6 +1276,12 @@
     "nota-sesion-D2-S1-sab": {
       "nota": "En el isométrico calculé 20 segundos sin subir y bajar aguanto",
       "timestamp": "2026-09-27T00:43:00.613Z"
+    },
+    "D2-S1-sab-Isométrico arriba (banda gruesa)-2": {
+      "reps": "15",
+      "timestamp": "2026-09-27T00:45:58.712Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1395,5 +1401,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T00:43:08.205Z"
+  "timestamp": "2026-09-27T00:46:01.728Z"
 }
