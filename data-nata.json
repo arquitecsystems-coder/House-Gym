@@ -2638,7 +2638,9 @@
     },
     "N2-S3-lun-Elevación Lateral (mancuerna)-2": {
       "peso": "5",
-      "timestamp": "2026-09-27T18:05:45.838Z"
+      "timestamp": "2026-09-27T18:10:51.990Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3520,5 +3522,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-27T18:08:00.836Z"
+  "timestamp": "2026-09-27T18:10:55.013Z"
 }
