@@ -2582,6 +2582,10 @@
     "N2-S3-lun-Press Inclinado (barra)-1": {
       "peso": "27,5",
       "timestamp": "2026-09-27T17:33:50.156Z"
+    },
+    "N2-S3-lun-Press Inclinado (barra)-2": {
+      "peso": "27,5",
+      "timestamp": "2026-09-27T17:33:54.315Z"
     }
   },
   "rehab": {},
@@ -3463,5 +3467,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-27T17:33:53.167Z"
+  "timestamp": "2026-09-27T17:33:57.324Z"
 }
