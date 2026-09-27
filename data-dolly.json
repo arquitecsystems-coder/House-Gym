@@ -1315,10 +1315,11 @@
       "peso": "15"
     },
     "D2-S1-sab-Press inclinado mancuerna (unilateral)-2": {
-      "reps": "",
-      "timestamp": "2026-09-27T01:30:04.416Z",
+      "reps": "8",
+      "timestamp": "2026-09-27T01:50:09.524Z",
       "rir": "0",
-      "checked": false
+      "checked": true,
+      "peso": "15"
     },
     "D2-S1-sab-Búlgara con mancuerna-1": {
       "reps": "8",
@@ -1460,5 +1461,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T01:45:50.257Z"
+  "timestamp": "2026-09-27T01:50:09.278Z"
 }
