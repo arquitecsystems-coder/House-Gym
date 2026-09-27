@@ -1274,8 +1274,8 @@
       "checked": true
     },
     "nota-sesion-D2-S1-sab": {
-      "nota": "En el isométrico calculé 20 segundos en la primera serie sin subir y bajar aguanto.Pero ya en la segunda note que me fuí bajando.Estoy haciendo zancadas no búlgara.",
-      "timestamp": "2026-09-27T01:45:47.255Z"
+      "nota": "En el isométrico calculé 20 segundos en la primera serie sin subir y bajar aguanto.Pero ya en la segunda note que me fuí bajando.Estoy haciendo zancadas no búlgara.Copa:Me queda muy difícil con 7.5 volví con la de 5 y logre 2 series (1 de 10 otra de 14)",
+      "timestamp": "2026-09-27T02:27:16.311Z"
     },
     "D2-S1-sab-Isométrico arriba (banda gruesa)-2": {
       "reps": "15",
@@ -1376,10 +1376,10 @@
     },
     "D2-S1-sab-Copa a una mano (tríceps)-2": {
       "peso": "5",
-      "timestamp": "2026-09-27T02:23:02.433Z",
+      "timestamp": "2026-09-27T02:27:19.715Z",
       "reps": "10",
       "checked": true,
-      "rir": "4"
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1499,5 +1499,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T02:23:05.448Z"
+  "timestamp": "2026-09-27T02:27:22.738Z"
 }
