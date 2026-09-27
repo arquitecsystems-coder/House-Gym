@@ -1309,15 +1309,15 @@
     },
     "D2-S1-sab-Press inclinado mancuerna (unilateral)-1": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:22:28.274Z",
+      "timestamp": "2026-09-27T01:30:00.364Z",
       "rir": "0",
-      "checked": true
+      "checked": false
     },
     "D2-S1-sab-Press inclinado mancuerna (unilateral)-2": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:22:26.862Z",
+      "timestamp": "2026-09-27T01:29:59.833Z",
       "rir": "0",
-      "checked": true
+      "checked": false
     },
     "D2-S1-sab-Búlgara con mancuerna-1": {
       "reps": "8",
@@ -1327,7 +1327,9 @@
     },
     "D2-S1-sab-Búlgara con mancuerna-2": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:29:54.488Z"
+      "timestamp": "2026-09-27T01:29:57.504Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1447,5 +1449,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T01:29:54.440Z"
+  "timestamp": "2026-09-27T01:30:03.379Z"
 }
