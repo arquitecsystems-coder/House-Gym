@@ -1410,6 +1410,11 @@
       "timestamp": "2026-09-27T17:16:33.067Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S1-dom-Negativas de fondo (banco)-4": {
+      "reps": "6",
+      "timestamp": "2026-09-27T17:21:07.012Z",
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1529,5 +1534,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T17:16:36.081Z"
+  "timestamp": "2026-09-27T17:21:06.723Z"
 }
