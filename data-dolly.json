@@ -1254,6 +1254,11 @@
       "timestamp": "2026-09-27T00:27:19.868Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S1-sab-Dominada asistida (doble banda)-2": {
+      "reps": "5",
+      "timestamp": "2026-09-27T00:33:43.928Z",
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1373,5 +1378,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T00:27:22.884Z"
+  "timestamp": "2026-09-27T00:33:43.358Z"
 }
