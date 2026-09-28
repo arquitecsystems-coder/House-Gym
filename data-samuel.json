@@ -2700,6 +2700,13 @@
       "reps": "8",
       "checked": true,
       "rir": "2"
+    },
+    "M7-S1-lun-Press Inclinado (barra)-1": {
+      "peso": "60",
+      "timestamp": "2026-09-28T18:50:09.676Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -4495,5 +4502,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-28T18:44:39.169Z"
+  "timestamp": "2026-09-28T18:50:12.683Z"
 }
