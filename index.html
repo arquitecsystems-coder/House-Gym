@@ -436,7 +436,7 @@
     color: var(--text);
   }
   .prog-sug.mantener, .prog-sug.info { border-left-color: var(--muted); }
-  .prog-sug.cierre { border-left-color: #c0392b; }
+  .prog-sug.cierre, .prog-sug.bajar { border-left-color: #c0392b; }
   .comparison {
     margin: 0 14px 12px;
     background: var(--surface);
@@ -2124,10 +2124,10 @@ const MESOCICLOS = {
           semanas: ["30kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","20kg x 15 (descarga)"] },
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
           nota: "Topado en 10kg hasta que lleguen las ajustables. Pares disponibles 5/10/20kg: el siguiente salto es a 20kg (+100%), inviable. Progresa solo por reps hasta que lleguen las ajustables. Braquial rezagado: único estímulo específico.",
-          semanas: ["10kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","10kg x 15 (descarga)"] },
+          semanas: ["10kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 6 (descarga)"] },
         { nombre: "Elevación Lateral (DB)", series: 2, rol: "accesorio",
           nota: "El rango 12-25 NO es subóptimo: estímulo equivalente entre 5-30 reps cerca del fallo. OJO: por encima de 20 reps el RIR percibido suele estar subestimado 1-2 reps (limita el ardor, no el músculo).",
-          semanas: ["10kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","10kg x 15 (descarga)"] },
+          semanas: ["10kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 6 (descarga)"] },
       ],
       mar: [
         { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap", ref: { peso: 70, reps: 4, label: "M6 70x4" } },
@@ -2138,7 +2138,7 @@ const MESOCICLOS = {
           semanas: ["52.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","35kg x 15 (descarga)"] },
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
           nota: "VUELVE. Es el único ejercicio que carga el dorsal en estiramiento largo, ángulo que ningún remo alcanza. Topado en 20kg (pares disponibles 5/10/20kg): progresa solo por reps hasta que lleguen las ajustables.",
-          semanas: ["20kg x 12-25","x 12-25","x 12-25","x 12-25","x 12-25 (pico)","15kg x 15 (descarga)"] },
+          semanas: ["20kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 12 (descarga)"] },
         { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
           semanas: ["32.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","22.5kg x 15 (descarga)"] },
       ],
@@ -2167,9 +2167,9 @@ const MESOCICLOS = {
         { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
           semanas: ["25kg x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","17.5kg x 20 (descarga)"] },
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
-          semanas: ["10kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","10kg x 18 (descarga)"] },
+          semanas: ["10kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 6 (descarga)"] },
         { nombre: "Elevación Lateral (DB)", series: 2, rol: "accesorio",
-          semanas: ["10kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","10kg x 18 (descarga)"] },
+          semanas: ["10kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 6 (descarga)"] },
       ],
       vie: [
         { nombre: "Remo Pendlay (barra)", series: 3, rol: "volumen",
@@ -2178,7 +2178,7 @@ const MESOCICLOS = {
         { nombre: "Remo Supino (barra)", series: 3, rol: "volumen",
           semanas: ["42.5kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","30kg x 15 (descarga)"] },
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
-          semanas: ["20kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","15kg x 18 (descarga)"] },
+          semanas: ["20kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 12 (descarga)"] },
         { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
           semanas: ["27.5kg x 12-15","x 12-15","x 12-15","x 12-15","x 12-15 (pico)","20kg x 18 (descarga)"] },
       ],
@@ -3002,12 +3002,20 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const alTope = completas && ult.sets.every(x => x.reps >= max && (x.peso ?? peso) >= peso);
   const repsTxt = ult.sets.map(x => x.reps).join("/");
   const inc = incrementoDoble(ej);
+  const s1 = ult.sets[0];
+  if (s1.reps < min) {
+    if (inc == null) return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, por debajo del rango (${min}). Mancuernas solo en pares de 5/10/20kg: no hay peso intermedio. Mantén ${fmtKg(peso)}kg y suma reps.` };
+    const e1 = e1rm(peso, s1.reps, s1.rir ?? 1);
+    const t = e1 / (1 + (min + 2) / 30);
+    const d = combinarDiscos(t, 0, t);
+    return { tipo: "bajar", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, la primera serie quedó por debajo del rango (${min}). Recalibrado desde 1RM est. ${fmtKg(e1)}kg: hoy ${fmtKg(d.total)}kg = ${d.texto}, apunta a ${min}+ reps con RIR 2 en todas las series con el mismo peso.` };
+  }
   if (alTope) {
     if (inc == null) return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Mancuernas solo en pares de 5/10/20kg: no hay salto posible. Mantén ${fmtKg(peso)}kg y sigue sumando reps hasta que lleguen las ajustables.` };
     const d = combinarDiscos(peso + inc, peso + 0.3);
     return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg = ${d.texto}. Reps vuelven a ${min}+.` };
   }
-  return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. Se sube cuando TODAS las series lleguen a ${max}.` };
+  return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. ${inc == null ? "Mancuerna: progresa solo por reps." : `Se sube cuando TODAS las series lleguen a ${max}.`}` };
 }
 
 // ── EJERCICIO CARD ──
