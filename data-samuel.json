@@ -2663,26 +2663,95 @@
       "checked": true
     },
     "M7-S1-lun-Curl Bíceps (barra)-1": {
-      "peso": "",
-      "timestamp": "2026-09-27T13:32:14.029Z",
-      "reps": "",
-      "checked": false
+      "peso": "30",
+      "timestamp": "2026-09-28T19:17:32.473Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     },
     "M7-S1-lun-Curl Bíceps (barra)-2": {
-      "peso": "",
-      "timestamp": "2026-09-27T13:32:13.758Z",
-      "reps": "",
-      "checked": false
+      "peso": "30",
+      "timestamp": "2026-09-28T19:23:03.805Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     },
     "M7-S1-mie-RDL sin flexión de rodilla (barra)-1": {
       "peso": "",
       "timestamp": "2026-09-27T16:00:39.406Z",
       "reps": "",
       "checked": false
+    },
+    "M7-S1-lun-Press Banca (barra)-1": {
+      "peso": "62,9",
+      "timestamp": "2026-09-28T18:39:22.265Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S1-lun-Press Banca (barra)-2": {
+      "peso": "62,9",
+      "timestamp": "2026-09-28T18:39:23.823Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-lun-Press Banca (barra)-3": {
+      "peso": "62,9",
+      "timestamp": "2026-09-28T18:44:36.164Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S1-lun-Press Inclinado (barra)-1": {
+      "peso": "60",
+      "timestamp": "2026-09-28T18:50:09.676Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-lun-Press Inclinado (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-09-28T18:59:18.433Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-lun-Press Inclinado (barra)-3": {
+      "peso": "40",
+      "timestamp": "2026-09-28T18:59:23.146Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "4"
+    },
+    "M7-S1-lun-Curl Martillo (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-09-28T19:27:24.747Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-lun-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-09-28T19:30:04.251Z",
+      "reps": "8",
+      "checked": true
+    },
+    "M7-S1-lun-Elevación Lateral (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-09-28T19:38:35.202Z",
+      "reps": "8",
+      "checked": true
+    },
+    "M7-S1-lun-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-09-28T19:43:41.187Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-25T21:12:34.141Z",
+    "_syncTs": "2026-09-28T19:43:44.197Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3101,34 +3170,6 @@
       "fechaInicio": "2026-07-17"
     },
     "registrosDiarios": {
-      "2026-07-01": {
-        "ayunas": 76.9,
-        "noche": null
-      },
-      "2026-07-03": {
-        "ayunas": 76.65,
-        "noche": null
-      },
-      "2026-07-04": {
-        "ayunas": 77.4,
-        "noche": null
-      },
-      "2026-07-06": {
-        "ayunas": 78.5,
-        "noche": null
-      },
-      "2026-07-08": {
-        "ayunas": 77.45,
-        "noche": null
-      },
-      "2026-07-10": {
-        "ayunas": 77,
-        "noche": null
-      },
-      "2026-07-11": {
-        "ayunas": 76.65,
-        "noche": null
-      },
       "2026-07-25": {
         "ayunas": 78,
         "noche": null
@@ -3176,6 +3217,38 @@
       "2026-09-20": {
         "ayunas": 79,
         "noche": null
+      },
+      "2026-07-01": {
+        "ayunas": 76.9,
+        "noche": null
+      },
+      "2026-07-03": {
+        "ayunas": 76.65,
+        "noche": null
+      },
+      "2026-07-04": {
+        "ayunas": 77.4,
+        "noche": null
+      },
+      "2026-07-06": {
+        "ayunas": 78.5,
+        "noche": null
+      },
+      "2026-07-08": {
+        "ayunas": 77.45,
+        "noche": null
+      },
+      "2026-07-10": {
+        "ayunas": 77,
+        "noche": null
+      },
+      "2026-07-11": {
+        "ayunas": 76.65,
+        "noche": null
+      },
+      "2026-09-28": {
+        "ayunas": 79.15,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -3207,10 +3280,13 @@
         ],
         "cintura": 85,
         "promAyunas": 79
+      },
+      "S11": {
+        "promAyunas": 79.2
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-25T21:12:34.141Z"
+    "_syncTs": "2026-09-28T19:43:44.197Z"
   },
   "test": {},
   "actividad": {
@@ -4103,6 +4179,65 @@
             "grasas": 0.2
           }
         ]
+      },
+      "2026-09-28": {
+        "comidas": [
+          {
+            "foodId": "mu92otuu92ou",
+            "nombre": "Arepa de Maiz",
+            "gramos": 250,
+            "kcal": 250,
+            "prot": 7.5,
+            "carbs": 47.5,
+            "grasas": 2.5
+          },
+          {
+            "foodId": "huevo",
+            "nombre": "Huevo (doble A)",
+            "gramos": 232,
+            "kcal": 360,
+            "prot": 30.2,
+            "carbs": 2.6,
+            "grasas": 25.5,
+            "unidades": 4
+          },
+          {
+            "foodId": "queso_campesino",
+            "nombre": "Queso campesino",
+            "gramos": 60,
+            "kcal": 180,
+            "prot": 12,
+            "carbs": 1.8,
+            "grasas": 13.8
+          },
+          {
+            "foodId": "carne_molida_75_25",
+            "nombre": "Carne molida 75/25",
+            "gramos": 250,
+            "kcal": 700,
+            "prot": 40,
+            "carbs": 0,
+            "grasas": 60
+          },
+          {
+            "foodId": "mucqupx5474z",
+            "nombre": "Contramuslo(Sin piel - Con hueso)",
+            "gramos": 230,
+            "kcal": 241,
+            "prot": 32.2,
+            "carbs": 0,
+            "grasas": 9.2
+          },
+          {
+            "foodId": "papa_cruda_sin_cascara",
+            "nombre": "Papa cruda sin cáscara",
+            "gramos": 250,
+            "kcal": 193,
+            "prot": 5,
+            "carbs": 42.5,
+            "grasas": 0.3
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -4467,5 +4602,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-27T16:00:42.408Z"
+  "timestamp": "2026-09-28T20:53:18.515Z"
 }
