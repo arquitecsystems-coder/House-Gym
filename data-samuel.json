@@ -2751,7 +2751,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-28T18:59:26.150Z",
+    "_syncTs": "2026-09-28T19:43:44.197Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3286,7 +3286,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-28T18:59:26.150Z"
+    "_syncTs": "2026-09-28T19:43:44.197Z"
   },
   "test": {},
   "actividad": {
@@ -4179,6 +4179,19 @@
             "grasas": 0.2
           }
         ]
+      },
+      "2026-09-28": {
+        "comidas": [
+          {
+            "foodId": "mu92otuu92ou",
+            "nombre": "Arepa de Maiz",
+            "gramos": 250,
+            "kcal": 250,
+            "prot": 7.5,
+            "carbs": 47.5,
+            "grasas": 2.5
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -4543,5 +4556,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-28T19:43:44.197Z"
+  "timestamp": "2026-09-28T20:52:28.738Z"
 }
