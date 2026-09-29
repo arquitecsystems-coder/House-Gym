@@ -2806,6 +2806,12 @@
       "timestamp": "2026-09-29T20:39:21.019Z",
       "reps": "18",
       "checked": true
+    },
+    "M7-S1-mar-Pullover (DB)-3": {
+      "peso": "10",
+      "timestamp": "2026-09-29T20:47:34.356Z",
+      "reps": "16",
+      "checked": true
     }
   },
   "rehab": {
@@ -4660,5 +4666,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-29T20:39:24.072Z"
+  "timestamp": "2026-09-29T20:47:37.367Z"
 }
