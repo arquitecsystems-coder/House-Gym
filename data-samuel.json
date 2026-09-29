@@ -2765,9 +2765,10 @@
     },
     "M7-S1-mar-Remo Pendlay (barra)-3": {
       "peso": "57,3",
-      "timestamp": "2026-09-29T20:05:31.564Z",
+      "timestamp": "2026-09-29T20:05:40.245Z",
       "reps": "8",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -4622,5 +4623,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-29T20:05:34.570Z"
+  "timestamp": "2026-09-29T20:05:43.250Z"
 }
