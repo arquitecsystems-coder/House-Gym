@@ -2826,6 +2826,12 @@
       "reps": "8",
       "checked": true,
       "rir": "1"
+    },
+    "M7-S1-mie-Sentadilla (barra + cuña)-1": {
+      "peso": "87,3",
+      "timestamp": "2026-10-01T18:02:34.698Z",
+      "reps": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -4680,5 +4686,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-01T17:33:59.841Z"
+  "timestamp": "2026-10-01T18:02:37.707Z"
 }
