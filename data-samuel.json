@@ -2819,10 +2819,17 @@
       "reps": "8",
       "checked": true,
       "rir": "1"
+    },
+    "M7-S1-mar-Press Francés (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-01T17:33:56.834Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-28T20:53:18.515Z",
+    "_syncTs": "2026-09-29T20:55:20.266Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3357,7 +3364,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-28T20:53:18.515Z"
+    "_syncTs": "2026-09-29T20:55:20.266Z"
   },
   "test": {},
   "actividad": {
@@ -4673,5 +4680,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-29T20:55:20.266Z"
+  "timestamp": "2026-10-01T17:33:59.841Z"
 }
