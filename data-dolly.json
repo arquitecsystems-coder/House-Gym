@@ -1737,14 +1737,14 @@
     },
     "D2-S2-dom-Lateral inclinado contra pared-1": {
       "peso": "7.5",
-      "timestamp": "2026-10-04T17:46:42.238Z",
-      "reps": "10",
+      "timestamp": "2026-10-04T17:49:24.224Z",
+      "reps": "10.10",
       "checked": true,
       "rir": "0"
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-04T16:05:22.010Z",
+    "_syncTs": "2026-10-04T17:46:45.263Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1860,5 +1860,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T17:46:45.263Z"
+  "timestamp": "2026-10-04T17:49:27.255Z"
 }
