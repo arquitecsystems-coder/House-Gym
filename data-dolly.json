@@ -1670,8 +1670,8 @@
     },
     "D2-S2-dom-RDL unilateral con apoyo-1": {
       "peso": "35",
-      "timestamp": "2026-10-04T16:53:27.540Z",
-      "reps": "10",
+      "timestamp": "2026-10-04T17:09:56.449Z",
+      "reps": "10.10",
       "checked": true,
       "rir": "1"
     },
@@ -1814,5 +1814,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T17:08:19.669Z"
+  "timestamp": "2026-10-04T17:09:59.465Z"
 }
