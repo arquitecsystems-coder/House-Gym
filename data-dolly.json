@@ -1610,6 +1610,10 @@
       "reps": "9",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S2-sab-Remo unilateral con mancuerna-3": {
+      "peso": "25",
+      "timestamp": "2026-10-04T03:20:37.070Z"
     }
   },
   "rehab": {
@@ -1729,5 +1733,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T03:16:09.485Z"
+  "timestamp": "2026-10-04T03:20:40.093Z"
 }
