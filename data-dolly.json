@@ -1709,6 +1709,14 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-D2-S2-dom": {
+      "nota": "Me siento más fuerte.Pero subir en la sentadilla globet aún me cuesta,subir con la espalda derecha ",
+      "timestamp": "2026-10-04T17:22:38.273Z"
+    },
+    "D2-S2-dom-Curl bíceps con mancuerna-1": {
+      "peso": "15",
+      "timestamp": "2026-10-04T17:22:40.973Z"
     }
   },
   "rehab": {
@@ -1828,5 +1836,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T17:17:28.108Z"
+  "timestamp": "2026-10-04T17:22:43.992Z"
 }
