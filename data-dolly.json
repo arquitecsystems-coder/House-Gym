@@ -1337,9 +1337,10 @@
     },
     "D2-S1-sab-Búlgara con mancuerna-3": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:37:34.415Z",
+      "timestamp": "2026-10-04T02:05:03.289Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "30"
     },
     "D2-S1-sab-Remo unilateral con mancuerna-1": {
       "reps": "8",
@@ -1648,5 +1649,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T02:04:02.669Z"
+  "timestamp": "2026-10-04T02:05:06.303Z"
 }
