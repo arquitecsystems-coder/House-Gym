@@ -1558,6 +1558,11 @@
       "timestamp": "2026-10-04T02:27:38.142Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S2-sab-Búlgara con mancuerna-1": {
+      "reps": "10",
+      "timestamp": "2026-10-04T02:36:13.408Z",
+      "rir": "0"
     }
   },
   "rehab": {
@@ -1677,5 +1682,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T02:27:41.160Z"
+  "timestamp": "2026-10-04T02:36:16.435Z"
 }
