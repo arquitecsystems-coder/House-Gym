@@ -1637,6 +1637,10 @@
       "timestamp": "2026-10-04T15:56:09.764Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S2-dom-Dominada asistida (práctica)-2": {
+      "reps": "5",
+      "timestamp": "2026-10-04T16:00:14.083Z"
     }
   },
   "rehab": {
@@ -1756,5 +1760,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T15:56:12.785Z"
+  "timestamp": "2026-10-04T16:00:17.104Z"
 }
