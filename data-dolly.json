@@ -1269,8 +1269,8 @@
     },
     "D2-S1-sab-Isométrico arriba (banda gruesa)-1": {
       "reps": "20",
-      "timestamp": "2026-09-27T00:43:05.191Z",
-      "rir": "4",
+      "timestamp": "2026-10-04T01:54:34.991Z",
+      "rir": "",
       "checked": true
     },
     "nota-sesion-D2-S1-sab": {
@@ -1634,5 +1634,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T01:53:32.679Z"
+  "timestamp": "2026-10-04T01:54:38.016Z"
 }
