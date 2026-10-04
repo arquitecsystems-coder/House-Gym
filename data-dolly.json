@@ -1634,13 +1634,15 @@
     },
     "D2-S2-dom-Dominada asistida (práctica)-1": {
       "reps": "5",
-      "timestamp": "2026-10-04T15:56:09.764Z",
-      "rir": "0",
+      "timestamp": "2026-10-04T16:00:20.734Z",
+      "rir": "1",
       "checked": true
     },
     "D2-S2-dom-Dominada asistida (práctica)-2": {
       "reps": "5",
-      "timestamp": "2026-10-04T16:00:14.083Z"
+      "timestamp": "2026-10-04T16:00:22.247Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -1760,5 +1762,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T16:00:17.104Z"
+  "timestamp": "2026-10-04T16:00:25.263Z"
 }
