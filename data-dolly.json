@@ -1540,6 +1540,12 @@
     "nota-sesion-D2-S2-sab": {
       "nota": "La flexión Inclinada la sigo haciendo en la mesa en el banco intento y no puedo ",
       "timestamp": "2026-10-04T02:17:00.673Z"
+    },
+    "D2-S2-sab-Flexión inclinada (banco)-2": {
+      "reps": "11",
+      "timestamp": "2026-10-04T02:18:44.988Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1659,5 +1665,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T02:17:03.684Z"
+  "timestamp": "2026-10-04T02:18:48.002Z"
 }
