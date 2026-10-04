@@ -1500,10 +1500,15 @@
       "reps": "10.10",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S2-sab-Dominada asistida (doble banda)-1": {
+      "reps": "5",
+      "timestamp": "2026-10-04T01:44:10.882Z",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-27T18:06:47.943Z",
+    "_syncTs": "2026-09-27T18:26:47.252Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1619,5 +1624,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T18:26:47.252Z"
+  "timestamp": "2026-10-04T01:44:13.905Z"
 }
