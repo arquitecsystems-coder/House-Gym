@@ -1323,15 +1323,17 @@
     },
     "D2-S1-sab-Búlgara con mancuerna-1": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:29:51.428Z",
+      "timestamp": "2026-10-04T02:03:56.342Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "30"
     },
     "D2-S1-sab-Búlgara con mancuerna-2": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:32:50.530Z",
+      "timestamp": "2026-10-04T02:03:59.653Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "30"
     },
     "D2-S1-sab-Búlgara con mancuerna-3": {
       "reps": "8",
@@ -1646,5 +1648,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T02:03:16.694Z"
+  "timestamp": "2026-10-04T02:03:59.354Z"
 }
