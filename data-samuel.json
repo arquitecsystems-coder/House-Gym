@@ -2912,6 +2912,12 @@
       "timestamp": "2026-10-05T20:46:31.700Z",
       "reps": "8",
       "checked": true
+    },
+    "M7-S2-lun-Press Banca (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-10-05T20:54:31.757Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -4773,5 +4779,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-05T20:46:34.709Z"
+  "timestamp": "2026-10-05T20:54:34.766Z"
 }
