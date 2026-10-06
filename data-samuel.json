@@ -3003,6 +3003,10 @@
       "reps": "7",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-M7-S2-mar": {
+      "nota": "Pendlay fallo técnico ",
+      "timestamp": "2026-10-06T22:23:32.521Z"
     }
   },
   "rehab": {
@@ -4864,5 +4868,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-06T22:23:24.850Z"
+  "timestamp": "2026-10-06T22:23:35.524Z"
 }
