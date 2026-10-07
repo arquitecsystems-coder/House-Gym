@@ -3016,9 +3016,24 @@
     },
     "M7-S2-mar-Remo Supino (barra)-1": {
       "peso": "55",
-      "timestamp": "2026-10-07T16:07:24.566Z",
+      "timestamp": "2026-10-07T16:23:23.737Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mar-Remo Supino (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-10-07T16:23:28.853Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-mar-Remo Supino (barra)-3": {
+      "peso": "55",
+      "timestamp": "2026-10-07T16:23:27.644Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -4880,5 +4895,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-07T16:07:27.575Z"
+  "timestamp": "2026-10-07T16:23:31.867Z"
 }
