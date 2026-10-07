@@ -1772,10 +1772,15 @@
       "reps": "10",
       "timestamp": "2026-10-07T10:00:31.475Z",
       "checked": true
+    },
+    "D2-S3-mar-Isométrico arriba (banda gruesa)-2": {
+      "reps": "10",
+      "timestamp": "2026-10-07T10:03:32.760Z",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-04T18:22:08.382Z",
+    "_syncTs": "2026-10-07T10:00:34.488Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1891,5 +1896,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-07T10:00:34.488Z"
+  "timestamp": "2026-10-07T10:03:35.771Z"
 }
