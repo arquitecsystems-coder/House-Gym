@@ -1780,8 +1780,13 @@
     },
     "D2-S3-mar-Retracciones escapulares colgada-1": {
       "reps": "6",
-      "timestamp": "2026-10-07T10:07:45.918Z",
-      "checked": true
+      "timestamp": "2026-10-07T10:09:04.349Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "nota-sesion-D2-S3-mar": {
+      "nota": "Retracción:Poco movimiento escapular ",
+      "timestamp": "2026-10-07T10:08:58.861Z"
     }
   },
   "rehab": {
@@ -1901,5 +1906,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-07T10:07:48.935Z"
+  "timestamp": "2026-10-07T10:09:03.584Z"
 }
