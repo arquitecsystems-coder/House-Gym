@@ -1755,10 +1755,16 @@
       "reps": "10.10",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S3-mar-Dead hang-1": {
+      "reps": "25",
+      "timestamp": "2026-10-07T09:51:16.159Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-04T17:49:37.512Z",
+    "_syncTs": "2026-10-04T18:22:08.382Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1874,5 +1880,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-04T18:22:08.382Z"
+  "timestamp": "2026-10-07T09:51:19.177Z"
 }
