@@ -1807,10 +1807,15 @@
     "nota-sesion-D2-S3-jue": {
       "nota": "Hoy mucho ardorsito en las manos ",
       "timestamp": "2026-10-08T10:17:32.891Z"
+    },
+    "D2-S3-jue-Isométrico arriba (banda gruesa)-2": {
+      "reps": "2",
+      "timestamp": "2026-10-08T10:20:16.584Z",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-07T10:09:07.361Z",
+    "_syncTs": "2026-10-08T10:17:35.927Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1926,5 +1931,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-08T10:17:35.927Z"
+  "timestamp": "2026-10-08T10:20:19.595Z"
 }
