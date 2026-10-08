@@ -1787,10 +1787,16 @@
     "nota-sesion-D2-S3-mar": {
       "nota": "Retracción:Poco movimiento escapular ",
       "timestamp": "2026-10-07T10:08:58.861Z"
+    },
+    "D2-S3-jue-Dead hang-1": {
+      "reps": "15",
+      "timestamp": "2026-10-08T10:08:10.737Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-07T10:00:34.488Z",
+    "_syncTs": "2026-10-07T10:09:07.361Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1906,5 +1912,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-07T10:09:07.361Z"
+  "timestamp": "2026-10-08T10:08:13.749Z"
 }
