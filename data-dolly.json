@@ -1812,6 +1812,11 @@
       "reps": "2",
       "timestamp": "2026-10-08T10:20:16.584Z",
       "checked": true
+    },
+    "D2-S3-jue-Retracciones escapulares colgada-1": {
+      "reps": "5",
+      "timestamp": "2026-10-08T10:24:14.691Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -1931,5 +1936,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-08T10:20:19.595Z"
+  "timestamp": "2026-10-08T10:24:17.700Z"
 }
