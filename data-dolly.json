@@ -1798,6 +1798,11 @@
       "reps": "20",
       "timestamp": "2026-10-08T10:11:19.280Z",
       "checked": true
+    },
+    "D2-S3-jue-Isométrico arriba (banda gruesa)-1": {
+      "reps": "10",
+      "timestamp": "2026-10-08T10:16:49.657Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -1917,5 +1922,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-08T10:11:22.286Z"
+  "timestamp": "2026-10-08T10:16:52.672Z"
 }
