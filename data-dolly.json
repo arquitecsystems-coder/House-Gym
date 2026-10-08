@@ -1803,6 +1803,10 @@
       "reps": "10",
       "timestamp": "2026-10-08T10:16:49.657Z",
       "checked": true
+    },
+    "nota-sesion-D2-S3-jue": {
+      "nota": "Hoy mucho ardorsito en las manos ",
+      "timestamp": "2026-10-08T10:17:32.891Z"
     }
   },
   "rehab": {
@@ -1922,5 +1926,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-08T10:16:52.672Z"
+  "timestamp": "2026-10-08T10:17:35.927Z"
 }
