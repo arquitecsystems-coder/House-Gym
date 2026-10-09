@@ -3211,6 +3211,13 @@
       "reps": "8",
       "checked": true,
       "rir": "1"
+    },
+    "M7-S2-jue-Elevación Lateral (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-10-09T21:19:00.580Z",
+      "reps": "22",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -5072,5 +5079,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-09T21:16:04.351Z"
+  "timestamp": "2026-10-09T21:19:03.591Z"
 }
