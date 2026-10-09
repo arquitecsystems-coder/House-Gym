@@ -3129,10 +3129,16 @@
       "timestamp": "2026-10-08T21:34:49.607Z",
       "checked": true,
       "rir": "0"
+    },
+    "M7-S2-mie-Crunch Abdominal-1": {
+      "peso": "20",
+      "timestamp": "2026-10-09T19:58:35.267Z",
+      "reps": "14",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-06T22:27:44.950Z",
+    "_syncTs": "2026-10-08T21:34:52.613Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3674,7 +3680,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-10-06T22:27:44.950Z"
+    "_syncTs": "2026-10-08T21:34:52.613Z"
   },
   "test": {},
   "actividad": {
@@ -4990,5 +4996,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-08T21:34:52.613Z"
+  "timestamp": "2026-10-09T19:58:34.587Z"
 }
