@@ -2648,6 +2648,10 @@
       "reps": "5",
       "checked": true,
       "rir": "0"
+    },
+    "N2-S5-lun-Sentadilla trasera (barra)-2": {
+      "reps": "4",
+      "timestamp": "2026-10-09T00:17:37.955Z"
     }
   },
   "rehab": {},
@@ -3529,5 +3533,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-09T00:12:57.053Z"
+  "timestamp": "2026-10-09T00:17:40.972Z"
 }
