@@ -3141,6 +3141,12 @@
       "timestamp": "2026-10-09T19:58:39.185Z",
       "reps": "12",
       "checked": true
+    },
+    "M7-S2-jue-Press Banca (barra)-1": {
+      "peso": "50",
+      "timestamp": "2026-10-09T20:26:21.792Z",
+      "reps": "15",
+      "checked": true
     }
   },
   "rehab": {
@@ -5002,5 +5008,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-09T19:58:42.194Z"
+  "timestamp": "2026-10-09T20:26:24.807Z"
 }
