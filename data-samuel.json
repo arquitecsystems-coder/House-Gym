@@ -3213,11 +3213,17 @@
       "rir": "1"
     },
     "M7-S2-jue-Elevación Lateral (DB)-1": {
-      "peso": "10",
-      "timestamp": "2026-10-09T21:19:00.580Z",
+      "peso": "5",
+      "timestamp": "2026-10-09T21:22:24.314Z",
       "reps": "22",
       "checked": true,
       "rir": "2"
+    },
+    "M7-S2-jue-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-10-09T21:22:22.842Z",
+      "reps": "6",
+      "checked": true
     }
   },
   "rehab": {
@@ -5079,5 +5085,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-09T21:19:03.591Z"
+  "timestamp": "2026-10-09T21:22:27.319Z"
 }
