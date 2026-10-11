@@ -1904,6 +1904,12 @@
       "reps": "9",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S3-sab-Press inclinado mancuerna (unilateral)-3": {
+      "reps": "7",
+      "timestamp": "2026-10-11T02:17:19.227Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2023,5 +2029,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-11T02:11:54.384Z"
+  "timestamp": "2026-10-11T02:17:22.240Z"
 }
