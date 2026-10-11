@@ -1930,12 +1930,14 @@
       "checked": true
     },
     "D2-S3-sab-Copa a una mano (tríceps)-1": {
-      "peso": "7.5",
-      "timestamp": "2026-10-11T02:36:09.030Z"
+      "peso": "5",
+      "timestamp": "2026-10-11T02:45:04.640Z",
+      "reps": "16",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-08T10:24:22.919Z",
+    "_syncTs": "2026-10-11T02:36:12.056Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2051,5 +2053,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-11T02:36:12.056Z"
+  "timestamp": "2026-10-11T02:45:04.217Z"
 }
