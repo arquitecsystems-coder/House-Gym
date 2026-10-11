@@ -1910,6 +1910,12 @@
       "timestamp": "2026-10-11T02:17:19.227Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S3-sab-Remo unilateral con mancuerna-1": {
+      "reps": "10.9",
+      "timestamp": "2026-10-11T02:22:34.462Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2029,5 +2035,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-11T02:17:22.240Z"
+  "timestamp": "2026-10-11T02:22:37.483Z"
 }
