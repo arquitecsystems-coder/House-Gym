@@ -1827,7 +1827,14 @@
     },
     "D2-S3-sab-Dominada asistida (doble banda)-2": {
       "reps": "7",
-      "timestamp": "2026-10-11T01:11:16.154Z",
+      "timestamp": "2026-10-11T01:15:17.874Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Dominada asistida (doble banda)-3": {
+      "reps": "6",
+      "timestamp": "2026-10-11T01:15:20.044Z",
+      "rir": "0",
       "checked": true
     }
   },
@@ -1948,5 +1955,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-11T01:11:19.168Z"
+  "timestamp": "2026-10-11T01:15:23.055Z"
 }
