@@ -1854,6 +1854,12 @@
       "timestamp": "2026-10-11T01:27:54.110Z",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S3-sab-Flexión inclinada (banco)-2": {
+      "reps": "5",
+      "timestamp": "2026-10-11T01:32:00.586Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -1973,5 +1979,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-11T01:27:57.124Z"
+  "timestamp": "2026-10-11T01:32:03.600Z"
 }
