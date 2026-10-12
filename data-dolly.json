@@ -1980,11 +1980,15 @@
       "checked": true
     },
     "D2-S3-dom-RDL unilateral con apoyo-1": {
-      "reps": "10",
-      "timestamp": "2026-10-12T16:01:31.566Z",
+      "reps": "10.10",
+      "timestamp": "2026-10-12T16:08:44.753Z",
       "peso": "40",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S3-dom-RDL unilateral con apoyo-2": {
+      "peso": "40",
+      "timestamp": "2026-10-12T16:08:48.253Z"
     }
   },
   "rehab": {
@@ -2104,5 +2108,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-12T16:01:34.581Z"
+  "timestamp": "2026-10-12T16:08:47.783Z"
 }
