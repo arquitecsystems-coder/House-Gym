@@ -1992,6 +1992,12 @@
       "reps": "10.10",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S3-dom-RDL unilateral con apoyo-3": {
+      "reps": "10.10",
+      "timestamp": "2026-10-12T16:14:35.429Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2111,5 +2117,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-12T16:09:00.063Z"
+  "timestamp": "2026-10-12T16:14:38.444Z"
 }
