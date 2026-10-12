@@ -2012,6 +2012,10 @@
       "reps": "12",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-D2-S3-dom": {
+      "nota": "Sentadilla Globet; aún inclino mucho la espalda al subir y bajar.",
+      "timestamp": "2026-10-12T16:25:39.380Z"
     }
   },
   "rehab": {
@@ -2131,5 +2135,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-12T16:24:23.339Z"
+  "timestamp": "2026-10-12T16:25:42.387Z"
 }
