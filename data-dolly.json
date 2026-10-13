@@ -2089,6 +2089,14 @@
       "timestamp": "2026-10-13T10:25:34.478Z",
       "rir": "0",
       "checked": true
+    },
+    "nota-sesion-D2-S4-mar": {
+      "nota": "Mejorando retracciones escapulares",
+      "timestamp": "2026-10-13T10:26:51.422Z"
+    },
+    "D2-S4-mar-Retracciones escapulares colgada-1": {
+      "reps": "6",
+      "timestamp": "2026-10-13T10:26:54.604Z"
     }
   },
   "rehab": {
@@ -2208,5 +2216,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-13T10:25:37.488Z"
+  "timestamp": "2026-10-13T10:26:54.427Z"
 }
