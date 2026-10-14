@@ -2641,6 +2641,94 @@
       "timestamp": "2026-09-27T18:10:51.990Z",
       "reps": "12",
       "checked": true
+    },
+    "N2-S5-lun-Sentadilla trasera (barra)-1": {
+      "peso": "60",
+      "timestamp": "2026-10-09T00:12:54.011Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "0"
+    },
+    "N2-S5-lun-Sentadilla trasera (barra)-2": {
+      "reps": "4",
+      "timestamp": "2026-10-09T00:17:42.735Z",
+      "peso": "60",
+      "checked": true
+    },
+    "N2-S5-lun-Curl Bíceps (2 mancuernas)-1": {
+      "peso": "5",
+      "timestamp": "2026-10-09T00:19:35.651Z",
+      "reps": "19",
+      "checked": true
+    },
+    "N2-S5-lun-Curl Bíceps (2 mancuernas)-2": {
+      "peso": "5",
+      "timestamp": "2026-10-09T00:28:55.384Z",
+      "reps": "16",
+      "checked": true
+    },
+    "N2-S5-lun-Curl Bíceps (2 mancuernas)-3": {
+      "peso": "5",
+      "timestamp": "2026-10-09T00:34:47.316Z",
+      "reps": "16",
+      "checked": true
+    },
+    "N2-S5-lun-Sentadilla trasera (barra)-3": {
+      "peso": "60",
+      "timestamp": "2026-10-09T00:21:12.273Z",
+      "reps": "3",
+      "checked": true
+    },
+    "N2-S5-lun-Sentadilla trasera (barra)-4": {
+      "peso": "60",
+      "timestamp": "2026-10-09T00:28:00.318Z",
+      "reps": "3",
+      "checked": true
+    },
+    "N2-S5-lun-Elevación Lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-10-09T00:42:53.240Z",
+      "reps": "12",
+      "checked": true
+    },
+    "N2-S5-lun-Elevación Lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-10-09T00:48:30.711Z",
+      "reps": "12",
+      "checked": true
+    },
+    "N2-S5-lun-Elevación de Piernas-1": {
+      "reps": "20",
+      "timestamp": "2026-10-09T00:52:25.656Z",
+      "checked": true
+    },
+    "N2-S5-lun-Elevación de Piernas-2": {
+      "reps": "19",
+      "timestamp": "2026-10-09T00:56:08.454Z",
+      "checked": true
+    },
+    "N2-S5-lun-Elevación de Piernas-3": {
+      "reps": "20",
+      "timestamp": "2026-10-09T01:01:28.304Z",
+      "checked": true
+    },
+    "N2-S5-lun-Press Inclinado (barra)-1": {
+      "peso": "27,5",
+      "timestamp": "2026-10-09T01:09:59.849Z",
+      "reps": "7",
+      "checked": true
+    },
+    "N2-S5-lun-Press Inclinado (barra)-2": {
+      "peso": "27,5",
+      "timestamp": "2026-10-09T01:17:06.702Z",
+      "reps": "8",
+      "checked": true
+    },
+    "N2-S5-lun-Press Inclinado (barra)-3": {
+      "peso": "27,5",
+      "timestamp": "2026-10-09T01:21:22.109Z",
+      "reps": "7",
+      "checked": true
     }
   },
   "rehab": {},
@@ -2821,7 +2909,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-25T01:07:14.377Z"
+    "_syncTs": "2026-09-27T18:31:32.645Z"
   },
   "test": {
     "test": {
@@ -3522,5 +3610,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-09-27T18:31:32.645Z"
+  "timestamp": "2026-10-09T01:21:25.136Z"
 }

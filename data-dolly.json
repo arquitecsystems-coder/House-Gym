@@ -1269,7 +1269,7 @@
     },
     "D2-S1-sab-Isométrico arriba (banda gruesa)-1": {
       "reps": "20",
-      "timestamp": "2026-09-27T00:43:05.191Z",
+      "timestamp": "2026-10-04T01:55:40.268Z",
       "rir": "4",
       "checked": true
     },
@@ -1323,21 +1323,24 @@
     },
     "D2-S1-sab-Búlgara con mancuerna-1": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:29:51.428Z",
+      "timestamp": "2026-10-04T02:03:56.342Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "30"
     },
     "D2-S1-sab-Búlgara con mancuerna-2": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:32:50.530Z",
+      "timestamp": "2026-10-04T02:03:59.653Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "30"
     },
     "D2-S1-sab-Búlgara con mancuerna-3": {
       "reps": "8",
-      "timestamp": "2026-09-27T01:37:34.415Z",
+      "timestamp": "2026-10-04T02:05:03.289Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "30"
     },
     "D2-S1-sab-Remo unilateral con mancuerna-1": {
       "reps": "8",
@@ -1500,10 +1503,606 @@
       "reps": "10.10",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S2-sab-Dominada asistida (doble banda)-1": {
+      "reps": "5",
+      "timestamp": "2026-10-04T01:44:10.882Z",
+      "checked": true
+    },
+    "D2-S2-sab-Dominada asistida (doble banda)-2": {
+      "reps": "5",
+      "timestamp": "2026-10-04T01:49:23.924Z",
+      "checked": true
+    },
+    "D2-S2-sab-Dominada asistida (doble banda)-3": {
+      "reps": "5",
+      "timestamp": "2026-10-04T01:54:57.009Z",
+      "checked": true
+    },
+    "D2-S2-sab-Isométrico arriba (banda gruesa)-1": {
+      "reps": "12",
+      "timestamp": "2026-10-04T01:58:13.884Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Isométrico arriba (banda gruesa)-2": {
+      "reps": "12",
+      "timestamp": "2026-10-04T02:03:13.670Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Flexión inclinada (banco)-1": {
+      "reps": "9",
+      "timestamp": "2026-10-04T02:13:32.132Z",
+      "rir": "0",
+      "checked": true
+    },
+    "nota-sesion-D2-S2-sab": {
+      "nota": "La flexión Inclinada la sigo haciendo en la mesa en el banco intento y no puedo ",
+      "timestamp": "2026-10-04T02:17:00.673Z"
+    },
+    "D2-S2-sab-Flexión inclinada (banco)-2": {
+      "reps": "11",
+      "timestamp": "2026-10-04T02:18:44.988Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Flexión inclinada (banco)-3": {
+      "reps": "6",
+      "timestamp": "2026-10-04T02:22:56.611Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Flexión inclinada (banco)-4": {
+      "reps": "9",
+      "timestamp": "2026-10-04T02:27:38.142Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Búlgara con mancuerna-1": {
+      "reps": "10",
+      "timestamp": "2026-10-04T02:36:24.886Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Búlgara con mancuerna-2": {
+      "reps": "10",
+      "timestamp": "2026-10-04T02:41:28.782Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Búlgara con mancuerna-3": {
+      "reps": "12",
+      "timestamp": "2026-10-04T02:46:59.430Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Press inclinado mancuerna (unilateral)-1": {
+      "peso": "15",
+      "timestamp": "2026-10-04T02:54:56.019Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "D2-S2-sab-Press inclinado mancuerna (unilateral)-2": {
+      "peso": "15",
+      "timestamp": "2026-10-04T02:58:59.551Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-sab-Press inclinado mancuerna (unilateral)-3": {
+      "reps": "7",
+      "timestamp": "2026-10-04T03:04:44.728Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-sab-Remo unilateral con mancuerna-1": {
+      "peso": "25",
+      "timestamp": "2026-10-04T03:10:41.062Z",
+      "reps": "10.8",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-sab-Remo unilateral con mancuerna-2": {
+      "peso": "25",
+      "timestamp": "2026-10-04T03:16:06.470Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-sab-Remo unilateral con mancuerna-3": {
+      "peso": "25",
+      "timestamp": "2026-10-04T03:20:43.572Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-sab-Copa a una mano (tríceps)-1": {
+      "peso": "5",
+      "timestamp": "2026-10-04T03:25:06.470Z",
+      "reps": "14",
+      "checked": true,
+      "rir": "2"
+    },
+    "D2-S2-sab-Copa a una mano (tríceps)-2": {
+      "peso": "5",
+      "timestamp": "2026-10-04T03:29:27.301Z",
+      "reps": "14",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Dominada asistida (práctica)-1": {
+      "reps": "5",
+      "timestamp": "2026-10-04T16:00:20.734Z",
+      "rir": "1",
+      "checked": true
+    },
+    "D2-S2-dom-Dominada asistida (práctica)-2": {
+      "reps": "5",
+      "timestamp": "2026-10-04T16:00:22.247Z",
+      "rir": "1",
+      "checked": true
+    },
+    "D2-S2-dom-Negativas de fondo (banco)-1": {
+      "reps": "7",
+      "timestamp": "2026-10-04T16:05:18.997Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-dom-Negativas de fondo (banco)-2": {
+      "reps": "7",
+      "timestamp": "2026-10-04T16:33:46.940Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-dom-Negativas de fondo (banco)-3": {
+      "reps": "7",
+      "timestamp": "2026-10-04T16:43:00.083Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-dom-Negativas de fondo (banco)-4": {
+      "reps": "7",
+      "timestamp": "2026-10-04T16:47:36.238Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S2-dom-RDL unilateral con apoyo-1": {
+      "peso": "35",
+      "timestamp": "2026-10-04T17:09:56.449Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "1"
+    },
+    "D2-S2-dom-RDL unilateral con apoyo-2": {
+      "peso": "35",
+      "timestamp": "2026-10-04T17:10:02.638Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-RDL unilateral con apoyo-3": {
+      "peso": "35",
+      "timestamp": "2026-10-04T17:10:13.637Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Sentadilla goblet-1": {
+      "peso": "30",
+      "timestamp": "2026-10-04T17:08:16.648Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Sentadilla goblet-2": {
+      "peso": "30",
+      "timestamp": "2026-10-04T17:12:59.115Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Sentadilla goblet-3": {
+      "peso": "30",
+      "timestamp": "2026-10-04T17:17:25.092Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "nota-sesion-D2-S2-dom": {
+      "nota": "Me siento más fuerte.Pero subir en la sentadilla globet aún me cuesta,subir con la espalda derecha ",
+      "timestamp": "2026-10-04T17:22:38.273Z"
+    },
+    "D2-S2-dom-Curl bíceps con mancuerna-1": {
+      "peso": "15",
+      "timestamp": "2026-10-04T17:22:48.523Z",
+      "reps": "5.5",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Curl bíceps con mancuerna-2": {
+      "peso": "12.5",
+      "timestamp": "2026-10-04T17:28:34.824Z",
+      "reps": "9.9",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Curl bíceps con mancuerna-3": {
+      "peso": "12.5",
+      "timestamp": "2026-10-04T17:35:53.336Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Lateral inclinado contra pared-1": {
+      "peso": "7.5",
+      "timestamp": "2026-10-04T17:49:24.224Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Lateral inclinado contra pared-2": {
+      "peso": "7.5",
+      "timestamp": "2026-10-04T17:49:34.495Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S2-dom-Lateral inclinado contra pared-3": {
+      "peso": "7.5",
+      "timestamp": "2026-10-12T17:05:16.330Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-mar-Dead hang-1": {
+      "reps": "25",
+      "timestamp": "2026-10-07T09:51:16.159Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-mar-Dead hang-2": {
+      "reps": "25",
+      "timestamp": "2026-10-07T09:55:42.422Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-mar-Isométrico arriba (banda gruesa)-1": {
+      "reps": "10",
+      "timestamp": "2026-10-07T10:00:31.475Z",
+      "checked": true
+    },
+    "D2-S3-mar-Isométrico arriba (banda gruesa)-2": {
+      "reps": "10",
+      "timestamp": "2026-10-07T10:03:32.760Z",
+      "checked": true
+    },
+    "D2-S3-mar-Retracciones escapulares colgada-1": {
+      "reps": "6",
+      "timestamp": "2026-10-07T10:09:04.349Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "nota-sesion-D2-S3-mar": {
+      "nota": "Retracción:Poco movimiento escapular ",
+      "timestamp": "2026-10-07T10:08:58.861Z"
+    },
+    "D2-S3-jue-Dead hang-1": {
+      "reps": "15",
+      "timestamp": "2026-10-08T10:08:10.737Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-jue-Dead hang-2": {
+      "reps": "20",
+      "timestamp": "2026-10-08T10:11:19.280Z",
+      "checked": true
+    },
+    "D2-S3-jue-Isométrico arriba (banda gruesa)-1": {
+      "reps": "10",
+      "timestamp": "2026-10-08T10:16:49.657Z",
+      "checked": true
+    },
+    "nota-sesion-D2-S3-jue": {
+      "nota": "Hoy mucho ardorsito en las manos ",
+      "timestamp": "2026-10-08T10:17:32.891Z"
+    },
+    "D2-S3-jue-Isométrico arriba (banda gruesa)-2": {
+      "reps": "2",
+      "timestamp": "2026-10-08T10:20:16.584Z",
+      "checked": true
+    },
+    "D2-S3-jue-Retracciones escapulares colgada-1": {
+      "reps": "5",
+      "timestamp": "2026-10-08T10:24:19.912Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Dominada asistida (doble banda)-1": {
+      "reps": "7",
+      "timestamp": "2026-10-11T01:07:03.214Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Dominada asistida (doble banda)-2": {
+      "reps": "7",
+      "timestamp": "2026-10-11T01:15:17.874Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Dominada asistida (doble banda)-3": {
+      "reps": "6",
+      "timestamp": "2026-10-11T01:15:20.044Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Isométrico arriba (banda gruesa)-1": {
+      "reps": "12",
+      "timestamp": "2026-10-11T01:23:40.917Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Isométrico arriba (banda gruesa)-2": {
+      "reps": "11",
+      "timestamp": "2026-10-11T01:23:41.697Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Flexión inclinada (banco)-1": {
+      "reps": "7",
+      "timestamp": "2026-10-11T01:27:54.110Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Flexión inclinada (banco)-2": {
+      "reps": "5",
+      "timestamp": "2026-10-11T01:32:00.586Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Flexión inclinada (banco)-3": {
+      "reps": "8",
+      "timestamp": "2026-10-11T01:36:24.667Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Flexión inclinada (banco)-4": {
+      "reps": "10",
+      "timestamp": "2026-10-11T01:41:06.528Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Búlgara con mancuerna-1": {
+      "reps": "12",
+      "timestamp": "2026-10-11T01:52:52.472Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Búlgara con mancuerna-2": {
+      "reps": "12",
+      "timestamp": "2026-10-11T01:55:27.349Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Búlgara con mancuerna-3": {
+      "reps": "16",
+      "timestamp": "2026-10-11T02:01:24.437Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Press inclinado mancuerna (unilateral)-1": {
+      "peso": "15",
+      "timestamp": "2026-10-11T02:07:02.365Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Press inclinado mancuerna (unilateral)-2": {
+      "peso": "15",
+      "timestamp": "2026-10-11T02:11:51.365Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Press inclinado mancuerna (unilateral)-3": {
+      "reps": "7",
+      "timestamp": "2026-10-11T02:17:19.227Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Remo unilateral con mancuerna-1": {
+      "reps": "10.9",
+      "timestamp": "2026-10-11T02:22:34.462Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Remo unilateral con mancuerna-2": {
+      "reps": "10.9",
+      "timestamp": "2026-10-11T02:27:59.583Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Remo unilateral con mancuerna-3": {
+      "reps": "8.8",
+      "timestamp": "2026-10-11T02:33:15.107Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-sab-Copa a una mano (tríceps)-1": {
+      "peso": "5",
+      "timestamp": "2026-10-11T02:45:07.366Z",
+      "reps": "16",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-sab-Copa a una mano (tríceps)-2": {
+      "peso": "5",
+      "timestamp": "2026-10-11T03:01:59.697Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Dominada asistida (práctica)-1": {
+      "reps": "5",
+      "timestamp": "2026-10-12T15:38:07.367Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-Dominada asistida (práctica)-2": {
+      "reps": "5",
+      "timestamp": "2026-10-12T15:41:54.351Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-Negativas de fondo (banco)-1": {
+      "reps": "8",
+      "timestamp": "2026-10-12T15:45:17.121Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-Negativas de fondo (banco)-2": {
+      "reps": "8",
+      "timestamp": "2026-10-12T15:49:46.536Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-Negativas de fondo (banco)-3": {
+      "reps": "8",
+      "timestamp": "2026-10-12T15:53:10.391Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-Negativas de fondo (banco)-4": {
+      "reps": "7",
+      "timestamp": "2026-10-12T15:56:41.884Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-RDL unilateral con apoyo-1": {
+      "reps": "10.10",
+      "timestamp": "2026-10-12T16:08:44.753Z",
+      "peso": "40",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-RDL unilateral con apoyo-2": {
+      "peso": "40",
+      "timestamp": "2026-10-12T16:08:57.048Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-RDL unilateral con apoyo-3": {
+      "reps": "10.10",
+      "timestamp": "2026-10-12T16:14:35.429Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S3-dom-Sentadilla goblet-1": {
+      "peso": "30",
+      "timestamp": "2026-10-12T16:19:43.251Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Sentadilla goblet-2": {
+      "peso": "30",
+      "timestamp": "2026-10-12T16:24:20.326Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "nota-sesion-D2-S3-dom": {
+      "nota": "Sentadilla Globet; aún inclino mucho la espalda al subir y bajar.\nEn el lateral con el brazo izquierdo sólo voy hasta la mitad con 7.5L,la segunda y tercera series las hice con 5L en el brazo izquierdo \n\n",
+      "timestamp": "2026-10-12T17:06:38.312Z"
+    },
+    "D2-S3-dom-Sentadilla goblet-3": {
+      "peso": "30",
+      "timestamp": "2026-10-12T16:31:53.618Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Curl bíceps con mancuerna-1": {
+      "peso": "15",
+      "timestamp": "2026-10-12T16:40:11.147Z",
+      "reps": "5.3",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Curl bíceps con mancuerna-2": {
+      "peso": "12.5",
+      "timestamp": "2026-10-12T16:44:46.883Z",
+      "reps": "8.8",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Curl bíceps con mancuerna-3": {
+      "peso": "12.5",
+      "timestamp": "2026-10-12T16:52:43.606Z",
+      "reps": "9.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Lateral inclinado contra pared-1": {
+      "peso": "7.5",
+      "timestamp": "2026-10-12T16:57:33.928Z",
+      "reps": "10.10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Lateral inclinado contra pared-2": {
+      "peso": "7.5",
+      "timestamp": "2026-10-12T17:01:54.824Z",
+      "reps": "15.17",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S3-dom-Lateral inclinado contra pared-3": {
+      "peso": "7.5",
+      "timestamp": "2026-10-12T17:07:00.968Z",
+      "reps": "15.18",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S4-mar-Dead hang-1": {
+      "reps": "30",
+      "timestamp": "2026-10-13T10:16:10.368Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S4-mar-Dead hang-2": {
+      "reps": "30",
+      "timestamp": "2026-10-13T10:19:32.206Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S4-mar-Isométrico arriba (banda gruesa)-1": {
+      "reps": "12",
+      "timestamp": "2026-10-13T10:23:20.172Z",
+      "rir": "0",
+      "checked": true
+    },
+    "D2-S4-mar-Isométrico arriba (banda gruesa)-2": {
+      "reps": "12",
+      "timestamp": "2026-10-13T10:25:34.478Z",
+      "rir": "0",
+      "checked": true
+    },
+    "nota-sesion-D2-S4-mar": {
+      "nota": "Mejorando retracciones escapulares",
+      "timestamp": "2026-10-13T10:26:51.422Z"
+    },
+    "D2-S4-mar-Retracciones escapulares colgada-1": {
+      "reps": "6",
+      "timestamp": "2026-10-13T10:26:59.461Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-27T18:06:47.943Z",
+    "_syncTs": "2026-10-12T17:07:03.990Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -1619,5 +2218,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-09-27T18:26:47.252Z"
+  "timestamp": "2026-10-13T10:27:02.467Z"
 }

@@ -2677,10 +2677,11 @@
       "rir": "0"
     },
     "M7-S1-mie-RDL sin flexión de rodilla (barra)-1": {
-      "peso": "",
-      "timestamp": "2026-09-27T16:00:39.406Z",
-      "reps": "",
-      "checked": false
+      "peso": "65",
+      "timestamp": "2026-10-01T18:19:08.461Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "3"
     },
     "M7-S1-lun-Press Banca (barra)-1": {
       "peso": "62,9",
@@ -2733,25 +2734,556 @@
     },
     "M7-S1-lun-Curl Martillo (DB)-2": {
       "peso": "10",
-      "timestamp": "2026-09-28T19:30:04.251Z",
+      "timestamp": "2026-09-29T20:35:26.671Z",
       "reps": "8",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     },
     "M7-S1-lun-Elevación Lateral (DB)-1": {
       "peso": "10",
-      "timestamp": "2026-09-28T19:38:35.202Z",
+      "timestamp": "2026-09-29T20:35:29.879Z",
       "reps": "8",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     },
     "M7-S1-lun-Elevación Lateral (DB)-2": {
       "peso": "10",
-      "timestamp": "2026-09-28T19:43:41.187Z",
+      "timestamp": "2026-09-29T20:35:31.099Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S1-mar-Remo Pendlay (barra)-1": {
+      "peso": "57,3",
+      "timestamp": "2026-09-29T19:52:55.685Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mar-Remo Pendlay (barra)-2": {
+      "peso": "57,3",
+      "timestamp": "2026-09-29T19:59:13.600Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mar-Remo Pendlay (barra)-3": {
+      "peso": "57,3",
+      "timestamp": "2026-09-29T20:05:59.466Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mar-Remo Supino (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-09-29T20:16:41.319Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mar-Remo Supino (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-09-29T20:35:05.606Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S1-mar-Remo Supino (barra)-3": {
+      "peso": "55",
+      "timestamp": "2026-09-29T20:35:06.920Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S1-mar-Pullover (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-09-29T20:35:02.042Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S1-mar-Pullover (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-09-29T20:39:21.019Z",
+      "reps": "18",
+      "checked": true
+    },
+    "M7-S1-mar-Pullover (DB)-3": {
+      "peso": "10",
+      "timestamp": "2026-09-29T20:47:34.356Z",
+      "reps": "16",
+      "checked": true
+    },
+    "M7-S1-mar-Press Francés (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-09-29T20:55:17.257Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mar-Press Francés (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-01T17:33:56.834Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mie-Sentadilla (barra + cuña)-1": {
+      "peso": "87,3",
+      "timestamp": "2026-10-01T18:02:39.733Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mie-Sentadilla (barra + cuña)-2": {
+      "peso": "87,3",
+      "timestamp": "2026-10-01T18:10:47.198Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mie-Sentadilla (barra + cuña)-3": {
+      "peso": "87,3",
+      "timestamp": "2026-10-01T18:14:54.395Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mie-RDL sin flexión de rodilla (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-10-01T18:26:45.307Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "3"
+    },
+    "M7-S1-mie-RDL sin flexión de rodilla (barra)-3": {
+      "peso": "65",
+      "timestamp": "2026-10-01T18:36:11.686Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "3"
+    },
+    "M7-S1-mie-Hip Thrust (barra)-1": {
+      "peso": "40",
+      "timestamp": "2026-10-01T18:44:34.712Z",
+      "reps": "10",
+      "checked": true
+    },
+    "M7-S1-mie-Hip Thrust (barra)-2": {
+      "peso": "40",
+      "timestamp": "2026-10-01T18:44:37.869Z",
       "reps": "8",
       "checked": true
+    },
+    "M7-S1-mie-Dragon Flag (negativas)-1": {
+      "reps": "8",
+      "timestamp": "2026-10-01T18:48:09.174Z",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S1-mie-Dragon Flag (negativas)-2": {
+      "reps": "8",
+      "timestamp": "2026-10-01T19:03:39.915Z",
+      "rir": "1",
+      "checked": true
+    },
+    "M7-S1-mie-Dragon Flag (negativas)-3": {
+      "reps": "8",
+      "timestamp": "2026-10-01T19:08:17.168Z",
+      "rir": "1",
+      "checked": true
+    },
+    "M7-S1-mie-Crunch Abdominal-1": {
+      "peso": "20",
+      "timestamp": "2026-10-01T19:24:34.772Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S1-mie-Crunch Abdominal-2": {
+      "peso": "20",
+      "timestamp": "2026-10-01T19:24:35.890Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-lun-Press Banca (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-10-05T20:59:13.367Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-lun-Press Banca (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-10-05T20:59:14.833Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-lun-Press Banca (barra)-3": {
+      "peso": "65",
+      "timestamp": "2026-10-05T20:59:42.256Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-lun-Press Inclinado (barra)-1": {
+      "peso": "53,4",
+      "timestamp": "2026-10-05T21:05:27.063Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "3"
+    },
+    "M7-S2-lun-Press Inclinado (barra)-2": {
+      "peso": "53,4",
+      "timestamp": "2026-10-05T21:12:44.401Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-lun-Press Inclinado (barra)-3": {
+      "peso": "53,4",
+      "timestamp": "2026-10-05T21:17:30.153Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-lun-Curl Bíceps (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-10-05T21:22:37.566Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-lun-Curl Bíceps (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-05T21:27:24.878Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-lun-Curl Martillo (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-10-05T21:32:17.765Z",
+      "reps": "11",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-lun-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-10-05T21:37:23.379Z",
+      "reps": "10",
+      "checked": true
+    },
+    "M7-S2-lun-Elevación Lateral (DB)-1": {
+      "peso": "5",
+      "timestamp": "2026-10-05T21:38:35.154Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-lun-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-10-05T21:52:46.213Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-mar-Remo Pendlay (barra)-1": {
+      "peso": "58,4",
+      "timestamp": "2026-10-06T22:19:40.569Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-mar-Remo Pendlay (barra)-2": {
+      "peso": "58,4",
+      "timestamp": "2026-10-06T22:23:21.844Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "nota-sesion-M7-S2-mar": {
+      "nota": "Pendlay fallo técnico ",
+      "timestamp": "2026-10-06T22:23:32.521Z"
+    },
+    "M7-S2-mar-Remo Pendlay (barra)-3": {
+      "peso": "58,4",
+      "timestamp": "2026-10-06T22:27:41.935Z",
+      "reps": "7",
+      "checked": true
+    },
+    "M7-S2-mar-Remo Supino (barra)-1": {
+      "peso": "55",
+      "timestamp": "2026-10-07T16:23:23.737Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mar-Remo Supino (barra)-2": {
+      "peso": "55",
+      "timestamp": "2026-10-07T16:23:28.853Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-mar-Remo Supino (barra)-3": {
+      "peso": "55",
+      "timestamp": "2026-10-07T16:23:27.644Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-mar-Pullover (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-10-07T16:26:42.336Z",
+      "reps": "22",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mar-Pullover (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-10-07T16:40:55.089Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mar-Pullover (DB)-3": {
+      "peso": "10",
+      "timestamp": "2026-10-07T16:40:56.306Z",
+      "reps": "18",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mar-Press Francés (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-10-07T16:46:04.997Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-mar-Press Francés (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-07T16:50:41.373Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-mie-Sentadilla (barra + cuña)-1": {
+      "peso": "89,5",
+      "timestamp": "2026-10-08T20:39:53.139Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-mie-Sentadilla (barra + cuña)-2": {
+      "peso": "89,5",
+      "timestamp": "2026-10-08T20:53:33.136Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-mie-Sentadilla (barra + cuña)-3": {
+      "peso": "89,3",
+      "timestamp": "2026-10-08T20:53:31.666Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-mie-RDL sin flexión de rodilla (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-10-08T21:00:54.404Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "4"
+    },
+    "M7-S2-mie-RDL sin flexión de rodilla (barra)-2": {
+      "peso": "65",
+      "timestamp": "2026-10-08T21:07:32.011Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "3"
+    },
+    "M7-S2-mie-RDL sin flexión de rodilla (barra)-3": {
+      "peso": "65",
+      "timestamp": "2026-10-08T21:13:51.538Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mie-Dragon Flag (negativas)-1": {
+      "reps": "8",
+      "timestamp": "2026-10-08T21:17:43.455Z",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-mie-Dragon Flag (negativas)-2": {
+      "reps": "8",
+      "timestamp": "2026-10-08T21:26:12.625Z",
+      "rir": "1",
+      "checked": true
+    },
+    "M7-S2-mie-Dragon Flag (negativas)-3": {
+      "reps": "10",
+      "timestamp": "2026-10-08T21:34:49.607Z",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S2-mie-Crunch Abdominal-1": {
+      "peso": "20",
+      "timestamp": "2026-10-09T19:58:35.267Z",
+      "reps": "14",
+      "checked": true
+    },
+    "M7-S2-mie-Crunch Abdominal-2": {
+      "peso": "20",
+      "timestamp": "2026-10-09T19:58:39.185Z",
+      "reps": "12",
+      "checked": true
+    },
+    "M7-S2-jue-Press Banca (barra)-1": {
+      "peso": "50",
+      "timestamp": "2026-10-09T20:26:28.192Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Press Banca (barra)-2": {
+      "peso": "50",
+      "timestamp": "2026-10-09T20:43:26.486Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Press Banca (barra)-3": {
+      "peso": "50",
+      "timestamp": "2026-10-09T20:43:31.683Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Press Inclinado (barra)-1": {
+      "peso": "47,5",
+      "timestamp": "2026-10-09T20:47:27.576Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Press Inclinado (barra)-2": {
+      "peso": "47,5",
+      "timestamp": "2026-10-09T20:53:49.916Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Press Inclinado (barra)-3": {
+      "peso": "47,5",
+      "timestamp": "2026-10-09T21:00:27.605Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Curl Bíceps (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-10-09T21:04:26.492Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-jue-Curl Bíceps (barra)-2": {
+      "peso": "25",
+      "timestamp": "2026-10-09T21:08:55.936Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-jue-Curl Martillo (DB)-1": {
+      "reps": "10",
+      "timestamp": "2026-10-09T21:12:57.212Z",
+      "peso": "10",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-jue-Curl Martillo (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-10-09T21:16:01.342Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S2-jue-Elevación Lateral (DB)-1": {
+      "peso": "5",
+      "timestamp": "2026-10-09T21:22:24.314Z",
+      "reps": "22",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S2-jue-Elevación Lateral (DB)-2": {
+      "peso": "10",
+      "timestamp": "2026-10-09T21:22:22.842Z",
+      "reps": "6",
+      "checked": true
+    },
+    "M7-S3-lun-Press Banca (barra)-1": {
+      "peso": "67,3",
+      "timestamp": "2026-10-13T21:22:08.367Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S3-lun-Press Banca (barra)-2": {
+      "peso": "67,3",
+      "timestamp": "2026-10-13T21:31:31.063Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S3-lun-Press Banca (barra)-3": {
+      "peso": "67,3",
+      "timestamp": "2026-10-13T21:36:04.225Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S3-lun-Press Inclinado (barra)-1": {
+      "peso": "53,4",
+      "timestamp": "2026-10-13T21:48:03.027Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S3-lun-Press Inclinado (barra)-2": {
+      "peso": "53,4",
+      "timestamp": "2026-10-13T21:47:58.057Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S3-lun-Press Inclinado (barra)-3": {
+      "peso": "53,4",
+      "timestamp": "2026-10-13T21:52:36.709Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S3-lun-Curl Bíceps (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-10-13T21:57:33.146Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S3-lun-Curl Bíceps (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-13T22:01:36.276Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
-    "_syncTs": "2026-09-28T19:43:44.197Z",
+    "_syncTs": "2026-10-09T21:22:27.319Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3249,6 +3781,10 @@
       "2026-09-28": {
         "ayunas": 79.15,
         "noche": null
+      },
+      "2026-10-02": {
+        "ayunas": 77.6,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -3283,10 +3819,13 @@
       },
       "S11": {
         "promAyunas": 79.2
+      },
+      "S12": {
+        "promAyunas": 77.6
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-28T19:43:44.197Z"
+    "_syncTs": "2026-10-09T21:22:27.319Z"
   },
   "test": {},
   "actividad": {
@@ -4602,5 +5141,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-09-28T20:53:18.515Z"
+  "timestamp": "2026-10-13T22:01:39.284Z"
 }
