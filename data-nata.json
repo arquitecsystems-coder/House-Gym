@@ -2729,6 +2729,10 @@
       "timestamp": "2026-10-09T01:21:22.109Z",
       "reps": "7",
       "checked": true
+    },
+    "N2-S6-lun-Sentadilla trasera (barra)-1": {
+      "peso": "37,27",
+      "timestamp": "2026-10-14T23:42:25.808Z"
     }
   },
   "rehab": {},
@@ -2909,7 +2913,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-09-27T18:31:32.645Z"
+    "_syncTs": "2026-10-09T01:21:25.136Z"
   },
   "test": {
     "test": {
@@ -3610,5 +3614,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-09T01:21:25.136Z"
+  "timestamp": "2026-10-14T23:42:28.831Z"
 }
