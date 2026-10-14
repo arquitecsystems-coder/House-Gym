@@ -2741,6 +2741,10 @@
     "N2-S6-lun-Sentadilla trasera (barra)-3": {
       "peso": "37,27",
       "timestamp": "2026-10-14T23:42:34.732Z"
+    },
+    "N2-S6-lun-Sentadilla trasera (barra)-4": {
+      "peso": "37,27",
+      "timestamp": "2026-10-14T23:42:41.231Z"
     }
   },
   "rehab": {},
@@ -3622,5 +3626,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-14T23:42:37.740Z"
+  "timestamp": "2026-10-14T23:42:44.239Z"
 }
