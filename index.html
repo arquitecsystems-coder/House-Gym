@@ -2862,46 +2862,71 @@ function pesoPlan(ej, semana) {
 
 // Básicos pesados (prog lineal): reps fijas, peso sube cada semana, regla RIR,
 // cierre al fallar reps y test (AMRAP o triple) comparado contra el bloque anterior.
-// Devuelve { sug, pesoHoy, cerrado }: pesoHoy alimenta la proyección de semanas futuras.
+// Devuelve { sug, pesoHoy, fase }: pesoHoy alimenta la proyección de semanas futuras.
 function analizarLineal(ej, mesoKey, semana, dia) {
   const meso = MESOCICLOS[mesoKey];
   const { reps, inc, cierre, ref } = ej.prog;
   const pico = meso.semanas - 1;
   const refE1 = ref ? e1rm(ref.peso, ref.reps, ref.rir) : null;
   const esTriple = cierre === "triple";
+  const corto = ej.nombre.replace(/ \(.*\)$/, "");
 
-  let proximo = pesoPlan(ej, 1), motivo = null, ultimoOk = null, fallo = null, test = null;
+  // Regla de pesos tras una semana COMPLETA
+  const reglaRir = (sets, peso) => {
+    const rirs = sets.map(x => x.rir);
+    if (rirs.every(r => r != null && r >= 4)) return { prox: peso + 2 * inc, motivo: "RIR 4+ en todas las series: doble subida", tipo: "subir" };
+    if (rirs[rirs.length - 1] === 0) return { prox: peso, motivo: "última serie a RIR 0: se mantiene el peso una semana", tipo: "mantener" };
+    return { prox: peso + inc, motivo: null, tipo: "subir" };
+  };
+
+  // fase: "subida" -> (2+ reps perdidas, o 2 fallos) -> "test" -> "reinicio" (segunda onda hasta el pico)
+  let fase = "subida", proximo = pesoPlan(ej, 1), motivo = null, tipo = "subir";
+  let ultimo = null, ultimoOk = null, aviso = null, cierreW = null, testRes = null, testEnPico = false;
   for (let w = 1; w < semana; w++) {
     const sets = seriesSemana(ej, mesoKey, w, dia);
     if (!sets) continue;
-    if (fallo || w === pico) { test = { w, sets }; break; }
     const peso = sets[0].peso;
-    const ok = sets.length >= ej.series && sets.every(x => x.reps >= reps);
-    if (!ok) { fallo = { w, peso }; continue; }
-    ultimoOk = { w, peso };
-    const rirs = sets.map(x => x.rir);
-    if (rirs.every(r => r != null && r >= 4)) { proximo = peso + 2 * inc; motivo = `RIR 4+ en todas las series: doble subida`; }
-    else if (rirs[rirs.length - 1] === 0) { proximo = peso; motivo = `última serie a RIR 0: se mantiene el peso una semana`; }
-    else { proximo = peso + inc; motivo = null; }
-  }
-
-  // Test ya hecho: mostrar resultado contra el bloque anterior
-  if (test) {
-    const mejor = test.sets.reduce((m, x) => x.peso != null && e1rm(x.peso, x.reps, x.rir) > m.e ? { e: e1rm(x.peso, x.reps, x.rir), x } : m, { e: 0, x: null });
-    let txt = `Test S${test.w}: ${fmtKg(mejor.x?.peso ?? 0)}kg x ${mejor.x?.reps ?? "-"} = 1RM est. ${fmtKg(mejor.e)}kg`;
-    if (refE1) {
-      const pct = (mejor.e / refE1 - 1) * 100;
-      txt += ` vs ${fmtKg(refE1)}kg en ${ref.label} (${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%)`;
+    if (fase === "test" || (fase === "subida" && w === pico)) {
+      const mejor = sets.reduce((m, x) => x.peso != null && e1rm(x.peso, x.reps, x.rir) > m.e ? { e: e1rm(x.peso, x.reps, x.rir), x } : m, { e: 0, x: null });
+      let txt = `Test S${w}: ${fmtKg(mejor.x?.peso ?? 0)}kg x ${mejor.x?.reps ?? "-"} = 1RM est. ${fmtKg(mejor.e)}kg`;
+      if (refE1) {
+        const pct = (mejor.e / refE1 - 1) * 100;
+        txt += ` vs ${fmtKg(refE1)}kg en ${ref.label} (${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%)`;
+      }
+      testRes = { w, e1: mejor.e, txt };
+      testEnPico = fase === "subida";
+      const t = mejor.e / (1 + (reps + 2) / 30);
+      proximo = combinarDiscos(t, 0, t).total;
+      motivo = `reinicio de la subida desde el 1RM del test (${reps} reps a RIR 2)`; tipo = "subir";
+      fase = "reinicio"; ultimo = null;
+      continue;
     }
-    txt += `. Bloque cerrado: ${semana >= meso.semanas ? "descarga" : "pasa a descarga"} y arranca el siguiente.`;
-    return { sug: { tipo: "cierre", objetivo: ej.semanas[meso.semanas - 1], texto: txt }, pesoHoy: null, cerrado: true };
+    const perdidas = sets.reduce((a, x) => a + Math.max(0, reps - x.reps), 0) + Math.max(0, ej.series - sets.length) * reps;
+    if (perdidas === 0) {
+      ultimo = { w, peso };
+      if (fase === "subida") ultimoOk = peso;
+      ({ prox: proximo, motivo, tipo } = reglaRir(sets, peso));
+      continue;
+    }
+    ultimo = { w, peso, fallo: true };
+    if (fase === "reinicio") { proximo = peso; motivo = `faltaron ${perdidas} rep(s): repite el peso`; tipo = "mantener"; continue; }
+    if (perdidas === 1 && !aviso) { aviso = w; proximo = peso; motivo = "faltó 1 rep: repite el peso una semana (un fallo aislado no cierra la subida)"; tipo = "mantener"; continue; }
+    cierreW = { w, peso, perdidas };
+    fase = "test";
   }
 
-  // Semana de test: tras un fallo, o en el pico
-  if (fallo || semana === pico) {
-    const pesoTest = ultimoOk?.peso ?? fallo?.peso ?? pesoPlan(ej, 1);
+  const descarga = semana >= meso.semanas;
+  if (descarga) {
+    return { sug: testRes ? { tipo: "info", texto: `${testRes.txt}. Semana de descarga.` } : cargaRealPlan(ej, semana), pesoHoy: null, fase: "fin" };
+  }
+
+  // Semana de test: tras el cierre de la subida, o en el pico si nunca falló
+  if (fase === "test" || (fase === "subida" && semana === pico)) {
+    const pesoTest = ultimoOk ?? (cierreW ? cierreW.peso : pesoPlan(ej, 1));
     const d = combinarDiscos(pesoTest);
-    const intro = fallo ? `No salió ${ej.series}x${reps} en S${fallo.w}: se cierra la subida. ` : `Semana de test. `;
+    const intro = fase === "test"
+      ? `S${cierreW.w}: faltaron ${cierreW.perdidas} reps. Se cierra la subida del ${corto} (solo este ejercicio; el resto del mesociclo sigue igual). `
+      : `Semana de test. `;
     let txt, objetivo;
     if (esTriple) {
       objetivo = `Triple pesado desde ${fmtKg(d.total)}kg`;
@@ -2915,20 +2940,24 @@ function analizarLineal(ej, mesoKey, semana, dia) {
         txt += ` Para superar ${ref.label} (1RM est. ${fmtKg(refE1)}kg) necesitas ${necesarias}+ reps.`;
       }
     }
+    txt += fase === "test" ? ` La semana siguiente la subida se reinicia desde ese resultado.` : "";
     txt += ` Solo con seguros o soportes puestos; si no hay, para en RIR 1 y anótalo.`;
-    return { sug: { tipo: "cierre", objetivo, texto: txt }, pesoHoy: null, cerrado: true };
+    return { sug: { tipo: "cierre", objetivo, texto: txt }, pesoHoy: null, fase: "test" };
   }
 
-  if (semana >= meso.semanas) return { sug: cargaRealPlan(ej, semana), pesoHoy: null, cerrado: true };
-  if (!ultimoOk) {
-    const p = pesoPlan(ej, semana) ?? proximo;
-    return { sug: semana === 1 ? cargaRealPlan(ej, 1) : null, pesoHoy: p, cerrado: false };
+  // Sin registros previos: peso del plan
+  if (!ultimo && fase === "subida") {
+    return { sug: semana === 1 ? cargaRealPlan(ej, 1) : null, pesoHoy: pesoPlan(ej, semana) ?? proximo, fase };
   }
-  const d = combinarDiscos(proximo, motivo?.startsWith("última") ? 0 : ultimoOk.peso + 0.3);
-  const base = `S${ultimoOk.w} completa (${fmtKg(ultimoOk.peso)}kg x ${reps})` + (motivo ? `, ${motivo}` : "");
+
+  const minimo = tipo === "subir" && ultimo ? ultimo.peso + 0.3 : 0;
+  const d = combinarDiscos(proximo, minimo, tipo === "mantener" ? proximo + 0.05 : Infinity);
+  let base;
+  if (!ultimo && testRes) base = `${testRes.txt}. Reinicio de la subida (${reps} reps a RIR 2 desde ese 1RM)`;
+  else base = `S${ultimo.w}: ${fmtKg(ultimo.peso)}kg x ${seriesSemana(ej, mesoKey, ultimo.w, dia).map(x => x.reps).join("/")}` + (motivo ? `, ${motivo}` : "");
   return {
-    sug: { tipo: motivo?.startsWith("última") ? "mantener" : "subir", objetivo: `${fmtKg(d.total)}kg x ${reps}`, texto: `${base}. Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` },
-    pesoHoy: d.total, cerrado: false,
+    sug: { tipo, objetivo: `${fmtKg(d.total)}kg x ${reps}`, texto: `${base}. Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` },
+    pesoHoy: d.total, fase,
   };
 }
 
@@ -2967,12 +2996,12 @@ function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
       if (sets && sets[0].peso != null) return `${fmtKg(sets[0].peso)}kg x ${sets.map(x => x.reps).join("/")}`;
       return w;
     }
-    if (lin?.cerrado && n < meso.semanas) return "bloque cerrado";
+    if (lin?.fase === "test" && n < meso.semanas) return "reinicio tras el test";
     if (rirA?.e1 && n < meso.semanas) {
       const r = ej.prog.rirPlan[n - 1] ?? 2, t = rirA.e1 / (1 + (ej.prog.reps + r) / 30);
       return `~${fmtKg(combinarDiscos(t, 0, t).total)}kg x ${ej.prog.reps} (RIR ${r})`;
     }
-    if (lin && !lin.cerrado && lin.pesoHoy != null && n < meso.semanas - 1) {
+    if (lin && lin.pesoHoy != null && n < (lin.fase === "reinicio" ? meso.semanas : meso.semanas - 1)) {
       const d = combinarDiscos(lin.pesoHoy + ej.prog.inc * (n - semana), lin.pesoHoy + 0.3 * (n - semana));
       return `~${fmtKg(d.total)}kg x ${ej.prog.reps}`;
     }
