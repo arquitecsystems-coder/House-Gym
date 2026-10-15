@@ -2800,6 +2800,14 @@
       "reps": "15",
       "timestamp": "2026-10-15T00:23:16.485Z",
       "checked": true
+    },
+    "N2-S6-lun-Press Inclinado (barra)-1": {
+      "peso": "16,5",
+      "timestamp": "2026-10-15T00:35:13.545Z"
+    },
+    "N2-S6-lun-Press Inclinado (barra)-2": {
+      "peso": "16,5",
+      "timestamp": "2026-10-15T00:35:17.229Z"
     }
   },
   "rehab": {},
@@ -3681,5 +3689,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-15T00:30:30.317Z"
+  "timestamp": "2026-10-15T00:35:16.554Z"
 }
