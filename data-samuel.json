@@ -3339,7 +3339,10 @@
     },
     "M7-S3-mie-Sentadilla (barra + cuña)-2": {
       "peso": "89,5",
-      "timestamp": "2026-10-15T18:16:07.387Z"
+      "timestamp": "2026-10-15T18:22:14.984Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -5201,5 +5204,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-15T18:16:10.397Z"
+  "timestamp": "2026-10-15T18:22:17.997Z"
 }
