@@ -3403,6 +3403,19 @@
       "reps": "14",
       "checked": true,
       "rir": "1"
+    },
+    "M7-S3-mie-Hip Thrust (barra)-1": {
+      "peso": "35",
+      "timestamp": "2026-10-15T19:21:16.137Z",
+      "reps": "13",
+      "checked": true,
+      "rir": "2"
+    },
+    "M7-S3-mie-Hip Thrust (barra)-2": {
+      "peso": "35",
+      "timestamp": "2026-10-15T19:21:19.344Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -5264,5 +5277,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-15T19:10:13.514Z"
+  "timestamp": "2026-10-15T19:21:22.354Z"
 }
