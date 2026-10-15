@@ -3392,9 +3392,10 @@
     },
     "M7-S3-mie-Crunch Abdominal-1": {
       "peso": "20",
-      "timestamp": "2026-10-15T19:05:41.507Z",
+      "timestamp": "2026-10-15T19:05:42.927Z",
       "reps": "15",
-      "checked": true
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -5256,5 +5257,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-15T19:05:41.153Z"
+  "timestamp": "2026-10-15T19:05:45.935Z"
 }
