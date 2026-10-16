@@ -1341,7 +1341,7 @@
     <span class="nav-icon">🏋️</span>sesión
   </div>
   <div class="nav-item" id="nav-rehab" onclick="setView('rehab')">
-    <span class="nav-icon">🦶</span>rehab
+    <span class="nav-icon">🧘</span>movilidad
   </div>
   <div class="nav-item" id="nav-cut" onclick="setView('cut')">
     <span class="nav-icon">🔥</span>cut
@@ -3205,38 +3205,92 @@ function renderRMs(main) {
   main.innerHTML = html;
 }
 
-// ── REHAB VIEW ──
+// ── MOVILIDAD (módulo interno "rehab": la clave de vista y la de storage se mantienen por compatibilidad) ──
+// Cada ejercicio parte de un nivel inicial (sets x valor; valor = segundos o reps) y, si tiene prog,
+// sube solo: prog.paso/tope suben el valor hasta el tope; prog.setsMax agrega series después;
+// prog.avanza = sesiones COMPLETAS (todas las series al objetivo) para subir de nivel (por defecto 5).
+// El nivel se calcula repasando el historial (idempotente). Los botones ▼▲ fijan un nivel manual.
+// Ejercicios sin prog quedan fijos a propósito: su progresión es de calidad/rango, no de conteo.
+const REHAB_PLAN_DESDE = "2026-10-16";   // desde esta fecha rige REHAB_EJERCICIOS; antes, REHAB_LEGACY
 const REHAB_EJERCICIOS = [
   {
-    id: "rodilla_pared",
-    nombre: "Rodilla a pared",
-    sets: 3,
-    objetivoSeg: 120,
-    protocolo: "Hold 2 min en rango máximo · descanso 30 s entre sets",
-    nota: "Empuja 1 mm más dentro del hold si sientes que la tensión cede"
+    id: "sentadilla_pared", grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 30,
+    nombre: "Sentadilla profunda con espalda en la pared",
+    protocolo: "Espalda completa apoyada, talones en el suelo · baja al rango máximo y sostén",
+    nota: "Con la espalda apoyada no hay compensación de tronco: el límite es el tobillo. Si el talón se despega o el pie rota hacia afuera, sube un poco. Anota en la nota si una rodilla o un pie compensa.",
+    prog: { paso: 10, tope: 90 }
   },
   {
-    id: "cuadrupedia",
-    nombre: "Cuadrupedia — desliz rodilla",
-    sets: 3,
-    objetivoSeg: 120,
-    protocolo: "Hold 2 min en rango máximo · descanso 30 s entre sets",
-    nota: "4 puntos de apoyo, talón pegado al suelo"
+    id: "rodilla_pared_din", grupo: "Tobillo", tipo: "reps", sets: 3, valor: 10, segRep: 4,
+    nombre: "Rodilla a la pared (solo tobillo lesionado)",
+    protocolo: "3 x 10 · pausa 2 s al final de cada rep · talón en el suelo",
+    nota: "Es el único trabajo unilateral del tobillo: la sentadilla en pared reparte la carga entre los dos pies. Progresa alejando el pie de la pared (+0.5 cm) cuando completes todo con el talón pegado; el rango real se mide el domingo."
   },
   {
-    id: "equilibrio",
-    nombre: "Equilibrio monopodal ojos cerrados",
-    sets: 2,
-    objetivoSeg: 45,
-    protocolo: "Hasta fallo · registra tiempo",
-    nota: "Superficie firme → inestable cuando superes 45 s consistente"
+    id: "elevacion_pierna", grupo: "Caderas", tipo: "reps", sets: 3, valor: 5, lados: 2, segRep: 8,
+    nombre: "Elevación de pierna sentado",
+    protocolo: "Rodilla estirada, manos atrás, sostén 5 s · por lado",
+    nota: "Sube la pierna activamente y sostén 5 s arriba. Al llegar a 8 reps, sube el sostén a 8-10 s.",
+    prog: { paso: 1, tope: 8 }
+  },
+  {
+    id: "inclinacion_pelvis", grupo: "Caderas", tipo: "reps", sets: 1, valor: 10, segRep: 4,
+    nombre: "Inclinación de pelvis sentado",
+    protocolo: "10 lentas",
+    nota: "Ejercicio de control motor: mejora con la calidad del movimiento, no con más repeticiones."
+  },
+  {
+    id: "straddle_cr", grupo: "Caderas", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 10,
+    nombre: "Straddle con contraer-relajar",
+    protocolo: "3 rondas · estira 30 s + contrae 10 s",
+    nota: "Contrae suave (20-30% de fuerza) los 10 s y relaja hacia más rango.",
+    prog: { paso: 10, tope: 60 }
+  },
+  {
+    id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 60,
+    nombre: "Sapo (rodillas y manos/antebrazos)",
+    protocolo: "2 x 60-90 s",
+    nota: "Llega a 90 s en las dos series y luego se agrega una tercera.",
+    prog: { paso: 10, tope: 90, setsMax: 3 }
+  },
+  {
+    id: "piernas_v", grupo: "Caderas", tipo: "tiempo", sets: 1, valor: 180,
+    nombre: "Piernas en la pared en V",
+    protocolo: "3 min",
+    nota: "Posición pasiva: progresa abriendo más la V, no con más tiempo."
+  },
+  {
+    id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
+    nombre: "Hombro con correa: izquierdo arriba",
+    protocolo: "3 x 30 s",
+    nota: "Acorta el agarre de la correa cuando 30 s se sientan fáciles.",
+    prog: { paso: 10, tope: 60 }
   },
 ];
 
-function normalizeRehabSet(raw, objetivoSeg) {
-  if (raw && typeof raw === 'object') return { tiempo: raw.tiempo != null ? raw.tiempo : null, completado: !!raw.completado };
-  if (raw === true) return { tiempo: objetivoSeg, completado: true };
-  return { tiempo: null, completado: false };
+// Plan anterior (rehabilitación de tobillo): se conserva solo para leer el historial y el mapa de calor.
+const REHAB_LEGACY = [
+  { id: "rodilla_pared",  nombre: "Rodilla a pared",                    grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120 },
+  { id: "cuadrupedia",    nombre: "Cuadrupedia - desliz rodilla",       grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120 },
+  { id: "equilibrio",     nombre: "Equilibrio monopodal ojos cerrados", grupo: "Tobillo", tipo: "tiempo", sets: 2, valor: 45 },
+];
+
+function rehabTodos() { return REHAB_EJERCICIOS.concat(REHAB_LEGACY); }
+function rehabBuscar(id) { return rehabTodos().find(function(e) { return e.id === id; }); }
+function rehabPlanEn(fecha) { return fecha >= REHAB_PLAN_DESDE ? REHAB_EJERCICIOS : REHAB_LEGACY; }
+function rehabHoy() {
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function normalizeRehabSet(raw, objetivo) {
+  if (raw && typeof raw === 'object') {
+    // Registros viejos guardaban los segundos en "tiempo"; los nuevos usan "valor" (segundos o reps)
+    const v = raw.valor != null ? raw.valor : (raw.tiempo != null ? raw.tiempo : null);
+    return { valor: v, completado: !!raw.completado };
+  }
+  if (raw === true) return { valor: objetivo != null ? objetivo : null, completado: true };
+  return { valor: null, completado: false };
 }
 
 function migrateRehabSesiones(datos) {
@@ -3244,11 +3298,11 @@ function migrateRehabSesiones(datos) {
   let changed = false;
   Object.values(datos.sesiones).forEach(dia => {
     if (!dia || typeof dia !== 'object') return;
-    REHAB_EJERCICIOS.forEach(ej => {
+    rehabTodos().forEach(ej => {
       const raw = dia[ej.id];
       if (!Array.isArray(raw)) return;
       if (raw.some(v => typeof v === 'boolean')) {
-        dia[ej.id] = raw.map(v => normalizeRehabSet(v, ej.objetivoSeg));
+        dia[ej.id] = raw.map(v => normalizeRehabSet(v, ej.valor));
         changed = true;
       }
     });
@@ -3269,21 +3323,106 @@ function saveRehabDatos(datos) {
   localStorage.setItem(uk("rehab-datos"), JSON.stringify(datos));
 }
 
-function getRehabDayScore(sesionDia) {
-  if (!sesionDia) return 0;
-  const totalObj = REHAB_EJERCICIOS.reduce(function(a, ej) { return a + ej.sets * ej.objetivoSeg; }, 0);
-  if (!totalObj) return 0;
-  let contrib = 0;
-  REHAB_EJERCICIOS.forEach(function(ej) {
-    var sets = sesionDia[ej.id] || [];
-    sets.forEach(function(s) {
-      var norm = normalizeRehabSet(s, ej.objetivoSeg);
-      if (norm.completado) {
-        contrib += Math.min(norm.tiempo != null ? norm.tiempo : ej.objetivoSeg, ej.objetivoSeg);
-      }
-    });
+// Pull de GitHub: une local y remoto en vez de pisar el local (la app hace pull al abrir; con uso diario
+// un registro sin subir se perdería). Cada día lleva _ts; gana el más reciente, empate = remoto.
+function mergeRehabDatos(local, remote) {
+  local = local || {}; remote = remote || {};
+  const out = Object.assign({}, local, remote);
+  const sl = local.sesiones || {}, sr = remote.sesiones || {};
+  out.sesiones = {};
+  Object.keys(Object.assign({}, sl, sr)).forEach(function(d) {
+    const a = sl[d], b = sr[d];
+    if (!a) out.sesiones[d] = b;
+    else if (!b) out.sesiones[d] = a;
+    else out.sesiones[d] = ((a._ts || "") > (b._ts || "")) ? a : b;
   });
-  return contrib / totalObj;
+  const med = {};
+  (local.mediciones || []).concat(remote.mediciones || []).forEach(function(m) { med[m.fecha] = m; });
+  out.mediciones = Object.keys(med).sort().map(function(f) { return med[f]; });
+  out.criterios = Object.assign({}, local.criterios || {}, remote.criterios || {});
+  const nl = local.nivelAjuste || {}, nr = remote.nivelAjuste || {};
+  out.nivelAjuste = {};
+  Object.keys(Object.assign({}, nl, nr)).forEach(function(id) {
+    const a = nl[id], b = nr[id];
+    out.nivelAjuste[id] = !a ? b : !b ? a : (((a.ts || "") > (b.ts || "")) ? a : b);
+  });
+  return out;
+}
+
+// Secuencia de niveles de un ejercicio: [{sets, valor}, ...]
+function rehabNiveles(ej) {
+  const seq = [{ sets: ej.sets, valor: ej.valor }];
+  const p = ej.prog;
+  if (!p) return seq;
+  let v = ej.valor, n = ej.sets;
+  while (v + p.paso <= p.tope) { v += p.paso; seq.push({ sets: n, valor: v }); }
+  while (p.setsMax && n < p.setsMax) { n++; seq.push({ sets: n, valor: v }); }
+  return seq;
+}
+
+// Estado de progresión ANTES de "fecha" (la sesión de ese día no cuenta: así el objetivo no cambia
+// a mitad del día). Repasa el historial desde el último ajuste manual.
+function rehabEstado(ej, datos, fecha) {
+  const seq = rehabNiveles(ej);
+  const aj = (datos.nivelAjuste || {})[ej.id] || {};
+  let nivel = Math.max(0, Math.min(seq.length - 1, aj.nivel || 0));
+  const desde = aj.fecha || "";
+  const avanza = (ej.prog && ej.prog.avanza) || 5;
+  const lados = ej.lados || 1;
+  let cuenta = 0, fallos = 0;
+  Object.keys(datos.sesiones || {}).sort().forEach(function(d) {
+    if (d <= desde || d >= fecha) return;
+    const sets = (datos.sesiones[d] || {})[ej.id];
+    if (!Array.isArray(sets)) return;
+    const norm = sets.map(function(x) { return normalizeRehabSet(x); });
+    if (!norm.some(function(x) { return x.completado; })) return;
+    const obj = seq[nivel];
+    const filas = obj.sets * lados;
+    let full = norm.length >= filas;
+    for (let i = 0; i < filas && full; i++) {
+      if (!norm[i].completado || (norm[i].valor != null && norm[i].valor < obj.valor)) full = false;
+    }
+    if (full) {
+      cuenta++; fallos = 0;
+      if (ej.prog && cuenta >= avanza && nivel < seq.length - 1) { nivel++; cuenta = 0; }
+    } else { fallos++; }
+  });
+  return { nivel: nivel, total: seq.length, obj: seq[nivel], cuenta: cuenta, avanza: avanza, fallos: fallos,
+           max: nivel === seq.length - 1, tieneProg: !!ej.prog };
+}
+
+function rehabFilas(ej, obj) { return obj.sets * (ej.lados || 1); }
+
+function rehabEtiquetaFila(ej, i) {
+  if ((ej.lados || 1) === 2) return (Math.floor(i / 2) + 1) + (i % 2 === 0 ? ' izq' : ' der');
+  return String(i + 1);
+}
+
+function rehabFmtObj(ej, obj) {
+  return obj.sets + ' x ' + obj.valor + (ej.tipo === 'reps' ? '' : ' s') + ((ej.lados || 1) === 2 ? ' por lado' : '');
+}
+
+// Duración estimada en segundos (incluye ~15 s de transición entre series)
+function rehabSegEj(ej, obj) {
+  const porFila = (ej.tipo === 'reps' ? obj.valor * (ej.segRep || 4) : obj.valor + (ej.extraSeg || 0)) + 15;
+  return rehabFilas(ej, obj) * porFila;
+}
+
+function getRehabDayScore(fecha, datos) {
+  const dia = (datos.sesiones || {})[fecha];
+  if (!dia) return 0;
+  let total = 0, contrib = 0;
+  rehabPlanEn(fecha).forEach(function(ej) {
+    const obj = rehabEstado(ej, datos, fecha).obj;
+    const sets = dia[ej.id] || [];
+    const filas = rehabFilas(ej, obj);
+    for (let i = 0; i < filas; i++) {
+      total++;
+      const n = normalizeRehabSet(sets[i]);
+      if (n.completado) contrib += Math.min(n.valor != null ? n.valor : obj.valor, obj.valor) / obj.valor;
+    }
+  });
+  return total ? contrib / total : 0;
 }
 
 function getHeatmapColor(score, isDark) {
@@ -3295,9 +3434,9 @@ function getHeatmapColor(score, isDark) {
 
 function dayHasActivity(sesionDia) {
   if (!sesionDia) return false;
-  return REHAB_EJERCICIOS.some(function(ej) {
-    var sets = sesionDia[ej.id] || [];
-    return sets.some(function(s) { return normalizeRehabSet(s, ej.objetivoSeg).completado; });
+  return Object.keys(sesionDia).some(function(k) {
+    const sets = sesionDia[k];
+    return Array.isArray(sets) && sets.some(function(x) { return normalizeRehabSet(x).completado; });
   });
 }
 
@@ -3320,6 +3459,7 @@ function renderRehab(main) {
   // Racha: basta con al menos un set completado en el dia
   let streak = 0;
   const _sd = new Date();
+  if (!dayHasActivity(sesiones[hoy])) _sd.setDate(_sd.getDate()-1);  // hoy aún sin registrar no corta la racha
   while (true) {
     const sk = _sd.getFullYear()+'-'+String(_sd.getMonth()+1).padStart(2,'0')+'-'+String(_sd.getDate()).padStart(2,'0');
     if (dayHasActivity(sesiones[sk])) { streak++; _sd.setDate(_sd.getDate()-1); }
@@ -3358,51 +3498,89 @@ function renderRehab(main) {
       + '</div>';
   }
 
-  // Sesion de hoy
-  html += '<div class="rehab-card"><div class="rehab-title">Hoy — '+hoy+'</div>';
+  // Sesion de hoy, agrupada por zona
+  const estados = REHAB_EJERCICIOS.map(function(ej) { return rehabEstado(ej, datos, hoy); });
+  const segDe = function(g) {
+    let t = 0;
+    REHAB_EJERCICIOS.forEach(function(ej, i) { if (!g || ej.grupo === g) t += rehabSegEj(ej, estados[i].obj); });
+    return Math.round(t / 60);
+  };
+  html += '<div class="rehab-card"><div class="rehab-title">Hoy — '+hoy+' · ~'+segDe()+' min</div>';
 
-  REHAB_EJERCICIOS.forEach(function(ej) {
-    const setsEj = sesionHoy[ej.id] || [];
-    const setsNorm = Array.from({length: ej.sets}, function(_, i) { return normalizeRehabSet(setsEj[i], ej.objetivoSeg); });
-    const completados = setsNorm.filter(function(s) { return s.completado; }).length;
-    const fullCount = setsNorm.filter(function(s) { return s.completado && (s.tiempo == null || s.tiempo >= ej.objetivoSeg); }).length;
-    const todoOk = fullCount === ej.sets;
+  const grupos = [];
+  REHAB_EJERCICIOS.forEach(function(ej) { if (grupos.indexOf(ej.grupo) < 0) grupos.push(ej.grupo); });
 
-    html += '<div style="padding:10px 0;border-bottom:1px solid var(--border)">'
-      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px">'
-      + '<div>'
-      + '<div style="font-size:14px;font-weight:600">'+ej.nombre+'</div>'
-      + '<div style="font-size:11px;color:var(--muted);margin-top:2px">'+ej.protocolo+'</div>'
-      + '</div>'
-      + '<div style="font-family:var(--font-mono);font-size:11px;color:'+(todoOk?'var(--ok)':'var(--muted)')+';white-space:nowrap;padding-top:2px">'
-      + completados+'/'+ej.sets+' sets'
-      + '</div></div>';
+  grupos.forEach(function(g) {
+    html += '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-bottom:2px;border-bottom:2px solid var(--border);font-family:var(--font-mono);font-size:11px;color:var(--muted)">'
+      + '<span style="color:var(--accent);font-weight:700;font-size:13px">'+g+'</span><span>~'+segDe(g)+' min</span></div>';
 
-    setsNorm.forEach(function(s, i) {
-      const full = s.completado && (s.tiempo == null || s.tiempo >= ej.objetivoSeg);
-      const partial = s.completado && s.tiempo != null && s.tiempo < ej.objetivoSeg;
-      const cBorder = full ? 'var(--ok)' : partial ? '#F9A825' : 'var(--border)';
-      const cBg    = full ? 'var(--ok)' : partial ? '#F9A825' : 'transparent';
-      const cFg    = (full || partial) ? '#fff' : 'var(--muted)';
-      const cLabel = full ? '&#10003;' : partial ? '~' : String(i+1);
-      const statusNote = partial ? ' · parcial' : '';
+    REHAB_EJERCICIOS.forEach(function(ej, idx) {
+      if (ej.grupo !== g) return;
+      const st = estados[idx];
+      const obj = st.obj;
+      const filas = rehabFilas(ej, obj);
+      const setsEj = sesionHoy[ej.id] || [];
+      const total = Math.max(filas, setsEj.length);
+      const setsNorm = Array.from({length: total}, function(_, i) { return normalizeRehabSet(setsEj[i]); });
+      const completados = setsNorm.filter(function(x) { return x.completado; }).length;
+      const fullCount = setsNorm.filter(function(x) { return x.completado && (x.valor == null || x.valor >= obj.valor); }).length;
+      const todoOk = fullCount >= filas;
+      const unidad = ej.tipo === 'reps' ? 'reps' : 's';
 
-      html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:5px">'
-        + '<button onclick="toggleRehabSet(\''+hoy+'\',\''+ej.id+'\','+i+')"'
-        + ' style="width:28px;height:28px;border-radius:50%;border:2px solid '+cBorder+';background:'+cBg+';color:'+cFg+';font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;line-height:1">'
-        + cLabel+'</button>'
-        + '<input type="number" min="0" max="999"'
-        + ' value="'+(s.tiempo != null ? s.tiempo : '')+'"'
-        + ' placeholder="'+ej.objetivoSeg+'"'
-        + ' class="rehab-input"'
-        + ' style="width:72px;padding:4px 6px;font-size:14px;border-color:'+cBorder+'"'
-        + ' onchange="saveRehabSetTime(\''+hoy+'\',\''+ej.id+'\','+i+',this.value)">'
-        + '<span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">'+ej.objetivoSeg+'s'+statusNote+'</span>'
+      const avance = st.tieneProg
+        ? (st.max ? ' · nivel máximo' : ' · avance '+st.cuenta+'/'+st.avanza)
+        : ' · fijo';
+      const ajuste = st.tieneProg
+        ? '<span style="white-space:nowrap">'
+          + '<button onclick="ajustarNivelRehab(\''+ej.id+'\',-1)" title="Bajar nivel" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:1px 7px;margin-left:6px;cursor:pointer">&#9660;</button>'
+          + '<button onclick="ajustarNivelRehab(\''+ej.id+'\',1)" title="Subir nivel" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:1px 7px;margin-left:4px;cursor:pointer">&#9650;</button>'
+          + '</span>'
+        : '';
+
+      html += '<div style="padding:10px 0;border-bottom:1px solid var(--border)">'
+        + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px">'
+        + '<div>'
+        + '<div style="font-size:14px;font-weight:600">'+ej.nombre+'</div>'
+        + '<div style="font-size:11px;color:var(--muted);margin-top:2px">'+ej.protocolo+'</div>'
+        + '</div>'
+        + '<div style="font-family:var(--font-mono);font-size:11px;color:'+(todoOk?'var(--ok)':'var(--muted)')+';white-space:nowrap;padding-top:2px">'
+        + completados+'/'+filas+' series'
+        + '</div></div>'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-family:var(--font-mono);font-size:11px;color:var(--accent)">'
+        + '<span>Nivel '+(st.nivel+1)+'/'+st.total+' · hoy '+rehabFmtObj(ej, obj)+'<span style="color:var(--muted)">'+avance+'</span></span>'+ajuste
+        + '</div>';
+
+      if (st.fallos >= 3 && st.nivel > 0) {
+        html += '<div style="font-size:11px;color:#F9A825;margin-bottom:6px">3 sesiones seguidas sin completar el objetivo: considera bajar un nivel (&#9660;).</div>';
+      }
+
+      setsNorm.forEach(function(x, i) {
+        const full = x.completado && (x.valor == null || x.valor >= obj.valor);
+        const partial = x.completado && x.valor != null && x.valor < obj.valor;
+        const cBorder = full ? 'var(--ok)' : partial ? '#F9A825' : 'var(--border)';
+        const cBg    = full ? 'var(--ok)' : partial ? '#F9A825' : 'transparent';
+        const cFg    = (full || partial) ? '#fff' : 'var(--muted)';
+        const cLabel = full ? '&#10003;' : partial ? '~' : String(i+1);
+        const statusNote = partial ? ' · parcial' : '';
+        const lado = (ej.lados || 1) === 2 ? ' · '+rehabEtiquetaFila(ej, i) : '';
+
+        html += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:5px">'
+          + '<button onclick="toggleRehabSet(\''+hoy+'\',\''+ej.id+'\','+i+')"'
+          + ' style="width:28px;height:28px;border-radius:50%;border:2px solid '+cBorder+';background:'+cBg+';color:'+cFg+';font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;line-height:1">'
+          + cLabel+'</button>'
+          + '<input type="number" min="0" max="999"'
+          + ' value="'+(x.valor != null ? x.valor : '')+'"'
+          + ' placeholder="'+obj.valor+'"'
+          + ' class="rehab-input"'
+          + ' style="width:72px;padding:4px 6px;font-size:14px;border-color:'+cBorder+'"'
+          + ' onchange="saveRehabSetTime(\''+hoy+'\',\''+ej.id+'\','+i+',this.value)">'
+          + '<span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">'+obj.valor+unidad+lado+statusNote+'</span>'
+          + '</div>';
+      });
+
+      html += '<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:4px">'+ej.nota+'</div>'
         + '</div>';
     });
-
-    html += '<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:4px">'+ej.nota+'</div>'
-      + '</div>';
   });
 
   const notaSesion = sesionHoy.nota || '';
@@ -3443,7 +3621,7 @@ function renderRehab(main) {
       const cellStr = cellDate.getFullYear()+'-'+String(cellDate.getMonth()+1).padStart(2,'0')+'-'+String(cellDate.getDate()).padStart(2,'0');
       const isFuture = cellDate > todayMid;
       const isToday = cellStr === hoy;
-      const score = isFuture ? 0 : getRehabDayScore(sesiones[cellStr]);
+      const score = isFuture ? 0 : getRehabDayScore(cellStr, datos);
       const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getHeatmapColor(score, isDark);
       const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
       const opacity = isFuture ? 'opacity:0.25;cursor:default;' : '';
@@ -3536,16 +3714,19 @@ function showRehabHeatmapDay(fechaStr) {
   const sesion = (datos.sesiones || {})[fechaStr] || {};
   let html = '<div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-bottom:8px">'+fechaStr+'</div>';
   let hasAny = false;
-  REHAB_EJERCICIOS.forEach(function(ej) {
+  rehabTodos().forEach(function(ej) {
     const sets = sesion[ej.id] || [];
     if (!sets.length) return;
     hasAny = true;
-    const setsInfo = sets.map(function(s, i) {
-      const norm = normalizeRehabSet(s, ej.objetivoSeg);
-      if (!norm.completado) return 'S'+(i+1)+': -';
-      const tStr = norm.tiempo != null ? norm.tiempo+'s' : 'hecho';
-      const esFull = norm.tiempo == null || norm.tiempo >= ej.objetivoSeg;
-      return 'S'+(i+1)+': '+tStr+(esFull ? '' : ' parcial');
+    const obj = rehabEstado(ej, datos, fechaStr).obj;
+    const u = ej.tipo === 'reps' ? ' reps' : 's';
+    const setsInfo = sets.map(function(x, i) {
+      const norm = normalizeRehabSet(x, obj.valor);
+      const lbl = 'S'+rehabEtiquetaFila(ej, i);
+      if (!norm.completado) return lbl+': -';
+      const vStr = norm.valor != null ? norm.valor+u : 'hecho';
+      const esFull = norm.valor == null || norm.valor >= obj.valor;
+      return lbl+': '+vStr+(esFull ? '' : ' parcial');
     }).join(' · ');
     html += '<div style="margin-bottom:6px">'
       + '<div style="font-size:12px;font-weight:600">'+ej.nombre+'</div>'
@@ -3562,22 +3743,30 @@ function showRehabHeatmapDay(fechaStr) {
   tooltip.style.display = 'block';
 }
 
-function saveRehabSetTime(fecha, ejId, setIdx, tiempoStr) {
-  const datos = getRehabDatos();
+// Garantiza el registro del día para un ejercicio con tantas filas como pide su nivel de ese día
+function rehabDia(datos, fecha, ej) {
   if (!datos.sesiones) datos.sesiones = {};
   if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
-  const ej = REHAB_EJERCICIOS.find(function(e) { return e.id === ejId; });
-  if (!ej) return;
-  if (!datos.sesiones[fecha][ejId]) {
-    datos.sesiones[fecha][ejId] = Array.from({length: ej.sets}, function() { return { tiempo: null, completado: false }; });
+  const dia = datos.sesiones[fecha];
+  if (!Array.isArray(dia[ej.id])) {
+    const filas = rehabFilas(ej, rehabEstado(ej, datos, fecha).obj);
+    dia[ej.id] = Array.from({length: filas}, function() { return { valor: null, completado: false }; });
   }
-  const tiempo = tiempoStr !== '' ? parseInt(tiempoStr, 10) : null;
-  const prev = datos.sesiones[fecha][ejId][setIdx] || {};
-  const wasCompletado = typeof prev === 'object' ? !!prev.completado : !!prev;
-  datos.sesiones[fecha][ejId][setIdx] = {
-    tiempo: (tiempo != null && !isNaN(tiempo) && tiempo >= 0) ? tiempo : null,
-    completado: (tiempo > 0) || wasCompletado
+  return dia;
+}
+
+function saveRehabSetTime(fecha, ejId, setIdx, valorStr) {
+  const datos = getRehabDatos();
+  const ej = rehabBuscar(ejId);
+  if (!ej) return;
+  const dia = rehabDia(datos, fecha, ej);
+  const valor = valorStr !== '' ? parseInt(valorStr, 10) : null;
+  const prev = normalizeRehabSet(dia[ejId][setIdx]);
+  dia[ejId][setIdx] = {
+    valor: (valor != null && !isNaN(valor) && valor >= 0) ? valor : null,
+    completado: (valor > 0) || prev.completado
   };
+  dia._ts = new Date().toISOString();
   saveRehabDatos(datos);
   queueSync();
   renderRehab(document.getElementById("mainContent"));
@@ -3585,15 +3774,28 @@ function saveRehabSetTime(fecha, ejId, setIdx, tiempoStr) {
 
 function toggleRehabSet(fecha, ejId, setIdx) {
   const datos = getRehabDatos();
-  if (!datos.sesiones) datos.sesiones = {};
-  if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
-  const ej = REHAB_EJERCICIOS.find(function(e) { return e.id === ejId; });
+  const ej = rehabBuscar(ejId);
   if (!ej) return;
-  if (!datos.sesiones[fecha][ejId]) {
-    datos.sesiones[fecha][ejId] = Array.from({length: ej.sets}, function() { return { tiempo: null, completado: false }; });
-  }
-  const norm = normalizeRehabSet(datos.sesiones[fecha][ejId][setIdx], ej.objetivoSeg);
-  datos.sesiones[fecha][ejId][setIdx] = { tiempo: norm.tiempo, completado: !norm.completado };
+  const dia = rehabDia(datos, fecha, ej);
+  const norm = normalizeRehabSet(dia[ejId][setIdx]);
+  dia[ejId][setIdx] = { valor: norm.valor, completado: !norm.completado };
+  dia._ts = new Date().toISOString();
+  saveRehabDatos(datos);
+  queueSync();
+  renderRehab(document.getElementById("mainContent"));
+}
+
+// Ajuste manual de nivel: fija el nivel desde hoy; el repaso del historial cuenta solo sesiones posteriores
+function ajustarNivelRehab(ejId, delta) {
+  const ej = rehabBuscar(ejId);
+  if (!ej) return;
+  const datos = getRehabDatos();
+  const hoy = rehabHoy();
+  const st = rehabEstado(ej, datos, hoy);
+  const nuevo = Math.max(0, Math.min(st.total - 1, st.nivel + delta));
+  if (nuevo === st.nivel) return;
+  if (!datos.nivelAjuste) datos.nivelAjuste = {};
+  datos.nivelAjuste[ejId] = { nivel: nuevo, fecha: hoy, ts: new Date().toISOString() };
   saveRehabDatos(datos);
   queueSync();
   renderRehab(document.getElementById("mainContent"));
@@ -3604,6 +3806,7 @@ function saveRehabNota(fecha, nota) {
   if (!datos.sesiones) datos.sesiones = {};
   if (!datos.sesiones[fecha]) datos.sesiones[fecha] = {};
   datos.sesiones[fecha].nota = nota;
+  datos.sesiones[fecha]._ts = new Date().toISOString();
   saveRehabDatos(datos);
   queueSync();
 }
@@ -6331,8 +6534,13 @@ async function pullFromGithub() {
     }
 
     if (data.rehab && Object.keys(data.rehab).length > 0) {
-      data.rehab._syncTs = data.timestamp;
-      localStorage.setItem(uk("rehab-datos"), JSON.stringify(data.rehab));
+      const localRehab = JSON.parse(localStorage.getItem(uk("rehab-datos")) || "{}");
+      const mergedRehab = mergeRehabDatos(localRehab, data.rehab);
+      mergedRehab._syncTs = data.timestamp;
+      localStorage.setItem(uk("rehab-datos"), JSON.stringify(mergedRehab));
+      // Si el local tenía registros que el remoto no, súbelos
+      const clave = function(r) { return JSON.stringify([r.sesiones, r.mediciones, r.nivelAjuste]); };
+      if (clave(mergedRehab) !== clave(mergeRehabDatos({}, data.rehab))) queueSync();
     }
 
     if (data.cut && Object.keys(data.cut).length > 0) {

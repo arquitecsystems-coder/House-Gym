@@ -62,6 +62,20 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 - Doble progresión (resto de ejercicios con barra): sube solo cuando TODAS las series llegan al tope del rango. Mancuernas (pares 5/10/20kg): solo reps, sin saltos de carga.
 - Equipo: barra 15kg, disco kg mínimo 5kg (saltos de 10kg), un par de cada microdisco 0.5/1.25/2.5/5lb. Constantes `BARRA_KG`, `PASO_KG`, `MICRO_DISCOS`.
 
+## Movilidad (módulo interno "rehab")
+
+- En la UI se llama "movilidad" (antes "rehab"). Los ids internos se mantienen (vista `'rehab'`, `renderRehab`, storage `rehab-datos`, `tieneRehab`, clave `rehab` en data-{usuario}.json): renombrarlos rompe storage, sync y posición guardada.
+- Ejercicios en `REHAB_EJERCICIOS` (rigen desde `REHAB_PLAN_DESDE`) y `REHAB_LEGACY` (plan anterior de tobillo, solo para leer historial y mapa de calor). Campos: `id, grupo, tipo ('tiempo'|'reps'), sets, valor, lados (2 = por lado), segRep, extraSeg, prog {paso, tope, setsMax, avanza}`.
+- Progresión: el nivel se calcula repasando el historial (`rehabEstado`): `avanza` (por defecto 5) sesiones COMPLETAS (todas las series al objetivo) suben un nivel; sesión parcial no cuenta ni resetea; la sesión de hoy no cuenta (el objetivo no cambia a mitad del día). Los botones ▼▲ fijan un nivel manual (`nivelAjuste`, cuenta desde el día siguiente). Ejercicios sin `prog` son fijos a propósito: su progresión es de calidad o rango, no de conteo.
+- Registros: `sesiones[fecha][ejId] = [{valor, completado}]` (los viejos usan `tiempo` en segundos; se leen ambos) más `_ts` por día. Filas = sets x lados (S1 izq, S1 der, ...).
+- El pull de rehab hace MERGE (`mergeRehabDatos`): por día gana el `_ts` más reciente; antes pisaba el local y, como la app hace pull al abrir, un registro sin subir se perdía.
+- La medición dominical de rodilla a pared (cm, objetivo 7) sigue siendo la única métrica objetiva de rango (tobillo). El criterio "equilibrio" de Re-ingreso sentadilla está fijo en `auto: true` (no lee datos).
+
+## Pendiente: movilidad
+
+- Completar la lista: la captura original estaba cortada en el ejercicio 7 (hombro con correa, izquierdo arriba); probablemente falta el derecho y otros.
+- Métricas de rango por zona (test semanal) para caderas y hombro: hoy solo el tobillo tiene métrica objetiva y el resto sube volumen sin medir si gana rango.
+
 ## Pendiente: generador de mesociclos (mediados de octubre, semana 4-5 del M7)
 
 - Objetivo: que la app genere el siguiente mesociclo desde los resultados del anterior, y el usuario lo revise con Claude en vez de escribirlo desde cero.
