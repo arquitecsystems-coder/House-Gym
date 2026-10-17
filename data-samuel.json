@@ -3894,7 +3894,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-17T20:12:02.202Z",
+        "_ts": "2026-10-17T20:16:15.438Z",
         "inclinacion_pelvis": [
           {
             "valor": null,
@@ -3922,7 +3922,7 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           }
         ]
       }
@@ -5516,5 +5516,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-17T20:12:05.204Z"
+  "timestamp": "2026-10-17T20:16:18.440Z"
 }
