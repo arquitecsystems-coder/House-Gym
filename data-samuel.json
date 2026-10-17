@@ -3482,7 +3482,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-17T00:37:47.171Z",
+    "_syncTs": "2026-10-17T00:43:54.848Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -3866,6 +3866,35 @@
             "completado": true
           }
         ]
+      },
+      "2026-10-17": {
+        "elevacion_pierna": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "_ts": "2026-10-17T19:45:37.122Z"
       }
     },
     "mediciones": [
@@ -4141,7 +4170,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-10-17T00:37:47.171Z"
+    "_syncTs": "2026-10-17T00:43:54.848Z"
   },
   "test": {},
   "actividad": {
@@ -5457,5 +5486,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-17T00:43:54.848Z"
+  "timestamp": "2026-10-17T19:45:40.126Z"
 }
