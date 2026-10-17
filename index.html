@@ -3248,17 +3248,18 @@ const REHAB_EJERCICIOS = [
     prog: { paso: 10, tope: 60 }
   },
   {
-    id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 60,
+    id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 30,
     nombre: "Sapo",
     protocolo: "Rodillas y manos/antebrazos",
-    nota: "Llega a 90 s en las dos series y luego se agrega una tercera.",
+    nota: "Arranca en 30 s (primer registro: 25 y 23 s). Llega a 90 s en las dos series y luego se agrega una tercera.",
     prog: { paso: 10, tope: 90, setsMax: 3 }
   },
   {
-    id: "piernas_v", grupo: "Caderas", tipo: "tiempo", sets: 1, valor: 180,
+    id: "piernas_v", grupo: "Caderas", tipo: "tiempo", sets: 1, valor: 90,
     nombre: "Piernas en la pared en V",
     protocolo: "",
-    nota: "Posición pasiva: progresa abriendo más la V, no con más tiempo."
+    nota: "Arranca en 90 s (primer registro) y sube hasta los 3 min; después progresa abriendo más la V.",
+    prog: { paso: 30, tope: 180 }
   },
   {
     id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
@@ -3372,7 +3373,7 @@ function rehabEstado(ej, datos, fecha) {
   const lados = ej.lados || 1;
   let cuenta = 0, fallos = 0;
   Object.keys(datos.sesiones || {}).sort().forEach(function(d) {
-    if (d <= desde || d >= fecha) return;
+    if (d < desde || d >= fecha) return;
     const sets = (datos.sesiones[d] || {})[ej.id];
     if (!Array.isArray(sets)) return;
     const norm = sets.map(function(x) { return normalizeRehabSet(x); });
@@ -3439,6 +3440,22 @@ function dayHasActivity(sesionDia) {
     const sets = sesionDia[k];
     return Array.isArray(sets) && sets.some(function(x) { return normalizeRehabSet(x).completado; });
   });
+}
+
+let rehabMesVista = null;   // {y, m}; null = mes actual
+
+function rehabCambiarMes(delta) {
+  const hoyD = new Date();
+  const cur = rehabMesVista || { y: hoyD.getFullYear(), m: hoyD.getMonth() };
+  let y = cur.y, m = cur.m + delta;
+  while (m < 0) { m += 12; y--; }
+  while (m > 11) { m -= 12; y++; }
+  const key = y+'-'+String(m+1).padStart(2,'0');
+  const fechas = Object.keys(getRehabDatos().sesiones || {}).sort();
+  const minKey = fechas.length ? fechas[0].slice(0, 7) : rehabHoy().slice(0, 7);
+  if (key > rehabHoy().slice(0, 7) || key < minKey) return;
+  rehabMesVista = { y: y, m: m };
+  renderRehab(document.getElementById("mainContent"));
 }
 
 function renderRehab(main) {
@@ -3590,48 +3607,54 @@ function renderRehab(main) {
     + ' onchange="saveRehabNota(\''+hoy+'\', this.value)">'+notaSesion+'</textarea>'
     + '</div></div>';
 
-  // Heatmap 8 semanas
+  // Calendario mensual (◀ ▶ para cambiar de mes)
   const todayMid = new Date(_hoy.getFullYear(), _hoy.getMonth(), _hoy.getDate());
-  const dowToday = todayMid.getDay();
-  const daysToMon = (dowToday + 6) % 7;
-  const thisMonday = new Date(todayMid.getTime() - daysToMon * 86400000);
+  const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const vista = rehabMesVista || { y: _hoy.getFullYear(), m: _hoy.getMonth() };
+  const keyMes = function(y, m) { return y+'-'+String(m+1).padStart(2,'0'); };
+  const mesActual = keyMes(_hoy.getFullYear(), _hoy.getMonth());
+  const primerRegistro = Object.keys(sesiones).sort()[0];
+  const mesMin = primerRegistro ? primerRegistro.slice(0, 7) : mesActual;
+  const puedeAtras = keyMes(vista.y, vista.m) > mesMin;
+  const puedeAdelante = keyMes(vista.y, vista.m) < mesActual;
+  const diasEnMes = new Date(vista.y, vista.m + 1, 0).getDate();
+  const offsetIni = (new Date(vista.y, vista.m, 1).getDay() + 6) % 7;   // lunes primero
 
-  // Rango dinamico: desde la semana del primer registro hasta hoy
-  const allSessionDates = Object.keys(sesiones).sort();
-  let hmStart = thisMonday;
-  if (allSessionDates.length) {
-    const fp = allSessionDates[0].split('-');
-    const firstDate = new Date(parseInt(fp[0]), parseInt(fp[1])-1, parseInt(fp[2]));
-    const firstDow = (firstDate.getDay() + 6) % 7;
-    hmStart = new Date(firstDate.getTime() - firstDow * 86400000);
+  let diasConRegistro = 0;
+  let celdas = '';
+  for (let i = 0; i < offsetIni; i++) celdas += '<div></div>';
+  for (let dia = 1; dia <= diasEnMes; dia++) {
+    const cellDate = new Date(vista.y, vista.m, dia);
+    const cellStr = keyMes(vista.y, vista.m)+'-'+String(dia).padStart(2,'0');
+    const isFuture = cellDate > todayMid;
+    const isToday = cellStr === hoy;
+    const score = isFuture ? 0 : getRehabDayScore(cellStr, datos);
+    if (!isFuture && dayHasActivity(sesiones[cellStr])) diasConRegistro++;
+    const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getHeatmapColor(score, isDark);
+    const txt = score >= 1 ? '#fff' : score > 0 ? '#1a1a1a' : 'var(--muted)';
+    const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
+    const opacity = isFuture ? 'opacity:0.35;cursor:default;' : '';
+    const onclick = isFuture ? '' : ' onclick="showRehabHeatmapDay(\''+cellStr+'\')"';
+    celdas += '<div class="rehab-heatmap-cell"'+onclick+' style="aspect-ratio:1.3;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:'+txt+';background:'+color+';'+outline+opacity+'">'+dia+'</div>';
   }
-  const numWeeks = Math.max(1, Math.round((thisMonday.getTime() - hmStart.getTime()) / (7 * 86400000)) + 1);
+
+  const btnMes = function(delta, simbolo, activo) {
+    return '<button onclick="rehabCambiarMes('+delta+')"'+(activo ? '' : ' disabled')+' style="width:32px;height:28px;font-size:13px;color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;cursor:pointer;'+(activo ? '' : 'opacity:0.3;cursor:default;')+'">'+simbolo+'</button>';
+  };
 
   html += '<div class="rehab-card">'
-    + '<div class="rehab-title" style="margin-bottom:10px">Historial</div>'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'
+    + btnMes(-1, '&#9664;', puedeAtras)
+    + '<div style="text-align:center"><div class="rehab-title" style="margin-bottom:0">'+MESES[vista.m]+' '+vista.y+'</div>'
+    + '<div style="font-size:10px;color:var(--muted);font-family:var(--font-mono);margin-top:2px">'+diasConRegistro+(diasConRegistro === 1 ? ' día' : ' días')+' con registro</div></div>'
+    + btnMes(1, '&#9654;', puedeAdelante)
+    + '</div>'
     + '<div class="rehab-heatmap-grid">';
 
   ['L','M','X','J','V','S','D'].forEach(function(d) {
     html += '<div class="rehab-heatmap-dow">'+d+'</div>';
   });
-
-  // Semanas mas antiguas arriba (row 0), semana actual abajo (ultima fila)
-  for (let row = 0; row < numWeeks; row++) {
-    for (let col = 0; col < 7; col++) {
-      const cellDate = new Date(hmStart.getTime() + (row * 7 + col) * 86400000);
-      const cellStr = cellDate.getFullYear()+'-'+String(cellDate.getMonth()+1).padStart(2,'0')+'-'+String(cellDate.getDate()).padStart(2,'0');
-      const isFuture = cellDate > todayMid;
-      const isToday = cellStr === hoy;
-      const score = isFuture ? 0 : getRehabDayScore(cellStr, datos);
-      const color = isFuture ? (isDark ? '#1e1e1e' : '#F0F0F0') : getHeatmapColor(score, isDark);
-      const outline = isToday ? 'outline:2px solid var(--accent);outline-offset:1px;' : '';
-      const opacity = isFuture ? 'opacity:0.25;cursor:default;' : '';
-      const onclick = isFuture ? '' : ' onclick="showRehabHeatmapDay(\''+cellStr+'\')"';
-      html += '<div class="rehab-heatmap-cell"'+onclick+' style="background:'+color+';'+outline+opacity+'"></div>';
-    }
-  }
-
-  html += '</div>';
+  html += celdas + '</div>';
   html += '<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);font-family:var(--font-mono);flex-wrap:wrap">'
     + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#2E7D32;vertical-align:middle;margin-right:3px"></span>100%</span>'
     + '<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#81C784;vertical-align:middle;margin-right:3px"></span>50%+</span>'
@@ -3786,7 +3809,7 @@ function toggleRehabSet(fecha, ejId, setIdx) {
   renderRehab(document.getElementById("mainContent"));
 }
 
-// Ajuste manual de nivel: fija el nivel desde hoy; el repaso del historial cuenta solo sesiones posteriores
+// Ajuste manual de nivel: fija el nivel desde hoy; el repaso del historial cuenta las sesiones de hoy en adelante
 function ajustarNivelRehab(ejId, delta) {
   const ej = rehabBuscar(ejId);
   if (!ej) return;

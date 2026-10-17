@@ -66,13 +66,15 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 
 - En la UI se llama "movilidad" (antes "rehab"). Los ids internos se mantienen (vista `'rehab'`, `renderRehab`, storage `rehab-datos`, `tieneRehab`, clave `rehab` en data-{usuario}.json): renombrarlos rompe storage, sync y posición guardada.
 - Ejercicios en `REHAB_EJERCICIOS` (rigen desde `REHAB_PLAN_DESDE`) y `REHAB_LEGACY` (plan anterior de tobillo, solo para leer historial y mapa de calor). Campos: `id, grupo, tipo ('tiempo'|'reps'), sets, valor, lados (2 = por lado), segRep, extraSeg, prog {paso, tope, setsMax, avanza}`.
-- Progresión: el nivel se calcula repasando el historial (`rehabEstado`): `avanza` (por defecto 5) sesiones COMPLETAS (todas las series al objetivo) suben un nivel; sesión parcial no cuenta ni resetea; la sesión de hoy no cuenta (el objetivo no cambia a mitad del día). Los botones ▼▲ fijan un nivel manual (`nivelAjuste`, cuenta desde el día siguiente). Ejercicios sin `prog` son fijos a propósito: su progresión es de calidad o rango, no de conteo.
+- Progresión: el nivel se calcula repasando el historial (`rehabEstado`): `avanza` (por defecto 5) sesiones COMPLETAS (todas las series al objetivo) suben un nivel; sesión parcial no cuenta ni resetea; la sesión de hoy no cuenta (el objetivo no cambia a mitad del día). Los botones ▼▲ fijan un nivel manual (`nivelAjuste`; la sesión de ese mismo día ya cuenta, porque su objetivo era el nivel nuevo). El nivel 1 de cada ejercicio debe coincidir con la capacidad real (no se puede bajar de él): se calibró sapo en 30 s y piernas en V en 90 s con el primer registro. Ejercicios sin `prog` son fijos a propósito: su progresión es de calidad o rango, no de conteo.
 - Registros: `sesiones[fecha][ejId] = [{valor, completado}]` (los viejos usan `tiempo` en segundos; se leen ambos) más `_ts` por día. Filas = sets x lados (S1 izq, S1 der, ...).
 - El pull de rehab hace MERGE (`mergeRehabDatos`): por día gana el `_ts` más reciente; antes pisaba el local y, como la app hace pull al abrir, un registro sin subir se perdía.
+- Historial: calendario mensual con ◀ ▶ (`rehabMesVista`, `rehabCambiarMes`), limitado entre el mes del primer registro y el mes actual; tocar un día muestra el detalle. Reemplazó un mapa de calor de una fila por semana que crecía sin límite.
 - La medición dominical de rodilla a pared (cm, objetivo 7) sigue siendo la única métrica objetiva de rango (tobillo). El criterio "equilibrio" de Re-ingreso sentadilla está fijo en `auto: true` (no lee datos).
 
 ## Pendiente: movilidad
 
+- Actividad y Hábitos (Nata) conservan el mapa de calor largo que crece hacia abajo; si molesta, se les puede aplicar el mismo calendario mensual.
 - Completar la lista: la captura original estaba cortada en el ejercicio 7 (hombro con correa, izquierdo arriba); probablemente falta el derecho y otros.
 - Métricas de rango por zona (test semanal) para caderas y hombro: hoy solo el tobillo tiene métrica objetiva y el resto sube volumen sin medir si gana rango.
 
