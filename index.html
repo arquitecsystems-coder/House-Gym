@@ -3211,58 +3211,59 @@ function renderRMs(main) {
 // prog.avanza = sesiones COMPLETAS (todas las series al objetivo) para subir de nivel (por defecto 5).
 // El nivel se calcula repasando el historial (idempotente). Los botones ▼▲ fijan un nivel manual.
 // Ejercicios sin prog quedan fijos a propósito: su progresión es de calidad/rango, no de conteo.
+// nota = referencia para quien edita el código; NO se muestra en la app (la pantalla es solo para anotar).
 const REHAB_PLAN_DESDE = "2026-10-16";   // desde esta fecha rige REHAB_EJERCICIOS; antes, REHAB_LEGACY
 const REHAB_EJERCICIOS = [
   {
     id: "sentadilla_pared", grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 30,
-    nombre: "Sentadilla profunda con espalda en la pared",
-    protocolo: "Espalda completa apoyada, talones en el suelo · baja al rango máximo y sostén",
+    nombre: "Sentadilla profunda en pared",
+    protocolo: "Espalda apoyada · rango máximo",
     nota: "Con la espalda apoyada no hay compensación de tronco: el límite es el tobillo. Si el talón se despega o el pie rota hacia afuera, sube un poco. Anota en la nota si una rodilla o un pie compensa.",
     prog: { paso: 10, tope: 90 }
   },
   {
     id: "rodilla_pared_din", grupo: "Tobillo", tipo: "reps", sets: 3, valor: 10, segRep: 4,
-    nombre: "Rodilla a la pared (solo tobillo lesionado)",
-    protocolo: "3 x 10 · pausa 2 s al final de cada rep · talón en el suelo",
+    nombre: "Rodilla a la pared (tobillo lesionado)",
+    protocolo: "Pausa 2 s al final de cada rep",
     nota: "Es el único trabajo unilateral del tobillo: la sentadilla en pared reparte la carga entre los dos pies. Progresa alejando el pie de la pared (+0.5 cm) cuando completes todo con el talón pegado; el rango real se mide el domingo."
   },
   {
     id: "elevacion_pierna", grupo: "Caderas", tipo: "reps", sets: 3, valor: 5, lados: 2, segRep: 8,
     nombre: "Elevación de pierna sentado",
-    protocolo: "Rodilla estirada, manos atrás, sostén 5 s · por lado",
+    protocolo: "Rodilla estirada · sostén 5 s",
     nota: "Sube la pierna activamente y sostén 5 s arriba. Al llegar a 8 reps, sube el sostén a 8-10 s.",
     prog: { paso: 1, tope: 8 }
   },
   {
     id: "inclinacion_pelvis", grupo: "Caderas", tipo: "reps", sets: 1, valor: 10, segRep: 4,
     nombre: "Inclinación de pelvis sentado",
-    protocolo: "10 lentas",
+    protocolo: "Lentas",
     nota: "Ejercicio de control motor: mejora con la calidad del movimiento, no con más repeticiones."
   },
   {
     id: "straddle_cr", grupo: "Caderas", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 10,
     nombre: "Straddle con contraer-relajar",
-    protocolo: "3 rondas · estira 30 s + contrae 10 s",
+    protocolo: "Estira + contrae 10 s",
     nota: "Contrae suave (20-30% de fuerza) los 10 s y relaja hacia más rango.",
     prog: { paso: 10, tope: 60 }
   },
   {
     id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 60,
-    nombre: "Sapo (rodillas y manos/antebrazos)",
-    protocolo: "2 x 60-90 s",
+    nombre: "Sapo",
+    protocolo: "Rodillas y manos/antebrazos",
     nota: "Llega a 90 s en las dos series y luego se agrega una tercera.",
     prog: { paso: 10, tope: 90, setsMax: 3 }
   },
   {
     id: "piernas_v", grupo: "Caderas", tipo: "tiempo", sets: 1, valor: 180,
     nombre: "Piernas en la pared en V",
-    protocolo: "3 min",
+    protocolo: "",
     nota: "Posición pasiva: progresa abriendo más la V, no con más tiempo."
   },
   {
     id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
     nombre: "Hombro con correa: izquierdo arriba",
-    protocolo: "3 x 30 s",
+    protocolo: "",
     nota: "Acorta el agarre de la correa cuando 30 s se sientan fáciles.",
     prog: { paso: 10, tope: 60 }
   },
@@ -3529,7 +3530,8 @@ function renderRehab(main) {
 
       const avance = st.tieneProg
         ? (st.max ? ' · nivel máximo' : ' · avance '+st.cuenta+'/'+st.avanza)
-        : ' · fijo';
+        : '';
+      const nivelTxt = st.tieneProg ? 'Nivel '+(st.nivel+1)+'/'+st.total+' · hoy ' : 'Hoy ';
       const ajuste = st.tieneProg
         ? '<span style="white-space:nowrap">'
           + '<button onclick="ajustarNivelRehab(\''+ej.id+'\',-1)" title="Bajar nivel" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:1px 7px;margin-left:6px;cursor:pointer">&#9660;</button>'
@@ -3541,13 +3543,13 @@ function renderRehab(main) {
         + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px">'
         + '<div>'
         + '<div style="font-size:14px;font-weight:600">'+ej.nombre+'</div>'
-        + '<div style="font-size:11px;color:var(--muted);margin-top:2px">'+ej.protocolo+'</div>'
+        + (ej.protocolo ? '<div style="font-size:11px;color:var(--muted);margin-top:2px">'+ej.protocolo+'</div>' : '')
         + '</div>'
         + '<div style="font-family:var(--font-mono);font-size:11px;color:'+(todoOk?'var(--ok)':'var(--muted)')+';white-space:nowrap;padding-top:2px">'
         + completados+'/'+filas+' series'
         + '</div></div>'
         + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-family:var(--font-mono);font-size:11px;color:var(--accent)">'
-        + '<span>Nivel '+(st.nivel+1)+'/'+st.total+' · hoy '+rehabFmtObj(ej, obj)+'<span style="color:var(--muted)">'+avance+'</span></span>'+ajuste
+        + '<span>'+nivelTxt+rehabFmtObj(ej, obj)+'<span style="color:var(--muted)">'+avance+'</span></span>'+ajuste
         + '</div>';
 
       if (st.fallos >= 3 && st.nivel > 0) {
@@ -3578,8 +3580,7 @@ function renderRehab(main) {
           + '</div>';
       });
 
-      html += '<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:4px">'+ej.nota+'</div>'
-        + '</div>';
+      html += '</div>';
     });
   });
 
