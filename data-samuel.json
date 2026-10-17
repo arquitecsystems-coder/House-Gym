@@ -3787,8 +3787,32 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-17T00:32:22.334Z",
+        "_ts": "2026-10-17T00:32:42.703Z",
         "inclinacion_pelvis": [
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "straddle_cr": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "sapo": [
+          {
+            "valor": null,
+            "completado": true
+          },
           {
             "valor": null,
             "completado": true
@@ -5383,5 +5407,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-17T00:32:25.358Z"
+  "timestamp": "2026-10-17T00:32:45.705Z"
 }
