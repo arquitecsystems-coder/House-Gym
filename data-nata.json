@@ -2818,6 +2818,10 @@
       "timestamp": "2026-10-15T00:47:56.677Z",
       "reps": "10",
       "checked": true
+    },
+    "N2-S6-mie-RDL (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-10-18T17:56:15.033Z"
     }
   },
   "rehab": {},
@@ -2998,7 +3002,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-10-09T01:21:25.136Z"
+    "_syncTs": "2026-10-15T00:47:59.696Z"
   },
   "test": {
     "test": {
@@ -3699,5 +3703,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-15T00:47:59.696Z"
+  "timestamp": "2026-10-18T17:56:18.099Z"
 }
