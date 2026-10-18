@@ -2901,6 +2901,11 @@
       "timestamp": "2026-10-18T18:50:06.650Z",
       "reps": "6",
       "checked": true
+    },
+    "N2-S6-vie-Curl Nórdico Asistido (banda)-1": {
+      "reps": "8",
+      "timestamp": "2026-10-18T23:25:06.266Z",
+      "checked": true
     }
   },
   "rehab": {},
@@ -3081,7 +3086,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-10-15T00:47:59.696Z"
+    "_syncTs": "2026-10-18T18:50:10.459Z"
   },
   "test": {
     "test": {
@@ -3782,5 +3787,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-18T18:50:10.459Z"
+  "timestamp": "2026-10-18T23:25:09.283Z"
 }
