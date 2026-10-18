@@ -2099,10 +2099,16 @@
       "timestamp": "2026-10-13T10:26:59.461Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S4-sab-Dominada asistida (doble banda)-1": {
+      "reps": "7",
+      "timestamp": "2026-10-18T12:54:00.843Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-12T17:07:03.990Z",
+    "_syncTs": "2026-10-13T10:27:02.467Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2155,7 +2161,10 @@
           false
         ]
       }
-    }
+    },
+    "mediciones": [],
+    "criterios": {},
+    "nivelAjuste": {}
   },
   "cut": {},
   "test": {
@@ -2218,5 +2227,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-13T10:27:02.467Z"
+  "timestamp": "2026-10-18T12:54:03.858Z"
 }
