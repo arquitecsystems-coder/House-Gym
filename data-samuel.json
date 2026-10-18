@@ -3973,11 +3973,11 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           },
           {
             "valor": null,
@@ -3988,7 +3988,7 @@
             "completado": false
           }
         ],
-        "_ts": "2026-10-18T19:55:56.988Z"
+        "_ts": "2026-10-18T20:34:04.436Z"
       }
     },
     "mediciones": [
@@ -5580,5 +5580,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-18T19:55:59.991Z"
+  "timestamp": "2026-10-18T20:34:07.439Z"
 }
