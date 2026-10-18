@@ -3490,6 +3490,11 @@
       "reps": "5",
       "timestamp": "2026-10-18T23:24:36.192Z",
       "checked": true
+    },
+    "M7-S3-sab-Curl Nórdico Asistido-3": {
+      "reps": "5",
+      "timestamp": "2026-10-18T23:34:50.178Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -5640,5 +5645,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-18T23:24:39.200Z"
+  "timestamp": "2026-10-18T23:34:53.189Z"
 }
