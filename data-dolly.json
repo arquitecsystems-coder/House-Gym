@@ -2168,6 +2168,10 @@
       "reps": "12.12",
       "checked": true,
       "rir": "0"
+    },
+    "D2-S4-dom-RDL unilateral con apoyo-3": {
+      "peso": "40",
+      "timestamp": "2026-10-18T13:58:50.939Z"
     }
   },
   "rehab": {
@@ -2290,5 +2294,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-18T13:53:48.062Z"
+  "timestamp": "2026-10-18T13:58:53.960Z"
 }
