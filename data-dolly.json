@@ -2227,7 +2227,14 @@
     },
     "D2-S4-dom-Lateral inclinado contra pared-2": {
       "peso": "7.5",
-      "timestamp": "2026-10-18T14:48:54.297Z"
+      "timestamp": "2026-10-18T14:49:00.403Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "D2-S4-dom-Lateral inclinado contra pared-3": {
+      "checked": true,
+      "timestamp": "2026-10-18T14:49:01.402Z"
     }
   },
   "rehab": {
@@ -2350,5 +2357,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-18T14:48:57.331Z"
+  "timestamp": "2026-10-18T14:49:04.417Z"
 }
