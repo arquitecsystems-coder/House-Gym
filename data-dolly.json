@@ -2135,10 +2135,16 @@
       "timestamp": "2026-10-18T13:21:21.368Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S4-dom-Negativas de fondo (banco)-2": {
+      "reps": "6",
+      "timestamp": "2026-10-18T13:31:03.252Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-18T12:59:13.288Z",
+    "_syncTs": "2026-10-18T13:21:24.385Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2257,5 +2263,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-18T13:21:24.385Z"
+  "timestamp": "2026-10-18T13:31:07.108Z"
 }
