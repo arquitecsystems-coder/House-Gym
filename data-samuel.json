@@ -3988,7 +3988,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-18T20:55:56.468Z",
+        "_ts": "2026-10-18T21:05:05.012Z",
         "sapo": [
           {
             "valor": 40,
@@ -4010,7 +4010,7 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           }
         ]
       }
@@ -5609,5 +5609,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-18T20:55:59.470Z"
+  "timestamp": "2026-10-18T21:05:08.017Z"
 }
