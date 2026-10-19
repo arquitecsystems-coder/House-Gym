@@ -5305,15 +5305,6 @@
             "prot": 5,
             "carbs": 42.5,
             "grasas": 0.3
-          },
-          {
-            "foodId": "mucqupx5474z",
-            "nombre": "Contramuslo(Sin piel - Con hueso)",
-            "gramos": 180,
-            "kcal": 189,
-            "prot": 25.2,
-            "carbs": 0,
-            "grasas": 7.2
           }
         ]
       }
@@ -5680,5 +5671,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-19T16:31:28.479Z"
+  "timestamp": "2026-10-19T16:31:31.526Z"
 }
