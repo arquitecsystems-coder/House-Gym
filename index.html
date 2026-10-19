@@ -1652,7 +1652,7 @@ const MESOCICLOS = {
   },
   "N2": {
     label: "N2 — Nata",
-    tipo: "activo",
+    tipo: "completado",
     semanas: 6,
     fechas: ["7–12 sep","14–19 sep","21–26 sep","28 sep–3 oct","5–10 oct","12–17 oct"],
     dias: [
@@ -1724,6 +1724,74 @@ const MESOCICLOS = {
           nota: "Segunda frecuencia semanal — mismo criterio que lunes.",
           series: 2,
           semanas: ["5kg x 12","5kg x 15","5kg x 18","5kg x 20","5kg x 20+ (pico)","5kg x 12"] },
+      ]
+    }
+  },
+  "N3": {
+    label: "N3 — Nata",
+    tipo: "activo",
+    semanas: 8,
+    modelo: "doble_progresion",
+    notaEquipo: "EQUIPO: barra 15kg, discos kg en pasos de 10, microdiscos lb (0.5/1.25/2.5/5lb, un par de cada, combinables). Mancuernas FIJAS 5/10/15/20kg: sin incremento fino, progresan por reps.",
+    nota: "Bloque de powerbuilding, 8 semanas (7 construcción + 1 descarga). Arranque por e1RM real (Epley desde el mejor set con RIR confirmado en N2, no desde el último peso entrenado) al 70-75% — Sentadilla, Press Inclinado, RDL y Remo Pendlay venían entrenando al 87-92% de su e1RM real sin margen, lo que explica el estancamiento de N2. Hip Thrust y Curl Nórdico no tienen e1RM real (cero sets con dato completo en todo N2): arrancan como recalibración/test, no como continuación. Entreno A/B/C en vez de lun/mié/vie — sin 'fechas', para que la posición no salte al día del calendario si una sesión quedó pendiente (el avance automático al completar sigue pendiente de construir aparte). Deltoide posterior: entra Y-T en banco inclinado (mismo hueco que se resolvió en el M6 de Samuel).",
+    dias: [
+      { key: "a", label: "Entreno A", titulo: "Full Body A — Pesado" },
+      { key: "b", label: "Entreno B", titulo: "Full Body B — Tracción" },
+      { key: "c", label: "Entreno C", titulo: "Full Body C — Técnico" },
+    ],
+    plan: {
+      a: [
+        { nombre: "Sentadilla trasera (barra)", orden: 1, rol: "fuerza", series: 4,
+          prog: { tipo: "lineal", reps: 5, inc: 2.27, cierre: "triple", ref: { peso: 52.9, reps: 7, rir: 0, label: "N2 52.9x7 RIR0 (S2)" } },
+          nota: "e1RM real ~65kg (Epley 52.9x7 RIR0). Arranca al 75% (único básico con margen real demostrado en N2, el resto venía más pegado al techo). Reps fijas 5. Semana sin 5x4 completas: se cierra la subida y la siguiente es triple pesado.",
+          semanas: ["49kg x 5","51.3kg x 5","53.5kg x 5","55.8kg x 5","58.1kg x 5","60.3kg x 5","Triple pesado RIR 0-1 (pico)","33kg x 5 (descarga)"] },
+        { nombre: "Press Inclinado (barra)", orden: 2, rol: "fuerza", series: 3,
+          prog: { tipo: "lineal", reps: 6, inc: 1.13, cierre: "amrap", ref: { peso: 25, reps: 6, rir: 1, label: "N2 25x6 RIR1 (S1 retest)" } },
+          nota: "e1RM real ~31kg (Epley 25x6 RIR1 — el único set con RIR confiable en toda su historia). Entrenaba ya al 89% de ese número (27.5kg sostenido S3-S5 sin subir) — por eso se estancó. Arranca al 70%, con margen real para volver a subir.",
+          semanas: ["21.5kg x 6","22.6kg x 6","23.8kg x 6","24.9kg x 6","26kg x 6","27.1kg x 6","AMRAP con último peso completado (pico)","15kg x 10 (descarga)"] },
+        { nombre: "Curl Bíceps (2 mancuernas → barra)", orden: 3, rol: "accesorio", series: 3,
+          nota: "2x5kg ya tocó tope de reps en N2 (x15). El salto a 2x10kg (20kg total) es demasiado grande — por eso Nata saltó a la barra a 15kg total como escalón intermedio real. Ese escalón queda fijo acá, no a criterio de cada sesión.",
+          semanas: ["2x5kg x 15","2x5kg x 18","2x5kg x 20 (tope)","barra 15kg x 8-10","barra 15kg x 10-12","barra 15kg x 12-15","barra 15kg x 15 (pico)","2x5kg x 15 (descarga)"] },
+        { nombre: "Elevación de Piernas", orden: 4, rol: "core", series: 3,
+          semanas: ["x 12","x 14","x 15","x 16","x 18","x 20","x 20+ (pico)","x 12 (descarga)"] },
+        { nombre: "Elevación Lateral (mancuerna)", orden: 5, rol: "accesorio", series: 2,
+          nota: "Topada en equipo (5-10-20kg sin intermedio). Progresión por reps; frecuencia 2x/semana compensa el techo de carga.",
+          semanas: ["5kg x 12","5kg x 14","5kg x 16","5kg x 18","5kg x 20","5kg x 20+","5kg x 20+ (pico)","5kg x 12 (descarga)"] },
+      ],
+      b: [
+        { nombre: "RDL (barra)", orden: 1, rol: "fuerza", series: 4,
+          prog: { tipo: "rir", reps: 8, rirPlan: [3, 3, 3, 2, 2, 1, 1] },
+          nota: "e1RM real ~36kg (Epley 28.4x8 RIR0). Entrenaba ya al 90% de ese número (32.5kg sostenido) — mismo patrón de techo que Press Inclinado. Arranca al 70%. Progresión por RIR, nunca a RIR 0 (límite duro del RDL).",
+          semanas: ["25kg x 8 (RIR 3)","x 8 (RIR 3)","x 8 (RIR 3)","x 8 (RIR 2)","x 8 (RIR 2)","x 8 (RIR 1)","x 8 (RIR 1, pico)","18kg x 10 (descarga)"] },
+        { nombre: "Remo Pendlay (barra)", orden: 2, rol: "fuerza", series: 3,
+          prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap", ref: { peso: 22.94, reps: 9, rir: 0, label: "N2 22.94x9 RIR0 (S1)" } },
+          nota: "e1RM real ~30kg (Epley 22.94x9 RIR0). Entrenaba ya al 92% de ese número (27.7kg) — mismo patrón. Arranca al 70%.",
+          semanas: ["21kg x 8","22.1kg x 8","23.3kg x 8","24.4kg x 8","25.5kg x 8","26.6kg x 8","AMRAP con último peso completado (pico)","15kg x 10 (descarga)"] },
+        { nombre: "Press Francés (barra)", orden: 3, rol: "accesorio", series: 3,
+          semanas: ["15kg x 8-12","x 8-12","16.25kg x 8-12","x 8-12","17.5kg x 8-12","x 8-12","x 8-12 (pico)","12.5kg x 12 (descarga)"] },
+        { nombre: "Pullover (mancuerna)", orden: 4, rol: "accesorio", series: 3,
+          nota: "7.5kg es el peso real de trabajo con la técnica corregida (hombros estirados, no retraídos) — confirmado dos veces. 10kg con esa técnica todavía le colapsa los reps.",
+          semanas: ["7.5kg x 10","7.5kg x 12","7.5kg x 12-15 (tope)","escalera 7.5/10kg alternado","10kg x 8-10","10kg x 10-12","10kg x 10-12 (pico)","7.5kg x 12 (descarga)"] },
+        { nombre: "Aperturas en banco (mancuerna)", orden: 5, rol: "accesorio", series: 3,
+          semanas: ["5kg x 10","5kg x 12","5kg x 14","5kg x 15","5kg x 16","5kg x 18","5kg x 18-20 (pico)","5kg x 10 (descarga)"] },
+        { nombre: "Y-T banco inclinado", orden: 6, rol: "accesorio", series: 2,
+          nota: "NUEVO — resuelve el hueco de deltoide posterior, pendiente desde N1 y N2 (mismo hueco que se resolvió en el M6 de Samuel con este ejercicio). Arranca sin peso o con el microdisco más liviano, prioridad técnica antes que carga.",
+          semanas: ["sin peso x 12","sin peso x 15","par 2.5lb x 10","par 2.5lb x 12","par 2.5lb x 12-15","par 5lb x 8-10","par 5lb x 10-12 (pico)","sin peso x 15 (descarga)"] },
+      ],
+      c: [
+        { nombre: "Curl Nórdico Asistido (banda)", orden: 1, rol: "patron_motor", series: 3,
+          nota: "Cero sets con reps reales registradas en todo N2 — la 'primera exposición' de N2 nunca quedó anotada. Esta sí es la primera exposición real con dato. REGISTRAR reps cada serie, no solo marcar el check — si no se anota, para este ejercicio es como si no se hubiera hecho.",
+          semanas: ["Calibración real: 3-4 reps controladas (anotar reps)","según respuesta real de S1","+control/reps","+control/reps","+control/reps","+control/reps","tope de control (pico)","reps bajas (descarga)"] },
+        { nombre: "Sentadilla trasera (barra)", orden: 2, rol: "tecnico", series: 3,
+          semanas: ["35kg x 10","37.5kg x 10","40kg x 8","42.5kg x 8","45kg x 8","47.5kg x 8","50kg x 8 (pico)","30kg x 12 (descarga)"] },
+        { nombre: "Hip Thrust (barra)", orden: 3, rol: "accesorio", series: 3,
+          nota: "Cero sets reales en todo N2 (chuleado sin dato las dos semanas que estuvo programado). No hay e1RM del que partir — esto es un reinicio desde cero, conservador, no una continuación.",
+          semanas: ["30kg x 8-12","x 8-12","35kg x 8-12","x 8-12","40kg x 8-12","x 8-12","x 8-12 (pico)","25kg x 12 (descarga)"] },
+        { nombre: "Crunch con peso", orden: 4, rol: "core", series: 3,
+          semanas: ["20kg x 20","20kg x 22","22.5kg x 18","22.5kg x 20","25kg x 15-18","25kg x 18-20","25kg x 18-20 (pico)","15kg x 25 (descarga)"] },
+        { nombre: "Elevación Lateral (mancuerna)", orden: 5, rol: "accesorio", series: 2,
+          nota: "Segunda frecuencia semanal — mismo criterio que Entreno A.",
+          semanas: ["5kg x 12","5kg x 14","5kg x 16","5kg x 18","5kg x 20","5kg x 20+","5kg x 20+ (pico)","5kg x 12 (descarga)"] },
       ]
     }
   },
@@ -2234,7 +2302,7 @@ const RMS_REFERENCIA = {
 const USUARIOS = {
   samuel: { mesociclos: ['M4', 'M5', 'M6', 'M7'], tieneRehab: true,  renderTest: null },
   dolly:  { mesociclos: ['D1','D2'],    tieneRehab: false, renderTest: null },
-  nata:   { mesociclos: ['N1','N2'],     tieneRehab: false, renderTest: null, tieneHabitos: true },
+  nata:   { mesociclos: ['N1','N2','N3'], tieneRehab: false, renderTest: null, tieneHabitos: true },
 };
 
 // ============================================================
