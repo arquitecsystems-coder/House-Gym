@@ -3520,6 +3520,13 @@
     "nota-sesion-M7-S4-lun": {
       "nota": "No tengo muy claro el RIR del Press, la técnica me falló durante la sesión ósea parecía que no me pesaba pero al mismo tiempo me desbalanceba",
       "timestamp": "2026-10-19T17:31:26.116Z"
+    },
+    "M7-S4-lun-Press Inclinado (barra)-1": {
+      "peso": "53,4",
+      "timestamp": "2026-10-19T17:36:35.238Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -5724,5 +5731,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-19T17:31:29.119Z"
+  "timestamp": "2026-10-19T17:36:38.246Z"
 }
