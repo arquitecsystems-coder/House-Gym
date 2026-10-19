@@ -3280,8 +3280,24 @@ function renderRMs(main) {
 // El nivel se calcula repasando el historial (idempotente). Los botones ▼▲ fijan un nivel manual.
 // Ejercicios sin prog quedan fijos a propósito: su progresión es de calidad/rango, no de conteo.
 // nota = referencia para quien edita el código; NO se muestra en la app (la pantalla es solo para anotar).
-const REHAB_PLAN_DESDE = "2026-10-16";   // desde esta fecha rige REHAB_EJERCICIOS; antes, REHAB_LEGACY
+// Vigencia: cada ejercicio cuenta en el plan entre "desde" (por defecto REHAB_PLAN_DESDE) y "hasta".
+// "alterna": los grupos marcados se hacen en días alternos (la app sugiere el que toca).
+const REHAB_PLAN_DESDE = "2026-10-16";
 const REHAB_EJERCICIOS = [
+  // ── Tobillo (diario) ──
+  {
+    id: "movilizacion_astragalo", grupo: "Tobillo", tipo: "reps", sets: 2, valor: 10, segRep: 4, desde: "2026-10-19",
+    nombre: "Movilización del astrágalo",
+    protocolo: "Manual · 2-3 s al final",
+    nota: "Preparación antes de la carga: desliza el astrágalo hacia atrás (sustituye la banda). Si el pellizco adelante es lo que frena en la dorsiflexión con carga, sube a 3 x 15."
+  },
+  {
+    id: "dorsiflexion_carga", grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 25, desde: "2026-10-19",
+    nombre: "Dorsiflexión con carga",
+    protocolo: "Media rodilla · 8 balanceos + sostén",
+    nota: "Pie izquierdo adelante, talón pegado, rodilla por encima de los dedos (recto; luego un poco hacia adentro). Dolor tolerable hasta 4-5/10 si al día siguiente estás igual. Sube el sostén 30 -> 60 s con 10 kg y repite el ciclo con 20 kg.",
+    prog: { paso: 10, tope: 60, cargas: ["10 kg", "20 kg"] }
+  },
   {
     id: "sentadilla_pared", grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 30,
     nombre: "Sentadilla profunda en pared",
@@ -3289,65 +3305,142 @@ const REHAB_EJERCICIOS = [
     nota: "Con la espalda apoyada no hay compensación de tronco: el límite es el tobillo. Si el talón se despega o el pie rota hacia afuera, sube un poco. Anota en la nota si una rodilla o un pie compensa.",
     prog: { paso: 10, tope: 90 }
   },
+  // ── Hombro (diario). Limita el derecho por abajo (rotación interna): más dosis a esa combinación ──
   {
-    id: "rodilla_pared_din", grupo: "Tobillo", tipo: "reps", sets: 3, valor: 10, segRep: 4,
-    nombre: "Rodilla a la pared (tobillo lesionado)",
-    protocolo: "Pausa 2 s al final de cada rep",
-    nota: "Es el único trabajo unilateral del tobillo: la sentadilla en pared reparte la carga entre los dos pies. Progresa alejando el pie de la pared (+0.5 cm) cuando completes todo con el talón pegado; el rango real se mide el domingo."
+    id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
+    nombre: "Hombro con correa: izquierdo arriba",
+    protocolo: "",
+    nota: "Combinación limitada: al tirar con la izquierda sube la derecha en rotación interna. Acorta el agarre cuando 30 s se sientan fáciles.",
+    prog: { paso: 10, tope: 60 }
   },
   {
-    id: "elevacion_pierna", grupo: "Caderas", tipo: "reps", sets: 3, valor: 5, lados: 2, segRep: 8,
-    nombre: "Elevación de pierna sentado",
-    protocolo: "Rodilla estirada · sostén 5 s",
-    nota: "Sube la pierna activamente y sostén 5 s arriba. Al llegar a 8 reps, sube el sostén a 8-10 s.",
-    prog: { paso: 1, tope: 8 }
+    id: "hombro_correa_der", grupo: "Hombro", tipo: "tiempo", sets: 1, valor: 30, desde: "2026-10-19",
+    nombre: "Hombro con correa: derecho arriba",
+    protocolo: "",
+    nota: "Combinación buena: mantenerla y que siga mejorando. Dosis menor a propósito.",
+    prog: { paso: 10, tope: 60 }
   },
   {
-    id: "inclinacion_pelvis", grupo: "Caderas", tipo: "reps", sets: 1, valor: 10, segRep: 4,
-    nombre: "Inclinación de pelvis sentado",
-    protocolo: "Lentas",
-    nota: "Ejercicio de control motor: mejora con la calidad del movimiento, no con más repeticiones."
+    id: "cruzado_der", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30, desde: "2026-10-19",
+    nombre: "Estiramiento cruzado (derecho)",
+    protocolo: "Brazo derecho cruza el pecho",
+    nota: "Estira la parte posterior del hombro (cápsula y rotadores externos), lo que limita la rotación interna. Si hay pellizco adelante del hombro, no forzar.",
+    prog: { paso: 10, tope: 60 }
   },
   {
-    id: "straddle_cr", grupo: "Caderas", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 10,
+    id: "liftoff_der", grupo: "Hombro", tipo: "reps", sets: 2, valor: 8, segRep: 4, desde: "2026-10-19",
+    nombre: "Lift-off (derecho)",
+    protocolo: "Mano en la espalda baja · despega 2-3 s",
+    nota: "Fuerza activa al final de la rotación interna: convierte el rango ganado en rango controlado.",
+    prog: { paso: 1, tope: 12 }
+  },
+  // ── Caderas A: straddle (días alternos) ──
+  {
+    id: "straddle_cr", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 10,
     nombre: "Straddle con contraer-relajar",
     protocolo: "Estira + contrae 10 s",
     nota: "Contrae suave (20-30% de fuerza) los 10 s y relaja hacia más rango.",
     prog: { paso: 10, tope: 60 }
   },
   {
-    id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 30,
+    id: "sapo", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "tiempo", sets: 2, valor: 30,
     nombre: "Sapo",
     protocolo: "Rodillas y manos/antebrazos",
-    nota: "Arranca en 30 s (primer registro: 25 y 23 s). Llega a 90 s en las dos series y luego se agrega una tercera.",
+    nota: "Aductores cortos (rodillas dobladas). Arranca en 30 s (primer registro: 25 y 23 s). Llega a 90 s en las dos series y luego se agrega una tercera.",
     prog: { paso: 10, tope: 90, setsMax: 3 }
   },
   {
-    id: "piernas_v", grupo: "Caderas", tipo: "tiempo", sets: 1, valor: 90,
+    id: "piernas_v", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "tiempo", sets: 1, valor: 90,
     nombre: "Piernas en la pared en V",
     protocolo: "",
-    nota: "Arranca en 90 s (primer registro) y sube hasta los 3 min; después progresa abriendo más la V.",
+    nota: "Se siente atrás-adentro de la rodilla (grácil e isquios internos): normal con piernas estiradas. Micro-flexión si molesta la articulación; si al flexionar el tobillo aparece hormigueo, abrir menos (componente neural). Sube hasta 3 min; después, abrir más la V.",
     prog: { paso: 30, tope: 180 }
   },
   {
-    id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
-    nombre: "Hombro con correa: izquierdo arriba",
-    protocolo: "",
-    nota: "Acorta el agarre de la correa cuando 30 s se sientan fáciles.",
-    prog: { paso: 10, tope: 60 }
+    id: "inclinacion_pelvis", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "reps", sets: 1, valor: 10, segRep: 4,
+    nombre: "Inclinación de pelvis sentado",
+    protocolo: "Lentas",
+    nota: "Control motor para inclinar la pelvis hacia adelante (clave del straddle): mejora con la calidad, no con más reps."
+  },
+  // ── Caderas B: split frontal (días alternos) ──
+  {
+    id: "couch_stretch", grupo: "Caderas B · split frontal", alterna: "caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
+    nombre: "Couch stretch",
+    protocolo: "Rodilla al suelo · pelvis metida",
+    nota: "Flexores de cadera de la pierna de atrás (lo que faltaba para el split frontal). Con la izquierda atrás el tobillo queda en flexión plantar: si pellizca atrás, empeine sobre un cojín o pie en el suelo.",
+    prog: { paso: 15, tope: 90 }
+  },
+  {
+    id: "split_apoyos", grupo: "Caderas B · split frontal", alterna: "caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
+    nombre: "Split frontal con apoyos",
+    protocolo: "Bloques bajo manos y cadera",
+    nota: "Lo más específico para el split es el split. Bajar los apoyos de a poco; la métrica es la distancia pelvis-suelo.",
+    prog: { paso: 15, tope: 90 }
+  },
+  {
+    id: "elevacion_pierna", grupo: "Caderas B · split frontal", alterna: "caderas", tipo: "reps", sets: 3, valor: 5, lados: 2, segRep: 8,
+    nombre: "Elevación de pierna sentado",
+    protocolo: "Rodilla estirada · sostén 5 s",
+    nota: "Fuerza activa de flexión de cadera con rodilla estirada (pierna de adelante del split). Al llegar a 8 reps, sube el sostén a 8-10 s.",
+    prog: { paso: 1, tope: 8 }
   },
 ];
 
-// Plan anterior (rehabilitación de tobillo): se conserva solo para leer el historial y el mapa de calor.
+// Planes anteriores: se conservan solo para leer el historial y el calendario.
 const REHAB_LEGACY = [
-  { id: "rodilla_pared",  nombre: "Rodilla a pared",                    grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120 },
-  { id: "cuadrupedia",    nombre: "Cuadrupedia - desliz rodilla",       grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120 },
-  { id: "equilibrio",     nombre: "Equilibrio monopodal ojos cerrados", grupo: "Tobillo", tipo: "tiempo", sets: 2, valor: 45 },
+  { id: "rodilla_pared",  nombre: "Rodilla a pared",                    grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120, hasta: "2026-10-15" },
+  { id: "cuadrupedia",    nombre: "Cuadrupedia - desliz rodilla",       grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120, hasta: "2026-10-15" },
+  { id: "equilibrio",     nombre: "Equilibrio monopodal ojos cerrados", grupo: "Tobillo", tipo: "tiempo", sets: 2, valor: 45,  hasta: "2026-10-15" },
+  { id: "rodilla_pared_din", nombre: "Rodilla a la pared (tobillo lesionado)", grupo: "Tobillo", tipo: "reps", sets: 3, valor: 10, segRep: 4, desde: "2026-10-16", hasta: "2026-10-18" },
+];
+
+// Métricas del registro dominical (además de la rodilla a pared izquierda, que vive en datos.mediciones)
+const REHAB_METRICAS = [
+  { id: "tobillo_der", label: "Tobillo derecho (rodilla a pared)", corto: "Tob der" },
+  { id: "straddle",    label: "Straddle: pelvis al suelo",          corto: "Straddle" },
+  { id: "split_izq",   label: "Split frontal, izquierda adelante: pelvis al suelo", corto: "Split izq" },
+  { id: "split_der",   label: "Split frontal, derecha adelante: pelvis al suelo",   corto: "Split der" },
+  { id: "hombro",      label: "Hombro izquierdo arriba: distancia entre dedos", corto: "Hombro" },
 ];
 
 function rehabTodos() { return REHAB_EJERCICIOS.concat(REHAB_LEGACY); }
 function rehabBuscar(id) { return rehabTodos().find(function(e) { return e.id === id; }); }
-function rehabPlanEn(fecha) { return fecha >= REHAB_PLAN_DESDE ? REHAB_EJERCICIOS : REHAB_LEGACY; }
+function rehabPlanEn(fecha) {
+  return rehabTodos().filter(function(e) {
+    const desde = e.desde || (REHAB_EJERCICIOS.indexOf(e) >= 0 ? REHAB_PLAN_DESDE : "");
+    return fecha >= desde && (!e.hasta || fecha <= e.hasta);
+  });
+}
+
+function rehabActividadGrupo(dia, grupo) {
+  if (!dia) return false;
+  return REHAB_EJERCICIOS.some(function(e) {
+    return e.grupo === grupo && Array.isArray(dia[e.id]) && dia[e.id].some(function(x) { return normalizeRehabSet(x).completado; });
+  });
+}
+
+function rehabGruposAlternos() {
+  const gs = [];
+  REHAB_EJERCICIOS.forEach(function(e) { if (e.alterna && gs.indexOf(e.grupo) < 0) gs.push(e.grupo); });
+  return gs;
+}
+
+// Bloque alterno que toca hoy: el que ya tenga registro hoy; si no, el siguiente al último hecho.
+// Se decide por el último registro, no por la fecha: saltarse un día no descuadra la alternancia.
+function rehabBloqueHoy(datos, hoy) {
+  const gs = rehabGruposAlternos();
+  if (!gs.length) return null;
+  const ses = datos.sesiones || {};
+  const hecho = gs.find(function(g) { return rehabActividadGrupo(ses[hoy], g); });
+  if (hecho) return hecho;
+  const fechas = Object.keys(ses).filter(function(d) { return d < hoy; }).sort().reverse();
+  for (let i = 0; i < fechas.length; i++) {
+    const hechos = gs.filter(function(g) { return rehabActividadGrupo(ses[fechas[i]], g); });
+    if (hechos.length === 1) return gs[(gs.indexOf(hechos[0]) + 1) % gs.length];
+    if (hechos.length > 1) return gs[0];
+  }
+  return gs[0];
+}
 function rehabHoy() {
   const d = new Date();
   return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
@@ -3410,6 +3503,9 @@ function mergeRehabDatos(local, remote) {
   (local.mediciones || []).concat(remote.mediciones || []).forEach(function(m) { med[m.fecha] = m; });
   out.mediciones = Object.keys(med).sort().map(function(f) { return med[f]; });
   out.criterios = Object.assign({}, local.criterios || {}, remote.criterios || {});
+  const ml = local.metricas || {}, mr = remote.metricas || {};
+  out.metricas = {};
+  Object.keys(Object.assign({}, ml, mr)).forEach(function(f) { out.metricas[f] = Object.assign({}, ml[f] || {}, mr[f] || {}); });
   const nl = local.nivelAjuste || {}, nr = remote.nivelAjuste || {};
   out.nivelAjuste = {};
   Object.keys(Object.assign({}, nl, nr)).forEach(function(id) {
@@ -3427,7 +3523,11 @@ function rehabNiveles(ej) {
   let v = ej.valor, n = ej.sets;
   while (v + p.paso <= p.tope) { v += p.paso; seq.push({ sets: n, valor: v }); }
   while (p.setsMax && n < p.setsMax) { n++; seq.push({ sets: n, valor: v }); }
-  return seq;
+  if (!p.cargas) return seq;
+  // Con cargas: el ciclo completo se repite con cada carga (ej. 30 -> 60 s con 10 kg, luego con 20 kg)
+  const out = [];
+  p.cargas.forEach(function(c) { seq.forEach(function(x) { out.push({ sets: x.sets, valor: x.valor, carga: c }); }); });
+  return out;
 }
 
 // Estado de progresión ANTES de "fecha" (la sesión de ese día no cuenta: así el objetivo no cambia
@@ -3469,7 +3569,7 @@ function rehabEtiquetaFila(ej, i) {
 }
 
 function rehabFmtObj(ej, obj) {
-  return obj.sets + ' x ' + obj.valor + (ej.tipo === 'reps' ? '' : ' s') + ((ej.lados || 1) === 2 ? ' por lado' : '');
+  return obj.sets + ' x ' + obj.valor + (ej.tipo === 'reps' ? '' : ' s') + ((ej.lados || 1) === 2 ? ' por lado' : '') + (obj.carga ? ' · ' + obj.carga : '');
 }
 
 // Duración estimada en segundos (incluye ~15 s de transición entre series)
@@ -3481,17 +3581,32 @@ function rehabSegEj(ej, obj) {
 function getRehabDayScore(fecha, datos) {
   const dia = (datos.sesiones || {})[fecha];
   if (!dia) return 0;
-  let total = 0, contrib = 0;
-  rehabPlanEn(fecha).forEach(function(ej) {
-    const obj = rehabEstado(ej, datos, fecha).obj;
-    const sets = dia[ej.id] || [];
-    const filas = rehabFilas(ej, obj);
-    for (let i = 0; i < filas; i++) {
-      total++;
-      const n = normalizeRehabSet(sets[i]);
-      if (n.completado) contrib += Math.min(n.valor != null ? n.valor : obj.valor, obj.valor) / obj.valor;
-    }
+  const cuenta = function(ejs) {
+    let total = 0, contrib = 0;
+    ejs.forEach(function(ej) {
+      const obj = rehabEstado(ej, datos, fecha).obj;
+      const sets = dia[ej.id] || [];
+      const filas = rehabFilas(ej, obj);
+      for (let i = 0; i < filas; i++) {
+        total++;
+        const n = normalizeRehabSet(sets[i]);
+        if (n.completado) contrib += Math.min(n.valor != null ? n.valor : obj.valor, obj.valor) / obj.valor;
+      }
+    });
+    return { total: total, contrib: contrib };
+  };
+  const plan = rehabPlanEn(fecha);
+  const fijo = cuenta(plan.filter(function(e) { return !e.alterna; }));
+  // De los bloques alternos cuenta solo uno: el que más se hizo ese día
+  let mejor = null;
+  const gs = [];
+  plan.forEach(function(e) { if (e.alterna && gs.indexOf(e.grupo) < 0) gs.push(e.grupo); });
+  gs.forEach(function(g) {
+    const r = cuenta(plan.filter(function(e) { return e.grupo === g; }));
+    if (!mejor || (r.total && r.contrib / r.total > mejor.contrib / (mejor.total || 1))) mejor = r;
   });
+  const total = fijo.total + (mejor ? mejor.total : 0);
+  const contrib = fijo.contrib + (mejor ? mejor.contrib : 0);
   return total ? contrib / total : 0;
 }
 
@@ -3511,6 +3626,12 @@ function dayHasActivity(sesionDia) {
 }
 
 let rehabMesVista = null;   // {y, m}; null = mes actual
+let rehabGrupoAbierto = {}; // bloques alternos de "otro día" desplegados a mano
+
+function rehabToggleGrupo(g) {
+  rehabGrupoAbierto[g] = !rehabGrupoAbierto[g];
+  renderRehab(document.getElementById("mainContent"));
+}
 
 function rehabCambiarMes(delta) {
   const hoyD = new Date();
@@ -3527,9 +3648,12 @@ function rehabCambiarMes(delta) {
 }
 
 function renderRehab(main) {
-  const TARGET_CM = 7;
   const datos = getRehabDatos();
   const mediciones = datos.mediciones || [];
+  const metricas = datos.metricas || {};
+  // Meta del tobillo izquierdo = lo que mide el derecho (12 cm según lo reportado, hasta que se registre)
+  const fechasDer = Object.keys(metricas).filter(function(f) { return metricas[f].tobillo_der != null; }).sort();
+  const TARGET_CM = fechasDer.length ? metricas[fechasDer[fechasDer.length - 1]].tobillo_der : 12;
   const sesiones = datos.sesiones || {};
   const isDark = document.body.classList.contains('dark');
 
@@ -3557,10 +3681,10 @@ function renderRehab(main) {
   // Header
   html += '<div class="rehab-card" style="display:flex;align-items:center;gap:16px;padding:14px 16px">'
     + '<div style="flex:1">'
-    + '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:2px">DORSIFLEXION ACTUAL</div>'
+    + '<div style="font-size:11px;font-family:var(--font-mono);color:var(--muted);margin-bottom:2px">DORSIFLEXIÓN IZQUIERDA</div>'
     + '<div style="display:flex;align-items:baseline;gap:6px">'
     + '<span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:'+(reached?'var(--ok)':'var(--accent)')+'">'+ultima+'</span>'
-    + '<span style="font-size:13px;color:var(--muted)">cm / '+TARGET_CM+' cm</span>'
+    + '<span style="font-size:13px;color:var(--muted)">cm / '+TARGET_CM+' cm (derecho)</span>'
     + '</div>'
     + '<div class="rehab-progress-bar" style="margin-top:6px">'
     + '<div class="rehab-progress-fill '+(reached?'done':'')+'" style="width:'+pct+'%"></div>'
@@ -3578,7 +3702,7 @@ function renderRehab(main) {
     html += '<div style="background:var(--accent-bg);border:1px solid var(--accent);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">'
       + '<div>'
       + '<div style="font-size:13px;font-weight:600;color:var(--accent)">&#128207; Día de medición</div>'
-      + '<div style="font-size:11px;color:var(--muted);margin-top:2px">Mide rodilla a pared y registra el resultado</div>'
+      + '<div style="font-size:11px;color:var(--muted);margin-top:2px">Tobillos, straddle, split y hombro</div>'
       + '</div>'
       + '<button class="rehab-add-btn" onclick="showMedicionModal()" style="flex-shrink:0;width:auto;padding:0 12px;font-size:12px;font-family:var(--font-mono)">Registrar</button>'
       + '</div>';
@@ -3586,9 +3710,12 @@ function renderRehab(main) {
 
   // Sesion de hoy, agrupada por zona
   const estados = REHAB_EJERCICIOS.map(function(ej) { return rehabEstado(ej, datos, hoy); });
+  const bloqueHoy = rehabBloqueHoy(datos, hoy);
   const segDe = function(g) {
     let t = 0;
-    REHAB_EJERCICIOS.forEach(function(ej, i) { if (!g || ej.grupo === g) t += rehabSegEj(ej, estados[i].obj); });
+    REHAB_EJERCICIOS.forEach(function(ej, i) {
+      if (g ? ej.grupo === g : (!ej.alterna || ej.grupo === bloqueHoy)) t += rehabSegEj(ej, estados[i].obj);
+    });
     return Math.round(t / 60);
   };
   html += '<div class="rehab-card"><div class="rehab-title">Hoy — '+hoy+' · ~'+segDe()+' min</div>';
@@ -3597,8 +3724,15 @@ function renderRehab(main) {
   REHAB_EJERCICIOS.forEach(function(ej) { if (grupos.indexOf(ej.grupo) < 0) grupos.push(ej.grupo); });
 
   grupos.forEach(function(g) {
-    html += '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-bottom:2px;border-bottom:2px solid var(--border);font-family:var(--font-mono);font-size:11px;color:var(--muted)">'
-      + '<span style="color:var(--accent);font-weight:700;font-size:13px">'+g+'</span><span>~'+segDe(g)+' min</span></div>';
+    const esAlterno = rehabGruposAlternos().indexOf(g) >= 0;
+    const otroDia = esAlterno && g !== bloqueHoy;
+    if (otroDia && !rehabGrupoAbierto[g]) {
+      html += '<div onclick="rehabToggleGrupo(\''+g+'\')" style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding:6px 0;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:11px;color:var(--muted);cursor:pointer">'
+        + '<span style="font-weight:700;font-size:13px">'+g+'</span><span>otro día &#9656;</span></div>';
+      return;
+    }
+    html += '<div'+(otroDia ? ' onclick="rehabToggleGrupo(\''+g+'\')"' : '')+' style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-bottom:2px;border-bottom:2px solid var(--border);font-family:var(--font-mono);font-size:11px;color:var(--muted)'+(otroDia ? ';cursor:pointer' : '')+'">'
+      + '<span style="color:var(--accent);font-weight:700;font-size:13px">'+g+'</span><span>'+(esAlterno ? (otroDia ? 'otro día &#9662; · ' : 'hoy · ') : '')+'~'+segDe(g)+' min</span></div>';
 
     REHAB_EJERCICIOS.forEach(function(ej, idx) {
       if (ej.grupo !== g) return;
@@ -3732,31 +3866,33 @@ function renderRehab(main) {
     + '<div id="rehab-heatmap-tooltip" style="display:none" class="rehab-heatmap-tooltip"></div>'
     + '</div>';
 
-  // Historial mediciones
-  if (mediciones.length > 0) {
-    html += '<div class="rehab-card">'
-      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
-      + '<div class="rehab-title" style="margin-bottom:0">&#128197; Mediciones dominicales</div>'
-      + '<button onclick="borrarMediciones()" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">borrar todo</button>'
+  // Mediciones: tobillo izquierdo (datos.mediciones) + métricas por fecha (datos.metricas)
+  const medPorFecha = {};
+  mediciones.forEach(function(m) { medPorFecha[m.fecha] = { tobillo_izq: m.valor }; });
+  Object.keys(metricas).forEach(function(f) { medPorFecha[f] = Object.assign(medPorFecha[f] || {}, metricas[f]); });
+  const fechasMed = Object.keys(medPorFecha).sort().reverse().slice(0, 12);
+  html += '<div class="rehab-card">'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:'+(fechasMed.length ? 14 : 0)+'px">'
+    + '<div class="rehab-title" style="margin-bottom:0">&#128197; Mediciones</div>'
+    + '<div style="display:flex;gap:6px">'
+    + (fechasMed.length ? '<button onclick="borrarMediciones()" style="font-size:11px;font-family:var(--font-mono);color:var(--muted);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">borrar todo</button>' : '')
+    + '<button onclick="showMedicionModal()" style="font-size:11px;font-family:var(--font-mono);color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:3px 8px;cursor:pointer">+ medir</button>'
+    + '</div></div>';
+  fechasMed.forEach(function(f) {
+    const m = medPorFecha[f];
+    const partes = [];
+    if (m.tobillo_izq != null) partes.push('<span style="color:'+(m.tobillo_izq>=TARGET_CM?'var(--ok)':'var(--accent)')+';font-weight:700">Tob izq '+m.tobillo_izq+'</span>');
+    REHAB_METRICAS.forEach(function(d) { if (m[d.id] != null) partes.push(d.corto+' '+m[d.id]); });
+    html += '<div class="rehab-history-row" style="align-items:flex-start;gap:10px">'
+      + '<span style="white-space:nowrap">'+f+'</span>'
+      + '<span style="text-align:right;font-size:12px">'+partes.join(' · ')+' <span style="color:var(--muted)">cm</span></span>'
       + '</div>';
-    var medRev = mediciones.slice().reverse().slice(0, 12);
-    medRev.forEach(function(m, i) {
-      const prev = medRev[i + 1];
-      const delta = prev ? (m.valor - prev.valor) : null;
-      const deltaStr = delta !== null
-        ? '<span style="color:'+(delta>0?'var(--ok)':delta<0?'var(--accent2)':'var(--muted)')+';font-size:11px;margin-left:6px">'+(delta>0?'+':'')+delta.toFixed(1)+' cm</span>'
-        : '';
-      html += '<div class="rehab-history-row">'
-        + '<span>'+m.fecha+'</span>'
-        + '<span style="color:'+(m.valor>=TARGET_CM?'var(--ok)':'var(--accent)')+';font-weight:700">'+m.valor+' cm'+deltaStr+'</span>'
-        + '</div>';
-    });
-    html += '</div>';
-  }
+  });
+  html += '</div>';
 
   // Criterios re-ingreso
   const criterios = [
-    { id: "dorsiflexion", label: "Dorsiflexion ≥ 7 cm (pierna izquierda)", auto: reached },
+    { id: "dorsiflexion", label: "Dorsiflexion ≥ 7 cm (pierna izquierda)", auto: ultima >= 7 },
     { id: "equilibrio",   label: "Equilibrio monopodal ojos cerrados ≥ 45 s", auto: true },
     { id: "pistol",       label: "Pistol squat izquierdo inicia descenso sin bloqueo", auto: false },
   ];
@@ -3779,13 +3915,18 @@ function renderRehab(main) {
   html += '</div>';
 
   // Modal medicion
+  const campoMed = function(id, label) {
+    return '<label style="display:block;font-size:12px;color:var(--muted);margin-bottom:8px">'+label
+      + '<input class="rehab-input" id="'+id+'" type="number" step="0.5" min="0" max="200" placeholder="cm"'
+      + ' style="width:100%;margin-top:4px;font-size:16px;text-align:center;padding:8px"></label>';
+  };
   html += '<div id="medicionModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;align-items:center;justify-content:center">'
-    + '<div style="background:var(--card);border-radius:var(--radius);padding:20px;margin:20px;max-width:320px;width:100%">'
-    + '<div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:12px">&#128207; MEDICION DOMINICAL</div>'
-    + '<div style="font-size:13px;color:var(--muted);margin-bottom:12px">Rodilla a pared · pie descalzo · talón en suelo<br>Distancia dedo gordo → pared en cm</div>'
-    + '<input class="rehab-input" id="rehabCm" type="number" step="0.1" min="0" max="15" placeholder="ej: 4.5"'
-    + ' style="width:100%;margin-bottom:10px;font-size:18px;text-align:center;padding:12px">'
-    + '<div style="display:flex;gap:8px">'
+    + '<div style="background:var(--card);border-radius:var(--radius);padding:20px;margin:20px;max-width:340px;width:100%;max-height:85vh;overflow-y:auto">'
+    + '<div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:6px">&#128207; MEDICIÓN</div>'
+    + '<div style="font-size:11px;color:var(--muted);margin-bottom:12px">En cm. Deja vacío lo que no midas.</div>'
+    + campoMed('med_tobillo_izq', 'Tobillo izquierdo (rodilla a pared)')
+    + REHAB_METRICAS.map(function(d) { return campoMed('med_'+d.id, d.label); }).join('')
+    + '<div style="display:flex;gap:8px;margin-top:6px">'
     + '<button onclick="hideMedicionModal()" style="flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--muted);cursor:pointer">Cancelar</button>'
     + '<button onclick="saveRehabMedicion()" style="flex:1;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer">Guardar</button>'
     + '</div></div></div>';
@@ -3912,26 +4053,46 @@ function hideMedicionModal() {
 }
 
 function saveRehabMedicion() {
-  const cm = parseFloat(document.getElementById("rehabCm").value);
-  if (!cm || cm <= 0) { showToast("Ingresa los cm", "err"); return; }
-  const _d = new Date();
-  const fecha = _d.getFullYear()+'-'+String(_d.getMonth()+1).padStart(2,'0')+'-'+String(_d.getDate()).padStart(2,'0');
+  const leer = function(id) {
+    const el = document.getElementById(id);
+    const v = el ? parseFloat(el.value) : NaN;
+    return isNaN(v) || v < 0 ? null : v;
+  };
+  const fecha = rehabHoy();
   const datos = getRehabDatos();
-  if (!datos.mediciones) datos.mediciones = [];
-  const idx = datos.mediciones.findIndex(function(m) { return m.fecha === fecha; });
-  if (idx >= 0) datos.mediciones[idx].valor = cm;
-  else datos.mediciones.push({ valor: cm, fecha });
-  datos.mediciones.sort(function(a,b) { return a.fecha.localeCompare(b.fecha); });
+  let guardados = 0;
+  const izq = leer('med_tobillo_izq');
+  if (izq != null) {
+    if (!datos.mediciones) datos.mediciones = [];
+    const idx = datos.mediciones.findIndex(function(m) { return m.fecha === fecha; });
+    if (idx >= 0) datos.mediciones[idx].valor = izq;
+    else datos.mediciones.push({ valor: izq, fecha: fecha });
+    datos.mediciones.sort(function(a,b) { return a.fecha.localeCompare(b.fecha); });
+    guardados++;
+  }
+  REHAB_METRICAS.forEach(function(d) {
+    const v = leer('med_'+d.id);
+    if (v == null) return;
+    if (!datos.metricas) datos.metricas = {};
+    if (!datos.metricas[fecha]) datos.metricas[fecha] = {};
+    datos.metricas[fecha][d.id] = v;
+    guardados++;
+  });
+  if (!guardados) { showToast("Ingresa al menos una medida", "err"); return; }
   saveRehabDatos(datos);
+  queueSync();
   hideMedicionModal();
-  showToast(cm + ' cm registrado', "ok");
+  showToast(guardados + (guardados === 1 ? ' medida registrada' : ' medidas registradas'), "ok");
   renderRehab(document.getElementById("mainContent"));
 }
 
 function borrarMediciones() {
+  if (!confirm("¿Borrar todas las mediciones?")) return;
   const datos = getRehabDatos();
   datos.mediciones = [];
+  datos.metricas = {};
   saveRehabDatos(datos);
+  queueSync();
   showToast("Mediciones borradas", "ok");
   renderRehab(document.getElementById("mainContent"));
 }
