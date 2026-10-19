@@ -3281,10 +3281,10 @@ function renderRMs(main) {
 // Ejercicios sin prog quedan fijos a propósito: su progresión es de calidad/rango, no de conteo.
 // nota = referencia para quien edita el código; NO se muestra en la app (la pantalla es solo para anotar).
 // Vigencia: cada ejercicio cuenta en el plan entre "desde" (por defecto REHAB_PLAN_DESDE) y "hasta".
-// "alterna": los grupos marcados se hacen en días alternos (la app sugiere el que toca).
+// "alterna" (opcional): los grupos marcados se harían en días alternos; hoy no se usa (todo es diario).
 const REHAB_PLAN_DESDE = "2026-10-16";
 const REHAB_EJERCICIOS = [
-  // ── Tobillo (diario) ──
+  // ── Tobillo (de pie / media rodilla): articulación -> carga en rango -> patrón completo ──
   {
     id: "movilizacion_astragalo", grupo: "Tobillo", tipo: "reps", sets: 2, valor: 10, segRep: 4, desde: "2026-10-19",
     nombre: "Movilización del astrágalo",
@@ -3305,7 +3305,14 @@ const REHAB_EJERCICIOS = [
     nota: "Con la espalda apoyada no hay compensación de tronco: el límite es el tobillo. Si el talón se despega o el pie rota hacia afuera, sube un poco. Anota en la nota si una rodilla o un pie compensa.",
     prog: { paso: 10, tope: 90 }
   },
-  // ── Hombro (diario). Limita el derecho por abajo (rotación interna): más dosis a esa combinación ──
+  // ── Hombro (de pie): estirar primero, fuerza activa al final para consolidar el rango ──
+  {
+    id: "cruzado_der", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30, desde: "2026-10-19",
+    nombre: "Estiramiento cruzado (derecho)",
+    protocolo: "Brazo derecho cruza el pecho",
+    nota: "Estira la parte posterior del hombro (cápsula y rotadores externos), lo que limita la rotación interna. Si hay pellizco adelante del hombro, no forzar.",
+    prog: { paso: 10, tope: 60 }
+  },
   {
     id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
     nombre: "Hombro con correa: izquierdo arriba",
@@ -3321,68 +3328,61 @@ const REHAB_EJERCICIOS = [
     prog: { paso: 10, tope: 60 }
   },
   {
-    id: "cruzado_der", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30, desde: "2026-10-19",
-    nombre: "Estiramiento cruzado (derecho)",
-    protocolo: "Brazo derecho cruza el pecho",
-    nota: "Estira la parte posterior del hombro (cápsula y rotadores externos), lo que limita la rotación interna. Si hay pellizco adelante del hombro, no forzar.",
-    prog: { paso: 10, tope: 60 }
-  },
-  {
     id: "liftoff_der", grupo: "Hombro", tipo: "reps", sets: 2, valor: 8, segRep: 4, desde: "2026-10-19",
     nombre: "Lift-off (derecho)",
     protocolo: "Mano en la espalda baja · despega 2-3 s",
     nota: "Fuerza activa al final de la rotación interna: convierte el rango ganado en rango controlado.",
     prog: { paso: 1, tope: 12 }
   },
-  // ── Caderas A: straddle (días alternos) ──
+  // ── Caderas (al suelo): de rodillas -> sentado -> acostado; split antes que su trabajo activo;
+  //    aductores cortos (sapo) antes que largos (straddle); piernas en V pasivo como cierre ──
   {
-    id: "straddle_cr", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 10,
-    nombre: "Straddle con contraer-relajar",
-    protocolo: "Estira + contrae 10 s",
-    nota: "Contrae suave (20-30% de fuerza) los 10 s y relaja hacia más rango.",
-    prog: { paso: 10, tope: 60 }
-  },
-  {
-    id: "sapo", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "tiempo", sets: 2, valor: 30,
-    nombre: "Sapo",
-    protocolo: "Rodillas y manos/antebrazos",
-    nota: "Aductores cortos (rodillas dobladas). Arranca en 30 s (primer registro: 25 y 23 s). Llega a 90 s en las dos series y luego se agrega una tercera.",
-    prog: { paso: 10, tope: 90, setsMax: 3 }
-  },
-  {
-    id: "piernas_v", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "tiempo", sets: 1, valor: 90,
-    nombre: "Piernas en la pared en V",
-    protocolo: "",
-    nota: "Se siente atrás-adentro de la rodilla (grácil e isquios internos): normal con piernas estiradas. Micro-flexión si molesta la articulación; si al flexionar el tobillo aparece hormigueo, abrir menos (componente neural). Sube hasta 3 min; después, abrir más la V.",
-    prog: { paso: 30, tope: 180 }
-  },
-  {
-    id: "inclinacion_pelvis", grupo: "Caderas A · straddle", alterna: "caderas", tipo: "reps", sets: 1, valor: 10, segRep: 4,
-    nombre: "Inclinación de pelvis sentado",
-    protocolo: "Lentas",
-    nota: "Control motor para inclinar la pelvis hacia adelante (clave del straddle): mejora con la calidad, no con más reps."
-  },
-  // ── Caderas B: split frontal (días alternos) ──
-  {
-    id: "couch_stretch", grupo: "Caderas B · split frontal", alterna: "caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
+    id: "couch_stretch", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
     nombre: "Couch stretch",
     protocolo: "Rodilla al suelo · pelvis metida",
     nota: "Flexores de cadera de la pierna de atrás (lo que faltaba para el split frontal). Con la izquierda atrás el tobillo queda en flexión plantar: si pellizca atrás, empeine sobre un cojín o pie en el suelo.",
     prog: { paso: 15, tope: 90 }
   },
   {
-    id: "split_apoyos", grupo: "Caderas B · split frontal", alterna: "caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
+    id: "split_apoyos", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
     nombre: "Split frontal con apoyos",
     protocolo: "Bloques bajo manos y cadera",
     nota: "Lo más específico para el split es el split. Bajar los apoyos de a poco; la métrica es la distancia pelvis-suelo.",
     prog: { paso: 15, tope: 90 }
   },
   {
-    id: "elevacion_pierna", grupo: "Caderas B · split frontal", alterna: "caderas", tipo: "reps", sets: 3, valor: 5, lados: 2, segRep: 8,
+    id: "elevacion_pierna", grupo: "Caderas", tipo: "reps", sets: 3, valor: 5, lados: 2, segRep: 8,
     nombre: "Elevación de pierna sentado",
     protocolo: "Rodilla estirada · sostén 5 s",
     nota: "Fuerza activa de flexión de cadera con rodilla estirada (pierna de adelante del split). Al llegar a 8 reps, sube el sostén a 8-10 s.",
     prog: { paso: 1, tope: 8 }
+  },
+  {
+    id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 30,
+    nombre: "Sapo",
+    protocolo: "Rodillas y manos/antebrazos",
+    nota: "Aductores cortos (rodillas dobladas). Arranca en 30 s (primer registro: 25 y 23 s). Llega a 90 s en las dos series y luego se agrega una tercera.",
+    prog: { paso: 10, tope: 90, setsMax: 3 }
+  },
+  {
+    id: "inclinacion_pelvis", grupo: "Caderas", tipo: "reps", sets: 1, valor: 10, segRep: 4,
+    nombre: "Inclinación de pelvis sentado",
+    protocolo: "Lentas",
+    nota: "Control motor para inclinar la pelvis hacia adelante (clave del straddle): mejora con la calidad, no con más reps."
+  },
+  {
+    id: "straddle_cr", grupo: "Caderas", tipo: "tiempo", sets: 3, valor: 30, extraSeg: 10,
+    nombre: "Straddle con contraer-relajar",
+    protocolo: "Estira + contrae 10 s",
+    nota: "Contrae suave (20-30% de fuerza) los 10 s y relaja hacia más rango.",
+    prog: { paso: 10, tope: 60 }
+  },
+  {
+    id: "piernas_v", grupo: "Caderas", tipo: "tiempo", sets: 1, valor: 90,
+    nombre: "Piernas en la pared en V",
+    protocolo: "",
+    nota: "Se siente atrás-adentro de la rodilla (grácil e isquios internos): normal con piernas estiradas. Micro-flexión si molesta la articulación; si al flexionar el tobillo aparece hormigueo, abrir menos (componente neural). Sube hasta 3 min; después, abrir más la V.",
+    prog: { paso: 30, tope: 180 }
   },
 ];
 
