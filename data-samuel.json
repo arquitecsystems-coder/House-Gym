@@ -3572,7 +3572,10 @@
     },
     "M7-S4-lun-Curl Martillo (DB)-1": {
       "peso": "10",
-      "timestamp": "2026-10-19T18:37:53.205Z"
+      "timestamp": "2026-10-19T18:37:56.749Z",
+      "reps": "17",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -5777,5 +5780,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-19T18:37:52.545Z"
+  "timestamp": "2026-10-19T18:37:59.755Z"
 }
