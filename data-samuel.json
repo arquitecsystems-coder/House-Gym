@@ -5324,6 +5324,15 @@
             "carbs": 2.6,
             "grasas": 25.5,
             "unidades": 4
+          },
+          {
+            "foodId": "arroz_cocinado",
+            "nombre": "Arroz cocinado",
+            "gramos": 150,
+            "kcal": 195,
+            "prot": 4.1,
+            "carbs": 42,
+            "grasas": 0.5
           }
         ]
       }
@@ -5690,5 +5699,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-19T16:31:43.359Z"
+  "timestamp": "2026-10-19T16:32:00.066Z"
 }
