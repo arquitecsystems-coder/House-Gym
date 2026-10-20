@@ -2260,6 +2260,10 @@
       "timestamp": "2026-10-20T10:19:08.251Z",
       "rir": "0",
       "checked": true
+    },
+    "nota-sesion-D2-S5-mar": {
+      "nota": "Lo que he notado es que en el isométrico subo pero no voy hasta arriba de la barra. ",
+      "timestamp": "2026-10-20T10:20:29.946Z"
     }
   },
   "rehab": {
@@ -2383,5 +2387,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-20T10:19:11.274Z"
+  "timestamp": "2026-10-20T10:20:32.951Z"
 }
