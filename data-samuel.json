@@ -5667,6 +5667,15 @@
             "prot": 14,
             "carbs": 0,
             "grasas": 4
+          },
+          {
+            "foodId": "contramuslo_pollo",
+            "nombre": "Contramuslo de pollo (con hueso y piel)",
+            "gramos": 170,
+            "kcal": 272,
+            "prot": 24.7,
+            "carbs": 0,
+            "grasas": 18.7
           }
         ]
       }
@@ -6033,5 +6042,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-20T22:12:46.097Z"
+  "timestamp": "2026-10-20T22:12:59.857Z"
 }
