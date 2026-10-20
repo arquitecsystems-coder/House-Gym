@@ -2234,13 +2234,20 @@
     },
     "D2-S4-dom-Lateral inclinado contra pared-3": {
       "checked": true,
-      "timestamp": "2026-10-18T14:53:55.478Z",
+      "timestamp": "2026-10-18T14:53:57.566Z",
       "peso": "7.5",
-      "reps": "10"
+      "reps": "10",
+      "rir": "0"
+    },
+    "D2-S5-mar-Dead hang-1": {
+      "reps": "30",
+      "timestamp": "2026-10-20T10:12:27.719Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-18T13:35:48.254Z",
+    "_syncTs": "2026-10-18T14:53:55.271Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2296,7 +2303,8 @@
     },
     "mediciones": [],
     "criterios": {},
-    "nivelAjuste": {}
+    "nivelAjuste": {},
+    "metricas": {}
   },
   "cut": {},
   "test": {
@@ -2359,5 +2367,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-18T14:53:55.271Z"
+  "timestamp": "2026-10-20T10:12:30.730Z"
 }
