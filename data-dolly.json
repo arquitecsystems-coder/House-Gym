@@ -2266,6 +2266,12 @@
     "nota-sesion-D2-S5-mar": {
       "nota": "Lo que he notado es que en el isométrico subo pero no voy hasta arriba de la barra. ",
       "timestamp": "2026-10-20T10:20:29.946Z"
+    },
+    "D2-S5-mar-Retracciones escapulares colgada-1": {
+      "reps": "8",
+      "timestamp": "2026-10-20T10:27:01.895Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2389,5 +2395,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-20T10:21:54.360Z"
+  "timestamp": "2026-10-20T10:27:04.911Z"
 }
