@@ -5694,6 +5694,16 @@
             "prot": 43,
             "carbs": 0,
             "grasas": 50
+          },
+          {
+            "foodId": "huevo",
+            "nombre": "Huevo (doble A)",
+            "gramos": 174,
+            "kcal": 270,
+            "prot": 22.6,
+            "carbs": 1.9,
+            "grasas": 19.1,
+            "unidades": 3
           }
         ]
       }
@@ -6060,5 +6070,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-20T22:13:20.065Z"
+  "timestamp": "2026-10-20T22:13:36.207Z"
 }
