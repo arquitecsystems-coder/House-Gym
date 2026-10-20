@@ -2254,6 +2254,12 @@
     "D2-S5-mar-Isométrico arriba (banda gruesa)-2": {
       "checked": false,
       "timestamp": "2026-10-20T10:16:46.810Z"
+    },
+    "D2-S5-mar-Isométrico arriba (banda gruesa)-1": {
+      "reps": "15",
+      "timestamp": "2026-10-20T10:19:08.251Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2377,5 +2383,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-20T10:16:49.820Z"
+  "timestamp": "2026-10-20T10:19:11.274Z"
 }
