@@ -3628,6 +3628,16 @@
       "reps": "10",
       "timestamp": "2026-10-20T18:51:04.880Z",
       "checked": true
+    },
+    "M7-S4-mar-Press Francés (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-10-21T09:31:05.061Z",
+      "reps": "7",
+      "checked": true
+    },
+    "M7-S4-mar-Press Francés (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-21T09:31:08.371Z"
     }
   },
   "rehab": {
@@ -4706,6 +4716,10 @@
       },
       "2026-10-20": {
         "ayunas": 76.8,
+        "noche": null
+      },
+      "2026-10-21": {
+        "ayunas": 77.6,
         "noche": null
       }
     },
@@ -6172,5 +6186,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-21T01:05:57.281Z"
+  "timestamp": "2026-10-21T09:31:08.072Z"
 }
