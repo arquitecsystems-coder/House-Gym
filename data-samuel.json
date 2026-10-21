@@ -3664,6 +3664,11 @@
     "nota-sesion-M7-S4-mie": {
       "nota": "Baje la altura de la cuña a la mitad.",
       "timestamp": "2026-10-21T09:57:59.214Z"
+    },
+    "M7-S4-mie-Dragon Flag (negativas)-2": {
+      "reps": "9",
+      "timestamp": "2026-10-21T10:00:39.936Z",
+      "rir": "1"
     }
   },
   "rehab": {
@@ -6212,5 +6217,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-21T09:58:15.764Z"
+  "timestamp": "2026-10-21T10:00:42.962Z"
 }
