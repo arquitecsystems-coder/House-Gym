@@ -2924,6 +2924,10 @@
     "N2-S6-vie-Elevación Lateral (mancuerna)-2": {
       "reps": "5",
       "timestamp": "2026-10-18T23:40:24.859Z"
+    },
+    "N3-S1-a-Sentadilla trasera (barra)-1": {
+      "peso": "48,6",
+      "timestamp": "2026-10-22T00:24:29.841Z"
     }
   },
   "rehab": {},
@@ -3104,7 +3108,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-10-18T18:50:10.459Z"
+    "_syncTs": "2026-10-18T23:40:28.612Z"
   },
   "test": {
     "test": {
@@ -3805,5 +3809,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-18T23:40:28.612Z"
+  "timestamp": "2026-10-22T00:24:32.876Z"
 }
