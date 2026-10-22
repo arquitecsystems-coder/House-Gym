@@ -3000,6 +3000,10 @@
     "N3-S1-a-Press Inclinado (barra)-1": {
       "peso": "21,8",
       "timestamp": "2026-10-22T01:27:35.159Z"
+    },
+    "N3-S1-a-Press Inclinado (barra)-2": {
+      "peso": "21,8",
+      "timestamp": "2026-10-22T01:27:40.495Z"
     }
   },
   "rehab": {},
@@ -3881,5 +3885,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-22T01:27:38.175Z"
+  "timestamp": "2026-10-22T01:27:43.506Z"
 }
