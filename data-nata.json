@@ -2958,6 +2958,10 @@
     "N3-S1-a-Curl Bíceps (2 mancuernas → barra)-2": {
       "peso": "5",
       "timestamp": "2026-10-22T00:40:57.009Z"
+    },
+    "N3-S1-a-Curl Bíceps (2 mancuernas → barra)-3": {
+      "peso": "5",
+      "timestamp": "2026-10-22T00:44:16.607Z"
     }
   },
   "rehab": {},
@@ -3839,5 +3843,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-22T00:41:00.021Z"
+  "timestamp": "2026-10-22T00:44:20.628Z"
 }
