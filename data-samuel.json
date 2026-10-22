@@ -4513,6 +4513,19 @@
             "completado": false
           }
         ]
+      },
+      "2026-10-22": {
+        "movilizacion_astragalo": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "_ts": "2026-10-22T23:03:09.042Z"
       }
     },
     "mediciones": [
@@ -6236,5 +6249,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-22T23:00:52.736Z"
+  "timestamp": "2026-10-22T23:03:12.045Z"
 }
