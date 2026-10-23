@@ -3723,6 +3723,13 @@
       "reps": "11",
       "checked": true,
       "rir": "2"
+    },
+    "M7-S4-jue-Press Inclinado (barra)-3": {
+      "peso": "47,5",
+      "timestamp": "2026-10-23T19:05:34.195Z",
+      "reps": "11",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -6421,5 +6428,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-23T18:56:45.444Z"
+  "timestamp": "2026-10-23T19:05:37.316Z"
 }
