@@ -3744,6 +3744,12 @@
       "reps": "10",
       "checked": true,
       "rir": "1"
+    },
+    "M7-S4-jue-Curl Martillo (DB)-1": {
+      "peso": "10",
+      "timestamp": "2026-10-23T19:34:15.809Z",
+      "reps": "18",
+      "checked": true
     }
   },
   "rehab": {
@@ -6442,5 +6448,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-23T19:25:07.892Z"
+  "timestamp": "2026-10-23T19:34:15.732Z"
 }
