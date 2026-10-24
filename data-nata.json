@@ -3051,6 +3051,10 @@
     "N3-S1-b-Remo Pendlay (barra)-2": {
       "peso": "21,1",
       "timestamp": "2026-10-24T11:28:20.656Z"
+    },
+    "N3-S1-b-Remo Pendlay (barra)-3": {
+      "peso": "21,1",
+      "timestamp": "2026-10-24T11:28:25.091Z"
     }
   },
   "rehab": {},
@@ -3932,5 +3936,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-24T11:28:23.664Z"
+  "timestamp": "2026-10-24T11:28:28.101Z"
 }
