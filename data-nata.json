@@ -3017,7 +3017,10 @@
     },
     "N3-S1-b-RDL (barra)-1": {
       "peso": "25",
-      "timestamp": "2026-10-24T11:09:59.556Z"
+      "timestamp": "2026-10-24T11:12:33.808Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "2"
     },
     "N3-S1-b-RDL (barra)-2": {
       "peso": "25",
@@ -3911,5 +3914,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-24T11:10:12.706Z"
+  "timestamp": "2026-10-24T11:12:36.832Z"
 }
