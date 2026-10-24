@@ -3041,6 +3041,10 @@
       "timestamp": "2026-10-24T11:23:25.715Z",
       "reps": "8",
       "checked": true
+    },
+    "N3-S1-b-Remo Pendlay (barra)-1": {
+      "reps": "8",
+      "timestamp": "2026-10-24T11:28:05.235Z"
     }
   },
   "rehab": {},
@@ -3922,5 +3926,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-24T11:23:29.176Z"
+  "timestamp": "2026-10-24T11:28:08.250Z"
 }
