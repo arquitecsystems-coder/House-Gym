@@ -3026,6 +3026,10 @@
     "N3-S1-b-RDL (barra)-3": {
       "peso": "25",
       "timestamp": "2026-10-24T11:10:05.927Z"
+    },
+    "N3-S1-b-RDL (barra)-4": {
+      "peso": "25",
+      "timestamp": "2026-10-24T11:10:09.694Z"
     }
   },
   "rehab": {},
@@ -3907,5 +3911,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-24T11:10:08.946Z"
+  "timestamp": "2026-10-24T11:10:12.706Z"
 }
