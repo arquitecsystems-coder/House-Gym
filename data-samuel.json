@@ -4744,7 +4744,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-24T01:19:45.782Z",
+        "_ts": "2026-10-24T01:49:08.161Z",
         "hombro_correa_izq": [
           {
             "valor": null,
@@ -4861,6 +4861,20 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "straddle_cr": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -6591,5 +6605,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-24T01:19:48.786Z"
+  "timestamp": "2026-10-24T01:49:11.164Z"
 }
