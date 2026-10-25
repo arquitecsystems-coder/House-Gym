@@ -4899,7 +4899,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-25T02:49:13.461Z",
+        "_ts": "2026-10-25T02:49:17.074Z",
         "cruzado_der": [
           {
             "valor": null,
@@ -4908,6 +4908,16 @@
           {
             "valor": null,
             "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "sapo": [
+          {
+            "valor": null,
+            "completado": true
           },
           {
             "valor": null,
@@ -6642,5 +6652,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-25T02:49:16.463Z"
+  "timestamp": "2026-10-25T02:49:20.076Z"
 }
