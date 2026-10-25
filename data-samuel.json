@@ -4899,7 +4899,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-25T02:52:25.764Z",
+        "_ts": "2026-10-25T03:00:40.526Z",
         "cruzado_der": [
           {
             "valor": null,
@@ -4922,6 +4922,20 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "hombro_correa_izq": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -6652,5 +6666,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-25T02:52:28.766Z"
+  "timestamp": "2026-10-25T03:00:43.527Z"
 }
