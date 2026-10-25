@@ -4899,7 +4899,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-25T03:12:40.942Z",
+        "_ts": "2026-10-25T03:14:01.094Z",
         "cruzado_der": [
           {
             "valor": null,
@@ -4957,7 +4957,7 @@
         "couch_stretch": [
           {
             "valor": null,
-            "completado": false
+            "completado": true
           },
           {
             "valor": 20,
@@ -6700,5 +6700,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-25T03:12:43.949Z"
+  "timestamp": "2026-10-25T03:14:04.096Z"
 }
