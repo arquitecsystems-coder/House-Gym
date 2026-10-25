@@ -4899,7 +4899,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-25T03:23:52.351Z",
+        "_ts": "2026-10-25T03:23:59.544Z",
         "cruzado_der": [
           {
             "valor": null,
@@ -4967,6 +4967,12 @@
             "valor": null,
             "completado": true
           },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "inclinacion_pelvis": [
           {
             "valor": null,
             "completado": true
@@ -6700,5 +6706,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-25T03:23:55.353Z"
+  "timestamp": "2026-10-25T03:24:02.546Z"
 }
