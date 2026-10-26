@@ -3115,6 +3115,14 @@
       "timestamp": "2026-10-26T23:35:21.338Z",
       "reps": "10",
       "checked": true
+    },
+    "N3-S1-b-Y-T banco inclinado-1": {
+      "checked": true,
+      "timestamp": "2026-10-26T23:35:25.721Z"
+    },
+    "N3-S1-b-Y-T banco inclinado-2": {
+      "checked": true,
+      "timestamp": "2026-10-26T23:35:26.061Z"
     }
   },
   "rehab": {},
@@ -3996,5 +4004,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-26T23:35:24.368Z"
+  "timestamp": "2026-10-26T23:35:29.072Z"
 }
