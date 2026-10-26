@@ -3786,6 +3786,10 @@
       "reps": "11",
       "checked": true,
       "rir": "2"
+    },
+    "nota-sesion-M7-S5-lun": {
+      "nota": "45lb en inclinado por lado ",
+      "timestamp": "2026-10-26T18:37:41.041Z"
     }
   },
   "rehab": {
@@ -7019,5 +7023,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-26T18:37:30.438Z"
+  "timestamp": "2026-10-26T18:37:44.044Z"
 }
