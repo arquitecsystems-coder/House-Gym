@@ -61,6 +61,7 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 - Chips de semanas: pasadas = lo registrado; futuras de básicos = proyección desde el peso real; tras el cierre = "bloque cerrado".
 - Doble progresión (resto de ejercicios con barra): sube solo cuando TODAS las series llegan al tope del rango. Mancuernas (pares 5/10/20kg): solo reps, sin saltos de carga.
 - Equipo: barra 15kg, disco kg mínimo 5kg (saltos de 10kg), un par de cada microdisco 0.5/1.25/2.5/5lb. Constantes `BARRA_KG`, `PASO_KG`, `MICRO_DISCOS`.
+- Mancuernas ajustables Sportfitness 10-90 lb (llegaron el 26 oct 2026, confirmadas por foto de la perilla; aún NO usadas por la app, entran en el M8). Posiciones por mancuerna en lb: 10, 15, 20, 25, 28.5, 33, 41.5, 45, 50, 55, 60, 65, 70.5, 75, 80, 85, 90 (kg: 4.5, 6.8, 9.1, 11.3, 12.9, 15.0, 18.8, 20.4, 22.7, 24.9, 27.2, 29.5, 32.0, 34.0, 36.3, 38.6, 40.8). Saltos ~2.3 kg salvo 25->28.5->33 (más finos) y 33->41.5 (~3.9 kg). Reemplazan los pares fijos 5/10/20 kg: martillo, lateral y pullover pasan a doble progresión con carga.
 
 ## Movilidad (módulo interno "rehab")
 
