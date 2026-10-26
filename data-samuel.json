@@ -3765,6 +3765,12 @@
       "reps": "5",
       "checked": true,
       "rir": "1"
+    },
+    "M7-S5-lun-Press Banca (barra)-2": {
+      "peso": "75",
+      "timestamp": "2026-10-26T18:15:54.732Z",
+      "reps": "3",
+      "checked": true
     }
   },
   "rehab": {
@@ -6998,5 +7004,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-26T18:07:40.809Z"
+  "timestamp": "2026-10-26T18:15:57.742Z"
 }
