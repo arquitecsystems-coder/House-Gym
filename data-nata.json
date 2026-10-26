@@ -3082,7 +3082,9 @@
     },
     "N3-S1-b-Pullover (mancuerna)-1": {
       "peso": "7,5",
-      "timestamp": "2026-10-26T22:57:20.517Z"
+      "timestamp": "2026-10-26T23:00:00.439Z",
+      "reps": "10",
+      "checked": true
     },
     "N3-S1-b-Pullover (mancuerna)-2": {
       "peso": "7,5",
@@ -3972,5 +3974,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-26T22:57:31.365Z"
+  "timestamp": "2026-10-26T23:00:03.451Z"
 }
