@@ -3893,6 +3893,10 @@
       "reps": "12",
       "checked": true,
       "rir": "1"
+    },
+    "nota-sesion-M7-S5-mar": {
+      "nota": "Pull Over con LB",
+      "timestamp": "2026-10-27T16:04:44.449Z"
     }
   },
   "rehab": {
@@ -7352,5 +7356,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T16:04:31.824Z"
+  "timestamp": "2026-10-27T16:04:47.452Z"
 }
