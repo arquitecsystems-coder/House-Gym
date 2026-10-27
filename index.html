@@ -2188,7 +2188,7 @@ const MESOCICLOS = {
         { nombre: "Press Inclinado (barra)", series: 3, rol: "secundario",
           nota: "Pasa a secundario. Cuando lleguen las mancuernas ajustables: cambiar a mancuerna sin cortar el bloque. Trayectoria humeral libre, terapéutico para la asimetría escapular izquierda.",
           semanas: ["60kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","~60% x 15 (descarga)"] },
-        { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
+        { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio", ancla: true,
           semanas: ["30kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","20kg x 15 (descarga)"] },
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
           nota: "Topado en 10kg hasta que lleguen las ajustables. Pares disponibles 5/10/20kg: el siguiente salto es a 20kg (+100%), inviable. Progresa solo por reps hasta que lleguen las ajustables. Braquial rezagado: único estímulo específico.",
@@ -2207,7 +2207,7 @@ const MESOCICLOS = {
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
           nota: "VUELVE. Es el único ejercicio que carga el dorsal en estiramiento largo, ángulo que ningún remo alcanza. Topado en 20kg (pares disponibles 5/10/20kg): progresa solo por reps hasta que lleguen las ajustables.",
           semanas: ["20kg x 8-20","x 8-20","x 8-20","x 8-20","x 8-20 (pico)","10kg x 12 (descarga)"] },
-        { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
+        { nombre: "Press Francés (barra)", series: 2, rol: "accesorio", ancla: true,
           semanas: ["32.5kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","22.5kg x 15 (descarga)"] },
       ],
       mie: [
@@ -2300,7 +2300,7 @@ const RMS_REFERENCIA = {
 // CONFIG POR USUARIO
 // ============================================================
 const USUARIOS = {
-  samuel: { mesociclos: ['M4', 'M5', 'M6', 'M7'], tieneRehab: true,  renderTest: null },
+  samuel: { mesociclos: ['M4', 'M5', 'M6', 'M7'], tieneRehab: true,  renderTest: null, tieneEquipo: true },
   dolly:  { mesociclos: ['D1','D2'],    tieneRehab: false, renderTest: null },
   nata:   { mesociclos: ['N1','N2','N3'], tieneRehab: false, renderTest: null, tieneHabitos: true },
 };
@@ -2841,12 +2841,31 @@ function setDia(d) {
 // no del calendario: si se salta una semana, el peso no "salta" solo.
 // Equipo real: barra 15kg, disco kg más pequeño 5kg (carga kg en pasos
 // de 10kg: 15, 25, 35...). Encima, UN par de cada microdisco en lb.
-const MICRO_DISCOS = [
-  { kg: 0.45, label: "0.5lb" },
-  { kg: 1.13, label: "1.25lb" },
-  { kg: 2.27, label: "2.5lb" },
-  { kg: 4.54, label: "5lb" },
-];
+// ── EQUIPO de Samuel (fuente única: lo usan las sugerencias y la pantalla Config > Equipo) ──
+// Si cambia el equipo (discos nuevos, otra mancuerna), se edita SOLO aquí.
+const EQUIPO = {
+  barraKg: 15,
+  discoMinKg: 5,   // disco kg más pequeño, uno por lado -> la carga en kg sube de 10 en 10
+  micro: [         // UN par de cada microdisco
+    { kg: 0.45, label: "0.5lb" },
+    { kg: 1.13, label: "1.25lb" },
+    { kg: 2.27, label: "2.5lb" },
+    { kg: 4.54, label: "5lb" },
+  ],
+  // Mancuernas ajustables Sportfitness 10-90 lb: posiciones de la perilla (por mancuerna, en lb)
+  mancuernaLb: [10, 15, 20, 25, 28.5, 33, 41.5, 45, 50, 55, 60, 65, 70.5, 75, 80, 85, 90],
+};
+const MICRO_DISCOS = EQUIPO.micro;
+const LB_KG = 0.45359237;
+function lbAKg(lb) { return lb * LB_KG; }
+function fmtLb(lb) { return String(Math.round(lb * 10) / 10); }
+function fmtPerilla(lb) { return fmtLb(lb) + ' lb · ' + fmtKg(lbAKg(lb)) + ' kg'; }
+function perillaSiguiente(lb) { return EQUIPO.mancuernaLb.find(function(x) { return x > lb + 0.01; }) ?? null; }
+// Posición más alta de la perilla que no pasa de "maxLb"
+function perillaHasta(maxLb) {
+  const ok = EQUIPO.mancuernaLb.filter(function(x) { return x <= maxLb + 0.01; });
+  return ok.length ? ok[ok.length - 1] : EQUIPO.mancuernaLb[0];
+}
 
 function parsePeso(v) {
   const n = parseFloat(String(v ?? "").replace(",", ".").replace(/kg/i, ""));
@@ -2857,7 +2876,7 @@ function fmtKg(n) {
   return String(Math.round(n * 10) / 10);
 }
 
-const BARRA_KG = 15, PASO_KG = 10;
+const BARRA_KG = EQUIPO.barraKg, PASO_KG = EQUIPO.discoMinKg * 2;
 
 // Carga real más cercana: barra + discos kg (pasos de 10) + microdiscos (máx 1 par de cada).
 // minimo: la carga nunca queda por debajo de este valor (para que "subir" siempre suba).
@@ -2911,6 +2930,8 @@ function ultimaSesion(ej, meso, semana, dia) {
 
 // Traduce el peso escrito en el plan a la carga real posible con barra
 function cargaRealPlan(ej, semana) {
+  const lb = (ej.semanas[semana - 1] || "").match(/^(\d+(?:\.\d+)?) lb/);
+  if (lb) return { tipo: "info", texto: `Perilla: ${fmtPerilla(+lb[1])}` };
   if (!/\(barra/.test(ej.nombre)) return null;
   const m = (ej.semanas[semana - 1] || "").match(/^~?(\d+(?:\.\d+)?)kg/);
   if (!m) return null;
@@ -2998,7 +3019,7 @@ function analizarLineal(ej, mesoKey, semana, dia) {
     let txt, objetivo;
     if (esTriple) {
       objetivo = `Triple pesado desde ${fmtKg(d.total)}kg`;
-      txt = intro + `Hoy triple pesado: sube desde ${fmtKg(d.total)}kg hasta el máximo x3 a RIR 0-1.`;
+      txt = intro + `Hoy triple pesado: sube desde ${fmtKg(d.total)}kg (${d.texto}) hasta el máximo x3 a RIR 0-1.`;
       if (refE1) txt += ` Para superar ${ref.label} necesitas más de ${fmtKg(refE1 / 1.1)}kg x3.`;
     } else {
       objetivo = `AMRAP ${fmtKg(d.total)}kg`;
@@ -3077,6 +3098,36 @@ function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
   });
 }
 
+// Mancuernas ajustables: rige en los mesociclos con mancuernas: "ajustables" (desde el M8).
+// Ahí el peso de los ejercicios con mancuerna se anota en LIBRAS (el número de la perilla).
+function esMancuernaAjustable(ej, meso) {
+  return !!(meso && meso.mancuernas === "ajustables" && (ej.equipo === "mancuerna" || /\(DB\)/.test(ej.nombre)));
+}
+
+// Regla del salto: con la perilla los escalones no son parejos (25->28.5 es +14%, 33->41.5 es +26%).
+// Se sube cuando la serie más floja predice (Epley) al menos el mínimo del rango con la siguiente
+// posición; así cada salto pide las reps que realmente hacen falta, no un tope fijo.
+function sugerenciaMancuerna(ej, ult, min, max) {
+  const lb = ult.sets[0].peso;
+  const repsTxt = ult.sets.map(function(x) { return x.reps; }).join("/");
+  const completas = ult.sets.length >= ej.series;
+  const floja = Math.min.apply(null, ult.sets.map(function(x) { return x.reps; }));
+  const s1 = ult.sets[0];
+  if (s1.reps < min) {
+    const e1 = e1rm(lb, s1.reps, s1.rir ?? 1);
+    const nuevo = perillaHasta(e1 / (1 + (min + 2) / 30));
+    return { tipo: "bajar", objetivo: `${fmtLb(nuevo)} lb x ${min}-${max}`, texto: `S${ult.w}: ${fmtLb(lb)} lb x ${repsTxt}, la primera serie quedó por debajo del rango (${min}). Hoy perilla en ${fmtPerilla(nuevo)}.` };
+  }
+  const sig = perillaSiguiente(lb);
+  if (sig == null) return { tipo: "mantener", objetivo: `${fmtLb(lb)} lb x ${min}-${max}`, texto: `${fmtPerilla(lb)} es el máximo de la mancuerna: sigue sumando reps.` };
+  const predice = 30 * ((lb * (1 + floja / 30)) / sig - 1);
+  const necesarias = Math.ceil(30 * ((sig / lb) * (1 + min / 30) - 1));
+  if (completas && predice >= min) {
+    return { tipo: "subir", objetivo: `${fmtLb(sig)} lb x ${min}-${max}`, texto: `S${ult.w}: ${fmtLb(lb)} lb x ${repsTxt}. Hoy perilla en ${fmtPerilla(sig)}; reps vuelven a ${min}+.` };
+  }
+  return { tipo: "mantener", objetivo: `${fmtLb(lb)} lb x ${min}-${max}`, texto: `S${ult.w}: ${fmtLb(lb)} lb x ${repsTxt}. Mantén ${fmtPerilla(lb)}. Para subir a ${fmtLb(sig)} lb: ${necesarias}+ reps en todas las series.` };
+}
+
 // Devuelve { tipo: "subir"|"mantener"|"cierre"|"info", texto } o null
 function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   const meso = MESOCICLOS[mesoKey];
@@ -3089,12 +3140,13 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   if (ej.prog) return null;
   const txtBase = ej.semanas[0] || "";
   const rango = (ej.semanas[semana - 1] || "").match(/x (\d+)-(\d+)/) || txtBase.match(/x (\d+)-(\d+)/);
-  if (!rango || !/kg/.test(txtBase)) return null;
+  if (!rango || !(/kg/.test(txtBase) || (esMancuernaAjustable(ej, meso) && /lb/.test(txtBase)))) return null;
   const min = +rango[1], max = +rango[2];
   const ult = ultimaSesion(ej, mesoKey, semana, dia);
   if (!ult) return cargaRealPlan(ej, 1) || { tipo: "info", texto: `Sin registro previo en este bloque: usa el peso de S1.` };
   const peso = ult.sets[0].peso;
   if (peso == null) return null;
+  if (esMancuernaAjustable(ej, meso)) return sugerenciaMancuerna(ej, ult, min, max);
   const completas = ult.sets.length >= ej.series;
   const alTope = completas && ult.sets.every(x => x.reps >= max && (x.peso ?? peso) >= peso);
   const repsTxt = ult.sets.map(x => x.reps).join("/");
@@ -3110,9 +3162,11 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   if (alTope) {
     if (inc == null) return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Mancuernas solo en pares de 5/10/20kg: no hay salto posible. Mantén ${fmtKg(peso)}kg y sigue sumando reps hasta que lleguen las ajustables.` };
     const d = combinarDiscos(peso + inc, peso + 0.3);
-    return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg = ${d.texto}. Reps vuelven a ${min}+.` };
+    const discos = /\(barra/.test(ej.nombre) ? ` = ${d.texto}` : '';
+    return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg${discos}. Reps vuelven a ${min}+.` };
   }
-  return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg y busca +1 rep por serie. ${inc == null ? "Mancuerna: progresa solo por reps." : `Se sube cuando TODAS las series lleguen a ${max}.`}` };
+  const carga = (inc != null && /\(barra/.test(ej.nombre)) ? ` (${combinarDiscos(peso).texto})` : '';
+  return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg${carga} y busca +1 rep por serie. ${inc == null ? "Mancuerna: progresa solo por reps." : `Se sube cuando TODAS las series lleguen a ${max}.`}` };
 }
 
 // ── EJERCICIO CARD ──
@@ -3197,7 +3251,7 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       <div>
         <div class="exercise-name">${ej.nombre}${ej.info ? `<button class="info-btn" onclick="event.stopPropagation();toggleInfo(this)" aria-label="Qué es este ejercicio">i</button>` : ""}</div>
         ${ej.info ? `<div class="info-panel" style="display:none">${ej.info}</div>` : ""}
-        <div class="exercise-meta">${ej.series} series — objetivo: ${planActual}</div>
+        <div class="exercise-meta">${MESOCICLOS[meso]?.modelo === "doble_progresion" ? CLASE_LABEL[claseEjercicio(ej)] + " · " : ""}${ej.series} series — objetivo: ${planActual}</div>
       </div>
       <div class="exercise-badge ${allChecked ? 'done' : ''}">
         ${allChecked ? "✓ hecho" : (ej.series+"s")}
@@ -6355,7 +6409,7 @@ document.addEventListener('click',      _unlockAudio, { passive: true, once: tru
 
 function getTimerConfig() {
   const saved = localStorage.getItem(uk('timer-config'));
-  const defaults = { tiempoFuerza: 180, tiempoAccesorio: 120 };
+  const defaults = { tiempoFuerza: 180, tiempoAncla: 150, tiempoAccesorio: 120 };
   return saved ? Object.assign({}, defaults, JSON.parse(saved)) : defaults;
 }
 function saveTimerConfig(d) {
@@ -6458,6 +6512,21 @@ function startTimer(duracionSeg, label) {
   _timer._iv = setInterval(updateTimerBar, 200);
 }
 
+// Clase de ejercicio (define el descanso):
+//   basico    = básicos pesados que se miden bloque a bloque (prog lineal/rir o rol fuerza) y compuestos
+//   ancla     = ancla de fuerza de brazo (curl barra, press francés): se mide bloque a bloque
+//   accesorio = estímulo (aislamientos, core, patrón motor)
+// Un ejercicio puede fijarla con "clase"; si no, se deduce.
+function claseEjercicio(ej) {
+  if (!ej) return 'basico';
+  if (ej.clase) return ej.clase;
+  if (ej.ancla) return 'ancla';
+  if (ej.prog && (ej.prog.tipo === 'lineal' || ej.prog.tipo === 'rir')) return 'basico';
+  if (['fuerza', 'secundario', 'volumen', 'tecnico'].indexOf(ej.rol) >= 0) return 'basico';
+  return 'accesorio';
+}
+const CLASE_LABEL = { basico: 'Básico', ancla: 'Ancla', accesorio: 'Accesorio' };
+
 function startTimerForKey(key) {
   const cfg = getTimerConfig();
   const parts = key.split('-');
@@ -6468,8 +6537,8 @@ function startTimerForKey(key) {
   const ejNombre = parts.slice(4, parts.length - 1).join('-');
   const plan = meso.plan && meso.plan[diaKey] ? meso.plan[diaKey] : [];
   const ej = plan.find(e => e.nombre === ejNombre);
-  const rol = ej ? ej.rol : null;
-  const duracion = (rol === 'accesorio') ? cfg.tiempoAccesorio : cfg.tiempoFuerza;
+  const clase = claseEjercicio(ej);
+  const duracion = clase === 'accesorio' ? cfg.tiempoAccesorio : clase === 'ancla' ? cfg.tiempoAncla : cfg.tiempoFuerza;
   const label = ej ? ej.nombre : 'Descanso';
   startTimer(duracion, label);
 }
@@ -6549,9 +6618,28 @@ function renderTimerConfig() {
       return '<button onclick="saveTimerConfigField(\'' + field + '\',' + s + ')" style="' + active + 'border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:12px;font-family:var(--font-mono)">' + lbl + '</button>';
     }).join(' ');
   }
-  return '<div class="config-panel"><div class="config-title">⏱ Temporizador de descanso</div><p style="font-size:12px;color:var(--muted);margin-bottom:12px">Se activa automático al completar una serie. Toca el contador para pausar/reanudar.</p><div style="margin-bottom:10px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">Fuerza (principales)</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoFuerza', cfg.tiempoFuerza) + '</div></div><div style="margin-bottom:14px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">Accesorios</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoAccesorio', cfg.tiempoAccesorio) + '</div></div><button onclick="playTimerBeep();this.textContent=\'Sonando...\';var b=this;setTimeout(function(){b.textContent=\'🔔 Probar sonido\'},4000)" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:13px;cursor:pointer">🔔 Probar sonido</button></div>';
+  return '<div class="config-panel"><div class="config-title">⏱ Temporizador de descanso</div><p style="font-size:12px;color:var(--muted);margin-bottom:12px">Se activa automático al completar una serie. Toca el contador para pausar/reanudar.</p><div style="margin-bottom:10px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">Básicos</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoFuerza', cfg.tiempoFuerza) + '</div></div><div style="margin-bottom:10px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">Anclas (curl barra, press francés)</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoAncla', cfg.tiempoAncla) + '</div></div><div style="margin-bottom:14px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">Accesorios</div><div style="display:flex;flex-wrap:wrap;gap:6px">' + chips('tiempoAccesorio', cfg.tiempoAccesorio) + '</div></div><button onclick="playTimerBeep();this.textContent=\'Sonando...\';var b=this;setTimeout(function(){b.textContent=\'🔔 Probar sonido\'},4000)" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:13px;cursor:pointer">🔔 Probar sonido</button></div>';
 }
 
+
+// Equipo (solo lectura): lo que la app usa para calcular cargas. Se edita en EQUIPO.
+function renderEquipoConfig() {
+  const fila = function(label, valor) {
+    return '<div style="display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px">'
+      + '<span style="color:var(--muted)">'+label+'</span><span style="font-family:var(--font-mono);text-align:right">'+valor+'</span></div>';
+  };
+  const micro = EQUIPO.micro.map(function(m) { return m.label.replace('lb', ' lb') + ' = +' + m.kg + ' kg'; }).join('<br>');
+  const perilla = EQUIPO.mancuernaLb.map(function(lb) {
+    return '<span style="display:inline-block;min-width:64px;padding:3px 6px;margin:2px;border:1px solid var(--border);border-radius:6px;font-family:var(--font-mono);font-size:11px;text-align:center">'
+      + fmtLb(lb) + ' lb<br><span style="color:var(--muted)">' + fmtKg(lbAKg(lb)) + ' kg</span></span>';
+  }).join('');
+  return '<div class="config-panel"><div class="config-title">🏋️ Equipo</div>'
+    + fila('Barra', EQUIPO.barraKg + ' kg')
+    + fila('Discos kg', 'desde ' + EQUIPO.discoMinKg + ' kg por lado (saltos de ' + (EQUIPO.discoMinKg * 2) + ' kg)')
+    + fila('Microdiscos (1 par de cada, kg)', micro)
+    + '<div style="font-size:12px;color:var(--muted);margin:10px 0 4px">Mancuernas ajustables (por mancuerna)</div>'
+    + '<div>' + perilla + '</div></div>';
+}
 
 // ── CONFIG VIEW ──
 function renderConfig(main) {
@@ -6596,6 +6684,8 @@ function renderConfig(main) {
         <span style="color:var(--accent)">□</span> Pistol squat izquierdo inicia descenso sin bloqueo
       </div>
     </div>` : ''}
+
+    ${USUARIOS[state.currentUser]?.tieneEquipo ? renderEquipoConfig() : ''}
 
     ${renderTimerConfig()}
   `;
