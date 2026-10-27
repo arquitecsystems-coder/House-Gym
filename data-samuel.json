@@ -5274,7 +5274,7 @@
             "completado": false
           }
         ],
-        "_ts": "2026-10-27T00:57:07.485Z",
+        "_ts": "2026-10-27T01:29:26.895Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -5306,11 +5306,119 @@
           },
           {
             "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "hombro_correa_izq": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "hombro_correa_der": [
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "liftoff_der": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "couch_stretch": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "split_apoyos": [
+          {
+            "valor": 20,
+            "completado": true
+          },
+          {
+            "valor": 10,
+            "completado": true
+          },
+          {
+            "valor": null,
             "completado": false
           },
           {
             "valor": null,
             "completado": false
+          }
+        ],
+        "elevacion_pierna": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "sapo": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "inclinacion_pelvis": [
+          {
+            "valor": null,
+            "completado": true
           }
         ]
       }
@@ -7132,5 +7240,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T00:57:10.488Z"
+  "timestamp": "2026-10-27T11:18:48.603Z"
 }
