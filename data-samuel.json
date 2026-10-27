@@ -3918,6 +3918,13 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "M7-S5-mar-Press Francés (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-10-27T21:30:56.744Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -7377,5 +7384,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T21:30:50.837Z"
+  "timestamp": "2026-10-27T21:51:54.105Z"
 }
