@@ -6915,6 +6915,15 @@
             "prot": 5.4,
             "carbs": 56,
             "grasas": 0.6
+          },
+          {
+            "foodId": "chuleton_cerdo",
+            "nombre": "Chuletón de cerdo (con grasa)",
+            "gramos": 100,
+            "kcal": 231,
+            "prot": 17,
+            "carbs": 0,
+            "grasas": 18
           }
         ]
       },
@@ -7322,5 +7331,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T15:52:09.198Z"
+  "timestamp": "2026-10-27T15:52:24.103Z"
 }
