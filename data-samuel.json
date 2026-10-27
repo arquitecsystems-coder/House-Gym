@@ -6908,6 +6908,19 @@
             "unidades": 6
           }
         ]
+      },
+      "2026-10-27": {
+        "comidas": [
+          {
+            "foodId": "queso_campesino",
+            "nombre": "Queso campesino",
+            "gramos": 150,
+            "kcal": 450,
+            "prot": 30,
+            "carbs": 4.5,
+            "grasas": 34.5
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -7272,5 +7285,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T15:45:45.669Z"
+  "timestamp": "2026-10-27T15:47:44.946Z"
 }
