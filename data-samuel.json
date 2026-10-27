@@ -5258,6 +5258,47 @@
             "completado": true
           }
         ]
+      },
+      "2026-10-26": {
+        "dorsiflexion_carga": [
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "_ts": "2026-10-27T00:56:59.446Z",
+        "movilizacion_astragalo": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "sentadilla_pared": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ]
       }
     },
     "mediciones": [
@@ -7077,5 +7118,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T00:56:51.405Z"
+  "timestamp": "2026-10-27T00:57:02.449Z"
 }
