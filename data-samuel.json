@@ -3897,6 +3897,13 @@
     "nota-sesion-M7-S5-mar": {
       "nota": "Pull Over con LB",
       "timestamp": "2026-10-27T16:04:44.449Z"
+    },
+    "M7-S5-mar-Pullover (DB)-2": {
+      "peso": "33",
+      "timestamp": "2026-10-27T16:15:33.688Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -7356,5 +7363,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T16:04:47.452Z"
+  "timestamp": "2026-10-27T16:15:33.578Z"
 }
