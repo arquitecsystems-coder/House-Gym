@@ -5274,7 +5274,7 @@
             "completado": false
           }
         ],
-        "_ts": "2026-10-27T00:56:59.446Z",
+        "_ts": "2026-10-27T00:57:07.485Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -5297,6 +5297,20 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "cruzado_der": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -7118,5 +7132,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T00:57:02.449Z"
+  "timestamp": "2026-10-27T00:57:10.488Z"
 }
