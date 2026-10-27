@@ -5684,6 +5684,10 @@
       "2026-10-21": {
         "ayunas": 77.6,
         "noche": null
+      },
+      "2026-10-27": {
+        "ayunas": 76.6,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -7240,5 +7244,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T11:18:48.603Z"
+  "timestamp": "2026-10-27T15:03:23.829Z"
 }
