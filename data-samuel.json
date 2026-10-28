@@ -5589,10 +5589,10 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           }
         ],
-        "_ts": "2026-10-28T21:21:03.674Z"
+        "_ts": "2026-10-28T21:23:04.854Z"
       }
     },
     "mediciones": [
@@ -7479,5 +7479,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-28T21:21:06.676Z"
+  "timestamp": "2026-10-28T21:23:07.857Z"
 }
