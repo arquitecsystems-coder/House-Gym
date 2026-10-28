@@ -3925,6 +3925,94 @@
       "reps": "8",
       "checked": true,
       "rir": "0"
+    },
+    "M7-S5-mie-Sentadilla (barra + cuña)-1": {
+      "peso": "95",
+      "timestamp": "2026-10-28T17:15:03.832Z",
+      "reps": "4",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-Sentadilla (barra + cuña)-2": {
+      "peso": "95",
+      "timestamp": "2026-10-28T17:21:12.128Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-Sentadilla (barra + cuña)-3": {
+      "peso": "95",
+      "timestamp": "2026-10-28T17:29:04.186Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-RDL sin flexión de rodilla (barra)-1": {
+      "peso": "70",
+      "timestamp": "2026-10-28T17:38:14.324Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-RDL sin flexión de rodilla (barra)-2": {
+      "peso": "70",
+      "timestamp": "2026-10-28T17:43:10.463Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-RDL sin flexión de rodilla (barra)-3": {
+      "peso": "70",
+      "timestamp": "2026-10-28T17:47:46.044Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S5-mie-Dragon Flag (negativas)-1": {
+      "reps": "10",
+      "timestamp": "2026-10-28T17:53:39.118Z",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-Dragon Flag (negativas)-2": {
+      "reps": "9",
+      "timestamp": "2026-10-28T17:59:09.785Z",
+      "rir": "1",
+      "checked": true
+    },
+    "M7-S5-mie-Dragon Flag (negativas)-3": {
+      "reps": "10",
+      "timestamp": "2026-10-28T18:05:16.027Z",
+      "rir": "0",
+      "checked": true
+    },
+    "M7-S5-mie-Crunch Abdominal-1": {
+      "peso": "20",
+      "timestamp": "2026-10-28T18:09:37.773Z",
+      "reps": "14",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-mie-Crunch Abdominal-2": {
+      "peso": "20",
+      "timestamp": "2026-10-28T18:43:51.997Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S5-mie-Hip Thrust (barra)-1": {
+      "peso": "45",
+      "timestamp": "2026-10-28T22:17:10.713Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
+    },
+    "M7-S5-mie-Hip Thrust (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-10-28T22:17:11.873Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -5502,6 +5590,99 @@
             "completado": true
           }
         ]
+      },
+      "2026-10-28": {
+        "cruzado_der": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "_ts": "2026-10-28T21:52:41.978Z",
+        "hombro_correa_izq": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "hombro_correa_der": [
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "liftoff_der": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "couch_stretch": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "split_apoyos": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "sapo": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ]
       }
     },
     "mediciones": [
@@ -5768,6 +5949,10 @@
       },
       "2026-10-27": {
         "ayunas": 76.6,
+        "noche": null
+      },
+      "2026-10-28": {
+        "ayunas": 76.9,
         "noche": null
       }
     },
@@ -7384,5 +7569,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-27T21:51:54.105Z"
+  "timestamp": "2026-10-28T22:17:14.882Z"
 }
