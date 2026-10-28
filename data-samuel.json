@@ -5585,14 +5585,14 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           },
           {
             "valor": null,
             "completado": false
           }
         ],
-        "_ts": "2026-10-28T21:19:03.869Z"
+        "_ts": "2026-10-28T21:21:03.674Z"
       }
     },
     "mediciones": [
@@ -7479,5 +7479,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-28T21:19:06.872Z"
+  "timestamp": "2026-10-28T21:21:06.676Z"
 }
