@@ -3967,6 +3967,12 @@
       "reps": "5",
       "checked": true,
       "rir": "0"
+    },
+    "M7-S5-mie-Dragon Flag (negativas)-1": {
+      "reps": "10",
+      "timestamp": "2026-10-28T17:53:39.118Z",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -7430,5 +7436,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-28T17:47:49.048Z"
+  "timestamp": "2026-10-28T17:53:42.124Z"
 }
