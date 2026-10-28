@@ -5592,7 +5592,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-28T21:36:58.492Z",
+        "_ts": "2026-10-28T21:38:26.161Z",
         "hombro_correa_izq": [
           {
             "valor": null,
@@ -5621,6 +5621,24 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "couch_stretch": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -7509,5 +7527,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-28T21:37:01.494Z"
+  "timestamp": "2026-10-28T21:38:29.163Z"
 }
