@@ -5592,7 +5592,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-28T21:35:26.797Z",
+        "_ts": "2026-10-28T21:35:51.311Z",
         "hombro_correa_izq": [
           {
             "valor": null,
@@ -5611,6 +5611,16 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "liftoff_der": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -7499,5 +7509,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-28T21:35:29.801Z"
+  "timestamp": "2026-10-28T21:35:54.313Z"
 }
