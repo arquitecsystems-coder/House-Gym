@@ -2268,7 +2268,81 @@ const MESOCICLOS = {
           semanas: ["20kg x 15-30","x 15-30","x 15-30","x 15-30","x 15-30 (pico)","15kg x 20 (descarga)"] },
       ],
     }
-  }
+  },
+  "M8": {
+    label: "M8 — 2026",
+    semanas: 6,
+    fechas: ["9–14 nov","16–21 nov","23–28 nov","30 nov–5 dic","7–12 dic","14–19 dic"],
+    modelo: "doble_progresion",
+    mancuernas: "ajustables",
+    flotante: true,
+    dias: [
+      { key: "a", label: "A", titulo: "Torso — Pesado" },
+      { key: "b", label: "B", titulo: "Pierna — Pesado" },
+      { key: "c", label: "C", titulo: "Torso — Técnico" },
+      { key: "d", label: "D", titulo: "Pierna — Volumen" },
+    ],
+    plan: {
+      a: [
+        { nombre: "Press Banca (barra)", series: 1, rol: "fuerza", prog: { tipo: "lineal", reps: 5, inc: 1.13, cierre: "amrap", ref: { peso: 75, reps: 5, rir: 1, label: "M7 75x5 RIR 1" } },
+          semanas: ["73.4kg x 5","x 5","x 5","x 5","AMRAP con último peso completado (pico)","55kg x 5 (descarga)"] },
+        { nombre: "Press Banca respaldo (barra)", series: 2, rol: "fuerza", prog: { tipo: "respaldo", de: "Press Banca (barra)", reps: 8, pct: 0.92 },
+          semanas: ["67.3kg x 8","x 8","x 8","x 8","x 8 (pico)","45kg x 8 (descarga)"] },
+        { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap", ref: { peso: 60, reps: 9, rir: 1, label: "M7 60x9 RIR 1" } },
+          semanas: ["59.5kg x 8","x 8","x 8","x 8","AMRAP con último peso completado (pico)","45kg x 8 (descarga)"] },
+        { nombre: "Press Inclinado (DB)", series: 3, rol: "secundario",
+          semanas: ["45 lb x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","33 lb x 10 (descarga)"] },
+        { nombre: "Curl Bíceps (barra)", series: 3, rol: "accesorio", ancla: true, ref: { peso: 30, reps: 11, rir: 0, label: "M7 30x11" },
+          semanas: ["31.1kg x 6-8","x 6-8","x 6-8","x 6-8","x 6-8 (pico)","25kg x 6 (descarga)"] },
+        { nombre: "Press Francés (barra)", series: 3, rol: "accesorio", ancla: true, ref: { peso: 35, reps: 6, rir: 0, label: "M6 35x6" },
+          semanas: ["31.1kg x 6-8","x 6-8","x 6-8","x 6-8","x 6-8 (pico)","25kg x 6 (descarga)"] },
+      ],
+      b: [
+        { nombre: "Sentadilla (barra + cuña)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 3, inc: 2.27, cierre: "triple", ref: { peso: 95, reps: 4, rir: 1, label: "M7 95x4 RIR 1" } },
+          semanas: ["91.8kg x 3","x 3","x 3","x 3","Triple pesado RIR 0-1 (pico)","65kg x 3 (descarga)"] },
+        { nombre: "RDL sin flexión de rodilla (barra)", series: 3, rol: "fuerza", prog: { tipo: "rir", reps: 5, rirPlan: [3, 3, 2, 2, 1] },
+          semanas: ["67.3kg x 5 (RIR 3)","x 5 (RIR 3)","x 5 (RIR 2)","x 5 (RIR 2)","x 5 (RIR 1, pico)","50kg x 5 (descarga)"] },
+        { nombre: "Elevación Lateral (DB)", series: 2, rol: "accesorio",
+          semanas: ["20 lb x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","15 lb x 12 (descarga)"] },
+        { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
+          semanas: ["25 lb x 8-15","x 8-15","x 8-15","x 8-15","x 8-15 (pico)","20 lb x 10 (descarga)"] },
+        { nombre: "Dragon Flag", series: 3, rol: "core", variantes: ["Elevación de piernas","Negativas","Tuck","Una pierna","Completo"],
+          info: "En kg/lb anota el nivel: 1 Elevación, 2 Negativas, 3 Tuck, 4 Una pierna, 5 Completo.",
+          semanas: ["Tuck x 6-10","x 6-10","x 6-10","x 6-10","x 6-10 (pico)","Negativas x 6 (descarga)"] },
+      ],
+      c: [
+        { nombre: "Press Banca pausada (barra)", series: 3, rol: "tecnico", inc: 1.13,
+          info: "Pausa de 1-2 s con la barra quieta en el pecho.",
+          semanas: ["62.3kg x 6-8","x 6-8","x 6-8","x 6-8","x 6-8 (pico)","45kg x 6 (descarga)"] },
+        { nombre: "Remo Unilateral (DB)", series: 3, rol: "secundario",
+          info: "Reps por lado.",
+          semanas: ["50 lb x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","41.5 lb x 8 (descarga)"] },
+        { nombre: "Aperturas (DB)", series: 3, rol: "accesorio",
+          semanas: ["20 lb x 10-20","x 10-20","x 10-20","x 10-20","x 10-20 (pico)","15 lb x 12 (descarga)"] },
+        { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
+          semanas: ["33 lb x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","25 lb x 10 (descarga)"] },
+        { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
+          semanas: ["25kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","20kg x 10 (descarga)"] },
+        { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
+          semanas: ["25kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","20kg x 10 (descarga)"] },
+      ],
+      d: [
+        { nombre: "Búlgara (DB)", series: 3, rol: "secundario",
+          info: "Mismo peso en las dos piernas. Anota las reps de la izquierda.",
+          semanas: ["25 lb x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","20 lb x 8 (descarga)"] },
+        { nombre: "Hip Thrust (barra)", series: 3, rol: "accesorio",
+          semanas: ["45kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","35kg x 8 (descarga)"] },
+        { nombre: "Curl Nórdico Asistido", series: 3, rol: "accesorio",
+          semanas: ["x 5-8","x 5-8","x 5-8","x 5-8","x 5-8 (pico)","x 3 (descarga)"] },
+        { nombre: "Elevación Lateral (DB)", series: 2, rol: "accesorio",
+          semanas: ["20 lb x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","15 lb x 12 (descarga)"] },
+        { nombre: "Copa a una mano (DB)", series: 2, rol: "accesorio",
+          semanas: ["25 lb x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","20 lb x 10 (descarga)"] },
+        { nombre: "Crunch Abdominal", series: 2, rol: "core",
+          semanas: ["20kg x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","15kg x 15 (descarga)"] },
+      ],
+    }
+  },
 };
 
 // RMs de referencia
@@ -2300,7 +2374,7 @@ const RMS_REFERENCIA = {
 // CONFIG POR USUARIO
 // ============================================================
 const USUARIOS = {
-  samuel: { mesociclos: ['M4', 'M5', 'M6', 'M7'], tieneRehab: true,  renderTest: null, tieneEquipo: true },
+  samuel: { mesociclos: ['M4', 'M5', 'M6', 'M7', 'M8'], tieneRehab: true,  renderTest: null, tieneEquipo: true },
   dolly:  { mesociclos: ['D1','D2'],    tieneRehab: false, renderTest: null },
   nata:   { mesociclos: ['N1','N2','N3'], tieneRehab: false, renderTest: null, tieneHabitos: true },
 };
@@ -3064,12 +3138,24 @@ function analizarRir(ej, mesoKey, semana, dia) {
   const e1s = validos.map(x => e1rm(x.peso, x.reps, x.rir ?? rirAsumido));
   const e1 = e1s.reduce((a, b) => a + b, 0) / e1s.length;
   const rirHoy = rirPlan[semana - 1] ?? 2;
-  const d = combinarDiscos(e1 / (1 + (reps + rirHoy) / 30), 0, e1 / (1 + (reps + rirHoy) / 30));
+  let d = combinarDiscos(e1 / (1 + (reps + rirHoy) / 30), 0, e1 / (1 + (reps + rirHoy) / 30));
+  // Si se cumplió el RIR planeado, el peso nunca baja (el redondeo hacia abajo frenaba la subida)
+  const cumplio = validos.every(x => x.reps >= reps && (x.rir ?? rirAsumido) >= rirAsumido);
+  if (cumplio && rirHoy <= rirAsumido && d.total < validos[0].peso) d = combinarDiscos(validos[0].peso);
   const sinRir = validos.some(x => x.rir == null);
   const hubo0 = validos.some(x => x.rir === 0);
   let texto = `S${ult.w}: ${fmtKg(validos[0].peso)}kg x ${validos.map(x => x.reps).join("/")}${sinRir ? ` (sin RIR anotado, se asumió RIR ${rirAsumido})` : ` RIR ${validos.map(x => x.rir).join("/")}`} = 1RM est. ${fmtKg(e1)}kg. Hoy RIR ${rirHoy}: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}.`;
   if (hubo0) texto += ` Hubo RIR 0: límite duro del RDL, no volver a tocarlo.`;
   return { sug: { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${reps} (RIR ${rirHoy})`, texto }, e1 };
+}
+
+// Texto de lo registrado: kg, lb (mancuerna ajustable) o nombre de la variante
+function fmtSeries(ej, mesoKey, sets) {
+  const reps = sets.map(x => x.reps).join("/");
+  const p = sets[0].peso;
+  if (ej.variantes) return `${ej.variantes[p - 1] || p} x ${reps}`;
+  if (esMancuernaAjustable(ej, MESOCICLOS[mesoKey])) return `${fmtLb(p)} lb x ${reps}`;
+  return `${fmtKg(p)}kg x ${reps}`;
 }
 
 // Chips de semanas: pasadas = lo registrado; futuras de básicos = proyección desde el peso real
@@ -3082,7 +3168,7 @@ function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
     if (n === semana) return planActual;
     if (n < semana) {
       const sets = seriesSemana(ej, mesoKey, n, dia);
-      if (sets && sets[0].peso != null) return `${fmtKg(sets[0].peso)}kg x ${sets.map(x => x.reps).join("/")}`;
+      if (sets && sets[0].peso != null) return fmtSeries(ej, mesoKey, sets);
       return w;
     }
     if (lin?.fase === "test" && n < meso.semanas) return "reinicio tras el test";
@@ -3128,12 +3214,38 @@ function sugerenciaMancuerna(ej, ult, min, max) {
   return { tipo: "mantener", objetivo: `${fmtLb(lb)} lb x ${min}-${max}`, texto: `S${ult.w}: ${fmtLb(lb)} lb x ${repsTxt}. Mantén ${fmtPerilla(lb)}. Para subir a ${fmtLb(sig)} lb: ${necesarias}+ reps en todas las series.` };
 }
 
+// Series de respaldo: un % del peso que toca hoy en la serie pesada del mismo día
+function analizarRespaldo(ej, mesoKey, semana, dia) {
+  const meso = MESOCICLOS[mesoKey];
+  const { de, reps, pct } = ej.prog;
+  if (semana <= 1 || semana >= meso.semanas) return cargaRealPlan(ej, semana);
+  const top = (meso.plan[dia] || []).find(function(x) { return x.nombre === de; });
+  const r = top ? analizarLineal(top, mesoKey, semana, dia) : null;
+  const pctTxt = Math.round(pct * 100) + "%";
+  if (!r || r.pesoHoy == null) return { tipo: "info", texto: `Hoy ${ej.series}x${reps} con el ${pctTxt} del peso que salga en la serie pesada.` };
+  const t = r.pesoHoy * pct, d = combinarDiscos(t, 0, t);
+  return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${reps}`, texto: `${pctTxt} de la serie pesada (${fmtKg(r.pesoHoy)}kg). Hoy: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}` };
+}
+
 // Devuelve { tipo: "subir"|"mantener"|"cierre"|"info", texto } o null
+// Anclas: en el pico la sugerencia dice cuántas reps hacen falta para superar el bloque anterior.
 function sugerenciaProgresion(ej, mesoKey, semana, dia) {
+  const sug = sugerenciaBase(ej, mesoKey, semana, dia);
+  const meso = MESOCICLOS[mesoKey];
+  if (!sug || !ej.ancla || !ej.ref || !meso || semana !== meso.semanas - 1) return sug;
+  const peso = parsePeso((sug.objetivo || "").replace(/kg.*/, ""));
+  if (peso == null) return sug;
+  const refE1 = e1rm(ej.ref.peso, ej.ref.reps, ej.ref.rir);
+  const n = Math.max(1, Math.floor(30 * (refE1 / peso - 1)) + 1);
+  return Object.assign({}, sug, { texto: `${sug.texto} Pico del ancla: con ${fmtKg(peso)}kg, ${n}+ reps superan ${ej.ref.label} (1RM est. ${fmtKg(refE1)}kg).` });
+}
+
+function sugerenciaBase(ej, mesoKey, semana, dia) {
   const meso = MESOCICLOS[mesoKey];
   if (!meso || meso.modelo !== "doble_progresion") return null;
   if (ej.prog?.tipo === "lineal") return analizarLineal(ej, mesoKey, semana, dia).sug;
   if (ej.prog?.tipo === "rir") return analizarRir(ej, mesoKey, semana, dia).sug;
+  if (ej.prog?.tipo === "respaldo") return analizarRespaldo(ej, mesoKey, semana, dia);
   if (semana <= 1 || semana >= meso.semanas) return cargaRealPlan(ej, semana); // S1 trae peso escrito; descarga no progresa
 
   // Doble progresión: rango de reps + subir carga al llegar al tope en TODAS las series
@@ -3161,9 +3273,10 @@ function sugerenciaProgresion(ej, mesoKey, semana, dia) {
   }
   if (alTope) {
     if (inc == null) return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope del rango. Mancuernas solo en pares de 5/10/20kg: no hay salto posible. Mantén ${fmtKg(peso)}kg y sigue sumando reps hasta que lleguen las ajustables.` };
-    const d = combinarDiscos(peso + inc, peso + 0.3);
+    const doble = ej.ancla && ult.sets.every(x => x.rir != null && x.rir >= 4);
+    const d = combinarDiscos(peso + inc * (doble ? 2 : 1), peso + 0.3);
     const discos = /\(barra/.test(ej.nombre) ? ` = ${d.texto}` : '';
-    return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtKg(d.total)}kg${discos}. Reps vuelven a ${min}+.` };
+    return { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}, tope (${max}) en todas las series${doble ? " con RIR 4+: doble subida" : ""}. Hoy: ${fmtKg(d.total)}kg${discos}. Reps vuelven a ${min}+.` };
   }
   const carga = (inc != null && /\(barra/.test(ej.nombre)) ? ` (${combinarDiscos(peso).texto})` : '';
   return { tipo: "mantener", objetivo: `${fmtKg(peso)}kg x ${min}-${max}`, texto: `S${ult.w}: ${fmtKg(peso)}kg x ${repsTxt}. Mantén ${fmtKg(peso)}kg${carga} y busca +1 rep por serie. ${inc == null ? "Mancuerna: progresa solo por reps." : `Se sube cuando TODAS las series lleguen a ${max}.`}` };
@@ -3189,7 +3302,7 @@ function renderEjercicioCard(ej, meso, semana, dia) {
   if (semana > 1) {
     const prevSets = seriesSemana(ej, meso, semana - 1, dia);
     const prevPlan = prevSets && prevSets[0].peso != null
-      ? `${fmtKg(prevSets[0].peso)}kg x ${prevSets.map(x => x.reps).join("/")}`
+      ? fmtSeries(ej, meso, prevSets)
       : ej.semanas[semana - 2];
     compHtml = `<div class="comparison">
       <div class="comp-item">
@@ -7230,7 +7343,10 @@ function initApp() {
     const diasSemana = ['dom','lun','mar','mie','jue','vie','sab'];
     const diaSemana = diasSemana[new Date().getDay()];
     const diasMeso = MESOCICLOS[pos.meso].dias.map(d => d.key);
-    state.dia = diasMeso.includes(diaSemana) ? diaSemana : diasMeso[0];
+    // Días flotantes (M8+): abre el primer día de la semana que no esté completo
+    state.dia = MESOCICLOS[pos.meso].flotante
+      ? (diasMeso.find(k => !diaCompleto(pos.meso, pos.semana, k)) || diasMeso[diasMeso.length - 1])
+      : (diasMeso.includes(diaSemana) ? diaSemana : diasMeso[0]);
   } else if (userMesos.length > 0) {
     const saved = localStorage.getItem(uk('forge-position'));
     if (saved) {
