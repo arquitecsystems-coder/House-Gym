@@ -4080,6 +4080,13 @@
     "nota-sesion-M7-S5-jue": {
       "nota": "Martillo, elevaciones e inclinado con mancuernas ajustables.",
       "timestamp": "2026-10-29T19:47:07.154Z"
+    },
+    "M7-S5-jue-Elevación Lateral (DB)-2": {
+      "peso": "15",
+      "timestamp": "2026-10-29T19:59:52.000Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -7717,5 +7724,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-29T19:47:10.156Z"
+  "timestamp": "2026-10-29T19:59:55.008Z"
 }
