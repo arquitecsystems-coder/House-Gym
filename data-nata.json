@@ -3161,7 +3161,9 @@
     },
     "N3-S1-c-Crunch con peso-3": {
       "peso": "20",
-      "timestamp": "2026-10-29T11:49:05.864Z"
+      "timestamp": "2026-10-29T12:12:14.126Z",
+      "reps": "20",
+      "checked": true
     },
     "N3-S1-c-Elevación Lateral (mancuerna)-1": {
       "peso": "5",
@@ -4055,5 +4057,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-29T12:07:29.533Z"
+  "timestamp": "2026-10-29T12:12:18.112Z"
 }
