@@ -3154,7 +3154,10 @@
     },
     "N3-S1-c-Crunch con peso-2": {
       "peso": "20",
-      "timestamp": "2026-10-29T11:49:01.748Z"
+      "timestamp": "2026-10-29T12:07:26.503Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "3"
     },
     "N3-S1-c-Crunch con peso-3": {
       "peso": "20",
@@ -4052,5 +4055,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-29T12:01:32.171Z"
+  "timestamp": "2026-10-29T12:07:29.533Z"
 }
