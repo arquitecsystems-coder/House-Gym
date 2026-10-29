@@ -2234,82 +2234,13 @@
     },
     "D2-S4-dom-Lateral inclinado contra pared-3": {
       "checked": true,
-      "timestamp": "2026-10-18T14:53:57.566Z",
+      "timestamp": "2026-10-18T14:53:55.478Z",
       "peso": "7.5",
-      "reps": "10",
-      "rir": "0"
-    },
-    "D2-S5-mar-Dead hang-1": {
-      "reps": "30",
-      "timestamp": "2026-10-20T10:12:27.719Z",
-      "rir": "0",
-      "checked": true
-    },
-    "D2-S5-mar-Dead hang-2": {
-      "reps": "20",
-      "timestamp": "2026-10-20T10:15:47.726Z",
-      "rir": "0",
-      "checked": true
-    },
-    "D2-S5-mar-Isométrico arriba (banda gruesa)-2": {
-      "checked": true,
-      "timestamp": "2026-10-20T10:21:51.347Z",
-      "reps": "15",
-      "rir": "0"
-    },
-    "D2-S5-mar-Isométrico arriba (banda gruesa)-1": {
-      "reps": "15",
-      "timestamp": "2026-10-20T10:19:08.251Z",
-      "rir": "0",
-      "checked": true
-    },
-    "nota-sesion-D2-S5-mar": {
-      "nota": "Lo que he notado es que en el isométrico subo pero no voy hasta arriba de la barra. ",
-      "timestamp": "2026-10-20T10:20:29.946Z"
-    },
-    "D2-S5-mar-Retracciones escapulares colgada-1": {
-      "reps": "8",
-      "timestamp": "2026-10-20T10:27:01.895Z",
-      "rir": "0",
-      "checked": true
-    },
-    "D2-S6-jue-Dead hang-1": {
-      "reps": "20",
-      "timestamp": "2026-10-29T10:26:03.640Z",
-      "rir": "4",
-      "checked": true
-    },
-    "D2-S6-jue-Dead hang-2": {
-      "reps": "20",
-      "timestamp": "2026-10-29T10:28:09.197Z",
-      "rir": "4",
-      "checked": true
-    },
-    "nota-sesion-D2-S6-jue": {
-      "nota": "Isométrico (hoy fue raro , primer intento no pude subir)en el segundo intento pude subir un poco y sostener ",
-      "timestamp": "2026-10-29T10:36:44.200Z"
-    },
-    "D2-S6-jue-Isométrico arriba (banda gruesa)-1": {
-      "reps": "0",
-      "timestamp": "2026-10-29T10:34:29.220Z",
-      "rir": "0",
-      "checked": true
-    },
-    "D2-S6-jue-Isométrico arriba (banda gruesa)-2": {
-      "reps": "8",
-      "timestamp": "2026-10-29T10:36:01.460Z",
-      "rir": "0",
-      "checked": true
-    },
-    "D2-S6-jue-Retracciones escapulares colgada-1": {
-      "reps": "5",
-      "timestamp": "2026-10-29T10:39:04.859Z",
-      "rir": "4",
-      "checked": true
+      "reps": "10"
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-18T14:53:55.271Z",
+    "_syncTs": "2026-09-27T18:26:47.252Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2362,11 +2293,7 @@
           false
         ]
       }
-    },
-    "mediciones": [],
-    "criterios": {},
-    "nivelAjuste": {},
-    "metricas": {}
+    }
   },
   "cut": {},
   "test": {
@@ -2429,5 +2356,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-29T10:39:07.879Z"
+  "timestamp": "2026-10-29T11:34:40.381Z"
 }
