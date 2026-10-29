@@ -4076,6 +4076,10 @@
       "reps": "20",
       "checked": true,
       "rir": "1"
+    },
+    "nota-sesion-M7-S5-jue": {
+      "nota": "Martillo, elevaciones e inclinado con mancuernas ajustables.",
+      "timestamp": "2026-10-29T19:47:07.154Z"
     }
   },
   "rehab": {
@@ -7713,5 +7717,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-29T19:46:49.212Z"
+  "timestamp": "2026-10-29T19:47:10.156Z"
 }
