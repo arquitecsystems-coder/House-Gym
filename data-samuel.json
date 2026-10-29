@@ -5954,6 +5954,10 @@
       "2026-10-28": {
         "ayunas": 76.9,
         "noche": null
+      },
+      "2026-10-29": {
+        "ayunas": 77.2,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -7205,6 +7209,19 @@
             "grasas": 0.2
           }
         ]
+      },
+      "2026-10-28": {
+        "comidas": [
+          {
+            "foodId": "mtsk9qasrz1b",
+            "nombre": "Yogurt",
+            "gramos": 250,
+            "kcal": 210,
+            "prot": 12,
+            "carbs": 12,
+            "grasas": 12.5
+          }
+        ]
       }
     },
     "biblioteca": [
@@ -7569,5 +7586,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-29T00:19:34.646Z"
+  "timestamp": "2026-10-29T11:06:51.656Z"
 }
