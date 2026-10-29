@@ -4037,10 +4037,10 @@
     },
     "M7-S5-jue-Press Inclinado (barra)-1": {
       "peso": "45",
-      "timestamp": "2026-10-29T19:24:47.265Z",
+      "timestamp": "2026-10-29T19:38:42.175Z",
       "reps": "8",
       "checked": true,
-      "rir": "1"
+      "rir": "2"
     },
     "M7-S5-jue-Press Inclinado (barra)-2": {
       "peso": "45",
@@ -4053,6 +4053,13 @@
       "peso": "25",
       "timestamp": "2026-10-29T19:33:44.681Z",
       "reps": "12",
+      "checked": true,
+      "rir": "1"
+    },
+    "M7-S5-jue-Press Inclinado (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-10-29T19:38:43.471Z",
+      "reps": "8",
       "checked": true,
       "rir": "1"
     }
@@ -7692,5 +7699,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-29T19:33:47.684Z"
+  "timestamp": "2026-10-29T19:38:46.476Z"
 }
