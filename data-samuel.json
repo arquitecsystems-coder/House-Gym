@@ -7229,6 +7229,15 @@
             "prot": 26.1,
             "carbs": 0,
             "grasas": 19.8
+          },
+          {
+            "foodId": "carne_molida_80_20",
+            "nombre": "Carne molida 80/20",
+            "gramos": 100,
+            "kcal": 254,
+            "prot": 17.2,
+            "carbs": 0,
+            "grasas": 20
           }
         ]
       }
@@ -7595,5 +7604,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-29T11:07:10.439Z"
+  "timestamp": "2026-10-29T11:07:23.636Z"
 }
