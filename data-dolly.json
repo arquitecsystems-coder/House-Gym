@@ -2284,6 +2284,10 @@
       "timestamp": "2026-10-29T10:28:09.197Z",
       "rir": "4",
       "checked": true
+    },
+    "nota-sesion-D2-S6-jue": {
+      "nota": "Isométrico (hoy fue raro , primer intento no pude subir)",
+      "timestamp": "2026-10-29T10:34:11.387Z"
     }
   },
   "rehab": {
@@ -2407,5 +2411,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-29T10:28:12.208Z"
+  "timestamp": "2026-10-29T10:34:14.416Z"
 }
