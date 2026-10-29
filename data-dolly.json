@@ -2278,6 +2278,10 @@
       "timestamp": "2026-10-29T10:26:03.640Z",
       "rir": "4",
       "checked": true
+    },
+    "D2-S6-jue-Dead hang-2": {
+      "reps": "20",
+      "timestamp": "2026-10-29T10:28:03.728Z"
     }
   },
   "rehab": {
@@ -2401,5 +2405,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-29T10:26:06.651Z"
+  "timestamp": "2026-10-29T10:28:06.748Z"
 }
