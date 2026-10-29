@@ -3133,7 +3133,10 @@
     },
     "N3-S1-c-Sentadilla trasera (barra)-2": {
       "peso": "35",
-      "timestamp": "2026-10-29T11:38:41.848Z"
+      "timestamp": "2026-10-29T11:44:15.799Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
     },
     "N3-S1-c-Sentadilla trasera (barra)-3": {
       "peso": "35",
@@ -4019,5 +4022,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-29T11:40:56.854Z"
+  "timestamp": "2026-10-29T11:44:18.820Z"
 }
