@@ -2288,6 +2288,12 @@
     "nota-sesion-D2-S6-jue": {
       "nota": "Isométrico (hoy fue raro , primer intento no pude subir)",
       "timestamp": "2026-10-29T10:34:11.387Z"
+    },
+    "D2-S6-jue-Isométrico arriba (banda gruesa)-1": {
+      "reps": "0",
+      "timestamp": "2026-10-29T10:34:29.220Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2411,5 +2417,5 @@
   "habitos": {},
   "userProfile": {},
   "foodLibrary": [],
-  "timestamp": "2026-10-29T10:34:14.416Z"
+  "timestamp": "2026-10-29T10:34:32.243Z"
 }
