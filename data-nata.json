@@ -3184,6 +3184,10 @@
     "N3-S2-a-Sentadilla trasera (barra)-2": {
       "peso": "50",
       "timestamp": "2026-10-30T00:31:59.174Z"
+    },
+    "N3-S2-a-Sentadilla trasera (barra)-3": {
+      "peso": "50",
+      "timestamp": "2026-10-30T00:32:01.851Z"
     }
   },
   "rehab": {},
@@ -4065,5 +4069,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-30T00:31:58.845Z"
+  "timestamp": "2026-10-30T00:32:04.866Z"
 }
