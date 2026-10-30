@@ -3250,7 +3250,9 @@
     },
     "N3-S2-a-Elevación Lateral (mancuerna)-2": {
       "peso": "5",
-      "timestamp": "2026-10-30T11:52:22.835Z"
+      "timestamp": "2026-10-30T11:58:45.846Z",
+      "reps": "14",
+      "checked": true
     }
   },
   "rehab": {},
@@ -4132,5 +4134,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-30T11:53:53.362Z"
+  "timestamp": "2026-10-30T11:58:48.869Z"
 }
