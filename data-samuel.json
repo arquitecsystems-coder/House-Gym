@@ -4155,6 +4155,12 @@
       "timestamp": "2026-10-30T20:10:48.441Z",
       "reps": "9",
       "checked": true
+    },
+    "M7-S5-vie-Pullover (DB)-3": {
+      "peso": "33",
+      "timestamp": "2026-10-30T20:19:34.915Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -7918,5 +7924,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-10-30T20:10:51.449Z"
+  "timestamp": "2026-10-30T20:19:34.446Z"
 }
