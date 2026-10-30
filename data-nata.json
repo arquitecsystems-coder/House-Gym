@@ -3213,7 +3213,10 @@
     },
     "N3-S2-a-Press Inclinado (barra)-2": {
       "peso": "22,9",
-      "timestamp": "2026-10-30T00:50:28.439Z"
+      "timestamp": "2026-10-30T00:58:08.256Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "2"
     },
     "N3-S2-a-Press Inclinado (barra)-3": {
       "peso": "22,9",
@@ -4099,5 +4102,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-30T00:54:21.757Z"
+  "timestamp": "2026-10-30T00:58:11.758Z"
 }
