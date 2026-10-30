@@ -5783,7 +5783,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-10-30T01:43:16.413Z",
+        "_ts": "2026-10-30T01:45:03.260Z",
         "dorsiflexion_carga": [
           {
             "valor": null,
@@ -5827,7 +5827,7 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           }
         ]
       }
@@ -7797,5 +7797,5 @@
       "grasas": 4
     }
   ],
-  "timestamp": "2026-10-30T01:43:19.416Z"
+  "timestamp": "2026-10-30T01:45:06.263Z"
 }
