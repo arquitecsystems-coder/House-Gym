@@ -1,5 +1,7 @@
 # Forge — Contexto del proyecto
 
+**Documento completo (entrenamiento + app, decisiones y por qué): `docs/forge-paper.md`. Leerlo al abrir una conversación nueva.**
+
 App de tracking personal: entrenamiento (mesociclos), rehabilitación de tobillo, y cutting phase (composición corporal). PWA instalada en iPhone y PC, hosteada en GitHub Pages.
 
 ## Arquitectura
