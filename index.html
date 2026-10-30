@@ -2584,11 +2584,13 @@ function mesoRango(meso) {
     const endMon = meses[(endParts[1] || '').toLowerCase()];
     const endDay = parseInt(endParts[0]);
     if (isNaN(endDay) || endMon === undefined) return null;
-    const endDate = new Date(2026, endMon, endDay);
+    // Año opcional al final ("4–9 ene 2027"); sin año = 2026 (mesociclos escritos a mano)
+    const endYear = parseInt(endParts[2]) || 2026;
+    const endDate = new Date(endYear, endMon, endDay);
     const startParts = startRaw.split(' ');
     const startDay = parseInt(startParts[0]);
     const startMon = startParts[1] ? meses[startParts[1].toLowerCase()] : endMon;
-    const startDate = new Date(2026, startMon, startDay);
+    const startDate = new Date(startMon > endMon ? endYear - 1 : endYear, startMon, startDay);
     return { start: startDate, end: endDate };
   }
   const first = parseRango(meso.fechas[0]);
@@ -6760,6 +6762,268 @@ function renderEquipoConfig() {
     + '<div>' + perilla + '</div></div>';
 }
 
+// ── GENERADOR DE MESOCICLOS (M9+) ──
+// Arma el bloque siguiente desde los registros del anterior: mismos días y ejercicios,
+// arranques, referencias y fechas nuevas. Se guarda como DATOS (mesos-generados, clave
+// "mesociclos" en data-{usuario}.json), no como código. No cambia ejercicios ni volumen:
+// eso es criterio humano y se revisa con el resumen que deja en meso.generado.
+const MESES_CORTOS = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+
+function getMesosGenerados() {
+  try { return JSON.parse(localStorage.getItem(uk('mesos-generados')) || '{}'); } catch(e) { return {}; }
+}
+function saveMesosGenerados(m) { localStorage.setItem(uk('mesos-generados'), JSON.stringify(m)); }
+
+function registrarMesosGenerados() {
+  const gen = getMesosGenerados(), cfg = USUARIOS[state.currentUser];
+  if (!cfg || !cfg.mesociclos) return;
+  Object.keys(MESOCICLOS).forEach(function(k) {
+    if (MESOCICLOS[k].generado && (!gen[k] || gen[k].borrado)) {
+      delete MESOCICLOS[k];
+      cfg.mesociclos = cfg.mesociclos.filter(function(x) { return x !== k; });
+    }
+  });
+  Object.keys(gen).sort(function(a, b) { return parseInt(a.slice(1)) - parseInt(b.slice(1)); }).forEach(function(k) {
+    if (gen[k].borrado) return;
+    MESOCICLOS[k] = gen[k];
+    if (cfg.mesociclos.indexOf(k) < 0) cfg.mesociclos.push(k);
+  });
+}
+
+// 6 semanas lunes-sábado desde el lunes siguiente al fin del bloque base
+function fechasSiguientes(base) {
+  const r = mesoRango(base);
+  const d = new Date(r.end.getFullYear(), r.end.getMonth(), r.end.getDate());
+  do { d.setDate(d.getDate() + 1); } while (d.getDay() !== 1);
+  const out = [];
+  for (let i = 0; i < base.semanas; i++) {
+    const ini = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 7 * i);
+    const fin = new Date(ini.getFullYear(), ini.getMonth(), ini.getDate() + 5);
+    let txt = ini.getDate() + (ini.getMonth() !== fin.getMonth() ? ' ' + MESES_CORTOS[ini.getMonth()] : '')
+      + '–' + fin.getDate() + ' ' + MESES_CORTOS[fin.getMonth()];
+    if (fin.getFullYear() !== 2026) txt += ' ' + fin.getFullYear();
+    out.push(txt);
+  }
+  return out;
+}
+
+// Todas las series registradas de un ejercicio en el bloque (sin la descarga)
+function seriesBloque(ej, mesoKey, dia) {
+  const meso = MESOCICLOS[mesoKey], out = [];
+  for (let w = 1; w < meso.semanas; w++) {
+    (seriesSemana(ej, mesoKey, w, dia) || []).forEach(function(x) { if (x.peso != null) out.push(Object.assign({ w: w }, x)); });
+  }
+  return out;
+}
+function mejorSerie(sets) {
+  return sets.reduce(function(m, x) { const e = e1rm(x.peso, x.reps, x.rir); return e > m.e ? { e: e, x: x } : m; }, { e: 0, x: null });
+}
+// Mejor 1RM estimado de un ejercicio (por nombre, cualquier día) en otro bloque
+function mejorE1Meso(mesoKey, nombre) {
+  const meso = MESOCICLOS[mesoKey];
+  if (!meso || !meso.plan) return null;
+  let best = 0;
+  Object.keys(meso.plan).forEach(function(dia) {
+    meso.plan[dia].forEach(function(ej) { if (ej.nombre === nombre) best = Math.max(best, mejorSerie(seriesBloque(ej, mesoKey, dia)).e); });
+  });
+  return best || null;
+}
+
+function generarEjercicio(ej, baseKey, dia, ctx) {
+  const base = MESOCICLOS[baseKey];
+  const nuevo = JSON.parse(JSON.stringify(ej));
+  const etiqueta = ej.nombre + ' (' + dia.toUpperCase() + ')';
+  const ajustable = esMancuernaAjustable(ej, base);
+  const sets = seriesBloque(ej, baseKey, dia);
+  const rango = (ej.semanas[0] || '').match(/x (\d+)-(\d+)/) || (ej.semanas[1] || '').match(/x (\d+)-(\d+)/);
+  const descarga = ej.semanas[base.semanas - 1];
+  const pico = base.semanas - 1;
+  const lineaRef = function(m) {
+    return { peso: m.x.peso, reps: m.x.reps, rir: m.x.rir || 0, label: baseKey + ' ' + fmtKg(m.x.peso) + 'x' + m.x.reps + (m.x.rir ? ' RIR ' + m.x.rir : '') };
+  };
+  const semanasDe = function(primera, resto, picoTxt, desc) {
+    return [primera, resto, resto, resto, picoTxt, desc];
+  };
+  const kgLb = function(v) { return ajustable ? fmtLb(v) + ' lb' : fmtKg(v) + 'kg'; };
+
+  // Estancamiento: mejor 1RM estimado contra el bloque anterior
+  const m = mejorSerie(sets);
+  if (m.x) {
+    let prevE1 = ej.mejorE1 || (ej.prog && ej.prog.ref ? e1rm(ej.prog.ref.peso, ej.prog.ref.reps, ej.prog.ref.rir) : null)
+      || (ej.ref ? e1rm(ej.ref.peso, ej.ref.reps, ej.ref.rir) : null);
+    const prevKey = base.generado ? base.generado.desde : 'M' + (parseInt(baseKey.slice(1)) - 1);
+    // Por nombre solo si no es ambiguo (curl/francés están como ancla en A y como técnico en C)
+    const repetido = Object.keys(base.plan).reduce(function(n, d) { return n + base.plan[d].filter(function(x) { return x.nombre === ej.nombre; }).length; }, 0) > 1;
+    if (!prevE1 && !ajustable && !repetido) prevE1 = mejorE1Meso(prevKey, ej.nombre);
+    nuevo.mejorE1 = Math.round(m.e * 10) / 10;
+    if (prevE1 && !ej.variantes) {
+      const pct = (m.e / prevE1 - 1) * 100;
+      nuevo.sinMejora = pct <= 0;
+      ctx.cambios[etiqueta] = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '% 1RM est.';
+      if (nuevo.sinMejora && ej.sinMejora) ctx.avisos.push(etiqueta + ': 2 bloques sin mejorar el 1RM est. Cambiar variante o rango (decisión humana).');
+      else if (nuevo.sinMejora) ctx.avisos.push(etiqueta + ': no mejoró el 1RM est. (' + pct.toFixed(1) + '%). Si se repite en el próximo bloque, cambiar variante o rango.');
+    }
+  } else if (ej.prog?.tipo !== 'respaldo' && (rango || ej.prog)) {
+    ctx.avisos.push(etiqueta + ': sin registros en el bloque, se deja el arranque anterior.');
+    return nuevo;
+  }
+  const cambio = ctx.cambios[etiqueta] ? ' · ' + ctx.cambios[etiqueta] : '';
+
+  if (ej.prog?.tipo === 'lineal') {
+    const reps = ej.prog.reps, t = m.e / (1 + (reps + 3) / 30);
+    const ini = combinarDiscos(t, 0, t).total;
+    nuevo.prog.ref = lineaRef(m);
+    ctx.arranques[ej.nombre] = ini;
+    nuevo.semanas = semanasDe(fmtKg(ini) + 'kg x ' + reps, 'x ' + reps,
+      ej.prog.cierre === 'triple' ? 'Triple pesado RIR 0-1 (pico)' : 'AMRAP con último peso completado (pico)',
+      fmtKg(combinarDiscos(ini * 0.7, 0, ini * 0.7).total) + 'kg x ' + reps + ' (descarga)');
+    ctx.resumen.push(etiqueta + ': ' + (ej.semanas[0] || '').replace(/ \(.*/, '') + ' → ' + fmtKg(ini) + 'kg x ' + reps
+      + ' (mejor serie ' + nuevo.prog.ref.label.replace(baseKey + ' ', '') + ' = 1RM est. ' + fmtKg(m.e) + 'kg, ' + reps + ' reps a RIR 3)' + cambio);
+    return nuevo;
+  }
+  if (ej.prog?.tipo === 'rir') {
+    const { reps, rirPlan } = ej.prog;
+    let mejorW = null;
+    for (let w = 1; w <= pico; w++) {
+      const s = (seriesSemana(ej, baseKey, w, dia) || []).filter(function(x) { return x.peso != null; });
+      if (!s.length) continue;
+      const prom = s.reduce(function(a, x) { return a + e1rm(x.peso, x.reps, x.rir ?? rirPlan[w - 1] ?? 2); }, 0) / s.length;
+      if (!mejorW || prom > mejorW.e) mejorW = { w: w, e: prom };
+    }
+    const t = mejorW.e / (1 + (reps + rirPlan[0]) / 30), ini = combinarDiscos(t, 0, t).total;
+    nuevo.semanas = rirPlan.map(function(r, i) {
+      return (i === 0 ? fmtKg(ini) + 'kg ' : '') + 'x ' + reps + ' (RIR ' + r + (i === rirPlan.length - 1 ? ', pico' : '') + ')';
+    }).concat([fmtKg(combinarDiscos(ini * 0.75, 0, ini * 0.75).total) + 'kg x ' + reps + ' (descarga)']);
+    ctx.resumen.push(etiqueta + ': ' + (ej.semanas[0] || '').replace(/ \(.*/, '') + ' → ' + fmtKg(ini) + 'kg x ' + reps
+      + ' (S' + mejorW.w + ' promedio 1RM est. ' + fmtKg(mejorW.e) + 'kg, ' + reps + ' reps a RIR ' + rirPlan[0] + ')' + cambio);
+    return nuevo;
+  }
+  if (ej.prog?.tipo === 'respaldo') {
+    const top = ctx.arranques[ej.prog.de];
+    if (top == null) return nuevo;
+    const t = top * ej.prog.pct, ini = combinarDiscos(t, 0, t).total;
+    nuevo.semanas = semanasDe(fmtKg(ini) + 'kg x ' + ej.prog.reps, 'x ' + ej.prog.reps, 'x ' + ej.prog.reps + ' (pico)',
+      fmtKg(combinarDiscos(ini * 0.7, 0, ini * 0.7).total) + 'kg x ' + ej.prog.reps + ' (descarga)');
+    ctx.resumen.push(etiqueta + ': ' + fmtKg(ini) + 'kg x ' + ej.prog.reps + ' (' + Math.round(ej.prog.pct * 100) + '% de la serie pesada)');
+    return nuevo;
+  }
+  if (ej.variantes) {
+    const ult = sets[sets.length - 1], nivel = Math.max(1, Math.min(ej.variantes.length, Math.round(ult.peso)));
+    const r = rango ? rango[1] + '-' + rango[2] : '';
+    nuevo.semanas = semanasDe(ej.variantes[nivel - 1] + ' x ' + r, 'x ' + r, 'x ' + r + ' (pico)',
+      ej.variantes[Math.max(0, nivel - 2)] + ' x ' + (rango ? rango[1] : '') + ' (descarga)');
+    ctx.resumen.push(etiqueta + ': nivel ' + nivel + ' (' + ej.variantes[nivel - 1] + '), el último registrado');
+    return nuevo;
+  }
+  if (!rango) return nuevo; // sin carga ni rango (ej. nórdico): se copia
+  const min = +rango[1], max = +rango[2], r = min + '-' + max;
+  const ult = ultimaSesion(ej, baseKey, base.semanas, dia);
+  let ini, motivo;
+  if (ajustable) {
+    const s = sugerenciaMancuerna(ej, ult, min, max);
+    ini = parseFloat(s.objetivo);
+    motivo = s.tipo === 'subir' ? 'llegó a las reps del salto' : s.tipo === 'bajar' ? 'primera serie bajo el mínimo: recalibrado' : 'se mantiene';
+  } else {
+    const peso = ult.sets[0].peso, inc = incrementoDoble(ej), s1 = ult.sets[0];
+    const alTope = ult.sets.length >= ej.series && ult.sets.every(function(x) { return x.reps >= max; });
+    const barra = /\(barra/.test(ej.nombre);
+    if (s1.reps < min && barra) {
+      const t = e1rm(peso, s1.reps, s1.rir ?? 1) / (1 + (min + 2) / 30);
+      ini = combinarDiscos(t, 0, t).total; motivo = 'primera serie bajo el mínimo: recalibrado';
+    } else if (alTope && barra && inc != null) {
+      const doble = ej.ancla && ult.sets.every(function(x) { return x.rir != null && x.rir >= 4; });
+      ini = combinarDiscos(peso + inc * (doble ? 2 : 1), peso + 0.3).total; motivo = 'tope del rango en todas las series' + (doble ? ' con RIR 4+: doble subida' : '');
+    } else {
+      ini = peso; motivo = alTope && !barra ? 'tope del rango: subir carga a mano' : 'se mantiene';
+    }
+  }
+  if (ej.ancla) nuevo.ref = lineaRef(m);
+  const desc = ajustable ? perillaHasta(ini * 0.75) : (/\(barra/.test(ej.nombre) ? combinarDiscos(ini * 0.75, 0, ini * 0.75).total : Math.round(ini * 0.75));
+  nuevo.semanas = semanasDe(kgLb(ini) + ' x ' + r, 'x ' + r, 'x ' + r + ' (pico)', kgLb(desc) + ' x ' + min + ' (descarga)');
+  ctx.resumen.push(etiqueta + ': ' + (ej.semanas[0] || '').replace(/ \(.*/, '') + ' → ' + kgLb(ini) + ' x ' + r
+    + ' (S' + ult.w + ': ' + fmtSeries(ej, baseKey, ult.sets) + ', ' + motivo + ')' + cambio);
+  return nuevo;
+}
+
+function generarSiguienteMeso(baseKey) {
+  const base = MESOCICLOS[baseKey];
+  const key = 'M' + (parseInt(baseKey.slice(1)) + 1);
+  const ctx = { resumen: [], avisos: [], arranques: {}, cambios: {} };
+  const plan = {};
+  base.dias.forEach(function(d) {
+    plan[d.key] = (base.plan[d.key] || []).map(function(ej) { return generarEjercicio(ej, baseKey, d.key, ctx); });
+  });
+  // Adherencia: días con algún registro vs días planeados (sin la descarga)
+  let hechos = 0, total = 0;
+  for (let w = 1; w < base.semanas; w++) {
+    base.dias.forEach(function(d) {
+      total++;
+      if ((base.plan[d.key] || []).some(function(ej) { return seriesSemana(ej, baseKey, w, d.key); })) hechos++;
+    });
+  }
+  const fechas = fechasSiguientes(base);
+  const anio = (fechas[0].match(/20\d\d/) || ['2026'])[0];
+  return { key: key, meso: {
+    label: key + ' — ' + anio, semanas: base.semanas, fechas: fechas, modelo: base.modelo,
+    mancuernas: base.mancuernas, flotante: base.flotante, dias: JSON.parse(JSON.stringify(base.dias)), plan: plan,
+    generado: { desde: baseKey, fecha: (function(h) { return h.getFullYear() + '-' + String(h.getMonth() + 1).padStart(2, '0') + '-' + String(h.getDate()).padStart(2, '0'); })(new Date()), ts: new Date().toISOString(),
+      resumen: ctx.resumen, avisos: ctx.avisos, adherencia: hechos + '/' + total + ' sesiones' },
+  } };
+}
+
+function generarMesociclo(baseKey) {
+  const base = MESOCICLOS[baseKey];
+  const pico = base.semanas - 1;
+  const conPico = base.dias.some(function(d) { return (base.plan[d.key] || []).some(function(ej) { return seriesSemana(ej, baseKey, pico, d.key); }); });
+  if (!conPico && !confirm('El pico (S' + pico + ') del ' + baseKey + ' no tiene registros. ¿Generar igual con lo que hay?')) return;
+  const r = generarSiguienteMeso(baseKey);
+  const gen = getMesosGenerados();
+  if (MESOCICLOS[r.key] && !MESOCICLOS[r.key].generado) { showToast(r.key + ' ya existe en el código', 'err'); return; }
+  if (gen[r.key] && !gen[r.key].borrado && !confirm('Ya hay un ' + r.key + ' generado. ¿Reemplazarlo?')) return;
+  gen[r.key] = r.meso;
+  saveMesosGenerados(gen);
+  registrarMesosGenerados();
+  queueSync();
+  showToast(r.key + ' generado ✓', 'ok');
+  render();
+}
+
+function borrarMesoGenerado(k) {
+  if (!confirm('¿Borrar el ' + k + ' generado? Los registros que tenga quedan guardados.')) return;
+  const gen = getMesosGenerados();
+  gen[k] = { borrado: true, generado: { ts: new Date().toISOString() } };
+  saveMesosGenerados(gen);
+  registrarMesosGenerados();
+  if (state.meso === k) { const l = USUARIOS[state.currentUser].mesociclos; state.meso = l[l.length - 1]; state.semana = 1; state.dia = MESOCICLOS[state.meso].dias[0].key; }
+  queueSync();
+  render();
+}
+
+function renderGeneradorConfig() {
+  const lista = USUARIOS[state.currentUser]?.mesociclos || [];
+  const baseKey = lista[lista.length - 1];
+  const base = MESOCICLOS[baseKey];
+  if (!base || base.modelo !== 'doble_progresion' || !mesoRango(base)) return '';
+  const sig = 'M' + (parseInt(baseKey.slice(1)) + 1);
+  const lineas = function(arr) {
+    return arr.map(function(t) { return '<div style="font-size:11px;padding:5px 0;border-bottom:1px solid var(--border);font-family:var(--font-mono)">' + t + '</div>'; }).join('');
+  };
+  let html = '<div class="config-panel"><div class="config-title">🧠 Generador de mesociclos</div>';
+  if (base.generado) {
+    const g = base.generado;
+    html += '<div style="font-size:12px;color:var(--muted);margin-bottom:6px">' + baseKey + ' generado el ' + g.fecha + ' desde el ' + g.desde + ' · adherencia del ' + g.desde + ': ' + g.adherencia + '</div>';
+    if (g.avisos.length) html += '<div style="font-size:12px;margin:8px 0 2px">Avisos</div>' + lineas(g.avisos);
+    html += '<div style="font-size:12px;margin:8px 0 2px">Arranques</div>' + lineas(g.resumen);
+    html += '<div style="display:flex;gap:8px;margin-top:10px">'
+      + '<button class="config-btn" style="background:var(--surface);color:var(--text);border:1px solid var(--border)" onclick="generarMesociclo(\'' + g.desde + '\')">Regenerar</button>'
+      + '<button class="config-btn" style="background:var(--surface);color:var(--text);border:1px solid var(--border)" onclick="borrarMesoGenerado(\'' + baseKey + '\')">Borrar</button></div>';
+    html += '<div style="height:12px"></div>';
+  }
+  html += '<div style="font-size:12px;color:var(--muted);margin-bottom:8px">Arma el ' + sig + ' desde los registros del ' + baseKey + ' (' + base.fechas[0] + ' a ' + base.fechas[base.fechas.length - 1] + ').</div>'
+    + '<button class="config-btn" onclick="generarMesociclo(\'' + baseKey + '\')">Generar ' + sig + '</button></div>';
+  return html;
+}
+
 // ── CONFIG VIEW ──
 function renderConfig(main) {
   const ghConnected = !!state.githubToken;
@@ -6804,7 +7068,7 @@ function renderConfig(main) {
       </div>
     </div>` : ''}
 
-    ${USUARIOS[state.currentUser]?.tieneEquipo ? renderEquipoConfig() : ''}
+    ${USUARIOS[state.currentUser]?.tieneEquipo ? renderGeneradorConfig() + renderEquipoConfig() : ''}
 
     ${renderTimerConfig()}
   `;
@@ -6929,6 +7193,7 @@ async function pushToGithub() {
       habitos: JSON.parse(localStorage.getItem(uk("habitos-datos")) || "{}"),
       userProfile: JSON.parse(localStorage.getItem(uk("user-profile")) || "{}"),
       foodLibrary: JSON.parse(localStorage.getItem(state.currentUser + "-food-library") || "[]"),
+      mesociclos: getMesosGenerados(),
       timestamp: new Date().toISOString()
     };
 
@@ -7056,6 +7321,16 @@ async function pullFromGithub() {
       );
       localStorage.setItem(state.currentUser + "-food-library", JSON.stringify(merged));
       migrateFoodLibraryV2();
+    }
+
+    if (data.mesociclos && Object.keys(data.mesociclos).length > 0) {
+      // Mesociclos generados: por clave gana el generado más reciente (incluye borrados)
+      const gen = getMesosGenerados();
+      Object.entries(data.mesociclos).forEach(([k, m]) => {
+        if (!gen[k] || (m.generado?.ts || "") >= (gen[k].generado?.ts || "")) gen[k] = m;
+      });
+      saveMesosGenerados(gen);
+      registrarMesosGenerados();
     }
 
     showToast("Datos descargados ✓", "ok");
@@ -7218,13 +7493,14 @@ function detectPosition() {
       const endParts = endRaw.split(' ');
       const endMon = meses[endParts[1]?.toLowerCase()];
       const endDay = parseInt(endParts[0]);
-      const endDate = new Date(2026, endMon, endDay);
+      const endYear = parseInt(endParts[2]) || 2026;
+      const endDate = new Date(endYear, endMon, endDay);
 
       // startRaw puede o no tener mes
       const startParts = startRaw.split(' ');
       const startDay = parseInt(startParts[0]);
       const startMon = startParts[1] ? meses[startParts[1].toLowerCase()] : endMon;
-      const startDate = new Date(2026, startMon, startDay);
+      const startDate = new Date(startMon > endMon ? endYear - 1 : endYear, startMon, startDay);
 
       // Incluir hasta el domingo de esa semana
       const weekEnd = new Date(endDate);
@@ -7341,6 +7617,7 @@ function initApp() {
   loadLocal();
   seedFoodLibraryIfEmpty();
   migrateFoodLibraryV2();
+  registrarMesosGenerados();
   const userMesos = USUARIOS[state.currentUser]?.mesociclos || [];
   const pos = detectPosition();
   if (pos && userMesos.includes(pos.meso)) {

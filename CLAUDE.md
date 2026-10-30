@@ -84,12 +84,13 @@ Headers de sección usan mayúscula solo en la primera letra ("Pesos", "Objetivo
 - Actividad y Hábitos (Nata) conservan el mapa de calor largo que crece hacia abajo; si molesta, se les puede aplicar el mismo calendario mensual.
 - Sesión diaria de ~36 min: si no se sostiene, bajar series de caderas primero (o volver a días alternos).
 
-## Pendiente: generador de mesociclos (mediados de octubre, semana 4-5 del M7)
+## Generador de mesociclos (implementado 30 oct 2026)
 
-- Objetivo: que la app genere el siguiente mesociclo desde los resultados del anterior, y el usuario lo revise con Claude en vez de escribirlo desde cero.
-- Cambio estructural previo: los mesociclos hoy son código dentro de `MESOCICLOS` en index.html; tienen que pasar a datos (`data-{usuario}.json`) para generarse sin tocar código.
-- Reglas: arranque de básicos = e1RM del test x % según reps objetivo; doble progresión = último peso con tope; estancamiento 2 bloques sin mejora de e1RM -> cambiar variante o rango. Cambios de ejercicios (equipo nuevo, lesión) quedan a criterio humano.
-- Construirlo con los datos reales del M7, no antes.
+- Config > Generador (solo usuarios con `tieneEquipo`): arma el M{n+1} desde los registros del último mesociclo de la lista, con los mismos días y ejercicios. Detalle completo de las reglas en `docs/forge-paper.md` (Parte II, sección 4).
+- Se guarda como DATOS: localStorage `mesos-generados` y clave `mesociclos` de `data-{usuario}.json`. `registrarMesosGenerados()` los suma a `MESOCICLOS` al abrir la app y tras cada pull. El merge es por `generado.ts`; borrar deja una lápida `{borrado: true}` para que el pull no lo resucite. Del M1 al M8 siguen en código.
+- Cada mesociclo generado guarda `generado = {desde, fecha, ts, resumen[], avisos[], adherencia}`. Es lo que Claude revisa en una conversación nueva.
+- No cambia ejercicios ni volumen (criterio humano). Estancamiento de 2 bloques → aviso.
+- Fechas con año opcional ("4–9 ene 2027"): `mesoRango` y `detectPosition` lo leen; sin año = 2026.
 
 ## Flujo de deploy
 

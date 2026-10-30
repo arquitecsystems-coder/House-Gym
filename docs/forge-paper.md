@@ -342,6 +342,7 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
 - **Mesociclo:**
   - `MESOCICLOS[clave] = {label, semanas: 6, fechas[6], modelo: "doble_progresion", mancuernas?, flotante?, dias[{key,label,titulo}], plan{dia: [ejercicio]}}`.
   - El pico es la semana `semanas - 1` y la descarga, la última.
+  - Los mesociclos generados llevan además `generado` y, por ejercicio, `mejorE1` y `sinMejora`.
   - La semana y el día que se abren salen de `fechas`, comparando con la fecha real.
 - **Ejercicio:**
   - **campos base:** `{nombre, series, rol, semanas[6], prog?, ancla?, ref?, inc?, clase?, variantes?, info?, equipo?}`;
@@ -366,6 +367,8 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
 | `chipsSemanas` | Chips de las semanas: pasadas = lo registrado; futuras = proyección desde el peso real |
 | `claseEjercicio` | Básico, ancla o accesorio, que decide el descanso: 180, 150 o 120 s, ajustables en Config |
 | `fmtSeries` | Muestra lo registrado en kg, en lb (perilla) o con el nombre de la variante |
+| `generarSiguienteMeso` / `generarEjercicio` | Generador (sección 4) |
+| `registrarMesosGenerados` | Suma a `MESOCICLOS` los generados guardados (al abrir la app y tras cada ↓) |
 
 **Todos los mensajes de carga muestran los discos,** incluido "Mantén X". Si es mancuerna, muestran la perilla ("25 lb · 11.3 kg").
 
@@ -383,6 +386,8 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
   - En el sync va en la clave `mesociclos` de `data-samuel.json`.
 - **Al abrir la app:** los mesociclos generados se suman a `MESOCICLOS` y a la lista del usuario.
 - **Lo que queda en código:** del M1 al M8. Los generados conviven con ellos.
+- **Quién lo ve:** solo aparece para usuarios con `tieneEquipo` (hoy, Samuel).
+- **Fechas:** pueden llevar el año al final ("4–9 ene 2027"); sin año se asume 2026. Ojo: el M9 caería del 21 dic al 30 ene, con Navidad y Año Nuevo en las S1-S2.
 
 ### 4.2 Reglas, por motor
 
@@ -393,14 +398,18 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
 | **Respaldo** | Se copia: sale solo de la serie pesada | — |
 | **Ancla** | Doble progresión: último peso; si llegó al tope en todas las series, una subida | La mejor serie del bloque |
 | **Doble progresión (barra)** | Último peso registrado; si llegó al tope, +`inc`; si la primera serie quedó bajo el mínimo, recalibra | — |
+| **Doble progresión con kg sin barra** (crunch) | Se mantiene el peso; si llegó al tope, avisa "subir carga a mano" | — |
 | **Mancuerna ajustable** | Misma regla de la perilla (`sugerenciaMancuerna`) | — |
 | **Con variantes** (dragon flag) | Último nivel registrado | — |
 | **Sin carga** (nórdico) | Se copia | — |
 
-**La semana de descarga se escribe sola:** ~70% del arranque, con las reps mínimas.
+**La semana de descarga se escribe sola:** ~70% del arranque en los básicos lineales y el respaldo, ~75% en el resto, con las reps mínimas. El dragon flag baja un nivel.
 
 **El generador también avisa** (avisa, no decide):
-- **Estancamiento:** el mejor 1RM estimado no mejoró contra el bloque anterior. Se compara por nombre de ejercicio, sin importar el día. Dos bloques así → cambiar variante o rango.
+- **Estancamiento:** el mejor 1RM estimado del bloque no mejoró contra el anterior.
+  - **Contra qué se compara:** la `ref` (básicos y anclas); si no hay `ref`, el `mejorE1` que el generador guarda en cada ejercicio; si tampoco hay, el mejor del bloque anterior por nombre.
+  - **Por nombre no compara** cuando el nombre se repite en el bloque (curl y francés: ancla en A y técnico en C), ni con mancuernas de unidades distintas.
+  - **Un bloque sin mejora:** aviso. **Dos seguidos** (marca `sinMejora`): cambiar variante o rango.
 - **Sin datos:** un ejercicio sin registros en el bloque queda con su arranque anterior, marcado.
 - **Adherencia:** sesiones hechas contra planeadas.
 
