@@ -3176,6 +3176,14 @@
       "timestamp": "2026-10-29T11:57:29.207Z",
       "reps": "12",
       "checked": true
+    },
+    "N3-S2-a-Sentadilla trasera (barra)-1": {
+      "peso": "50",
+      "timestamp": "2026-10-30T00:31:55.782Z"
+    },
+    "N3-S2-a-Sentadilla trasera (barra)-2": {
+      "peso": "50",
+      "timestamp": "2026-10-30T00:31:59.174Z"
     }
   },
   "rehab": {},
@@ -4057,5 +4065,5 @@
     "displayName": "Nata"
   },
   "foodLibrary": [],
-  "timestamp": "2026-10-29T12:12:18.112Z"
+  "timestamp": "2026-10-30T00:31:58.845Z"
 }
