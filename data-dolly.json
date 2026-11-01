@@ -2374,8 +2374,8 @@
       "rir": "3"
     },
     "D2-S6-sab-Búlgara con mancuerna-2": {
-      "reps": "10",
-      "timestamp": "2026-11-01T16:45:00.658Z",
+      "reps": "10.10",
+      "timestamp": "2026-11-01T16:45:44.689Z",
       "rir": "3",
       "checked": true
     }
@@ -2502,5 +2502,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-01T16:45:40.421Z"
+  "timestamp": "2026-11-01T16:45:47.732Z"
 }
