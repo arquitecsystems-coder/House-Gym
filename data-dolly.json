@@ -2340,6 +2340,12 @@
       "timestamp": "2026-11-01T16:14:36.537Z",
       "rir": "0",
       "checked": true
+    },
+    "D2-S6-sab-Flexión inclinada (banco)-1": {
+      "reps": "9",
+      "timestamp": "2026-11-01T16:17:49.793Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2464,5 +2470,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-01T16:15:12.442Z"
+  "timestamp": "2026-11-01T16:17:52.807Z"
 }
