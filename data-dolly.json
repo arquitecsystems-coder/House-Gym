@@ -2510,6 +2510,10 @@
       "reps": "10",
       "checked": true,
       "rir": "0"
+    },
+    "nota-sesion-D2-S6-dom": {
+      "nota": "La sentadilla la hago pero no con la espalda derecha y me crugen mis piernas. ",
+      "timestamp": "2026-11-02T15:20:52.510Z"
     }
   },
   "rehab": {
@@ -2634,5 +2638,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T15:16:21.755Z"
+  "timestamp": "2026-11-02T15:20:56.376Z"
 }
