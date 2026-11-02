@@ -3351,7 +3351,9 @@
     },
     "N3-S2-b-Aperturas en banco (mancuerna)-1": {
       "peso": "5",
-      "timestamp": "2026-11-02T17:33:23.970Z"
+      "timestamp": "2026-11-02T17:39:00.374Z",
+      "reps": "5",
+      "checked": true
     },
     "N3-S2-b-Aperturas en banco (mancuerna)-2": {
       "peso": "5",
@@ -4242,5 +4244,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:33:32.951Z"
+  "timestamp": "2026-11-02T17:39:03.403Z"
 }
