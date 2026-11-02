@@ -3351,8 +3351,8 @@
     },
     "N3-S2-b-Aperturas en banco (mancuerna)-1": {
       "peso": "5",
-      "timestamp": "2026-11-02T17:39:00.374Z",
-      "reps": "5",
+      "timestamp": "2026-11-02T17:50:23.122Z",
+      "reps": "9",
       "checked": true
     },
     "N3-S2-b-Aperturas en banco (mancuerna)-2": {
@@ -3363,7 +3363,9 @@
     },
     "N3-S2-b-Aperturas en banco (mancuerna)-3": {
       "peso": "5",
-      "timestamp": "2026-11-02T17:33:29.941Z"
+      "timestamp": "2026-11-02T17:50:19.311Z",
+      "reps": "9",
+      "checked": true
     }
   },
   "rehab": {},
@@ -4246,5 +4248,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:44:28.497Z"
+  "timestamp": "2026-11-02T17:50:22.336Z"
 }
