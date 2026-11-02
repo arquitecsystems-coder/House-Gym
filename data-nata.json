@@ -3338,6 +3338,14 @@
     "N3-S2-b-Pullover (mancuerna)-3": {
       "peso": "7,5",
       "timestamp": "2026-11-02T17:17:37.288Z"
+    },
+    "N3-S2-b-Y-T banco inclinado-1": {
+      "checked": true,
+      "timestamp": "2026-11-02T17:29:20.897Z"
+    },
+    "N3-S2-b-Y-T banco inclinado-2": {
+      "checked": true,
+      "timestamp": "2026-11-02T17:29:21.604Z"
     }
   },
   "rehab": {},
@@ -4220,5 +4228,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:29:01.790Z"
+  "timestamp": "2026-11-02T17:29:24.625Z"
 }
