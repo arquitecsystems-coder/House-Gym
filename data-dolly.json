@@ -2489,6 +2489,10 @@
       "peso": "30",
       "reps": "10.10",
       "checked": true
+    },
+    "D2-S6-dom-RDL unilateral con apoyo-3": {
+      "peso": "30",
+      "timestamp": "2026-11-02T15:07:14.503Z"
     }
   },
   "rehab": {
@@ -2613,5 +2617,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T15:02:03.458Z"
+  "timestamp": "2026-11-02T15:07:17.546Z"
 }
