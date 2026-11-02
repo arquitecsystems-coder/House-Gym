@@ -3313,7 +3313,9 @@
     },
     "N3-S2-b-Press Francés (barra)-1": {
       "peso": "15",
-      "timestamp": "2026-11-02T17:15:38.046Z"
+      "timestamp": "2026-11-02T17:56:30.928Z",
+      "reps": "8",
+      "checked": true
     },
     "N3-S2-b-Press Francés (barra)-2": {
       "peso": "15",
@@ -4248,5 +4250,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:50:26.136Z"
+  "timestamp": "2026-11-02T17:56:33.945Z"
 }
