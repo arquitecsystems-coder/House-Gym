@@ -3348,6 +3348,18 @@
     "N3-S2-b-Y-T banco inclinado-2": {
       "checked": true,
       "timestamp": "2026-11-02T17:29:21.604Z"
+    },
+    "N3-S2-b-Aperturas en banco (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-11-02T17:33:23.970Z"
+    },
+    "N3-S2-b-Aperturas en banco (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-11-02T17:33:26.393Z"
+    },
+    "N3-S2-b-Aperturas en banco (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-11-02T17:33:29.941Z"
     }
   },
   "rehab": {},
@@ -4230,5 +4242,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:32:52.521Z"
+  "timestamp": "2026-11-02T17:33:29.404Z"
 }
