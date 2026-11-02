@@ -2455,6 +2455,12 @@
       "timestamp": "2026-11-02T14:18:40.373Z",
       "rir": "2",
       "checked": true
+    },
+    "D2-S6-dom-Negativas de fondo (banco)-2": {
+      "reps": "5",
+      "timestamp": "2026-11-02T14:29:50.005Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -2579,5 +2585,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T14:18:43.390Z"
+  "timestamp": "2026-11-02T14:29:53.020Z"
 }
