@@ -2401,9 +2401,10 @@
     },
     "D2-S6-sab-Press inclinado mancuerna (unilateral)-3": {
       "reps": "10.10",
-      "timestamp": "2026-11-01T17:18:59.832Z",
+      "timestamp": "2026-11-02T14:56:12.691Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "12.5"
     },
     "D2-S6-sab-Remo unilateral con mancuerna-1": {
       "peso": "21",
@@ -2609,5 +2610,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T14:55:55.017Z"
+  "timestamp": "2026-11-02T14:56:15.728Z"
 }
