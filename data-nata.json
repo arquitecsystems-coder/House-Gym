@@ -3295,7 +3295,9 @@
     },
     "N3-S2-b-Remo Pendlay (barra)-1": {
       "peso": "22,3",
-      "timestamp": "2026-11-02T17:05:55.182Z"
+      "timestamp": "2026-11-02T17:07:19.819Z",
+      "reps": "9",
+      "checked": true
     },
     "N3-S2-b-Remo Pendlay (barra)-2": {
       "peso": "22,3",
@@ -4186,5 +4188,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:06:04.851Z"
+  "timestamp": "2026-11-02T17:07:22.859Z"
 }
