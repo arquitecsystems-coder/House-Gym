@@ -3325,7 +3325,9 @@
     },
     "N3-S2-b-Pullover (mancuerna)-1": {
       "peso": "7,5",
-      "timestamp": "2026-11-02T17:17:29.907Z"
+      "timestamp": "2026-11-02T17:19:36.147Z",
+      "reps": "12",
+      "checked": true
     },
     "N3-S2-b-Pullover (mancuerna)-2": {
       "peso": "7,5",
@@ -4216,5 +4218,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T17:17:40.299Z"
+  "timestamp": "2026-11-02T17:19:39.204Z"
 }
