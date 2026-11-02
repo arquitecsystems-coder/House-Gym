@@ -2548,6 +2548,10 @@
       "timestamp": "2026-11-02T15:49:46.248Z",
       "reps": "10",
       "checked": true
+    },
+    "D2-S6-dom-Lateral inclinado contra pared-2": {
+      "peso": "7.5",
+      "timestamp": "2026-11-02T16:01:43.293Z"
     }
   },
   "rehab": {
@@ -2672,5 +2676,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T15:50:50.500Z"
+  "timestamp": "2026-11-02T16:01:46.343Z"
 }
