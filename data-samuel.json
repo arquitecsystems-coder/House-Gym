@@ -706,6 +706,798 @@
       "checked": true,
       "rir": "0"
     },
+    "N1-S1-lun-Sentadilla trasera (barra)-1": {
+      "peso": "40",
+      "timestamp": "2026-07-30T18:25:05.160Z",
+      "reps": "9",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-lun-Sentadilla trasera (barra)-2": {
+      "peso": "40",
+      "timestamp": "2026-07-30T18:25:05.646Z",
+      "reps": "8",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-lun-Sentadilla trasera (barra)-3": {
+      "peso": "40",
+      "timestamp": "2026-07-30T18:25:06.048Z",
+      "reps": "8",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-lun-Sentadilla trasera (barra)-4": {
+      "peso": "40",
+      "timestamp": "2026-07-30T18:25:06.456Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-lun-Press inclinado (barra)-1": {
+      "peso": "22,5",
+      "timestamp": "2026-07-30T18:25:08.150Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-lun-Press inclinado (barra)-2": {
+      "peso": "22,5",
+      "timestamp": "2026-07-30T18:25:08.587Z",
+      "reps": "8",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-lun-Press inclinado (barra)-3": {
+      "peso": "22,5",
+      "timestamp": "2026-07-30T18:25:08.865Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-lun-Curl bíceps (barra)-1": {
+      "peso": "10",
+      "timestamp": "2026-07-30T18:25:10.073Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-lun-Curl bíceps (barra)-2": {
+      "peso": "10",
+      "timestamp": "2026-07-30T18:25:10.518Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-lun-Curl bíceps (barra)-3": {
+      "peso": "10",
+      "timestamp": "2026-07-30T18:25:10.804Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-lun-Plancha (core)-1": {
+      "reps": "52",
+      "timestamp": "2026-07-30T18:25:12.139Z",
+      "checked": true
+    },
+    "N1-S1-lun-Plancha (core)-2": {
+      "reps": "55",
+      "timestamp": "2026-07-30T18:25:12.364Z",
+      "checked": true
+    },
+    "N1-S1-lun-Plancha (core)-3": {
+      "reps": "60",
+      "timestamp": "2026-07-30T18:25:12.664Z",
+      "checked": true
+    },
+    "N1-S1-mie-RDL (barra)-1": {
+      "peso": "27.5",
+      "timestamp": "2026-07-30T18:24:57.119Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-mie-RDL (barra)-2": {
+      "peso": "27.5",
+      "timestamp": "2026-07-30T18:24:57.577Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-mie-RDL (barra)-3": {
+      "peso": "27.5",
+      "timestamp": "2026-07-30T18:24:58.062Z",
+      "reps": "8",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-mie-RDL (barra)-4": {
+      "peso": "27.5",
+      "timestamp": "2026-07-30T18:24:58.275Z",
+      "reps": "7",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-mie-Remo Pendlay (barra)-1": {
+      "reps": "8",
+      "timestamp": "2026-07-30T18:24:54.935Z",
+      "rir": "1",
+      "peso": "27.5",
+      "checked": true
+    },
+    "N1-S1-mie-Remo Pendlay (barra)-2": {
+      "peso": "27.5",
+      "timestamp": "2026-07-30T18:24:55.303Z",
+      "reps": "8",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-mie-Remo Pendlay (barra)-3": {
+      "peso": "27.5",
+      "timestamp": "2026-07-30T18:24:55.549Z",
+      "reps": "8",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-mie-Elevación lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-07-30T18:24:51.524Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-mie-Elevación lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-07-30T18:24:52.266Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-mie-Elevación lateral (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-07-30T18:24:52.666Z",
+      "reps": "10",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-mie-Pullover (mancuerna, banco)-2": {
+      "peso": "7.5",
+      "timestamp": "2026-07-30T18:35:17.366Z",
+      "reps": "10",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-mie-Pullover (mancuerna, banco)-1": {
+      "peso": "10",
+      "timestamp": "2026-07-30T18:24:48.835Z",
+      "reps": "6",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-mie-Pullover (mancuerna, banco)-3": {
+      "peso": "7.5",
+      "timestamp": "2026-07-30T18:35:17.790Z",
+      "reps": "12",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-vie-Zancada estática (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-08-02T00:55:20.990Z",
+      "reps": "14",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-vie-Zancada estática (barra)-2": {
+      "peso": "40",
+      "timestamp": "2026-08-02T00:55:22.297Z",
+      "reps": "6",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S1-vie-Zancada estática (barra)-3": {
+      "peso": "40",
+      "timestamp": "2026-08-02T00:55:22.834Z",
+      "reps": "6",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S1-vie-Hip thrust (barra)-1": {
+      "peso": "35",
+      "timestamp": "2026-08-02T01:51:53.294Z",
+      "reps": "8",
+      "rir": "4",
+      "checked": true
+    },
+    "N1-S1-vie-Hip thrust (barra)-2": {
+      "peso": "35",
+      "timestamp": "2026-08-02T01:51:53.693Z",
+      "reps": "8",
+      "rir": "4",
+      "checked": true
+    },
+    "N1-S1-vie-Hip thrust (barra)-3": {
+      "peso": "35",
+      "timestamp": "2026-08-02T01:51:54.084Z",
+      "reps": "8",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-vie-Aperturas en banco (mancuerna)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-02T01:14:25.364Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-vie-Aperturas en banco (mancuerna)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-02T01:14:25.759Z",
+      "reps": "10",
+      "rir": "4",
+      "checked": true
+    },
+    "N1-S1-vie-Aperturas en banco (mancuerna)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-02T01:14:26.123Z",
+      "reps": "10",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-vie-Crunch con peso-1": {
+      "peso": "20",
+      "timestamp": "2026-08-02T01:26:40.481Z",
+      "reps": "20",
+      "rir": "3",
+      "checked": true
+    },
+    "N1-S1-vie-Crunch con peso-2": {
+      "peso": "20",
+      "timestamp": "2026-08-02T01:26:41.023Z",
+      "reps": "22",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S1-vie-Crunch con peso-3": {
+      "peso": "20",
+      "timestamp": "2026-08-02T01:26:41.242Z",
+      "reps": "17",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-lun-Sentadilla trasera (barra)-1": {
+      "reps": "8",
+      "timestamp": "2026-08-05T00:05:11.503Z",
+      "peso": "45",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-lun-Sentadilla trasera (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-08-05T00:05:14.675Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-lun-Sentadilla trasera (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-08-05T00:13:14.764Z",
+      "reps": "8",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-lun-Sentadilla trasera (barra)-4": {
+      "peso": "45",
+      "timestamp": "2026-08-05T00:13:17.108Z",
+      "reps": "8",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-lun-Curl bíceps (barra)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-05T00:16:59.068Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-lun-Curl bíceps (barra)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-05T00:22:39.964Z",
+      "reps": "10",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-lun-Curl bíceps (barra)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-05T00:23:22.433Z",
+      "reps": "10",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-lun-Press inclinado (barra)-1": {
+      "peso": "22,5",
+      "timestamp": "2026-08-05T00:34:42.697Z",
+      "reps": "6",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-lun-Press inclinado (barra)-2": {
+      "peso": "22,5",
+      "timestamp": "2026-08-05T00:34:43.245Z",
+      "reps": "7",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-lun-Press inclinado (barra)-3": {
+      "peso": "22,5",
+      "timestamp": "2026-08-05T00:34:43.505Z",
+      "reps": "8",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-lun-Plancha (core)-1": {
+      "reps": "55",
+      "timestamp": "2026-08-05T00:43:54.641Z",
+      "checked": true
+    },
+    "N1-S2-lun-Plancha (core)-2": {
+      "reps": "37",
+      "timestamp": "2026-08-05T00:43:56.125Z",
+      "checked": true
+    },
+    "N1-S2-lun-Plancha (core)-3": {
+      "reps": "60",
+      "timestamp": "2026-08-05T00:49:42.923Z",
+      "checked": true
+    },
+    "N1-S2-mie-Remo Pendlay (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-08-08T23:08:34.074Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-mie-RDL (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-08-08T22:56:29.963Z",
+      "reps": "8",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-mie-RDL (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-08-08T22:56:31.284Z",
+      "reps": "8",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-mie-RDL (barra)-3": {
+      "peso": "30",
+      "timestamp": "2026-08-08T23:02:09.813Z",
+      "reps": "8",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-mie-RDL (barra)-4": {
+      "peso": "30",
+      "timestamp": "2026-08-08T23:02:10.131Z",
+      "reps": "8",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-mie-Remo Pendlay (barra)-2": {
+      "peso": "20",
+      "timestamp": "2026-08-08T23:08:34.642Z",
+      "reps": "9",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S2-mie-Remo Pendlay (barra)-3": {
+      "peso": "20",
+      "timestamp": "2026-08-08T23:11:19.685Z",
+      "reps": "9",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-mie-Elevación lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-08-08T23:21:06.672Z",
+      "reps": "12",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-mie-Elevación lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-08-08T23:21:07.114Z",
+      "reps": "12",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S2-mie-Elevación lateral (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-08-08T23:21:07.443Z",
+      "reps": "12",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-mie-Pullover (mancuerna, banco)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-08T23:33:17.876Z",
+      "reps": "10",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-mie-Pullover (mancuerna, banco)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-08T23:33:18.280Z",
+      "reps": "10",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S2-mie-Pullover (mancuerna, banco)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-14T22:56:49.815Z",
+      "checked": true
+    },
+    "N1-S3-lun-Plancha (core)-1": {
+      "reps": "67",
+      "timestamp": "2026-08-14T23:12:51.772Z",
+      "rir": "0",
+      "peso": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Plancha (core)-2": {
+      "peso": "0",
+      "timestamp": "2026-08-14T23:16:30.933Z",
+      "rir": "0",
+      "reps": "72",
+      "checked": true
+    },
+    "N1-S3-lun-Plancha (core)-3": {
+      "peso": "0",
+      "timestamp": "2026-08-14T23:23:28.179Z",
+      "reps": "83",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Curl bíceps (barra)-1": {
+      "peso": "5",
+      "timestamp": "2026-08-14T23:31:16.888Z",
+      "reps": "15",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Curl bíceps (barra)-2": {
+      "peso": "5",
+      "timestamp": "2026-08-14T23:31:17.314Z",
+      "reps": "12",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Curl bíceps (barra)-3": {
+      "peso": "5",
+      "timestamp": "2026-08-14T23:34:52.064Z",
+      "reps": "10",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S3-lun-Sentadilla trasera (barra)-1": {
+      "peso": "45",
+      "timestamp": "2026-08-14T23:54:20.665Z",
+      "reps": "9",
+      "rir": "2",
+      "checked": true
+    },
+    "N1-S3-lun-Sentadilla trasera (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-08-14T23:54:21.073Z",
+      "reps": "9",
+      "rir": "1",
+      "checked": true
+    },
+    "N1-S3-lun-Sentadilla trasera (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-08-15T00:03:36.716Z",
+      "reps": "9",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Sentadilla trasera (barra)-4": {
+      "peso": "45",
+      "timestamp": "2026-08-15T00:08:07.990Z",
+      "reps": "6",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Press inclinado (barra)-1": {
+      "peso": "15",
+      "timestamp": "2026-08-15T00:32:43.458Z",
+      "reps": "10",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Press inclinado (barra)-2": {
+      "peso": "15",
+      "timestamp": "2026-08-15T00:32:54.000Z",
+      "reps": "10",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-lun-Press inclinado (barra)-3": {
+      "peso": "15",
+      "timestamp": "2026-08-15T00:32:54.437Z",
+      "reps": "12",
+      "rir": "0",
+      "checked": true
+    },
+    "N1-S3-mie-RDL (barra)-1": {
+      "checked": false,
+      "timestamp": "2026-08-16T12:41:01.951Z",
+      "peso": "",
+      "reps": ""
+    },
+    "N1-S4-lun-Sentadilla trasera (barra)-1": {
+      "peso": "49.54",
+      "timestamp": "2026-08-18T01:36:21.376Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-lun-Sentadilla trasera (barra)-2": {
+      "peso": "49.54",
+      "timestamp": "2026-08-18T01:42:10.944Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-lun-Sentadilla trasera (barra)-3": {
+      "peso": "49.54",
+      "timestamp": "2026-08-18T01:46:15.736Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-lun-Sentadilla trasera (barra)-4": {
+      "peso": "49.54",
+      "timestamp": "2026-08-18T01:50:28.882Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-lun-Curl bíceps (barra)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-18T01:53:42.721Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "2"
+    },
+    "N1-S4-lun-Curl bíceps (barra)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-18T01:56:49.232Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "1"
+    },
+    "N1-S4-lun-Curl bíceps (barra)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-18T02:01:31.716Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-lun-Plancha (core)-1": {
+      "reps": "60",
+      "timestamp": "2026-08-18T02:11:26.205Z",
+      "checked": true
+    },
+    "N1-S4-lun-Plancha (core)-2": {
+      "reps": "55",
+      "timestamp": "2026-08-18T02:11:27.021Z",
+      "checked": true
+    },
+    "N1-S4-lun-Plancha (core)-3": {
+      "reps": "55",
+      "timestamp": "2026-08-18T02:19:51.882Z",
+      "checked": true
+    },
+    "N1-S4-lun-Press inclinado (barra)-1": {
+      "peso": "15",
+      "timestamp": "2026-08-18T02:48:12.403Z",
+      "reps": "12",
+      "checked": true
+    },
+    "N1-S4-lun-Press inclinado (barra)-2": {
+      "peso": "15",
+      "timestamp": "2026-08-18T02:48:20.383Z",
+      "reps": "10",
+      "checked": true
+    },
+    "N1-S4-lun-Press inclinado (barra)-3": {
+      "peso": "15",
+      "timestamp": "2026-08-18T02:48:28.578Z",
+      "reps": "8",
+      "checked": true
+    },
+    "N1-S4-mie-RDL (barra)-1": {
+      "peso": "35",
+      "timestamp": "2026-08-20T01:29:52.766Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "2"
+    },
+    "N1-S4-mie-RDL (barra)-2": {
+      "peso": "35",
+      "timestamp": "2026-08-20T01:33:30.835Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "1"
+    },
+    "N1-S4-mie-RDL (barra)-3": {
+      "peso": "35",
+      "timestamp": "2026-08-20T01:37:54.203Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-RDL (barra)-4": {
+      "peso": "35",
+      "timestamp": "2026-08-20T01:42:15.030Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Elevación lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-08-20T01:48:36.202Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Elevación lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-08-20T01:52:47.412Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Elevación lateral (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-08-20T01:57:02.616Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Remo Pendlay (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-08-20T02:02:01.327Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Remo Pendlay (barra)-2": {
+      "peso": "25",
+      "timestamp": "2026-08-20T02:05:26.246Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Remo Pendlay (barra)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-20T02:08:34.915Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-mie-Pullover (mancuerna, banco)-1": {
+      "peso": "10",
+      "timestamp": "2026-08-20T02:12:18.629Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "N1-S4-mie-Pullover (mancuerna, banco)-2": {
+      "peso": "10",
+      "timestamp": "2026-08-20T02:19:15.294Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
+    },
+    "N1-S4-mie-Pullover (mancuerna, banco)-3": {
+      "peso": "10",
+      "timestamp": "2026-08-20T02:24:05.028Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "0"
+    },
+    "nota-sesion-N1-S4-vie": {
+      "nota": "Picho ",
+      "timestamp": "2026-08-21T23:17:33.003Z"
+    },
+    "N1-S4-vie-Zancada estática (barra)-1": {
+      "peso": "40",
+      "timestamp": "2026-08-21T23:42:05.186Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-vie-Zancada estática (barra)-2": {
+      "peso": "40",
+      "timestamp": "2026-08-21T23:42:07.917Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-vie-Zancada estática (barra)-3": {
+      "peso": "40",
+      "timestamp": "2026-08-21T23:43:13.805Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-vie-Aperturas en banco (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-08-21T23:47:14.177Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "N1-S4-vie-Aperturas en banco (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-08-21T23:51:08.480Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
+    },
+    "N1-S4-vie-Aperturas en banco (mancuerna)-3": {
+      "peso": "5",
+      "timestamp": "2026-08-21T23:55:23.725Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "1"
+    },
+    "N1-S4-vie-Crunch con peso-1": {
+      "peso": "20",
+      "timestamp": "2026-08-21T23:59:03.619Z",
+      "reps": "22",
+      "checked": true,
+      "rir": "2"
+    },
+    "N1-S4-vie-Crunch con peso-2": {
+      "peso": "20",
+      "timestamp": "2026-08-22T00:03:18.304Z",
+      "reps": "25",
+      "checked": true,
+      "rir": "1"
+    },
+    "N1-S4-vie-Crunch con peso-3": {
+      "peso": "20",
+      "timestamp": "2026-08-22T00:06:43.117Z",
+      "reps": "25",
+      "checked": true,
+      "rir": "0"
+    },
+    "N1-S4-vie-Hip thrust (barra)-1": {
+      "peso": "45",
+      "timestamp": "2026-08-22T00:55:50.093Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
+    },
+    "N1-S4-vie-Hip thrust (barra)-2": {
+      "peso": "45",
+      "timestamp": "2026-08-22T00:55:52.530Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "4"
+    },
+    "N1-S4-vie-Hip thrust (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-08-22T00:55:54.591Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "3"
+    },
     "M5-S2-mie-Sentadilla parcial (barra)-1": {
       "peso": "75",
       "timestamp": "2026-07-16T16:24:23.477Z",
@@ -3495,672 +4287,6 @@
       "reps": "5",
       "timestamp": "2026-10-18T23:34:50.178Z",
       "checked": true
-    },
-    "M7-S4-lun-Press Banca (barra)-1": {
-      "peso": "67,3",
-      "timestamp": "2026-10-19T17:29:22.917Z",
-      "reps": "7",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-lun-Press Banca (barra)-2": {
-      "peso": "67,3",
-      "timestamp": "2026-10-19T17:29:24.133Z",
-      "reps": "5",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-lun-Press Banca (barra)-3": {
-      "peso": "67,3",
-      "timestamp": "2026-10-19T17:29:20.760Z",
-      "reps": "7",
-      "checked": true,
-      "rir": "1"
-    },
-    "nota-sesion-M7-S4-lun": {
-      "nota": "No tengo muy claro el RIR del Press, la técnica me falló durante la sesión ósea parecía que no me pesaba pero al mismo tiempo me desbalanceba",
-      "timestamp": "2026-10-19T17:31:26.116Z"
-    },
-    "M7-S4-lun-Press Inclinado (barra)-1": {
-      "peso": "53,4",
-      "timestamp": "2026-10-19T17:56:23.884Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-lun-Press Inclinado (barra)-2": {
-      "peso": "53,4",
-      "timestamp": "2026-10-19T17:48:01.593Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-lun-Press Inclinado (barra)-3": {
-      "peso": "53,4",
-      "timestamp": "2026-10-19T17:56:20.906Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-lun-Curl Bíceps (barra)-1": {
-      "peso": "30",
-      "timestamp": "2026-10-19T18:04:23.981Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S4-lun-Curl Bíceps (barra)-2": {
-      "peso": "30",
-      "timestamp": "2026-10-19T18:13:20.830Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-lun-Elevación Lateral (DB)-1": {
-      "peso": "10",
-      "timestamp": "2026-10-19T18:23:33.489Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S4-lun-Elevación Lateral (DB)-2": {
-      "peso": "10",
-      "timestamp": "2026-10-19T18:33:55.058Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-lun-Curl Martillo (DB)-1": {
-      "peso": "10",
-      "timestamp": "2026-10-19T18:37:56.749Z",
-      "reps": "17",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-mar-Remo Pendlay (barra)-1": {
-      "peso": "57,3",
-      "timestamp": "2026-10-20T17:50:01.007Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-mar-Remo Pendlay (barra)-2": {
-      "peso": "57,3",
-      "timestamp": "2026-10-20T17:55:56.338Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-mar-Remo Pendlay (barra)-3": {
-      "peso": "57,3",
-      "timestamp": "2026-10-20T18:01:24.375Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-mar-Remo Supino (barra)-1": {
-      "peso": "57,3",
-      "timestamp": "2026-10-20T18:13:08.819Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-mar-Remo Supino (barra)-2": {
-      "peso": "57,3",
-      "timestamp": "2026-10-20T18:20:19.386Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-mar-Remo Supino (barra)-3": {
-      "peso": "57,3",
-      "timestamp": "2026-10-20T18:27:49.087Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-mar-Pullover (DB)-1": {
-      "reps": "16",
-      "timestamp": "2026-10-20T18:51:04.585Z",
-      "checked": true
-    },
-    "M7-S4-mar-Pullover (DB)-2": {
-      "reps": "10",
-      "timestamp": "2026-10-20T18:51:04.880Z",
-      "checked": true
-    },
-    "M7-S4-mar-Press Francés (barra)-1": {
-      "peso": "30",
-      "timestamp": "2026-10-21T09:31:05.061Z",
-      "reps": "7",
-      "checked": true
-    },
-    "M7-S4-mar-Press Francés (barra)-2": {
-      "peso": "30",
-      "timestamp": "2026-10-21T09:31:09.836Z",
-      "reps": "7",
-      "checked": true
-    },
-    "M7-S4-mie-Sentadilla (barra + cuña)-1": {
-      "peso": "95",
-      "timestamp": "2026-10-21T09:47:48.719Z",
-      "reps": "3",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-mie-Sentadilla (barra + cuña)-2": {
-      "peso": "95",
-      "timestamp": "2026-10-21T09:54:09.416Z",
-      "reps": "3",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-mie-Dragon Flag (negativas)-1": {
-      "reps": "9",
-      "timestamp": "2026-10-21T09:57:23.859Z",
-      "checked": true,
-      "rir": "1"
-    },
-    "nota-sesion-M7-S4-mie": {
-      "nota": "Baje la altura de la cuña a la mitad.",
-      "timestamp": "2026-10-21T09:57:59.214Z"
-    },
-    "M7-S4-mie-Dragon Flag (negativas)-2": {
-      "reps": "9",
-      "timestamp": "2026-10-21T10:01:10.785Z",
-      "rir": "1",
-      "checked": true
-    },
-    "M7-S4-mie-Dragon Flag (negativas)-3": {
-      "reps": "9",
-      "timestamp": "2026-10-21T10:04:35.473Z",
-      "rir": "1",
-      "checked": true
-    },
-    "M7-S4-mie-Crunch Abdominal-1": {
-      "peso": "20",
-      "timestamp": "2026-10-21T10:08:08.563Z",
-      "reps": "12",
-      "checked": true
-    },
-    "M7-S4-mie-Crunch Abdominal-2": {
-      "peso": "20",
-      "timestamp": "2026-10-21T10:11:23.322Z",
-      "reps": "11",
-      "checked": true
-    },
-    "M7-S4-jue-Press Banca (barra)-1": {
-      "peso": "55",
-      "timestamp": "2026-10-23T18:39:37.852Z",
-      "reps": "15",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-jue-Press Banca (barra)-2": {
-      "peso": "55",
-      "timestamp": "2026-10-23T18:31:22.002Z",
-      "reps": "15",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-jue-Press Banca (barra)-3": {
-      "peso": "55",
-      "timestamp": "2026-10-23T18:39:36.363Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-jue-Press Inclinado (barra)-1": {
-      "peso": "47,5",
-      "timestamp": "2026-10-23T18:50:15.888Z",
-      "reps": "11",
-      "checked": true,
-      "rir": "3"
-    },
-    "M7-S4-jue-Press Inclinado (barra)-2": {
-      "peso": "47,5",
-      "timestamp": "2026-10-23T18:56:42.432Z",
-      "reps": "11",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S4-jue-Press Inclinado (barra)-3": {
-      "peso": "47,5",
-      "timestamp": "2026-10-23T19:05:34.195Z",
-      "reps": "11",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-jue-Curl Bíceps (barra)-1": {
-      "peso": "25",
-      "timestamp": "2026-10-23T19:10:27.464Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-jue-Curl Bíceps (barra)-2": {
-      "peso": "25",
-      "timestamp": "2026-10-23T19:25:04.886Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-jue-Curl Martillo (DB)-1": {
-      "peso": "10",
-      "timestamp": "2026-10-23T19:34:18.178Z",
-      "reps": "18",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S4-jue-Curl Martillo (DB)-2": {
-      "peso": "10",
-      "timestamp": "2026-10-23T19:37:36.442Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Press Banca (barra)-1": {
-      "peso": "75",
-      "timestamp": "2026-10-26T18:07:37.732Z",
-      "reps": "5",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Press Banca (barra)-2": {
-      "peso": "75",
-      "timestamp": "2026-10-26T18:22:36.788Z",
-      "reps": "3",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Press Banca (barra)-3": {
-      "peso": "55",
-      "timestamp": "2026-10-26T18:22:37.963Z",
-      "reps": "15",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-lun-Press Inclinado (barra)-1": {
-      "peso": "45",
-      "timestamp": "2026-10-26T18:37:27.435Z",
-      "reps": "11",
-      "checked": true,
-      "rir": "2"
-    },
-    "nota-sesion-M7-S5-lun": {
-      "nota": "45lb en inclinado por lado, un poco menos que en la barra pero también debo acostumbrarme al recorrido libre.\n\nMartillo también con las mancuernas ajustables.",
-      "timestamp": "2026-10-26T19:23:07.179Z"
-    },
-    "M7-S5-lun-Press Inclinado (barra)-2": {
-      "peso": "45",
-      "timestamp": "2026-10-26T18:43:32.211Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Press Inclinado (barra)-3": {
-      "peso": "45",
-      "timestamp": "2026-10-26T18:57:08.925Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Curl Bíceps (barra)-1": {
-      "peso": "30",
-      "timestamp": "2026-10-26T19:06:55.199Z",
-      "reps": "11",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-lun-Curl Bíceps (barra)-2": {
-      "peso": "30",
-      "timestamp": "2026-10-26T19:17:56.000Z",
-      "reps": "9",
-      "checked": true
-    },
-    "M7-S5-lun-Curl Martillo (DB)-1": {
-      "peso": "25",
-      "timestamp": "2026-10-26T19:22:41.227Z",
-      "reps": "11",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Curl Martillo (DB)-2": {
-      "peso": "25",
-      "timestamp": "2026-10-26T19:34:29.005Z",
-      "reps": "11",
-      "checked": true
-    },
-    "M7-S5-lun-Elevación Lateral (DB)-1": {
-      "peso": "20",
-      "timestamp": "2026-10-26T19:34:36.240Z",
-      "reps": "18",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-lun-Elevación Lateral (DB)-2": {
-      "peso": "20",
-      "timestamp": "2026-10-26T19:40:24.497Z",
-      "reps": "18",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mar-Remo Pendlay (barra)-1": {
-      "peso": "60",
-      "timestamp": "2026-10-27T15:14:59.905Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mar-Remo Pendlay (barra)-2": {
-      "peso": "60",
-      "timestamp": "2026-10-27T15:19:34.048Z",
-      "reps": "7",
-      "checked": true,
-      "rir": ""
-    },
-    "M7-S5-mar-Remo Pendlay (barra)-3": {
-      "peso": "60",
-      "timestamp": "2026-10-27T15:39:06.493Z",
-      "reps": "7",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mar-Remo Supino (barra)-1": {
-      "peso": "57,3",
-      "timestamp": "2026-10-27T15:45:42.665Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mar-Remo Supino (barra)-2": {
-      "peso": "57,3",
-      "timestamp": "2026-10-27T15:53:18.794Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mar-Remo Supino (barra)-3": {
-      "peso": "57,3",
-      "timestamp": "2026-10-27T15:58:55.889Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mar-Pullover (DB)-1": {
-      "peso": "33",
-      "timestamp": "2026-10-27T16:04:28.818Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "nota-sesion-M7-S5-mar": {
-      "nota": "Pull Over con LB",
-      "timestamp": "2026-10-27T16:04:44.449Z"
-    },
-    "M7-S5-mar-Pullover (DB)-2": {
-      "peso": "33",
-      "timestamp": "2026-10-27T16:20:57.914Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mar-Pullover (DB)-3": {
-      "peso": "33",
-      "timestamp": "2026-10-27T16:20:56.699Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mar-Press Francés (barra)-1": {
-      "peso": "30",
-      "timestamp": "2026-10-27T16:31:03.242Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mar-Press Francés (barra)-2": {
-      "peso": "30",
-      "timestamp": "2026-10-27T21:30:56.744Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mie-Sentadilla (barra + cuña)-1": {
-      "peso": "95",
-      "timestamp": "2026-10-28T17:15:03.832Z",
-      "reps": "4",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-Sentadilla (barra + cuña)-2": {
-      "peso": "95",
-      "timestamp": "2026-10-28T17:21:12.128Z",
-      "reps": "3",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-Sentadilla (barra + cuña)-3": {
-      "peso": "95",
-      "timestamp": "2026-10-28T17:29:04.186Z",
-      "reps": "3",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-RDL sin flexión de rodilla (barra)-1": {
-      "peso": "70",
-      "timestamp": "2026-10-28T17:38:14.324Z",
-      "reps": "6",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-RDL sin flexión de rodilla (barra)-2": {
-      "peso": "70",
-      "timestamp": "2026-10-28T17:43:10.463Z",
-      "reps": "5",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-RDL sin flexión de rodilla (barra)-3": {
-      "peso": "70",
-      "timestamp": "2026-10-28T17:47:46.044Z",
-      "reps": "5",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mie-Dragon Flag (negativas)-1": {
-      "reps": "10",
-      "timestamp": "2026-10-28T17:53:39.118Z",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-Dragon Flag (negativas)-2": {
-      "reps": "9",
-      "timestamp": "2026-10-28T17:59:09.785Z",
-      "rir": "1",
-      "checked": true
-    },
-    "M7-S5-mie-Dragon Flag (negativas)-3": {
-      "reps": "10",
-      "timestamp": "2026-10-28T18:05:16.027Z",
-      "rir": "0",
-      "checked": true
-    },
-    "M7-S5-mie-Crunch Abdominal-1": {
-      "peso": "20",
-      "timestamp": "2026-10-28T18:09:37.773Z",
-      "reps": "14",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-mie-Crunch Abdominal-2": {
-      "peso": "20",
-      "timestamp": "2026-10-28T18:43:51.997Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mie-Hip Thrust (barra)-1": {
-      "peso": "45",
-      "timestamp": "2026-10-28T22:17:10.713Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-mie-Hip Thrust (barra)-2": {
-      "peso": "45",
-      "timestamp": "2026-10-28T22:17:11.873Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-jue-Press Banca (barra)-1": {
-      "peso": "55",
-      "timestamp": "2026-10-29T19:10:39.960Z",
-      "reps": "15",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-jue-Press Banca (barra)-2": {
-      "peso": "55",
-      "timestamp": "2026-10-29T19:15:30.894Z",
-      "reps": "10",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-jue-Press Banca (barra)-3": {
-      "peso": "55",
-      "timestamp": "2026-10-29T19:20:06.235Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S5-jue-Press Inclinado (barra)-1": {
-      "peso": "45",
-      "timestamp": "2026-10-29T19:38:42.175Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "2"
-    },
-    "M7-S5-jue-Press Inclinado (barra)-2": {
-      "peso": "45",
-      "timestamp": "2026-10-29T19:30:15.840Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-jue-Curl Bíceps (barra)-1": {
-      "peso": "25",
-      "timestamp": "2026-10-29T19:41:54.645Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-jue-Press Inclinado (barra)-3": {
-      "peso": "45",
-      "timestamp": "2026-10-29T19:38:43.471Z",
-      "reps": "8",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-jue-Curl Bíceps (barra)-2": {
-      "peso": "25",
-      "timestamp": "2026-10-29T19:41:50.699Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-jue-Elevación Lateral (DB)-1": {
-      "peso": "15",
-      "timestamp": "2026-10-29T19:46:46.205Z",
-      "reps": "20",
-      "checked": true,
-      "rir": "1"
-    },
-    "nota-sesion-M7-S5-jue": {
-      "nota": "Martillo, elevaciones e inclinado con mancuernas ajustables.",
-      "timestamp": "2026-10-29T19:47:07.154Z"
-    },
-    "M7-S5-jue-Elevación Lateral (DB)-2": {
-      "peso": "15",
-      "timestamp": "2026-10-29T19:59:52.000Z",
-      "reps": "20",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-jue-Curl Martillo (DB)-1": {
-      "peso": "25",
-      "timestamp": "2026-10-29T20:00:06.758Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-jue-Curl Martillo (DB)-2": {
-      "peso": "25",
-      "timestamp": "2026-10-29T20:02:57.869Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-vie-Remo Pendlay (barra)-1": {
-      "peso": "50",
-      "timestamp": "2026-10-30T19:34:38.294Z",
-      "reps": "14",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-vie-Remo Pendlay (barra)-2": {
-      "peso": "50",
-      "timestamp": "2026-10-30T19:39:04.386Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "1"
-    },
-    "M7-S5-vie-Remo Pendlay (barra)-3": {
-      "peso": "50",
-      "timestamp": "2026-10-30T19:43:06.519Z",
-      "reps": "9",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-vie-Remo Supino (barra)-1": {
-      "peso": "50",
-      "timestamp": "2026-10-30T19:47:34.156Z",
-      "reps": "15",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-vie-Remo Supino (barra)-2": {
-      "peso": "50",
-      "timestamp": "2026-10-30T20:03:46.040Z",
-      "reps": "14",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-vie-Remo Supino (barra)-3": {
-      "peso": "50",
-      "timestamp": "2026-10-30T20:03:44.962Z",
-      "reps": "12",
-      "checked": true,
-      "rir": "0"
-    },
-    "M7-S5-vie-Pullover (DB)-1": {
-      "peso": "33",
-      "timestamp": "2026-10-30T20:07:36.854Z",
-      "reps": "12",
-      "checked": true
-    },
-    "M7-S5-vie-Pullover (DB)-2": {
-      "peso": "33",
-      "timestamp": "2026-10-30T20:10:48.441Z",
-      "reps": "9",
-      "checked": true
-    },
-    "M7-S5-vie-Pullover (DB)-3": {
-      "peso": "33",
-      "timestamp": "2026-10-30T20:19:34.915Z",
-      "reps": "12",
-      "checked": true
     }
   },
   "rehab": {
@@ -4715,1247 +4841,6 @@
             "completado": true
           }
         ]
-      },
-      "2026-10-19": {
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-20T00:43:32.766Z",
-        "dorsiflexion_carga": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sentadilla_pared": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": 30,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": 30,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "split_apoyos": [
-          {
-            "valor": 10,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "elevacion_pierna": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "straddle_cr": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "piernas_v": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-20": {
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-21T01:05:54.226Z",
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "nota": "Sesión dura, tengo agujetas del día de ayer especialmente en los flexores de cadera.",
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "straddle_cr": [
-          {
-            "valor": 15,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ]
-      },
-      "2026-10-22": {
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-23T01:46:45.362Z",
-        "dorsiflexion_carga": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": 30,
-            "completado": true
-          },
-          {
-            "valor": 30,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "elevacion_pierna": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "straddle_cr": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-23": {
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-24T13:30:51.138Z",
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": 27,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "split_apoyos": [
-          {
-            "valor": 5,
-            "completado": true
-          },
-          {
-            "valor": 5,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "elevacion_pierna": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "straddle_cr": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "piernas_v": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-24": {
-        "dorsiflexion_carga": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-25T03:30:15.935Z",
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": 20,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "piernas_v": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-25": {
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-26T00:32:05.758Z",
-        "dorsiflexion_carga": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sentadilla_pared": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "split_apoyos": [
-          {
-            "valor": 10,
-            "completado": true
-          },
-          {
-            "valor": 10,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "elevacion_pierna": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": 40,
-            "completado": true
-          },
-          {
-            "valor": 40,
-            "completado": true
-          }
-        ],
-        "nota": "El sapo bajo el tiempo pero cambié en vez de brazos adelante entre las piernas están detrás (supongo es más difícil)",
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "straddle_cr": [
-          {
-            "valor": 25,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-26": {
-        "dorsiflexion_carga": [
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "_ts": "2026-10-27T01:29:26.895Z",
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sentadilla_pared": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "split_apoyos": [
-          {
-            "valor": 20,
-            "completado": true
-          },
-          {
-            "valor": 10,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "elevacion_pierna": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-28": {
-        "cruzado_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-28T21:52:41.978Z",
-        "hombro_correa_izq": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "liftoff_der": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "split_apoyos": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ]
-      },
-      "2026-10-29": {
-        "movilizacion_astragalo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "_ts": "2026-10-30T02:29:38.400Z",
-        "dorsiflexion_carga": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_izq": [
-          {
-            "valor": 20,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "couch_stretch": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "hombro_correa_der": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "sapo": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "inclinacion_pelvis": [
-          {
-            "valor": null,
-            "completado": true
-          }
-        ],
-        "split_apoyos": [
-          {
-            "valor": 25,
-            "completado": true
-          },
-          {
-            "valor": 25,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ],
-        "elevacion_pierna": [
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": true
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          },
-          {
-            "valor": null,
-            "completado": false
-          }
-        ]
       }
     },
     "mediciones": [
@@ -5978,15 +4863,10 @@
         "fecha": "2026-10-18",
         "ts": "2026-10-18T20:47:19.594Z"
       },
-      "liftoff_der": {
-        "nivel": 1,
-        "fecha": "2026-10-20",
-        "ts": "2026-10-21T00:51:01.464Z"
-      },
       "cruzado_der": {
-        "nivel": 2,
-        "fecha": "2026-10-22",
-        "ts": "2026-10-22T23:26:31.775Z"
+        "nivel": 0,
+        "fecha": "2026-11-02",
+        "ts": "2026-11-03T02:01:18.302Z"
       }
     },
     "metricas": {}
@@ -6207,30 +5087,6 @@
       "2026-10-02": {
         "ayunas": 77.6,
         "noche": null
-      },
-      "2026-10-19": {
-        "ayunas": 77.15,
-        "noche": null
-      },
-      "2026-10-20": {
-        "ayunas": 76.8,
-        "noche": null
-      },
-      "2026-10-21": {
-        "ayunas": 77.6,
-        "noche": null
-      },
-      "2026-10-27": {
-        "ayunas": 76.6,
-        "noche": null
-      },
-      "2026-10-28": {
-        "ayunas": 76.9,
-        "noche": null
-      },
-      "2026-10-29": {
-        "ayunas": 77.2,
-        "noche": null
       }
     },
     "registrosSemanales": {
@@ -6275,6 +5131,7 @@
   },
   "test": {},
   "actividad": {
+    "objetivoPasos": 4000,
     "registros": {
       "2026-08-24": {
         "comidas": [
@@ -7223,342 +6080,6 @@
             "grasas": 0.3
           }
         ]
-      },
-      "2026-10-19": {
-        "comidas": [
-          {
-            "foodId": "carne_molida_80_20",
-            "nombre": "Carne molida 80/20",
-            "gramos": 300,
-            "kcal": 762,
-            "prot": 51.6,
-            "carbs": 0,
-            "grasas": 60
-          },
-          {
-            "foodId": "papa_cruda_sin_cascara",
-            "nombre": "Papa cruda sin cáscara",
-            "gramos": 250,
-            "kcal": 193,
-            "prot": 5,
-            "carbs": 42.5,
-            "grasas": 0.3
-          },
-          {
-            "foodId": "mucqupx5474z",
-            "nombre": "Contramuslo(Sin piel - Con hueso)",
-            "gramos": 200,
-            "kcal": 210,
-            "prot": 28,
-            "carbs": 0,
-            "grasas": 8
-          },
-          {
-            "foodId": "huevo",
-            "nombre": "Huevo (doble A)",
-            "gramos": 232,
-            "kcal": 360,
-            "prot": 30.2,
-            "carbs": 2.6,
-            "grasas": 25.5,
-            "unidades": 4
-          },
-          {
-            "foodId": "arroz_cocinado",
-            "nombre": "Arroz cocinado",
-            "gramos": 150,
-            "kcal": 195,
-            "prot": 4.1,
-            "carbs": 42,
-            "grasas": 0.5
-          }
-        ]
-      },
-      "2026-10-20": {
-        "comidas": [
-          {
-            "foodId": "mucqupx5474z",
-            "nombre": "Contramuslo(Sin piel - Con hueso)",
-            "gramos": 100,
-            "kcal": 105,
-            "prot": 14,
-            "carbs": 0,
-            "grasas": 4
-          },
-          {
-            "foodId": "contramuslo_pollo",
-            "nombre": "Contramuslo de pollo (con hueso y piel)",
-            "gramos": 170,
-            "kcal": 272,
-            "prot": 24.7,
-            "carbs": 0,
-            "grasas": 18.7
-          },
-          {
-            "foodId": "arroz_cocinado",
-            "nombre": "Arroz cocinado",
-            "gramos": 250,
-            "kcal": 325,
-            "prot": 6.8,
-            "carbs": 70,
-            "grasas": 0.8
-          },
-          {
-            "foodId": "carne_molida_80_20",
-            "nombre": "Carne molida 80/20",
-            "gramos": 250,
-            "kcal": 635,
-            "prot": 43,
-            "carbs": 0,
-            "grasas": 50
-          },
-          {
-            "foodId": "huevo",
-            "nombre": "Huevo (doble A)",
-            "gramos": 174,
-            "kcal": 270,
-            "prot": 22.6,
-            "carbs": 1.9,
-            "grasas": 19.1,
-            "unidades": 3
-          },
-          {
-            "foodId": "arroz_cocinado",
-            "nombre": "Arroz cocinado",
-            "gramos": 300,
-            "kcal": 390,
-            "prot": 8.1,
-            "carbs": 84,
-            "grasas": 0.9
-          }
-        ]
-      },
-      "2026-10-25": {
-        "comidas": [
-          {
-            "foodId": "carne_molida_75_25",
-            "nombre": "Carne molida 75/25",
-            "gramos": 250,
-            "kcal": 700,
-            "prot": 40,
-            "carbs": 0,
-            "grasas": 60
-          },
-          {
-            "foodId": "arroz_cocinado",
-            "nombre": "Arroz cocinado",
-            "gramos": 200,
-            "kcal": 260,
-            "prot": 5.4,
-            "carbs": 56,
-            "grasas": 0.6
-          },
-          {
-            "foodId": "huevo",
-            "nombre": "Huevo (doble A)",
-            "gramos": 232,
-            "kcal": 360,
-            "prot": 30.2,
-            "carbs": 2.6,
-            "grasas": 25.5,
-            "unidades": 4
-          },
-          {
-            "foodId": "queso_campesino",
-            "nombre": "Queso campesino",
-            "gramos": 150,
-            "kcal": 450,
-            "prot": 30,
-            "carbs": 4.5,
-            "grasas": 34.5
-          },
-          {
-            "foodId": "leche_entera",
-            "nombre": "Leche entera",
-            "gramos": 150,
-            "kcal": 92,
-            "prot": 4.8,
-            "carbs": 7.2,
-            "grasas": 4.9
-          },
-          {
-            "foodId": "papa_cruda_sin_cascara",
-            "nombre": "Papa cruda sin cáscara",
-            "gramos": 300,
-            "kcal": 231,
-            "prot": 6,
-            "carbs": 51,
-            "grasas": 0.3
-          }
-        ]
-      },
-      "2026-10-26": {
-        "comidas": [
-          {
-            "foodId": "carne_molida_75_25",
-            "nombre": "Carne molida 75/25",
-            "gramos": 250,
-            "kcal": 700,
-            "prot": 40,
-            "carbs": 0,
-            "grasas": 60
-          },
-          {
-            "foodId": "huevo",
-            "nombre": "Huevo (doble A)",
-            "gramos": 232,
-            "kcal": 360,
-            "prot": 30.2,
-            "carbs": 2.6,
-            "grasas": 25.5,
-            "unidades": 4
-          },
-          {
-            "foodId": "papa_cruda_sin_cascara",
-            "nombre": "Papa cruda sin cáscara",
-            "gramos": 200,
-            "kcal": 154,
-            "prot": 4,
-            "carbs": 34,
-            "grasas": 0.2
-          },
-          {
-            "foodId": "arroz_cocinado",
-            "nombre": "Arroz cocinado",
-            "gramos": 200,
-            "kcal": 260,
-            "prot": 5.4,
-            "carbs": 56,
-            "grasas": 0.6
-          },
-          {
-            "foodId": "chuleton_cerdo",
-            "nombre": "Chuletón de cerdo (con grasa)",
-            "gramos": 100,
-            "kcal": 231,
-            "prot": 17,
-            "carbs": 0,
-            "grasas": 18
-          }
-        ]
-      },
-      "2026-10-27": {
-        "comidas": [
-          {
-            "foodId": "queso_campesino",
-            "nombre": "Queso campesino",
-            "gramos": 150,
-            "kcal": 450,
-            "prot": 30,
-            "carbs": 4.5,
-            "grasas": 34.5
-          },
-          {
-            "foodId": "carne_molida_75_25",
-            "nombre": "Carne molida 75/25",
-            "gramos": 250,
-            "kcal": 700,
-            "prot": 40,
-            "carbs": 0,
-            "grasas": 60
-          },
-          {
-            "foodId": "huevo",
-            "nombre": "Huevo (doble A)",
-            "gramos": 232,
-            "kcal": 360,
-            "prot": 30.2,
-            "carbs": 2.6,
-            "grasas": 25.5,
-            "unidades": 4
-          },
-          {
-            "foodId": "papa_cruda_sin_cascara",
-            "nombre": "Papa cruda sin cáscara",
-            "gramos": 150,
-            "kcal": 116,
-            "prot": 3,
-            "carbs": 25.5,
-            "grasas": 0.2
-          }
-        ]
-      },
-      "2026-10-28": {
-        "comidas": [
-          {
-            "foodId": "mtsk9qasrz1b",
-            "nombre": "Yogurt",
-            "gramos": 250,
-            "kcal": 210,
-            "prot": 12,
-            "carbs": 12,
-            "grasas": 12.5
-          },
-          {
-            "foodId": "contramuslo_pollo",
-            "nombre": "Contramuslo de pollo (con hueso y piel)",
-            "gramos": 180,
-            "kcal": 288,
-            "prot": 26.1,
-            "carbs": 0,
-            "grasas": 19.8
-          },
-          {
-            "foodId": "carne_molida_80_20",
-            "nombre": "Carne molida 80/20",
-            "gramos": 100,
-            "kcal": 254,
-            "prot": 17.2,
-            "carbs": 0,
-            "grasas": 20
-          },
-          {
-            "foodId": "huevo",
-            "nombre": "Huevo (doble A)",
-            "gramos": 232,
-            "kcal": 360,
-            "prot": 30.2,
-            "carbs": 2.6,
-            "grasas": 25.5,
-            "unidades": 4
-          },
-          {
-            "foodId": "leche_entera",
-            "nombre": "Leche entera",
-            "gramos": 150,
-            "kcal": 92,
-            "prot": 4.8,
-            "carbs": 7.2,
-            "grasas": 4.9
-          },
-          {
-            "foodId": "azucar",
-            "nombre": "Azúcar",
-            "gramos": 9,
-            "kcal": 35,
-            "prot": 0,
-            "carbs": 9,
-            "grasas": 0
-          },
-          {
-            "foodId": "papa_cruda_sin_cascara",
-            "nombre": "Papa cruda sin cáscara",
-            "gramos": 300,
-            "kcal": 231,
-            "prot": 6,
-            "carbs": 51,
-            "grasas": 0.3
-          },
-          {
-            "foodId": "arroz_cocinado",
-            "nombre": "Arroz cocinado",
-            "gramos": 250,
-            "kcal": 325,
-            "prot": 6.8,
-            "carbs": 70,
-            "grasas": 0.8
-          }
-        ]
       }
     },
     "biblioteca": [
@@ -7924,5 +6445,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-10-30T20:19:37.924Z"
+  "timestamp": "2026-11-03T02:01:21.309Z"
 }
