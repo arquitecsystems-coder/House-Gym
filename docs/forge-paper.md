@@ -293,8 +293,14 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
 - **Diario, con la dosis completa (~36 min).** Lo decidió el usuario: tiene una franja fija en la tarde, y eso le sostiene el hábito. Si no se sostiene, se bajan primero las series de caderas.
 - **Orden de la sesión:**
   1. **Tobillo:** movilización del astrágalo → dorsiflexión con carga → sentadilla en pared.
-  2. **Hombro:** cruzado derecho → correa con el brazo izquierdo arriba → correa con el derecho arriba → lift-off derecho. Primero estirar, después fuerza activa.
-  3. **Caderas, en el suelo:** couch stretch → split con apoyos → elevación de pierna → sapo → inclinación de pelvis → straddle contraer-relajar → piernas en V, como cierre pasivo.
+  2. **Hombro:** correa con el brazo izquierdo arriba → correa con el derecho arriba → lift-off derecho. Primero estirar, después fuerza activa.
+  3. **Caderas, en el suelo:** héroe reclinado → split con apoyos → elevación de pierna → **L-sit** → sapo → inclinación de pelvis → straddle contraer-relajar → piernas en V, como cierre pasivo.
+- **Cambios del 4 nov:**
+  - **Sale el cruzado:** la correa es lo específico para llevar la mano detrás de la espalda.
+  - **Héroe reclinado (2×60 s) en lugar del couch stretch:** cubre el cuádriceps completo, las dos piernas a la vez. El usuario ya lo hace con la espalda y la lumbar en el suelo, y el tobillo lo tolera. El psoas lo cubre la pierna de atrás del split.
+  - **Entra el L-sit en el suelo,** objetivo del usuario. Va por variantes: piernas cruzadas (actual) → tuck → una pierna estirada → rodillas semiflexionadas → completo; 3 × 10-20 s.
+  - **Elevación de pierna y split** son la prioridad. El split es el cuello de botella: sostiene 10-25 s de 45.
+- **Adherencia:** el diario sí se sostiene (82% del 19 al 29 oct). El hueco posterior fue un viaje.
 - **Objetivos:**
   - tobillo izquierdo de 7 a ~11-12 cm (el derecho mide 12, que es la meta del encabezado);
   - straddle y split frontal;

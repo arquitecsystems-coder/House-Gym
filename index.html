@@ -3481,13 +3481,7 @@ const REHAB_EJERCICIOS = [
     prog: { paso: 10, tope: 90 }
   },
   // ── Hombro (de pie): estirar primero, fuerza activa al final para consolidar el rango ──
-  {
-    id: "cruzado_der", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30, desde: "2026-10-19",
-    nombre: "Estiramiento cruzado (derecho)",
-    protocolo: "Brazo derecho cruza el pecho",
-    nota: "Estira la parte posterior del hombro (cápsula y rotadores externos), lo que limita la rotación interna. Si hay pellizco adelante del hombro, no forzar.",
-    prog: { paso: 10, tope: 60 }
-  },
+
   {
     id: "hombro_correa_izq", grupo: "Hombro", tipo: "tiempo", sets: 3, valor: 30,
     nombre: "Hombro con correa: izquierdo arriba",
@@ -3511,12 +3505,13 @@ const REHAB_EJERCICIOS = [
   },
   // ── Caderas (al suelo): de rodillas -> sentado -> acostado; split antes que su trabajo activo;
   //    aductores cortos (sapo) antes que largos (straddle); piernas en V pasivo como cierre ──
+
   {
-    id: "couch_stretch", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
-    nombre: "Couch stretch",
-    protocolo: "Rodilla al suelo · pelvis metida",
-    nota: "Flexores de cadera de la pierna de atrás (lo que faltaba para el split frontal). Con la izquierda atrás el tobillo queda en flexión plantar: si pellizca atrás, empeine sobre un cojín o pie en el suelo.",
-    prog: { paso: 15, tope: 90 }
+    id: "heroe_reclinado", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 60, desde: "2026-11-04",
+    nombre: "Héroe reclinado",
+    protocolo: "Sentado sobre los talones · espalda y lumbar al suelo",
+    nota: "Cuádriceps completo (recto femoral y vastos) en las dos piernas a la vez; reemplaza al couch stretch. La extensión de cadera la da la pierna de atrás del split. Si pellizca el tobillo izquierdo, toalla enrollada bajo el empeine.",
+    prog: { paso: 15, tope: 120 }
   },
   {
     id: "split_apoyos", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
@@ -3531,6 +3526,13 @@ const REHAB_EJERCICIOS = [
     protocolo: "Rodilla estirada · sostén 5 s",
     nota: "Fuerza activa de flexión de cadera con rodilla estirada (pierna de adelante del split). Al llegar a 8 reps, sube el sostén a 8-10 s.",
     prog: { paso: 1, tope: 8 }
+  },
+  {
+    id: "l_sit", grupo: "Caderas", tipo: "tiempo", sets: 3, valor: 10, desde: "2026-11-04",
+    nombre: "L-sit",
+    protocolo: "En el suelo · hombros abajo, brazos estirados",
+    nota: "Compresión (flexores de cadera acortados) + abdomen + depresión de hombros. Arranca con piernas cruzadas; al pasar de variante, si los talones no despegan, apoyos bajo las manos (libros o bloques).",
+    prog: { paso: 5, tope: 20, cargas: ["Piernas cruzadas", "Tuck", "Una pierna estirada", "Rodillas semiflexionadas", "Completo"] }
   },
   {
     id: "sapo", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 30,
@@ -3567,6 +3569,8 @@ const REHAB_LEGACY = [
   { id: "cuadrupedia",    nombre: "Cuadrupedia - desliz rodilla",       grupo: "Tobillo", tipo: "tiempo", sets: 3, valor: 120, hasta: "2026-10-15" },
   { id: "equilibrio",     nombre: "Equilibrio monopodal ojos cerrados", grupo: "Tobillo", tipo: "tiempo", sets: 2, valor: 45,  hasta: "2026-10-15" },
   { id: "rodilla_pared_din", nombre: "Rodilla a la pared (tobillo lesionado)", grupo: "Tobillo", tipo: "reps", sets: 3, valor: 10, segRep: 4, desde: "2026-10-16", hasta: "2026-10-18" },
+  { id: "cruzado_der",    nombre: "Estiramiento cruzado (derecho)",     grupo: "Hombro",  tipo: "tiempo", sets: 3, valor: 30, desde: "2026-10-19", hasta: "2026-11-03" },
+  { id: "couch_stretch",  nombre: "Couch stretch",                      grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19", hasta: "2026-11-03" },
 ];
 
 // Métricas del registro dominical (además de la rodilla a pared izquierda, que vive en datos.mediciones)
