@@ -3380,6 +3380,10 @@
     "N3-S2-c-Sentadilla trasera (barra)-2": {
       "peso": "37,5",
       "timestamp": "2026-11-04T11:12:40.024Z"
+    },
+    "N3-S2-c-Sentadilla trasera (barra)-3": {
+      "peso": "37,5",
+      "timestamp": "2026-11-04T11:12:43.635Z"
     }
   },
   "rehab": {},
@@ -4262,5 +4266,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-04T11:12:39.409Z"
+  "timestamp": "2026-11-04T11:12:43.037Z"
 }
