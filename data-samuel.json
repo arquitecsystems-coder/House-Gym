@@ -5980,7 +5980,21 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-04T14:12:32.715Z"
+        "_ts": "2026-11-04T14:14:14.000Z",
+        "dorsiflexion_carga": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ]
       }
     },
     "mediciones": [
@@ -7949,5 +7963,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-04T14:12:35.718Z"
+  "timestamp": "2026-11-04T14:14:17.003Z"
 }
