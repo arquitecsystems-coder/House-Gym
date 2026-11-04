@@ -3411,7 +3411,9 @@
     },
     "N3-S2-c-Crunch con peso-2": {
       "peso": "20",
-      "timestamp": "2026-11-04T11:37:28.243Z"
+      "timestamp": "2026-11-04T11:42:27.860Z",
+      "reps": "22",
+      "checked": true
     },
     "N3-S2-c-Crunch con peso-3": {
       "peso": "20",
@@ -4298,5 +4300,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-04T11:38:50.504Z"
+  "timestamp": "2026-11-04T11:42:31.512Z"
 }
