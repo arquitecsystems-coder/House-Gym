@@ -4215,6 +4215,13 @@
       "reps": "15",
       "checked": true,
       "rir": "4"
+    },
+    "M7-S6-lun-Curl Bíceps (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-11-04T16:23:30.295Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "3"
     }
   },
   "rehab": {
@@ -8029,5 +8036,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-04T16:20:27.782Z"
+  "timestamp": "2026-11-04T16:23:33.299Z"
 }
