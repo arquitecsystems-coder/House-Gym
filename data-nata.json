@@ -3390,6 +3390,14 @@
       "timestamp": "2026-11-04T11:23:44.082Z",
       "reps": "10",
       "checked": true
+    },
+    "N3-S2-c-Elevación Lateral (mancuerna)-1": {
+      "peso": "5",
+      "timestamp": "2026-11-04T11:27:11.356Z"
+    },
+    "N3-S2-c-Elevación Lateral (mancuerna)-2": {
+      "peso": "5",
+      "timestamp": "2026-11-04T11:27:13.725Z"
     }
   },
   "rehab": {},
@@ -4272,5 +4280,5 @@
   },
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-04T11:23:47.514Z"
+  "timestamp": "2026-11-04T11:27:16.738Z"
 }
