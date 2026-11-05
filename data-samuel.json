@@ -4306,6 +4306,13 @@
       "reps": "10",
       "checked": true,
       "rir": "3"
+    },
+    "M7-S6-mar-Pullover (DB)-3": {
+      "peso": "15",
+      "timestamp": "2026-11-05T15:38:57.846Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -8151,5 +8158,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-05T15:35:29.687Z"
+  "timestamp": "2026-11-05T15:39:00.850Z"
 }
