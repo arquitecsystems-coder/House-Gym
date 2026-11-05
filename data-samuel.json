@@ -4252,15 +4252,22 @@
       "rir": "4"
     },
     "M7-S6-mar-Remo Pendlay (barra)-1": {
-      "peso": "40",
-      "timestamp": "2026-11-05T15:15:40.024Z",
+      "peso": "45",
+      "timestamp": "2026-11-05T15:18:47.085Z",
       "reps": "10",
       "checked": true,
       "rir": "4"
     },
     "M7-S6-mar-Remo Pendlay (barra)-2": {
-      "peso": "40",
-      "timestamp": "2026-11-05T15:15:45.678Z",
+      "peso": "45",
+      "timestamp": "2026-11-05T15:18:43.607Z",
+      "reps": "10",
+      "checked": true,
+      "rir": "3"
+    },
+    "M7-S6-mar-Remo Pendlay (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-11-05T15:18:42.188Z",
       "reps": "10",
       "checked": true,
       "rir": "3"
@@ -8109,5 +8116,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-05T15:15:48.683Z"
+  "timestamp": "2026-11-05T15:18:50.089Z"
 }
