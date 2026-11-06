@@ -6243,6 +6243,19 @@
             "completado": false
           }
         ]
+      },
+      "2026-11-06": {
+        "movilizacion_astragalo": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "_ts": "2026-11-06T23:46:14.276Z"
       }
     },
     "mediciones": [
@@ -8215,5 +8228,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-06T23:46:03.197Z"
+  "timestamp": "2026-11-06T23:46:17.278Z"
 }
