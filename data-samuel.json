@@ -4365,6 +4365,11 @@
       "reps": "8",
       "checked": true,
       "rir": "4"
+    },
+    "M7-S6-mie-Dragon Flag (negativas)-1": {
+      "reps": "10",
+      "timestamp": "2026-11-06T23:46:00.190Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -8210,5 +8215,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-06T23:41:57.388Z"
+  "timestamp": "2026-11-06T23:46:03.197Z"
 }
