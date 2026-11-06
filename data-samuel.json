@@ -4380,6 +4380,13 @@
       "reps": "10",
       "timestamp": "2026-11-06T23:53:52.551Z",
       "checked": true
+    },
+    "M7-S6-mie-Crunch Abdominal-1": {
+      "peso": "15",
+      "timestamp": "2026-11-06T23:57:54.451Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "3"
     }
   },
   "rehab": {
@@ -8252,5 +8259,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-06T23:53:55.559Z"
+  "timestamp": "2026-11-06T23:57:54.280Z"
 }
