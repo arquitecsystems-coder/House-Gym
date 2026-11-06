@@ -4313,6 +4313,18 @@
       "reps": "10",
       "checked": true,
       "rir": "2"
+    },
+    "M7-S6-mar-Press Francés (barra)-1": {
+      "peso": "20",
+      "timestamp": "2026-11-05T16:12:39.539Z",
+      "reps": "15",
+      "checked": true
+    },
+    "M7-S6-mar-Press Francés (barra)-2": {
+      "peso": "20",
+      "timestamp": "2026-11-05T16:12:43.619Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -8158,5 +8170,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-05T15:39:00.850Z"
+  "timestamp": "2026-11-06T22:42:02.087Z"
 }
