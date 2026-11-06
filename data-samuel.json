@@ -4358,6 +4358,13 @@
       "timestamp": "2026-11-06T23:32:56.090Z",
       "reps": "5",
       "checked": true
+    },
+    "M7-S6-mie-RDL sin flexión de rodilla (barra)-3": {
+      "peso": "45",
+      "timestamp": "2026-11-06T23:41:54.382Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "4"
     }
   },
   "rehab": {
@@ -8203,5 +8210,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-06T23:32:59.142Z"
+  "timestamp": "2026-11-06T23:41:53.773Z"
 }
