@@ -4399,6 +4399,11 @@
       "reps": "5",
       "timestamp": "2026-11-07T00:16:32.225Z",
       "checked": true
+    },
+    "M7-S6-sab-Curl Nórdico Asistido-2": {
+      "reps": "5",
+      "timestamp": "2026-11-07T00:22:10.486Z",
+      "checked": true
     }
   },
   "rehab": {
@@ -8271,5 +8276,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-07T00:16:35.236Z"
+  "timestamp": "2026-11-07T00:22:13.496Z"
 }
