@@ -4430,6 +4430,13 @@
       "reps": "6",
       "checked": true,
       "rir": "2"
+    },
+    "M8-S1-a-Remo Pendlay (barra)-1": {
+      "peso": "59,5",
+      "timestamp": "2026-11-10T18:26:09.580Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "4"
     }
   },
   "rehab": {
@@ -8302,5 +8309,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-10T18:10:01.060Z"
+  "timestamp": "2026-11-10T18:26:12.588Z"
 }
