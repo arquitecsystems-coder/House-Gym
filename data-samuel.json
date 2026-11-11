@@ -6438,7 +6438,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-11T11:25:28.130Z",
+        "_ts": "2026-11-11T11:26:44.820Z",
         "dorsiflexion_carga": [
           {
             "valor": null,
@@ -6446,7 +6446,7 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           },
           {
             "valor": null,
@@ -8425,5 +8425,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T11:25:31.133Z"
+  "timestamp": "2026-11-11T11:26:47.823Z"
 }
