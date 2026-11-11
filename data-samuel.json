@@ -6438,7 +6438,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-11T12:04:44.940Z",
+        "_ts": "2026-11-11T12:12:57.020Z",
         "dorsiflexion_carga": [
           {
             "valor": null,
@@ -6491,6 +6491,24 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "split_apoyos": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -8465,5 +8483,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T12:04:47.942Z"
+  "timestamp": "2026-11-11T12:13:00.023Z"
 }
