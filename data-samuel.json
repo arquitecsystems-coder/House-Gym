@@ -4615,6 +4615,12 @@
       "timestamp": "2026-11-11T19:35:48.526Z",
       "reps": "6",
       "checked": true
+    },
+    "M8-S1-b-Dragon Flag-2": {
+      "peso": "0",
+      "timestamp": "2026-11-11T19:40:30.711Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -8683,5 +8689,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T19:35:51.533Z"
+  "timestamp": "2026-11-11T19:40:33.862Z"
 }
