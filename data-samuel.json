@@ -4560,6 +4560,13 @@
       "reps": "12",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S1-b-Curl Martillo (DB)-1": {
+      "peso": "25",
+      "timestamp": "2026-11-11T19:18:22.137Z",
+      "reps": "14",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -8628,5 +8635,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T19:18:15.274Z"
+  "timestamp": "2026-11-11T19:18:25.140Z"
 }
