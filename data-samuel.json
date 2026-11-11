@@ -4528,6 +4528,10 @@
       "reps": "3",
       "checked": true,
       "rir": "1"
+    },
+    "nota-sesion-M8-S1-b": {
+      "nota": "La sentadilla salió sin cuña, un poco difícil la última serie porque el tejido del tobillo ya estaba cediendo menos.",
+      "timestamp": "2026-11-11T18:42:35.042Z"
     }
   },
   "rehab": {
@@ -8596,5 +8600,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T18:41:48.101Z"
+  "timestamp": "2026-11-11T18:42:38.045Z"
 }
