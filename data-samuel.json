@@ -4611,8 +4611,10 @@
       "rir": "0"
     },
     "M8-S1-b-Dragon Flag-1": {
-      "peso": "6",
-      "timestamp": "2026-11-11T19:35:40.971Z"
+      "peso": "",
+      "timestamp": "2026-11-11T19:35:48.526Z",
+      "reps": "6",
+      "checked": true
     }
   },
   "rehab": {
@@ -8681,5 +8683,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T19:35:43.979Z"
+  "timestamp": "2026-11-11T19:35:51.533Z"
 }
