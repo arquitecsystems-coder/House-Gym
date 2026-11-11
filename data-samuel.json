@@ -4507,6 +4507,13 @@
     "M8-S1-a-Press Francés (barra)-3": {
       "checked": true,
       "timestamp": "2026-11-11T13:20:21.684Z"
+    },
+    "M8-S1-b-Sentadilla (barra + cuña)-1": {
+      "peso": "93,4",
+      "timestamp": "2026-11-11T18:26:51.975Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -8575,5 +8582,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T18:17:29.220Z"
+  "timestamp": "2026-11-11T18:26:54.980Z"
 }
