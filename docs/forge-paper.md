@@ -306,7 +306,7 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
     - **Por qué a una pierna:** con la otra estirada la pelvis no puede compensar, y estira más que el couch stretch.
     - **Hecho (foto del usuario):** con las dos piernas tocaba primero la espalda alta.
   - **Mediciones cualquier día:** botón "+ medir" en el encabezado, con fecha editable (no puede ser futura). El domingo queda solo como recordatorio.
-    - **Dato del usuario:** tobillo izquierdo en **9 cm** el 5 nov (en julio eran 5).
+    - **Dato del usuario:** tobillo izquierdo en **9 cm** en la S1 del M8 (en julio eran 5).
 - **Día D del M8:** **nórdico inverso 2×6-10 opcional**, con banda al inicio. No cuenta para dar el día por completo ni genera avisos en el generador.
   - **Para qué sirve:** trabaja el recto femoral en posición estirada, la parte del cuádriceps que la sentadilla casi no hace crecer (Kubo y colaboradores, 2019).
   - **Qué no es:** el héroe reclinado es un estiramiento, no este ejercicio; ahí la rodilla queda quieta y el suelo sostiene el peso.
