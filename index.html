@@ -2473,6 +2473,9 @@ const MESOCICLOS = {
           semanas: ["45kg x 8-12","x 8-12","x 8-12","x 8-12","x 8-12 (pico)","35kg x 8 (descarga)"] },
         { nombre: "Curl Nórdico Asistido", series: 3, rol: "accesorio",
           semanas: ["x 5-8","x 5-8","x 5-8","x 5-8","x 5-8 (pico)","x 3 (descarga)"] },
+        { nombre: "Nórdico Inverso", series: 2, rol: "accesorio", opcional: true,
+          info: "Opcional. Cuerpo recto de las rodillas a la cabeza; baja hasta donde controles la vuelta. Banda si hace falta.",
+          semanas: ["x 6-10","x 6-10","x 6-10","x 6-10","x 6-10 (pico)","x 5 (descarga)"] },
         { nombre: "Elevación Lateral (DB)", series: 3, rol: "accesorio",
           semanas: ["20 lb x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","15 lb x 12 (descarga)"] },
         { nombre: "Copa a una mano (DB)", series: 2, rol: "accesorio",
@@ -3508,7 +3511,7 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       <div>
         <div class="exercise-name">${ej.nombre}${ej.info ? `<button class="info-btn" onclick="event.stopPropagation();toggleInfo(this)" aria-label="Qué es este ejercicio">i</button>` : ""}</div>
         ${ej.info ? `<div class="info-panel" style="display:none">${ej.info}</div>` : ""}
-        <div class="exercise-meta">${MESOCICLOS[meso]?.modelo === "doble_progresion" ? CLASE_LABEL[claseEjercicio(ej)] + " · " : ""}${ej.series} series — objetivo: ${planActual}</div>
+        <div class="exercise-meta">${ej.opcional ? "Opcional · " : ""}${MESOCICLOS[meso]?.modelo === "doble_progresion" ? CLASE_LABEL[claseEjercicio(ej)] + " · " : ""}${ej.series} series — objetivo: ${planActual}</div>
       </div>
       <div class="exercise-badge ${allChecked ? 'done' : ''}">
         ${allChecked ? "✓ hecho" : (ej.series+"s")}
@@ -3643,12 +3646,13 @@ const REHAB_EJERCICIOS = [
   //    aductores cortos (sapo) antes que largos (straddle); piernas en V pasivo como cierre ──
 
   {
-    id: "heroe_reclinado", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 60, desde: "2026-11-04",
-    nombre: "Héroe reclinado",
-    protocolo: "Sentado sobre los talones · espalda y lumbar al suelo",
-    nota: "Cuádriceps completo (recto femoral y vastos) en las dos piernas a la vez; reemplaza al couch stretch. La extensión de cadera la da la pierna de atrás del split. Si pellizca el tobillo izquierdo, toalla enrollada bajo el empeine.",
-    prog: { paso: 15, tope: 120 }
+    id: "heroe_una_pierna", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 20, lados: 2, desde: "2026-11-12",
+    nombre: "Héroe reclinado a una pierna",
+    protocolo: "Una rodilla doblada, la otra estirada · espalda al suelo",
+    nota: "Progresión del héroe reclinado: con la otra pierna estirada la pelvis no puede compensar y el estiramiento del cuádriceps y del flexor de cadera es mayor. Toca primero la espalda alta, después la lumbar.",
+    prog: { paso: 10, tope: 60 }
   },
+
   {
     id: "split_apoyos", grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19",
     nombre: "Split frontal con apoyos",
@@ -3706,6 +3710,7 @@ const REHAB_LEGACY = [
   { id: "equilibrio",     nombre: "Equilibrio monopodal ojos cerrados", grupo: "Tobillo", tipo: "tiempo", sets: 2, valor: 45,  hasta: "2026-10-15" },
   { id: "rodilla_pared_din", nombre: "Rodilla a la pared (tobillo lesionado)", grupo: "Tobillo", tipo: "reps", sets: 3, valor: 10, segRep: 4, desde: "2026-10-16", hasta: "2026-10-18" },
   { id: "cruzado_der",    nombre: "Estiramiento cruzado (derecho)",     grupo: "Hombro",  tipo: "tiempo", sets: 3, valor: 30, desde: "2026-10-19", hasta: "2026-11-03" },
+  { id: "heroe_reclinado", nombre: "Héroe reclinado",                    grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 60, desde: "2026-11-04", hasta: "2026-11-11" },
   { id: "couch_stretch",  nombre: "Couch stretch",                      grupo: "Caderas", tipo: "tiempo", sets: 2, valor: 45, lados: 2, desde: "2026-10-19", hasta: "2026-11-03" },
 ];
 
@@ -4006,6 +4011,7 @@ function renderRehab(main) {
     + '</div>'
     + '<div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px">'
     + (reached ? '&#10003; Objetivo alcanzado' : 'Faltan '+(TARGET_CM-ultima).toFixed(1)+' cm')
+    + ' <button onclick="showMedicionModal()" style="margin-left:6px;font-size:11px;font-family:var(--font-mono);color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:2px 8px;cursor:pointer">+ medir</button>'
     + '</div></div>'
     + '<div style="text-align:center;border-left:1px solid var(--border);padding-left:16px;min-width:64px">'
     + '<div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--accent)">'+streak+'</div>'
@@ -4239,6 +4245,8 @@ function renderRehab(main) {
     + '<div style="background:var(--card);border-radius:var(--radius);padding:20px;margin:20px;max-width:340px;width:100%;max-height:85vh;overflow-y:auto">'
     + '<div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:6px">&#128207; MEDICIÓN</div>'
     + '<div style="font-size:11px;color:var(--muted);margin-bottom:12px">En cm. Deja vacío lo que no midas.</div>'
+    + '<label style="display:block;font-size:12px;color:var(--muted);margin-bottom:8px">Fecha'
+    + '<input class="rehab-input" id="med_fecha" type="date" style="width:100%;margin-top:4px;font-size:16px;text-align:center;padding:8px"></label>'
     + campoMed('med_tobillo_izq', 'Tobillo izquierdo (rodilla a pared)')
     + REHAB_METRICAS.map(function(d) { return campoMed('med_'+d.id, d.label); }).join('')
     + '<div style="display:flex;gap:8px;margin-top:6px">'
@@ -4360,6 +4368,8 @@ function saveRehabNota(fecha, nota) {
 }
 
 function showMedicionModal() {
+  const f = document.getElementById("med_fecha");
+  if (f) { f.value = rehabHoy(); f.max = rehabHoy(); }
   document.getElementById("medicionModal").style.display = "flex";
 }
 
@@ -4373,7 +4383,9 @@ function saveRehabMedicion() {
     const v = el ? parseFloat(el.value) : NaN;
     return isNaN(v) || v < 0 ? null : v;
   };
-  const fecha = rehabHoy();
+  // Se puede medir cualquier día y registrar una fecha pasada (nunca futura)
+  const fEl = document.getElementById('med_fecha');
+  const fecha = fEl && /^\d{4}-\d{2}-\d{2}$/.test(fEl.value) && fEl.value <= rehabHoy() ? fEl.value : rehabHoy();
   const datos = getRehabDatos();
   let guardados = 0;
   const izq = leer('med_tobillo_izq');
@@ -7003,7 +7015,7 @@ function generarEjercicio(ej, baseKey, dia, ctx) {
       if (nuevo.sinMejora && ej.sinMejora) ctx.avisos.push(etiqueta + ': 2 bloques sin mejorar el 1RM est. Cambiar variante o rango (decisión humana).');
       else if (nuevo.sinMejora) ctx.avisos.push(etiqueta + ': no mejoró el 1RM est. (' + pct.toFixed(1) + '%). Si se repite en el próximo bloque, cambiar variante o rango.');
     }
-  } else if (ej.prog?.tipo !== 'respaldo' && (rango || ej.prog)) {
+  } else if (ej.prog?.tipo !== 'respaldo' && !ej.opcional && (rango || ej.prog)) {
     ctx.avisos.push(etiqueta + ': sin registros en el bloque, se deja el arranque anterior.');
     return nuevo;
   }
@@ -7252,7 +7264,7 @@ function toggleCheck(key) {
 function diaCompleto(meso, semana, dia) {
   const planDia = MESOCICLOS[meso]?.plan[dia] || [];
   if (!planDia.length) return false;
-  return planDia.every(ej =>
+  return planDia.every(ej => ej.opcional ||
     Array.from({length: ej.series}, (_, i) => i + 1)
       .every(s => state.registros[`${meso}-S${semana}-${dia}-${ej.nombre}-${s}`]?.checked)
   );
