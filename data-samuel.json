@@ -4485,6 +4485,20 @@
       "timestamp": "2026-11-11T00:58:21.078Z",
       "reps": "7",
       "checked": true
+    },
+    "M8-S1-a-Press Francés (barra)-2": {
+      "peso": "31,1",
+      "timestamp": "2026-11-11T00:58:29.085Z",
+      "reps": "7",
+      "checked": true,
+      "rir": "0"
+    },
+    "M8-S1-a-Press Inclinado (DB)-3": {
+      "peso": "45",
+      "timestamp": "2026-11-11T00:58:35.102Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -8357,5 +8371,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T00:58:24.084Z"
+  "timestamp": "2026-11-11T00:58:42.595Z"
 }
