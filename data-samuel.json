@@ -6408,14 +6408,14 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           }
         ],
-        "_ts": "2026-11-11T00:58:45.416Z"
+        "_ts": "2026-11-11T01:01:03.898Z"
       }
     },
     "mediciones": [
@@ -8388,5 +8388,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-11T00:58:48.418Z"
+  "timestamp": "2026-11-11T01:01:06.901Z"
 }
