@@ -4679,7 +4679,15 @@
     },
     "M8-S1-c-Aperturas (DB)-2": {
       "peso": "14",
-      "timestamp": "2026-11-13T20:40:55.485Z"
+      "timestamp": "2026-11-13T20:40:56.750Z",
+      "reps": "1",
+      "checked": true
+    },
+    "M8-S1-c-Aperturas (DB)-3": {
+      "peso": "12",
+      "timestamp": "2026-11-13T20:40:59.729Z",
+      "reps": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -8748,5 +8756,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-13T20:40:55.289Z"
+  "timestamp": "2026-11-13T20:41:02.738Z"
 }
