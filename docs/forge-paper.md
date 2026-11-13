@@ -117,6 +117,29 @@ Hay cuatro motores. Cada ejercicio usa uno según su clase.
 - **Estructura:** banca 1×5 pesada (lineal) + 2×8 de respaldo.
 - **Peso del respaldo:** **92% del peso que toca ese día** en la serie pesada, redondeado hacia abajo. Si la pesada sube, el respaldo sube solo.
 
+### 4.6 RIR objetivo por semana (desde el 13 nov)
+
+Cada tarjeta muestra el RIR en el que debería quedar la serie esa semana.
+
+| Tipo | S1 | S2 | S3 | S4 | S5 (pico) | S6 |
+|---|---|---|---|---|---|---|
+| Básicos lineales | 3 | 2-3 | 2 | 1-2 | Test | 4+ |
+| Respaldo | 2-3 | 2-3 | 2-3 | 2-3 | 2 | 4+ |
+| Anclas | 2 | 2 | 1 | 1 | 0-1 | 4+ |
+| Técnicos | 2 | 2 | 2 | 2 | 1-2 | 4+ |
+| Secundarios | 1-2 | 1-2 | 1-2 | 1-2 | 1-2 | 4+ |
+| Accesorios | 0-1, la última al fallo | | | | | |
+
+**Por qué los básicos no van al fallo:** el peso sube cada semana con reps fijas, así que el RIR baja solo hasta el pico.
+
+**Accesorios al fallo en la última serie** (powerbuilding, decisión del usuario).
+- **Hecho (meta-análisis recientes):** entrenar al fallo y quedarse a 1-2 reps da una hipertrofia parecida, pero el fallo cuesta más fatiga.
+- Por eso el fallo va solo en la última serie, no en todas.
+
+**Reglas asociadas:**
+- **En los lineales:** si una serie queda 2 o más reps por debajo del objetivo, se mantiene el peso.
+- **La primera semana del bloque es calibración:** un fallo repite el peso y no cierra la subida.
+
 ## 5. Historia de los bloques
 
 - **M4-M6:** varias estructuras (full body, push/pull/legs).

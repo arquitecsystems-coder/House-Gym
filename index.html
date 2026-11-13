@@ -2412,6 +2412,7 @@ const MESOCICLOS = {
     modelo: "doble_progresion",
     mancuernas: "ajustables",
     flotante: true,
+    rirObjetivo: true,
     dias: [
       { key: "a", label: "A", titulo: "Torso — Pesado" },
       { key: "b", label: "B", titulo: "Pierna — Pesado" },
@@ -2422,7 +2423,7 @@ const MESOCICLOS = {
       a: [
         { nombre: "Press Banca (barra)", series: 1, rol: "fuerza", prog: { tipo: "lineal", reps: 5, inc: 1.13, cierre: "amrap", ref: { peso: 75, reps: 5, rir: 1, label: "M7 75x5 RIR 1" } },
           semanas: ["73.4kg x 5","x 5","x 5","x 5","AMRAP con último peso completado (pico)","55kg x 5 (descarga)"] },
-        { nombre: "Press Banca respaldo (barra)", series: 2, rol: "fuerza", prog: { tipo: "respaldo", de: "Press Banca (barra)", reps: 8, pct: 0.92 },
+        { nombre: "Press Banca respaldo (barra)", series: 2, rol: "fuerza", prog: { tipo: "respaldo", de: "Press Banca (barra)", reps: 8, pct: 0.85 },
           semanas: ["67.3kg x 8","x 8","x 8","x 8","x 8 (pico)","45kg x 8 (descarga)"] },
         { nombre: "Remo Pendlay (barra)", series: 3, rol: "fuerza", prog: { tipo: "lineal", reps: 8, inc: 1.13, cierre: "amrap", ref: { peso: 60, reps: 9, rir: 1, label: "M7 60x9 RIR 1" } },
           semanas: ["59.5kg x 8","x 8","x 8","x 8","AMRAP con último peso completado (pico)","45kg x 8 (descarga)"] },
@@ -2443,10 +2444,10 @@ const MESOCICLOS = {
         { nombre: "Curl Martillo (DB)", series: 2, rol: "accesorio",
           semanas: ["25 lb x 8-15","x 8-15","x 8-15","x 8-15","x 8-15 (pico)","20 lb x 10 (descarga)"] },
         { nombre: "Elevación de talón a una pierna (DB)", series: 3, rol: "accesorio",
-          info: "Por pierna, en un escalón, bajando el talón completo. Mismo peso en las dos; anota las reps de la izquierda.",
-          semanas: ["25 lb x 10-20","x 10-20","x 10-20","x 10-20","x 10-20 (pico)","15 lb x 10 (descarga)"] },
+          info: "Por pierna, en un escalón, bajando el talón completo. Sin carga: en kg/lb anota 0. Mismo peso en las dos; anota las reps de la izquierda.",
+          semanas: ["Peso corporal x 6-15","x 6-15","x 6-15","x 6-15","x 6-15 (pico)","Peso corporal x 6 (descarga)"] },
         { nombre: "Dragon Flag", series: 3, rol: "core", variantes: ["Tuck 4/4","Tuck 3/4","Tuck 2/4","Tuck 1/4","Cadera extendida","Completo"],
-          info: "En kg/lb anota el nivel: 1 Tuck 4/4 (rodillas al pecho), 2 Tuck 3/4, 3 Tuck 2/4, 4 Tuck 1/4, 5 Cadera extendida con rodillas flexionadas, 6 Completo.",
+          info: "En kg/lb anota el nivel = ángulo del muslo con el tronco: 1 muslo al pecho, 2 a 45°, 3 a 90°, 4 a 135°, 5 en línea con el tronco (rodillas dobladas), 6 completo.",
           semanas: ["Tuck 2/4 x 6-10","x 6-10","x 6-10","x 6-10","x 6-10 (pico)","Tuck 3/4 x 6 (descarga)"] },
       ],
       c: [
@@ -2460,9 +2461,9 @@ const MESOCICLOS = {
           semanas: ["20 lb x 10-20","x 10-20","x 10-20","x 10-20","x 10-20 (pico)","15 lb x 12 (descarga)"] },
         { nombre: "Pullover (DB)", series: 3, rol: "accesorio",
           semanas: ["33 lb x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","25 lb x 10 (descarga)"] },
-        { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio",
+        { nombre: "Curl Bíceps (barra)", series: 2, rol: "accesorio", tecnico: true,
           semanas: ["25kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","20kg x 10 (descarga)"] },
-        { nombre: "Press Francés (barra)", series: 2, rol: "accesorio",
+        { nombre: "Press Francés (barra)", series: 2, rol: "accesorio", tecnico: true,
           semanas: ["25kg x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","20kg x 10 (descarga)"] },
       ],
       d: [
@@ -2481,8 +2482,8 @@ const MESOCICLOS = {
         { nombre: "Copa a una mano (DB)", series: 2, rol: "accesorio",
           semanas: ["25 lb x 10-15","x 10-15","x 10-15","x 10-15","x 10-15 (pico)","20 lb x 10 (descarga)"] },
         { nombre: "Elevación de talón a una pierna (DB)", series: 2, rol: "accesorio",
-          info: "Por pierna, en un escalón, bajando el talón completo. Mismo peso en las dos; anota las reps de la izquierda.",
-          semanas: ["25 lb x 10-20","x 10-20","x 10-20","x 10-20","x 10-20 (pico)","15 lb x 10 (descarga)"] },
+          info: "Por pierna, en un escalón, bajando el talón completo. Sin carga: en kg/lb anota 0. Mismo peso en las dos; anota las reps de la izquierda.",
+          semanas: ["Peso corporal x 6-15","x 6-15","x 6-15","x 6-15","x 6-15 (pico)","Peso corporal x 6 (descarga)"] },
         { nombre: "Crunch Abdominal", series: 2, rol: "core",
           semanas: ["20kg x 12-20","x 12-20","x 12-20","x 12-20","x 12-20 (pico)","15kg x 15 (descarga)"] },
       ],
@@ -3170,6 +3171,24 @@ function pesoPlan(ej, semana) {
   return m ? +m[1] : null;
 }
 
+// RIR objetivo por semana según el tipo de ejercicio (mesociclos con rirObjetivo: true).
+// Devuelve { txt, min } o null. min = el RIR más bajo aceptable esa semana.
+function rirObjetivo(ej, mesoKey, semana) {
+  const meso = MESOCICLOS[mesoKey];
+  if (!meso || !meso.rirObjetivo || ej.variantes) return null;
+  const pico = meso.semanas - 1;
+  if (semana >= meso.semanas) return { txt: '4+', min: 4 };
+  const t = function(arr) { const v = arr[Math.min(semana, pico) - 1]; return v == null ? null : { txt: String(v), min: parseInt(v) }; };
+  if (ej.prog?.tipo === 'lineal') return semana === pico ? null : t([3, '2-3', 2, '1-2']);
+  if (ej.prog?.tipo === 'rir') return null; // el RDL ya trae su RIR en el plan
+  if (ej.prog?.tipo === 'respaldo') return semana === pico ? { txt: '2', min: 2 } : { txt: '2-3', min: 2 };
+  if (ej.ancla) return t([2, 2, 1, 1, '0-1']);
+  if (ej.tecnico || ej.rol === 'tecnico') return semana === pico ? { txt: '1-2', min: 1 } : { txt: '2', min: 2 };
+  if (ej.rol === 'secundario') return { txt: '1-2', min: 1 };
+  if (claseEjercicio(ej) === 'accesorio') return { txt: '0-1, última al fallo', min: 0 };
+  return null;
+}
+
 // Básicos pesados (prog lineal): reps fijas, peso sube cada semana, regla RIR,
 // cierre al fallar reps y test (AMRAP o triple) comparado contra el bloque anterior.
 // Devuelve { sug, pesoHoy, fase }: pesoHoy alimenta la proyección de semanas futuras.
@@ -3182,10 +3201,12 @@ function analizarLineal(ej, mesoKey, semana, dia) {
   const corto = ej.nombre.replace(/ \(.*\)$/, "");
 
   // Regla de pesos tras una semana COMPLETA
-  const reglaRir = (sets, peso) => {
+  const reglaRir = (sets, peso, w) => {
     const rirs = sets.map(x => x.rir);
+    const obj = rirObjetivo(ej, mesoKey, w);
     if (rirs.every(r => r != null && r >= 4)) return { prox: peso + 2 * inc, motivo: "RIR 4+ en todas las series: doble subida", tipo: "subir" };
     if (rirs[rirs.length - 1] === 0) return { prox: peso, motivo: "última serie a RIR 0: se mantiene el peso una semana", tipo: "mantener" };
+    if (obj && rirs.some(r => r != null && r <= obj.min - 2)) return { prox: peso, motivo: `RIR 2+ por debajo del objetivo (${obj.txt}): se mantiene el peso una semana`, tipo: "mantener" };
     return { prox: peso + inc, motivo: null, tipo: "subir" };
   };
 
@@ -3215,9 +3236,11 @@ function analizarLineal(ej, mesoKey, semana, dia) {
     if (perdidas === 0) {
       ultimo = { w, peso };
       if (fase === "subida") ultimoOk = peso;
-      ({ prox: proximo, motivo, tipo } = reglaRir(sets, peso));
+      ({ prox: proximo, motivo, tipo } = reglaRir(sets, peso, w));
       continue;
     }
+    // La primera semana registrada del bloque calibra el arranque: un fallo ahí repite el peso, no cierra
+    if (!ultimo && fase === "subida" && !aviso) { ultimo = { w, peso, fallo: true }; aviso = w; proximo = peso; motivo = `faltaron ${perdidas} rep(s) en la primera semana (calibración): repite el peso`; tipo = "mantener"; continue; }
     ultimo = { w, peso, fallo: true };
     if (fase === "reinicio") { proximo = peso; motivo = `faltaron ${perdidas} rep(s): repite el peso`; tipo = "mantener"; continue; }
     if (perdidas === 1 && !aviso) { aviso = w; proximo = peso; motivo = "faltó 1 rep: repite el peso una semana (un fallo aislado no cierra la subida)"; tipo = "mantener"; continue; }
@@ -3301,7 +3324,7 @@ function fmtSeries(ej, mesoKey, sets) {
   const reps = sets.map(x => x.reps).join("/");
   const p = sets[0].peso;
   if (ej.variantes) return `${ej.variantes[p - 1] || p} x ${reps}`;
-  if (esMancuernaAjustable(ej, MESOCICLOS[mesoKey])) return `${fmtLb(p)} lb x ${reps}`;
+  if (esMancuernaAjustable(ej, MESOCICLOS[mesoKey])) return (p ? `${fmtLb(p)} lb` : 'PC') + ` x ${reps}`;
   return `${fmtKg(p)}kg x ${reps}`;
 }
 
@@ -3343,6 +3366,12 @@ function esMancuernaAjustable(ej, meso) {
 function sugerenciaMancuerna(ej, ult, min, max) {
   const lb = ult.sets[0].peso;
   const repsTxt = ult.sets.map(function(x) { return x.reps; }).join("/");
+  if (!lb) {
+    // Peso corporal (0): sube a la primera posición de la perilla solo con el tope del rango en todas las series
+    const tope = ult.sets.length >= ej.series && ult.sets.every(function(x) { return x.reps >= max; });
+    if (tope) return { tipo: "subir", objetivo: `${fmtLb(EQUIPO.mancuernaLb[0])} lb x ${min}-${max}`, texto: `S${ult.w}: peso corporal x ${repsTxt}, tope (${max}) en todas las series. Hoy: ${fmtPerilla(EQUIPO.mancuernaLb[0])}.` };
+    return { tipo: "mantener", objetivo: `Peso corporal x ${min}-${max}`, texto: `S${ult.w}: peso corporal x ${repsTxt}. Sigue sin carga y suma reps; se agrega mancuerna con ${max} en todas las series.` };
+  }
   const completas = ult.sets.length >= ej.series;
   const floja = Math.min.apply(null, ult.sets.map(function(x) { return x.reps; }));
   const s1 = ult.sets[0];
@@ -3399,7 +3428,7 @@ function sugerenciaBase(ej, mesoKey, semana, dia) {
   if (ej.prog) return null;
   const txtBase = ej.semanas[0] || "";
   const rango = (ej.semanas[semana - 1] || "").match(/x (\d+)-(\d+)/) || txtBase.match(/x (\d+)-(\d+)/);
-  if (!rango || !(/kg/.test(txtBase) || (esMancuernaAjustable(ej, meso) && /lb/.test(txtBase)))) return null;
+  if (!rango || !(/kg/.test(txtBase) || (esMancuernaAjustable(ej, meso) && /lb|Peso corporal/.test(txtBase)))) return null;
   const min = +rango[1], max = +rango[2];
   const ult = ultimaSesion(ej, mesoKey, semana, dia);
   if (!ult) return cargaRealPlan(ej, 1) || { tipo: "info", texto: `Sin registro previo en este bloque: usa el peso de S1.` };
@@ -3511,7 +3540,7 @@ function renderEjercicioCard(ej, meso, semana, dia) {
       <div>
         <div class="exercise-name">${ej.nombre}${ej.info ? `<button class="info-btn" onclick="event.stopPropagation();toggleInfo(this)" aria-label="Qué es este ejercicio">i</button>` : ""}</div>
         ${ej.info ? `<div class="info-panel" style="display:none">${ej.info}</div>` : ""}
-        <div class="exercise-meta">${ej.opcional ? "Opcional · " : ""}${MESOCICLOS[meso]?.modelo === "doble_progresion" ? CLASE_LABEL[claseEjercicio(ej)] + " · " : ""}${ej.series} series — objetivo: ${planActual}</div>
+        <div class="exercise-meta">${ej.opcional ? "Opcional · " : ""}${MESOCICLOS[meso]?.modelo === "doble_progresion" ? CLASE_LABEL[claseEjercicio(ej)] + " · " : ""}${ej.series} series — objetivo: ${planActual}${(function(o) { return o ? ' · RIR ' + o.txt : ''; })(rirObjetivo(ej, meso, semana))}</div>
       </div>
       <div class="exercise-badge ${allChecked ? 'done' : ''}">
         ${allChecked ? "✓ hecho" : (ej.series+"s")}
@@ -6806,8 +6835,8 @@ function startTimerForKey(key) {
   const mesoKey = parts[0];
   const meso = MESOCICLOS[mesoKey];
   if (!meso) { startTimer(cfg.tiempoFuerza, 'Descanso'); return; }
-  const diaKey = parts[3];
-  const ejNombre = parts.slice(4, parts.length - 1).join('-');
+  const diaKey = parts[2];
+  const ejNombre = parts.slice(3, parts.length - 1).join('-');
   const plan = meso.plan && meso.plan[diaKey] ? meso.plan[diaKey] : [];
   const ej = plan.find(e => e.nombre === ejNombre);
   const clase = claseEjercicio(ej);
@@ -6996,7 +7025,7 @@ function generarEjercicio(ej, baseKey, dia, ctx) {
   const semanasDe = function(primera, resto, picoTxt, desc) {
     return [primera, resto, resto, resto, picoTxt, desc];
   };
-  const kgLb = function(v) { return ajustable ? fmtLb(v) + ' lb' : fmtKg(v) + 'kg'; };
+  const kgLb = function(v) { return ajustable ? (v ? fmtLb(v) + ' lb' : 'Peso corporal') : fmtKg(v) + 'kg'; };
 
   // Estancamiento: mejor 1RM estimado contra el bloque anterior
   const m = mejorSerie(sets);
@@ -7073,7 +7102,7 @@ function generarEjercicio(ej, baseKey, dia, ctx) {
   let ini, motivo;
   if (ajustable) {
     const s = sugerenciaMancuerna(ej, ult, min, max);
-    ini = parseFloat(s.objetivo);
+    ini = /^Peso corporal/.test(s.objetivo) ? 0 : parseFloat(s.objetivo);
     motivo = s.tipo === 'subir' ? 'llegó a las reps del salto' : s.tipo === 'bajar' ? 'primera serie bajo el mínimo: recalibrado' : 'se mantiene';
   } else {
     const peso = ult.sets[0].peso, inc = incrementoDoble(ej), s1 = ult.sets[0];
@@ -7117,7 +7146,7 @@ function generarSiguienteMeso(baseKey) {
   const anio = (fechas[0].match(/20\d\d/) || ['2026'])[0];
   return { key: key, meso: {
     label: key + ' — ' + anio, semanas: base.semanas, fechas: fechas, modelo: base.modelo,
-    mancuernas: base.mancuernas, flotante: base.flotante, dias: JSON.parse(JSON.stringify(base.dias)), plan: plan,
+    mancuernas: base.mancuernas, flotante: base.flotante, rirObjetivo: base.rirObjetivo, dias: JSON.parse(JSON.stringify(base.dias)), plan: plan,
     generado: { desde: baseKey, fecha: (function(h) { return h.getFullYear() + '-' + String(h.getMonth() + 1).padStart(2, '0') + '-' + String(h.getDate()).padStart(2, '0'); })(new Date()), ts: new Date().toISOString(),
       resumen: ctx.resumen, avisos: ctx.avisos, adherencia: hechos + '/' + total + ' sesiones' },
   } };
