@@ -4671,22 +4671,22 @@
       "rir": "0"
     },
     "M8-S1-c-Aperturas (DB)-1": {
-      "peso": "16",
-      "timestamp": "2026-11-13T20:19:14.047Z",
-      "reps": "1",
+      "peso": "20",
+      "timestamp": "2026-11-13T22:46:36.698Z",
+      "reps": "16",
       "checked": true,
       "rir": "0"
     },
     "M8-S1-c-Aperturas (DB)-2": {
-      "peso": "14",
-      "timestamp": "2026-11-13T20:40:56.750Z",
-      "reps": "1",
+      "peso": "20",
+      "timestamp": "2026-11-13T22:46:37.946Z",
+      "reps": "14",
       "checked": true
     },
     "M8-S1-c-Aperturas (DB)-3": {
-      "peso": "12",
-      "timestamp": "2026-11-13T20:40:59.729Z",
-      "reps": "1",
+      "peso": "20",
+      "timestamp": "2026-11-13T22:46:40.792Z",
+      "reps": "12",
       "checked": true
     },
     "M8-S1-c-Pullover (DB)-1": {
@@ -8805,5 +8805,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-13T22:39:01.736Z"
+  "timestamp": "2026-11-13T22:46:43.803Z"
 }
