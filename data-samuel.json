@@ -4751,6 +4751,13 @@
       "reps": "12",
       "checked": true,
       "rir": "3"
+    },
+    "M8-S1-d-Búlgara (DB)-3": {
+      "peso": "25",
+      "timestamp": "2026-11-14T19:24:03.207Z",
+      "reps": "12",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -8886,5 +8893,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T18:52:16.710Z"
+  "timestamp": "2026-11-14T19:24:06.215Z"
 }
