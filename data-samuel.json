@@ -4758,6 +4758,12 @@
       "reps": "12",
       "checked": true,
       "rir": "2"
+    },
+    "M8-S1-d-Hip Thrust (barra)-1": {
+      "peso": "25",
+      "timestamp": "2026-11-14T19:24:10.266Z",
+      "reps": "14",
+      "checked": true
     }
   },
   "rehab": {
@@ -8893,5 +8899,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T19:24:06.215Z"
+  "timestamp": "2026-11-14T19:24:10.229Z"
 }
