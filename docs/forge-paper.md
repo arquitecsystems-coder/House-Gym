@@ -250,6 +250,11 @@ Cada tarjeta muestra el RIR en el que debería quedar la serie esa semana.
    - **Riesgo conocido:** la dorsiflexión del tobillo izquierdo cuando ese pie va adelante.
    - Mismo peso en las dos piernas; manda la izquierda.
 8. **Gemelo:** estaba en 0 series.
+   - **Actualización del 14 nov (hecho):** la izquierda no completa la elevación a una pierna ni sin peso; en la S1 necesitó apoyo del otro pie.
+   - **Desde entonces, izquierda:** sube con los dos pies y baja solo con la izquierda en 3-4 s. El músculo controla más carga al bajar que al subir.
+   - **Derecha:** a una pierna normal.
+   - **Progresión:** 3×15 bajadas → una pierna con un dedo de apoyo → sin apoyo → mancuerna.
+   - **Por qué no bilateral con mancuerna:** la derecha compensa y oculta la asimetría.
    - **Hecho:** el déficit de fuerza para empujar con la punta del pie (flexión plantar) es una secuela típica de la fractura de tobillo.
    - Entra a una pierna, en un escalón y con el rango completo.
 9. **Deltoide lateral 3+3.**
