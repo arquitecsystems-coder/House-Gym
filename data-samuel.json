@@ -4779,6 +4779,10 @@
       "reps": "11",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S1-d-Nórdico Inverso-1": {
+      "reps": "10",
+      "timestamp": "2026-11-14T19:33:35.794Z"
     }
   },
   "rehab": {
@@ -8914,5 +8918,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T19:26:21.091Z"
+  "timestamp": "2026-11-14T19:33:38.809Z"
 }
