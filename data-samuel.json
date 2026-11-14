@@ -4831,10 +4831,10 @@
     },
     "M8-S1-d-Crunch Abdominal-1": {
       "peso": "45",
-      "timestamp": "2026-11-14T20:08:14.057Z",
+      "timestamp": "2026-11-14T20:08:48.057Z",
       "reps": "15",
       "checked": true,
-      "rir": "0"
+      "rir": "1"
     }
   },
   "rehab": {
@@ -8970,5 +8970,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T20:08:17.066Z"
+  "timestamp": "2026-11-14T20:08:51.067Z"
 }
