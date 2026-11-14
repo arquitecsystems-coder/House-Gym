@@ -4849,6 +4849,12 @@
       "reps": "9",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S1-d-Copa a una mano (DB)-2": {
+      "peso": "25",
+      "timestamp": "2026-11-14T20:44:40.808Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -8984,5 +8990,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T20:30:12.045Z"
+  "timestamp": "2026-11-14T20:44:43.820Z"
 }
