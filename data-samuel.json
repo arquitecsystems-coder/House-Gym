@@ -4785,6 +4785,10 @@
       "timestamp": "2026-11-14T19:33:46.795Z",
       "peso": "70",
       "checked": true
+    },
+    "nota-sesion-M8-S1-d": {
+      "nota": "La casilla de peso en el inverso son la resistencia de 70LB de la banda",
+      "timestamp": "2026-11-14T19:34:21.029Z"
     }
   },
   "rehab": {
@@ -8920,5 +8924,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T19:33:49.807Z"
+  "timestamp": "2026-11-14T19:34:24.032Z"
 }
