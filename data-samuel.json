@@ -8451,6 +8451,15 @@
             "prot": 40,
             "carbs": 0,
             "grasas": 60
+          },
+          {
+            "foodId": "mwfnc8x39dao",
+            "nombre": "Pulpa de Res",
+            "gramos": 150,
+            "kcal": 203,
+            "prot": 34.5,
+            "carbs": 0,
+            "grasas": 6
           }
         ]
       }
@@ -8815,8 +8824,16 @@
       "prot": 14,
       "carbs": 0,
       "grasas": 4
+    },
+    {
+      "id": "mwfnc8x39dao",
+      "nombre": "Pulpa de Res",
+      "kcal": 135,
+      "prot": 23,
+      "carbs": 0,
+      "grasas": 4
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T00:06:14.705Z"
+  "timestamp": "2026-11-14T00:07:31.307Z"
 }
