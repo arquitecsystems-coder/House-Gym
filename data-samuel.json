@@ -4835,6 +4835,13 @@
       "reps": "15",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S1-d-Crunch Abdominal-2": {
+      "peso": "45",
+      "timestamp": "2026-11-14T20:28:33.226Z",
+      "reps": "15",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -8970,5 +8977,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T20:08:51.067Z"
+  "timestamp": "2026-11-14T20:28:36.237Z"
 }
