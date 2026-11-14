@@ -4802,6 +4802,13 @@
       "reps": "13",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S1-d-Elevación Lateral (DB)-2": {
+      "peso": "20",
+      "timestamp": "2026-11-14T19:51:47.702Z",
+      "reps": "11",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -8937,5 +8944,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T19:45:49.985Z"
+  "timestamp": "2026-11-14T19:51:50.712Z"
 }
