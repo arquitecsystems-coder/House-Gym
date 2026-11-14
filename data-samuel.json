@@ -4789,6 +4789,12 @@
     "nota-sesion-M8-S1-d": {
       "nota": "La casilla de peso en el inverso son la resistencia de 70LB de la banda",
       "timestamp": "2026-11-14T19:34:21.029Z"
+    },
+    "M8-S1-d-Nórdico Inverso-2": {
+      "peso": "70",
+      "timestamp": "2026-11-14T19:37:16.756Z",
+      "reps": "8",
+      "checked": true
     }
   },
   "rehab": {
@@ -8924,5 +8930,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T19:34:24.032Z"
+  "timestamp": "2026-11-14T19:37:19.765Z"
 }
