@@ -6955,7 +6955,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-18T23:53:51.811Z",
+        "_ts": "2026-11-18T23:55:52.188Z",
         "dorsiflexion_carga": [
           {
             "valor": null,
@@ -6979,6 +6979,12 @@
             "valor": null,
             "completado": true
           },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "hombro_correa_der": [
           {
             "valor": null,
             "completado": true
@@ -9031,5 +9037,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-18T23:53:54.813Z"
+  "timestamp": "2026-11-18T23:55:55.191Z"
 }
