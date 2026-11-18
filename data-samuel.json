@@ -4858,7 +4858,7 @@
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-18T23:34:53.189Z",
+    "_syncTs": "2026-11-14T20:44:43.820Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -6943,6 +6943,19 @@
             "completado": true
           }
         ]
+      },
+      "2026-11-18": {
+        "movilizacion_astragalo": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "_ts": "2026-11-18T14:21:43.420Z"
       }
     },
     "mediciones": [
@@ -7270,7 +7283,7 @@
       }
     },
     "registrosMensuales": {},
-    "_syncTs": "2026-10-18T23:34:53.189Z"
+    "_syncTs": "2026-11-14T20:44:43.820Z"
   },
   "test": {},
   "actividad": {
@@ -8990,5 +9003,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-14T20:44:43.820Z"
+  "timestamp": "2026-11-18T14:21:46.424Z"
 }
