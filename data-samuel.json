@@ -4855,6 +4855,13 @@
       "timestamp": "2026-11-14T20:44:40.808Z",
       "reps": "8",
       "checked": true
+    },
+    "M8-S2-a-Press Banca (barra)-1": {
+      "peso": "75",
+      "timestamp": "2026-11-19T16:10:03.456Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -9159,5 +9166,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T15:56:52.356Z"
+  "timestamp": "2026-11-19T16:10:06.465Z"
 }
