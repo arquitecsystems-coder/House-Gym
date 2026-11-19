@@ -4897,6 +4897,13 @@
       "reps": "6",
       "checked": true,
       "rir": "0"
+    },
+    "M8-S2-a-Press Inclinado (DB)-1": {
+      "peso": "45",
+      "timestamp": "2026-11-19T16:45:11.230Z",
+      "reps": "13",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -9201,5 +9208,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T16:40:20.043Z"
+  "timestamp": "2026-11-19T16:45:11.170Z"
 }
