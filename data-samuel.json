@@ -4918,6 +4918,13 @@
       "reps": "8",
       "checked": true,
       "rir": "2"
+    },
+    "M8-S2-a-Press Francés (barra)-1": {
+      "peso": "30",
+      "timestamp": "2026-11-19T17:06:38.333Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -9222,5 +9229,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T17:02:31.310Z"
+  "timestamp": "2026-11-19T17:06:41.341Z"
 }
