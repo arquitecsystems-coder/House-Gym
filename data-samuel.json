@@ -4914,10 +4914,10 @@
     },
     "M8-S2-a-Curl Bíceps (barra)-1": {
       "peso": "30",
-      "timestamp": "2026-11-19T17:02:20.446Z",
+      "timestamp": "2026-11-19T17:02:28.300Z",
       "reps": "8",
       "checked": true,
-      "rir": "1"
+      "rir": "2"
     }
   },
   "rehab": {
@@ -9222,5 +9222,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T17:02:20.242Z"
+  "timestamp": "2026-11-19T17:02:31.310Z"
 }
