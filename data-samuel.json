@@ -4921,10 +4921,10 @@
     },
     "M8-S2-a-Press Francés (barra)-1": {
       "peso": "30",
-      "timestamp": "2026-11-19T17:06:38.333Z",
+      "timestamp": "2026-11-19T17:16:14.993Z",
       "reps": "8",
       "checked": true,
-      "rir": "0"
+      "rir": "1"
     },
     "M8-S2-a-Curl Bíceps (barra)-2": {
       "peso": "30",
@@ -4932,6 +4932,13 @@
       "reps": "8",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S2-a-Press Francés (barra)-2": {
+      "peso": "30",
+      "timestamp": "2026-11-19T17:16:16.177Z",
+      "reps": "8",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -9236,5 +9243,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T17:11:40.435Z"
+  "timestamp": "2026-11-19T17:16:19.188Z"
 }
