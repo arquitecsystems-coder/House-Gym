@@ -6955,7 +6955,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-19T01:10:06.477Z",
+        "_ts": "2026-11-19T11:37:37.300Z",
         "dorsiflexion_carga": [
           {
             "valor": null,
@@ -7049,6 +7049,66 @@
         "inclinacion_pelvis": [
           {
             "valor": null,
+            "completado": true
+          }
+        ],
+        "elevacion_pierna": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": 3,
+            "completado": true
+          },
+          {
+            "valor": 2,
+            "completado": true
+          }
+        ],
+        "l_sit": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "straddle_cr": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "piernas_v": [
+          {
+            "valor": 30,
             "completado": true
           }
         ]
@@ -9099,5 +9159,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T01:10:09.479Z"
+  "timestamp": "2026-11-19T11:37:40.298Z"
 }
