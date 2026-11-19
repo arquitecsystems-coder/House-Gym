@@ -7212,7 +7212,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-19T21:59:39.379Z",
+        "_ts": "2026-11-19T22:08:53.381Z",
         "hombro_correa_izq": [
           {
             "valor": null,
@@ -7222,6 +7222,12 @@
             "valor": null,
             "completado": true
           },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "hombro_correa_der": [
           {
             "valor": null,
             "completado": true
@@ -9274,5 +9280,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-19T21:59:42.382Z"
+  "timestamp": "2026-11-19T22:08:56.388Z"
 }
