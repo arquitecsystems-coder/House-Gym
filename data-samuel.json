@@ -4939,6 +4939,14 @@
       "reps": "8",
       "checked": true,
       "rir": "0"
+    },
+    "M8-S2-a-Press Francés (barra)-3": {
+      "checked": true,
+      "timestamp": "2026-11-20T17:37:26.783Z"
+    },
+    "M8-S2-a-Curl Bíceps (barra)-3": {
+      "checked": true,
+      "timestamp": "2026-11-20T17:37:29.337Z"
     }
   },
   "rehab": {
@@ -9330,5 +9338,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T17:26:04.827Z"
+  "timestamp": "2026-11-20T17:37:32.346Z"
 }
