@@ -5022,6 +5022,11 @@
       "timestamp": "2026-11-20T19:12:22.218Z",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S2-b-Elevación Lateral (DB)-3": {
+      "reps": "9",
+      "timestamp": "2026-11-20T19:15:14.899Z",
+      "rir": "1"
     }
   },
   "rehab": {
@@ -9413,5 +9418,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T19:12:25.224Z"
+  "timestamp": "2026-11-20T19:15:13.907Z"
 }
