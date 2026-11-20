@@ -4982,6 +4982,13 @@
       "reps": "9",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S2-b-Elevación de talón a una pierna (DB)-2": {
+      "reps": "6",
+      "timestamp": "2026-11-20T19:00:26.829Z",
+      "peso": "0",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -9373,5 +9380,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T18:55:53.056Z"
+  "timestamp": "2026-11-20T19:00:29.834Z"
 }
