@@ -7212,7 +7212,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-19T23:23:08.239Z",
+        "_ts": "2026-11-20T01:40:26.145Z",
         "hombro_correa_izq": [
           {
             "valor": null,
@@ -7250,6 +7250,24 @@
           },
           {
             "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "split_apoyos": [
+          {
+            "valor": 10,
+            "completado": true
+          },
+          {
+            "valor": 10,
             "completado": true
           },
           {
@@ -9308,5 +9326,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T01:40:04.962Z"
+  "timestamp": "2026-11-20T01:40:29.148Z"
 }
