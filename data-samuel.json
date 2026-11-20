@@ -4996,6 +4996,13 @@
       "reps": "5",
       "checked": true,
       "rir": "3"
+    },
+    "M8-S2-b-RDL sin flexión de rodilla (barra)-3": {
+      "peso": "68,4",
+      "timestamp": "2026-11-20T19:02:21.635Z",
+      "reps": "5",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -9387,5 +9394,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T19:00:43.182Z"
+  "timestamp": "2026-11-20T19:02:24.640Z"
 }
