@@ -4947,6 +4947,13 @@
     "M8-S2-a-Curl Bíceps (barra)-3": {
       "checked": true,
       "timestamp": "2026-11-20T17:37:29.337Z"
+    },
+    "M8-S2-b-Sentadilla (barra + cuña)-1": {
+      "peso": "95",
+      "timestamp": "2026-11-20T18:26:35.652Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -9338,5 +9345,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T18:26:26.641Z"
+  "timestamp": "2026-11-20T18:26:38.656Z"
 }
