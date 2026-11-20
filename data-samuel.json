@@ -7566,6 +7566,10 @@
       "2026-11-05": {
         "ayunas": 70,
         "noche": null
+      },
+      "2026-11-20": {
+        "ayunas": 76,
+        "noche": null
       }
     },
     "registrosSemanales": {
@@ -9326,5 +9330,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-20T12:21:59.568Z"
+  "timestamp": "2026-11-20T17:26:04.827Z"
 }
