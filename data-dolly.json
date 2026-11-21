@@ -2512,8 +2512,8 @@
       "rir": "0"
     },
     "nota-sesion-D2-S6-dom": {
-      "nota": "La sentadilla la hago pero no con la espalda derecha y me crugen mis piernas. El lateral lo hago con 7.5 pero no subo hasta el final. Con 5 si me dá ",
-      "timestamp": "2026-11-02T15:50:47.494Z"
+      "nota": "La sentadilla la hago pero no con la espalda derecha y me crugen mis piernas. El lateral lo hago con 7.5 pero no subo hasta el final. Con 5,5 si me dá ",
+      "timestamp": "2026-11-02T16:05:02.740Z"
     },
     "D2-S6-dom-Sentadilla goblet-3": {
       "peso": "25",
@@ -2560,10 +2560,16 @@
       "timestamp": "2026-11-02T16:04:23.310Z",
       "reps": "17",
       "checked": true
+    },
+    "D3-S1-sab-Dominada asistida (doble banda)-1": {
+      "reps": "4",
+      "timestamp": "2026-11-21T23:08:09.632Z",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
-    "_syncTs": "2026-10-18T14:53:55.271Z",
+    "_syncTs": "2026-11-02T16:04:26.322Z",
     "sesiones": {
       "2026-06-24": {
         "rodilla_pared": [
@@ -2684,5 +2690,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-02T16:04:26.322Z"
+  "timestamp": "2026-11-21T23:08:12.654Z"
 }
