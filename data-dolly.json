@@ -2569,8 +2569,9 @@
     },
     "D3-S1-sab-Dominada asistida (doble banda)-2": {
       "reps": "4",
-      "timestamp": "2026-11-21T23:11:16.693Z",
-      "rir": "1"
+      "timestamp": "2026-11-21T23:11:18.873Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -2695,5 +2696,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-21T23:11:16.120Z"
+  "timestamp": "2026-11-21T23:11:21.892Z"
 }
