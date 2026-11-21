@@ -2578,6 +2578,10 @@
       "timestamp": "2026-11-21T23:14:25.397Z",
       "rir": "1",
       "checked": true
+    },
+    "D3-S1-sab-Isométrico arriba (doble banda)-1": {
+      "reps": "10",
+      "timestamp": "2026-11-21T23:17:22.188Z"
     }
   },
   "rehab": {
@@ -2702,5 +2706,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-21T23:14:28.407Z"
+  "timestamp": "2026-11-21T23:17:25.213Z"
 }
