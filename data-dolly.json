@@ -2631,6 +2631,11 @@
       "timestamp": "2026-11-21T23:47:16.584Z",
       "rir": "0",
       "checked": true
+    },
+    "D3-S1-sab-Curl bíceps con mancuerna-1": {
+      "reps": "8",
+      "timestamp": "2026-11-21T23:51:08.683Z",
+      "rir": "2"
     }
   },
   "rehab": {
@@ -2755,5 +2760,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-21T23:47:19.605Z"
+  "timestamp": "2026-11-21T23:51:08.514Z"
 }
