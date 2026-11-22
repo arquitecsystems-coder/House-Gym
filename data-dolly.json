@@ -2689,6 +2689,12 @@
       "timestamp": "2026-11-22T13:20:11.830Z",
       "rir": "0",
       "checked": true
+    },
+    "D3-S1-dom-RDL unilateral con apoyo-1": {
+      "reps": "10",
+      "timestamp": "2026-11-22T13:25:01.217Z",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -2813,5 +2819,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T13:20:14.843Z"
+  "timestamp": "2026-11-22T13:25:04.234Z"
 }
