@@ -2760,7 +2760,9 @@
     },
     "D3-S1-dom-Press inclinado mancuerna (unilateral)-2": {
       "peso": "12.5",
-      "timestamp": "2026-11-22T14:06:47.469Z"
+      "timestamp": "2026-11-22T14:06:53.100Z",
+      "reps": "7.6",
+      "checked": true
     }
   },
   "rehab": {
@@ -2885,5 +2887,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T14:06:50.489Z"
+  "timestamp": "2026-11-22T14:06:56.115Z"
 }
