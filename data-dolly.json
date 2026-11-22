@@ -2716,7 +2716,9 @@
     },
     "D3-S1-dom-Sentadilla goblet con banco-2": {
       "reps": "8",
-      "timestamp": "2026-11-22T13:44:17.357Z"
+      "timestamp": "2026-11-22T13:44:23.603Z",
+      "rir": "1",
+      "checked": true
     }
   },
   "rehab": {
@@ -2841,5 +2843,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T13:44:20.388Z"
+  "timestamp": "2026-11-22T13:44:26.612Z"
 }
