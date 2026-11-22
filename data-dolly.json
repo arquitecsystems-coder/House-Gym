@@ -2730,9 +2730,10 @@
       "rir": "0"
     },
     "D3-S1-dom-Press inclinado mancuerna (unilateral)-1": {
-      "reps": "",
-      "timestamp": "2026-11-22T14:02:53.439Z",
-      "peso": "12.5"
+      "reps": "8.7",
+      "timestamp": "2026-11-22T14:03:00.035Z",
+      "peso": "12.5",
+      "checked": true
     },
     "D3-S1-dom-Negativas de fondo (banco)-1": {
       "reps": "5",
@@ -2879,5 +2880,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T14:02:56.481Z"
+  "timestamp": "2026-11-22T14:03:03.044Z"
 }
