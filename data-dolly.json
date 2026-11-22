@@ -2655,6 +2655,15 @@
       "timestamp": "2026-11-22T00:03:23.147Z",
       "rir": "4",
       "checked": true
+    },
+    "nota-sesion-D3-S1-sab": {
+      "nota": "Me pareció suave. No quedé estresada. \n\n",
+      "timestamp": "2026-11-22T00:04:10.138Z"
+    },
+    "D3-S1-dom-Dominada asistida (práctica)-1": {
+      "reps": "4",
+      "timestamp": "2026-11-22T13:07:23.595Z",
+      "rir": "2"
     }
   },
   "rehab": {
@@ -2779,5 +2788,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T00:03:26.164Z"
+  "timestamp": "2026-11-22T13:07:23.339Z"
 }
