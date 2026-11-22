@@ -2738,6 +2738,16 @@
       "timestamp": "2026-11-22T13:52:24.342Z",
       "rir": "1",
       "checked": true
+    },
+    "nota-sesion-D3-S1-dom": {
+      "nota": "Siento que perdí al no entrenar 2 semanas. Quedé debilucha. Y me sentí debilucha practicando. ",
+      "timestamp": "2026-11-22T13:55:53.694Z"
+    },
+    "D3-S1-dom-Negativas de fondo (banco)-2": {
+      "reps": "6",
+      "timestamp": "2026-11-22T13:55:58.298Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2862,5 +2872,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T13:52:27.351Z"
+  "timestamp": "2026-11-22T13:56:01.311Z"
 }
