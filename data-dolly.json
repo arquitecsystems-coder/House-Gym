@@ -2665,6 +2665,12 @@
       "timestamp": "2026-11-22T13:07:24.603Z",
       "rir": "2",
       "checked": true
+    },
+    "D3-S1-dom-Dominada asistida (práctica)-2": {
+      "reps": "4",
+      "timestamp": "2026-11-22T13:12:09.812Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2789,5 +2795,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T13:07:27.617Z"
+  "timestamp": "2026-11-22T13:12:12.828Z"
 }
