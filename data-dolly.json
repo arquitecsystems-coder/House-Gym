@@ -2677,6 +2677,12 @@
       "timestamp": "2026-11-22T13:15:36.573Z",
       "rir": "1",
       "checked": true
+    },
+    "D3-S1-dom-Remo unilateral con mancuerna-2": {
+      "reps": "8.8",
+      "timestamp": "2026-11-22T13:16:58.699Z",
+      "rir": "0",
+      "checked": true
     }
   },
   "rehab": {
@@ -2801,5 +2807,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-22T13:15:39.604Z"
+  "timestamp": "2026-11-22T13:17:01.716Z"
 }
