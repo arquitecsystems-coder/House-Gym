@@ -345,6 +345,21 @@ En la app es el módulo "movilidad"; internamente se llama "rehab".
 - **Progresión:** 5 sesiones completas suben un nivel. Una sesión parcial ni cuenta ni reinicia el conteo.
 - **Mediciones:** en cm, con "+ medir" o en el aviso del domingo.
 
+## 7b. Cut (composición corporal)
+
+- **Medición:** % de grasa con los 7 pliegues de Jackson-Pollock (pliegues, edad y sexo; **no usa la estatura**).
+- **Estatura:** se usa solo para el FFMI. Samuel mide **1.73 m**: FFMI ~22.2, normalizado **~22.6**, con la masa magra de julio (66.3 kg). Es intermedio alto.
+- **Pérdida semanal fija por el % de grasa inicial:** más de 15% → 0.5 kg; 12-15% → 0.35 kg; menos de 12% → 0.25 kg. Es pérdida de **grasa**.
+- **Ganancia de masa magra durante el cut:**
+  - **Ganancia anual según el FFMI** (tabla Aragon/McDonald): 18 → 8 kg, 20 → 7, 22 → 5, 23 → 4, 24 → 3, 25 → 2, 26.5 → 1.
+  - **Multiplicada por un factor según el % de grasa de cada semana:** más de 20% → 0.8; 15-20% → 0.6; 12-15% → 0.5; 10-12% → 0.3; menos de 10% → 0.1.
+  - **Por qué el factor:** según la curva de Forbes, con más grasa al empezar casi todo lo que se pierde es grasa, y hay más margen de recomposición. Cerca del 10% lo realista es conservar.
+  - **Los valores del factor son una heurística;** la forma de la curva sí está respaldada.
+- **Calendario:** cada semana baja (grasa perdida − músculo ganado) y termina en el peso objetivo real. Antes terminaba ~1 kg más abajo, porque ignoraba el músculo.
+- **Estimación de Samuel** (del 13.9% al 9%): **~0.4 kg** de músculo, más la memoria muscular, que no está modelada. Se puede fijar a mano en "Ganancia músculo".
+- **Reiniciar fechas:** nuevo inicio con el peso actual, conservando objetivos y pliegues (o 7 pliegues nuevos). El plan anterior queda en el historial.
+- **Datos al 23 nov (hecho):** del 17 jul a fines de octubre el peso quedó plano en ~77 kg. El registro del 5 nov (70 kg) era un error de tipeo y se corrigió a 77.
+
 ## 8. Pendientes de entrenamiento
 
 - **Composición corporal:** fotos + 7 pliegues para estimar el % de grasa y la masa magra. Se calcula con la fórmula de 7 pliegues de Jackson-Pollock; las fotos se usan como contexto.

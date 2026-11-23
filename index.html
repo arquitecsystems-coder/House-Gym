@@ -4518,6 +4518,89 @@ function renderCut(main) {
 }
 
 // ── WIZARD ──
+// ── PLAN DEL CUT (fuente única: lo usan el asistente, la edición y "Reiniciar fechas") ──
+// Ganancia de masa magra anual según FFMI normalizado (tabla Aragon/McDonald, "objetivos realistas").
+const CUT_FFMI_GANANCIA = [[18, 8], [20, 7], [22, 5], [23, 4], [24, 3], [25, 2], [26.5, 1]];
+function gananciaAnualFFMI(ffmiN) {
+  const t = CUT_FFMI_GANANCIA;
+  if (ffmiN <= t[0][0]) return t[0][1];
+  for (let i = 1; i < t.length; i++) {
+    if (ffmiN <= t[i][0]) return t[i-1][1] + (t[i][1] - t[i-1][1]) * (ffmiN - t[i-1][0]) / (t[i][0] - t[i-1][0]);
+  }
+  return t[t.length - 1][1];
+}
+// En déficit se gana menos, y menos cuanto más delgado (Forbes): factor según el % de grasa de esa semana
+function factorGrasaCut(pct) {
+  if (pct > 20) return 0.8;
+  if (pct > 15) return 0.6;
+  if (pct > 12) return 0.5;
+  if (pct > 10) return 0.3;
+  return 0.1;
+}
+// Simula semana a semana: la grasa baja perdidaSemanal (fija por el % inicial) y la masa magra sube según
+// FFMI y % de grasa del momento. Termina cuando se llega al % objetivo. ganMusManual (kg) reescala la curva.
+function calcPlanCut(inp) {
+  const pliegues = inp.pliegues;
+  const pctGrasaActual = calcGrasa7(pliegues, inp.edad || 24, inp.genero || 'hombre');
+  const masaMagra = inp.pesoAyunas * (1 - pctGrasaActual / 100);
+  const grasaKg = inp.pesoAyunas - masaMagra;
+  const perdidaSemanal = getPerdidaSemanal(pctGrasaActual);
+  const h = inp.estatura ? inp.estatura / 100 : null;
+  const ffmi = h ? masaMagra / (h * h) : null;
+  const ffmiN = h ? ffmi + 6.1 * (1.8 - h) : null;
+  const anual = h ? gananciaAnualFFMI(ffmiN) : null;
+  const manual = inp.ganMusManual != null && !isNaN(inp.ganMusManual) ? inp.ganMusManual : null;
+  const simular = function(escala, porSemana) {
+    let lbm = masaMagra, fm = grasaKg;
+    const semanas = [];
+    for (let w = 1; w <= 104; w++) {
+      const pct = fm / (lbm + fm) * 100;
+      if (pct <= inp.pctTarget) break;
+      const g = porSemana != null ? porSemana : (anual / 52) * factorGrasaCut(pct) * escala;
+      fm = Math.max(0, fm - perdidaSemanal);
+      lbm += g;
+      semanas.push({ lbm: lbm, fm: fm });
+    }
+    return semanas;
+  };
+  let sim;
+  if (anual != null) {
+    sim = simular(1, null);
+    const modelo = sim.length ? sim[sim.length - 1].lbm - masaMagra : 0;
+    if (manual != null && modelo > 0) sim = simular(manual / modelo, null);
+  } else {
+    // Sin estatura: ganancia manual repartida igual entre las semanas (estimación previa sin músculo)
+    const base = simular(1, 0);
+    sim = simular(1, (manual || 0) / Math.max(1, base.length));
+  }
+  const fin = sim[sim.length - 1] || { lbm: masaMagra, fm: grasaKg };
+  const pesoTarget = fin.lbm + fin.fm;
+  const ganMus = fin.lbm - masaMagra;
+  const offsetNoche = (inp.pesoNoche || inp.pesoAyunas) - inp.pesoAyunas;
+  const [sy, sm, sd] = inp.fecha.split('-').map(Number);
+  const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const fmt = function(d) { return d.getDate() + ' ' + mesesFmt[d.getMonth()]; };
+  const calendario = sim.map(function(x, i) {
+    const ws = new Date(sy, sm - 1, sd + i * 7), we = new Date(sy, sm - 1, sd + i * 7 + 6);
+    const ay = Math.round((x.lbm + x.fm) * 10) / 10;
+    return { semana: i + 1, fechaStr: fmt(ws) + ' \u2013 ' + fmt(we), targetAyunas: ay, targetNoche: Math.round((ay + offsetNoche) * 10) / 10,
+             grasa: Math.round(x.fm * 10) / 10, magra: Math.round(x.lbm * 10) / 10 };
+  });
+  const indexed = pliegues.map(function(v, i) { return { i: i, v: v, nombre: PLIEGUES_NAMES[i] }; }).sort(function(a, b) { return b.v - a.v; });
+  const plieguTargets = calcPlieguTargets(pliegues, pctGrasaActual, inp.pctTarget);
+  return {
+    pesoNoche: inp.pesoNoche, pesoAyunas: inp.pesoAyunas, pctTarget: inp.pctTarget, cals: inp.cals,
+    edad: inp.edad || 24, genero: inp.genero || 'hombre', estatura: inp.estatura || null,
+    ganMusManual: manual, fechaInicio: inp.fecha, fecha: inp.fecha,
+    pctGrasaActual: pctGrasaActual, masaMagra: masaMagra, ffmi: ffmi, ffmiN: ffmiN, gananciaAnual: anual,
+    ganMus: Math.round(ganMus * 10) / 10, pesoTarget: pesoTarget, grasaEliminar: grasaKg - fin.fm,
+    perdidaSemanal: perdidaSemanal, semanas: calendario.length, deficitDiario: Math.round(perdidaSemanal * 7700 / 7),
+    topPliegues: indexed.slice(0, 3).map(function(p) { return { nombre: p.nombre, actual: p.v, target: plieguTargets[p.i], idx: p.i }; }),
+    cinturaActual: inp.cintura, plieguesIniciales: pliegues, plieguTargets: plieguTargets, calendario: calendario,
+    ts: new Date().toISOString(),
+  };
+}
+
 function renderCutWizard(wrap, datos) {
   const step = datos.wizardStep || 1;
 
@@ -4545,8 +4628,12 @@ function renderCutWizard(wrap, datos) {
           <input class="cut-input" id="cw_pctTarget" type="number" step="0.1" placeholder="9.0" value="${p.pctTarget || ''}">
         </div>
         <div class="cut-field">
-          <div class="cut-label">Ganancia músculo (kg)</div>
-          <input class="cut-input" id="cw_ganMus" type="number" step="0.1" placeholder="1.0" value="${p.ganMus || ''}">
+          <div class="cut-label">Estatura (cm)</div>
+          <input class="cut-input" id="cw_estatura" type="number" step="0.5" placeholder="173" value="${p.estatura || ''}">
+        </div>
+        <div class="cut-field">
+          <div class="cut-label">Ganancia músculo (kg, vacío = auto)</div>
+          <input class="cut-input" id="cw_ganMus" type="number" step="0.1" placeholder="auto" value="${p.ganMusManual ?? ''}">
         </div>
         <div class="cut-field">
           <div class="cut-label">Calorías diarias plan</div>
@@ -4630,6 +4717,10 @@ function renderCutWizard(wrap, datos) {
           <div class="cut-stat-label">Grasa a eliminar</div>
         </div>
         <div class="cut-stat">
+          <div class="cut-stat-val ok">+${r.ganMus} kg</div>
+          <div class="cut-stat-label">Músculo estimado${r.ffmiN ? ' · FFMI ' + r.ffmiN.toFixed(1) : ''}</div>
+        </div>
+        <div class="cut-stat">
           <div class="cut-stat-val">${r.semanas} sem</div>
           <div class="cut-stat-label">Duración estimada</div>
         </div>
@@ -4677,17 +4768,20 @@ function wizardNext1() {
   const pesoNoche = get('cw_pesoNoche');
   const pesoAyunas = get('cw_pesoAyunas');
   const pctTarget = get('cw_pctTarget');
-  const ganMus = get('cw_ganMus');
+  const ganMusRaw = get('cw_ganMus');
+  const ganMusManual = isNaN(ganMusRaw) ? null : ganMusRaw;
+  const estatura = get('cw_estatura') || null;
   const cals = get('cw_cals');
   const edad = get('cw_edad') || 24;
   const fecha = document.getElementById('cw_fecha')?.value;
   const genero = document.querySelector('input[name="cw_genero"]:checked')?.value || 'hombre';
 
-  if (!pesoNoche || !pesoAyunas || !pctTarget || !ganMus || !cals || !fecha) {
+  if (!pesoNoche || !pesoAyunas || !pctTarget || !cals || !fecha) {
     showToast("Completa todos los campos", "err"); return;
   }
+  if (!estatura && ganMusManual == null) { showToast("Pon tu estatura (o la ganancia de músculo a mano)", "err"); return; }
 
-  datos.wizardPartial = { pesoNoche, pesoAyunas, pctTarget, ganMus, cals, edad, fecha, genero };
+  datos.wizardPartial = { pesoNoche, pesoAyunas, pctTarget, ganMusManual, estatura, cals, edad, fecha, genero };
   datos.wizardStep = 2;
   saveCutDatos(datos);
   renderCut(document.getElementById('mainContent'));
@@ -4703,56 +4797,7 @@ function wizardNext2() {
     showToast("Completa todos los pliegues", "err"); return;
   }
 
-  const edad = partial.edad || 24;
-  const genero = partial.genero || 'hombre';
-  const pctGrasaActual = calcGrasa7(pliegues, edad, genero);
-  const masaMagra = partial.pesoAyunas * (1 - pctGrasaActual / 100);
-  const masaMagraProyectada = masaMagra + partial.ganMus;
-  const pesoTarget = masaMagraProyectada / (1 - partial.pctTarget / 100);
-  const grasaActualKg = partial.pesoAyunas * (pctGrasaActual / 100);
-  const grasaTargetKg = pesoTarget * (partial.pctTarget / 100);
-  const grasaEliminar = grasaActualKg - grasaTargetKg;
-  const perdidaSemanal = getPerdidaSemanal(pctGrasaActual);
-  const semanas = Math.ceil(grasaEliminar / perdidaSemanal);
-  const deficitDiario = Math.round(perdidaSemanal * 7700 / 7);
-
-  // Top 3 pliegues más altos
-  const indexedPliegues = pliegues.map((v,i) => ({ i, v, nombre: PLIEGUES_NAMES[i] }));
-  indexedPliegues.sort((a,b) => b.v - a.v);
-  const top3 = indexedPliegues.slice(0,3);
-  const plieguTargets = calcPlieguTargets(pliegues, pctGrasaActual, partial.pctTarget);
-  const topPliegues = top3.map(p => ({
-    nombre: p.nombre, actual: p.v, target: plieguTargets[p.i], idx: p.i
-  }));
-
-  // Generar calendario semanal
-  const calendario = [];
-  const startDate = new Date(partial.fecha);
-  let pesoNocheActual = partial.pesoNoche;
-  let pesoAyunasActual = partial.pesoAyunas;
-  for (let s = 1; s <= semanas; s++) {
-    const weekStart = new Date(startDate);
-    weekStart.setDate(startDate.getDate() + (s-1)*7);
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekStart.getDate() + 6);
-    const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-    const fmt = d => `${d.getDate()} ${mesesFmt[d.getMonth()]}`;
-    pesoNocheActual = Math.round((pesoNocheActual - perdidaSemanal) * 10) / 10;
-    pesoAyunasActual = Math.round((pesoAyunasActual - perdidaSemanal) * 10) / 10;
-    calendario.push({
-      semana: s,
-      fechaStr: `${fmt(weekStart)} – ${fmt(weekEnd)}`,
-      targetNoche: pesoNocheActual,
-      targetAyunas: pesoAyunasActual,
-    });
-  }
-
-  datos.wizardResumen = {
-    pctGrasaActual, pctTarget: partial.pctTarget, masaMagra,
-    pesoTarget, grasaEliminar, perdidaSemanal, semanas, deficitDiario,
-    topPliegues, cinturaActual: cintura, plieguesIniciales: pliegues,
-    plieguTargets, cals: partial.cals, genero
-  };
+  datos.wizardResumen = calcPlanCut(Object.assign({}, partial, { pliegues: pliegues, cintura: cintura }));
   datos.wizardStep = 3;
   saveCutDatos(datos);
   renderCut(document.getElementById('mainContent'));
@@ -4780,37 +4825,8 @@ function wizardBack(step) {
 function wizardConfirm() {
   const datos = getCutDatos();
   const r = datos.wizardResumen;
-  const partial = datos.wizardPartial;
 
-  // Generar calendario
-  const calendario = [];
-  const [sy, sm, sd] = partial.fecha.split('-').map(Number);
-  const startDate = new Date(sy, sm-1, sd);
-  let pesoNoche = partial.pesoNoche;
-  let pesoAyunas = partial.pesoAyunas;
-  for (let s = 1; s <= r.semanas; s++) {
-    const weekStart = new Date(startDate);
-    weekStart.setDate(startDate.getDate() + (s-1)*7);
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekStart.getDate() + 6);
-    const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-    const fmt = d => `${d.getDate()} ${mesesFmt[d.getMonth()]}`;
-    pesoNoche = Math.round((pesoNoche - r.perdidaSemanal) * 10) / 10;
-    pesoAyunas = Math.round((pesoAyunas - r.perdidaSemanal) * 10) / 10;
-    calendario.push({
-      semana: s,
-      fechaStr: `${fmt(weekStart)} – ${fmt(weekEnd)}`,
-      targetNoche: pesoNoche,
-      targetAyunas: pesoAyunas,
-    });
-  }
-
-  datos.setup = {
-    ...partial,
-    ...r,
-    calendario,
-    fechaInicio: partial.fecha,
-  };
+  datos.setup = r;
   datos.registrosDiarios = {};
   datos.registrosSemanales = {};
   datos.registrosMensuales = {};
@@ -4838,7 +4854,7 @@ function renderCutDashboard(wrap, datos) {
   const [_hy, _hm, _hd] = hoy.split('-').map(Number);
   const hoyDate = new Date(_hy, _hm-1, _hd);
   const diasTranscurridos = Math.floor((hoyDate - inicio) / (1000*60*60*24));
-  const semanaActual = Math.min(Math.floor(diasTranscurridos / 7) + 1, s.semanas);
+  const semanaActual = Math.max(1, Math.min(Math.floor(diasTranscurridos / 7) + 1, s.semanas));
   const semanaInfo = s.calendario[semanaActual - 1];
 
   // Promedio peso esta semana
@@ -4871,7 +4887,7 @@ function renderCutDashboard(wrap, datos) {
   if (semanaActual > 1 && promAyunas !== null) {
     const semanaAnterior = s.calendario[semanaActual - 2];
     const diffReal = semanaAnterior.targetAyunas - promAyunas;
-    const diffEsperado = s.perdidaSemanal;
+    const diffEsperado = semanaAnterior.targetAyunas - (semanaInfo?.targetAyunas ?? semanaAnterior.targetAyunas) || s.perdidaSemanal;
     if (diffReal < diffEsperado * 0.5) {
       const ajuste = Math.round((diffEsperado - diffReal) * 7700 / 7 / 50) * 50;
       alertaCalorica = `<div class="cut-alert warn">⚠️ El peso no bajó lo esperado esta semana. Considera reducir ~${ajuste} kcal/día (de ${s.cals} a ${s.cals - ajuste} kcal).</div>`;
@@ -4890,7 +4906,8 @@ function renderCutDashboard(wrap, datos) {
         <div style="font-size:12px;color:var(--muted);margin-top:2px">${semanaInfo?.fechaStr || ''}</div>
       </div>
       <div style="display:flex;gap:6px">
-        <button onclick="resetCut()" style="font-size:10px;font-family:var(--font-mono);color:var(--accent2);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">Reiniciar</button>
+        <button onclick="abrirReinicioCut()" style="font-size:10px;font-family:var(--font-mono);color:var(--accent);background:none;border:1px solid var(--accent);border-radius:6px;padding:3px 8px;cursor:pointer">Reiniciar fechas</button>
+        <button onclick="resetCut()" style="font-size:10px;font-family:var(--font-mono);color:var(--accent2);background:none;border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer">Borrar todo</button>
       </div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
@@ -4909,6 +4926,9 @@ function renderCutDashboard(wrap, datos) {
     <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:4px;display:flex;justify-content:space-between">
       <span>Inicio: ${s.fechaInicio}</span>
       <span>${pct}% · ${bajado.toFixed(1)} kg bajados</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);font-family:var(--font-mono);margin-top:6px">
+      Grasa a perder ${s.grasaEliminar?.toFixed(1)} kg · músculo estimado +${s.ganMus ?? 0} kg${s.ffmiN ? ' (FFMI ' + s.ffmiN.toFixed(1) + ')' : ''}
     </div>
   </div>
 
@@ -5023,7 +5043,7 @@ function savePesoDiario(fecha) {
   const [hy, hm, hd] = fecha.split('-').map(Number);
   const hoyDate = new Date(hy, hm-1, hd);
   const dias = Math.floor((hoyDate - inicio) / (1000*60*60*24));
-  const semana = Math.min(Math.floor(dias / 7) + 1, s.semanas);
+  const semana = Math.max(1, Math.min(Math.floor(dias / 7) + 1, s.semanas));
 
   const diasSemana = [];
   for (let i = 0; i < 7; i++) {
@@ -5069,8 +5089,66 @@ function clearDailyRecords() {
   renderCut(document.getElementById('mainContent'));
 }
 
+// Reiniciar fechas: nuevo inicio con el peso de hoy, conservando pliegues y objetivos (o pliegues nuevos
+// si se llenan los 7). El plan anterior y sus registros semanales quedan en datos.historial.
+function abrirReinicioCut() {
+  const s = getCutDatos().setup;
+  if (!s) return;
+  const hoy = rehabHoy();
+  const campo = function(id, label, val, step) {
+    return '<div class="cut-field"><div class="cut-label">' + label + '</div><input class="cut-input" id="' + id + '" type="number" step="' + (step || '0.1') + '" value="' + (val ?? '') + '"></div>';
+  };
+  const modal = document.createElement('div');
+  modal.id = 'reinicioCutModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;display:flex;align-items:center;justify-content:center;padding:16px';
+  modal.innerHTML = '<div style="background:var(--card);border-radius:var(--radius);padding:20px;width:100%;max-width:380px;max-height:85vh;overflow-y:auto">'
+    + '<div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:6px">Reiniciar fechas</div>'
+    + '<div style="font-size:11px;color:var(--muted);margin-bottom:12px">Conserva objetivos y pliegues. El plan anterior queda en el historial.</div>'
+    + '<div class="cut-field" style="margin-bottom:10px"><div class="cut-label">Fecha de inicio</div><input class="cut-input" id="rc_fecha" type="date" value="' + hoy + '"></div>'
+    + '<div class="cut-input-grid" style="margin-bottom:12px">'
+    + campo('rc_ayunas', 'Peso ayunas (kg)', '') + campo('rc_noche', 'Peso noche (kg)', '') + campo('rc_estatura', 'Estatura (cm)', s.estatura, '0.5')
+    + '</div>'
+    + '<div style="font-size:11px;color:var(--muted);margin-bottom:8px;font-family:var(--font-mono)">Pliegues nuevos (opcional, los 7 o ninguno)</div>'
+    + '<div class="cut-input-grid" style="margin-bottom:12px">'
+    + PLIEGUES_NAMES.map(function(n, i) { return '<div class="cut-field"><div class="cut-label">' + n + '</div><input class="cut-input" id="rc_pl_' + i + '" type="number" step="0.5" placeholder="' + (s.plieguesIniciales?.[i] ?? '') + '"></div>'; }).join('')
+    + campo('rc_cintura', 'Cintura (cm)', '', '0.5')
+    + '</div>'
+    + '<div style="display:flex;gap:8px">'
+    + '<button onclick="document.getElementById(\'reinicioCutModal\').remove()" style="flex:1;padding:11px;border:1px solid var(--border);border-radius:8px;background:none;color:var(--muted);cursor:pointer">Cancelar</button>'
+    + '<button onclick="confirmarReinicioCut()" style="flex:2;padding:11px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer">Reiniciar</button>'
+    + '</div></div>';
+  document.body.appendChild(modal);
+}
+
+function confirmarReinicioCut() {
+  const datos = getCutDatos();
+  const s = datos.setup;
+  const num = function(id) { const v = parseFloat(document.getElementById(id)?.value); return isNaN(v) ? null : v; };
+  const fecha = document.getElementById('rc_fecha')?.value;
+  const ayunas = num('rc_ayunas');
+  if (!fecha || !ayunas) { showToast("Pon la fecha y el peso en ayunas", "err"); return; }
+  const nuevos = PLIEGUES_NAMES.map(function(_, i) { return num('rc_pl_' + i); });
+  const llenos = nuevos.filter(function(v) { return v != null; }).length;
+  if (llenos && llenos < 7) { showToast("Pliegues: llena los 7 o ninguno", "err"); return; }
+  const noche = num('rc_noche') ?? Math.round((ayunas + ((s.pesoNoche || s.pesoAyunas) - s.pesoAyunas)) * 10) / 10;
+  const estatura = num('rc_estatura') || s.estatura || null;
+  if (!datos.historial) datos.historial = [];
+  datos.historial.push({ hasta: fecha, setup: s, registrosSemanales: datos.registrosSemanales || {} });
+  datos.setup = calcPlanCut({
+    pesoAyunas: ayunas, pesoNoche: noche, pctTarget: s.pctTarget, cals: s.cals, edad: s.edad, genero: s.genero,
+    fecha: fecha, estatura: estatura, ganMusManual: estatura ? null : (s.ganMusManual ?? s.ganMus ?? null),
+    pliegues: llenos ? nuevos : s.plieguesIniciales, cintura: num('rc_cintura') ?? s.cinturaActual,
+  });
+  datos.registrosSemanales = {};
+  saveCutDatos(datos);
+  queueSync();
+  document.getElementById('reinicioCutModal')?.remove();
+  showToast("Cut reiniciado desde " + fecha + " ✓", "ok");
+  renderCut(document.getElementById('mainContent'));
+}
+
 function resetCut() {
-  if (!confirm("¿Reiniciar la Cutting Phase? Se borrarán todos los datos.")) return;
+  if (!confirm("¿Borrar toda la Cutting Phase? Se pierden setup, registros e historial.")) return;
   localStorage.removeItem(uk("cut-datos"));
   showToast("Cutting Phase reiniciada", "ok");
   renderCut(document.getElementById('mainContent'));
@@ -5350,8 +5428,12 @@ function editCutSetup() {
         <input class="cut-input" id="ed_pctTarget" type="number" step="0.1" value="${s.pctTarget}">
       </div>
       <div class="cut-field">
-        <div class="cut-label">Ganancia músculo (kg)</div>
-        <input class="cut-input" id="ed_ganMus" type="number" step="0.1" value="${s.ganMus}">
+        <div class="cut-label">Estatura (cm)</div>
+        <input class="cut-input" id="ed_estatura" type="number" step="0.5" value="${s.estatura || ''}">
+      </div>
+      <div class="cut-field">
+        <div class="cut-label">Ganancia músculo (kg, vacío = auto)</div>
+        <input class="cut-input" id="ed_ganMus" type="number" step="0.1" placeholder="auto ${s.ganMus ?? ''}" value="${s.ganMusManual ?? ''}">
       </div>
       <div class="cut-field">
         <div class="cut-label">Calorías diarias</div>
@@ -5399,58 +5481,19 @@ function saveEditModal() {
   const pesoNoche = get('ed_pesoNoche') || s.pesoNoche;
   const pesoAyunas = get('ed_pesoAyunas') || s.pesoAyunas;
   const pctTarget = get('ed_pctTarget') || s.pctTarget;
-  const ganMus = get('ed_ganMus') || s.ganMus;
+  const ganMusRaw = get('ed_ganMus');
   const cals = get('ed_cals') || s.cals;
   const fecha = getString('ed_fecha') || s.fechaInicio;
-  const edad = s.edad || 24;
-
   const pliegues = PLIEGUES_NAMES.map((_,i) => get('ed_pl_'+i) || s.plieguesIniciales?.[i] || 0);
   const cintura = get('ed_cintura') || s.cinturaActual;
-  const genero = s.genero || 'hombre';
+  const estatura = get('ed_estatura') || s.estatura || null;
+  const ganMusManual = isNaN(ganMusRaw) ? (estatura ? null : s.ganMus) : ganMusRaw;
 
-  // Recalculate everything
-  const pctGrasaActual = calcGrasa7(pliegues, edad, genero);
-  const masaMagra = pesoAyunas * (1 - pctGrasaActual / 100);
-  const masaMagraProyectada = masaMagra + ganMus;
-  const pesoTarget = masaMagraProyectada / (1 - pctTarget / 100);
-  const grasaActualKg = pesoAyunas * (pctGrasaActual / 100);
-  const grasaTargetKg = pesoTarget * (pctTarget / 100);
-  const grasaEliminar = grasaActualKg - grasaTargetKg;
-  const perdidaSemanal = getPerdidaSemanal(pctGrasaActual);
-  const semanas = Math.ceil(grasaEliminar / perdidaSemanal);
-  const deficitDiario = Math.round(perdidaSemanal * 7700 / 7);
-
-  const indexedPliegues = pliegues.map((v,i) => ({ i, v, nombre: PLIEGUES_NAMES[i] }));
-  indexedPliegues.sort((a,b) => b.v - a.v);
-  const top3 = indexedPliegues.slice(0,3);
-  const plieguTargets = calcPlieguTargets(pliegues, pctGrasaActual, pctTarget);
-  const topPliegues = top3.map(p => ({ nombre: p.nombre, actual: p.v, target: plieguTargets[p.i], idx: p.i }));
-
-  // Regenerate calendar
-  const calendario = [];
-  const [sy, sm, sd] = fecha.split('-').map(Number);
-  const startDate = new Date(sy, sm-1, sd);
-  const mesesFmt = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  const fmt = d => `${d.getDate()} ${mesesFmt[d.getMonth()]}`;
-  let pNoche = pesoNoche;
-  let pAyunas = pesoAyunas;
-  for (let i = 1; i <= semanas; i++) {
-    const ws = new Date(startDate); ws.setDate(startDate.getDate() + (i-1)*7);
-    const we = new Date(ws); we.setDate(ws.getDate() + 6);
-    pNoche = Math.round((pNoche - perdidaSemanal) * 10) / 10;
-    pAyunas = Math.round((pAyunas - perdidaSemanal) * 10) / 10;
-    calendario.push({ semana: i, fechaStr: `${fmt(ws)} – ${fmt(we)}`, targetNoche: pNoche, targetAyunas: pAyunas });
-  }
-
-  datos.setup = {
-    pesoNoche, pesoAyunas, pctTarget, ganMus, cals, edad,
-    fechaInicio: fecha, pctGrasaActual, masaMagra, pesoTarget,
-    grasaEliminar, perdidaSemanal, semanas, deficitDiario,
-    topPliegues, cinturaActual: cintura, plieguesIniciales: pliegues,
-    plieguTargets, calendario
-  };
+  datos.setup = calcPlanCut({ pesoNoche, pesoAyunas, pctTarget, cals, fecha, pliegues, cintura, estatura, ganMusManual,
+                              edad: s.edad || 24, genero: s.genero || 'hombre' });
 
   saveCutDatos(datos);
+  queueSync();
   closeEditModal();
   showToast("Datos actualizados ✓", "ok");
   renderProfile(document.getElementById('mainContent'));
@@ -7463,6 +7506,12 @@ async function pullFromGithub() {
           mergedCut[field] = Object.assign({}, localCut[field] || {}, data.cut[field] || {});
         });
         if (!mergedCut.setup && localCut.setup) mergedCut.setup = localCut.setup;
+        // Plan más nuevo en local (reinicio o edición aún sin subir): gana el local con sus semanales
+        if (localCut.setup && (localCut.setup.ts || '') > (data.cut.setup?.ts || '')) {
+          mergedCut.setup = localCut.setup;
+          mergedCut.registrosSemanales = localCut.registrosSemanales || {};
+        }
+        if (!mergedCut.historial && localCut.historial) mergedCut.historial = localCut.historial;
         localStorage.setItem(uk("cut-datos"), JSON.stringify(mergedCut));
       }
     }
