@@ -3312,9 +3312,16 @@ function analizarRir(ej, mesoKey, semana, dia) {
   // Si se cumplió el RIR planeado, el peso nunca baja (el redondeo hacia abajo frenaba la subida)
   const cumplio = validos.every(x => x.reps >= reps && (x.rir ?? rirAsumido) >= rirAsumido);
   if (cumplio && rirHoy <= rirAsumido && d.total < validos[0].peso) d = combinarDiscos(validos[0].peso);
+  // Semana que repite el RIR objetivo y se cumplió: sube el incremento mínimo (el RIR entero no detecta mejoras de 1-2 kg)
+  let repite = false;
+  if (cumplio && rirHoy === rirAsumido) {
+    const sube = combinarDiscos(validos[0].peso + 1.13, validos[0].peso + 0.3);
+    if (sube.total > d.total) { d = sube; repite = true; }
+  }
   const sinRir = validos.some(x => x.rir == null);
   const hubo0 = validos.some(x => x.rir === 0);
   let texto = `S${ult.w}: ${fmtKg(validos[0].peso)}kg x ${validos.map(x => x.reps).join("/")}${sinRir ? ` (sin RIR anotado, se asumió RIR ${rirAsumido})` : ` RIR ${validos.map(x => x.rir).join("/")}`} = 1RM est. ${fmtKg(e1)}kg. Hoy RIR ${rirHoy}: ${fmtKg(d.total)}kg x ${reps} = ${d.texto}.`;
+  if (repite) texto += ` Mismo RIR objetivo que la semana pasada y lo cumpliste: +1.13 kg.`;
   if (hubo0) texto += ` Hubo RIR 0: límite duro del RDL, no volver a tocarlo.`;
   return { sug: { tipo: "subir", objetivo: `${fmtKg(d.total)}kg x ${reps} (RIR ${rirHoy})`, texto }, e1 };
 }

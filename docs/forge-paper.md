@@ -88,6 +88,8 @@ Hay cuatro motores. Cada ejercicio usa uno según su clase.
 - **RIR por semana:** S1-S2 a RIR 3, S3-S4 a RIR 2, S5 a RIR 1.
 - **Peso:** sale del 1RM estimado promedio de la última sesión, redondeado **hacia abajo** a una carga real.
 - **Corrección del M8:** si se cumplió el RIR planeado, el peso **nunca baja**. En el M7 el redondeo hacia abajo lo dejó 4 semanas en 65-66.5 kg.
+- **Corrección del 24 nov:** en una semana que repite el RIR objetivo de la anterior (S2 y S4), si se cumplió el RIR, sube **+1.13 kg**.
+  - **Por qué:** el peso salía solo del 1RM estimado, y un RIR anotado en números enteros no detecta mejoras de 1-2 kg. Repetía el peso aunque hubiera progreso.
 - **Límite duro: nunca RIR 0.** Es redondeo lumbar bajo carga máxima. En la S5 del M7 la tercera serie fue a RIR 0: en el M8, si la serie va a quedar en RIR 0, se corta en la rep anterior.
 
 ### 4.3 Doble progresión (el resto de los ejercicios con carga)
