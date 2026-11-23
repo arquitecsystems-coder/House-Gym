@@ -4529,16 +4529,9 @@ function gananciaAnualFFMI(ffmiN) {
   }
   return t[t.length - 1][1];
 }
-// En déficit se gana menos, y menos cuanto más delgado (Forbes): factor según el % de grasa de esa semana
-function factorGrasaCut(pct) {
-  if (pct > 20) return 0.8;
-  if (pct > 15) return 0.6;
-  if (pct > 12) return 0.5;
-  if (pct > 10) return 0.3;
-  return 0.1;
-}
-// Simula semana a semana: la grasa baja perdidaSemanal (fija por el % inicial) y la masa magra sube según
-// FFMI y % de grasa del momento. Termina cuando se llega al % objetivo. ganMusManual (kg) reescala la curva.
+// Simula semana a semana: la grasa baja perdidaSemanal (fija por el % inicial) y la masa magra sube al ritmo
+// anual de su FFMI (sin factor por déficit ni % de grasa: decisión del usuario). Termina al llegar al % objetivo.
+// ganMusManual (kg) reemplaza la estimación.
 function calcPlanCut(inp) {
   const pliegues = inp.pliegues;
   const pctGrasaActual = calcGrasa7(pliegues, inp.edad || 24, inp.genero || 'hombre');
@@ -4556,7 +4549,7 @@ function calcPlanCut(inp) {
     for (let w = 1; w <= 104; w++) {
       const pct = fm / (lbm + fm) * 100;
       if (pct <= inp.pctTarget) break;
-      const g = porSemana != null ? porSemana : (anual / 52) * factorGrasaCut(pct) * escala;
+      const g = porSemana != null ? porSemana : (anual / 52) * escala;
       fm = Math.max(0, fm - perdidaSemanal);
       lbm += g;
       semanas.push({ lbm: lbm, fm: fm });
