@@ -5072,6 +5072,13 @@
       "reps": "7",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S3-a-Press Banca respaldo (barra)-1": {
+      "peso": "65",
+      "timestamp": "2026-11-23T21:05:42.508Z",
+      "reps": "9",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -9463,5 +9470,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-23T21:00:48.323Z"
+  "timestamp": "2026-11-23T21:05:45.514Z"
 }
