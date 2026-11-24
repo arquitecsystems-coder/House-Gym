@@ -7547,17 +7547,17 @@
       "cals": 2000,
       "edad": 24,
       "genero": "hombre",
-      "estatura": 172,
+      "estatura": 173,
       "ganMusManual": null,
       "fechaInicio": "2026-11-24",
       "fecha": "2026-11-24",
       "pctGrasaActual": 12.158188737262865,
       "masaMagra": 66.75977655968022,
-      "ffmi": 22.566176500703158,
-      "ffmiN": 23.054176500703157,
-      "gananciaAnual": 3.945823499296843,
-      "ganMus": 0.6,
-      "pesoTarget": 73.80704976912257,
+      "ffmi": 22.306049837842966,
+      "ffmiN": 22.733049837842966,
+      "gananciaAnual": 4.266950162157034,
+      "ganMus": 0.7,
+      "pesoTarget": 73.85645387110112,
       "grasaEliminar": 2.799999999999997,
       "perdidaSemanal": 0.35,
       "semanas": 8,
@@ -7637,10 +7637,10 @@
         {
           "semana": 5,
           "fechaStr": "22 dic – 28 dic",
-          "targetAyunas": 74.6,
-          "targetNoche": 75.4,
+          "targetAyunas": 74.7,
+          "targetNoche": 75.5,
           "grasa": 7.5,
-          "magra": 67.1
+          "magra": 67.2
         },
         {
           "semana": 6,
@@ -7648,7 +7648,7 @@
           "targetAyunas": 74.4,
           "targetNoche": 75.2,
           "grasa": 7.1,
-          "magra": 67.2
+          "magra": 67.3
         },
         {
           "semana": 7,
@@ -7661,13 +7661,13 @@
         {
           "semana": 8,
           "fechaStr": "12 ene – 18 ene",
-          "targetAyunas": 73.8,
-          "targetNoche": 74.6,
+          "targetAyunas": 73.9,
+          "targetNoche": 74.7,
           "grasa": 6.4,
           "magra": 67.4
         }
       ],
-      "ts": "2026-11-24T11:27:49.944Z"
+      "ts": "2026-11-24T12:18:52.967Z"
     },
     "registrosDiarios": {
       "2026-07-25": {
@@ -9682,5 +9682,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-24T12:18:41.614Z"
+  "timestamp": "2026-11-24T12:18:55.969Z"
 }
