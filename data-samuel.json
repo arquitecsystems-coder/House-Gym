@@ -7543,7 +7543,7 @@
     "setup": {
       "pesoNoche": 76.8,
       "pesoAyunas": 76,
-      "pctTarget": 9,
+      "pctTarget": 7,
       "cals": 2000,
       "edad": 24,
       "genero": "hombre",
@@ -7556,29 +7556,29 @@
       "ffmi": 22.306049837842966,
       "ffmiN": 22.733049837842966,
       "gananciaAnual": 4.266950162157034,
-      "ganMus": 0.7,
-      "pesoTarget": 73.85645387110112,
-      "grasaEliminar": 2.799999999999997,
+      "ganMus": 1,
+      "pesoTarget": 72.78468080665169,
+      "grasaEliminar": 4.199999999999996,
       "perdidaSemanal": 0.35,
-      "semanas": 8,
+      "semanas": 12,
       "deficitDiario": 385,
       "topPliegues": [
         {
           "nombre": "Abdominal",
           "actual": 17,
-          "target": 12.6,
+          "target": 9.8,
           "idx": 4
         },
         {
           "nombre": "Muslo",
           "actual": 17,
-          "target": 12.6,
+          "target": 9.8,
           "idx": 6
         },
         {
           "nombre": "Suprailiaco",
           "actual": 15,
-          "target": 11.1,
+          "target": 8.6,
           "idx": 5
         }
       ],
@@ -7593,13 +7593,13 @@
         17
       ],
       "plieguTargets": [
-        3.7,
-        8.1,
-        8.1,
-        8.9,
-        12.6,
-        11.1,
-        12.6
+        2.9,
+        6.3,
+        6.3,
+        6.9,
+        9.8,
+        8.6,
+        9.8
       ],
       "calendario": [
         {
@@ -7665,9 +7665,41 @@
           "targetNoche": 74.7,
           "grasa": 6.4,
           "magra": 67.4
+        },
+        {
+          "semana": 9,
+          "fechaStr": "19 ene – 25 ene",
+          "targetAyunas": 73.6,
+          "targetNoche": 74.4,
+          "grasa": 6.1,
+          "magra": 67.5
+        },
+        {
+          "semana": 10,
+          "fechaStr": "26 ene – 1 feb",
+          "targetAyunas": 73.3,
+          "targetNoche": 74.1,
+          "grasa": 5.7,
+          "magra": 67.6
+        },
+        {
+          "semana": 11,
+          "fechaStr": "2 feb – 8 feb",
+          "targetAyunas": 73.1,
+          "targetNoche": 73.9,
+          "grasa": 5.4,
+          "magra": 67.7
+        },
+        {
+          "semana": 12,
+          "fechaStr": "9 feb – 15 feb",
+          "targetAyunas": 72.8,
+          "targetNoche": 73.6,
+          "grasa": 5,
+          "magra": 67.7
         }
       ],
-      "ts": "2026-11-24T12:18:52.967Z"
+      "ts": "2026-11-24T12:29:46.781Z"
     },
     "registrosDiarios": {
       "2026-07-25": {
@@ -7785,9 +7817,17 @@
       "2026-11-20": {
         "ayunas": 76,
         "noche": null
+      },
+      "2026-11-24": {
+        "ayunas": 75.55,
+        "noche": null
       }
     },
-    "registrosSemanales": {},
+    "registrosSemanales": {
+      "S1": {
+        "promAyunas": 75.6
+      }
+    },
     "registrosMensuales": {},
     "_syncTs": "2026-11-14T20:44:43.820Z",
     "historial": [
@@ -9682,5 +9722,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-24T12:18:55.969Z"
+  "timestamp": "2026-11-24T12:29:49.785Z"
 }
