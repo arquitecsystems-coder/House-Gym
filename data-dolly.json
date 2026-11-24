@@ -2797,7 +2797,9 @@
     },
     "D3-S2-mar-Retracciones escapulares colgada-1": {
       "reps": "8",
-      "timestamp": "2026-11-24T10:02:44.311Z"
+      "timestamp": "2026-11-24T10:02:50.524Z",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -2922,5 +2924,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-24T10:02:47.329Z"
+  "timestamp": "2026-11-24T10:02:53.541Z"
 }
