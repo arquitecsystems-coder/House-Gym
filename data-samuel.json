@@ -7523,7 +7523,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-25T00:39:40.846Z",
+        "_ts": "2026-11-25T00:42:04.452Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -7580,6 +7580,24 @@
           {
             "valor": 20,
             "completado": true
+          }
+        ],
+        "split_apoyos": [
+          {
+            "valor": 15,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -9809,5 +9827,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T00:39:43.852Z"
+  "timestamp": "2026-11-25T00:42:07.457Z"
 }
