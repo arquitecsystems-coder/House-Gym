@@ -7507,6 +7507,23 @@
             "completado": true
           }
         ]
+      },
+      "2026-11-24": {
+        "hombro_correa_izq": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "_ts": "2026-11-25T00:15:18.753Z"
       }
     },
     "mediciones": [
@@ -7831,12 +7848,13 @@
       },
       "2026-11-24": {
         "ayunas": 75.55,
-        "noche": null
+        "noche": 76.8
       }
     },
     "registrosSemanales": {
       "S1": {
-        "promAyunas": 75.6
+        "promAyunas": 75.6,
+        "promNoche": 76.8
       }
     },
     "registrosMensuales": {},
@@ -9733,5 +9751,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T00:07:49.555Z"
+  "timestamp": "2026-11-25T00:15:21.759Z"
 }
