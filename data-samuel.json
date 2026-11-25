@@ -7523,7 +7523,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-25T00:52:39.638Z",
+        "_ts": "2026-11-25T00:58:07.593Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -7624,6 +7624,32 @@
           {
             "valor": 60,
             "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          }
+        ],
+        "elevacion_pierna": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           },
           {
             "valor": null,
@@ -9857,5 +9883,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T00:52:42.642Z"
+  "timestamp": "2026-11-25T00:58:10.598Z"
 }
