@@ -5013,33 +5013,38 @@
     },
     "M8-S2-b-Elevación Lateral (DB)-1": {
       "reps": "13",
-      "timestamp": "2026-11-20T19:07:05.446Z",
+      "timestamp": "2026-11-25T17:03:57.675Z",
       "rir": "1",
-      "checked": true
+      "checked": true,
+      "peso": "20"
     },
     "M8-S2-b-Elevación Lateral (DB)-2": {
       "reps": "11",
-      "timestamp": "2026-11-20T19:12:22.218Z",
+      "timestamp": "2026-11-25T17:03:59.406Z",
       "checked": true,
-      "rir": "1"
+      "rir": "1",
+      "peso": "20"
     },
     "M8-S2-b-Elevación Lateral (DB)-3": {
       "reps": "9",
-      "timestamp": "2026-11-20T19:15:16.456Z",
+      "timestamp": "2026-11-25T17:04:01.186Z",
       "rir": "0",
-      "checked": true
+      "checked": true,
+      "peso": "20"
     },
     "M8-S2-b-Curl Martillo (DB)-1": {
       "reps": "14",
-      "timestamp": "2026-11-20T19:26:58.733Z",
+      "timestamp": "2026-11-25T17:04:03.500Z",
       "rir": "1",
-      "checked": true
+      "checked": true,
+      "peso": "25"
     },
     "M8-S2-b-Curl Martillo (DB)-2": {
       "reps": "14",
-      "timestamp": "2026-11-20T19:26:59.064Z",
+      "timestamp": "2026-11-25T17:04:05.363Z",
       "rir": "1",
-      "checked": true
+      "checked": true,
+      "peso": "25"
     },
     "M8-S2-b-Dragon Flag-1": {
       "reps": "15",
@@ -9949,5 +9954,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T17:01:33.765Z"
+  "timestamp": "2026-11-25T17:04:08.378Z"
 }
