@@ -3330,6 +3330,7 @@ function analizarRir(ej, mesoKey, semana, dia) {
 function fmtSeries(ej, mesoKey, sets) {
   const reps = sets.map(x => x.reps).join("/");
   const p = sets[0].peso;
+  if (p == null) return `x ${reps}`; // sin peso anotado: igual se muestran las reps
   if (ej.variantes) return `${ej.variantes[p - 1] || p} x ${reps}`;
   if (esMancuernaAjustable(ej, MESOCICLOS[mesoKey])) return (p ? `${fmtLb(p)} lb` : 'PC') + ` x ${reps}`;
   return `${fmtKg(p)}kg x ${reps}`;
@@ -3345,7 +3346,7 @@ function chipsSemanas(ej, mesoKey, semana, dia, planActual) {
     if (n === semana) return planActual;
     if (n < semana) {
       const sets = seriesSemana(ej, mesoKey, n, dia);
-      if (sets && sets[0].peso != null) return fmtSeries(ej, mesoKey, sets);
+      if (sets) return fmtSeries(ej, mesoKey, sets);
       return w;
     }
     if (lin?.fase === "test" && n < meso.semanas) return "reinicio tras el test";
@@ -3439,9 +3440,21 @@ function sugerenciaBase(ej, mesoKey, semana, dia) {
   const min = +rango[1], max = +rango[2];
   const ult = ultimaSesion(ej, mesoKey, semana, dia);
   if (!ult) return cargaRealPlan(ej, 1) || { tipo: "info", texto: `Sin registro previo en este bloque: usa el peso de S1.` };
+  let notaPeso = '';
+  if (ult.sets[0].peso == null) {
+    // Peso sin anotar: se asume el último anotado en el bloque o, si no hay, el de arranque del plan
+    let asumido = null;
+    for (let w = ult.w - 1; w >= 1 && asumido == null; w--) {
+      const s = seriesSemana(ej, mesoKey, w, dia);
+      if (s && s[0].peso != null) asumido = s[0].peso;
+    }
+    if (asumido == null) { const m = txtBase.match(/^(\d+(?:\.\d+)?)\s?(kg|lb)/); asumido = m ? +m[1] : (/Peso corporal/.test(txtBase) ? 0 : null); }
+    if (asumido == null) return null;
+    ult.sets = ult.sets.map(x => Object.assign({}, x, { peso: x.peso ?? asumido }));
+    notaPeso = ` (S${ult.w} sin peso anotado: se asumió ${esMancuernaAjustable(ej, meso) ? fmtLb(asumido) + ' lb' : fmtKg(asumido) + 'kg'}; anótalo.)`;
+  }
   const peso = ult.sets[0].peso;
-  if (peso == null) return null;
-  if (esMancuernaAjustable(ej, meso)) return sugerenciaMancuerna(ej, ult, min, max);
+  if (esMancuernaAjustable(ej, meso)) { const s = sugerenciaMancuerna(ej, ult, min, max); return notaPeso ? Object.assign({}, s, { texto: s.texto + notaPeso }) : s; }
   const completas = ult.sets.length >= ej.series;
   const alTope = completas && ult.sets.every(x => x.reps >= max && (x.peso ?? peso) >= peso);
   const repsTxt = ult.sets.map(x => x.reps).join("/");
@@ -3484,7 +3497,7 @@ function renderEjercicioCard(ej, meso, semana, dia) {
   let compHtml = "";
   if (semana > 1) {
     const prevSets = seriesSemana(ej, meso, semana - 1, dia);
-    const prevPlan = prevSets && prevSets[0].peso != null
+    const prevPlan = prevSets
       ? fmtSeries(ej, meso, prevSets)
       : ej.semanas[semana - 2];
     compHtml = `<div class="comparison">
