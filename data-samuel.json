@@ -7523,7 +7523,7 @@
             "completado": false
           }
         ],
-        "_ts": "2026-11-25T00:16:48.562Z",
+        "_ts": "2026-11-25T00:18:06.345Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -7532,6 +7532,20 @@
           {
             "valor": null,
             "completado": true
+          }
+        ],
+        "dorsiflexion_carga": [
+          {
+            "valor": null,
+            "completado": true
+          },
+          {
+            "valor": null,
+            "completado": false
+          },
+          {
+            "valor": null,
+            "completado": false
           }
         ]
       }
@@ -9761,5 +9775,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T00:16:51.564Z"
+  "timestamp": "2026-11-25T00:18:09.349Z"
 }
