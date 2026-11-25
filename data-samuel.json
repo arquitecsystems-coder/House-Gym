@@ -5235,7 +5235,7 @@
     },
     "M8-S3-b-Elevación de talón a una pierna (DB)-2": {
       "reps": "7",
-      "timestamp": "2026-11-25T17:14:04.102Z",
+      "timestamp": "2026-11-25T17:18:49.796Z",
       "rir": "0",
       "checked": true
     },
@@ -5243,6 +5243,11 @@
       "reps": "10",
       "timestamp": "2026-11-25T17:15:00.030Z",
       "rir": "1",
+      "checked": true
+    },
+    "M8-S3-b-Elevación de talón a una pierna (DB)-3": {
+      "reps": "6",
+      "timestamp": "2026-11-25T17:18:48.988Z",
       "checked": true
     }
   },
@@ -9978,5 +9983,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T17:15:03.038Z"
+  "timestamp": "2026-11-25T17:18:52.807Z"
 }
