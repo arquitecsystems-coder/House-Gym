@@ -4368,19 +4368,22 @@ function saveRehabSetTime(fecha, ejId, setIdx, valorStr) {
   renderRehab(document.getElementById("mainContent"));
 }
 
-// Cronómetro de la fila: cuenta el objetivo en la barra del temporizador y, al terminar, marca la serie con ese tiempo
+// Cronómetro de la fila: cuenta el objetivo en la barra del temporizador. Al terminar marca la serie con el
+// objetivo; si se corta antes, la marca con los segundos alcanzados (queda como parcial).
 function rehabCronometro(fecha, ejId, setIdx, seg) {
   const ej = rehabBuscar(ejId);
   if (!ej) return;
-  startTimer(seg, ej.nombre + ' · S' + rehabEtiquetaFila(ej, setIdx), function() {
+  const marcar = function(valor) {
+    if (!valor) return;
     const datos = getRehabDatos();
     const dia = rehabDia(datos, fecha, ej);
-    dia[ejId][setIdx] = { valor: seg, completado: true };
+    dia[ejId][setIdx] = { valor: valor, completado: true };
     dia._ts = new Date().toISOString();
     saveRehabDatos(datos);
     queueSync();
     if (state.view === 'rehab') renderRehab(document.getElementById("mainContent"));
-  });
+  };
+  startTimer(seg, ej.nombre + ' · S' + rehabEtiquetaFila(ej, setIdx), function() { marcar(seg); }, marcar);
 }
 
 function toggleRehabSet(fecha, ejId, setIdx) {
@@ -6857,9 +6860,24 @@ function _releaseWakeLock() {
   if (_wakeLock) { try { _wakeLock.release(); } catch(e) {} _wakeLock = null; }
 }
 
-function startTimer(duracionSeg, label, onDone) {
+// Segundos transcurridos del temporizador en curso (respeta la pausa)
+function timerTranscurrido() {
+  const restante = _timer.paused ? _timer.pausedMs : _timer.endTs - Date.now();
+  return Math.max(0, Math.floor((_timer.duration - restante) / 1000));
+}
+// Si se corta antes de terminar (cancelar o iniciar otro), avisa con los segundos que alcanzó a contar
+function _timerCortado() {
+  if (_timer.active && !_timer.beepFired && _timer.onCancel) {
+    const f = _timer.onCancel; _timer.onCancel = null; f(timerTranscurrido());
+  }
+  _timer.onCancel = null;
+}
+
+function startTimer(duracionSeg, label, onDone, onCancel) {
+  _timerCortado();
   if (_timer._iv) clearInterval(_timer._iv);
   _timer.onDone = onDone || null;
+  _timer.onCancel = onCancel || null;
   _timer.active = true;
   _timer.paused = false;
   _timer.beepFired = false;
@@ -6934,6 +6952,7 @@ function adjustTimer(deltaSeg) {
 }
 
 function cancelTimer() {
+  _timerCortado();
   if (_timer._iv) clearInterval(_timer._iv);
   _timer.onDone = null;
   _timer.active = false;
