@@ -7523,7 +7523,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-25T00:49:29.183Z",
+        "_ts": "2026-11-25T00:50:46.847Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -7612,8 +7612,8 @@
             "completado": true
           },
           {
-            "valor": null,
-            "completado": false
+            "valor": 10,
+            "completado": true
           },
           {
             "valor": null,
@@ -9847,5 +9847,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T00:49:32.188Z"
+  "timestamp": "2026-11-25T00:50:49.853Z"
 }
