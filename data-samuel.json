@@ -5167,6 +5167,13 @@
       "reps": "9",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S3-b-Sentadilla (barra + cuña)-1": {
+      "peso": "97,3",
+      "timestamp": "2026-11-25T16:23:47.927Z",
+      "reps": "3",
+      "checked": true,
+      "rir": "2"
     }
   },
   "rehab": {
@@ -9901,5 +9908,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T16:20:42.643Z"
+  "timestamp": "2026-11-25T16:23:46.548Z"
 }
