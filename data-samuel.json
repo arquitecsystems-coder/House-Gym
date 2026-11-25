@@ -5249,6 +5249,13 @@
       "reps": "6",
       "timestamp": "2026-11-25T17:18:48.988Z",
       "checked": true
+    },
+    "M8-S3-b-Dragon Flag-1": {
+      "peso": "3",
+      "timestamp": "2026-11-25T17:22:11.534Z",
+      "reps": "11",
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -9983,5 +9990,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T17:20:27.400Z"
+  "timestamp": "2026-11-25T17:22:14.538Z"
 }
