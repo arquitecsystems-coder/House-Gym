@@ -7523,7 +7523,7 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-25T00:25:30.128Z",
+        "_ts": "2026-11-25T00:25:33.941Z",
         "movilizacion_astragalo": [
           {
             "valor": null,
@@ -7543,6 +7543,12 @@
             "valor": null,
             "completado": true
           },
+          {
+            "valor": null,
+            "completado": true
+          }
+        ],
+        "hombro_correa_der": [
           {
             "valor": null,
             "completado": true
@@ -9775,5 +9781,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T00:25:33.132Z"
+  "timestamp": "2026-11-25T00:25:36.944Z"
 }
