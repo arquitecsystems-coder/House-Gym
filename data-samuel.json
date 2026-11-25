@@ -5259,9 +5259,10 @@
     },
     "M8-S3-b-Curl Martillo (DB)-1": {
       "peso": "28,5",
-      "timestamp": "2026-11-25T17:32:04.671Z",
+      "timestamp": "2026-11-25T17:32:26.701Z",
       "reps": "12",
-      "checked": true
+      "checked": true,
+      "rir": "0"
     }
   },
   "rehab": {
@@ -9996,5 +9997,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-25T17:32:07.687Z"
+  "timestamp": "2026-11-25T17:32:29.706Z"
 }
