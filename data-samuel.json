@@ -7796,10 +7796,10 @@
           },
           {
             "valor": null,
-            "completado": false
+            "completado": true
           }
         ],
-        "_ts": "2026-11-26T01:40:29.291Z"
+        "_ts": "2026-11-26T01:40:51.474Z"
       }
     },
     "mediciones": [
@@ -10031,5 +10031,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-26T01:40:32.296Z"
+  "timestamp": "2026-11-26T01:40:54.483Z"
 }
