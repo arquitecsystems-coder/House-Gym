@@ -5298,6 +5298,13 @@
       "reps": "7",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S3-c-Press Banca pausada (barra)-3": {
+      "peso": "62,3",
+      "timestamp": "2026-11-27T14:13:40.572Z",
+      "reps": "6",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -10079,5 +10086,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-27T14:11:57.852Z"
+  "timestamp": "2026-11-27T14:13:43.580Z"
 }
