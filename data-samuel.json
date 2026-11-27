@@ -5305,6 +5305,10 @@
       "reps": "6",
       "checked": true,
       "rir": "1"
+    },
+    "M8-S3-c-Remo Unilateral (DB)-1": {
+      "peso": "50",
+      "timestamp": "2026-11-27T14:20:56.235Z"
     }
   },
   "rehab": {
@@ -10086,5 +10090,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-27T14:13:43.580Z"
+  "timestamp": "2026-11-27T14:20:59.254Z"
 }
