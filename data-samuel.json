@@ -7799,7 +7799,37 @@
             "completado": true
           }
         ],
-        "_ts": "2026-11-26T01:40:51.474Z"
+        "_ts": "2026-11-26T01:51:12.016Z",
+        "heroe_una_pierna": [
+          {
+            "valor": 20,
+            "completado": true
+          },
+          {
+            "valor": 20,
+            "completado": true
+          },
+          {
+            "valor": 20,
+            "completado": true
+          },
+          {
+            "valor": 20,
+            "completado": true
+          }
+        ],
+        "piernas_v": [
+          {
+            "valor": 95,
+            "completado": true
+          }
+        ],
+        "inclinacion_pelvis": [
+          {
+            "valor": null,
+            "completado": true
+          }
+        ]
       }
     },
     "mediciones": [
@@ -8128,13 +8158,17 @@
       },
       "2026-11-25": {
         "ayunas": 75.85,
+        "noche": 76.2
+      },
+      "2026-11-26": {
+        "ayunas": 75.65,
         "noche": null
       }
     },
     "registrosSemanales": {
       "S1": {
         "promAyunas": 75.7,
-        "promNoche": 76.8
+        "promNoche": 76.5
       }
     },
     "registrosMensuales": {},
@@ -10031,5 +10065,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-26T01:40:54.483Z"
+  "timestamp": "2026-11-27T13:31:39.179Z"
 }
