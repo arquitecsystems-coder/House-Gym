@@ -5322,9 +5322,17 @@
     },
     "M8-S3-c-Remo Unilateral (DB)-3": {
       "peso": "50",
-      "timestamp": "2026-11-27T14:33:10.164Z",
+      "timestamp": "2026-11-27T14:33:15.166Z",
       "reps": "8",
-      "checked": true
+      "checked": true,
+      "rir": "0"
+    },
+    "M8-S3-c-Aperturas (DB)-1": {
+      "peso": "20",
+      "timestamp": "2026-11-27T14:35:33.242Z",
+      "reps": "20",
+      "checked": true,
+      "rir": "1"
     }
   },
   "rehab": {
@@ -10106,5 +10114,5 @@
     }
   ],
   "mesociclos": {},
-  "timestamp": "2026-11-27T14:33:13.177Z"
+  "timestamp": "2026-11-27T14:35:36.247Z"
 }
