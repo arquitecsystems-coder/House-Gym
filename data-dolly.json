@@ -2659,9 +2659,10 @@
     },
     "D3-S1-sab-Lateral inclinado contra pared-2": {
       "reps": "12",
-      "timestamp": "2026-11-22T00:03:23.147Z",
+      "timestamp": "2026-11-28T17:31:26.270Z",
       "rir": "4",
-      "checked": true
+      "checked": true,
+      "peso": "5"
     },
     "nota-sesion-D3-S1-sab": {
       "nota": "Me pareció suave. No quedé estresada. \n\n",
@@ -2983,5 +2984,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:31:08.238Z"
+  "timestamp": "2026-11-28T17:31:29.291Z"
 }
