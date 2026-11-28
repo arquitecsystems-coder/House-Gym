@@ -2832,8 +2832,9 @@
     },
     "D3-S2-sab-Flexión inclinada (mesa) + negativas en banco-3": {
       "rir": "0",
-      "timestamp": "2026-11-28T17:23:54.463Z",
-      "reps": "6"
+      "timestamp": "2026-11-28T17:23:55.341Z",
+      "reps": "6",
+      "checked": true
     },
     "D3-S2-sab-Flexión inclinada (mesa) + negativas en banco-1": {
       "reps": "8",
@@ -2970,5 +2971,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:23:54.120Z"
+  "timestamp": "2026-11-28T17:23:58.356Z"
 }
