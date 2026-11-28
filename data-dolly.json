@@ -2860,6 +2860,12 @@
       "reps": "4",
       "timestamp": "2026-11-28T17:26:54.059Z",
       "checked": true
+    },
+    "D3-S2-sab-Zancada inversa con mancuerna-1": {
+      "peso": "25",
+      "timestamp": "2026-11-28T17:34:45.564Z",
+      "reps": "12",
+      "checked": true
     }
   },
   "rehab": {
@@ -2984,5 +2990,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:31:29.291Z"
+  "timestamp": "2026-11-28T17:34:45.510Z"
 }
