@@ -2617,15 +2617,17 @@
     },
     "D3-S1-sab-Zancada inversa con mancuerna-1": {
       "reps": "10",
-      "timestamp": "2026-11-21T23:40:03.896Z",
+      "timestamp": "2026-11-28T17:30:29.205Z",
       "rir": "4",
-      "checked": true
+      "checked": true,
+      "peso": "25"
     },
     "D3-S1-sab-Zancada inversa con mancuerna-2": {
       "reps": "10",
-      "timestamp": "2026-11-21T23:43:29.715Z",
+      "timestamp": "2026-11-28T17:30:32.098Z",
       "rir": "2",
-      "checked": true
+      "checked": true,
+      "peso": "25"
     },
     "D3-S1-sab-Zancada inversa con mancuerna-3": {
       "reps": "10",
@@ -2977,5 +2979,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:30:09.926Z"
+  "timestamp": "2026-11-28T17:30:35.123Z"
 }
