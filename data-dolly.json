@@ -2890,6 +2890,10 @@
     "nota-sesion-D3-S2-sab": {
       "nota": "En el curl bíceps me fue mejor con la izquierda ",
       "timestamp": "2026-11-28T17:55:47.214Z"
+    },
+    "D3-S2-sab-Curl bíceps con mancuerna-2": {
+      "peso": "12.5",
+      "timestamp": "2026-11-28T17:58:44.824Z"
     }
   },
   "rehab": {
@@ -3014,5 +3018,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:55:50.222Z"
+  "timestamp": "2026-11-28T17:58:47.853Z"
 }
