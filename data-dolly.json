@@ -2870,8 +2870,9 @@
     },
     "D3-S2-sab-Zancada inversa con mancuerna-2": {
       "reps": "12",
-      "timestamp": "2026-11-28T17:39:15.750Z",
-      "rir": "3"
+      "timestamp": "2026-11-28T17:39:19.993Z",
+      "rir": "2",
+      "checked": true
     }
   },
   "rehab": {
@@ -2996,5 +2997,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:39:18.780Z"
+  "timestamp": "2026-11-28T17:39:23.005Z"
 }
