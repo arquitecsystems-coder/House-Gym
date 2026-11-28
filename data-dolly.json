@@ -2882,7 +2882,9 @@
     },
     "D3-S2-sab-Curl bíceps con mancuerna-1": {
       "peso": "12.5",
-      "timestamp": "2026-11-28T17:54:15.560Z"
+      "timestamp": "2026-11-28T17:54:36.204Z",
+      "reps": "9.10",
+      "checked": true
     }
   },
   "rehab": {
@@ -3007,5 +3009,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T17:54:18.608Z"
+  "timestamp": "2026-11-28T17:54:39.228Z"
 }
