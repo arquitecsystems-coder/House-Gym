@@ -2907,7 +2907,9 @@
     },
     "D3-S2-sab-Lateral inclinado contra pared-2": {
       "peso": "5",
-      "timestamp": "2026-11-28T18:09:32.283Z"
+      "timestamp": "2026-11-28T18:09:37.638Z",
+      "reps": "15.15",
+      "checked": true
     }
   },
   "rehab": {
@@ -3032,5 +3034,5 @@
   "userProfile": {},
   "foodLibrary": [],
   "mesociclos": {},
-  "timestamp": "2026-11-28T18:09:35.327Z"
+  "timestamp": "2026-11-28T18:09:40.650Z"
 }
